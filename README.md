@@ -1,8 +1,12 @@
-# RDKit
-[![Azure build Status](https://dev.azure.com/rdkit-builds/RDKit/_apis/build/status/rdkit.rdkit?branchName=master)](https://dev.azure.com/rdkit-builds/RDKit/_build/latest?definitionId=1&branchName=master)
-[![Documentation Status](https://readthedocs.org/projects/rdkit/badge/?version=latest)](http://rdkit.readthedocs.org/en/latest/)
-[![DOI](https://zenodo.org/badge/10009991.svg)](https://zenodo.org/badge/latestdoi/10009991)
+# RDKix
 
+## Overview and fork description
+
+This is a renamed fork of RDKit, to enable multiple rdkit versions to coexist in the same python environment.
+
+In order to cooperate with other packages (such as datamol, nglview), you need to convert the molecules of rdkix to the molecules of rdkit, please use the `to_rdkit()` method of `rdkix.Chem.Mol` (If the version difference is too large, the conversion may not be possible). 
+
+## Original Description
 
 [RDKit](https://github.com/rdkit/rdkit) is a collection of cheminformatics and machine-learning software written in C++ and Python.
 
