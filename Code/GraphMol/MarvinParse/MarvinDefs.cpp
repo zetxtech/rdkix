@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
 #include "MarvinDefs.h"
 
-namespace RDKit {
+namespace RDKix {
 
 std::string getDoubleAsText(double val) {
   if (fabs(val) < 0.00001) {
@@ -2489,7 +2489,7 @@ bool MarvinMolBase::AnyOverLappingAtoms(const MarvinMolBase *otherMol) const {
 }
 
 // the following routine determines if a sgroup role is passive when expanding
-// in preparation for creating an RDKit mol.  sgroups are NOT passive if they
+// in preparation for creating an RDKix mol.  sgroups are NOT passive if they
 // create atoms or bonds in the parent when expanding
 
 bool MarvinMolBase::isPassiveRoleForExpansion() const {
@@ -2502,7 +2502,7 @@ bool MarvinSuperatomSgroup::isPassiveRoleForExpansion() const { return false; }
 bool MarvinMultipleSgroup::isPassiveRoleForExpansion() const { return false; }
 
 // this routine determines if the sgroup is passive for contraction, whern
-// coming from an RDKit mol to a Marvin Mol
+// coming from an RDKix mol to a Marvin Mol
 //  It is NOT passive if atoms in the parent are removed by contracting it.
 
 bool MarvinMolBase::isPassiveRoleForContraction() const {
@@ -2519,7 +2519,7 @@ bool MarvinSuperatomSgroupExpanded::isPassiveRoleForContraction() const {
 
 bool MarvinMultipleSgroup::isPassiveRoleForContraction() const { return false; }
 
-void MarvinMolBase::parseMoleculeSpecific(RDKit::RWMol *mol,
+void MarvinMolBase::parseMoleculeSpecific(RDKix::RWMol *mol,
                                           std::unique_ptr<SubstanceGroup> &,
                                           int) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
@@ -2527,7 +2527,7 @@ void MarvinMolBase::parseMoleculeSpecific(RDKit::RWMol *mol,
 };
 
 void MarvinSuperatomSgroupExpanded::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
 
@@ -2546,7 +2546,7 @@ void MarvinSuperatomSgroupExpanded::parseMoleculeSpecific(
   sgroup->setProp("LABEL", this->title);
 }
 void MarvinMultipleSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
 
@@ -2574,7 +2574,7 @@ void MarvinMultipleSgroup::parseMoleculeSpecific(
   sgroup->setProp("MULT", this->title);
 }
 void MarvinSruCoModSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
 
@@ -2607,7 +2607,7 @@ void MarvinSruCoModSgroup::parseMoleculeSpecific(
 }
 
 void MarvinDataSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
   // Now the data groups
@@ -2634,13 +2634,13 @@ void MarvinDataSgroup::parseMoleculeSpecific(
       << std::fixed << std::setw(10) << std::setprecision(4) << this->y
       << "    DRU   ALL  0       0";
 
-  sgroup->setProp("FIELDDISP", out.str());  // really not used by RDKIT
+  sgroup->setProp("FIELDDISP", out.str());  // really not used by RDKIX
 
   std::vector<std::string> fieldDatas;
   fieldDatas.push_back(this->fieldData);
   sgroup->setProp("DATAFIELDS", fieldDatas);
 
-  // The following props are not part of the RDKit structure for MOL
+  // The following props are not part of the RDKix structure for MOL
   // files, but we save them so that we can round-trip the MRV
 
   sgroup->setProp("UNITS", this->units);
@@ -2652,10 +2652,10 @@ void MarvinDataSgroup::parseMoleculeSpecific(
 }
 
 void MarvinMulticenterSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *, std::unique_ptr<SubstanceGroup> &, int) {
+    RDKix::RWMol *, std::unique_ptr<SubstanceGroup> &, int) {
   // the MultiCenter Sgroups
 
-  // There is really no place to put these in RDKit.  We should have
+  // There is really no place to put these in RDKix.  We should have
   // removed these already
   PRECONDITION(
       0, "Internal error:   a MarvinMulticenterSgroup has not been removed");
@@ -2664,7 +2664,7 @@ void MarvinMulticenterSgroup::parseMoleculeSpecific(
 // the Generic groups
 
 void MarvinGenericSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
 
@@ -2683,7 +2683,7 @@ void MarvinGenericSgroup::parseMoleculeSpecific(
 // note: sequence continues counting from the loop above
 
 void MarvinMonomerSgroup::parseMoleculeSpecific(
-    RDKit::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
+    RDKix::RWMol *mol, std::unique_ptr<SubstanceGroup> &sgroup,
     int sequenceId) {
   PRECONDITION(mol != nullptr, "mol cannot be null");
 
@@ -2697,7 +2697,7 @@ void MarvinMonomerSgroup::parseMoleculeSpecific(
   }
   sgroup->setProp("LABEL", this->title);
 
-  // Note: RDKit does not have a place for the Bracket information nor
+  // Note: RDKix does not have a place for the Bracket information nor
   // the charge="onAtoms" attr
 }
 
@@ -2732,7 +2732,7 @@ void promoteChild(MarvinMolBase *molToMove) {
 }
 
 void MarvinMultipleSgroup::expandOneMultipleSgroup() {
-  // Mulitplesgroups are handled differently in Marvin and RDKit/mol file
+  // Mulitplesgroups are handled differently in Marvin and RDKix/mol file
   // format
   //
   // In Marvin, the atoms of the group are indicated, and the "title" contains
@@ -2744,7 +2744,7 @@ void MarvinMultipleSgroup::expandOneMultipleSgroup() {
   // derived
   //
   //  This routine takes a MarvinMol and  prepares it for generation of an
-  //  RDKit mol.  Each MultipleSgroup is expanded by:
+  //  RDKix mol.  Each MultipleSgroup is expanded by:
   //    1) expanding the atom block - the new replicate sets of atoms are
   //    places just after the last atom in the original (parent) set 2)
   //    records the two bonds to atoms NOT in the expanded group - one is from
@@ -3270,7 +3270,7 @@ void MarvinMulticenterSgroup::processOneMulticenterSgroup() {
   }
 }
 
-void MarvinMolBase::prepSgroupsForRDKit() {
+void MarvinMolBase::prepSgroupsForRDKix() {
   // this routine recursively fixes the hierarchy of sgroups - some may NOT
   // actually belong underneath their parent and can be promoted to the
   // grandparent
@@ -3288,7 +3288,7 @@ void MarvinMolBase::prepSgroupsForRDKit() {
               sgroupsMolIdsDone, std::vector<std::string>{childSgroup->molID},
               molIDInSgroups)) {
         sgroupsMolIdsDone.push_back(childSgroup->molID);
-        childSgroup->prepSgroupsForRDKit();
+        childSgroup->prepSgroupsForRDKix();
         allDone = false;
         break;  // have to start the loop over - we might have changed the
                 // vector
@@ -3636,7 +3636,7 @@ int MarvinMultipleSgroup::getMatchedOrphanBondIndex(
 
 void MarvinMultipleSgroup::contractOneMultipleSgroup() {
   // this routine takes the expanded MultipleSgroup (which comes from the
-  // RDKit version, or is ready to produce the RDKit version), and contracts
+  // RDKix version, or is ready to produce the RDKix version), and contracts
   // it
   //  to the Marvin format version.
   //  the replicates are deleted (atoms and bonds), and the two orphaned bonds
@@ -3897,7 +3897,7 @@ IsSgroupInAtomSetResult MarvinSuperatomSgroup::isSgroupInSetOfAtoms(
   return SgroupNotInAtomSet;
 }
 
-void MarvinMolBase::processSgroupsFromRDKit() {
+void MarvinMolBase::processSgroupsFromRDKix() {
   // this routine recursively fixes sgroups to be in the heirarchy expected by
   // Marvin format
 
@@ -3987,7 +3987,7 @@ void MarvinMolBase::processSgroupsFromRDKit() {
       }
 
       childrenSgroupsMolIdsDone.push_back(childSgroup->molID);
-      childSgroup->processSgroupsFromRDKit();
+      childSgroup->processSgroupsFromRDKix();
       allDone = false;
       break;  // have to start the loop over - we might have changed the
               // vector
@@ -4064,9 +4064,9 @@ ptree MarvinMol::toMolPtree() const {
 
 MarvinReaction::~MarvinReaction() {}
 
-void MarvinReaction::prepSgroupsForRDKit() {
+void MarvinReaction::prepSgroupsForRDKix() {
   // This routine converts all the mols in the rxn to be ready for conversion
-  // to RDKIT mols
+  // to RDKIX mols
   int molCount = 0, atomCount = 0, bondCount = 0, sgCount = 0;
 
   std::map<std::string, std::string> sgMap;
@@ -4074,18 +4074,18 @@ void MarvinReaction::prepSgroupsForRDKit() {
   std::map<std::string, std::string> bondMap;
 
   for (auto &reactant : reactants) {
-    reactant->prepSgroupsForRDKit();
+    reactant->prepSgroupsForRDKix();
 
     reactant->cleanUpNumbering(molCount, atomCount, bondCount, sgCount, sgMap,
                                atomMap, bondMap);
   }
   for (auto &agent : agents) {
-    agent->prepSgroupsForRDKit();
+    agent->prepSgroupsForRDKix();
     agent->cleanUpNumbering(molCount, atomCount, bondCount, sgCount, sgMap,
                             atomMap, bondMap);
   }
   for (auto &product : products) {
-    product->prepSgroupsForRDKit();
+    product->prepSgroupsForRDKix();
     product->cleanUpNumbering(molCount, atomCount, bondCount, sgCount, sgMap,
                               atomMap, bondMap);
   }
@@ -4280,4 +4280,4 @@ MarvinStereoGroup::MarvinStereoGroup(StereoGroupType grouptypeInit,
   groupType = grouptypeInit;
   groupNumber = groupNumberInit;
 }
-}  // namespace RDKit
+}  // namespace RDKix

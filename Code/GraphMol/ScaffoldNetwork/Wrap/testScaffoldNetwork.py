@@ -2,17 +2,17 @@
 # Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 #  All Rights Reserved
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 
 import pickle
 import unittest
 
-from rdkit import Chem, RDConfig, rdBase
-from rdkit.Chem.Scaffolds import rdScaffoldNetwork
+from rdkix import Chem, RDConfig, rdBase
+from rdkix.Chem.Scaffolds import rdScaffoldNetwork
 
 rdBase.DisableLog("rdApp.info")
 

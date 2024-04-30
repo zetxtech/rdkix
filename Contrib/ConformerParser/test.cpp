@@ -40,7 +40,7 @@
 #include <RDGeneral/utils.h>
 #include <RDGeneral/StreamOps.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -51,8 +51,8 @@
 
 #include <DataStructs/BitVects.h>
 #include <DataStructs/BitOps.h>
-using namespace RDKit;
-using namespace RDKit::ConformerParser;
+using namespace RDKix;
+using namespace RDKix::ConformerParser;
 
 void test1() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;

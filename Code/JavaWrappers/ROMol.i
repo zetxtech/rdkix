@@ -1,7 +1,7 @@
 /*
 *
 *  Copyright (c) 2010-2021, Novartis Institutes for BioMedical Research Inc.
-*   and other RDKit contributors
+*   and other RDKix contributors
 *  All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -68,44 +68,44 @@
 #include <sstream>
 %}
 
-%template(ROMol_Vect) std::vector< boost::shared_ptr<RDKit::ROMol> >;
-%template(ROMol_Vect_Vect) std::vector< std::vector< boost::shared_ptr<RDKit::ROMol> > >;
-%template(Atom_Vect) std::vector<RDKit::Atom*>;
-%template(StereoGroup_Vect) std::vector<RDKit::StereoGroup>;
+%template(ROMol_Vect) std::vector< boost::shared_ptr<RDKix::ROMol> >;
+%template(ROMol_Vect_Vect) std::vector< std::vector< boost::shared_ptr<RDKix::ROMol> > >;
+%template(Atom_Vect) std::vector<RDKix::Atom*>;
+%template(StereoGroup_Vect) std::vector<RDKix::StereoGroup>;
 %template(UChar_Vect) std::vector<unsigned char>;
 
 // These prevent duplicate definitions in Java code
-%ignore RDKit::ROMol::hasProp(std::string const) const ;
-%ignore RDKit::ROMol::clearProp(std::string const) const ;
-%ignore RDKit::ROMol::getAtomWithIdx(unsigned int) const ;
-%ignore RDKit::ROMol::getBondWithIdx(unsigned int) const ;
-%ignore RDKit::ROMol::getBondBetweenAtoms(unsigned int,unsigned int) const ;
-%ignore RDKit::ROMol::getAtomNeighbors(Atom const *at) const;
-%ignore RDKit::ROMol::getAtomBonds(Atom const *at) const;
-%ignore RDKit::ROMol::atomNeighbors(Atom const *at) const;
-%ignore RDKit::ROMol::atomBonds(Atom const *at) const;
-%ignore RDKit::ROMol::atomNeighbors(Atom const *at);
-%ignore RDKit::ROMol::atomBonds(Atom const *at);
-%ignore RDKit::ROMol::atoms();
-%ignore RDKit::ROMol::atoms() const;
-%ignore RDKit::ROMol::bonds();
-%ignore RDKit::ROMol::bonds() const;
+%ignore RDKix::ROMol::hasProp(std::string const) const ;
+%ignore RDKix::ROMol::clearProp(std::string const) const ;
+%ignore RDKix::ROMol::getAtomWithIdx(unsigned int) const ;
+%ignore RDKix::ROMol::getBondWithIdx(unsigned int) const ;
+%ignore RDKix::ROMol::getBondBetweenAtoms(unsigned int,unsigned int) const ;
+%ignore RDKix::ROMol::getAtomNeighbors(Atom const *at) const;
+%ignore RDKix::ROMol::getAtomBonds(Atom const *at) const;
+%ignore RDKix::ROMol::atomNeighbors(Atom const *at) const;
+%ignore RDKix::ROMol::atomBonds(Atom const *at) const;
+%ignore RDKix::ROMol::atomNeighbors(Atom const *at);
+%ignore RDKix::ROMol::atomBonds(Atom const *at);
+%ignore RDKix::ROMol::atoms();
+%ignore RDKix::ROMol::atoms() const;
+%ignore RDKix::ROMol::bonds();
+%ignore RDKix::ROMol::bonds() const;
 
-%ignore RDKit::ROMol::getVertices() ;
-%ignore RDKit::ROMol::getVertices() const ;
-%ignore RDKit::ROMol::getEdges() ;
-%ignore RDKit::ROMol::getEdges() const ;
-%ignore RDKit::ROMol::getTopology() const ;
+%ignore RDKix::ROMol::getVertices() ;
+%ignore RDKix::ROMol::getVertices() const ;
+%ignore RDKix::ROMol::getEdges() ;
+%ignore RDKix::ROMol::getEdges() const ;
+%ignore RDKix::ROMol::getTopology() const ;
 
 
 #ifdef SWIGJAVA
-%typemap(jni) std::string RDKit::ROMol::toByteArray "jbyteArray"
-%typemap(jtype) std::string RDKit::ROMol::toByteArray "byte[]"
-%typemap(jstype) std::string RDKit::ROMol::toByteArray "byte[]"
-%typemap(javaout) std::string RDKit::ROMol::toByteArray {
+%typemap(jni) std::string RDKix::ROMol::toByteArray "jbyteArray"
+%typemap(jtype) std::string RDKix::ROMol::toByteArray "byte[]"
+%typemap(jstype) std::string RDKix::ROMol::toByteArray "byte[]"
+%typemap(javaout) std::string RDKix::ROMol::toByteArray {
   return $jnicall;
 }
-%typemap(out) std::string RDKit::ROMol::toByteArray {
+%typemap(out) std::string RDKix::ROMol::toByteArray {
   $result = JCALL1(NewByteArray, jenv, $1.size());
   JCALL4(SetByteArrayRegion, jenv, $result, 0, $1.size(), (const jbyte*)$1.c_str());
 }
@@ -120,9 +120,9 @@
  * underlying C++ object.
  */
 %ignore addConformer(Conformer * conf, bool assignId=false);
-%rename(addConformer) RDKit::ROMol::addConf;
-%typemap(javain) RDKit::Conformer * ownedConf "getCPtrAndReleaseControl($javainput)"
-%typemap(javacode) RDKit::ROMol %{
+%rename(addConformer) RDKix::ROMol::addConf;
+%typemap(javain) RDKix::Conformer * ownedConf "getCPtrAndReleaseControl($javainput)"
+%typemap(javacode) RDKix::ROMol %{
   // Ensure that the GC doesn't collect this item,
   // as the underlying C++ class stores a shallow copy
   private long getCPtrAndReleaseControl(Conformer conf) {
@@ -145,7 +145,7 @@
     }
   }
 %}
-%typemap(cscode) RDKit::ROMol %{
+%typemap(cscode) RDKix::ROMol %{
   public static ROMol FromByteArray(byte[] pkl) {
     UChar_Vect vec = null;
     try {
@@ -180,7 +180,7 @@
 %ignore SubstructMatch;
 %include <GraphMol/Substruct/SubstructMatch.h>
 
-%ignore RDKit::MolPickler;
+%ignore RDKix::MolPickler;
 %include <GraphMol/MolPickler.h>
 
 
@@ -217,16 +217,16 @@ void setPreferCoordGen(bool);
 
 %{
 bool getUseLegacyStereoPerception() {
-  return RDKit::Chirality::getUseLegacyStereoPerception();
+  return RDKix::Chirality::getUseLegacyStereoPerception();
 }
 void setUseLegacyStereoPerception(bool val) {
-  RDKit::Chirality::setUseLegacyStereoPerception(val);
+  RDKix::Chirality::setUseLegacyStereoPerception(val);
 }
 bool getAllowNontetrahedralChirality() {
-  return RDKit::Chirality::getAllowNontetrahedralChirality();
+  return RDKix::Chirality::getAllowNontetrahedralChirality();
 }
 void setAllowNontetrahedralChirality(bool val) {
-  RDKit::Chirality::setAllowNontetrahedralChirality(val);
+  RDKix::Chirality::setAllowNontetrahedralChirality(val);
 }
 %}
 
@@ -236,14 +236,14 @@ bool getAllowNontetrahedralChirality();
 void setAllowNontetrahedralChirality(bool);
 
 #ifdef SWIGJAVA
-%javamethodmodifiers RDKit::ROMol::fromUCharVect "private";
+%javamethodmodifiers RDKix::ROMol::fromUCharVect "private";
 #endif
 #ifdef SWIGCSHARP
-%csmethodmodifiers RDKit::ROMol::fromUCharVect "private";
-%csmethodmodifiers RDKit::ROMol::toUCharVect "private";
+%csmethodmodifiers RDKix::ROMol::fromUCharVect "private";
+%csmethodmodifiers RDKix::ROMol::toUCharVect "private";
 #endif
 
-%extend RDKit::ROMol {
+%extend RDKix::ROMol {
   std::string getProp(const std::string key){
     std::string res;
     self->getProp(key, res);
@@ -251,172 +251,172 @@ void setAllowNontetrahedralChirality(bool);
   }
 
   /* Used in the addConformer modifications described above */
-  unsigned int RDKit::ROMol::addConf(RDKit::Conformer * ownedConf, bool assignId=false) {
+  unsigned int RDKix::ROMol::addConf(RDKix::Conformer * ownedConf, bool assignId=false) {
     return self->addConformer(ownedConf, assignId);
   }
 
   std::string MolToSmiles(bool doIsomericSmiles=true, bool doKekule=false, int rootedAtAtom=-1, bool canonical=true,
                           bool allBondsExplicit=false, bool allHsExplicit=false, bool doRandom=false) {
-    return RDKit::MolToSmiles(*($self), doIsomericSmiles, doKekule, rootedAtAtom, canonical, allBondsExplicit, allHsExplicit, doRandom);
+    return RDKix::MolToSmiles(*($self), doIsomericSmiles, doKekule, rootedAtAtom, canonical, allBondsExplicit, allHsExplicit, doRandom);
   }
-  std::string MolToSmiles(const RDKit::SmilesWriteParams &params) {
-    return RDKit::MolToSmiles(*($self), params);
+  std::string MolToSmiles(const RDKix::SmilesWriteParams &params) {
+    return RDKix::MolToSmiles(*($self), params);
   }
   std::string MolToMolBlock(bool includeStereo=true, int confId=-1, bool kekulize=true, bool forceV3000=false) {
-    return RDKit::MolToMolBlock(*($self), includeStereo, confId, kekulize, forceV3000);
+    return RDKix::MolToMolBlock(*($self), includeStereo, confId, kekulize, forceV3000);
   }
   void MolToMolFile(std::string fName,bool includeStereo=true, int confId=-1, bool kekulize=true, bool forceV3000=false) {
-    RDKit::MolToMolFile(*($self), fName, includeStereo, confId, kekulize, forceV3000);
+    RDKix::MolToMolFile(*($self), fName, includeStereo, confId, kekulize, forceV3000);
   }
   std::string MolToTPLText(std::string partialChargeProp="_GasteigerCharge", bool writeFirstConfTwice=false) {
-    return RDKit::MolToTPLText(*($self), partialChargeProp, writeFirstConfTwice);
+    return RDKix::MolToTPLText(*($self), partialChargeProp, writeFirstConfTwice);
   }
   void MolToTPLFile(std::string fName,
     std::string partialChargeProp="_GasteigerCharge",
     bool writeFirstConfTwice=false) {
-    RDKit::MolToTPLFile(*($self), fName, partialChargeProp, writeFirstConfTwice);
+    RDKix::MolToTPLFile(*($self), fName, partialChargeProp, writeFirstConfTwice);
   }
 
   std::string MolToPDBBlock(int confId=-1,unsigned int flavor=0) {
-    return RDKit::MolToPDBBlock(*($self),confId,flavor);
+    return RDKix::MolToPDBBlock(*($self),confId,flavor);
   }
   void MolToPDBFile(std::string fName,int confId=-1,unsigned int flavor=0) {
-    RDKit::MolToPDBFile(*($self), fName, confId, flavor);
+    RDKix::MolToPDBFile(*($self), fName, confId, flavor);
   }
   std::string MolToSequence() {
-    return RDKit::MolToSequence(*($self));
+    return RDKix::MolToSequence(*($self));
   }
   std::string MolToFASTA() {
-    return RDKit::MolToFASTA(*($self));
+    return RDKix::MolToFASTA(*($self));
   }
   std::string MolToHELM() {
-    return RDKit::MolToHELM(*($self));
+    return RDKix::MolToHELM(*($self));
   }
 
   std::string MolToCMLBlock(int confId=-1, bool kekulize=true) {
-    return RDKit::MolToCMLBlock(*($self), confId, kekulize);
+    return RDKix::MolToCMLBlock(*($self), confId, kekulize);
   }
   void MolToCMLFile(std::string fName, int confId=-1, bool kekulize=true) {
-    RDKit::MolToCMLFile(*($self), fName, confId, kekulize);
+    RDKix::MolToCMLFile(*($self), fName, confId, kekulize);
   }
 
   std::string MolToXYZBlock(int confId=-1) {
-    return RDKit::MolToXYZBlock(*($self), confId);
+    return RDKix::MolToXYZBlock(*($self), confId);
   }
   void MolToXYZFile(std::string fName, int confId=-1) {
-    RDKit::MolToXYZFile(*($self), fName, confId);
+    RDKix::MolToXYZFile(*($self), fName, confId);
   }
 
-  bool hasSubstructMatch(RDKit::ROMol &query,bool useChirality=false){
-    RDKit::MatchVectType mv;
+  bool hasSubstructMatch(RDKix::ROMol &query,bool useChirality=false){
+    RDKix::MatchVectType mv;
     return SubstructMatch(*($self),query,mv,true,useChirality);
   };
 
-  bool hasSubstructMatch(RDKit::ROMol &query,RDKit::SubstructMatchParameters ps){
+  bool hasSubstructMatch(RDKix::ROMol &query,RDKix::SubstructMatchParameters ps){
     ps.maxMatches = 1;
-    std::vector<RDKit::MatchVectType> mv = SubstructMatch(*($self),query,ps);
+    std::vector<RDKix::MatchVectType> mv = SubstructMatch(*($self),query,ps);
     return mv.size()>0;
   };
 
-  std::vector<std::pair<int, int> > getSubstructMatch(RDKit::ROMol &query,RDKit::SubstructMatchParameters ps){
-    std::vector<RDKit::MatchVectType> mvs = SubstructMatch(*($self),query,ps);
-    RDKit::MatchVectType mv;
+  std::vector<std::pair<int, int> > getSubstructMatch(RDKix::ROMol &query,RDKix::SubstructMatchParameters ps){
+    std::vector<RDKix::MatchVectType> mvs = SubstructMatch(*($self),query,ps);
+    RDKix::MatchVectType mv;
     if(mvs.size()) mv = mvs[0];
     return mv;
   };
 
-  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKit::ROMol &query,RDKit::SubstructMatchParameters ps){
-    std::vector<RDKit::MatchVectType> mvs = SubstructMatch(*($self),query,ps);
+  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKix::ROMol &query,RDKix::SubstructMatchParameters ps){
+    std::vector<RDKix::MatchVectType> mvs = SubstructMatch(*($self),query,ps);
     return mvs;
   };
 
-  bool hasSubstructMatch(RDKit::MolBundle & query,
-                         RDKit::SubstructMatchParameters ps) {
+  bool hasSubstructMatch(RDKix::MolBundle & query,
+                         RDKix::SubstructMatchParameters ps) {
     ps.maxMatches = 1;
-    std::vector<RDKit::MatchVectType> mv = SubstructMatch(*($self), query, ps);
+    std::vector<RDKix::MatchVectType> mv = SubstructMatch(*($self), query, ps);
     return mv.size() > 0;
   };
 
   std::vector<std::pair<int, int>> getSubstructMatch(
-      RDKit::MolBundle & query, RDKit::SubstructMatchParameters ps) {
-    std::vector<RDKit::MatchVectType> mvs = SubstructMatch(*($self), query, ps);
-    RDKit::MatchVectType mv;
+      RDKix::MolBundle & query, RDKix::SubstructMatchParameters ps) {
+    std::vector<RDKix::MatchVectType> mvs = SubstructMatch(*($self), query, ps);
+    RDKix::MatchVectType mv;
     if (mvs.size()) mv = mvs[0];
     return mv;
   };
 
   std::vector<std::vector<std::pair<int, int>>> getSubstructMatches(
-      RDKit::MolBundle & query, RDKit::SubstructMatchParameters ps) {
-    std::vector<RDKit::MatchVectType> mvs = SubstructMatch(*($self), query, ps);
+      RDKix::MolBundle & query, RDKix::SubstructMatchParameters ps) {
+    std::vector<RDKix::MatchVectType> mvs = SubstructMatch(*($self), query, ps);
     return mvs;
   };
 
   /* From MolOps, Substruct/SubstructMatch */
-  std::vector<std::pair<int, int> > getSubstructMatch(RDKit::ROMol &query,bool useChirality=false){
-    RDKit::MatchVectType mv;
+  std::vector<std::pair<int, int> > getSubstructMatch(RDKix::ROMol &query,bool useChirality=false){
+    RDKix::MatchVectType mv;
     SubstructMatch(*($self),query,mv,true,useChirality);
     return mv;
   };
 
-  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKit::ROMol &query,bool uniquify=true, bool useChirality=false){
-    std::vector<RDKit::MatchVectType> mv;
+  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKix::ROMol &query,bool uniquify=true, bool useChirality=false){
+    std::vector<RDKix::MatchVectType> mv;
     SubstructMatch(*($self),query,mv,uniquify,true,useChirality);
     return mv;
   };
 
-  RDKit::ROMol *deleteSubstructs(const RDKit::ROMol &query, bool replaceAll) {
-    return RDKit::deleteSubstructs(*($self), query, replaceAll);
+  RDKix::ROMol *deleteSubstructs(const RDKix::ROMol &query, bool replaceAll) {
+    return RDKix::deleteSubstructs(*($self), query, replaceAll);
   };
 
-  std::vector<RDKit::ROMOL_SPTR> replaceSubstructs(const RDKit::ROMol &query,
-                                        const RDKit::ROMol &replacement,
+  std::vector<RDKix::ROMOL_SPTR> replaceSubstructs(const RDKix::ROMol &query,
+                                        const RDKix::ROMol &replacement,
                                         bool replaceAll=false) {
-    return RDKit::replaceSubstructs(*($self), query, replacement, replaceAll);
+    return RDKix::replaceSubstructs(*($self), query, replacement, replaceAll);
   };
 
-  RDKit::ROMol *replaceSidechains(const RDKit::ROMol &coreQuery) {
-    return RDKit::replaceSidechains(*($self), coreQuery);
+  RDKix::ROMol *replaceSidechains(const RDKix::ROMol &coreQuery) {
+    return RDKix::replaceSidechains(*($self), coreQuery);
   };
 
-  RDKit::ROMol *replaceCore(const RDKit::ROMol &coreQuery, bool replaceDummies=true,bool labelByIndex=false) {
-    return RDKit::replaceCore(*($self), coreQuery, replaceDummies, labelByIndex);
+  RDKix::ROMol *replaceCore(const RDKix::ROMol &coreQuery, bool replaceDummies=true,bool labelByIndex=false) {
+    return RDKix::replaceCore(*($self), coreQuery, replaceDummies, labelByIndex);
   };
 
   /* Methods from SubstructUtils.h */
-  const RDKit::MatchVectType &getMostSubstitutedCoreMatch(const RDKit::ROMol& core,
-    const std::vector<RDKit::MatchVectType>& matches) {
-    return RDKit::getMostSubstitutedCoreMatch(*($self), core, matches);
+  const RDKix::MatchVectType &getMostSubstitutedCoreMatch(const RDKix::ROMol& core,
+    const std::vector<RDKix::MatchVectType>& matches) {
+    return RDKix::getMostSubstitutedCoreMatch(*($self), core, matches);
   };
 
-  std::vector<RDKit::MatchVectType> sortMatchesByDegreeOfCoreSubstitution(
-    const RDKit::ROMol& core, const std::vector<RDKit::MatchVectType>& matches) {
-    return RDKit::sortMatchesByDegreeOfCoreSubstitution(*($self), core, matches);
+  std::vector<RDKix::MatchVectType> sortMatchesByDegreeOfCoreSubstitution(
+    const RDKix::ROMol& core, const std::vector<RDKix::MatchVectType>& matches) {
+    return RDKix::sortMatchesByDegreeOfCoreSubstitution(*($self), core, matches);
   };
 
   /* Methods from MolFileStereoChem.h */
-  void DetectBondStereoChemistry(const RDKit::Conformer *conf) {
-    RDKit::DetectBondStereoChemistry(*($self), conf);
+  void DetectBondStereoChemistry(const RDKix::Conformer *conf) {
+    RDKix::DetectBondStereoChemistry(*($self), conf);
   };
 
-  void WedgeMolBonds(const RDKit::Conformer *conf) {
-    RDKit::WedgeMolBonds(*($self), conf);
+  void WedgeMolBonds(const RDKix::Conformer *conf) {
+    RDKix::WedgeMolBonds(*($self), conf);
   };
 
   void pickBondsToWedge() {
-    RDKit::pickBondsToWedge(*($self));
+    RDKix::pickBondsToWedge(*($self));
   };
 
   void ClearSingleBondDirFlags() {
-    RDKit::ClearSingleBondDirFlags(*($self));
+    RDKix::ClearSingleBondDirFlags(*($self));
   };
 
   /* Methods from ConjugHybrid.cpp */
   void setConjugation() {
-    RDKit::MolOps::setConjugation(*($self));
+    RDKix::MolOps::setConjugation(*($self));
   }
 
   void setHybridization() {
-    RDKit::MolOps::setHybridization(*($self));
+    RDKix::MolOps::setHybridization(*($self));
   }
 
   /* From GraphMol/Depictor/RDDepictor.h */
@@ -427,7 +427,7 @@ void setAllowNontetrahedralChirality(bool);
                                unsigned int nSamples=0,
                                int sampleSeed=0,
                                bool permuteDeg4Nodes=false,
-			       bool forceRDKit=false) {
+			       bool forceRDKix=false) {
     return RDDepict::compute2DCoords(*($self),
                                coordMap,
                                canonOrient,
@@ -435,15 +435,15 @@ void setAllowNontetrahedralChirality(bool);
                                nFlipsPerSample,
                                nSamples,
                                sampleSeed,
-				     permuteDeg4Nodes, forceRDKit);
+				     permuteDeg4Nodes, forceRDKix);
   }
 
-  unsigned int compute2DCoords(RDKit::ROMol &templ){
-    RDKit::MatchVectType matchVect;
+  unsigned int compute2DCoords(RDKix::ROMol &templ){
+    RDKix::MatchVectType matchVect;
     if(templ.getNumConformers() && SubstructMatch(*($self),templ,matchVect)){
       RDGeom::INT_POINT2D_MAP coordMap;
-      RDKit::Conformer conf=templ.getConformer();
-      for(RDKit::MatchVectType::const_iterator iter=matchVect.begin();
+      RDKix::Conformer conf=templ.getConformer();
+      for(RDKix::MatchVectType::const_iterator iter=matchVect.begin();
           iter!=matchVect.end();++iter){
         RDGeom::Point2D pt;
         pt.x = conf.getAtomPos(iter->first).x;
@@ -464,7 +464,7 @@ void setAllowNontetrahedralChirality(bool);
                                            unsigned int nFlipsPerSample=3,
                                            unsigned int nSamples=100,
                                            int sampleSeed=25,
-                                           bool permuteDeg4Nodes=true, bool forceRDKit=false) {
+                                           bool permuteDeg4Nodes=true, bool forceRDKix=false) {
     return RDDepict::compute2DCoordsMimicDistMat(*($self),
                                                  dmat,
                                                  canonOrient,
@@ -473,30 +473,30 @@ void setAllowNontetrahedralChirality(bool);
                                                  nFlipsPerSample,
                                                  nSamples,
                                                  sampleSeed,
-                                                 permuteDeg4Nodes, forceRDKit);
+                                                 permuteDeg4Nodes, forceRDKix);
 
   }
 
-  void generateDepictionMatching2DStructure(const RDKit::ROMol &reference,
-                                          const RDKit::MatchVectType &refMatchVect,
+  void generateDepictionMatching2DStructure(const RDKix::ROMol &reference,
+                                          const RDKix::MatchVectType &refMatchVect,
                                           int confId=-1,
-                                          bool forceRDKit=false) {
-    RDDepict::generateDepictionMatching2DStructure(*($self),reference,refMatchVect,confId,forceRDKit);
+                                          bool forceRDKix=false) {
+    RDDepict::generateDepictionMatching2DStructure(*($self),reference,refMatchVect,confId,forceRDKix);
   }
-  RDKit::MatchVectType generateDepictionMatching2DStructure(const RDKit::ROMol &reference,
+  RDKix::MatchVectType generateDepictionMatching2DStructure(const RDKix::ROMol &reference,
                                           int confId=-1,
-                                          bool acceptFailure=false, bool forceRDKit=false,
+                                          bool acceptFailure=false, bool forceRDKix=false,
                                           bool allowOptionalAttachments=false) {
     return RDDepict::generateDepictionMatching2DStructure(*($self),reference,confId,nullptr,
-            acceptFailure,forceRDKit,allowOptionalAttachments);
+            acceptFailure,forceRDKix,allowOptionalAttachments);
   }
-  RDKit::MatchVectType generateDepictionMatching2DStructure(const RDKit::ROMol &reference,
+  RDKix::MatchVectType generateDepictionMatching2DStructure(const RDKix::ROMol &reference,
                                           int confId,
-                                          const RDKit::ROMol &referencePattern,
-                                          bool acceptFailure=false, bool forceRDKit=false,
+                                          const RDKix::ROMol &referencePattern,
+                                          bool acceptFailure=false, bool forceRDKix=false,
                                           bool allowOptionalAttachments=false) {
     return RDDepict::generateDepictionMatching2DStructure(*($self),reference,confId,
-           &referencePattern,acceptFailure,forceRDKit,allowOptionalAttachments);
+           &referencePattern,acceptFailure,forceRDKix,allowOptionalAttachments);
   }
 
   double normalizeDepiction(int confId=-1, int canonicalize=1,
@@ -509,17 +509,17 @@ void setAllowNontetrahedralChirality(bool);
   }
 
   /* From FindRings.cpp, MolOps.h */
-  int findSSSR(RDKit::VECT_INT_VECT &res) {
-    return RDKit::MolOps::findSSSR(*($self), res);
+  int findSSSR(RDKix::VECT_INT_VECT &res) {
+    return RDKix::MolOps::findSSSR(*($self), res);
   };
   int findSSSR() {
-    return RDKit::MolOps::findSSSR(*($self));
+    return RDKix::MolOps::findSSSR(*($self));
   };
-  int symmetrizeSSSR(RDKit::VECT_INT_VECT &res) {
-    return RDKit::MolOps::symmetrizeSSSR(*($self), res);
+  int symmetrizeSSSR(RDKix::VECT_INT_VECT &res) {
+    return RDKix::MolOps::symmetrizeSSSR(*($self), res);
   }
   int symmetrizeSSSR() {
-    return RDKit::MolOps::symmetrizeSSSR(*($self));
+    return RDKix::MolOps::symmetrizeSSSR(*($self));
   }
 
   /* From Matrices.cpp, MolOps.h */
@@ -527,25 +527,25 @@ void setAllowNontetrahedralChirality(bool);
                          bool useAtomWts=false,
                          bool force=false,
                          const char *propNamePrefix=0) {
-    return RDKit::MolOps::getDistanceMat(*($self), useBO, useAtomWts, force, propNamePrefix);
+    return RDKix::MolOps::getDistanceMat(*($self), useBO, useAtomWts, force, propNamePrefix);
   }
 
   double *getDistanceMat(const std::vector<int> &activeAtoms,
                          const std::vector<const Bond *> &bonds,
                          bool useBO=false,
                          bool useAtomWts=false) {
-    return RDKit::MolOps::getDistanceMat(*($self), activeAtoms, bonds, useBO, useAtomWts);
+    return RDKix::MolOps::getDistanceMat(*($self), activeAtoms, bonds, useBO, useAtomWts);
   }
 
   double *getAdjacencyMatrix(bool useBO=false,
                              int emptyVal=0,
                              bool force=false,
                              const char *propNamePrefix=0) {
-    return RDKit::MolOps::getAdjacencyMatrix(*($self), useBO, emptyVal, force, propNamePrefix);
+    return RDKix::MolOps::getAdjacencyMatrix(*($self), useBO, emptyVal, force, propNamePrefix);
   }
 
-  RDKit::INT_LIST getShortestPath(int aid1, int aid2) {
-    return RDKit::MolOps::getShortestPath(*($self), aid1, aid2);
+  RDKix::INT_LIST getShortestPath(int aid1, int aid2) {
+    return RDKix::MolOps::getShortestPath(*($self), aid1, aid2);
   }
   /* From MolTransforms.h */
   void transformMolsAtoms(RDGeom::Transform3D &tform) {
@@ -556,26 +556,26 @@ void setAllowNontetrahedralChirality(bool);
   }
 
   /* From Python wrappers -- implied functionality */
-  std::vector<RDKit::Atom*> *getAtoms() {
+  std::vector<RDKix::Atom*> *getAtoms() {
     int c = ($self)->getNumAtoms();
-    std::vector<RDKit::Atom*> *atoms = new std::vector<RDKit::Atom*>;
+    std::vector<RDKix::Atom*> *atoms = new std::vector<RDKix::Atom*>;
     for (int i = 0; i < c; i++) {
-      RDKit::Atom* a = ($self)->getAtomWithIdx(i);
+      RDKix::Atom* a = ($self)->getAtomWithIdx(i);
       atoms->push_back(a);
     }
     return atoms;
   }
 
-  std::vector<RDKit::Atom*> *getAtomNeighbors(RDKit::Atom *at) {
-    std::vector<RDKit::Atom*> *atoms = new std::vector<RDKit::Atom*>;
+  std::vector<RDKix::Atom*> *getAtomNeighbors(RDKix::Atom *at) {
+    std::vector<RDKix::Atom*> *atoms = new std::vector<RDKix::Atom*>;
     for(const auto &nbri : boost::make_iterator_range(($self)->getAtomNeighbors(at))){
       atoms->push_back((*($self))[nbri]);
     }
     return atoms;
   }
 
-  std::vector<RDKit::Bond*> *getAtomBonds(RDKit::Atom *at) {
-    std::vector<RDKit::Bond*> *bonds = new std::vector<RDKit::Bond*>;
+  std::vector<RDKix::Bond*> *getAtomBonds(RDKix::Atom *at) {
+    std::vector<RDKix::Bond*> *bonds = new std::vector<RDKix::Bond*>;
     for(const auto &nbri : boost::make_iterator_range(($self)->getAtomBonds(at))){
       bonds->push_back((*($self))[nbri]);
     }
@@ -585,97 +585,97 @@ void setAllowNontetrahedralChirality(bool);
   /* From MolPickler.h */
   std::vector<int> ToBinary(){
     std::string sres;
-    RDKit::MolPickler::pickleMol(*($self),sres);
+    RDKix::MolPickler::pickleMol(*($self),sres);
     std::vector<int> res(sres.length());
     std::copy(sres.begin(),sres.end(),res.begin());
     return res;
   };
-  static RDKit::ROMOL_SPTR MolFromBinary(const std::vector<int> &pkl){
+  static RDKix::ROMOL_SPTR MolFromBinary(const std::vector<int> &pkl){
     std::string sres;
     sres.resize(pkl.size());
     std::copy(pkl.begin(),pkl.end(),sres.begin());
-    RDKit::ROMol *res;
+    RDKix::ROMol *res;
     try {
-      res = new RDKit::ROMol(sres);
-    } catch (const RDKit::MolPicklerException &e) {
+      res = new RDKix::ROMol(sres);
+    } catch (const RDKix::MolPicklerException &e) {
       res = nullptr;
       throw;
     }
-    return RDKit::ROMOL_SPTR(res);
+    return RDKix::ROMOL_SPTR(res);
   }
 #ifdef SWIGJAVA
   const std::string toByteArray() {
     std::string sres;
-    RDKit::MolPickler::pickleMol(*($self), sres);
+    RDKix::MolPickler::pickleMol(*($self), sres);
     return sres;
   }
 #endif
 #ifdef SWIGCSHARP
   const std::vector<unsigned char> toUCharVect() {
     std::string sres;
-    RDKit::MolPickler::pickleMol(*($self), sres);
+    RDKix::MolPickler::pickleMol(*($self), sres);
     const std::vector<unsigned char> vec(sres.begin(), sres.end());
     return vec;
   }
 #endif
-  static RDKit::ROMOL_SPTR fromUCharVect(const std::vector<unsigned char> &pkl) {
+  static RDKix::ROMOL_SPTR fromUCharVect(const std::vector<unsigned char> &pkl) {
     std::string sres(pkl.begin(), pkl.end());
-    RDKit::ROMol *res;
+    RDKix::ROMol *res;
     try {
-      res = new RDKit::ROMol(sres);
-    } catch (const RDKit::MolPicklerException &e) {
+      res = new RDKix::ROMol(sres);
+    } catch (const RDKix::MolPicklerException &e) {
       res = nullptr;
       throw;
     }
-    return RDKit::ROMOL_SPTR(res);
+    return RDKix::ROMOL_SPTR(res);
   }
 
   /* From AddHs.cpp */
-  RDKit::ROMol *addHs(bool explicitOnly,bool addCoords=false){
-    return RDKit::MolOps::addHs(*($self), explicitOnly, addCoords);
+  RDKix::ROMol *addHs(bool explicitOnly,bool addCoords=false){
+    return RDKix::MolOps::addHs(*($self), explicitOnly, addCoords);
   }
 
-  RDKit::ROMol *removeHs(bool implicitOnly,bool updateExplicitCount=false,bool sanitize=false) {
-    return RDKit::MolOps::removeHs(*($self), implicitOnly, updateExplicitCount, sanitize);
+  RDKix::ROMol *removeHs(bool implicitOnly,bool updateExplicitCount=false,bool sanitize=false) {
+    return RDKix::MolOps::removeHs(*($self), implicitOnly, updateExplicitCount, sanitize);
   }
 
-  RDKit::ROMol *mergeQueryHs() {
-    return RDKit::MolOps::mergeQueryHs(*($self));
+  RDKix::ROMol *mergeQueryHs() {
+    return RDKix::MolOps::mergeQueryHs(*($self));
   }
 
   /* From GraphMol/MolAlign/AlignMolecules */
-  double alignMol(const RDKit::ROMol &refMol,
+  double alignMol(const RDKix::ROMol &refMol,
                   int prbCid=-1, int refCid=-1,
                   const std::vector<std::pair<int,int> > *atomMap=0,
                   const RDNumeric::DoubleVector *weights=0,
                   bool reflect=false, unsigned int maxIters=50) {
-    return RDKit::MolAlign::alignMol(*($self), refMol, prbCid, refCid, atomMap, weights, reflect, maxIters);
+    return RDKix::MolAlign::alignMol(*($self), refMol, prbCid, refCid, atomMap, weights, reflect, maxIters);
   }
 
   void alignMolConformers(const std::vector<unsigned int> *atomIds=0,
                           const std::vector<unsigned int> *confIds=0,
                           const RDNumeric::DoubleVector  *weights=0,
                           bool reflect=false, unsigned int maxIters=50) {
-    RDKit::MolAlign::alignMolConformers(*($self), atomIds, confIds, weights, reflect, maxIters);
+    RDKix::MolAlign::alignMolConformers(*($self), atomIds, confIds, weights, reflect, maxIters);
   }
 
   /* From GraphMol/MolAlign/AlignMolecules */
-  double getAlignmentTransform(const RDKit::ROMol &refMol,
+  double getAlignmentTransform(const RDKix::ROMol &refMol,
                              RDGeom::Transform3D &trans, int prbCid = -1,
                              int refCid = -1, const std::vector<std::pair<int,int> > *atomMap = 0,
                              const RDNumeric::DoubleVector *weights = 0,
                              bool reflect = false, unsigned int maxIters = 50){
-    return RDKit::MolAlign::getAlignmentTransform(*($self), refMol, trans, prbCid, refCid, atomMap, weights, reflect, maxIters);
+    return RDKix::MolAlign::getAlignmentTransform(*($self), refMol, trans, prbCid, refCid, atomMap, weights, reflect, maxIters);
   }
 
   double getBestAlignmentTransform(
-    const RDKit::ROMol &refMol, RDGeom::Transform3D &bestTrans,
+    const RDKix::ROMol &refMol, RDGeom::Transform3D &bestTrans,
     std::vector<std::pair<int,int> > &bestMatch, int prbCid = -1, int refCid = -1,
     const std::vector<std::vector<std::pair<int,int> > > &map = std::vector<std::vector<std::pair<int,int> > >(),
     int maxMatches = 1e6, bool symmetrizeConjugatedTerminalGroups = true,
     const RDNumeric::DoubleVector *weights = nullptr, bool reflect = false,
     unsigned int maxIters = 50) {
-    return RDKit::MolAlign::getBestAlignmentTransform(*($self), refMol, bestTrans, bestMatch,
+    return RDKix::MolAlign::getBestAlignmentTransform(*($self), refMol, bestTrans, bestMatch,
       prbCid, refCid, map, maxMatches, symmetrizeConjugatedTerminalGroups, weights, reflect, maxIters);
   }
 
@@ -684,7 +684,7 @@ void setAllowNontetrahedralChirality(bool);
     const std::vector<std::vector<std::pair<int,int> > > &map = std::vector<std::vector<std::pair<int,int> > >(),
     int maxMatches = 1e6, bool symmetrizeConjugatedTerminalGroups = true,
     const RDNumeric::DoubleVector *weights = nullptr) {
-    return RDKit::MolAlign::CalcRMS(*($self), refMol, prbCid, refCid, map, maxMatches, symmetrizeConjugatedTerminalGroups, weights);
+    return RDKix::MolAlign::CalcRMS(*($self), refMol, prbCid, refCid, map, maxMatches, symmetrizeConjugatedTerminalGroups, weights);
   }
 
   double getBestRMS(
@@ -692,18 +692,18 @@ void setAllowNontetrahedralChirality(bool);
     const std::vector<std::vector<std::pair<int,int> > > &map = std::vector<std::vector<std::pair<int,int> > >(),
     int maxMatches = 1e6, bool symmetrizeConjugatedTerminalGroups = true,
     const RDNumeric::DoubleVector *weights = nullptr) {
-    return RDKit::MolAlign::getBestRMS(*($self), refMol, prbCid, refCid, map, maxMatches, symmetrizeConjugatedTerminalGroups, weights);
+    return RDKix::MolAlign::getBestRMS(*($self), refMol, prbCid, refCid, map, maxMatches, symmetrizeConjugatedTerminalGroups, weights);
   }
 
   /* From GraphMol/MolAlign/AlignMolecules */
-  std::pair<double,double> O3AAlignMol(RDKit::ROMol &refMol,
+  std::pair<double,double> O3AAlignMol(RDKix::ROMol &refMol,
                                        int prbCid=-1, int refCid=-1,
                                        bool reflect=false, unsigned int maxIters=50,
                                        unsigned int accuracy=0) {
-    RDKit::MMFF::MMFFMolProperties prbMP(*($self));
-    RDKit::MMFF::MMFFMolProperties refMP(refMol);
+    RDKix::MMFF::MMFFMolProperties prbMP(*($self));
+    RDKix::MMFF::MMFFMolProperties refMP(refMol);
 
-    RDKit::MolAlign::O3A o3a(*($self), refMol, &prbMP, &refMP, RDKit::MolAlign::O3A::MMFF94,
+    RDKix::MolAlign::O3A o3a(*($self), refMol, &prbMP, &refMP, RDKix::MolAlign::O3A::MMFF94,
                              prbCid, refCid,
                              reflect,maxIters,accuracy);
     double rmsd=o3a.align();
@@ -712,32 +712,32 @@ void setAllowNontetrahedralChirality(bool);
   }
 
   void computeGasteigerCharges(int nIter=12,bool throwOnParamFailure=false){
-    RDKit::computeGasteigerCharges(*($self),nIter,throwOnParamFailure);
+    RDKix::computeGasteigerCharges(*($self),nIter,throwOnParamFailure);
   }
   void computeGasteigerCharges(std::vector<double> &charges,
                                int nIter=12,bool throwOnParamFailure=false){
-    RDKit::computeGasteigerCharges(*($self),charges,nIter,throwOnParamFailure);
+    RDKix::computeGasteigerCharges(*($self),charges,nIter,throwOnParamFailure);
   }
 
   /* From new_canon.h*/
   void rankMolAtoms(UINT_VECT &ranks,
                   bool breakTies = true, bool includeChirality = true,
                   bool includeIsotopes = true){
-	RDKit::Canon::rankMolAtoms(*($self), ranks, breakTies, includeChirality, includeIsotopes);
+	RDKix::Canon::rankMolAtoms(*($self), ranks, breakTies, includeChirality, includeIsotopes);
   }
 }
 
 
 
 
-%extend RDKit::ROMol {
+%extend RDKix::ROMol {
   std::string ToSVG(const std::vector<int> &highlightAtoms,
                     int lineWidthMult=2,int fontSize=50){
     // FIX: not sure any more what these are for
     if(fontSize<0) fontSize*=2;
     if(lineWidthMult<0) lineWidthMult *=2;
     std::stringstream outs;
-    RDKit::MolDraw2DSVG drawer(300,300,outs);
+    RDKix::MolDraw2DSVG drawer(300,300,outs);
     //drawer.setFontSize(static_cast<float>(fontSize)*drawer.fontSize()/50);
     drawer.drawMolecule(*($self),&highlightAtoms);
     drawer.finishDrawing();
@@ -750,7 +750,7 @@ void setAllowNontetrahedralChirality(bool);
     if(fontSize<0) fontSize*=2;
     if(lineWidthMult<0) lineWidthMult *=2;
     std::stringstream outs;
-    RDKit::MolDraw2DSVG drawer(300,300,outs);
+    RDKix::MolDraw2DSVG drawer(300,300,outs);
     //drawer.setFontSize(static_cast<float>(fontSize)*drawer.fontSize()/50);
     drawer.drawMolecule(*($self));
     drawer.finishDrawing();

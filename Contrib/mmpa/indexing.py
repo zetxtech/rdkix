@@ -34,7 +34,7 @@ import re
 import sys
 from optparse import OptionParser
 
-from rdkit import Chem
+from rdkix import Chem
 
 
 def heavy_atom_count(smi):

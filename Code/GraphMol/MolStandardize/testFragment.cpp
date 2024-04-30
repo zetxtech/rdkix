@@ -2,17 +2,17 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <GraphMol/MolStandardize/FragmentCatalog/FragmentCatalogParams.h>
 #include <GraphMol/MolStandardize/FragmentCatalog/FragmentCatalogUtils.h>
 #include <GraphMol/MolStandardize/Fragment.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -24,7 +24,7 @@
 #include <iostream>
 #include <fstream>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace MolStandardize;
 
 void test2() {
@@ -320,7 +320,7 @@ void testFragmentWithoutSmarts() {
   for (const auto& smarts : data) {
     bool ok = false;
     std::istringstream input(smarts);
-    std::vector<std::shared_ptr<RDKit::ROMol>> groups;
+    std::vector<std::shared_ptr<RDKix::ROMol>> groups;
     try {
       groups = readFuncGroups(input);
     } catch (const ValueErrorException&) {

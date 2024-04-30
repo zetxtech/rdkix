@@ -31,8 +31,8 @@
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/MonomerInfo.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -50,7 +50,7 @@
 #include <fstream>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testGlobalPickleProps() {
   BOOST_LOG(rdInfoLog) << "-----------------------\n";

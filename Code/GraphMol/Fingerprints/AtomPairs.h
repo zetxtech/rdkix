@@ -2,10 +2,10 @@
 //  Copyright (C) 2007-2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file AtomPairs.h
@@ -37,7 +37,7 @@
 #include <DataStructs/BitVects.h>
 #include <cstdint>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
-namespace RDKit {
+namespace RDKix {
 class Atom;
 
 namespace AtomPairs {
@@ -77,14 +77,14 @@ const std::string atomPairsVersion = "1.1.0";
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t> *getAtomPairFingerprint(
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t> *getAtomPairFingerprint(
     const ROMol &mol, unsigned int minLength, unsigned int maxLength,
     const std::vector<std::uint32_t> *fromAtoms = nullptr,
     const std::vector<std::uint32_t> *ignoreAtoms = nullptr,
     const std::vector<std::uint32_t> *atomInvariants = nullptr,
     bool includeChirality = false, bool use2D = true, int confId = -1);
 //! \overload
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t> *getAtomPairFingerprint(
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t> *getAtomPairFingerprint(
     const ROMol &mol, const std::vector<std::uint32_t> *fromAtoms = nullptr,
     const std::vector<std::uint32_t> *ignoreAtoms = nullptr,
     const std::vector<std::uint32_t> *atomInvariants = nullptr,
@@ -117,7 +117,7 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t> *getAtomPairFingerprint(
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t>
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t>
     *getHashedAtomPairFingerprint(
         const ROMol &mol, unsigned int nBits = 2048, unsigned int minLength = 1,
         unsigned int maxLength = maxPathLen - 1,
@@ -154,7 +154,7 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::int32_t>
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *
 getHashedAtomPairFingerprintAsBitVect(
     const ROMol &mol, unsigned int nBits = 2048, unsigned int minLength = 1,
     unsigned int maxLength = maxPathLen - 1,
@@ -190,7 +190,7 @@ getHashedAtomPairFingerprintAsBitVect(
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<boost::int64_t>
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<boost::int64_t>
     *getTopologicalTorsionFingerprint(
         const ROMol &mol, unsigned int targetSize = 4,
         const std::vector<std::uint32_t> *fromAtoms = nullptr,
@@ -224,7 +224,7 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<boost::int64_t>
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<boost::int64_t> *
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<boost::int64_t> *
 getHashedTopologicalTorsionFingerprint(
     const ROMol &mol, unsigned int nBits = 2048, unsigned int targetSize = 4,
     const std::vector<std::uint32_t> *fromAtoms = nullptr,
@@ -255,7 +255,7 @@ getHashedTopologicalTorsionFingerprint(
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *
 getHashedTopologicalTorsionFingerprintAsBitVect(
     const ROMol &mol, unsigned int nBits = 2048, unsigned int targetSize = 4,
     const std::vector<std::uint32_t> *fromAtoms = nullptr,
@@ -263,6 +263,6 @@ getHashedTopologicalTorsionFingerprintAsBitVect(
     const std::vector<std::uint32_t> *atomInvariants = nullptr,
     unsigned int nBitsPerEntry = 4, bool includeChirality = false);
 }  // namespace AtomPairs
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

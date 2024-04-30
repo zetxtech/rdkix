@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/MolOps.h>
@@ -13,7 +13,7 @@
 #include <GraphMol/AtomIterators.h>
 #include <GraphMol/BondIterators.h>
 #include <GraphMol/PeriodicTable.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <vector>
 #include <algorithm>
@@ -43,7 +43,7 @@
 
 const int ci_LOCAL_INF = static_cast<int>(1e8);
 
-namespace RDKit {
+namespace RDKix {
 namespace MolOps {
 namespace {
 void nitrogenCleanup(RWMol &mol, Atom *atom) {
@@ -244,9 +244,9 @@ void metalBondCleanup(RWMol &mol, Atom *atom,
                       const std::vector<unsigned int> &ranks) {
   PRECONDITION(atom, "bad atom in metalBondCleanup");
   // The IUPAC recommendation for ligand->metal coordination bonds is that they
-  // be single.  This upsets the RDKit valence model, as seen in CHEBI:26355,
+  // be single.  This upsets the RDKix valence model, as seen in CHEBI:26355,
   // heme b.  If the valence of a non-metal atom is above the maximum in the
-  // RDKit model, and there are single bonds from it to metal
+  // RDKix model, and there are single bonds from it to metal
   // change those bonds to atom->metal dative.
   // If the atom is bonded to more than 1 metal atom, choose the one
   // with the fewer dative bonds incident on it, with the canonical
@@ -274,7 +274,7 @@ void metalBondCleanup(RWMol &mol, Atom *atom,
       auto bond =
           mol.getBondBetweenAtoms(atom->getIdx(), metals.front()->getIdx());
       if (bond) {
-        bond->setBondType(RDKit::Bond::BondType::DATIVE);
+        bond->setBondType(RDKix::Bond::BondType::DATIVE);
         bond->setBeginAtom(atom);
         bond->setEndAtom(metals.front());
       }
@@ -329,7 +329,7 @@ void cleanUpOrganometallics(RWMol &mol) {
   mol.updatePropertyCache(false);
   // First see if anything needs doing
   std::vector<unsigned int> ranks(mol.getNumAtoms());
-  RDKit::Canon::rankMolAtoms(mol, ranks);
+  RDKix::Canon::rankMolAtoms(mol, ranks);
   std::vector<std::pair<int, int>> atom_ranks;
   for (size_t i = 0; i < ranks.size(); ++i) {
     atom_ranks.push_back(std::make_pair(i, ranks[i]));
@@ -873,16 +873,16 @@ std::map<T, boost::shared_ptr<ROMol>> getMolFragsWithQuery(
   }
   return res;
 }
-template RDKIT_GRAPHMOL_EXPORT std::map<std::string, boost::shared_ptr<ROMol>>
+template RDKIX_GRAPHMOL_EXPORT std::map<std::string, boost::shared_ptr<ROMol>>
 getMolFragsWithQuery(const ROMol &mol,
                      std::string (*query)(const ROMol &, const Atom *),
                      bool sanitizeFrags, const std::vector<std::string> *,
                      bool);
-template RDKIT_GRAPHMOL_EXPORT std::map<int, boost::shared_ptr<ROMol>>
+template RDKIX_GRAPHMOL_EXPORT std::map<int, boost::shared_ptr<ROMol>>
 getMolFragsWithQuery(const ROMol &mol,
                      int (*query)(const ROMol &, const Atom *),
                      bool sanitizeFrags, const std::vector<int> *, bool);
-template RDKIT_GRAPHMOL_EXPORT std::map<unsigned int, boost::shared_ptr<ROMol>>
+template RDKIX_GRAPHMOL_EXPORT std::map<unsigned int, boost::shared_ptr<ROMol>>
 getMolFragsWithQuery(const ROMol &mol,
                      unsigned int (*query)(const ROMol &, const Atom *),
                      bool sanitizeFrags, const std::vector<unsigned int> *,
@@ -1133,7 +1133,7 @@ std::vector<int> hapticBondEndpoints(const Bond *bond) {
   // FileParsers library which is built after GraphMol so not available
   // to link in.  It can't be built first because it needs GraphMol.
   //      std::vector<unsigned int> oats =
-  //          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(endpts);
+  //          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(endpts);
   // Returns the atom indices i.e. subtracts 1 from the numbers in the prop.
   std::vector<int> oats;
   std::string endpts;
@@ -1152,4 +1152,4 @@ std::vector<int> hapticBondEndpoints(const Bond *bond) {
 }
 }  // end of namespace details
 };  // end of namespace MolOps
-};  // end of namespace RDKit
+};  // end of namespace RDKix

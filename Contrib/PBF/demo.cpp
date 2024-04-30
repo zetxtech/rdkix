@@ -3,28 +3,28 @@
 //  Copyright (C) 2012 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <RDGeneral/RDLog.h>
 #include <vector>
 #include <algorithm>
 #include <fstream>
 
-#include "PBFRDKit.h"
+#include "PBFRDKix.h"
 
 void calc() {
   std::string fname = "testData/egfr.sdf";
-  RDKit::SDMolSupplier reader(fname, true, false);
+  RDKix::SDMolSupplier reader(fname, true, false);
 
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     if (!m) continue;
     std::string nm;
     m->getProp("_Name", nm);
@@ -36,11 +36,11 @@ void calc() {
 
 void test() {
   std::string fname = "testData/egfr.sdf";
-  RDKit::SDMolSupplier reader(fname, true, false);
+  RDKix::SDMolSupplier reader(fname, true, false);
   std::ifstream instrm("testData/egfr.out");
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     if (!m) continue;
     std::string nm;
     m->getProp("_Name", nm);

@@ -6,18 +6,18 @@ steps:
     conda info -a
     conda install -n base conda-libmamba-solver
     conda config --set solver libmamba
-    conda create --name rdkit_build ^
+    conda create --name rdkix_build ^
         boost-cpp=$(boost_version) boost=$(boost_version) ^
         py-boost=$(boost_version) libboost=$(boost_version) ^
         numpy matplotlib=3.8 cairo pillow eigen pandas=2.1
-    call activate rdkit_build
+    call activate rdkix_build
     conda install -c conda-forge sphinx myst-parser ipython=8.20 jupyter pytest nbval
     conda install -c conda-forge cmake
   displayName: Install dependencies
 - script: |
     set Boost_ROOT=
     mkdir build && cd build
-    call activate rdkit_build
+    call activate rdkix_build
     cmake .. ^
     -G "Visual Studio 16 2019" ^
     -DCMAKE_BUILD_TYPE=Release ^
@@ -47,12 +47,12 @@ steps:
     -DCMAKE_LIBRARY_PATH="%CONDA_PREFIX%/Library/lib
   displayName: Configure build (Run CMake)
 - script: |
-    call activate rdkit_build
+    call activate rdkix_build
     cd build
     cmake --build . --config Release --target install -j $(number_of_cores)
   displayName: Build
 - script: |
-    call activate rdkit_build
+    call activate rdkix_build
     set RDBASE=%cd%
     set PYTHONPATH=%RDBASE%;%PYTHONPATH%
     set PATH=%RDBASE%\lib;%PATH%
@@ -60,7 +60,7 @@ steps:
     ctest -C Release -j $(number_of_cores) --output-on-failure -T Test
   displayName: Run tests
 - script: |
-    call activate rdkit_build
+    call activate rdkix_build
     conda install -c conda-forge sphinx myst-parser
     set RDBASE=%cd%
     set PYTHONPATH=%RDBASE%;%PYTHONPATH%

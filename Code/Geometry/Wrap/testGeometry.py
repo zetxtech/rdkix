@@ -5,8 +5,8 @@ import pickle
 import sys
 import unittest
 
-from rdkit import DataStructs, RDConfig
-from rdkit.Geometry import rdGeometry as geom
+from rdkix import DataStructs, RDConfig
+from rdkix.Geometry import rdGeometry as geom
 
 
 def feq(v1, v2, tol=1.0e-4):

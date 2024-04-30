@@ -2,19 +2,19 @@
 //  Copyright (C) 2018 Boran Adas, Google Summer of Code
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 #include <RDGeneral/hash/hash.hpp>
 
-namespace RDKit {
+namespace RDKix {
 namespace AtomPair {
 using namespace AtomPairs;
 
@@ -230,7 +230,7 @@ FingerprintGenerator<OutputType> *getAtomPairGenerator(
       ownsAtomInvGenerator, false);
 }
 
-template RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint32_t> *
+template RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint32_t> *
 getAtomPairGenerator(const unsigned int minDistance,
                      const unsigned int maxDistance,
                      const bool includeChirality, const bool use2D,
@@ -239,7 +239,7 @@ getAtomPairGenerator(const unsigned int minDistance,
                      const std::vector<std::uint32_t> countBounds,
                      const bool ownsAtomInvGen);
 
-template RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
+template RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
 getAtomPairGenerator(const unsigned int minDistance,
                      const unsigned int maxDistance,
                      const bool includeChirality, const bool use2D,
@@ -248,4 +248,4 @@ getAtomPairGenerator(const unsigned int minDistance,
                      const std::vector<std::uint32_t> countBounds,
                      const bool ownsAtomInvGen);
 }  // namespace AtomPair
-}  // namespace RDKit
+}  // namespace RDKix

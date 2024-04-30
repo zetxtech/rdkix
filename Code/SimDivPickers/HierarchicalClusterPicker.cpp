@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "HierarchicalClusterPicker.h"
 #include <RDGeneral/Invariant.h>
@@ -19,7 +19,7 @@ extern "C" void distdriver_(long int *n, long int *len, real *dists,
 
 namespace RDPickers {
 
-RDKit::VECT_INT_VECT HierarchicalClusterPicker::cluster(
+RDKix::VECT_INT_VECT HierarchicalClusterPicker::cluster(
     const double *distMat, unsigned int poolSize, unsigned int pickSize) const {
   PRECONDITION(distMat, "Invalid Distance Matrix");
   PRECONDITION((poolSize >= pickSize),
@@ -55,22 +55,22 @@ RDKit::VECT_INT_VECT HierarchicalClusterPicker::cluster(
   //     it is assumed that when a cluster ia[j] is merged with ib[j]
   //     ia[j] is replaced by the new cluster in the cluster list
   //
-  RDKit::VECT_INT_VECT clusters;
+  RDKix::VECT_INT_VECT clusters;
   for (unsigned int i = 0; i < poolSize; i++) {
-    RDKit::INT_VECT cls;
+    RDKix::INT_VECT cls;
     cls.push_back(i);
     clusters.push_back(cls);
   }
 
   // do the merging, each round of of this loop eliminates one cluster
-  RDKit::INT_VECT removed;
+  RDKix::INT_VECT removed;
   for (unsigned int i = 0; i < (poolSize - pickSize); i++) {
     int cx1 = ia[i] - 1;
     int cx2 = ib[i] - 1;
 
     // add the items from cluster cx2 to cx1
     // REVIEW: merge function???
-    for (RDKit::INT_VECT_CI cx2i = clusters[cx2].begin();
+    for (RDKix::INT_VECT_CI cx2i = clusters[cx2].begin();
          cx2i != clusters[cx2].end(); cx2i++) {
       clusters[cx1].push_back(*cx2i);
     }
@@ -88,12 +88,12 @@ RDKit::VECT_INT_VECT HierarchicalClusterPicker::cluster(
   // some error checking here, uniqueify removed and the vector should not
   // changed
   // REVIEW can we put this inside a #ifdef DEBUG?
-  RDKit::INT_VECT_CI nEnd = std::unique(removed.begin(), removed.end());
+  RDKix::INT_VECT_CI nEnd = std::unique(removed.begin(), removed.end());
   CHECK_INVARIANT(
       nEnd == removed.end(),
       "Somehow there are duplicates in the list of removed clusters");
 
-  RDKit::VECT_INT_VECT res;
+  RDKix::VECT_INT_VECT res;
   unsigned int j = 0;
   for (unsigned int i = 0; i < poolSize; i++) {
     if (j < removed.size() && static_cast<int>(i) == removed[j]) {
@@ -105,24 +105,24 @@ RDKit::VECT_INT_VECT HierarchicalClusterPicker::cluster(
   return res;
 }
 
-RDKit::INT_VECT HierarchicalClusterPicker::pick(const double *distMat,
+RDKix::INT_VECT HierarchicalClusterPicker::pick(const double *distMat,
                                                 unsigned int poolSize,
                                                 unsigned int pickSize) const {
   PRECONDITION(distMat, "bad distance matrix");
-  RDKit::VECT_INT_VECT clusters = this->cluster(distMat, poolSize, pickSize);
+  RDKix::VECT_INT_VECT clusters = this->cluster(distMat, poolSize, pickSize);
   CHECK_INVARIANT(clusters.size() == pickSize, "");
 
   // the last step: find a representative element from each of the
   // remaining clusters
-  RDKit::INT_VECT picks;
+  RDKix::INT_VECT picks;
   for (unsigned int i = 0; i < pickSize; i++) {
     int pick;
-    double minSumD2 = RDKit::MAX_DOUBLE;
-    for (RDKit::INT_VECT_CI cxi1 = clusters[i].begin();
+    double minSumD2 = RDKix::MAX_DOUBLE;
+    for (RDKix::INT_VECT_CI cxi1 = clusters[i].begin();
          cxi1 != clusters[i].end(); ++cxi1) {
       int curPick = (*cxi1);
       double d2sum = 0.0;
-      for (RDKit::INT_VECT_CI cxi2 = clusters[i].begin();
+      for (RDKix::INT_VECT_CI cxi2 = clusters[i].begin();
            cxi2 != clusters[i].end(); ++cxi2) {
         if (cxi1 == cxi2) {
           continue;

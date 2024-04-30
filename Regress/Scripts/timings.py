@@ -4,10 +4,10 @@ import random
 import sys
 import time
 
-import rdkit
-from rdkit import Chem
-from rdkit.Chem import AllChem, Recap
-from rdkit.RDLogger import logger
+import rdkix
+from rdkix import Chem
+from rdkix.Chem import AllChem, Recap
+from rdkix.RDLogger import logger
 
 logger = logger()
 
@@ -244,4 +244,4 @@ if tests[18]:
   logger.info('Results18: %.2f seconds' % (t2 - t1))
   ts.append(t2 - t1)
 
-print(f"| {rdkit.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")
+print(f"| {rdkix.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")

@@ -5,7 +5,7 @@ import os
 
 import freewilson as fw
 
-from rdkit import Chem, rdBase
+from rdkix import Chem, rdBase
 
 PATH = os.path.join(os.path.dirname(fw.__file__), 'data')
 assert os.path.exists(PATH), PATH

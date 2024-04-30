@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2015 Sereina Riniker and other RDKit contributors
+//  Copyright (C) 2015 Sereina Riniker and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_TORSIONANGLEM6_H
@@ -28,7 +28,7 @@ namespace ForceFields {
 namespace CrystalFF {
 
 //! the torsion term for multiplicity m = 1 - 6
-class RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribM6
+class RDKIX_FORCEFIELDHELPERS_EXPORT TorsionAngleContribM6
     : public ForceFields::ForceFieldContrib {
  public:
   TorsionAngleContribM6() {}
@@ -62,7 +62,7 @@ class RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribM6
 };
 
 //! calculates and returns the torsional energy
-RDKIT_FORCEFIELDHELPERS_EXPORT double calcTorsionEnergyM6(
+RDKIX_FORCEFIELDHELPERS_EXPORT double calcTorsionEnergyM6(
     const std::vector<double> &V, const std::vector<int> &signs,
     const double cosPhi);
 }  // namespace CrystalFF

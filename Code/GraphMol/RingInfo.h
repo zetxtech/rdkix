@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_RINGINFO_H
@@ -23,12 +23,12 @@
 #include <RingDecomposerLib.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 //! A class to store information about a molecule's rings
 /*!
 
  */
-class RDKIT_GRAPHMOL_EXPORT RingInfo {
+class RDKIX_GRAPHMOL_EXPORT RingInfo {
   friend class MolPickler;
 
  public:
@@ -166,7 +166,7 @@ class RDKIT_GRAPHMOL_EXPORT RingInfo {
   /*!
     <b>Notes:</b>
       - the object must be initialized before calling this
-      - if the RDKit has been built with URF support, this returns the number
+      - if the RDKix has been built with URF support, this returns the number
         of ring families.
   */
   unsigned int numRings() const;
@@ -314,6 +314,6 @@ class RDKIT_GRAPHMOL_EXPORT RingInfo {
   boost::shared_ptr<RDL_data> dp_urfData;
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

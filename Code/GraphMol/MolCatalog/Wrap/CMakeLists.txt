@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLCATALOG_BUILD)
-rdkit_python_extension(rdMolCatalog rdMolCatalog.cpp
+remove_definitions(-DRDKIX_MOLCATALOG_BUILD)
+rdkix_python_extension(rdMolCatalog rdMolCatalog.cpp
                        DEST Chem
                        LINK_LIBRARIES MolCatalog )
 

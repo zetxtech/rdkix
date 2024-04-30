@@ -2,10 +2,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _GRID3D_H_20050124_1113
@@ -14,13 +14,13 @@
 #include <string>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 class DiscreteValueVect;
 }
 namespace RDGeom {
 class Point3D;
 
-class RDKIT_RDGEOMETRYLIB_EXPORT GridException : public std::exception {
+class RDKIX_RDGEOMETRYLIB_EXPORT GridException : public std::exception {
  public:
   //! construct with an error message
   GridException(const char *msg) : _msg(msg) {}
@@ -35,7 +35,7 @@ class RDKIT_RDGEOMETRYLIB_EXPORT GridException : public std::exception {
 };
 
 //! Virtual base class for a grid object
-class RDKIT_RDGEOMETRYLIB_EXPORT Grid3D {
+class RDKIX_RDGEOMETRYLIB_EXPORT Grid3D {
  public:
   virtual ~Grid3D() {}
   virtual int getGridPointIndex(const Point3D &point) const = 0;
@@ -48,7 +48,7 @@ class RDKIT_RDGEOMETRYLIB_EXPORT Grid3D {
 
   virtual unsigned int getSize() const = 0;
 
-  virtual const RDKit::DiscreteValueVect *getOccupancyVect() const = 0;
+  virtual const RDKix::DiscreteValueVect *getOccupancyVect() const = 0;
 };
 }  // namespace RDGeom
 

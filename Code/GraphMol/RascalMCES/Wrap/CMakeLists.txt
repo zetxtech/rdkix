@@ -1,6 +1,6 @@
-remove_definitions(-DRDKIT_RASCALMCES_BUILD)
+remove_definitions(-DRDKIX_RASCALMCES_BUILD)
 
-rdkit_python_extension(rdRascalMCES
+rdkix_python_extension(rdRascalMCES
         rdRascalMCES.cpp
         DEST Chem
         LINK_LIBRARIES RascalMCES)

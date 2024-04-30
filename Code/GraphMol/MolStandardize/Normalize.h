@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file Normalize.h
 
@@ -21,12 +21,12 @@
 #include <GraphMol/MolStandardize/TransformCatalog/TransformCatalogParams.h>
 #include <GraphMol/MolStandardize/MolStandardize.h>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
 namespace MolStandardize {
-RDKIT_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
+RDKIX_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
     defaultCleanupParameters;
 
 typedef RDCatalog::HierarchCatalog<TransformCatalogEntry,
@@ -44,7 +44,7 @@ typedef std::pair<std::string, ROMOL_SPTR> SmilesMolPair;
   occur.
 */
 
-class RDKIT_MOLSTANDARDIZE_EXPORT Normalizer {
+class RDKIX_MOLSTANDARDIZE_EXPORT Normalizer {
  public:
   Normalizer();
   //! Construct a Normalizer with a particular normalizeFile and maxRestarts
@@ -101,6 +101,6 @@ inline Normalizer *normalizerFromParams(const CleanupParameters &params) {
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

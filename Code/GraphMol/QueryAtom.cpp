@@ -3,16 +3,16 @@
 //  Copyright (C) 2001-2006 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/QueryOps.h>
 #include <Query/NullQueryAlgebra.h>
 
-namespace RDKit {
+namespace RDKix {
 
 QueryAtom::~QueryAtom() {
   delete dp_query;
@@ -192,4 +192,4 @@ bool QueryAtom::QueryMatch(QueryAtom const *what) const {
   }
 }
 
-};  // namespace RDKit
+};  // namespace RDKix

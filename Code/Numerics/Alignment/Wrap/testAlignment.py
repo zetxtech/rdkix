@@ -10,8 +10,8 @@ import unittest
 
 import numpy as np
 
-import rdkit.Numerics.rdAlignment as rdAlg
-from rdkit import Geometry
+import rdkix.Numerics.rdAlignment as rdAlg
+from rdkix import Geometry
 
 
 def lstFeq(l1, l2, tol=1.e-4):

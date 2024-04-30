@@ -1,25 +1,25 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/new_canon.h>
 
 #include <GraphMol/SmilesParse/SmilesParseOps.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/Exceptions.h>
 #include <RDGeneral/hash/hash.hpp>
 #include <RDGeneral/utils.h>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 namespace Canon {
 namespace details {
 bool isUnsaturated(const Atom *atom, const ROMol &mol) {
@@ -70,8 +70,8 @@ bool atomHasFourthValence(const Atom *atom) {
 }
 }  // namespace details
 
-bool chiralAtomNeedsTagInversion(const RDKit::ROMol &mol,
-                                 const RDKit::Atom *atom, bool isAtomFirst,
+bool chiralAtomNeedsTagInversion(const RDKix::ROMol &mol,
+                                 const RDKix::Atom *atom, bool isAtomFirst,
                                  size_t numClosures) {
   PRECONDITION(atom, "bad atom");
   return atom->getDegree() == 3 &&
@@ -1322,4 +1322,4 @@ void canonicalizeEnhancedStereo(ROMol &mol,
   mol.setStereoGroups(newSgs);
 }
 }  // namespace Canon
-}  // namespace RDKit
+}  // namespace RDKix

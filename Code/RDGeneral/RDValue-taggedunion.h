@@ -29,8 +29,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RDVALUE_TAGGED_UNION_H
-#define RDKIT_RDVALUE_TAGGED_UNION_H
+#ifndef RDKIX_RDVALUE_TAGGED_UNION_H
+#define RDKIX_RDVALUE_TAGGED_UNION_H
 
 #include <cassert>
 #include "Invariant.h"
@@ -50,7 +50,7 @@
 
 #define RDVALUE_HASBOOL
 
-namespace RDKit {
+namespace RDKix {
 
 // RDValue does not dynamically create POD types (kind of like
 //  cdiggins::any)  However, it doesn't use RTTI type info
@@ -524,5 +524,5 @@ inline bool rdvalue_cast<bool>(RDValue_cast_t v) {
   throw std::bad_any_cast();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

@@ -3,10 +3,10 @@
 //  Copyright (C) 2016 Sereina Riniker, Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 
@@ -16,7 +16,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 Snapshot *getSnapshot_wrap(Trajectory *traj, unsigned int snapshotNum) {
   return new Snapshot(traj->getSnapshot(snapshotNum));
@@ -158,6 +158,6 @@ struct Trajectory_wrapper {
                 "returns the number of Snapshot objects read in\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_trajectory() { RDKit::Trajectory_wrapper::wrap(); }
+void wrap_trajectory() { RDKix::Trajectory_wrapper::wrap(); }

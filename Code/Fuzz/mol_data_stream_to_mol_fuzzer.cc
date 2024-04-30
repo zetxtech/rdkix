@@ -29,10 +29,10 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   std::istringstream data_stream(fdp.ConsumeRemainingBytesAsString());
   unsigned int num_lines = 0;  // output parameter.
 
-  std::unique_ptr<RDKit::RWMol> result = nullptr;
+  std::unique_ptr<RDKix::RWMol> result = nullptr;
 
   try {
-    result.reset(RDKit::MolDataStreamToMol(&data_stream, num_lines, sanitize,
+    result.reset(RDKix::MolDataStreamToMol(&data_stream, num_lines, sanitize,
                                            remove_hs, strict_parsing));
   } catch (...) {
   }

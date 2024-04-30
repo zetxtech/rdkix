@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_DISTPICKER_H
@@ -28,7 +28,7 @@ namespace RDPickers {
  *    if (i > j) : distMat[i*(i-1)/2 + j]
  *    if (j < i) : distMat[j*(j-1)/2 + i]
  */
-RDKIT_SIMDIVPICKERS_EXPORT double getDistFromLTM(const double *distMat,
+RDKIX_SIMDIVPICKERS_EXPORT double getDistFromLTM(const double *distMat,
                                                  unsigned int i,
                                                  unsigned int j);
 
@@ -43,7 +43,7 @@ RDKIT_SIMDIVPICKERS_EXPORT double getDistFromLTM(const double *distMat,
  *  This class contains a pointer to a distance matrix, but it is not
  *responsible for cleaning it up
  */
-class RDKIT_SIMDIVPICKERS_EXPORT DistPicker {
+class RDKIX_SIMDIVPICKERS_EXPORT DistPicker {
  public:
   /*! \brief Default constructor
    *
@@ -70,7 +70,7 @@ class RDKIT_SIMDIVPICKERS_EXPORT DistPicker {
    *
    *    \return a vector with indices of the picked items.
    */
-  virtual RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
+  virtual RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
                                unsigned int pickSize) const = 0;
 };
 

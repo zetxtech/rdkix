@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::ChemicalReaction "
+%typemap(javaimports) RDKix::ChemicalReaction "
 /** 
 This is a class for storing and applying general chemical reactions.
 <p>
@@ -70,7 +70,7 @@ basic usage will be something like:
      
  */"
 
-%javamethodmodifiers RDKit::ChemicalReaction::addProductTemplate 	( 	ROMOL_SPTR  	mol 	 )  	"
+%javamethodmodifiers RDKix::ChemicalReaction::addProductTemplate 	( 	ROMOL_SPTR  	mol 	 )  	"
 /**
 <p>
 Adds a new product template.
@@ -82,7 +82,7 @@ the number of products
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::addReactantTemplate 	( 	ROMOL_SPTR  	mol 	 )  	"
+%javamethodmodifiers RDKix::ChemicalReaction::addReactantTemplate 	( 	ROMOL_SPTR  	mol 	 )  	"
 /**
 <p>
 Adds a new reactant template.
@@ -94,7 +94,7 @@ the number of reactants
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::getImplicitPropertiesFlag 	( 		 )  	const "
+%javamethodmodifiers RDKix::ChemicalReaction::getImplicitPropertiesFlag 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -104,7 +104,7 @@ This toggles whether or not unspecified atomic properties in the products are co
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::initReactantMatchers 	( 		 )  	"
+%javamethodmodifiers RDKix::ChemicalReaction::initReactantMatchers 	( 		 )  	"
 /**
 <p>
 initializes our internal reactant-matching datastructures.
@@ -113,7 +113,7 @@ This must be called after adding reactants and before calling runReactants.
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::runReactants 	( 	const MOL_SPTR_VECT  	reactants 	 )  	const"
+%javamethodmodifiers RDKix::ChemicalReaction::runReactants 	( 	const MOL_SPTR_VECT  	reactants 	 )  	const"
 /**
 <p>
 Runs the reaction on a set of reactants.
@@ -128,14 +128,14 @@ We return a vector of vectors of products because each individual template may m
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::setImplicitPropertiesFlag 	( 	bool  	val 	 )  	"
+%javamethodmodifiers RDKix::ChemicalReaction::setImplicitPropertiesFlag 	( 	bool  	val 	 )  	"
 /**
 <p>
 sets the implicit properties flag. See the documentation for getImplicitProertiesFlag() for a discussion of what this means.
 */
 public";
 
-%javamethodmodifiers RDKit::ChemicalReaction::validate 	( 	unsigned int &  	numWarnings, 		unsigned int &  	numErrors, 		bool  	silent = false	  	) 			const"
+%javamethodmodifiers RDKix::ChemicalReaction::validate 	( 	unsigned int &  	numWarnings, 		unsigned int &  	numErrors, 		bool  	silent = false	  	) 			const"
 /**
 <p>
 validates the reactants and products to make sure the reaction seems 'reasonable'

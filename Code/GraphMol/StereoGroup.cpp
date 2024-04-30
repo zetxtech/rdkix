@@ -8,7 +8,7 @@
 #include "Atom.h"
 #include "ROMol.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void storeIdsInUse(boost::dynamic_bitset<> &ids, StereoGroup &sg) {
@@ -112,17 +112,17 @@ void forwardStereoGroupIds(ROMol &mol) {
   mol.setStereoGroups(stgs);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-std::ostream &operator<<(std::ostream &target, const RDKit::StereoGroup &stg) {
+std::ostream &operator<<(std::ostream &target, const RDKix::StereoGroup &stg) {
   switch (stg.getGroupType()) {
-    case RDKit::StereoGroupType::STEREO_ABSOLUTE:
+    case RDKix::StereoGroupType::STEREO_ABSOLUTE:
       target << "ABS";
       break;
-    case RDKit::StereoGroupType::STEREO_OR:
+    case RDKix::StereoGroupType::STEREO_OR:
       target << "OR ";
       break;
-    case RDKit::StereoGroupType::STEREO_AND:
+    case RDKix::StereoGroupType::STEREO_AND:
       target << "AND";
       break;
   }

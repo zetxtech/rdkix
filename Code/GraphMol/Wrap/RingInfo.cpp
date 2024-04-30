@@ -2,23 +2,23 @@
 //  Copyright (C) Greg Landrum 2007-2017
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <RDBoost/Wrap.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 
 namespace python = boost::python;
 
 namespace {
-using namespace RDKit;
+using namespace RDKix;
 python::object atomRings(const RingInfo *self) {
   python::list res;
   for (const auto &ring : self->atomRings()) {
@@ -83,7 +83,7 @@ void addRing(RingInfo *self, python::object atomRing, python::object bondRing) {
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 std::string classDoc = "contains information about a molecule's rings\n";
 
 struct ringinfo_wrapper {
@@ -138,5 +138,5 @@ struct ringinfo_wrapper {
              "Adds a ring to the set. Be very careful with this operation.");
   };
 };
-}  // namespace RDKit
-void wrap_ringinfo() { RDKit::ringinfo_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_ringinfo() { RDKix::ringinfo_wrapper::wrap(); }

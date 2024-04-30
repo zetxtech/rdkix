@@ -1,5 +1,5 @@
-include_directories(${RDKit_ExternalDir})
-include_directories(${RDKit_ExternalDir}/rapidjson-1.1.0/include)
+include_directories(${RDKix_ExternalDir})
+include_directories(${RDKix_ExternalDir}/rapidjson-1.1.0/include)
 
 if(RDK_BUILD_MINIMAL_LIB)
     set(MINIMAL_LIB_LIBRARIES "MolInterchange_static;Abbreviations_static;"
@@ -30,10 +30,10 @@ if(RDK_BUILD_MINIMAL_LIB)
             set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${USE_FLAGS}")
         endif()
     endif()
-    add_executable(RDKit_minimal jswrapper.cpp minilib.cpp)
-    target_link_libraries(RDKit_minimal ${MINIMAL_LIB_LIBRARIES})
+    add_executable(RDKix_minimal jswrapper.cpp minilib.cpp)
+    target_link_libraries(RDKix_minimal ${MINIMAL_LIB_LIBRARIES})
 
-    set_target_properties(RDKit_minimal PROPERTIES LINK_FLAGS "--bind")
+    set_target_properties(RDKix_minimal PROPERTIES LINK_FLAGS "--bind")
 endif(RDK_BUILD_MINIMAL_LIB)
 
 if(RDK_BUILD_CFFI_LIB)
@@ -59,28 +59,28 @@ if(RDK_BUILD_CFFI_LIB)
         set(LIBS_TO_USE ${tmpLibs})
     endif()
     
-    add_library(rdkitcffi SHARED cffiwrapper.cpp)
-    target_link_libraries(rdkitcffi PUBLIC rdkit_base)
-    target_link_libraries(rdkitcffi PUBLIC ${LIBS_TO_USE})
-    INSTALL(TARGETS rdkitcffi EXPORT rdkit-targets
-            DESTINATION ${RDKit_LibDir}/${RDKLIB_DEST}
+    add_library(rdkixcffi SHARED cffiwrapper.cpp)
+    target_link_libraries(rdkixcffi PUBLIC rdkix_base)
+    target_link_libraries(rdkixcffi PUBLIC ${LIBS_TO_USE})
+    INSTALL(TARGETS rdkixcffi EXPORT rdkix-targets
+            DESTINATION ${RDKix_LibDir}/${RDKLIB_DEST}
             COMPONENT runtime )
-    set_target_properties(rdkitcffi PROPERTIES
-                            OUTPUT_NAME "rdkitcffi"
-                            VERSION "${RDKit_ABI}.${RDKit_Year}.${RDKit_Month}.${RDKit_Revision}"
-                            VERSION ${RDKit_VERSION}
-                            SOVERSION ${RDKit_ABI} )
-    set_target_properties(rdkitcffi PROPERTIES
+    set_target_properties(rdkixcffi PROPERTIES
+                            OUTPUT_NAME "rdkixcffi"
+                            VERSION "${RDKix_ABI}.${RDKix_Year}.${RDKix_Month}.${RDKix_Revision}"
+                            VERSION ${RDKix_VERSION}
+                            SOVERSION ${RDKix_ABI} )
+    set_target_properties(rdkixcffi PROPERTIES
                             ARCHIVE_OUTPUT_DIRECTORY ${RDK_ARCHIVE_OUTPUT_DIRECTORY}
                             RUNTIME_OUTPUT_DIRECTORY ${RDK_RUNTIME_OUTPUT_DIRECTORY}
                             LIBRARY_OUTPUT_DIRECTORY ${RDK_LIBRARY_OUTPUT_DIRECTORY})
 if(MSVC OR WIN32)
-  set_target_properties(rdkitcffi PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+  set_target_properties(rdkixcffi PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
 
 
     add_executable(cffi_test cffi_test.c)
-    target_link_libraries(cffi_test rdkitcffi)
+    target_link_libraries(cffi_test rdkixcffi)
     set_target_properties(cffi_test PROPERTIES LINKER_LANGUAGE CXX)
 
 #if(NOT MSVC)

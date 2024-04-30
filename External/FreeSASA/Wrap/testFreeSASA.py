@@ -34,8 +34,8 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem
-from rdkit.Chem import rdFreeSASA
+from rdkix import Chem
+from rdkix.Chem import rdFreeSASA
 
 expected = [[0, 1, "Polar", 1.64], [1, 0, "Apolar", 1.88], [2, 0, "Apolar", 1.61],
             [3, 1, "Polar", 1.42], [4, 0, "Apolar", 1.88], [5, 0, "Apolar", 1.88],

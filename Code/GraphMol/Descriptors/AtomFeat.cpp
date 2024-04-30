@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Guillaume GODIN
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -21,7 +21,7 @@
 //
 // Adding ATOM FEATURES descriptors by Guillaume Godin
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <iostream>
 
 #include "AtomFeat.h"
@@ -34,7 +34,7 @@
 #include <cmath>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Descriptors {
 
@@ -47,7 +47,7 @@ std::vector<std::string> Symbols{"B", "C",  "N",  "O", "S", "F", "Si",
 std::vector<Atom::HybridizationType> HS{Atom::SP, Atom::SP2, Atom::SP3,
                                         Atom::SP3D, Atom::SP3D2};
 
-void AtomFeatVector(const RDKit::Atom* atom, const ROMol* mol,
+void AtomFeatVector(const RDKix::Atom* atom, const ROMol* mol,
                     std::vector<double>& feats, bool addchiral) {
   PRECONDITION(atom, "bad atom");
   PRECONDITION(mol, "bad mol");
@@ -60,7 +60,7 @@ void AtomFeatVector(const RDKit::Atom* atom, const ROMol* mol,
 
   // initiate ring info if not already done
   if (!mol->getRingInfo()->isInitialized()) {
-    RDKit::MolOps::findSSSR(*mol);
+    RDKix::MolOps::findSSSR(*mol);
   }
 
   // one hot atom symbols
@@ -157,4 +157,4 @@ void AtomFeatVect(const ROMol& mol, std::vector<double>& res, int atomid,
 }
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

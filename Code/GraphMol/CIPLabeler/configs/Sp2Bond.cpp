@@ -3,10 +3,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/Chirality.h>
 
@@ -14,7 +14,7 @@
 #include "../Sort.h"
 #include "../rules/Rules.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 Sp2Bond::Sp2Bond(const CIPMol &mol, Bond *bond, Atom *startAtom, Atom *endAtom,
@@ -135,4 +135,4 @@ Descriptor Sp2Bond::label(Node *root1, Digraph &digraph, const Rules &comp) {
 }
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

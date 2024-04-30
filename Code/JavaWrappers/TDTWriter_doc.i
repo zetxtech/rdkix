@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::TDTWriter "
+%typemap(javaimports) RDKix::TDTWriter "
 /** 
 The TDTWriter is for writing molecules and properties to TDT files */"
 

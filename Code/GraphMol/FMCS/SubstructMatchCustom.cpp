@@ -2,21 +2,21 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <map>
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include "SubstructMatchCustom.h"
 
 #include "../Substruct/vf2.hpp"
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 
 class MolMatchFinalCheckFunctor {
@@ -189,4 +189,4 @@ bool SubstructMatchCustom(
                     *match);
 }
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

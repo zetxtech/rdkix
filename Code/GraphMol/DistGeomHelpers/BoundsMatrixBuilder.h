@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2019 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_BOUNDS_MATRIX_BUILDER_H
@@ -13,7 +13,7 @@
 
 #include <DistGeom/BoundsMatrix.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace DGeomHelpers {
 //! Set default upper and lower distance bounds in a distance matrix
@@ -22,12 +22,12 @@ namespace DGeomHelpers {
   \param defaultMin  default value for the lower distance bounds
   \param defaultMax  default value for the upper distance bounds
 */
-RDKIT_DISTGEOMHELPERS_EXPORT void initBoundsMat(DistGeom::BoundsMatrix *mmat,
+RDKIX_DISTGEOMHELPERS_EXPORT void initBoundsMat(DistGeom::BoundsMatrix *mmat,
                                                 double defaultMin = 0.0,
                                                 double defaultMax = 1000.0);
 /*! \overload
  */
-RDKIT_DISTGEOMHELPERS_EXPORT void initBoundsMat(DistGeom::BoundsMatPtr mmat,
+RDKIX_DISTGEOMHELPERS_EXPORT void initBoundsMat(DistGeom::BoundsMatPtr mmat,
                                                 double defaultMin = 0.0,
                                                 double defaultMax = 1000.0);
 
@@ -53,14 +53,14 @@ RDKIT_DISTGEOMHELPERS_EXPORT void initBoundsMat(DistGeom::BoundsMatPtr mmat,
   it is recommended to back out and recompute the bounds matrix with no 1-5
   bounds and with vdW scaling.
 */
-RDKIT_DISTGEOMHELPERS_EXPORT void setTopolBounds(
+RDKIX_DISTGEOMHELPERS_EXPORT void setTopolBounds(
     const ROMol &mol, DistGeom::BoundsMatPtr mmat, bool set15bounds = true,
     bool scaleVDW = false, bool useMacrocycle14config = false,
     bool forceTransAmides = true);
 
 /*! \overload for experimental torsion angle preferences
  */
-RDKIT_DISTGEOMHELPERS_EXPORT void setTopolBounds(
+RDKIX_DISTGEOMHELPERS_EXPORT void setTopolBounds(
     const ROMol &mol, DistGeom::BoundsMatPtr mmat,
     std::vector<std::pair<int, int>> &bonds,
     std::vector<std::vector<int>> &angles, bool set15bounds = true,
@@ -68,10 +68,10 @@ RDKIT_DISTGEOMHELPERS_EXPORT void setTopolBounds(
     bool forceTransAmides = true);
 
 //! generate the vectors of bonds and angles used by (ET)KDG
-RDKIT_DISTGEOMHELPERS_EXPORT void collectBondsAndAngles(
+RDKIX_DISTGEOMHELPERS_EXPORT void collectBondsAndAngles(
     const ROMol &mol, std::vector<std::pair<int, int>> &bonds,
     std::vector<std::vector<int>> &angles);
 
 }  // namespace DGeomHelpers
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

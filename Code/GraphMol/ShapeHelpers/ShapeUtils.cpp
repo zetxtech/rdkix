@@ -1,21 +1,21 @@
 //
-//   Copyright (C) 2005-2021 Greg Landrum and other RDKit contributors
+//   Copyright (C) 2005-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "ShapeUtils.h"
 #include "ShapeEncoder.h"
 #include <Geometry/UniformGrid3D.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <Geometry/Transform3D.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 #include <Geometry/GridUtils.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolShapes {
 
 void computeConfBox(const Conformer &conf, RDGeom::Point3D &leftBottom,
@@ -240,4 +240,4 @@ double protrudeDistance(const Conformer &conf1, const Conformer &conf2,
   return res;
 }
 }  // namespace MolShapes
-}  // namespace RDKit
+}  // namespace RDKix

@@ -48,12 +48,12 @@
 #include <thread>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace Utils {
 namespace detail {
 // Implementation of LocaleSwitcher
 //  The locale switcher has state to indicate how many times
-//   it has been used (in a thread if thread safe RDKIT)
+//   it has been used (in a thread if thread safe RDKIX)
 
 const static int CurrentState = 0;  // return current state
 const static int SwitchLocale = 1;  // indicate we are now switched to "C"
@@ -151,4 +151,4 @@ class LocaleSwitcherImpl {
 LocaleSwitcher::LocaleSwitcher() : impl(new detail::LocaleSwitcherImpl) {}
 LocaleSwitcher::~LocaleSwitcher() { delete impl; }
 }  // namespace Utils
-}  // namespace RDKit
+}  // namespace RDKix

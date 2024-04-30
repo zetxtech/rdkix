@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2007-2022, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -45,11 +45,11 @@
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
 
-namespace RDKit {
+namespace RDKix {
 class ChemicalReaction;
 
 //! used to indicate an error in parsing reaction data
-class RDKIT_CHEMREACTIONS_EXPORT ChemicalReactionParserException
+class RDKIX_CHEMREACTIONS_EXPORT ChemicalReactionParserException
     : public std::exception {
  public:
   //! construct with an error message
@@ -86,17 +86,17 @@ class RDKIT_CHEMREACTIONS_EXPORT ChemicalReactionParserException
    \param allowCXSMILES     if set, any CXSMILES extensions present will be
    parsed, otherwise it will be ignored
  */
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnSmartsToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *RxnSmartsToChemicalReaction(
     const std::string &text,
     std::map<std::string, std::string> *replacements = nullptr,
     bool useSmiles = false, bool allowCXSMILES = true);
 
 //! returns the reaction SMARTS for a reaction
-RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnSmarts(
+RDKIX_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnSmarts(
     const ChemicalReaction &rxn);
 
 //! returns the reaction SMILES for a reaction
-RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnSmiles(
+RDKIX_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnSmiles(
     const ChemicalReaction &rxn, bool canonical = true);
 //! @}
 
@@ -112,11 +112,11 @@ RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnSmiles(
 
    \param mol           ROMol with RXN roles set
  */
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnMolToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *RxnMolToChemicalReaction(
     const ROMol &mol);
 
 //! returns a ROMol with RXN roles used to describe the reaction
-RDKIT_CHEMREACTIONS_EXPORT ROMol *ChemicalReactionToRxnMol(
+RDKIX_CHEMREACTIONS_EXPORT ROMol *ChemicalReactionToRxnMol(
     const ChemicalReaction &rxn);
 //! @}
 
@@ -125,15 +125,15 @@ RDKIT_CHEMREACTIONS_EXPORT ROMol *ChemicalReactionToRxnMol(
 //! @{
 
 //! Parse a text block in MDL rxn format into a ChemicalReaction
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnBlockToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *RxnBlockToChemicalReaction(
     const std::string &rxnBlock, bool sanitize = false, bool removeHs = false,
     bool strictParsing = true);
 //! Parse a file in MDL rxn format into a ChemicalReaction
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnFileToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *RxnFileToChemicalReaction(
     const std::string &fileName, bool sanitize = false, bool removeHs = false,
     bool strictParsing = true);
 //! Parse a text stream in MDL rxn format into a ChemicalReaction
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnDataStreamToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *RxnDataStreamToChemicalReaction(
     std::istream &rxnStream, unsigned int &line, bool sanitize = false,
     bool removeHs = false, bool strictParsing = true);
 //! returns an rxn block for a reaction
@@ -147,7 +147,7 @@ RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *RxnDataStreamToChemicalReaction(
    \param forceV3000     flag to cause the V3000 format to be used instead of
                          V2000
  */
-RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnBlock(
+RDKIX_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnBlock(
     const ChemicalReaction &rxn, bool separateAgents = false,
     bool forceV3000 = false);
 //! returns an V3000 rxn block for a reaction
@@ -158,7 +158,7 @@ RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToRxnBlock(
                          otherwise they are included in the reactants block
                          (default)
 */
-RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToV3KRxnBlock(
+RDKIX_CHEMREACTIONS_EXPORT std::string ChemicalReactionToV3KRxnBlock(
     const ChemicalReaction &rxn, bool separateAgents = false);
 
 //! @}
@@ -169,24 +169,24 @@ RDKIT_CHEMREACTIONS_EXPORT std::string ChemicalReactionToV3KRxnBlock(
 
 //! Tags used for PNG metadata
 namespace PNGData {
-RDKIT_CHEMREACTIONS_EXPORT extern const std::string rxnSmilesTag;
-RDKIT_CHEMREACTIONS_EXPORT extern const std::string rxnSmartsTag;
-RDKIT_CHEMREACTIONS_EXPORT extern const std::string rxnRxnTag;
-RDKIT_CHEMREACTIONS_EXPORT extern const std::string rxnPklTag;
+RDKIX_CHEMREACTIONS_EXPORT extern const std::string rxnSmilesTag;
+RDKIX_CHEMREACTIONS_EXPORT extern const std::string rxnSmartsTag;
+RDKIX_CHEMREACTIONS_EXPORT extern const std::string rxnRxnTag;
+RDKIX_CHEMREACTIONS_EXPORT extern const std::string rxnPklTag;
 }  // namespace PNGData
 
 //! \brief constructs a ChemicalReaction from the metadata in a PNG stream
 /*!
 
 Looks through the metadata in the PNG to find the first tag that matches one of
-the tags in \c RDKit::PNGData. A molecule is constructed from this chunk.
+the tags in \c RDKix::PNGData. A molecule is constructed from this chunk.
 
 Throws a \c FileParseException if no suitable tag is found.
 
 The caller is responsible for the returned pointer.
 
  */
-RDKIT_CHEMREACTIONS_EXPORT ChemicalReaction *PNGStreamToChemicalReaction(
+RDKIX_CHEMREACTIONS_EXPORT ChemicalReaction *PNGStreamToChemicalReaction(
     std::istream &pngStream);
 //! \brief constructs a ChemicalReaction from the metadata in a PNG string
 //! See \c PNGStreamToChemicalReaction() for more details
@@ -216,7 +216,7 @@ inline ChemicalReaction *PNGFileToChemicalReaction(const std::string &fname) {
   \param includeRxn     include an RXN block for the reaction
 
 */
-RDKIT_CHEMREACTIONS_EXPORT std::string addChemicalReactionToPNGStream(
+RDKIX_CHEMREACTIONS_EXPORT std::string addChemicalReactionToPNGStream(
     const ChemicalReaction &rxn, std::istream &iStream, bool includePkl = true,
     bool includeSmiles = true, bool includeSmarts = false,
     bool includeRxn = false);
@@ -274,18 +274,18 @@ inline std::unique_ptr<ChemicalReaction> operator"" _rxnsmiles(const char *text,
 ///@{
 
 //! Parse text in CDXML rxn format into a vector of ChemicalReactions
-RDKIT_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
+RDKIX_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
 CDXMLToChemicalReactions(const std::string &rxnBlock, bool sanitize = false,
                          bool removeHs = false);
 //! Parse a file in CDXML rxn format into a vector of ChemicalReactions
-RDKIT_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
+RDKIX_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
 CDXMLFileToChemicalReactions(const std::string &fileName, bool sanitize = false,
                              bool removeHs = false);
 //! Parse a text stream in CDXML rxn format into a vector of ChemicalReactions
-RDKIT_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
+RDKIX_CHEMREACTIONS_EXPORT std::vector<std::unique_ptr<ChemicalReaction>>
 CDXMLDataStreamToChemicalReactions(std::istream &rxnStream,
                                    bool sanitize = false,
                                    bool removeHs = false);
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

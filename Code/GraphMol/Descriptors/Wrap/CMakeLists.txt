@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_DESCRIPTORS_BUILD)
-rdkit_python_extension(rdMolDescriptors rdMolDescriptors.cpp
+remove_definitions(-DRDKIX_DESCRIPTORS_BUILD)
+rdkix_python_extension(rdMolDescriptors rdMolDescriptors.cpp
                        DEST Chem
                        LINK_LIBRARIES
 LINK_LIBRARIES Descriptors Fingerprints )

@@ -30,8 +30,8 @@
 #
 # Created by Jameed Hussain, May 2013
 
-from rdkit import Chem
-from rdkit.Chem.Fraggle import FraggleSim
+from rdkix import Chem
+from rdkix.Chem.Fraggle import FraggleSim
 
 if __name__ == '__main__':
   import re

@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 //  Automatically generated from elements.txt
@@ -16,7 +16,7 @@
 
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace constants {
 const double electronMass =
@@ -3473,4 +3473,4 @@ const std::string isotopesAtomData[] = {
 118 Og  294  294.21392 0 \n \
 118 Og  295  295.21624 0 )DAT",
     "EOS"};
-}  // namespace RDKit
+}  // namespace RDKix

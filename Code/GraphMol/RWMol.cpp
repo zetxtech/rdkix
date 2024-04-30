@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/tokenizer.hpp>
@@ -20,7 +20,7 @@
 #include "RingInfo.h"
 #include "SubstanceGroup.h"
 
-namespace RDKit {
+namespace RDKix {
 
 RWMol &RWMol::operator=(const RWMol &other) {
   if (this != &other) {
@@ -306,12 +306,12 @@ void RWMol::removeAtom(Atom *atom) {
   std::string sprop;
   while (beg != end) {
     Bond *bond = d_graph[*beg++];
-    if (bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+    if (bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop)) {
       // This would ideally use ParseV3000Array but I'm buggered if I can get
       // the linker to find it.
       //      std::vector<unsigned int> oats =
-      //          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
+      //          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
       if ('(' == sprop.front() && ')' == sprop.back()) {
         sprop = sprop.substr(1, sprop.length() - 2);
 
@@ -331,7 +331,7 @@ void RWMol::removeAtom(Atom *atom) {
           --num_ats;
         }
         if (!num_ats) {
-          bond->clearProp(RDKit::common_properties::_MolFileBondEndPts);
+          bond->clearProp(RDKix::common_properties::_MolFileBondEndPts);
           bond->clearProp(common_properties::_MolFileBondAttach);
         } else {
           sprop = "(" + std::to_string(num_ats) + " ";
@@ -342,7 +342,7 @@ void RWMol::removeAtom(Atom *atom) {
             sprop += std::to_string(i) + " ";
           }
           sprop[sprop.length() - 1] = ')';
-          bond->setProp(RDKit::common_properties::_MolFileBondEndPts, sprop);
+          bond->setProp(RDKix::common_properties::_MolFileBondEndPts, sprop);
         }
       }
     }
@@ -593,4 +593,4 @@ void RWMol::commitBatchEdit() {
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

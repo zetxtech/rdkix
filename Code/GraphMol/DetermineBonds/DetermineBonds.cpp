@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2022 Sreya Gogineni and other RDKit contributors
+//  Copyright (C) 2022 Sreya Gogineni and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "DetermineBonds.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #ifdef RDK_BUILD_YAEHMOP_SUPPORT
 #include <YAeHMOP/EHTTools.h>
 #endif
@@ -73,7 +73,7 @@ std::vector<T> LazyCartesianProduct<T>::entryAt(uint1024_t pos) const {
 }
 
 std::vector<unsigned int> possibleValences(
-    const RDKit::Atom *atom,
+    const RDKix::Atom *atom,
     const std::unordered_map<int, std::vector<unsigned int>> &atomicValence) {
   auto atomNum = atom->getAtomicNum();
   auto numBonds = atom->getDegree();
@@ -82,7 +82,7 @@ std::vector<unsigned int> possibleValences(
   if (valences == atomicValence.end()) {
     std::stringstream ss;
     ss << "determineBondOrdering() does not work with element "
-       << RDKit::PeriodicTable::getTable()->getElementSymbol(atomNum);
+       << RDKix::PeriodicTable::getTable()->getElementSymbol(atomNum);
     throw ValueErrorException(ss.str());
   }
   std::vector<unsigned int> possible;
@@ -95,7 +95,7 @@ std::vector<unsigned int> possibleValences(
 }
 
 LazyCartesianProduct<unsigned int> getValenceCombinations(
-    const RDKit::RWMol &mol) {
+    const RDKix::RWMol &mol) {
   auto numAtoms = mol.getNumAtoms();
   const std::unordered_map<int, std::vector<unsigned int>> atomicValence = {
       {1, {1}},  {5, {3, 4}}, {6, {4}},     {7, {3, 4}},     {8, {2, 1, 3}},
@@ -121,7 +121,7 @@ LazyCartesianProduct<unsigned int> getValenceCombinations(
 
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 #ifdef RDK_BUILD_YAEHMOP_SUPPORT
 void connectivityHueckel(RWMol &mol, int charge) {
@@ -172,7 +172,7 @@ void determineConnectivity(RWMol &mol, bool useHueckel, int charge,
 #ifndef RDK_BUILD_YAEHMOP_SUPPORT
   if (useHueckel) {
     throw ValueErrorException(
-        "The RDKit was not compiled with YAeHMOP support");
+        "The RDKix was not compiled with YAeHMOP support");
   }
 #endif
   auto numAtoms = mol.getNumAtoms();
@@ -468,4 +468,4 @@ void determineBonds(RWMol &mol, bool useHueckel, int charge, double covFactor,
                       useAtomMap);
 }  // determineBonds()
 
-}  // namespace RDKit
+}  // namespace RDKix

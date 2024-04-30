@@ -2,13 +2,13 @@
 // Copyright (c) 2018 greg Landrum
 //
 //   @@ All Rights Reserved  @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-// RDKit configuration options
+// RDKix configuration options
 #cmakedefine RDK_USE_BOOST_SERIALIZATION
 #cmakedefine RDK_USE_BOOST_IOSTREAMS
 #cmakedefine RDK_USE_BOOST_STACKTRACE

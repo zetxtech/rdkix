@@ -2,10 +2,10 @@
 //  Copyright (c) 2022 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_CDXML_FILEPARSERS_H
@@ -16,11 +16,11 @@
 #include <iostream>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 
 //! \brief construct molecules from a CDXML file
-//! Note that the CDXML format is large and complex, the RDKit doesn't support
+//! Note that the CDXML format is large and complex, the RDKix doesn't support
 //!  full functionality, just the base ones required for molecule and
 //!  reaction parsing.
 /*!
@@ -31,11 +31,11 @@ class RWMol;
  *                     is only done if the molecule is sanitized
  * correctness of the contents.
  */
-RDKIT_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>>
+RDKIX_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>>
 CDXMLDataStreamToMols(std::istream &inStream, bool sanitize = true,
                       bool removeHs = true);
 //! \brief construct molecules from a CDXML file
-//! Note that the CDXML format is large and complex, the RDKit doesn't support
+//! Note that the CDXML format is large and complex, the RDKix doesn't support
 //!  full functionality, just the base ones required for molecule and
 //!  reaction parsing.
 /*!
@@ -46,11 +46,11 @@ CDXMLDataStreamToMols(std::istream &inStream, bool sanitize = true,
  *                     is only done if the molecule is sanitized
  * correctness of the contents.
  */
-RDKIT_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>> CDXMLFileToMols(
+RDKIX_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>> CDXMLFileToMols(
     const std::string &filename, bool sanitize = true, bool removeHs = true);
 
 //! \brief construct molecules from a CDXML file
-//! Note that the CDXML format is large and complex, the RDKit doesn't support
+//! Note that the CDXML format is large and complex, the RDKix doesn't support
 //!  full functionality, just the base ones required for molecule and
 //!  reaction parsing.
 /*!
@@ -61,8 +61,8 @@ RDKIT_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>> CDXMLFileToMols(
  *                     is only done if the molecule is sanitized
  * correctness of the contents.
  */
-RDKIT_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>> CDXMLToMols(
+RDKIX_FILEPARSERS_EXPORT std::vector<std::unique_ptr<RWMol>> CDXMLToMols(
     const std::string &cdxml, bool sanitize = true, bool removeHs = true);
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // _RD_CDXML_FILEPARSERS_H

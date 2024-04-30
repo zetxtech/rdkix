@@ -49,7 +49,7 @@
 #define BOOST_NO_CXX11_NULLPTR
 %include <boost/smart_ptr/shared_array.hpp>
 
-/* undefine RDKIT_<LIBNAME>_EXPORT macros */
+/* undefine RDKIX_<LIBNAME>_EXPORT macros */
 %include <RDGeneral/RDExportMacros.h>
 %include <RDGeneral/export.h>
 /* Include the base types before anything that will utilize them */
@@ -100,28 +100,28 @@ typedef unsigned long long int	uintmax_t;
 #endif
 
 %shared_ptr(std::exception)
-%shared_ptr(RDKit::RDProps)
-%shared_ptr(RDKit::Conformer)
-%shared_ptr(RDKit::ROMol)
-%shared_ptr(RDKit::RWMol)
-%shared_ptr(RDKit::Atom)
-%shared_ptr(RDKit::Bond)
-%shared_ptr(RDKit::PeriodicTable)
+%shared_ptr(RDKix::RDProps)
+%shared_ptr(RDKix::Conformer)
+%shared_ptr(RDKix::ROMol)
+%shared_ptr(RDKix::RWMol)
+%shared_ptr(RDKix::Atom)
+%shared_ptr(RDKix::Bond)
+%shared_ptr(RDKix::PeriodicTable)
 %shared_ptr(Canon::MolStackElem)
-%shared_ptr(RDKit::QueryAtom)
-%shared_ptr(RDKit::QueryBond)
-%shared_ptr(RDKit::QueryOps)
-%shared_ptr(RDKit::MolBundle)
-%shared_ptr(RDKit::FixedMolSizeMolBundle)
-%shared_ptr(RDKit::MolSanitizeException)
-%shared_ptr(RDKit::AtomSanitizeException)
-%shared_ptr(RDKit::AtomValenceException)
-%shared_ptr(RDKit::AtomKekulizeException)
-%shared_ptr(RDKit::KekulizeException)
-%shared_ptr(RDKit::SmilesParseException)
-%shared_ptr(RDKit::MolPicklerException)
-%shared_ptr(RDKit::RingInfo)
-%shared_ptr(RDKit::ChemicalReaction)
+%shared_ptr(RDKix::QueryAtom)
+%shared_ptr(RDKix::QueryBond)
+%shared_ptr(RDKix::QueryOps)
+%shared_ptr(RDKix::MolBundle)
+%shared_ptr(RDKix::FixedMolSizeMolBundle)
+%shared_ptr(RDKix::MolSanitizeException)
+%shared_ptr(RDKix::AtomSanitizeException)
+%shared_ptr(RDKix::AtomValenceException)
+%shared_ptr(RDKix::AtomKekulizeException)
+%shared_ptr(RDKix::KekulizeException)
+%shared_ptr(RDKix::SmilesParseException)
+%shared_ptr(RDKix::MolPicklerException)
+%shared_ptr(RDKix::RingInfo)
+%shared_ptr(RDKix::ChemicalReaction)
 %shared_ptr(ForceFields::ForceFieldContrib);
 %shared_ptr(ForceFields::UFF::AngleBendContrib);
 %shared_ptr(ForceFields::UFF::BondStretchContrib);
@@ -129,7 +129,7 @@ typedef unsigned long long int	uintmax_t;
 %shared_ptr(ForceFields::UFF::vdWContrib);
 %shared_ptr(ForceFields::UFF::TorsionAngleContrib);
 %shared_ptr(ForceFields::UFF::InversionContrib);
-%shared_ptr(RDKit::FilterCatalogEntry);
+%shared_ptr(RDKix::FilterCatalogEntry);
 
 /* Some utility classes for passing arrays in and out */
 %array_class(double, Double_Array);
@@ -163,7 +163,7 @@ typedef unsigned long long int	uintmax_t;
 %include "../FilterCatalogs_doc.i"
 
 // DO THIS BEFORE ANY OF THE OTHER INCLUDES
-%include "../RDKitExceptions.i"
+%include "../RDKixExceptions.i"
 
 %include "../point.i"
 // Need the types wrapper or we get undefined errors for STR_VECT
@@ -236,7 +236,7 @@ typedef unsigned long long int	uintmax_t;
 %template(TanimotoSimilarityEBV) TanimotoSimilarity<ExplicitBitVect,ExplicitBitVect>;
 %template(DiceSimilarityEBV) DiceSimilarity<ExplicitBitVect,ExplicitBitVect>;
 */
-%template(DiceSimilarity) RDKit::DiceSimilarity<boost::uint32_t>;
+%template(DiceSimilarity) RDKix::DiceSimilarity<boost::uint32_t>;
 
 /* vector */
 %template(Int_Vect) std::vector<int>;
@@ -315,8 +315,8 @@ typedef unsigned long long int	uintmax_t;
 #include <RDGeneral/versions.h>
 %}
 
-%immutable RDKit::rdkitVersion;
-%immutable RDKit::boostVersion;
-%immutable RDKit::rdkitBuild;
+%immutable RDKix::rdkixVersion;
+%immutable RDKix::boostVersion;
+%immutable RDKix::rdkixBuild;
 
 %include <RDGeneral/versions.h>

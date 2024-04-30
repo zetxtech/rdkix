@@ -1,4 +1,4 @@
-#  Copyright (c) 2023 David Cosgrove and other RDKit contributors
+#  Copyright (c) 2023 David Cosgrove and other RDKix contributors
 #  All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -36,8 +36,8 @@ import unittest
 
 from pathlib import Path
 
-from rdkit import Chem
-from rdkit.Chem import rdRascalMCES
+from rdkix import Chem
+from rdkix.Chem import rdRascalMCES
 
 
 class TestCase(unittest.TestCase):

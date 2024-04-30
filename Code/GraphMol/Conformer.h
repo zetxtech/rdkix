@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_CONFORMER_H
@@ -19,11 +19,11 @@
 #include <limits>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 //! used to indicate errors from incorrect conformer access
-class RDKIT_GRAPHMOL_EXPORT ConformerException : public std::exception {
+class RDKIX_GRAPHMOL_EXPORT ConformerException : public std::exception {
  public:
   //! construct with an error message
   ConformerException(const char *msg) : _msg(msg) {}
@@ -43,7 +43,7 @@ class RDKIT_GRAPHMOL_EXPORT ConformerException : public std::exception {
   - a pointer to the owing molecule
   - a vector of 3D points (positions of atoms)
 */
-class RDKIT_GRAPHMOL_EXPORT Conformer : public RDProps {
+class RDKIX_GRAPHMOL_EXPORT Conformer : public RDProps {
  public:
   friend class ROMol;
 
@@ -180,6 +180,6 @@ inline bool hasNonZeroZCoords(const Conformer &conf) {
   return false;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

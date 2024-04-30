@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2008 greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/Wrap.h>
 #include <DataStructs/BitVects.h>
@@ -17,7 +17,7 @@
 namespace python = boost::python;
 
 // allows BitVects to be pickled
-struct sbv_pickle_suite : rdkit_pickle_suite {
+struct sbv_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const SparseBitVect &self) {
     std::string res = self.toString();
     python::object retval = python::object(

@@ -31,15 +31,15 @@
 //
 
 #include <RDGeneral/export.h>
-#ifndef RDKIT_REGISTER_DESCRIPTOR_H
-#define RDKIT_REGISTER_DESCRIPTOR_H
+#ifndef RDKIX_REGISTER_DESCRIPTOR_H
+#define RDKIX_REGISTER_DESCRIPTOR_H
 
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/shared_ptr.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 #include "Property.h"
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 
@@ -59,7 +59,7 @@ VERSION) { \
 NAME##PropertyFunctor(false)); \
     d_dataFunc = &NAME##PropertyFunction;  \
   } \
-  double operator()(const RDKit::ROMol &mol) const { \
+  double operator()(const RDKix::ROMol &mol) const { \
      return NAME##PropertyFunction(mol); } \
 }; \
 static NAME##PropertyFunctor NAME##PropertyFunctor__;
@@ -75,10 +75,10 @@ static NAME##PropertyFunctor NAME##PropertyFunctor__;
       if (registerProp)                                                     \
         Properties::registerProperty(new NAME##PropertyFunctor(false));     \
     }                                                                       \
-    double operator()(const RDKit::ROMol &mol) const { return _func(mol); } \
+    double operator()(const RDKix::ROMol &mol) const { return _func(mol); } \
   };                                                                        \
   static NAME##PropertyFunctor NAME##PropertyFunctor__;
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

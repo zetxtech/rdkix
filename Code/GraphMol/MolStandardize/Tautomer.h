@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_TAUTOMER_H
@@ -22,7 +22,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 
@@ -35,9 +35,9 @@ typedef RDCatalog::HierarchCatalog<TautomerCatalogEntry, TautomerCatalogParams,
 namespace TautomerScoringFunctions {
 const std::string tautomerScoringVersion = "1.0.0";
 
-RDKIT_MOLSTANDARDIZE_EXPORT int scoreRings(const ROMol &mol);
-RDKIT_MOLSTANDARDIZE_EXPORT int scoreSubstructs(const ROMol &mol);
-RDKIT_MOLSTANDARDIZE_EXPORT int scoreHeteroHs(const ROMol &mol);
+RDKIX_MOLSTANDARDIZE_EXPORT int scoreRings(const ROMol &mol);
+RDKIX_MOLSTANDARDIZE_EXPORT int scoreSubstructs(const ROMol &mol);
+RDKIX_MOLSTANDARDIZE_EXPORT int scoreHeteroHs(const ROMol &mol);
 
 inline int scoreTautomer(const ROMol &mol) {
   return scoreRings(mol) + scoreSubstructs(mol) + scoreHeteroHs(mol);
@@ -75,7 +75,7 @@ typedef std::map<std::string, Tautomer> SmilesTautomerMap;
 typedef std::pair<std::string, Tautomer> SmilesTautomerPair;
 
 //! Contains results of tautomer enumeration
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumeratorResult {
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerEnumeratorResult {
   friend class TautomerEnumerator;
 
  public:
@@ -184,14 +184,14 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumeratorResult {
   boost::dynamic_bitset<> d_modifiedBonds;
 };
 
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumeratorCallback {
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerEnumeratorCallback {
  public:
   TautomerEnumeratorCallback() {}
   virtual ~TautomerEnumeratorCallback() {}
   virtual bool operator()(const ROMol &, const TautomerEnumeratorResult &) = 0;
 };
 
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumerator {
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerEnumerator {
  public:
   TautomerEnumerator(TautomerCatalog *tautCat)
       : dp_catalog(tautCat),
@@ -245,7 +245,7 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumerator {
       will be removed from sp3 atoms involved in tautomerism.
       This means that S-aminoacids will lose their stereochemistry after going
       through tautomer enumeration because of the amido-imidol tautomerism.
-      This defaults to true in RDKit, false in the workflow described
+      This defaults to true in RDKix, false in the workflow described
       by Sitzmann et al.
    */
   void setRemoveSp3Stereo(bool removeSp3Stereo) {
@@ -259,7 +259,7 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerEnumerator {
       will be removed from double bonds involved in tautomerism.
       This means that enols will lose their E/Z stereochemistry after going
       through tautomer enumeration because of the keto-enolic tautomerism.
-      This defaults to true in RDKit and also in the workflow described
+      This defaults to true in RDKix and also in the workflow described
       by Sitzmann et al.
    */
   void setRemoveBondStereo(bool removeBondStereo) {
@@ -426,6 +426,6 @@ inline TautomerEnumerator *getV1TautomerEnumerator() {
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

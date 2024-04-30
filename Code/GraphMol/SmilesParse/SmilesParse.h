@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SMILESPARSE_H
@@ -17,9 +17,9 @@
 #include <exception>
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 
-struct RDKIT_SMILESPARSE_EXPORT SmilesParserParams {
+struct RDKIX_SMILESPARSE_EXPORT SmilesParserParams {
   int debugParse = 0;   /**< enable debugging in the SMILES parser*/
   bool sanitize = true; /**< sanitize the molecule after building it */
   std::map<std::string, std::string> *replacements =
@@ -32,11 +32,11 @@ struct RDKIT_SMILESPARSE_EXPORT SmilesParserParams {
   bool skipCleanup =
       false; /**<  skip the final cleanup stage (for internal use) */
 };
-RDKIT_SMILESPARSE_EXPORT RWMol *SmilesToMol(const std::string &smi,
+RDKIX_SMILESPARSE_EXPORT RWMol *SmilesToMol(const std::string &smi,
                                             const SmilesParserParams &params);
 
-RDKIT_SMILESPARSE_EXPORT Atom *SmilesToAtom(const std::string &smi);
-RDKIT_SMILESPARSE_EXPORT Bond *SmilesToBond(const std::string &smi);
+RDKIX_SMILESPARSE_EXPORT Atom *SmilesToAtom(const std::string &smi);
+RDKIX_SMILESPARSE_EXPORT Bond *SmilesToBond(const std::string &smi);
 
 //! Construct a molecule from a SMILES string
 /*!
@@ -81,7 +81,7 @@ inline RWMol *SmilesToMol(
   return SmilesToMol(smi, params);
 };
 
-struct RDKIT_SMILESPARSE_EXPORT SmartsParserParams {
+struct RDKIX_SMILESPARSE_EXPORT SmartsParserParams {
   int debugParse = 0; /**< enable debugging in the SMARTS parser*/
   std::map<std::string, std::string> *replacements =
       nullptr;               /**< allows SMARTS "macros" */
@@ -94,7 +94,7 @@ struct RDKIT_SMILESPARSE_EXPORT SmartsParserParams {
   bool skipCleanup =
       false; /**<  skip the final cleanup stage (for internal use) */
 };
-RDKIT_SMILESPARSE_EXPORT RWMol *SmartsToMol(const std::string &sma,
+RDKIX_SMILESPARSE_EXPORT RWMol *SmartsToMol(const std::string &sma,
                                             const SmartsParserParams &ps);
 
 //! Construct a molecule from a SMARTS string
@@ -119,10 +119,10 @@ inline RWMol *SmartsToMol(
   return SmartsToMol(sma, ps);
 };
 
-RDKIT_SMILESPARSE_EXPORT Atom *SmartsToAtom(const std::string &sma);
-RDKIT_SMILESPARSE_EXPORT Bond *SmartsToBond(const std::string &sma);
+RDKIX_SMILESPARSE_EXPORT Atom *SmartsToAtom(const std::string &sma);
+RDKIX_SMILESPARSE_EXPORT Bond *SmartsToBond(const std::string &sma);
 
-class RDKIT_SMILESPARSE_EXPORT SmilesParseException : public std::exception {
+class RDKIX_SMILESPARSE_EXPORT SmilesParseException : public std::exception {
  public:
   SmilesParseException(const char *msg) : _msg(msg) {}
   SmilesParseException(const std::string msg) : _msg(msg) {}
@@ -133,18 +133,18 @@ class RDKIT_SMILESPARSE_EXPORT SmilesParseException : public std::exception {
   std::string _msg;
 };
 
-inline std::unique_ptr<RDKit::RWMol> operator"" _smiles(const char *text,
+inline std::unique_ptr<RDKix::RWMol> operator"" _smiles(const char *text,
                                                         size_t len) {
   std::string smi(text, len);
   RWMol *ptr = nullptr;
   try {
     ptr = SmilesToMol(smi);
-  } catch (const RDKit::MolSanitizeException &) {
+  } catch (const RDKix::MolSanitizeException &) {
     ptr = nullptr;
   }
   return std::unique_ptr<RWMol>(ptr);
 }
-inline std::unique_ptr<RDKit::RWMol> operator"" _smarts(const char *text,
+inline std::unique_ptr<RDKix::RWMol> operator"" _smarts(const char *text,
                                                         size_t len) {
   std::string smi(text, len);
   // no need for exception handling here: SmartsToMol() doesn't do
@@ -153,6 +153,6 @@ inline std::unique_ptr<RDKit::RWMol> operator"" _smarts(const char *text,
   return std::unique_ptr<RWMol>(ptr);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

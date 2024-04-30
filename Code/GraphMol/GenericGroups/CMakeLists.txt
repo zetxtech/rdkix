@@ -1,10 +1,10 @@
 
-rdkit_library(GenericGroups 
+rdkix_library(GenericGroups 
               GenericGroups.cpp 
               LINK_LIBRARIES GraphMol RDGeneral)
-target_compile_definitions(GenericGroups PRIVATE RDKIT_GENERICGROUPS_BUILD)
+target_compile_definitions(GenericGroups PRIVATE RDKIX_GENERICGROUPS_BUILD)
 
-rdkit_headers(GenericGroups.h DEST GraphMol/GenericGroups)
+rdkix_headers(GenericGroups.h DEST GraphMol/GenericGroups)
 
-rdkit_catch_test(testGenericGroups generic_tests.cpp 
+rdkix_catch_test(testGenericGroups generic_tests.cpp 
     LINK_LIBRARIES GenericGroups FileParsers SmilesParse SubstructMatch)

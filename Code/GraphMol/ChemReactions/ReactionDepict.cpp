@@ -35,7 +35,7 @@
 #include <GraphMol/Depictor/RDDepictor.h>
 
 namespace RDDepict {
-void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
+void compute2DCoordsForReaction(RDKix::ChemicalReaction &rxn, double spacing,
                                 bool updateProps, bool canonOrient,
                                 unsigned int nFlipsPerSample,
                                 unsigned int nSamples, int sampleSeed,
@@ -44,8 +44,8 @@ void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
   for (auto &reactant : rxn.getReactants()) {
     if (updateProps) {
       reactant->updatePropertyCache(false);
-      RDKit::MolOps::setConjugation(*reactant);
-      RDKit::MolOps::setHybridization(*reactant);
+      RDKix::MolOps::setConjugation(*reactant);
+      RDKix::MolOps::setHybridization(*reactant);
     }
     compute2DCoords(*reactant, nullptr, canonOrient, true, nFlipsPerSample,
                     nSamples, sampleSeed, permuteDeg4Nodes);
@@ -64,8 +64,8 @@ void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
   for (auto &product : rxn.getProducts()) {
     if (updateProps) {
       product->updatePropertyCache(false);
-      RDKit::MolOps::setConjugation(*product);
-      RDKit::MolOps::setHybridization(*product);
+      RDKix::MolOps::setConjugation(*product);
+      RDKix::MolOps::setHybridization(*product);
     }
     compute2DCoords(*product, nullptr, canonOrient, true, nFlipsPerSample,
                     nSamples, sampleSeed, permuteDeg4Nodes);

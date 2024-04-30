@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
-#define YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
+#ifndef YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
+#define YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 #define YYDEBUG 0
@@ -88,15 +88,15 @@ union YYSTYPE {
 #line 92 "sln.yy" /* yacc.c:1913  */
 
   int mol_T;
-  RDKit::Atom *atom_T;
-  RDKit::Bond *bond_T;
+  RDKix::Atom *atom_T;
+  RDKix::Bond *bond_T;
   int ival_T;
   std::string *text_T;
   char char_T;
-  RDKit::SLNParse::AttribType *attrib_T;
-  RDKit::SLNParse::AttribListType *attriblist_T;
+  RDKix::SLNParse::AttribType *attrib_T;
+  RDKix::SLNParse::AttribListType *attriblist_T;
 
-#line 102 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.hpp" /* yacc.c:1913  */
+#line 102 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.hpp" /* yacc.c:1913  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -104,8 +104,8 @@ typedef union YYSTYPE YYSTYPE;
 #define YYSTYPE_IS_DECLARED 1
 #endif
 
-int yysln_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
+int yysln_parse(const char *input, std::vector<RDKix::RWMol *> *molList,
                 bool doQueries, void *scanner);
 
-#endif /* !YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED \
+#endif /* !YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED \
         */

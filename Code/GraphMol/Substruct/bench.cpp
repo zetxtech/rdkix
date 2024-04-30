@@ -2,10 +2,10 @@
 //  Copyright (C) 2001,2003 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef WIN32
 #pragma warning(disable : 4786)  // warning: long & complicated stl warning
@@ -16,15 +16,15 @@
 #include <iostream>
 
 // RD bits
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include "SubstructMatch.h"
 #include "SubstructUtils.h"
 #include <cstdlib>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1(int stopAfter = 1000) {
   std::cout << " ----------------- Test 1" << std::endl;

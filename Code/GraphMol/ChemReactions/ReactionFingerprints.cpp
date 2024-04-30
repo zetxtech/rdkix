@@ -30,7 +30,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <DataStructs/ExplicitBitVect.h>
 #include <DataStructs/BitOps.h>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -44,81 +44,81 @@
 
 namespace {
 
-RDKit::SparseIntVect<std::uint32_t> *generateFingerprint(
-    RDKit::ROMol &mol, unsigned int fpSize, RDKit::FingerprintType t) {
+RDKix::SparseIntVect<std::uint32_t> *generateFingerprint(
+    RDKix::ROMol &mol, unsigned int fpSize, RDKix::FingerprintType t) {
   mol.updatePropertyCache(false);
-  RDKit::SparseIntVect<std::uint32_t> *res;
+  RDKix::SparseIntVect<std::uint32_t> *res;
   switch (t) {
-    case RDKit::AtomPairFP: {
-      RDKit::SparseIntVect<std::int32_t> *tmp1 =
-          RDKit::AtomPairs::getHashedAtomPairFingerprint(mol, fpSize);
-      res = new RDKit::SparseIntVect<std::uint32_t>(fpSize);
+    case RDKix::AtomPairFP: {
+      RDKix::SparseIntVect<std::int32_t> *tmp1 =
+          RDKix::AtomPairs::getHashedAtomPairFingerprint(mol, fpSize);
+      res = new RDKix::SparseIntVect<std::uint32_t>(fpSize);
       for (auto val : tmp1->getNonzeroElements()) {
         res->setVal(static_cast<std::uint32_t>(val.first), val.second);
       }
       delete tmp1;
     } break;
-    case RDKit::TopologicalTorsion: {
-      RDKit::SparseIntVect<boost::int64_t> *tmp2 =
-          RDKit::AtomPairs::getHashedTopologicalTorsionFingerprint(mol, fpSize);
-      res = new RDKit::SparseIntVect<std::uint32_t>(fpSize);
+    case RDKix::TopologicalTorsion: {
+      RDKix::SparseIntVect<boost::int64_t> *tmp2 =
+          RDKix::AtomPairs::getHashedTopologicalTorsionFingerprint(mol, fpSize);
+      res = new RDKix::SparseIntVect<std::uint32_t>(fpSize);
       for (auto val : tmp2->getNonzeroElements()) {
         res->setVal(static_cast<std::uint32_t>(val.first), val.second);
       }
       delete tmp2;
     } break;
-    case RDKit::MorganFP: {
+    case RDKix::MorganFP: {
       if (!mol.getRingInfo()->isInitialized()) {
         mol.updatePropertyCache();
-        RDKit::MolOps::findSSSR(mol);
+        RDKix::MolOps::findSSSR(mol);
       }
-      res = RDKit::MorganFingerprints::getHashedFingerprint(mol, 2, fpSize);
+      res = RDKix::MorganFingerprints::getHashedFingerprint(mol, 2, fpSize);
     } break;
     default:
       std::stringstream err;
       err << ">> unsupported fingerprint type" << std::endl;
-      throw RDKit::ChemicalReactionException(err.str());
+      throw RDKix::ChemicalReactionException(err.str());
   }
   return res;
 }
 
-ExplicitBitVect *generateFingerprintAsBitVect(RDKit::ROMol &mol,
+ExplicitBitVect *generateFingerprintAsBitVect(RDKix::ROMol &mol,
                                               unsigned int fpSize,
-                                              RDKit::FingerprintType t) {
+                                              RDKix::FingerprintType t) {
   mol.updatePropertyCache(false);
   ExplicitBitVect *res;
   switch (t) {
-    case RDKit::AtomPairFP:
+    case RDKix::AtomPairFP:
       res =
-          RDKit::AtomPairs::getHashedAtomPairFingerprintAsBitVect(mol, fpSize);
+          RDKix::AtomPairs::getHashedAtomPairFingerprintAsBitVect(mol, fpSize);
       break;
-    case RDKit::RDKitFP:
-      res = RDKit::RDKFingerprintMol(mol, 1, 7, fpSize);
+    case RDKix::RDKixFP:
+      res = RDKix::RDKFingerprintMol(mol, 1, 7, fpSize);
       break;
-    case RDKit::TopologicalTorsion:
-      res = RDKit::AtomPairs::getHashedTopologicalTorsionFingerprintAsBitVect(
+    case RDKix::TopologicalTorsion:
+      res = RDKix::AtomPairs::getHashedTopologicalTorsionFingerprintAsBitVect(
           mol, fpSize);
       break;
-    case RDKit::MorganFP: {
+    case RDKix::MorganFP: {
       if (!mol.getRingInfo()->isInitialized()) {
         mol.updatePropertyCache();
-        RDKit::MolOps::findSSSR(mol);
+        RDKix::MolOps::findSSSR(mol);
       }
-      res = RDKit::MorganFingerprints::getFingerprintAsBitVect(mol, 2, fpSize);
+      res = RDKix::MorganFingerprints::getFingerprintAsBitVect(mol, 2, fpSize);
     } break;
-    case RDKit::PatternFP:
-      res = RDKit::PatternFingerprintMol(mol, fpSize);
+    case RDKix::PatternFP:
+      res = RDKix::PatternFingerprintMol(mol, fpSize);
       break;
     default:
       std::stringstream err;
       err << ">> unsupported fingerprint type" << std::endl;
-      throw RDKit::ChemicalReactionException(err.str());
+      throw RDKix::ChemicalReactionException(err.str());
   }
   return res;
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 const ReactionFingerprintParams DefaultStructuralFPParams(true, 0.2, 1, 1, 4096,
                                                           PatternFP);
@@ -225,4 +225,4 @@ SparseIntVect<std::uint32_t> *DifferenceFingerprintChemReaction(
   delete productFP;
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

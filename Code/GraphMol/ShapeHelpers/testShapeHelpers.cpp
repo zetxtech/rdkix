@@ -1,18 +1,18 @@
 //
-//   Copyright (C) 2005-2021 Greg Landrum and other RDKit contributors
+//   Copyright (C) 2005-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <Geometry/UniformGrid3D.h>
 #include "ShapeEncoder.h"
 #include "ShapeUtils.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <Geometry/GridUtils.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/MolTransforms/MolTransforms.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1Encode() {
   RDGeom::UniformGrid3D grd(30.0, 16.0, 10.0);
@@ -62,9 +62,9 @@ void test2Compare() {
   double rmsd = MolAlign::alignMol(*m, *m2);
   CHECK_INVARIANT(rmsd >= 0.0, "");
   dist = MolShapes::tanimotoDistance(*m, *m2);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.31, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.31, 0.01), "");
   dist = MolShapes::tverskyIndex(*m, *m2, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.68, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.68, 0.01), "");
   delete m2;
 
   m2 = MolFileToMol(fname2);
@@ -78,7 +78,7 @@ void test2Compare() {
   rmsd = MolAlign::alignMol(*m2, *m, 0, 0, &atomMap);
   dist = MolShapes::tanimotoDistance(*m, *m2);
 
-  CHECK_INVARIANT(RDKit::feq(dist, 0.3593), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.3593), "");
   delete m;
   delete m2;
 }
@@ -97,7 +97,7 @@ void testGithub4364() {
   MolTransforms::canonicalizeMol(*m2);
   int cid1 = -1, cid2 = -1;
   auto dist = MolShapes::tanimotoDistance(*m, *m2, cid1, cid2);
-  TEST_ASSERT(RDKit::feq(dist, 0.31, 0.01));
+  TEST_ASSERT(RDKix::feq(dist, 0.31, 0.01));
   double gridSpacing = 1.0;
   auto dist2 = MolShapes::tanimotoDistance(*m, *m2, cid1, cid2, gridSpacing);
   TEST_ASSERT(fabs(dist - dist2) > 0.001);

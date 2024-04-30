@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // This file contains an implementation of the clustering algorithm
 // described in
@@ -30,7 +30,7 @@
 #include <GraphMol/RascalMCES/RascalMCES.h>
 #include <GraphMol/RascalMCES/RascalResult.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace RascalMCES {
 namespace details {
 ClusNode calcMolMolSimilarity(
@@ -200,7 +200,7 @@ std::vector<std::vector<unsigned int>> makeSubClusters(
       auto m2 = tmpNbors[i]->d_res->getMcesMol();
       auto g_13 = g_ij(m2, clusOpts.a, clusOpts.b, clusOpts.minFragSize);
 
-      auto results = RDKit::RascalMCES::rascalMCES(*m1, *m2);
+      auto results = RDKix::RascalMCES::rascalMCES(*m1, *m2);
       if (results.empty() || results.front().getBondMatches().empty()) {
         continue;
       }
@@ -379,4 +379,4 @@ std::vector<std::vector<unsigned int>> rascalCluster(
 }
 
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix

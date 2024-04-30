@@ -2,10 +2,10 @@
 //  Copyright (c) 2022 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -26,7 +26,7 @@
 
 #include "ReactionUtils.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void make_query_atoms(RWMol &mol) {
@@ -116,4 +116,4 @@ std::vector<std::unique_ptr<ChemicalReaction>> CDXMLFileToChemicalReactions(
   }
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

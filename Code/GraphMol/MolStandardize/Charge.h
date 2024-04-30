@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file Charge.h
 
@@ -22,20 +22,20 @@
 #include <GraphMol/MolStandardize/AcidBaseCatalog/AcidBaseCatalogEntry.h>
 #include <GraphMol/MolStandardize/AcidBaseCatalog/AcidBaseCatalogParams.h>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
 namespace MolStandardize {
 
-RDKIT_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
+RDKIX_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
     defaultCleanupParameters;
 
 typedef RDCatalog::HierarchCatalog<AcidBaseCatalogEntry, AcidBaseCatalogParams,
                                    int>
     AcidBaseCatalog;
 
-struct RDKIT_MOLSTANDARDIZE_EXPORT ChargeCorrection {
+struct RDKIX_MOLSTANDARDIZE_EXPORT ChargeCorrection {
   std::string Name;
   std::string Smarts;
   int Charge;
@@ -45,7 +45,7 @@ struct RDKIT_MOLSTANDARDIZE_EXPORT ChargeCorrection {
 };
 
 // The default list of ChargeCorrections.
-RDKIT_MOLSTANDARDIZE_EXPORT extern std::vector<ChargeCorrection>
+RDKIX_MOLSTANDARDIZE_EXPORT extern std::vector<ChargeCorrection>
     CHARGE_CORRECTIONS;
 
 //! The reionizer class to fix charges and reionize a molecule such that the
@@ -56,7 +56,7 @@ RDKIT_MOLSTANDARDIZE_EXPORT extern std::vector<ChargeCorrection>
     -
 */
 
-class RDKIT_MOLSTANDARDIZE_EXPORT Reionizer {
+class RDKIX_MOLSTANDARDIZE_EXPORT Reionizer {
  public:
   Reionizer();
   //! construct a Reionizer with a particular acidbaseFile
@@ -127,7 +127,7 @@ inline Reionizer *reionizerFromParams(const CleanupParameters &params) {
 
 */
 
-class RDKIT_MOLSTANDARDIZE_EXPORT Uncharger {
+class RDKIX_MOLSTANDARDIZE_EXPORT Uncharger {
  public:
   Uncharger();
   Uncharger(bool canonicalOrdering) : Uncharger() {
@@ -153,5 +153,5 @@ class RDKIT_MOLSTANDARDIZE_EXPORT Uncharger {
 };  // Uncharger class
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

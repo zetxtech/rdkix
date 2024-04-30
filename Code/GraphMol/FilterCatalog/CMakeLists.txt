@@ -18,7 +18,7 @@ if (PYTHONINTERP_FOUND)
 endif()
 
 
-rdkit_library(FilterCatalog
+rdkix_library(FilterCatalog
               Filters.cpp
               FilterCatalog.cpp
               FilterCatalogEntry.cpp
@@ -27,9 +27,9 @@ rdkit_library(FilterCatalog
               FunctionalGroupHierarchy.cpp
               LINK_LIBRARIES Subgraphs SubstructMatch SmilesParse
               GraphMol Catalogs)
-target_compile_definitions(FilterCatalog PRIVATE RDKIT_FILTERCATALOG_BUILD)
+target_compile_definitions(FilterCatalog PRIVATE RDKIX_FILTERCATALOG_BUILD)
 
-rdkit_headers(FilterCatalogEntry.h
+rdkix_headers(FilterCatalogEntry.h
               FilterCatalog.h
               FilterMatcherBase.h
               FilterMatchers.h
@@ -40,5 +40,5 @@ if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)
 endif()
 
-rdkit_test(filterCatalogTest filtercatalogtest.cpp
+rdkix_test(filterCatalogTest filtercatalogtest.cpp
            LINK_LIBRARIES FilterCatalog SmilesParse FileParsers )

@@ -43,7 +43,7 @@
 // we can do something with the output of detectChemistryProblems()
 
 // approach from: http://www.swig.org/Doc3.0/Java.html#Java_adding_downcasts
-%exception RDKit::AtomSanitizeException::dynamic_cast(RDKit::MolSanitizeException) {
+%exception RDKix::AtomSanitizeException::dynamic_cast(RDKix::MolSanitizeException) {
   $action
     if(!result){
       jclass excep = jenv->FindClass("java/lang/ClassCastException");
@@ -52,13 +52,13 @@
       }
     }
 }
-%extend RDKit::AtomSanitizeException {
-    static RDKit::AtomSanitizeException *dynamic_cast(RDKit::MolSanitizeException *mse){
-        return dynamic_cast<RDKit::AtomSanitizeException *>(mse);
+%extend RDKix::AtomSanitizeException {
+    static RDKix::AtomSanitizeException *dynamic_cast(RDKix::MolSanitizeException *mse){
+        return dynamic_cast<RDKix::AtomSanitizeException *>(mse);
     }
 };
 
-%exception RDKit::AtomValenceException::dynamic_cast(RDKit::MolSanitizeException) {
+%exception RDKix::AtomValenceException::dynamic_cast(RDKix::MolSanitizeException) {
   $action
     if(!result){
       jclass excep = jenv->FindClass("java/lang/ClassCastException");
@@ -67,13 +67,13 @@
       }
     }
 }
-%extend RDKit::AtomValenceException {
-    static RDKit::AtomValenceException *dynamic_cast(RDKit::MolSanitizeException *mse){
-        return dynamic_cast<RDKit::AtomValenceException *>(mse);
+%extend RDKix::AtomValenceException {
+    static RDKix::AtomValenceException *dynamic_cast(RDKix::MolSanitizeException *mse){
+        return dynamic_cast<RDKix::AtomValenceException *>(mse);
     }
 };
 
-%exception RDKit::AtomKekulizeException::dynamic_cast(RDKit::MolSanitizeException) {
+%exception RDKix::AtomKekulizeException::dynamic_cast(RDKix::MolSanitizeException) {
   $action
     if(!result){
       jclass excep = jenv->FindClass("java/lang/ClassCastException");
@@ -82,13 +82,13 @@
       }
     }
 }
-%extend RDKit::AtomKekulizeException {
-    static RDKit::AtomKekulizeException *dynamic_cast(RDKit::MolSanitizeException *mse){
-        return dynamic_cast<RDKit::AtomKekulizeException *>(mse);
+%extend RDKix::AtomKekulizeException {
+    static RDKix::AtomKekulizeException *dynamic_cast(RDKix::MolSanitizeException *mse){
+        return dynamic_cast<RDKix::AtomKekulizeException *>(mse);
     }
 };
 
-%exception RDKit::KekulizeException::dynamic_cast(RDKit::MolSanitizeException) {
+%exception RDKix::KekulizeException::dynamic_cast(RDKix::MolSanitizeException) {
   $action
     if(!result){
       jclass excep = jenv->FindClass("java/lang/ClassCastException");
@@ -97,9 +97,9 @@
       }
     }
 }
-%extend RDKit::KekulizeException {
-    static RDKit::KekulizeException *dynamic_cast(RDKit::MolSanitizeException *mse){
-        return dynamic_cast<RDKit::KekulizeException *>(mse);
+%extend RDKix::KekulizeException {
+    static RDKix::KekulizeException *dynamic_cast(RDKix::MolSanitizeException *mse){
+        return dynamic_cast<RDKix::KekulizeException *>(mse);
     }
 };
 #endif

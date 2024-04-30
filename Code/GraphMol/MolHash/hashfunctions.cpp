@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2011-2022 NextMove Software and other RDKit contributors
+//  Copyright (C) 2011-2022 NextMove Software and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -18,8 +18,8 @@
 // #define VERBOSE_HASH 1
 
 #include <string>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
 #include "nmmolhash.h"
@@ -27,52 +27,52 @@
 
 namespace {
 
-void addCXExtensions(RDKit::RWMol *mol, std::string &result,
+void addCXExtensions(RDKix::RWMol *mol, std::string &result,
                      unsigned additionalSkips = 0) {
-  unsigned int cxflagsToSkip = additionalSkips | RDKit::SmilesWrite::CX_COORDS;
-  auto cxext = RDKit::SmilesWrite::getCXExtensions(
-      *mol, RDKit::SmilesWrite::CX_ALL ^ cxflagsToSkip);
+  unsigned int cxflagsToSkip = additionalSkips | RDKix::SmilesWrite::CX_COORDS;
+  auto cxext = RDKix::SmilesWrite::getCXExtensions(
+      *mol, RDKix::SmilesWrite::CX_ALL ^ cxflagsToSkip);
   if (!cxext.empty()) {
     result += " " + cxext;
   }
 }
-unsigned int NMRDKitBondGetOrder(const RDKit::Bond *bnd) {
+unsigned int NMRDKixBondGetOrder(const RDKix::Bond *bnd) {
   PRECONDITION(bnd, "bad bond");
   switch (bnd->getBondType()) {
-    case RDKit::Bond::AROMATIC:
-    case RDKit::Bond::SINGLE:
+    case RDKix::Bond::AROMATIC:
+    case RDKix::Bond::SINGLE:
       return 1;
-    case RDKit::Bond::DOUBLE:
+    case RDKix::Bond::DOUBLE:
       return 2;
-    case RDKit::Bond::TRIPLE:
+    case RDKix::Bond::TRIPLE:
       return 3;
-    case RDKit::Bond::QUADRUPLE:
+    case RDKix::Bond::QUADRUPLE:
       return 4;
-    case RDKit::Bond::QUINTUPLE:
+    case RDKix::Bond::QUINTUPLE:
       return 5;
-    case RDKit::Bond::HEXTUPLE:
+    case RDKix::Bond::HEXTUPLE:
       return 6;
     default:
       return 0;
   }
 }
 
-RDKit::Bond *NMRDKitMolNewBond(RDKit::RWMol *mol, RDKit::Atom *src,
-                               RDKit::Atom *dst, unsigned int order,
+RDKix::Bond *NMRDKixMolNewBond(RDKix::RWMol *mol, RDKix::Atom *src,
+                               RDKix::Atom *dst, unsigned int order,
                                bool arom) {
   PRECONDITION(mol, "bad molecule");
   PRECONDITION(src, "bad src atom");
   PRECONDITION(dst, "bad dest atom");
-  RDKit::Bond *result;
+  RDKix::Bond *result;
   result = mol->getBondBetweenAtoms(src->getIdx(), dst->getIdx());
   if (result) {
     if (order == 1) {
       switch (result->getBondType()) {
-        case RDKit::Bond::SINGLE:
-          result->setBondType(RDKit::Bond::DOUBLE);
+        case RDKix::Bond::SINGLE:
+          result->setBondType(RDKix::Bond::DOUBLE);
           break;
-        case RDKit::Bond::DOUBLE:
-          result->setBondType(RDKit::Bond::TRIPLE);
+        case RDKix::Bond::DOUBLE:
+          result->setBondType(RDKix::Bond::TRIPLE);
           break;
         default:
           break;
@@ -80,27 +80,27 @@ RDKit::Bond *NMRDKitMolNewBond(RDKit::RWMol *mol, RDKit::Atom *src,
     }
     return result;
   }
-  RDKit::Bond::BondType type = RDKit::Bond::UNSPECIFIED;
+  RDKix::Bond::BondType type = RDKix::Bond::UNSPECIFIED;
   if (!arom) {
     switch (order) {
       case 1:
-        type = RDKit::Bond::SINGLE;
+        type = RDKix::Bond::SINGLE;
         break;
       case 2:
-        type = RDKit::Bond::DOUBLE;
+        type = RDKix::Bond::DOUBLE;
         break;
       case 3:
-        type = RDKit::Bond::TRIPLE;
+        type = RDKix::Bond::TRIPLE;
         break;
       case 4:
-        type = RDKit::Bond::QUADRUPLE;
+        type = RDKix::Bond::QUADRUPLE;
         break;
     }
   } else {
-    type = RDKit::Bond::AROMATIC;
+    type = RDKix::Bond::AROMATIC;
   }
 
-  result = new RDKit::Bond(type);
+  result = new RDKix::Bond(type);
   result->setOwningMol(mol);
   result->setBeginAtom(src);
   result->setEndAtom(dst);
@@ -111,7 +111,7 @@ RDKit::Bond *NMRDKitMolNewBond(RDKit::RWMol *mol, RDKit::Atom *src,
   return result;
 }
 
-void NMRDKitSanitizeHydrogens(RDKit::RWMol *mol) {
+void NMRDKixSanitizeHydrogens(RDKix::RWMol *mol) {
   PRECONDITION(mol, "bad molecule");
   // Move all of the implicit Hs into one box
   for (auto aptr : mol->atoms()) {
@@ -127,7 +127,7 @@ void NMRDKitSanitizeHydrogens(RDKit::RWMol *mol) {
 
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 namespace MolHash {
 
 namespace {
@@ -717,7 +717,7 @@ bool TraverseForRing(Atom *atom, unsigned char *visit) {
            atom->getOwningMol().getAtomNeighbors(atom))) {
     auto nptr = atom->getOwningMol()[nbri];
     if (visit[nptr->getIdx()] == 0) {
-      if (RDKit::queryIsAtomInRing(nptr)) {
+      if (RDKix::queryIsAtomInRing(nptr)) {
         return true;
       }
 
@@ -743,7 +743,7 @@ bool DepthFirstSearchForRing(Atom *root, Atom *nbor, unsigned int maxatomidx) {
 
 bool IsInScaffold(Atom *atom, unsigned int maxatomidx) {
   PRECONDITION(atom, "bad atom pointer");
-  if (RDKit::queryIsAtomInRing(atom)) {
+  if (RDKix::queryIsAtomInRing(atom)) {
     return true;
   }
 
@@ -836,7 +836,7 @@ std::string MurckoScaffoldHash(RWMol *mol, bool useCXSmiles,
             auto bptr = (aptr->getOwningMol())[nbri];
             Atom *nbr = bptr->getOtherAtom(aptr);
             unsigned int hcount = nbr->getTotalNumHs(false);
-            nbr->setNumExplicitHs(hcount + NMRDKitBondGetOrder(bptr));
+            nbr->setNumExplicitHs(hcount + NMRDKixBondGetOrder(bptr));
             nbr->setNoImplicit(true);
           }
         }
@@ -925,7 +925,7 @@ bool HasDoubleBond(Atom *atom) {
   for (const auto &nbri :
        boost::make_iterator_range(atom->getOwningMol().getAtomBonds(atom))) {
     auto bptr = (atom->getOwningMol())[nbri];
-    if (NMRDKitBondGetOrder(bptr) == 2) {
+    if (NMRDKixBondGetOrder(bptr) == 2) {
       return true;
     }
   }
@@ -941,10 +941,10 @@ bool HasDoubleBond(Atom *atom) {
 
 int RegioisomerBond(Bond *bnd) {
   PRECONDITION(bnd, "bad bond");
-  if (NMRDKitBondGetOrder(bnd) != 1) {
+  if (NMRDKixBondGetOrder(bnd) != 1) {
     return -1;
   }
-  if (RDKit::queryIsBondInRing(bnd)) {
+  if (RDKix::queryIsBondInRing(bnd)) {
     return -1;
   }
 
@@ -957,13 +957,13 @@ int RegioisomerBond(Bond *bnd) {
     return -1;
   }
 
-  if (RDKit::queryIsAtomInRing(beg)) {
-    if (RDKit::queryIsAtomInRing(end)) {
+  if (RDKix::queryIsAtomInRing(beg)) {
+    if (RDKix::queryIsAtomInRing(end)) {
       return 0;
     }
     return 2;
   }
-  if (RDKit::queryIsAtomInRing(end)) {
+  if (RDKix::queryIsAtomInRing(end)) {
     return 1;
   }
 
@@ -982,8 +982,8 @@ void ClearEZStereo(Atom *atm) {
   for (const auto &nbri :
        boost::make_iterator_range(atm->getOwningMol().getAtomBonds(atm))) {
     auto bptr = (atm->getOwningMol())[nbri];
-    if (bptr->getStereo() > RDKit::Bond::STEREOANY) {
-      bptr->setStereo(RDKit::Bond::STEREOANY);
+    if (bptr->getStereo() > RDKix::Bond::STEREOANY) {
+      bptr->setStereo(RDKix::Bond::STEREOANY);
     }
   }
 }
@@ -994,7 +994,7 @@ std::string RegioisomerHash(RWMol *mol, bool useCXSmiles,
 
   // we need a copy of the molecule so that we can loop over the bonds of
   // something while modifying something else
-  RDKit::ROMol molcpy(*mol);
+  RDKix::ROMol molcpy(*mol);
   if (molcpy.getRingInfo()->isInitialized()) {
     MolOps::fastFindRings(molcpy);
   }
@@ -1010,20 +1010,20 @@ std::string RegioisomerHash(RWMol *mol, bool useCXSmiles,
       ClearEZStereo(end);
 
       if (split & 1) {
-        Atom *star = new RDKit::Atom(0);
+        Atom *star = new RDKix::Atom(0);
         mol->addAtom(star, true, true);
         star->setNoImplicit(true);
-        NMRDKitMolNewBond(mol, beg, star, 1, false);
+        NMRDKixMolNewBond(mol, beg, star, 1, false);
       } else {
         unsigned int hcount = beg->getTotalNumHs(false);
         beg->setNumExplicitHs(hcount + 1);
         beg->setNoImplicit(true);
       }
       if (split & 2) {
-        Atom *star = new RDKit::Atom(0);
+        Atom *star = new RDKix::Atom(0);
         mol->addAtom(star, true, true);
         star->setNoImplicit(true);
-        NMRDKitMolNewBond(mol, end, star, 1, false);
+        NMRDKixMolNewBond(mol, end, star, 1, false);
       } else {
         unsigned int hcount = end->getTotalNumHs(false);
         end->setNumExplicitHs(hcount + 1);
@@ -1170,7 +1170,7 @@ std::string MolHash(RWMol *mol, HashFunction func, bool useCXSmiles,
   PRECONDITION(mol, "bad molecule");
   std::string result;
   char buffer[32];
-  NMRDKitSanitizeHydrogens(mol);
+  NMRDKixSanitizeHydrogens(mol);
 
   switch (func) {
     default:
@@ -1239,4 +1239,4 @@ std::string MolHash(RWMol *mol, HashFunction func, bool useCXSmiles,
   return result;
 }
 }  // namespace MolHash
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,10 +1,10 @@
 //  Copyright (C) 2018  Lorton
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -19,7 +19,7 @@
 #include <maeparser/Reader.hpp>
 
 #include <GraphMol/FileParsers/MolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/python_streambuf.h>
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
@@ -38,9 +38,9 @@ bool streamIsGoodOrExhausted(std::istream *stream) {
   return stream->good() || (stream->eof() && stream->fail() && !stream->bad());
 }
 
-class LocalMaeMolSupplier : public RDKit::MaeMolSupplier {
+class LocalMaeMolSupplier : public RDKix::MaeMolSupplier {
  public:
-  LocalMaeMolSupplier() : RDKit::MaeMolSupplier() {}
+  LocalMaeMolSupplier() : RDKix::MaeMolSupplier() {}
 
   LocalMaeMolSupplier(python::object &input, bool sanitize, bool removeHs)
       : dp_streambuf(new streambuf(input)) {
@@ -64,7 +64,7 @@ class LocalMaeMolSupplier : public RDKit::MaeMolSupplier {
 
   LocalMaeMolSupplier(const std::string &fname, bool sanitize = true,
                       bool removeHs = true)
-      : RDKit::MaeMolSupplier(fname, sanitize, removeHs) {}
+      : RDKix::MaeMolSupplier(fname, sanitize, removeHs) {}
 
  private:
   std::unique_ptr<streambuf> dp_streambuf = nullptr;
@@ -74,7 +74,7 @@ LocalMaeMolSupplier *FwdMolSupplIter(LocalMaeMolSupplier *self) { return self; }
 
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 std::string maeMolSupplierClassDoc =
     "A class which supplies molecules from file-like object containing Maestro data.\n\
@@ -136,6 +136,6 @@ struct maemolsup_wrap {
              "Returns whether or not we have hit EOF.\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_maesupplier() { RDKit::maemolsup_wrap::wrap(); }
+void wrap_maesupplier() { RDKix::maemolsup_wrap::wrap(); }

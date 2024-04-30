@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_SUBSTRUCTLIBRARY_BUILD)
-rdkit_python_extension(rdDeprotect
+remove_definitions(-DRDKIX_SUBSTRUCTLIBRARY_BUILD)
+rdkix_python_extension(rdDeprotect
                        rdDeprotect.cpp
                        DeprotectWrap.cpp
                        DEST Chem

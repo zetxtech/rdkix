@@ -1,8 +1,8 @@
 // Copyright (C) 2003 Rational Discovery LLC
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 // NOTES:
 //  - larger functional groups should come before smaller ones involving
 //    the same core atom

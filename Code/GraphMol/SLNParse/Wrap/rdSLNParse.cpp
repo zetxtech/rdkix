@@ -42,13 +42,13 @@
 
 namespace python = boost::python;
 
-void rdSLNParseExceptionTranslator(RDKit::SLNParseException const &x) {
+void rdSLNParseExceptionTranslator(RDKix::SLNParseException const &x) {
   std::ostringstream ss;
   ss << "SLNParseException: " << x.what();
   PyErr_SetString(PyExc_ValueError, ss.str().c_str());
 }
 
-namespace RDKit {
+namespace RDKix {
 ROMol *MolFromSLN(std::string sln, bool sanitize = 1,
                   bool debugParser = false) {
   RWMol *newM = SLNToMol(sln, sanitize, debugParser);
@@ -59,14 +59,14 @@ ROMol *MolFromQuerySLN(std::string sln, bool mergeHs = 1,
   RWMol *newM = SLNQueryToMol(sln, mergeHs, debugParser);
   return static_cast<ROMol *>(newM);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdSLNParse) {
   python::scope().attr("__doc__") =
       "Module containing classes and functions for working with Sybyl line "
       "notation (SLN).";
 
-  python::register_exception_translator<RDKit::SLNParseException>(
+  python::register_exception_translator<RDKix::SLNParseException>(
       &rdSLNParseExceptionTranslator);
 
   std::string docString;
@@ -87,7 +87,7 @@ BOOST_PYTHON_MODULE(rdSLNParse) {
   NOTE: the SLN should not contain query information or properties. To build a\n\
     query from SLN, use MolFromQuerySLN.\n\
 \n";
-  python::def("MolFromSLN", RDKit::MolFromSLN,
+  python::def("MolFromSLN", RDKix::MolFromSLN,
               (python::arg("SLN"), python::arg("sanitize") = true,
                python::arg("debugParser") = false),
               docString.c_str(),
@@ -106,7 +106,7 @@ BOOST_PYTHON_MODULE(rdSLNParse) {
 \n\
     a Mol object suitable for using in substructure queries, None on failure.\n\
 \n";
-  python::def("MolFromQuerySLN", RDKit::MolFromQuerySLN,
+  python::def("MolFromQuerySLN", RDKix::MolFromQuerySLN,
               (python::arg("SLN"), python::arg("mergeHs") = true,
                python::arg("debugParser") = false),
               docString.c_str(),

@@ -6,14 +6,14 @@ steps:
     conda config --set always_yes yes --set changeps1 no
     conda update -q conda
     conda info -a
-    conda create --name rdkit_build cmake \
+    conda create --name rdkix_build cmake \
         boost-cpp=$(boost_version) boost=$(boost_version) \
         py-boost=$(boost_version) libboost=$(boost_version) \
         cairo eigen
   displayName: Setup build environment
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
 
     export CC="clang-9"
     export CXX="clang++-9"
@@ -40,13 +40,13 @@ steps:
   displayName: Configure build (Run CMake)
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     cd build
     make -j $( $(number_of_cores) ) install
   displayName: Build
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     corpora=$(find . -type d -name "*_fuzzer")
     for corpus in $corpora; do
       corpus_basename=$(basename $corpus)

@@ -3,10 +3,10 @@
 //  Copyright (c) 2014, Novartis Institutes for BioMedical Research Inc.
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_RXNPICKLE_H_2JUNE2009
@@ -21,11 +21,11 @@
 #include <ios>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 class ChemicalReaction;
 
 //! used to indicate exceptions whilst pickling (serializing) reactions
-class RDKIT_CHEMREACTIONS_EXPORT ReactionPicklerException
+class RDKIX_CHEMREACTIONS_EXPORT ReactionPicklerException
     : public std::exception {
  public:
   ReactionPicklerException(const char *msg) : _msg(msg) {}
@@ -38,7 +38,7 @@ class RDKIT_CHEMREACTIONS_EXPORT ReactionPicklerException
 };
 
 //! handles pickling (serializing) reactions
-class RDKIT_CHEMREACTIONS_EXPORT ReactionPickler {
+class RDKIX_CHEMREACTIONS_EXPORT ReactionPickler {
  public:
   static const std::int32_t versionMajor;  //!< mark the pickle version
   static const std::int32_t versionMinor;  //!< mark the pickle version
@@ -116,6 +116,6 @@ class RDKIT_CHEMREACTIONS_EXPORT ReactionPickler {
   //! unpickle standard properties
   static void _unpickleProperties(std::istream &ss, RDProps &props);
 };
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

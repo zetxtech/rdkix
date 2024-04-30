@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_EQUALITYQUERY_H
@@ -20,7 +20,7 @@ namespace Queries {
 template <typename MatchFuncArgType,
           typename DataFuncArgType = MatchFuncArgType,
           bool needsConversion = false>
-class RDKIT_QUERY_EXPORT EqualityQuery
+class RDKIX_QUERY_EXPORT EqualityQuery
     : public Query<MatchFuncArgType, DataFuncArgType, needsConversion> {
  public:
   EqualityQuery() { this->df_negate = false; }

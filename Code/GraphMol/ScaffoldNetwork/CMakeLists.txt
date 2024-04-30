@@ -1,12 +1,12 @@
-rdkit_library(ScaffoldNetwork
+rdkix_library(ScaffoldNetwork
               ScaffoldNetwork.cpp
               LINK_LIBRARIES MolStandardize ChemReactions ChemTransforms SmilesParse 
               SubstructMatch GraphMol RDGeneral)
-target_compile_definitions(ScaffoldNetwork PRIVATE RDKIT_SCAFFOLDNETWORK_BUILD)
+target_compile_definitions(ScaffoldNetwork PRIVATE RDKIX_SCAFFOLDNETWORK_BUILD)
 
-rdkit_headers(ScaffoldNetwork.h DEST GraphMol/ScaffoldNetwork)
+rdkix_headers(ScaffoldNetwork.h DEST GraphMol/ScaffoldNetwork)
 
-rdkit_catch_test(testScaffoldNetwork catch_tests.cpp 
+rdkix_catch_test(testScaffoldNetwork catch_tests.cpp 
 LINK_LIBRARIES ScaffoldNetwork SmilesParse )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::Atom "
+%typemap(javaimports) RDKix::Atom "
 /** 
 The class for representing atoms.
 <p>
@@ -54,7 +54,7 @@ For tetrahedral coordination, the chiralTag tells you what direction you have to
 <p>
 NOTE: if an atom has an implicit H, the bond to that H is considered to be at the *end* of the list of other bonds. */"
 
-%javamethodmodifiers RDKit::Atom::calcExplicitValence 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::Atom::calcExplicitValence 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates and returns our explicit valence
@@ -66,7 +66,7 @@ calculates and returns our explicit valence
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::calcImplicitValence 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::Atom::calcImplicitValence 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates and returns our implicit valence
@@ -78,14 +78,14 @@ calculates and returns our implicit valence
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::clearProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::Atom::clearProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::clearProp 	( 	const char *  	key 	 )  	const "
+%javamethodmodifiers RDKix::Atom::clearProp 	( 	const char *  	key 	 )  	const "
 /**
 <p>
 clears the value of a property
@@ -98,18 +98,18 @@ clears the value of a property
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::copy 	( 		 )  	const "
+%javamethodmodifiers RDKix::Atom::copy 	( 		 )  	const "
 /**
 <p>
 makes a copy of this Atom and returns a pointer to it.
 <p>
 <p>
 @notes
-Reimplemented in RDKit::QueryAtom.
+Reimplemented in RDKix::QueryAtom.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getDegree 	( 		 )  	const"
+%javamethodmodifiers RDKix::Atom::getDegree 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -122,7 +122,7 @@ the explicit degree of the Atom (number of bonded neighbors in the graph)
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getImplicitValence 	( 		 )  	const"
+%javamethodmodifiers RDKix::Atom::getImplicitValence 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -135,7 +135,7 @@ the implicit valence for this Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getNumImplicitHs 	( 		 )  	const"
+%javamethodmodifiers RDKix::Atom::getNumImplicitHs 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -148,7 +148,7 @@ the number of implicit Hs this Atom is bound to
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getNumRadicalElectrons 	( 		 )  	const "
+%javamethodmodifiers RDKix::Atom::getNumRadicalElectrons 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -161,7 +161,7 @@ the number of radical electrons for this Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const"
+%javamethodmodifiers RDKix::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const"
 /**
 <p>
 returns the perturbation order for a list of integers
@@ -186,7 +186,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::Atom::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -194,7 +194,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::Atom::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 allows retrieval of a particular property value
@@ -211,7 +211,7 @@ res 	a reference to the storage location for the value.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getTotalDegree 	( 		 )  	const"
+%javamethodmodifiers RDKix::Atom::getTotalDegree 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -224,7 +224,7 @@ the total degree of the Atom (number of bonded neighbors + number of Hs)
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::getTotalNumHs 	( 	bool  	includeNeighbors = false 	 )  	const"
+%javamethodmodifiers RDKix::Atom::getTotalNumHs 	( 	bool  	includeNeighbors = false 	 )  	const"
 /**
 <p>
 <p>
@@ -237,23 +237,23 @@ the total number of Hs (implicit and explicit) that this Atom is bound to
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::hasProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::Atom::hasProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::Match 	( 	const ATOM_SPTR  	what 	 )  	const "
+%javamethodmodifiers RDKix::Atom::Match 	( 	const ATOM_SPTR  	what 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 <p>
-Reimplemented in RDKit::QueryAtom.
+Reimplemented in RDKix::QueryAtom.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::Match 	( 	Atom const *  	what 	 )  	const "
+%javamethodmodifiers RDKix::Atom::Match 	( 	Atom const *  	what 	 )  	const "
 /**
 <p>
 <p>
@@ -262,11 +262,11 @@ whether or not we match the argument
 <p>
 @notes
 <li>for Atom objects, 'match' means that atomic numbers are the same.
-Reimplemented in RDKit::QueryAtom.
+Reimplemented in RDKix::QueryAtom.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::setIdx 	( 	unsigned int  	index 	 )  	"
+%javamethodmodifiers RDKix::Atom::setIdx 	( 	unsigned int  	index 	 )  	"
 /**
 <p>
 sets our index within the ROMol
@@ -279,7 +279,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::Atom::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -287,7 +287,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::Atom::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
 /**
 <p>
 sets a property value
@@ -301,7 +301,7 @@ computed 	(optional) allows the property to be flagged computed.
 */
 public";
 
-%javamethodmodifiers RDKit::Atom::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::Atom::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates any of our lazy properties

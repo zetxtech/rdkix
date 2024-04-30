@@ -1,10 +1,10 @@
 //
 //  Copyright (C) 2003-2017  Greg Landrum and Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 
@@ -30,7 +30,7 @@ namespace python = boost::python;
 namespace RDPickers {
 
 // REVIEW: the poolSize can be pulled from the numeric array
-RDKit::INT_VECT MaxMinPicks(MaxMinPicker *picker, python::object distMat,
+RDKix::INT_VECT MaxMinPicks(MaxMinPicker *picker, python::object distMat,
                             int poolSize, int pickSize,
                             python::object firstPicks, int seed) {
   if (pickSize >= poolSize) {
@@ -46,12 +46,12 @@ RDKit::INT_VECT MaxMinPicks(MaxMinPicker *picker, python::object distMat,
                                                        NPY_DOUBLE, 1, 1);
   auto *dMat = (double *)PyArray_DATA(copy);
 
-  RDKit::INT_VECT firstPickVect;
+  RDKix::INT_VECT firstPickVect;
   for (unsigned int i = 0;
        i < python::extract<unsigned int>(firstPicks.attr("__len__")()); ++i) {
     firstPickVect.push_back(python::extract<int>(firstPicks[i]));
   }
-  RDKit::INT_VECT res =
+  RDKix::INT_VECT res =
       picker->pick(dMat, poolSize, pickSize, firstPickVect, seed);
   Py_DECREF(copy);
   return res;
@@ -61,8 +61,8 @@ namespace {
 template <typename T>
 void LazyMaxMinHelper(MaxMinPicker *picker, T functor, unsigned int poolSize,
                       unsigned int pickSize, python::object firstPicks,
-                      int seed, RDKit::INT_VECT &res, double &threshold) {
-  RDKit::INT_VECT firstPickVect;
+                      int seed, RDKix::INT_VECT &res, double &threshold) {
+  RDKix::INT_VECT firstPickVect;
   for (unsigned int i = 0;
        i < python::extract<unsigned int>(firstPicks.attr("__len__")()); ++i) {
     firstPickVect.push_back(python::extract<int>(firstPicks[i]));
@@ -72,7 +72,7 @@ void LazyMaxMinHelper(MaxMinPicker *picker, T functor, unsigned int poolSize,
 }
 }  // end of anonymous namespace
 
-RDKit::INT_VECT LazyMaxMinPicks(MaxMinPicker *picker, python::object distFunc,
+RDKix::INT_VECT LazyMaxMinPicks(MaxMinPicker *picker, python::object distFunc,
                                 int poolSize, int pickSize,
                                 python::object firstPicks, int seed,
                                 python::object useCache) {
@@ -81,7 +81,7 @@ RDKit::INT_VECT LazyMaxMinPicks(MaxMinPicker *picker, python::object distFunc,
         << "the useCache argument is deprecated and ignored" << std::endl;
   }
   pyobjFunctor functor(distFunc);
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   double threshold = -1.;
   LazyMaxMinHelper(picker, functor, poolSize, pickSize, firstPicks, seed, res,
                    threshold);
@@ -91,13 +91,13 @@ python::tuple LazyMaxMinPicksWithThreshold(
     MaxMinPicker *picker, python::object distFunc, int poolSize, int pickSize,
     double threshold, python::object firstPicks, int seed) {
   pyobjFunctor functor(distFunc);
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   LazyMaxMinHelper(picker, functor, poolSize, pickSize, firstPicks, seed, res,
                    threshold);
   return python::make_tuple(res, threshold);
 }
 
-RDKit::INT_VECT LazyVectorMaxMinPicks(MaxMinPicker *picker, python::object objs,
+RDKix::INT_VECT LazyVectorMaxMinPicks(MaxMinPicker *picker, python::object objs,
                                       int poolSize, int pickSize,
                                       python::object firstPicks, int seed,
                                       python::object useCache) {
@@ -111,7 +111,7 @@ RDKit::INT_VECT LazyVectorMaxMinPicks(MaxMinPicker *picker, python::object objs,
   }
   pyBVFunctor<ExplicitBitVect> functor(bvs, TANIMOTO);
 
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   double threshold = -1.;
   LazyMaxMinHelper(picker, functor, poolSize, pickSize, firstPicks, seed, res,
                    threshold);
@@ -127,7 +127,7 @@ python::tuple LazyVectorMaxMinPicksWithThreshold(
   }
   pyBVFunctor<ExplicitBitVect> functor(bvs, TANIMOTO);
 
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   LazyMaxMinHelper(picker, functor, poolSize, pickSize, firstPicks, seed, res,
                    threshold);
   return python::make_tuple(res, threshold);

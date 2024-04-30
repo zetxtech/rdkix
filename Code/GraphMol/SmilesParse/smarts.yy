@@ -1,7 +1,7 @@
 %{
 
   //
-  //  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+  //  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
   //
   //   @@ All Rights Reserved  @@
   //
@@ -9,8 +9,8 @@
 #include <iostream>
 #include <vector>
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesParseOps.h>
 #include <RDGeneral/RDLog.h>
@@ -20,10 +20,10 @@
 
 extern int yysmarts_lex(YYSTYPE *,void *, int &);
 
-using namespace RDKit;
+using namespace RDKix;
 namespace {
- void yyErrorCleanup(std::vector<RDKit::RWMol *> *molList){
-  for(std::vector<RDKit::RWMol *>::iterator iter=molList->begin();
+ void yyErrorCleanup(std::vector<RDKix::RWMol *> *molList){
+  for(std::vector<RDKix::RWMol *>::iterator iter=molList->begin();
       iter != molList->end(); ++iter){
      SmilesParseOps::CleanupAfterParseError(*iter);
      delete *iter;
@@ -34,9 +34,9 @@ namespace {
 }
 void
 yysmarts_error( const char *input,
-                std::vector<RDKit::RWMol *> *ms,
-                RDKit::Atom* &,
-                RDKit::Bond* &,
+                std::vector<RDKix::RWMol *> *ms,
+                RDKix::Atom* &,
+                RDKix::Bond* &,
                 unsigned int &,unsigned int &,
                 std::list<unsigned int> *,
 		void *,int , const char *msg  )
@@ -47,7 +47,7 @@ yysmarts_error( const char *input,
 
 void
 yysmarts_error( const char *input,
-                std::vector<RDKit::RWMol *> *ms,
+                std::vector<RDKix::RWMol *> *ms,
                 std::list<unsigned int> *,
 		void *,int, const char * msg )
 {
@@ -62,9 +62,9 @@ yysmarts_error( const char *input,
 %lex-param   {yyscan_t *scanner}
 %lex-param   {int& start_token}
 %parse-param {const char *input}
-%parse-param {std::vector<RDKit::RWMol *> *molList}
-%parse-param {RDKit::Atom* &lastAtom}
-%parse-param {RDKit::Bond* &lastBond}
+%parse-param {std::vector<RDKix::RWMol *> *molList}
+%parse-param {RDKix::Atom* &lastAtom}
+%parse-param {RDKix::Bond* &lastBond}
 %parse-param {unsigned &numAtomsParsed}
 %parse-param {unsigned &numBondsParsed}
 %parse-param {std::list<unsigned int> *branchPoints}
@@ -80,9 +80,9 @@ yysmarts_error( const char *input,
 
 %union {
   int                      moli;
-  RDKit::QueryAtom * atom;
-  RDKit::QueryBond * bond;
-  RDKit::Atom::ChiralType chiraltype;
+  RDKix::QueryAtom * atom;
+  RDKix::QueryBond * bond;
+  RDKix::Atom::ChiralType chiraltype;
   int                      ival;
 }
 
@@ -178,7 +178,7 @@ mol: atomd {
   int sz     = molList->size();
   molList->resize( sz + 1);
   (*molList)[ sz ] = new RWMol();
-  $1->setProp(RDKit::common_properties::_SmilesStart,1);
+  $1->setProp(RDKix::common_properties::_SmilesStart,1);
   (*molList)[ sz ]->addAtom($1,true,true);
   //delete $1;
   $$ = sz;
@@ -220,7 +220,7 @@ mol: atomd {
 
 | mol SEPARATOR_TOKEN atomd {
   RWMol *mp = (*molList)[$$];
-  $3->setProp(RDKit::common_properties::_SmilesStart,1,true);
+  $3->setProp(RDKix::common_properties::_SmilesStart,1,true);
   mp->addAtom($3,true,true);
 }
 
@@ -240,11 +240,11 @@ mol: atomd {
   SmilesParseOps::CheckRingClosureBranchStatus(atom,mp);
 
   INT_VECT tmp;
-  if(atom->hasProp(RDKit::common_properties::_RingClosures)){
-    atom->getProp(RDKit::common_properties::_RingClosures,tmp);
+  if(atom->hasProp(RDKix::common_properties::_RingClosures)){
+    atom->getProp(RDKix::common_properties::_RingClosures,tmp);
   }
   tmp.push_back(-($2+1));
-  atom->setProp(RDKit::common_properties::_RingClosures,tmp);
+  atom->setProp(RDKix::common_properties::_RingClosures,tmp);
 
 }
 
@@ -261,11 +261,11 @@ mol: atomd {
   SmilesParseOps::CheckRingClosureBranchStatus(atom,mp);
 
   INT_VECT tmp;
-  if(atom->hasProp(RDKit::common_properties::_RingClosures)){
-    atom->getProp(RDKit::common_properties::_RingClosures,tmp);
+  if(atom->hasProp(RDKix::common_properties::_RingClosures)){
+    atom->getProp(RDKix::common_properties::_RingClosures,tmp);
   }
   tmp.push_back(-($3+1));
-  atom->setProp(RDKit::common_properties::_RingClosures,tmp);
+  atom->setProp(RDKix::common_properties::_RingClosures,tmp);
 
 }
 
@@ -332,7 +332,7 @@ atomd:	simple_atom
 | ATOM_OPEN_TOKEN atom_expr COLON_TOKEN number ATOM_CLOSE_TOKEN
 {
   $$ = $2;
-  $$->setProp(RDKit::common_properties::molAtomMapNumber,$4);
+  $$->setProp(RDKix::common_properties::molAtomMapNumber,$4);
 }
 ;
 
@@ -359,7 +359,7 @@ hydrogen_atom:	ATOM_OPEN_TOKEN H_TOKEN ATOM_CLOSE_TOKEN
 | ATOM_OPEN_TOKEN H_TOKEN COLON_TOKEN number ATOM_CLOSE_TOKEN
 {
   $$ = new QueryAtom(1);
-  $$->setProp(RDKit::common_properties::molAtomMapNumber,$4);
+  $$->setProp(RDKix::common_properties::molAtomMapNumber,$4);
 }
 | ATOM_OPEN_TOKEN number H_TOKEN ATOM_CLOSE_TOKEN {
   QueryAtom *newQ = new QueryAtom(1);
@@ -371,7 +371,7 @@ hydrogen_atom:	ATOM_OPEN_TOKEN H_TOKEN ATOM_CLOSE_TOKEN
   QueryAtom *newQ = new QueryAtom(1);
   newQ->setIsotope($2);
   newQ->expandQuery(makeAtomIsotopeQuery($2),Queries::COMPOSITE_AND,true);
-  newQ->setProp(RDKit::common_properties::molAtomMapNumber,$5);
+  newQ->setProp(RDKix::common_properties::molAtomMapNumber,$5);
 
   $$=newQ;
 }
@@ -386,7 +386,7 @@ hydrogen_atom:	ATOM_OPEN_TOKEN H_TOKEN ATOM_CLOSE_TOKEN
   QueryAtom *newQ = new QueryAtom(1);
   newQ->setFormalCharge($3);
   newQ->expandQuery(makeAtomFormalChargeQuery($3),Queries::COMPOSITE_AND,true);
-  newQ->setProp(RDKit::common_properties::molAtomMapNumber,$5);
+  newQ->setProp(RDKix::common_properties::molAtomMapNumber,$5);
 
   $$=newQ;
 }
@@ -404,7 +404,7 @@ hydrogen_atom:	ATOM_OPEN_TOKEN H_TOKEN ATOM_CLOSE_TOKEN
   newQ->setFormalCharge($4);
   newQ->expandQuery(makeAtomIsotopeQuery($2),Queries::COMPOSITE_AND,true);
   newQ->expandQuery(makeAtomFormalChargeQuery($4),Queries::COMPOSITE_AND,true);
-  newQ->setProp(RDKit::common_properties::molAtomMapNumber,$6);
+  newQ->setProp(RDKix::common_properties::molAtomMapNumber,$6);
 
   $$=newQ;
 }
@@ -488,7 +488,7 @@ recursive_query: BEGIN_RECURSE mol END_RECURSE {
   // UNDOCUMENTED EXTENSION:
   // this is a recursive SMARTS expression with a serial number
   // please don't write your own SMARTS that include this extension:
-  // the RDKit smarts parsing code will automatically insert serial
+  // the RDKix smarts parsing code will automatically insert serial
   // numbers for recursive smarts patterns.
   QueryAtom *qA = new QueryAtom();
   //  FIX: there's maybe a leak here

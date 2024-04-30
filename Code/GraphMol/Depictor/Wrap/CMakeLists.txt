@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_DEPICTOR_BUILD)
-rdkit_python_extension(rdDepictor
+remove_definitions(-DRDKIX_DEPICTOR_BUILD)
+rdkix_python_extension(rdDepictor
                        rdDepictor.cpp
                        DEST Chem
                        LINK_LIBRARIES

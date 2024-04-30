@@ -36,16 +36,16 @@
 #include <cmath>
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <RDFreeSASA.h>
 #include <RDBoost/Wrap.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 namespace {
-python::object classifyAtomsHelper(RDKit::ROMol &mol,
+python::object classifyAtomsHelper(RDKix::ROMol &mol,
                                    const FreeSASA::SASAOpts &opts) {
   std::vector<double> radii;
   python::list l;
@@ -58,12 +58,12 @@ python::object classifyAtomsHelper(RDKit::ROMol &mol,
   return l;
 }
 
-double calcSASAHelper(const RDKit::ROMol &mol, python::object radii,
-                      int confIdx, const RDKit::Atom *query,
+double calcSASAHelper(const RDKix::ROMol &mol, python::object radii,
+                      int confIdx, const RDKix::Atom *query,
                       const FreeSASA::SASAOpts &opts) {
-  const RDKit::QueryAtom *atom = nullptr;
+  const RDKix::QueryAtom *atom = nullptr;
   if (query) {
-    atom = dynamic_cast<const RDKit::QueryAtom *>(query);
+    atom = dynamic_cast<const RDKix::QueryAtom *>(query);
     if (!atom) {
       throw ValueErrorException("Query is not a query atom!");
     }
@@ -179,10 +179,10 @@ struct freesasa_wrapper {
         "and SASAClassName set to the POLAR class.  (see classifyAtoms)");
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdFreeSASA) {
   python::scope().attr("__doc__") =
       "Module containing rdFreeSASA classes and functions.";
-  RDKit::freesasa_wrapper::wrap();
+  RDKix::freesasa_wrapper::wrap();
 }

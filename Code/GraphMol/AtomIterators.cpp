@@ -2,16 +2,16 @@
 //  Copyright (C) 2002-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "AtomIterators.h"
-#include "RDKitBase.h"
-#include "RDKitQueries.h"
+#include "RDKixBase.h"
+#include "RDKixQueries.h"
 
-namespace RDKit {
+namespace RDKix {
 template <class Atom_, class Mol_>
 AtomIterator_<Atom_, Mol_>::AtomIterator_(Mol_ *mol) {
   _mol = mol;
@@ -640,4 +640,4 @@ template class QueryAtomIterator_<const Atom, const ROMol>;
 template class MatchingAtomIterator_<Atom, ROMol>;
 template class MatchingAtomIterator_<const Atom, const ROMol>;
 
-};  // namespace RDKit
+};  // namespace RDKix

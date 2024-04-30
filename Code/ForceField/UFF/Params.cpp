@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef WIN32
 #define _USE_MATH_DEFINES
@@ -50,7 +50,7 @@ ParamCollection::ParamCollection(std::string paramData) {
   }
   std::istringstream inStream(paramData);
 
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!inStream.eof()) {
     if (inLine[0] != '#') {
       AtomicParams paramObj;
@@ -87,7 +87,7 @@ ParamCollection::ParamCollection(std::string paramData) {
       ++token;
       d_params[label] = paramObj;
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 

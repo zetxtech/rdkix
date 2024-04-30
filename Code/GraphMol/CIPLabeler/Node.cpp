@@ -3,10 +3,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <vector>
 
@@ -15,7 +15,7 @@
 #include "Node.h"
 #include "CIPMol.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 Node *Node::newTerminalChild(int idx, Atom *atom, int flags) const {
@@ -47,7 +47,7 @@ Node::Node(Digraph *g, std::vector<char> &&visit, Atom *atom,
     d_edges.reserve(4);
     d_atomic_mass = 0.;
   } else {
-    const auto &table = RDKit::PeriodicTable::getTable();
+    const auto &table = RDKix::PeriodicTable::getTable();
     auto atomic_number = getAtomicNum();
     auto isotope = getMassNum();
     if (isotope == 0u) {
@@ -155,4 +155,4 @@ std::vector<Edge *> Node::getNonTerminalOutEdges() const {
 }
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

@@ -53,16 +53,16 @@ import os
 import sys
 import time
 
-from rdkit import RDConfig
-from rdkit.Dbase.DbConnection import DbConnect
-from rdkit.RDLogger import logger
+from rdkix import RDConfig
+from rdkix.Dbase.DbConnection import DbConnect
+from rdkix.RDLogger import logger
 
 logger = logger()
 import zlib
 
-from rdkit import Chem, DataStructs
-from rdkit.Chem.MolDb import FingerprintUtils
-from rdkit.Chem.MolDb.FingerprintUtils import (BuildSigFactory, DepickleFP,
+from rdkix import Chem, DataStructs
+from rdkix.Chem.MolDb import FingerprintUtils
+from rdkix.Chem.MolDb.FingerprintUtils import (BuildSigFactory, DepickleFP,
                                                LayeredOptions,
                                                supportedSimilarityMethods)
 
@@ -80,7 +80,7 @@ def GetNeighborLists(probes, topN, pool, simMetric=DataStructs.DiceSimilarity, s
   probeFps = [x[1] for x in probes]
   validProbes = [x for x in range(len(probeFps)) if probeFps[x] is not None]
   validFps = [probeFps[x] for x in validProbes]
-  from rdkit.DataStructs.TopNContainer import TopNContainer
+  from rdkix.DataStructs.TopNContainer import TopNContainer
   if simThresh <= 0:
     nbrLists = [TopNContainer(topN) for x in range(len(probeFps))]
   else:
@@ -170,7 +170,7 @@ def RunSearch(options, queryFilename):
     fpTableName = options.torsionsTableName
     fpColName = options.torsionsColName
   elif options.similarityType == 'RDK':
-    fpBuilder = FingerprintUtils.BuildRDKitFP
+    fpBuilder = FingerprintUtils.BuildRDKixFP
     simMetric = DataStructs.FingerprintSimilarity
     dbName = os.path.join(options.dbDir, options.fpDbName)
     fpTableName = options.fpTableName
@@ -187,7 +187,7 @@ def RunSearch(options, queryFilename):
     fpColName = options.fpColName
     FingerprintUtils.sigFactory = BuildSigFactory(options)
   elif options.similarityType == 'Gobbi2D':
-    from rdkit.Chem.Pharm2D import Gobbi_Pharm2D
+    from rdkix.Chem.Pharm2D import Gobbi_Pharm2D
     fpBuilder = FingerprintUtils.BuildPharm2DFP
     simMetric = DataStructs.TanimotoSimilarity
     dbName = os.path.join(options.dbDir, options.fpDbName)
@@ -544,7 +544,7 @@ def initParser():
   parser.add_argument('--torsionsColName', default='torsionfp', help='name of the atom pair column')
   parser.add_argument('--fpDbName', default='Fingerprints.sqlt',
                       help='name of the 2D fingerprints database')
-  parser.add_argument('--fpTableName', default='rdkitfps', help='name of the 2D fingerprints table')
+  parser.add_argument('--fpTableName', default='rdkixfps', help='name of the 2D fingerprints table')
   parser.add_argument('--layeredTableName', default='layeredfps',
                       help='name of the layered fingerprints table')
   parser.add_argument('--fpColName', default='',

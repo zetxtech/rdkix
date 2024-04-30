@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_DISTVIOLATIONCONTRIB_H__
@@ -16,7 +16,7 @@
 namespace DistGeom {
 //! A term to capture the violation of the upper and lower bounds by
 //! distance between two points
-class RDKIT_DISTGEOMETRY_EXPORT DistViolationContrib
+class RDKIX_DISTGEOMETRY_EXPORT DistViolationContrib
     : public ForceFields::ForceFieldContrib {
  public:
   DistViolationContrib() {}

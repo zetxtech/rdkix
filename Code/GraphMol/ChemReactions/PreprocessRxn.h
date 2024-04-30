@@ -30,35 +30,35 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_PREPROCESS_RXN_H
-#define RDKIT_PREPROCESS_RXN_H
+#ifndef RDKIX_PREPROCESS_RXN_H
+#define RDKIX_PREPROCESS_RXN_H
 
 #include "Reaction.h"
 #include <string>
 #include <exception>
 
-namespace RDKit {
+namespace RDKix {
 
-RDKIT_CHEMREACTIONS_EXPORT bool preprocessReaction(
+RDKIX_CHEMREACTIONS_EXPORT bool preprocessReaction(
     ChemicalReaction &rxn,
     const std::string &propName = common_properties::molFileValue);
 
-RDKIT_CHEMREACTIONS_EXPORT bool preprocessReaction(
+RDKIX_CHEMREACTIONS_EXPORT bool preprocessReaction(
     ChemicalReaction &rxn, unsigned int &numWarnings, unsigned int &numErrors,
     std::vector<std::vector<std::pair<unsigned int, std::string>>>
         &reactantLabels,
     const std::string &propName = common_properties::molFileValue);
 
-RDKIT_CHEMREACTIONS_EXPORT bool preprocessReaction(
+RDKIX_CHEMREACTIONS_EXPORT bool preprocessReaction(
     ChemicalReaction &rxn, const std::map<std::string, ROMOL_SPTR> &queries,
     const std::string &propName = common_properties::molFileValue);
 
-RDKIT_CHEMREACTIONS_EXPORT bool preprocessReaction(
+RDKIX_CHEMREACTIONS_EXPORT bool preprocessReaction(
     ChemicalReaction &rxn, unsigned int &numWarnings, unsigned int &numErrors,
     std::vector<std::vector<std::pair<unsigned int, std::string>>>
         &reactantLabels,
     const std::map<std::string, ROMOL_SPTR> &queries,
     const std::string &propName = common_properties::molFileValue);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

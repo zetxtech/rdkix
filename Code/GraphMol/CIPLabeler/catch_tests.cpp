@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <bitset>
@@ -27,8 +27,8 @@
 
 #include "CIPMol.h"
 
-using namespace RDKit;
-using namespace RDKit::CIPLabeler;
+using namespace RDKix;
+using namespace RDKix::CIPLabeler;
 
 std::string toBinaryString(int value) {
   return std::bitset<32>(value).to_string();
@@ -656,7 +656,7 @@ M  END
   )";
 
   auto mol =
-      std::unique_ptr<RDKit::RWMol>(MolBlockToMol(molBlock, true, false));
+      std::unique_ptr<RDKix::RWMol>(MolBlockToMol(molBlock, true, false));
   REQUIRE(mol);
   CHECK_THROWS_AS(CIPLabeler::assignCIPLabels(*mol, 100000),
                   CIPLabeler::MaxIterationsExceeded);

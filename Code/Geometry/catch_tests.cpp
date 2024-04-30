@@ -1,11 +1,11 @@
 //
-//   Copyright (C) 2019-2021 Greg Landrum and other RDKit contributors
+//   Copyright (C) 2019-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <catch2/catch_all.hpp>
 #include <Geometry/point.h>
@@ -138,7 +138,7 @@ TEST_CASE("compareParams") {
     RDGeom::Point3D offset = grd.getOffset();
     offset *= 1.5;
     RDGeom::UniformGrid3D grd2(6.0, 5.0, 4.0, grd.getSpacing(),
-                               RDKit::DiscreteValueVect::TWOBITVALUE, &offset);
+                               RDKix::DiscreteValueVect::TWOBITVALUE, &offset);
     CHECK(!grd.compareParams(grd2));
     CHECK(!grd2.compareParams(grd));
   }

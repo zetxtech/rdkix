@@ -2,25 +2,25 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Metal.h"
 #include <GraphMol/FileParsers/MolSGroupParsing.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/Substruct/SubstructUtils.h>
 
 using namespace std;
-using namespace RDKit;
-namespace RDKit {
+using namespace RDKix;
+namespace RDKix {
 class RWMol;
 
 class ROMol;
@@ -49,9 +49,9 @@ MetalDisconnector::MetalDisconnector(const MetalDisconnectorOptions &options)
     nonMetalList = "[B,C," + nonMetalList;
   }
   std::string metal_non_smt = metalList + nonMetalList;
-  dp_metal_non.reset(RDKit::SmartsToMol(metal_non_smt));
+  dp_metal_non.reset(RDKix::SmartsToMol(metal_non_smt));
   std::string metalDummySmt = metalList + "[*]";
-  dp_metalDummy.reset(RDKit::SmartsToMol(metalDummySmt));
+  dp_metalDummy.reset(RDKix::SmartsToMol(metalDummySmt));
 };
 
 MetalDisconnector::MetalDisconnector(const MetalDisconnector &other)
@@ -129,7 +129,7 @@ void MetalDisconnector::disconnect(RWMol &mol) {
   }
 }
 
-void MetalDisconnector::adjust_charges(RDKit::RWMol &mol,
+void MetalDisconnector::adjust_charges(RDKix::RWMol &mol,
                                        std::map<int, NonMetal> &nonMetals,
                                        std::map<int, int> &metalChargeExcess) {
   for (auto it = nonMetals.begin(); it != nonMetals.end(); ++it) {
@@ -253,7 +253,7 @@ void MetalDisconnector::adjust_charges(RDKit::RWMol &mol,
   }
 }
 
-void MetalDisconnector::remove_haptic_dummies(RDKit::RWMol &mol) {
+void MetalDisconnector::remove_haptic_dummies(RDKix::RWMol &mol) {
   std::vector<MatchVectType> matches;
   SubstructMatch(mol, *dp_metalDummy, matches);
   std::vector<unsigned int> dummiesToGo;
@@ -262,7 +262,7 @@ void MetalDisconnector::remove_haptic_dummies(RDKit::RWMol &mol) {
     int dummy_idx = match[1].second;
     auto bond = mol.getBondBetweenAtoms(metal_idx, dummy_idx);
     std::string sprop;
-    if (bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+    if (bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop)) {
       if (sprop.length() > 4 && sprop[0] == '(' && sprop.back() == ')') {
         dummiesToGo.push_back(dummy_idx);
@@ -280,4 +280,4 @@ void MetalDisconnector::remove_haptic_dummies(RDKit::RWMol &mol) {
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,18 +2,18 @@
 //  Copyright (C) 2013-2017 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "ProximityBonds.h"
 #include <algorithm>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/RWMol.h>
 #include <GraphMol/MonomerInfo.h>
 
-namespace RDKit {
+namespace RDKix {
 
 static const double EXTDIST = 0.45;
 // static const double MAXRAD   = 2.50;
@@ -218,7 +218,7 @@ static void ConnectTheDots_Large(RWMol *mol, unsigned int flags) {
       auto *atom_info = (AtomPDBResidueInfo *)(atom->getMonomerInfo());
       // cut all but shortest Bond
       RDGeom::Point3D p = conf->getAtomPos(i);
-      RDKit::RWMol::ADJ_ITER nbr, end_nbr;
+      RDKix::RWMol::ADJ_ITER nbr, end_nbr;
       boost::tie(nbr, end_nbr) = mol->getAtomNeighbors(atom);
       float best = 10000;
       unsigned int best_idx = mol->getNumAtoms() + 1;
@@ -526,4 +526,4 @@ void StandardPDBResidueBondOrders(RWMol *mol) {
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

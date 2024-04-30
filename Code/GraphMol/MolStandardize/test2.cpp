@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // file used to test memory leakage
 
@@ -14,7 +14,7 @@
 #include "Metal.h"
 #include "Normalize.h"
 #include "Charge.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/Invariant.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace MolStandardize;
 
 void test1() {
@@ -59,9 +59,9 @@ void testMetal() {
 void testValidate() {
   BOOST_LOG(rdInfoLog) << "-----------------------\n test validate"
                        << std::endl;
-  // testing RDKitDefault
+  // testing RDKixDefault
   {
-    RDKitValidation vm;
+    RDKixValidation vm;
     std::string smi = "CO(C)C";
     RWMOL_SPTR m(SmilesToMol(smi, 0, false));
     std::vector<ValidationErrorInfo> errout = vm.validate(*m, true);

@@ -13,7 +13,7 @@
 #include <list>
 #include <limits>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesParseOps.h>
 #include <RDGeneral/RDLog.h>
@@ -23,10 +23,10 @@
 
 extern int yysmiles_lex(YYSTYPE *,void *,int &);
 
-using namespace RDKit;
+using namespace RDKix;
 namespace {
- void yyErrorCleanup(std::vector<RDKit::RWMol *> *molList){
-  for(std::vector<RDKit::RWMol *>::iterator iter=molList->begin();
+ void yyErrorCleanup(std::vector<RDKix::RWMol *> *molList){
+  for(std::vector<RDKix::RWMol *>::iterator iter=molList->begin();
       iter != molList->end(); ++iter){
       SmilesParseOps::CleanupAfterParseError(*iter);
       delete *iter;
@@ -37,9 +37,9 @@ namespace {
 }
 void
 yysmiles_error( const char *input,
-                std::vector<RDKit::RWMol *> *ms,
-                RDKit::Atom* &,
-                RDKit::Bond* &,
+                std::vector<RDKix::RWMol *> *ms,
+                RDKix::Atom* &,
+                RDKix::Bond* &,
                 unsigned int &,unsigned int &,
                 std::list<unsigned int> *,
 		void *,int, const char * msg )
@@ -50,7 +50,7 @@ yysmiles_error( const char *input,
 
 void
 yysmiles_error( const char *input,
-                std::vector<RDKit::RWMol *> *ms,
+                std::vector<RDKix::RWMol *> *ms,
                 std::list<unsigned int> *,
 		void *,int, const char * msg )
 {
@@ -65,9 +65,9 @@ yysmiles_error( const char *input,
 %lex-param   {yyscan_t *scanner}
 %lex-param   {int& start_token}
 %parse-param {const char *input}
-%parse-param {std::vector<RDKit::RWMol *> *molList}
-%parse-param {RDKit::Atom* &lastAtom}
-%parse-param {RDKit::Bond* &lastBond}
+%parse-param {std::vector<RDKix::RWMol *> *molList}
+%parse-param {RDKix::Atom* &lastAtom}
+%parse-param {RDKix::Bond* &lastBond}
 %parse-param {unsigned &numAtomsParsed}
 %parse-param {unsigned &numBondsParsed}
 %parse-param {std::list<unsigned int> *branchPoints}
@@ -81,9 +81,9 @@ yysmiles_error( const char *input,
 
 %union {
   int                      moli;
-  RDKit::Atom * atom;
-  RDKit::Bond * bond;
-  RDKit::Atom::ChiralType chiraltype;
+  RDKix::Atom * atom;
+  RDKix::Bond * bond;
+  RDKix::Atom::ChiralType chiraltype;
   int                      ival;
 }
 
@@ -163,8 +163,8 @@ mol: atomd {
   int sz     = molList->size();
   molList->resize( sz + 1);
   (*molList)[ sz ] = new RWMol();
-  RDKit::RWMol *curMol = (*molList)[ sz ];
-  $1->setProp(RDKit::common_properties::_SmilesStart,1);
+  RDKix::RWMol *curMol = (*molList)[ sz ];
+  $1->setProp(RDKix::common_properties::_SmilesStart,1);
   curMol->addAtom($1, true, true);
   //delete $1;
   $$ = sz;
@@ -213,7 +213,7 @@ mol: atomd {
 
 | mol SEPARATOR_TOKEN atomd {
   RWMol *mp = (*molList)[$$];
-  $3->setProp(RDKit::common_properties::_SmilesStart,1,true);
+  $3->setProp(RDKix::common_properties::_SmilesStart,1,true);
   mp->addAtom($3,true,true);
 }
 
@@ -225,7 +225,7 @@ mol: atomd {
   Bond *newB = mp->createPartialBond(atom->getIdx(),
 				     Bond::UNSPECIFIED);
   mp->setBondBookmark(newB,$2);
-  newB->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+  newB->setProp(RDKix::common_properties::_unspecifiedOrder,1);
   if(!(mp->getAllBondsWithBookmark($2).size()%2)){
     newB->setProp("_cxsmilesBondIdx",numBondsParsed++);
   }
@@ -233,9 +233,9 @@ mol: atomd {
   SmilesParseOps::CheckRingClosureBranchStatus(atom,mp);
 
   INT_VECT tmp;
-  atom->getPropIfPresent(RDKit::common_properties::_RingClosures,tmp);
+  atom->getPropIfPresent(RDKix::common_properties::_RingClosures,tmp);
   tmp.push_back(-($2+1));
-  atom->setProp(RDKit::common_properties::_RingClosures,tmp);
+  atom->setProp(RDKix::common_properties::_RingClosures,tmp);
 }
 
 | mol BOND_TOKEN ring_number {
@@ -243,8 +243,8 @@ mol: atomd {
   Atom *atom=mp->getActiveAtom();
   Bond *newB = mp->createPartialBond(atom->getIdx(),
 				     $2->getBondType());
-  if($2->hasProp(RDKit::common_properties::_unspecifiedOrder)){
-    newB->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+  if($2->hasProp(RDKix::common_properties::_unspecifiedOrder)){
+    newB->setProp(RDKix::common_properties::_unspecifiedOrder,1);
   }
   newB->setBondDir($2->getBondDir());
   mp->setAtomBookmark(atom,$3);
@@ -256,9 +256,9 @@ mol: atomd {
   SmilesParseOps::CheckRingClosureBranchStatus(atom,mp);
 
   INT_VECT tmp;
-  atom->getPropIfPresent(RDKit::common_properties::_RingClosures,tmp);
+  atom->getPropIfPresent(RDKix::common_properties::_RingClosures,tmp);
   tmp.push_back(-($3+1));
-  atom->setProp(RDKit::common_properties::_RingClosures,tmp);
+  atom->setProp(RDKix::common_properties::_RingClosures,tmp);
   delete $2;
 }
 
@@ -276,9 +276,9 @@ mol: atomd {
   SmilesParseOps::CheckRingClosureBranchStatus(atom,mp);
 
   INT_VECT tmp;
-  atom->getPropIfPresent(RDKit::common_properties::_RingClosures,tmp);
+  atom->getPropIfPresent(RDKix::common_properties::_RingClosures,tmp);
   tmp.push_back(-($3+1));
-  atom->setProp(RDKit::common_properties::_RingClosures,tmp);
+  atom->setProp(RDKix::common_properties::_RingClosures,tmp);
 }
 
 | mol GROUP_OPEN_TOKEN atomd {
@@ -348,7 +348,7 @@ atomd:	simple_atom
 {
   $$ = $2;
   $$->setNoImplicit(true);
-  $$->setProp(RDKit::common_properties::molAtomMapNumber,$4);
+  $$->setProp(RDKix::common_properties::molAtomMapNumber,$4);
 }
 | ATOM_OPEN_TOKEN charge_element ATOM_CLOSE_TOKEN
 {

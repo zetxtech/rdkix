@@ -1,5 +1,5 @@
 
-rdkit_python_extension(rdEHTTools
+rdkix_python_extension(rdEHTTools
                        rdEHTTools.cpp
                        DEST Chem
                        LINK_LIBRARIES

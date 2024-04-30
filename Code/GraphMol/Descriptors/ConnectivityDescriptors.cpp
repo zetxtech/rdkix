@@ -2,10 +2,10 @@
 //  Copyright (C) 2012-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/Invariant.h>
 #include <GraphMol/GraphMol.h>
@@ -15,7 +15,7 @@
 #include "MolDescriptors.h"
 #include "ConnectivityDescriptors.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace detail {
 void hkDeltas(const ROMol &mol, std::vector<double> &deltas, bool force) {
@@ -360,4 +360,4 @@ double calcPhi(const ROMol &mol) {
   return Phi;
 }
 }  // end of namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #if defined(__CYGWIN__) && !defined(_GNU_SOURCE)
 // -std=c++11 doesn't declare strtok_r
@@ -16,7 +16,7 @@
 #include <cctype>
 #include "Pattern.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 static const char *AtomSymbol[] = {
@@ -329,4 +329,4 @@ bool AtomSymbolMatch(const std::string symbol, const std::string pattern) {
 }
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

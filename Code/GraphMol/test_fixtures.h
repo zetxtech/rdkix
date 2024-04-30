@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #pragma once
@@ -57,14 +57,14 @@ class TestFixtureTemplate : public boost::noncopyable {
 class UseLegacyStereoPerceptionFixture : private TestFixtureTemplate {
  public:
   UseLegacyStereoPerceptionFixture()
-      : TestFixtureTemplate(RDKit::Chirality::useLegacyStereoEnvVar,
-                            &RDKit::Chirality::getUseLegacyStereoPerception,
-                            &RDKit::Chirality::setUseLegacyStereoPerception) {}
+      : TestFixtureTemplate(RDKix::Chirality::useLegacyStereoEnvVar,
+                            &RDKix::Chirality::getUseLegacyStereoPerception,
+                            &RDKix::Chirality::setUseLegacyStereoPerception) {}
 
   UseLegacyStereoPerceptionFixture(bool state)
-      : TestFixtureTemplate(RDKit::Chirality::useLegacyStereoEnvVar,
-                            &RDKit::Chirality::getUseLegacyStereoPerception,
-                            &RDKit::Chirality::setUseLegacyStereoPerception) {
+      : TestFixtureTemplate(RDKix::Chirality::useLegacyStereoEnvVar,
+                            &RDKix::Chirality::getUseLegacyStereoPerception,
+                            &RDKix::Chirality::setUseLegacyStereoPerception) {
     (*m_setter_func)(state);
   }
 };
@@ -73,7 +73,7 @@ class AllowNontetrahedralChiralityFixture : private TestFixtureTemplate {
  public:
   AllowNontetrahedralChiralityFixture()
       : TestFixtureTemplate(
-            RDKit::Chirality::nonTetrahedralStereoEnvVar,
-            &RDKit::Chirality::getAllowNontetrahedralChirality,
-            &RDKit::Chirality::setAllowNontetrahedralChirality) {}
+            RDKix::Chirality::nonTetrahedralStereoEnvVar,
+            &RDKix::Chirality::getAllowNontetrahedralChirality,
+            &RDKix::Chirality::setAllowNontetrahedralChirality) {}
 };
