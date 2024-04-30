@@ -258,7 +258,7 @@ def _patch():
       b = bx.replace(b'rdkix.Chem.rdchem', b'rdkit.Chem.rdchem')
       return pickle.loads(b)
     except (pickle.UnpicklingError, ModuleNotFoundError):
-      raise ConversionError('Fail to convert rdkix molecule to rdkix (either rdkix is not installed or version difference is not tolerated), please use smiles/smarts instead.')    
+      raise ConversionError('Fail to convert rdkix molecule to rdkit (either rdkit is not installed or version difference is not tolerated), please use smiles/smarts instead.')    
   Mol.to_rdkit = to_rdkit
   
 _patch()
