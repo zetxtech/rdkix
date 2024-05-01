@@ -235,6 +235,27 @@ def _test():
   return doctest.testmod(sys.modules["__main__"])
 
 
+#------------------------------------
+#
+#  patcher
+#
+
+class ConversionError(Exception):
+  pass
+
+def _patch():
+  def to_rdkit(self):
+    try:
+      import pickle
+      bx = pickle.dumps(self)
+      b = bx.replace(b'rdkix.Chem.rdchem', b'rdkit.Chem.rdchem')
+      return pickle.loads(b)
+    except (pickle.UnpicklingError, ModuleNotFoundError):
+      raise ConversionError('Fail to convert rdkix molecule to rdkit (either rdkit is not installed or version difference is not tolerated), please use smiles/smarts instead.')    
+  Mol.to_rdkit = to_rdkit
+  
+_patch()
+
 if __name__ == '__main__':
   import sys
   failed, tried = _test()
