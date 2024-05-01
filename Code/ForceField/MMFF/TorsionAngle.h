@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2013-2022 Paolo Tosco and other RDKit contributors
+//  Copyright (C) 2013-2022 Paolo Tosco and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MMFFTORSIONANGLE_H
@@ -23,7 +23,7 @@ namespace MMFF {
 class MMFFTor;
 
 //! the torsion term for MMFF
-class RDKIT_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
  public:
   TorsionAngleContrib() {}
   //! Constructor
@@ -55,19 +55,19 @@ class RDKIT_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
 
 namespace Utils {
 //! calculates and returns the cosine of a torsion angle
-RDKIT_FORCEFIELD_EXPORT double calcTorsionCosPhi(const RDGeom::Point3D &iPoint,
+RDKIX_FORCEFIELD_EXPORT double calcTorsionCosPhi(const RDGeom::Point3D &iPoint,
                                                  const RDGeom::Point3D &jPoint,
                                                  const RDGeom::Point3D &kPoint,
                                                  const RDGeom::Point3D &lPoint);
 //! returns the 3-tuple of a torsion angle force constants
-RDKIT_FORCEFIELD_EXPORT std::tuple<double, double, double>
+RDKIX_FORCEFIELD_EXPORT std::tuple<double, double, double>
 calcTorsionForceConstant(const MMFFTor *mmffTorParams);
 //! calculates and returns the torsional MMFF energy
-RDKIT_FORCEFIELD_EXPORT double calcTorsionEnergy(const double V1,
+RDKIX_FORCEFIELD_EXPORT double calcTorsionEnergy(const double V1,
                                                  const double V2,
                                                  const double V3,
                                                  const double cosPhi);
-RDKIT_FORCEFIELD_EXPORT void calcTorsionGrad(RDGeom::Point3D *r,
+RDKIX_FORCEFIELD_EXPORT void calcTorsionGrad(RDGeom::Point3D *r,
                                              RDGeom::Point3D *t, double *d,
                                              double **g, double &sinTerm,
                                              double &cosPhi);

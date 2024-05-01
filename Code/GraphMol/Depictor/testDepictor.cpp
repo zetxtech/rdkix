@@ -2,15 +2,15 @@
 //  Copyright (C) 2004-2018 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 #include <GraphMol/FileParsers/MolWriters.h>
@@ -35,17 +35,17 @@
 #include <boost/tokenizer.hpp>
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-using namespace RDKit;
+using namespace RDKix;
 
-auto defaultRDKitBondLen = RDDepict::BOND_LEN;
+auto defaultRDKixBondLen = RDDepict::BOND_LEN;
 
 void _compareCoords(const ROMol *mol1, unsigned int cid1, const ROMol *mol2,
                     unsigned int cid2, double tol = 0.01) {
   unsigned int nat = mol1->getNumAtoms();
   CHECK_INVARIANT(nat == mol2->getNumAtoms(), "");
 
-  const RDKit::Conformer &conf1 = mol1->getConformer(cid1);
-  const RDKit::Conformer &conf2 = mol2->getConformer(cid2);
+  const RDKix::Conformer &conf1 = mol1->getConformer(cid1);
+  const RDKix::Conformer &conf2 = mol2->getConformer(cid2);
 
   for (unsigned int i = 0; i < nat; i++) {
     RDGeom::Point3D pt1 = conf1.getAtomPos(i);
@@ -192,7 +192,7 @@ void testIssue198() {
   std::string smi = "Cl.C[N+](C)(C)CCO";
   RWMol *m = SmilesToMol(smi, 0, 1);
   unsigned int confId = RDDepict::compute2DCoords(*m);
-  RDKit::ROMol::AtomIterator ai;
+  RDKix::ROMol::AtomIterator ai;
   const Conformer &conf = m->getConformer(confId);
   for (ai = m->beginAtoms(); ai != m->endAtoms(); ai++) {
     RDGeom::Point3D loc = conf.getAtomPos((*ai)->getIdx());
@@ -474,7 +474,7 @@ void testIssue2303566() {
   crdMap[5] = RDGeom::Point2D(1.02041, -1.56945);
   std::string mb =
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   6  7  0  0  0  0  0  0  0  0999 V2000\n\
     0.0782   -0.1121    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -864,8 +864,8 @@ void testConstrainedCoords() {
 
   std::string xp0_file =
       rdbase + "/Code/GraphMol/Depictor/test_data/1XP0_ligand.sdf";
-  RDKit::ROMol *xp0_lig = RDKit::MolFileToMol(xp0_file);
-  auto *xp0_lig_2d = new RDKit::ROMol(*xp0_lig);
+  RDKix::ROMol *xp0_lig = RDKix::MolFileToMol(xp0_file);
+  auto *xp0_lig_2d = new RDKix::ROMol(*xp0_lig);
   RDDepict::compute2DCoords(*xp0_lig_2d);
   writer.write(*xp0_lig_2d);
   RDDepict::generateDepictionMatching3DStructure(*xp0_lig_2d, *xp0_lig);
@@ -1079,7 +1079,7 @@ void testGenerate2DDepictionRefPatternMatchVect() {
          "generateDepictionMatching2DStructure with refPattern and matchVect"
       << std::endl;
   auto indazoleRef = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   9 10  0  0  0  0  0  0  0  0999 V2000
    -6.0878    2.4335    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1140,7 +1140,7 @@ M  END)RES"_ctab;
   try {
     RDDepict::generateDepictionMatching2DStructure(
         *cycloheptylPyrazole, *indazoleRef, 1, refPatt.get());
-  } catch (const RDKit::ConformerException &) {
+  } catch (const RDKix::ConformerException &) {
     raised = true;
   }
 
@@ -1189,7 +1189,7 @@ M  END)RES"_ctab;
   try {
     RDDepict::generateDepictionMatching2DStructure(*cycloheptylPyrazole,
                                                    *indazoleRef, matchVect, 1);
-  } catch (const RDKit::ConformerException &) {
+  } catch (const RDKix::ConformerException &) {
     raised = true;
   }
   BOOST_LOG(rdInfoLog) << "Finished" << std::endl;
@@ -1201,7 +1201,7 @@ void testGenerate2DDepictionAllowRGroupsOrig() {
          "generateDepictionMatching2DStructure with allowRGroups"
       << std::endl;
   auto templateRef = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1259,7 +1259,7 @@ M  END)RES"_ctab;
 
   // test that using a refPattern with R groups and a reference without works
   auto pyridineRef = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1375,7 +1375,7 @@ void testGenerate2DDepictionAllowRGroups() {
          "generateDepictionMatching2DStructure with allowRGroups"
       << std::endl;
   auto templateRef = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1407,7 +1407,7 @@ M  END)RES"_ctab;
   auto phenyl = "c1ccccc1"_smiles;
 
   auto prevBondLen = RDDepict::BOND_LEN;
-  RDDepict::BOND_LEN = defaultRDKitBondLen;
+  RDDepict::BOND_LEN = defaultRDKixBondLen;
   RDDepict::generateDepictionMatching2DStructure(*orthoMeta, *templateRef);
   TEST_ASSERT(orthoMeta->getNumConformers() == 1);
   for (bool alignOnly : {true, false}) {
@@ -1444,7 +1444,7 @@ M  END)RES"_ctab;
     // test that using a refPattern with R groups and a reference missing one
     // works
     auto pyridineRef = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   8  8  0  0  0  0  0  0  0  0999 V2000
     0.0000    1.5469    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1619,31 +1619,31 @@ M  END)RES"_ctab;
                                   0) < 1.e-5);
     TEST_ASSERT(MolAlign::CalcRMS(*noradrenalineMJ, *noradrenalineMJCopy, 0,
                                   1) > 1.e-5);
-    TEST_ASSERT(RDKit::feq(scalingFactor, 1.875, 1.e-3));
+    TEST_ASSERT(RDKix::feq(scalingFactor, 1.875, 1.e-3));
     auto conformer2 = new Conformer(*conformer1);
     noradrenalineMJCopy->addConformer(conformer2, true);
     auto bond10_11Conf0 = conformer0.getAtomPos(11) - conformer0.getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.x, 0.825, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.y, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.x, 0.825, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.y, 0.0, 1.e-3));
     auto bond10_11Conf1 =
         conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 1.513, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, -0.321, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 1.513, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, -0.321, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 1);
     bond10_11Conf1 = conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 1.340, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, -0.773, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 1.340, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, -0.773, 1.e-3));
     auto bond4_11Conf1 = conformer1->getAtomPos(11) - conformer1->getAtomPos(4);
-    TEST_ASSERT(RDKit::feq(bond4_11Conf1.x, 0.0, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond4_11Conf1.y, 1.547, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf1.x, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf1.y, 1.547, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 2, true);
     auto bond10_11Conf2 =
         conformer2->getAtomPos(11) - conformer2->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.x, 1.547, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.y, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.x, 1.547, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.y, 0.0, 1.e-3));
     auto bond4_11Conf2 = conformer2->getAtomPos(11) - conformer2->getAtomPos(4);
-    TEST_ASSERT(RDKit::feq(bond4_11Conf2.x, -0.773, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond4_11Conf2.y, 1.339, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf2.x, -0.773, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf2.y, 1.339, 1.e-3));
   }
   {
     auto noradrenalineMJCopy =
@@ -1657,25 +1657,25 @@ M  END)RES"_ctab;
                                   0) < 1.e-5);
     TEST_ASSERT(MolAlign::CalcRMS(*noradrenalineMJ, *noradrenalineMJCopy, 0,
                                   1) > 1.e-5);
-    TEST_ASSERT(RDKit::feq(scalingFactor, 1.875, 1.e-3));
+    TEST_ASSERT(RDKix::feq(scalingFactor, 1.875, 1.e-3));
     auto conformer2 = new Conformer(*conformer1);
     noradrenalineMJCopy->addConformer(conformer2, true);
     auto bond10_11Conf0 = conformer0.getAtomPos(11) - conformer0.getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.x, 0.825, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.y, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.x, 0.825, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.y, 0.0, 1.e-3));
     auto bond10_11Conf1 =
         conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 0.321, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, 1.513, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 0.321, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, 1.513, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 1);
     bond10_11Conf1 = conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 0.0, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, 1.547, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, 1.547, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 2, true);
     auto bond10_11Conf2 =
         conformer2->getAtomPos(11) - conformer2->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.x, bond10_11Conf1.x, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.y, bond10_11Conf1.y, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.x, bond10_11Conf1.x, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.y, bond10_11Conf1.y, 1.e-3));
   }
   {
     auto noradrenalineMJCopy =
@@ -1689,40 +1689,40 @@ M  END)RES"_ctab;
                                   0) < 1.e-5);
     TEST_ASSERT(MolAlign::CalcRMS(*noradrenalineMJ, *noradrenalineMJCopy, 0,
                                   1) > 1.e-5);
-    TEST_ASSERT(RDKit::feq(scalingFactor, 3.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(scalingFactor, 3.0, 1.e-3));
     auto conformer2 = new Conformer(*conformer1);
     noradrenalineMJCopy->addConformer(conformer2, true);
     auto conformer3 = new Conformer(*conformer1);
     noradrenalineMJCopy->addConformer(conformer3, true);
     auto bond10_11Conf0 = conformer0.getAtomPos(11) - conformer0.getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.x, 0.825, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf0.y, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.x, 0.825, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf0.y, 0.0, 1.e-3));
     auto bond10_11Conf1 =
         conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 2.475, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 2.475, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, 0.0, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 1);
     bond10_11Conf1 = conformer1->getAtomPos(11) - conformer1->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.x, 2.143, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf1.y, -1.237, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.x, 2.143, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf1.y, -1.237, 1.e-3));
     auto bond4_11Conf1 = conformer1->getAtomPos(11) - conformer1->getAtomPos(4);
-    TEST_ASSERT(RDKit::feq(bond4_11Conf1.x, 0.0, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond4_11Conf1.y, 2.475, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf1.x, 0.0, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf1.y, 2.475, 1.e-3));
     RDDepict::straightenDepiction(*noradrenalineMJCopy, 2, true);
     auto bond10_11Conf2 =
         conformer2->getAtomPos(11) - conformer2->getAtomPos(10);
     auto bond10_11Conf3 =
         conformer3->getAtomPos(11) - conformer3->getAtomPos(10);
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.x, bond10_11Conf3.x, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond10_11Conf2.y, bond10_11Conf3.y, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.x, bond10_11Conf3.x, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond10_11Conf2.y, bond10_11Conf3.y, 1.e-3));
     auto bond4_11Conf2 = conformer2->getAtomPos(11) - conformer2->getAtomPos(4);
     auto bond4_11Conf3 = conformer3->getAtomPos(11) - conformer3->getAtomPos(4);
-    TEST_ASSERT(RDKit::feq(bond4_11Conf2.x, bond4_11Conf3.x, 1.e-3));
-    TEST_ASSERT(RDKit::feq(bond4_11Conf2.y, bond4_11Conf3.y, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf2.x, bond4_11Conf3.x, 1.e-3));
+    TEST_ASSERT(RDKix::feq(bond4_11Conf2.y, bond4_11Conf3.y, 1.e-3));
   }
   {
     auto zeroCoordCTab = R"RES(
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

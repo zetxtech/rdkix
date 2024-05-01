@@ -7,7 +7,7 @@
 #include <string>
 
 class ExplicitBitVect;
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace MACCSFingerprints {
 const std::string maccsFingerprintVersion = "2.0.0";
@@ -24,9 +24,9 @@ const std::string maccsFingerprintVersion = "2.0.0";
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *getFingerprintAsBitVect(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *getFingerprintAsBitVect(
     const ROMol &mol);
 }  // namespace MACCSFingerprints
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

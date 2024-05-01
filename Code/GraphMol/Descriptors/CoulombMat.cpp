@@ -28,11 +28,11 @@
 //  Modified by Greg Landrum, March 2020
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <cmath>
 #include "CoulombMat.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 void CoulombMat(const ROMol &mol, std::vector<std::vector<double>> &res,
@@ -59,4 +59,4 @@ void CoulombMat(const ROMol &mol, std::vector<std::vector<double>> &res,
   }
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

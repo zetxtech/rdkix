@@ -2,10 +2,10 @@
 //  Copyright (C) 2013 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <algorithm>
 #include <fstream>
@@ -24,7 +24,7 @@
 #include <GraphMol/FileParsers/MolWriters.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/MonomerInfo.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/LocaleSwitcher.h>
@@ -37,7 +37,7 @@
 // flavor & 16 : Write MASTER record
 // flavor & 32 : Write TER record
 
-namespace RDKit {
+namespace RDKix {
 std::string GetPDBAtomLine(const Atom *atom, const Conformer *conf,
                            std::map<unsigned int, unsigned int> &elem) {
   PRECONDITION(atom, "bad atom");
@@ -374,4 +374,4 @@ void MolToPDBFile(const ROMol &mol, const std::string &fname, int confId,
   w.write(mol, confId);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

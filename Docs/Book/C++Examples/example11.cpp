@@ -15,31 +15,31 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
 int main(int main, char **argv) {
-  std::shared_ptr<RDKit::ROMol> mol(RDKit::SmilesToMol("C1CCC1OC"));
-  std::shared_ptr<RDKit::ROMol> mol1(RDKit::MolOps::addHs(*mol));
-  std::shared_ptr<RDKit::ROMol> mol2(RDKit::MolOps::addHs(*mol));
+  std::shared_ptr<RDKix::ROMol> mol(RDKix::SmilesToMol("C1CCC1OC"));
+  std::shared_ptr<RDKix::ROMol> mol1(RDKix::MolOps::addHs(*mol));
+  std::shared_ptr<RDKix::ROMol> mol2(RDKix::MolOps::addHs(*mol));
   // Original distance geometry embedding
-  RDKit::DGeomHelpers::EmbedMolecule(*mol1, 0, 1234);
-  RDKit::UFF::UFFOptimizeMolecule(*mol1);
+  RDKix::DGeomHelpers::EmbedMolecule(*mol1, 0, 1234);
+  RDKix::UFF::UFFOptimizeMolecule(*mol1);
 
   // new Riniker and Landrum CSD-based method
   // using the parameters class
-  RDKit::DGeomHelpers::EmbedParameters params(RDKit::DGeomHelpers::ETKDG);
+  RDKix::DGeomHelpers::EmbedParameters params(RDKix::DGeomHelpers::ETKDG);
   params.randomSeed = 1234;
-  RDKit::DGeomHelpers::EmbedMolecule(*mol2, params);
+  RDKix::DGeomHelpers::EmbedMolecule(*mol2, params);
 
   // Multiple conformations
-  RDKit::INT_VECT mol1_cids =
-      RDKit::DGeomHelpers::EmbedMultipleConfs(*mol1, 10);
+  RDKix::INT_VECT mol1_cids =
+      RDKix::DGeomHelpers::EmbedMultipleConfs(*mol1, 10);
   std::cout << "Number of conformations : " << mol1_cids.size() << std::endl;
 
-  RDKit::INT_VECT mol2_cids;
+  RDKix::INT_VECT mol2_cids;
   int numConfs = 20;
-  RDKit::DGeomHelpers::EmbedMultipleConfs(*mol2, mol2_cids, numConfs, params);
+  RDKix::DGeomHelpers::EmbedMultipleConfs(*mol2, mol2_cids, numConfs, params);
   std::cout << "Number of conformations : " << mol2_cids.size() << std::endl;
 
   std::vector<double> rms_list;
   std::vector<unsigned int> m2cids(mol2_cids.begin(), mol2_cids.end());
-  RDKit::MolAlign::alignMolConformers(*mol2, nullptr, &m2cids, nullptr, false,
+  RDKix::MolAlign::alignMolConformers(*mol2, nullptr, &m2cids, nullptr, false,
                                       50, &rms_list);
 }

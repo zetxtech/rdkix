@@ -3,8 +3,8 @@ import pickle
 import sys
 import time
 
-from rdkit import Chem, RDConfig
-from rdkit.RDLogger import logger
+from rdkix import Chem, RDConfig
+from rdkix.RDLogger import logger
 
 logger = logger()
 

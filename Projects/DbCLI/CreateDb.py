@@ -54,11 +54,11 @@ _description = """
 """
 import argparse
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem.MolDb import Loader
-from rdkit.Dbase import DbModule
-from rdkit.Dbase.DbConnection import DbConnect
-from rdkit.RDLogger import logger
+from rdkix import Chem, RDConfig
+from rdkix.Chem.MolDb import Loader
+from rdkix.Dbase import DbModule
+from rdkix.Dbase.DbConnection import DbConnect
+from rdkix.RDLogger import logger
 
 logger = logger()
 import io
@@ -66,8 +66,8 @@ import os
 import pickle
 import sys
 
-from rdkit.Chem.MolDb import FingerprintUtils
-from rdkit.Chem.MolDb.FingerprintUtils import BuildSigFactory, LayeredOptions
+from rdkix.Chem.MolDb import FingerprintUtils
+from rdkix.Chem.MolDb.FingerprintUtils import BuildSigFactory, LayeredOptions
 
 # ---- ---- ---- ----  ---- ---- ---- ----  ---- ---- ---- ----  ---- ---- ---- ----
 
@@ -90,7 +90,7 @@ def initParser():
   parser.add_argument('--pairTableName', default='atompairs', help='name of the atom pairs table')
   parser.add_argument('--fpDbName', default='Fingerprints.sqlt',
                       help='name of the 2D fingerprints database')
-  parser.add_argument('--fpTableName', default='rdkitfps', help='name of the 2D fingerprints table')
+  parser.add_argument('--fpTableName', default='rdkixfps', help='name of the 2D fingerprints table')
   parser.add_argument('--layeredTableName', default='layeredfps',
                       help='name of the layered fingerprints table')
   parser.add_argument('--descrDbName', default='Descriptors.sqlt',
@@ -276,7 +276,7 @@ def CreateDb(options, dataFilename='', supplier=None):
       fpCurs.execute(
         'create table %s (guid integer not null primary key,%s varchar not null unique,gobbi2dfp blob)'
         % (options.gobbi2DTableName, options.molIdName))
-      from rdkit.Chem.Pharm2D import Generate, Gobbi_Pharm2D
+      from rdkix.Chem.Pharm2D import Generate, Gobbi_Pharm2D
 
   if options.doMorganFps:
     fpConn = DbConnect(os.path.join(options.outDir, options.fpDbName))
@@ -346,7 +346,7 @@ def CreateDb(options, dataFilename='', supplier=None):
       row = (molGuid, molId, pkl1, pkl2)
       pairRows.append(row)
     if options.doFingerprints:
-      fp2 = FingerprintUtils.BuildRDKitFP(mol)
+      fp2 = FingerprintUtils.BuildRDKixFP(mol)
       pkl = DbModule.binaryHolder(fp2.ToBinary())
       row = (molGuid, molId, pkl)
       fpRows.append(row)

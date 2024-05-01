@@ -3,10 +3,10 @@
 // Copyright (C)  2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -52,39 +52,39 @@ void test1() {
   BoundsMatPtr mptr(mmat);
 
   triangleSmoothBounds(mptr);
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 1), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 1), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 2), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 2), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 3), 2.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 3), 0.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 4), 3.464, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 4), 0.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(1, 2), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(1, 2), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(1, 3), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(1, 3), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(1, 4), 2.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(1, 4), 0.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(2, 3), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(2, 3), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(2, 4), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(2, 4), 1.732, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(3, 4), 1.0, 0.001), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(3, 4), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 1), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 1), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 2), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 2), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 3), 2.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 3), 0.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 4), 3.464, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 4), 0.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(1, 2), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(1, 2), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(1, 3), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(1, 3), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(1, 4), 2.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(1, 4), 0.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(2, 3), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(2, 3), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(2, 4), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(2, 4), 1.732, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(3, 4), 1.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(3, 4), 1.0, 0.001), "");
 
   DoubleSymmMatrix dmat(npt, 0.0);
-  RDKit::rng_type generator(42u);
+  RDKix::rng_type generator(42u);
   generator.seed(100);
-  RDKit::uniform_double distrib(0, 1.0);
-  RDKit::double_source_type rng(generator, distrib);
+  RDKix::uniform_double distrib(0, 1.0);
+  RDKix::double_source_type rng(generator, distrib);
   pickRandomDistMat(*mmat, dmat, rng);
 
   double sumElem = 0.0;
   for (unsigned int i = 0; i < dmat.getDataSize(); i++) {
     sumElem += dmat.getData()[i];
   }
-  CHECK_INVARIANT(RDKit::feq(sumElem, 14.3079, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(sumElem, 14.3079, 0.001), "");
 }
 
 void testIssue216() {
@@ -115,7 +115,7 @@ void testIssue216() {
     for (int j = 0; j < i; j++) {
       RDGeom::Point3D ptj = *(RDGeom::Point3D *)pos[j];
       ptj -= pti;
-      CHECK_INVARIANT(RDKit::feq(ptj.length(), 1.0, 0.02), "");
+      CHECK_INVARIANT(RDKix::feq(ptj.length(), 1.0, 0.02), "");
     }
   }
   for (int i = 0; i < 4; i++) {

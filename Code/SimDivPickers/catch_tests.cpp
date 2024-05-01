@@ -2,10 +2,10 @@
 //  Copyright (C) 2019
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -71,7 +71,7 @@ TEST_CASE(
 #ifdef RDK_BUILD_THREADSAFE_SSS
   SECTION("basics multithreaded") {
     double threshold = 0.8;
-    RDKit::INT_VECT firstPicks;
+    RDKix::INT_VECT firstPicks;
     int nThreads = 0;  // use max available
     auto res =
         pkr.lazyPick(bvf, fps.size(), 0, firstPicks, threshold, nThreads);

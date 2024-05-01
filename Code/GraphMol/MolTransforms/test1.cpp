@@ -2,16 +2,16 @@
 //   Copyright (C) 2003-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/utils.h>
 #include <Geometry/Transform3D.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
@@ -21,7 +21,7 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace MolTransforms;
 bool comparePts(const RDGeom::Point3D &pt1, const RDGeom::Point3D &pt2,
                 double tol = 1.0e-4) {
@@ -104,7 +104,7 @@ void test1Canonicalization() {
   canonicalizeConformer(*conf);
 
 // computeCanonicalTransform returns more approximate eigenvalues/eigencvectors
-// when built against the native RDKit PowerEigenSolver, so unit test results
+// when built against the native RDKix PowerEigenSolver, so unit test results
 // differ slightly
 #ifdef RDK_HAS_EIGEN3
   std::vector<RDGeom::Point3D> expected = {
@@ -159,13 +159,13 @@ void testGetSetBondLength() {
   TEST_ASSERT(m);
   Conformer &conf = m->getConformer();
   double dist = getBondLength(conf, 0, 19);
-  TEST_ASSERT(RDKit::feq(dist, 1.36));
+  TEST_ASSERT(RDKix::feq(dist, 1.36));
   setBondLength(conf, 0, 19, 2.5);
   dist = getBondLength(conf, 0, 19);
-  TEST_ASSERT(RDKit::feq(dist, 2.5));
+  TEST_ASSERT(RDKix::feq(dist, 2.5));
   setBondLength(conf, 19, 0, 3.0);
   dist = getBondLength(conf, 0, 19);
-  TEST_ASSERT(RDKit::feq(dist, 3.0));
+  TEST_ASSERT(RDKix::feq(dist, 3.0));
   delete m;
 }
 
@@ -178,15 +178,15 @@ void testGetSetAngle() {
   TEST_ASSERT(m);
   Conformer &conf = m->getConformer();
   double angle = getAngleDeg(conf, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(angle, 109.7, 0.05));
+  TEST_ASSERT(RDKix::feq(angle, 109.7, 0.05));
   setAngleDeg(conf, 0, 19, 21, 125.0);
   angle = getAngleDeg(conf, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(angle, 125.0));
+  TEST_ASSERT(RDKix::feq(angle, 125.0));
   setAngleRad(conf, 21, 19, 0, M_PI / 2.);
   angle = getAngleRad(conf, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(angle, M_PI / 2.));
+  TEST_ASSERT(RDKix::feq(angle, M_PI / 2.));
   angle = getAngleDeg(conf, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(angle, 90.0));
+  TEST_ASSERT(RDKix::feq(angle, 90.0));
   delete m;
 }
 
@@ -199,18 +199,18 @@ void testGetSetDihedral() {
   TEST_ASSERT(m);
   Conformer &conf = m->getConformer();
   double dihedral = getDihedralDeg(conf, 0, 19, 21, 24);
-  TEST_ASSERT(RDKit::feq(dihedral, 176.05, 0.05));
+  TEST_ASSERT(RDKix::feq(dihedral, 176.05, 0.05));
   setDihedralDeg(conf, 8, 0, 19, 21, 65.0);
   dihedral = getDihedralDeg(conf, 8, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(dihedral, 65.0));
+  TEST_ASSERT(RDKix::feq(dihedral, 65.0));
   setDihedralDeg(conf, 8, 0, 19, 21, -130.0);
   dihedral = getDihedralDeg(conf, 8, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(dihedral, -130.0));
+  TEST_ASSERT(RDKix::feq(dihedral, -130.0));
   setDihedralRad(conf, 21, 19, 0, 8, -2. / 3. * M_PI);
   dihedral = getDihedralRad(conf, 8, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(dihedral, -2. / 3. * M_PI));
+  TEST_ASSERT(RDKix::feq(dihedral, -2. / 3. * M_PI));
   dihedral = getDihedralDeg(conf, 8, 0, 19, 21);
-  TEST_ASSERT(RDKit::feq(dihedral, -120.0));
+  TEST_ASSERT(RDKix::feq(dihedral, -120.0));
   delete m;
 }
 
@@ -223,18 +223,18 @@ void testGetSetDihedralThroughTripleBond() {
   Conformer &conf = m->getConformer();
   setDihedralDeg(conf, 6, 1, 2, 9, 0.0);
   double dihedral = getDihedralDeg(conf, 6, 1, 2, 9);
-  TEST_ASSERT(RDKit::feq(dihedral, 0.0));
+  TEST_ASSERT(RDKix::feq(dihedral, 0.0));
   double dist = getBondLength(conf, 6, 9);
   setDihedralDeg(conf, 6, 1, 2, 9, 120.0);
   dihedral = getDihedralDeg(conf, 6, 1, 2, 9);
-  TEST_ASSERT(RDKit::feq(dihedral, 120.0));
+  TEST_ASSERT(RDKix::feq(dihedral, 120.0));
   double dist2 = getBondLength(conf, 6, 7);
-  TEST_ASSERT(RDKit::feq(dist, dist2, 0.05));
+  TEST_ASSERT(RDKix::feq(dist, dist2, 0.05));
   setDihedralDeg(conf, 6, 1, 2, 9, 180.0);
   dihedral = getDihedralDeg(conf, 6, 1, 2, 9);
-  TEST_ASSERT(RDKit::feq(dihedral, 180.0));
+  TEST_ASSERT(RDKix::feq(dihedral, 180.0));
   double dist3 = getBondLength(conf, 6, 9);
-  TEST_ASSERT(!RDKit::feq(dist, dist3, 0.3));
+  TEST_ASSERT(!RDKix::feq(dist, dist3, 0.3));
   bool exceptionRaised = false;
   try {
     setDihedralDeg(conf, 6, 0, 3, 9, 0.0);
@@ -366,15 +366,15 @@ void testGithub4302() {
       rdbase + "/Code/GraphMol/MolTransforms/test_data/github4302.sdf";
   std::string fname2 =
       rdbase + "/Code/GraphMol/MolTransforms/test_data/github4302_canon.sdf";
-  RDKit::SDMolSupplier reader(fname1);
-  RDKit::SDWriter writer(fname2);
+  RDKix::SDMolSupplier reader(fname1);
+  RDKix::SDWriter writer(fname2);
   while (!reader.atEnd()) {
-    std::unique_ptr<RDKit::ROMol> mol(reader.next());
-    const RDKit::Conformer &conf = mol->getConformer();
-    auto canonConf = new RDKit::Conformer(conf);
+    std::unique_ptr<RDKix::ROMol> mol(reader.next());
+    const RDKix::Conformer &conf = mol->getConformer();
+    auto canonConf = new RDKix::Conformer(conf);
     auto cid = mol->addConformer(canonConf, true);
     canonicalizeConformer(*canonConf);
-    // the native RDKit eigensolver comes up with non-canonical
+    // the native RDKix eigensolver comes up with non-canonical
     // or distorted coordinates with these conformations
 #ifdef RDK_HAS_EIGEN3
     for (unsigned int i = 0; i < mol->getNumAtoms(); ++i) {
@@ -390,10 +390,10 @@ void testWeightedCentroid() {
   std::string rdbase = getenv("RDBASE");
   std::string fname1 =
       rdbase + "/Code/GraphMol/MolTransforms/test_data/github4302.sdf";
-  RDKit::SDMolSupplier reader(fname1);
+  RDKix::SDMolSupplier reader(fname1);
   while (!reader.atEnd()) {
-    std::unique_ptr<RDKit::ROMol> mol(reader.next());
-    const RDKit::Conformer &conf = mol->getConformer();
+    std::unique_ptr<RDKix::ROMol> mol(reader.next());
+    const RDKix::Conformer &conf = mol->getConformer();
     std::vector<double> weights;
     weights.reserve(mol->getNumAtoms());
     for (const auto a : mol->atoms()) {

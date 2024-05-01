@@ -3,10 +3,10 @@
 //  Adapted from pseudo-code from Roger Sayle
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -26,11 +26,11 @@
 
 // #define VERBOSE_CANON 1
 
-namespace RDKit {
+namespace RDKix {
 namespace Canon {
 struct canon_atom;
 
-struct RDKIT_GRAPHMOL_EXPORT bondholder {
+struct RDKIX_GRAPHMOL_EXPORT bondholder {
   Bond::BondType bondType{Bond::BondType::UNSPECIFIED};
   unsigned int bondStereo{
       static_cast<unsigned int>(Bond::BondStereo::STEREONONE)};
@@ -97,7 +97,7 @@ struct RDKIT_GRAPHMOL_EXPORT bondholder {
     return 0;
   }
 };
-struct RDKIT_GRAPHMOL_EXPORT canon_atom {
+struct RDKIX_GRAPHMOL_EXPORT canon_atom {
   const Atom *atom{nullptr};
   int index{-1};
   unsigned int degree{0};
@@ -114,10 +114,10 @@ struct RDKIT_GRAPHMOL_EXPORT canon_atom {
   std::vector<bondholder> bonds;
 };
 
-RDKIT_GRAPHMOL_EXPORT void updateAtomNeighborIndex(
+RDKIX_GRAPHMOL_EXPORT void updateAtomNeighborIndex(
     canon_atom *atoms, std::vector<bondholder> &nbrs);
 
-RDKIT_GRAPHMOL_EXPORT void updateAtomNeighborNumSwaps(
+RDKIX_GRAPHMOL_EXPORT void updateAtomNeighborNumSwaps(
     canon_atom *atoms, std::vector<bondholder> &nbrs, unsigned int atomIdx,
     std::vector<std::pair<unsigned int, unsigned int>> &result);
 
@@ -132,7 +132,7 @@ RDKIT_GRAPHMOL_EXPORT void updateAtomNeighborNumSwaps(
  *include neighbors within the ranking
  */
 
-class RDKIT_GRAPHMOL_EXPORT SpecialChiralityAtomCompareFunctor {
+class RDKIX_GRAPHMOL_EXPORT SpecialChiralityAtomCompareFunctor {
  public:
   Canon::canon_atom *dp_atoms{nullptr};
   const ROMol *dp_mol{nullptr};
@@ -189,7 +189,7 @@ class RDKIT_GRAPHMOL_EXPORT SpecialChiralityAtomCompareFunctor {
   }
 };
 
-class RDKIT_GRAPHMOL_EXPORT SpecialSymmetryAtomCompareFunctor {
+class RDKIX_GRAPHMOL_EXPORT SpecialSymmetryAtomCompareFunctor {
  public:
   Canon::canon_atom *dp_atoms{nullptr};
   const ROMol *dp_mol{nullptr};
@@ -280,7 +280,7 @@ unsigned int getChiralRank(const ROMol *dp_mol, canon_atom *dp_atoms,
   return res;
 }
 }  // namespace
-class RDKIT_GRAPHMOL_EXPORT AtomCompareFunctor {
+class RDKIX_GRAPHMOL_EXPORT AtomCompareFunctor {
   unsigned int getAtomRingNbrCode(unsigned int i) const {
     if (!dp_atoms[i].hasRingNbr) {
       return 0;
@@ -520,7 +520,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomCompareFunctor {
  */
 
 const unsigned int ATNUM_CLASS_OFFSET = 10000;
-class RDKIT_GRAPHMOL_EXPORT ChiralAtomCompareFunctor {
+class RDKIX_GRAPHMOL_EXPORT ChiralAtomCompareFunctor {
   void getAtomNeighborhood(std::vector<bondholder> &nbrs) const {
     for (unsigned j = 0; j < nbrs.size(); ++j) {
       unsigned int nbrIdx = nbrs[j].nbrIdx;
@@ -794,22 +794,22 @@ void BreakTies(const ROMol &mol, canon_atom *atoms, CompareFunc compar,
   }
 }  // end of BreakTies()
 
-RDKIT_GRAPHMOL_EXPORT void CreateSinglePartition(unsigned int nAtoms,
+RDKIX_GRAPHMOL_EXPORT void CreateSinglePartition(unsigned int nAtoms,
                                                  int *order, int *count,
                                                  canon_atom *atoms);
 
-RDKIT_GRAPHMOL_EXPORT void ActivatePartitions(unsigned int nAtoms, int *order,
+RDKIX_GRAPHMOL_EXPORT void ActivatePartitions(unsigned int nAtoms, int *order,
                                               int *count, int &activeset,
                                               int *next, int *changed);
 
-RDKIT_GRAPHMOL_EXPORT void rankMolAtoms(const ROMol &mol,
+RDKIX_GRAPHMOL_EXPORT void rankMolAtoms(const ROMol &mol,
                                         std::vector<unsigned int> &res,
                                         bool breakTies = true,
                                         bool includeChirality = true,
                                         bool includeIsotopes = true,
                                         bool includeAtomMaps = true);
 
-RDKIT_GRAPHMOL_EXPORT void rankFragmentAtoms(
+RDKIX_GRAPHMOL_EXPORT void rankFragmentAtoms(
     const ROMol &mol, std::vector<unsigned int> &res,
     const boost::dynamic_bitset<> &atomsInPlay,
     const boost::dynamic_bitset<> &bondsInPlay,
@@ -829,10 +829,10 @@ inline void rankFragmentAtoms(
                     includeAtomMaps);
 };
 
-RDKIT_GRAPHMOL_EXPORT void chiralRankMolAtoms(const ROMol &mol,
+RDKIX_GRAPHMOL_EXPORT void chiralRankMolAtoms(const ROMol &mol,
                                               std::vector<unsigned int> &res);
 
-RDKIT_GRAPHMOL_EXPORT void initCanonAtoms(const ROMol &mol,
+RDKIX_GRAPHMOL_EXPORT void initCanonAtoms(const ROMol &mol,
                                           std::vector<Canon::canon_atom> &atoms,
                                           bool includeChirality = true);
 
@@ -854,4 +854,4 @@ void rankWithFunctor(T &ftor, bool breakTies, int *order,
 }  // namespace detail
 
 }  // namespace Canon
-}  // namespace RDKit
+}  // namespace RDKix

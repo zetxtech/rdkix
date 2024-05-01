@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <cstdlib>
@@ -14,7 +14,7 @@
 
 #include <boost/noncopyable.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/MolOps.h>
@@ -26,7 +26,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 unsigned count_wedged_bonds(const ROMol &mol) {
   unsigned nWedged = 0;
@@ -2011,7 +2011,7 @@ TEST_CASE(
     "chirality") {
   RDLog::LogStateSetter setter;  // disable irritating warning messages
   auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2147,7 +2147,7 @@ TEST_CASE(
     "bonds") {
   RDLog::LogStateSetter setter;  // disable irritating warning messages
   auto molblock = R"CTAB(
-     RDKit          3D
+     RDKix          3D
      
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2601,7 +2601,7 @@ TEST_CASE("nontetrahedral StereoInfo", "[nontetrahedral]") {
 TEST_CASE("github #5328: assignChiralTypesFrom3D() ignores wiggly bonds") {
   SECTION("basics") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2733,7 +2733,7 @@ M  END
 
 TEST_CASE("wedgeMolBonds to aromatic rings") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2793,7 +2793,7 @@ M  END
 
 TEST_CASE("github 5307: AssignAtomChiralTagsFromStructure ignores Hydrogens") {
   std::string mb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
      
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3064,9 +3064,9 @@ TEST_CASE("more findPotential and ring stereo") {
 }
 
 TEST_CASE(
-    "github 2984: RDKit misplaces stereochemistry/chirality information for "
+    "github 2984: RDKix misplaces stereochemistry/chirality information for "
     "small ring") {
-  using namespace RDKit::Chirality;
+  using namespace RDKix::Chirality;
 
   UseLegacyStereoPerceptionFixture reset_stereo_perception;
 
@@ -3293,28 +3293,28 @@ TEST_CASE(
 void testStereoValidationFromMol(std::string molBlock,
                                  std::string expectedSmiles, bool legacyFlag,
                                  bool canonicalFlag = false) {
-  RDKit::Chirality::setUseLegacyStereoPerception(legacyFlag);
+  RDKix::Chirality::setUseLegacyStereoPerception(legacyFlag);
 
   std::unique_ptr<RWMol> mol(MolBlockToMol(molBlock, true, false, false));
   REQUIRE(mol);
 
   // CHECK(CIPLabeler::validateStereochem(*mol, validationFlags));
 
-  RDKit::SmilesWriteParams smilesWriteParams;
+  RDKix::SmilesWriteParams smilesWriteParams;
   smilesWriteParams.doIsomericSmiles = true;
   smilesWriteParams.doKekule = false;
   smilesWriteParams.canonical = canonicalFlag;
 
   unsigned int flags = 0 |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_ENHANCEDSTEREO |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_SGROUPS |
-                       RDKit::SmilesWrite::CXSmilesFields::CX_POLYMER;
+                       RDKix::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
+                       RDKix::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
+                       RDKix::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
+                       RDKix::SmilesWrite::CXSmilesFields::CX_ENHANCEDSTEREO |
+                       RDKix::SmilesWrite::CXSmilesFields::CX_SGROUPS |
+                       RDKix::SmilesWrite::CXSmilesFields::CX_POLYMER;
 
   auto outSmiles = MolToCXSmiles(*mol, smilesWriteParams, flags);
-  RDKit::Chirality::setUseLegacyStereoPerception(false);
+  RDKix::Chirality::setUseLegacyStereoPerception(false);
 
   CHECK(outSmiles == expectedSmiles);
 }
@@ -3709,14 +3709,14 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
     }
     {
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
     }
   }
@@ -3731,7 +3731,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       // the crossed bond dir has been translated to unknown stereo:
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereo() == Bond::BondStereo::STEREOANY);
@@ -3740,7 +3740,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       // the crossed bond dir has been translated to unknown stereo:
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereo() == Bond::BondStereo::STEREOANY);
@@ -3758,7 +3758,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereoAtoms().empty());
     }
@@ -3766,7 +3766,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereoAtoms().empty());
     }
@@ -3966,7 +3966,7 @@ M  END
 }
 
 TEST_CASE(
-    "RDKit Issue #6217: Atoms may get flagged with non-tetrahedral stereo even when it is not allowed",
+    "RDKix Issue #6217: Atoms may get flagged with non-tetrahedral stereo even when it is not allowed",
     "[bug][stereo][non-tetrahedral]") {
   UseLegacyStereoPerceptionFixture reset_stereo_perception;
   Chirality::setUseLegacyStereoPerception(false);
@@ -3991,7 +3991,7 @@ TEST_CASE(
 }
 
 TEST_CASE(
-    "RDKit Issue #6239: Tri-coordinate atom with implicit + neighbor H atom is found potentially chiral",
+    "RDKix Issue #6239: Tri-coordinate atom with implicit + neighbor H atom is found potentially chiral",
     "[bug][stereo]") {
   // Parametrize test to run under legacy and new stereo perception
   const auto legacy_stereo = GENERATE(true, false);
@@ -4048,7 +4048,7 @@ TEST_CASE("double bonded N with H should be stereogenic", "[bug][stereo]") {
 
 TEST_CASE("Issue in GitHub #6473", "[bug][stereo]") {
   constexpr const char *mb = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   6  5  0  0  0  0  0  0  0  0999 V2000
     2.0443    0.2759    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4198,7 +4198,7 @@ TEST_CASE("t-shaped chirality cases") {
   SECTION("ChEMBL example") {
     {
       auto m = R"CTAB(CHEMBL3183068
-     RDKit          2D
+     RDKix          2D
 
  11 11  0  0  1  0  0  0  0  0999 V2000
     1.7309    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4236,7 +4236,7 @@ None
     }
     {
       auto m = R"CTAB(CHEMBL3183068 (with an H removed)
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  0  1  0  0  0  0  0999 V2000
     1.7309    0.0000    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4407,7 +4407,7 @@ M  END
 TEST_CASE("almost linear, degree 4") {
   SECTION("from chembl 1") {
     auto m = R"CTAB(CHEMBL3680147
-     RDKit          2D
+     RDKix          2D
 
  15 16  0  0  1  0  0  0  0  0999 V2000
     3.8912   -4.9570    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4449,7 +4449,7 @@ M  END
   }
   SECTION("from chembl 2") {
     auto m = R"CTAB(CHEMBL76346
-     RDKit          2D
+     RDKix          2D
 
  16 17  0  0  1  0  0  0  0  0999 V2000
     3.4292   -0.4250    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4493,7 +4493,7 @@ M  END
   }
   SECTION("from chembl 3") {
     auto m = R"CTAB(CHEMBL3577363
-     RDKit          2D
+     RDKix          2D
 
  15 16  0  0  0  0  0  0  0  0999 V2000
    -2.5989    1.5003    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4535,7 +4535,7 @@ M  END
   }
   SECTION("from chembl 4") {
     auto m =
-        R"CTAB(derived from CHEMBL2373651. This was wrong in the RDKit implementation
+        R"CTAB(derived from CHEMBL2373651. This was wrong in the RDKix implementation
   Mrv2211 07212313282D
             
   0  0  0     0  0            999 V3000
@@ -4570,7 +4570,7 @@ M  END
   }
   SECTION("cut from CHEMBL4578507") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4608,7 +4608,7 @@ $$$$)CTAB"_ctab;
 
   SECTION("derived from CHEMBL4578507") {
     auto m = R"CTAB(CHEMBL4578507
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4666,7 +4666,7 @@ M  END)CTAB"_ctab;
 
   SECTION("derived from CHEMBL123021") {
     auto m = R"CTAB(CHEMBL123021
-     RDKit          2D
+     RDKix          2D
 
  16 17  0  0  1  0  0  0  0  0999 V2000
    -2.8208   -0.5792    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4713,7 +4713,7 @@ M  END
 
   SECTION("derived from CHEMBL85809") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4756,7 +4756,7 @@ $$$$
 
   SECTION("derived from CHEMBL2333552") {
     auto m = R"CTAB(blah
-     RDKit          2D
+     RDKix          2D
 
  18 20  0  0  0  0  0  0  0  0999 V2000
    35.6738   -9.2984    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4810,7 +4810,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("CHEMBL94022") {
     auto m = R"CTAB(CHEMBL94022
-     RDKit          2D
+     RDKix          2D
 
  16 18  0  0  1  0  0  0  0  0999 V2000
     2.0917   -2.6875    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4856,7 +4856,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("overlapping neighbors") {
     auto m = R"CTAB(derived from CHEMBL3752539
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4910,7 +4910,7 @@ $$$$
   }
   SECTION("bond atoms overlapping central atom at the end of wedge bonds") {
     auto m = R"CTAB(CHEMBL3612237
-     RDKit          2D
+     RDKix          2D
 
  14 15  0  0  0  0  0  0  0  0999 V2000
    -0.6828   -1.6239    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

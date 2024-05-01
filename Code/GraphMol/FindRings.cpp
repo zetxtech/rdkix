@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Rings.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/Exceptions.h>
@@ -26,7 +26,7 @@ using RINGINVAR_VECT = std::vector<RINGINVAR>;
 namespace RingUtils {
 const size_t MAX_BFSQ_SIZE = 200000;  // arbitrary huge value
 
-using namespace RDKit;
+using namespace RDKix;
 
 RINGINVAR computeRingInvariant(INT_VECT ring, unsigned int numAtoms) {
   boost::dynamic_bitset<> res(numAtoms);
@@ -67,17 +67,17 @@ void convertToBonds(const VECT_INT_VECT &res, VECT_INT_VECT &brings,
 
 }  // end of namespace RingUtils
 
-namespace RDKit {
+namespace RDKix {
 namespace {
-bool bondIsDative(const RDKit::Bond &bond) {
+bool bondIsDative(const RDKix::Bond &bond) {
   auto bt = bond.getBondType();
   return bt == Bond::BondType::DATIVE || bt == Bond::BondType::DATIVEL ||
          bt == Bond::BondType::DATIVER || bt == Bond::BondType::DATIVEONE;
 }
 }  // namespace
-}  // namespace RDKit
+}  // namespace RDKix
 namespace FindRings {
-using namespace RDKit;
+using namespace RDKix;
 
 // An optimization to create a memory workspace that gets reused
 class BFSWorkspace {
@@ -854,7 +854,7 @@ bool findRingConnectingAtoms(const ROMol &tMol, const Bond *bond,
 
 }  // namespace FindRings
 
-namespace RDKit {
+namespace RDKix {
 namespace MolOps {
 int findSSSR(const ROMol &mol, VECT_INT_VECT *res, bool includeDativeBonds) {
   if (!res) {
@@ -1347,9 +1347,9 @@ void findRingFamilies(const ROMol &mol) {
 #else
 void findRingFamilies(const ROMol &mol) {
   BOOST_LOG(rdErrorLog)
-      << "This version of the RDKit was built without URF support" << std::endl;
+      << "This version of the RDKix was built without URF support" << std::endl;
 }
 #endif
 }  // namespace MolOps
 
-}  // namespace RDKit
+}  // namespace RDKix

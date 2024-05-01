@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
@@ -13,13 +13,13 @@
 // Like DrawMol, it is not part of the public API and should only be
 // used by MolDraw2D.
 
-#ifndef RDKIT_DRAWMOLMCH_H
-#define RDKIT_DRAWMOLMCH_H
+#ifndef RDKIX_DRAWMOLMCH_H
+#define RDKIX_DRAWMOLMCH_H
 
 #include <GraphMol/MolDraw2D/AtomSymbol.h>
 #include <GraphMol/MolDraw2D/DrawMol.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 class DrawMolMCH : public DrawMol {
@@ -71,6 +71,6 @@ class DrawMolMCH : public DrawMol {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWMOLMCH_H
+#endif  // RDKIX_DRAWMOLMCH_H

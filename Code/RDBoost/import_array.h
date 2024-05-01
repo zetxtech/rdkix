@@ -1,14 +1,14 @@
 #include <RDGeneral/export.h>
-#ifndef RDKIT_IMPORT_ARRAY_INCLUDED
-#define RDKIT_IMPORT_ARRAY_INCLUDED
+#ifndef RDKIX_IMPORT_ARRAY_INCLUDED
+#define RDKIX_IMPORT_ARRAY_INCLUDED
 
 #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 #include <numpy/arrayobject.h>
 
 #if PY_MAJOR_VERSION >= 3
-void* rdkit_import_array()
+void* rdkix_import_array()
 #else
-void rdkit_import_array()
+void rdkix_import_array()
 #endif
 {
   // numpy's import_array is defined as a macro that expands into a block

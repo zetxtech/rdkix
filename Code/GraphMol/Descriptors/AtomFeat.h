@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Guillaume GODIN
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -22,18 +22,18 @@
 // Created by Guillaume Godin 2020
 
 #include <RDGeneral/export.h>
-#ifndef AtomFeatRDKIT_H_MARC2020
-#define AtomFeatRDKIT_H_MARC2020
+#ifndef AtomFeatRDKIX_H_MARC2020
+#define AtomFeatRDKIX_H_MARC2020
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string AtomFeatVersion = "1.0.0";
 
-RDKIT_DESCRIPTORS_EXPORT void AtomFeatVect(const ROMol &,
+RDKIX_DESCRIPTORS_EXPORT void AtomFeatVect(const ROMol &,
                                            std::vector<double> &res,
                                            int atomid = 0,
                                            bool addchiral = false);
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

@@ -1,25 +1,25 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx).
 //
 // A concrete class derived from DrawText that uses SVG
 // to draw text onto a picture.
 
-#ifndef RDKIT_DRAWTEXTSVG_H
-#define RDKIT_DRAWTEXTSVG_H
+#ifndef RDKIX_DRAWTEXTSVG_H
+#define RDKIX_DRAWTEXTSVG_H
 
 #include <iosfwd>
 
 #include <GraphMol/MolDraw2D/DrawTextNotFT.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class MolDraw2DSVG;
 
@@ -51,6 +51,6 @@ class DrawTextSVG : public DrawTextNotFT {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWTEXTSVG_H
+#endif  // RDKIX_DRAWTEXTSVG_H

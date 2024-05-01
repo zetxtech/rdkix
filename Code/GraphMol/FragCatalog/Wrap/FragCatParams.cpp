@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <string>
 
 #include <DataStructs/BitVects.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FragCatalog/FragCatalogEntry.h>
 #include <GraphMol/FragCatalog/FragCatGenerator.h>
 #include <GraphMol/FragCatalog/FragCatParams.h>
@@ -19,7 +19,7 @@
 #include <Catalogs/CatalogParams.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 struct fragparams_wrapper {
   static void wrap() {
     // this exposed to be read only
@@ -45,6 +45,6 @@ struct fragparams_wrapper {
         .def("Serialize", &FragCatParams::Serialize, python::args("self"));
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_fragparams() { RDKit::fragparams_wrapper::wrap(); }
+void wrap_fragparams() { RDKix::fragparams_wrapper::wrap(); }

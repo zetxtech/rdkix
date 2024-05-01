@@ -34,7 +34,7 @@
 
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 const char *DEFAULT_FILTERMATCHERBASE_NAME = "Unnamed FilterMatcherBase";
 const char *SMARTS_MATCH_NAME_DEFAULT = "Unnamed SmartsMatcher";
 namespace {
@@ -88,18 +88,18 @@ bool SmartsMatcher::getMatches(const ROMol &mol,
   PRECONDITION(d_pattern.get(), "bad on pattern");
 
   bool onPatExists = false;
-  std::vector<RDKit::MatchVectType> matches;
+  std::vector<RDKix::MatchVectType> matches;
 
   if (d_min_count == 1 && d_max_count == UINT_MAX) {
-    RDKit::MatchVectType match;
-    onPatExists = RDKit::SubstructMatch(mol, *d_pattern.get(), match);
+    RDKix::MatchVectType match;
+    onPatExists = RDKix::SubstructMatch(mol, *d_pattern.get(), match);
     if (onPatExists) {
       matchVect.emplace_back(copy(), match);
     }
   } else {  // need to count
     const bool uniquify = true;
     unsigned int count =
-        RDKit::SubstructMatch(mol, *d_pattern.get(), matches, uniquify);
+        RDKix::SubstructMatch(mol, *d_pattern.get(), matches, uniquify);
     onPatExists = (count >= d_min_count &&
                    (d_max_count == UINT_MAX || count <= d_max_count));
     if (onPatExists) {
@@ -116,13 +116,13 @@ bool SmartsMatcher::hasMatch(const ROMol &mol) const {
   PRECONDITION(d_pattern.get(), "bad on pattern");
 
   if (d_min_count == 1 && d_max_count == UINT_MAX) {
-    RDKit::MatchVectType matches;
+    RDKix::MatchVectType matches;
     return SubstructMatch(mol, *d_pattern.get(), matches);
   } else {  // need to count
     const bool uniquify = true;
-    std::vector<RDKit::MatchVectType> matches;
+    std::vector<RDKix::MatchVectType> matches;
     unsigned int count =
-        RDKit::SubstructMatch(mol, *d_pattern.get(), matches, uniquify);
+        RDKix::SubstructMatch(mol, *d_pattern.get(), matches, uniquify);
     return (count >= d_min_count &&
             (d_max_count == UINT_MAX || count <= d_max_count));
   }
@@ -151,4 +151,4 @@ bool FilterHierarchyMatcher::getMatches(const ROMol &mol,
 
   return result;
 }
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,14 +2,14 @@
 //  Copyright (c) 2016, Guillaume GODIN
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <RDGeneral/RDLog.h>
@@ -27,7 +27,7 @@ void testGETAWAY() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/GETAWAY.new.out";
 
@@ -56,14 +56,14 @@ void testGETAWAY() {
     // if (nDone > 10) {
     //   break;
     // }
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dgetaway;
 
-    RDKit::Descriptors::GETAWAY(*m, dgetaway);
+    RDKix::Descriptors::GETAWAY(*m, dgetaway);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -79,14 +79,14 @@ void testGETAWAY() {
       if (fabs(ref) > 1) {
         if (fabs((ref - dgetaway[i]) / ref) > 0.01) {
           std::cerr << "value mismatch: pos" << i << " " << inm
-                    << " dragon: " << ref << " rdkit: " << dgetaway[i]
+                    << " dragon: " << ref << " rdkix: " << dgetaway[i]
                     << std::endl;
         }
       }
       if (fabs(ref) <= 1) {
         if (fabs(ref - dgetaway[i]) > 0.02) {
           std::cerr << "value mismatch: pos" << i << " " << inm
-                    << " dragon: " << ref << " rdkit: " << dgetaway[i]
+                    << " dragon: " << ref << " rdkix: " << dgetaway[i]
                     << std::endl;
         }
       }

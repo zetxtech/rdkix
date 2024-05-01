@@ -2,10 +2,10 @@
 //  Copyright (C) 2018-2022 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MOLINTERCHANGEDETAILS_H_FEB2018
@@ -13,11 +13,11 @@
 #include <GraphMol/Atom.h>
 #include <GraphMol/Bond.h>
 #include <GraphMol/StereoGroup.h>
-namespace RDKit {
+namespace RDKix {
 namespace MolInterchange {
 constexpr int currentMolJSONVersion = 10;
-constexpr int currentRDKitJSONVersion = 11;
-constexpr int currentRDKitRepresentationVersion = 2;
+constexpr int currentRDKixJSONVersion = 11;
+constexpr int currentRDKixRepresentationVersion = 2;
 constexpr int currentChargeRepresentationVersion = 10;
 constexpr int currentQueryRepresentationVersion = 10;
 
@@ -59,5 +59,5 @@ static const std::map<StereoGroupType, std::string> inv_stereoGrouplookup = {
     {StereoGroupType::STEREO_OR, "or"}};
 
 }  // namespace MolInterchange
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

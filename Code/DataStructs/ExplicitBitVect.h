@@ -3,10 +3,10 @@
 //  Copyright (c) 2014, Novartis Institutes for BioMedical Research Inc.
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_EXPLICITBITVECTS_H__
@@ -26,7 +26,7 @@
     sparsely occupied vectors.
 
  */
-class RDKIT_DATASTRUCTS_EXPORT ExplicitBitVect : public BitVect {
+class RDKIX_DATASTRUCTS_EXPORT ExplicitBitVect : public BitVect {
  public:
   ExplicitBitVect() {}
   //! initialize with a particular size;

@@ -1,15 +1,15 @@
 //
 //
-//  Copyright (C) 2019-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2019-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ChemReactions/ReactionParser.h>
@@ -22,8 +22,8 @@ class JSMolList;
 
 class JSMol {
  public:
-  JSMol() : d_mol(new RDKit::RWMol()) {}
-  JSMol(RDKit::RWMol *mol) : d_mol(mol) { assert(d_mol); }
+  JSMol() : d_mol(new RDKix::RWMol()) {}
+  JSMol(RDKix::RWMol *mol) : d_mol(mol) { assert(d_mol); }
   std::string get_smiles() const;
   std::string get_cxsmiles() const;
   std::string get_smarts() const;
@@ -64,11 +64,11 @@ class JSMol {
   std::string get_topological_torsion_fp_as_binary_text() const {
     return get_topological_torsion_fp_as_binary_text("{}");
   }
-  std::string get_rdkit_fp(const std::string &details) const;
-  std::string get_rdkit_fp() const { return get_rdkit_fp("{}"); }
-  std::string get_rdkit_fp_as_binary_text(const std::string &details) const;
-  std::string get_rdkit_fp_as_binary_text() const {
-    return get_rdkit_fp_as_binary_text("{}");
+  std::string get_rdkix_fp(const std::string &details) const;
+  std::string get_rdkix_fp() const { return get_rdkix_fp("{}"); }
+  std::string get_rdkix_fp_as_binary_text(const std::string &details) const;
+  std::string get_rdkix_fp_as_binary_text() const {
+    return get_rdkix_fp_as_binary_text("{}");
   }
   std::string get_atom_pair_fp(const std::string &details) const;
   std::string get_atom_pair_fp() const { return get_atom_pair_fp("{}"); }
@@ -153,14 +153,14 @@ class JSMol {
       unsigned int maxCutBonds) const;
 #endif
 
-  std::unique_ptr<RDKit::RWMol> d_mol;
+  std::unique_ptr<RDKix::RWMol> d_mol;
   static constexpr int d_defaultWidth = 250;
   static constexpr int d_defaultHeight = 200;
 };
 
 class JSMolList {
  public:
-  JSMolList(const std::vector<RDKit::ROMOL_SPTR> &mols)
+  JSMolList(const std::vector<RDKix::ROMOL_SPTR> &mols)
       : d_mols(mols), d_idx(0){};
   JSMolList() : d_idx(0){};
   JSMol *next();
@@ -171,35 +171,35 @@ class JSMolList {
   void reset() { d_idx = 0; }
   bool at_end() const { return d_idx == d_mols.size(); }
   size_t size() const { return d_mols.size(); }
-  const std::vector<RDKit::ROMOL_SPTR> &mols() const { return d_mols; }
+  const std::vector<RDKix::ROMOL_SPTR> &mols() const { return d_mols; }
 
  private:
-  std::vector<RDKit::ROMOL_SPTR> d_mols;
+  std::vector<RDKix::ROMOL_SPTR> d_mols;
   size_t d_idx;
 };
 
-namespace RDKit {
+namespace RDKix {
 namespace MinimalLib {
 struct LogHandle;
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 class JSLog {
  public:
-  JSLog(RDKit::MinimalLib::LogHandle *logHandle);
+  JSLog(RDKix::MinimalLib::LogHandle *logHandle);
   ~JSLog();
   std::string get_buffer() const;
   void clear_buffer() const;
 
  private:
-  RDKit::MinimalLib::LogHandle *d_logHandle;
+  RDKix::MinimalLib::LogHandle *d_logHandle;
 };
 
 #ifdef RDK_BUILD_MINIMAL_LIB_RXN
 class JSReaction {
  public:
-  JSReaction() : d_rxn(new RDKit::ChemicalReaction()) {}
-  JSReaction(RDKit::ChemicalReaction *rxn) : d_rxn(rxn) { assert(d_rxn); }
+  JSReaction() : d_rxn(new RDKix::ChemicalReaction()) {}
+  JSReaction(RDKix::ChemicalReaction *rxn) : d_rxn(rxn) { assert(d_rxn); }
   [
       [deprecated("please check the get_rxn return value for non-nullness "
                   "instead")]] bool
@@ -211,7 +211,7 @@ class JSReaction {
   }
   std::string get_svg_with_highlights(const std::string &details) const;
 
-  std::unique_ptr<RDKit::ChemicalReaction> d_rxn;
+  std::unique_ptr<RDKix::ChemicalReaction> d_rxn;
   static constexpr int d_defaultWidth = 800;
   static constexpr int d_defaultHeight = 200;
 };
@@ -250,9 +250,9 @@ class JSSubstructLibrary {
   }
   unsigned int size() const { return d_sslib->size(); }
 
-  std::unique_ptr<RDKit::SubstructLibrary> d_sslib;
-  RDKit::CachedTrustedSmilesMolHolder *d_molHolder;
-  RDKit::PatternHolder *d_fpHolder;
+  std::unique_ptr<RDKix::SubstructLibrary> d_sslib;
+  RDKix::CachedTrustedSmilesMolHolder *d_molHolder;
+  RDKix::PatternHolder *d_fpHolder;
   unsigned int d_num_bits;
   static constexpr unsigned int d_defaultNumBits = 2048;
   static constexpr bool d_defaultUseChirality = true;
@@ -260,7 +260,7 @@ class JSSubstructLibrary {
   static constexpr int d_defaultMaxResults = 1000;
 
  private:
-  inline int add_mol_helper(const RDKit::ROMol &mol);
+  inline int add_mol_helper(const RDKix::ROMol &mol);
 };
 #endif
 

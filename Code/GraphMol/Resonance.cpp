@@ -3,12 +3,12 @@
 //  Copyright (C) 2015 Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/Resonance.h>
 #include <RDGeneral/hash/hash.hpp>
@@ -19,7 +19,7 @@
 #endif
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 // class definitions that do not need being exposed in Resonance.h
 
 typedef std::set<std::size_t> CESet;
@@ -1836,4 +1836,4 @@ ROMol *ResonanceMolSupplier::assignBondsFormalCharges(
   ResonanceUtils::sanitizeMol((RWMol &)*mol);
   return mol;
 }
-}  // namespace RDKit
+}  // namespace RDKix

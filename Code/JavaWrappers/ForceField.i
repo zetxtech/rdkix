@@ -70,11 +70,11 @@
     return ((std::vector<RDGeom::Point3D *> &) ($self)->positions());
   }
 
-  static int UFFOptimizeMolecule(RDKit::ROMol &mol, int maxIters=200,
+  static int UFFOptimizeMolecule(RDKix::ROMol &mol, int maxIters=200,
     double vdwThresh=10.0, int confId=-1,
     bool ignoreInterfragInteractions=true ) {
 
-    ForceFields::ForceField *ff=RDKit::UFF::constructForceField(mol,vdwThresh, confId, ignoreInterfragInteractions);
+    ForceFields::ForceField *ff=RDKix::UFF::constructForceField(mol,vdwThresh, confId, ignoreInterfragInteractions);
     ff->initialize();
     int res=ff->minimize(maxIters);
     delete ff;
@@ -82,47 +82,47 @@
   }
 
   %newobject UFFGetMoleculeForceField;
-  static ForceFields::ForceField *UFFGetMoleculeForceField(RDKit::ROMol &mol,
+  static ForceFields::ForceField *UFFGetMoleculeForceField(RDKix::ROMol &mol,
     double vdwThresh=10.0,
     int confId=-1,
     bool ignoreInterfragInteractions=true ) {
 
-    ForceFields::ForceField *ff=RDKit::UFF::constructForceField(mol,vdwThresh, confId, ignoreInterfragInteractions);
+    ForceFields::ForceField *ff=RDKix::UFF::constructForceField(mol,vdwThresh, confId, ignoreInterfragInteractions);
     ff->initialize();
     return ff;
   }
 
-  static bool UFFHasAllMoleculeParams(const RDKit::ROMol &mol){
-    RDKit::UFF::AtomicParamVect types;
+  static bool UFFHasAllMoleculeParams(const RDKix::ROMol &mol){
+    RDKix::UFF::AtomicParamVect types;
     bool foundAll;
-    boost::tie(types,foundAll)=RDKit::UFF::getAtomTypes(mol);
+    boost::tie(types,foundAll)=RDKix::UFF::getAtomTypes(mol);
     return foundAll;
   }
 
   /* From GraphMol/ForceFieldHelpers/UFF/AtomTyper.h */
-  static void UFFAddAtomChargeFlags(const RDKit::Atom *atom, std::string &atomKey, bool tolerateChargeMismatch=true) {
-    RDKit::UFF::Tools::addAtomChargeFlags(atom, atomKey, tolerateChargeMismatch);
+  static void UFFAddAtomChargeFlags(const RDKix::Atom *atom, std::string &atomKey, bool tolerateChargeMismatch=true) {
+    RDKix::UFF::Tools::addAtomChargeFlags(atom, atomKey, tolerateChargeMismatch);
   }
 
-  static std::string UFFGetAtomLabel(const RDKit::Atom *atom) {
-    return RDKit::UFF::Tools::getAtomLabel(atom);
+  static std::string UFFGetAtomLabel(const RDKix::Atom *atom) {
+    return RDKix::UFF::Tools::getAtomLabel(atom);
   }
 
   /* From GraphMol/ForceFieldHelpers/UFF/AtomTyper.h */
-  static std::pair<std::vector<const ForceFields::UFF::AtomicParams *>,bool> UFFGetAtomTypes(const RDKit::ROMol &mol, const std::string &paramData="") {
-    return RDKit::UFF::getAtomTypes(mol, paramData);
+  static std::pair<std::vector<const ForceFields::UFF::AtomicParams *>,bool> UFFGetAtomTypes(const RDKix::ROMol &mol, const std::string &paramData="") {
+    return RDKix::UFF::getAtomTypes(mol, paramData);
   }
 
-  static int MMFFOptimizeMolecule(RDKit::ROMol &mol,
+  static int MMFFOptimizeMolecule(RDKix::ROMol &mol,
                                   std::string mmffVariant="MMFF94",
                                   int maxIters=200,
                                   double nonBondedThresh=100.0, int confId=-1,
                                   bool ignoreInterfragInteractions=true ) {
     int res=1;
-    RDKit::MMFF::MMFFMolProperties mmffMolProperties(mol, mmffVariant);
+    RDKix::MMFF::MMFFMolProperties mmffMolProperties(mol, mmffVariant);
 
     if (mmffMolProperties.isValid()) {
-      ForceFields::ForceField *ff = RDKit::MMFF::constructForceField(mol,
+      ForceFields::ForceField *ff = RDKix::MMFF::constructForceField(mol,
         &mmffMolProperties, nonBondedThresh, confId, ignoreInterfragInteractions);
       ff->initialize();
       res = ff->minimize(maxIters);
@@ -135,16 +135,16 @@
   }
 
   %newobject MMFFGetMoleculeForceField;
-  static ForceFields::ForceField *MMFFGetMoleculeForceField(RDKit::ROMol &mol,
+  static ForceFields::ForceField *MMFFGetMoleculeForceField(RDKix::ROMol &mol,
                                                             std::string mmffVariant="MMFF94",
                                                             double nonBondedThresh=100.0,
                                                             int confId=-1,
                                                             bool ignoreInterfragInteractions=true ) {
 
     ForceFields::ForceField *ff = 0;
-    RDKit::MMFF::MMFFMolProperties mmffMolProperties(mol, mmffVariant);
+    RDKix::MMFF::MMFFMolProperties mmffMolProperties(mol, mmffVariant);
     if (mmffMolProperties.isValid()) {
-      ff = RDKit::MMFF::constructForceField(mol,
+      ff = RDKix::MMFF::constructForceField(mol,
                                             &mmffMolProperties, nonBondedThresh,
                                             confId, ignoreInterfragInteractions);
       ff->initialize();
@@ -153,8 +153,8 @@
     }
     return ff;
   }
-  static bool MMFFHasAllMoleculeParams(RDKit::ROMol &mol){
-    RDKit::MMFF::MMFFMolProperties mmffMolProperties(mol);
+  static bool MMFFHasAllMoleculeParams(RDKix::ROMol &mol){
+    RDKix::MMFF::MMFFMolProperties mmffMolProperties(mol);
     return mmffMolProperties.isValid();
   }
 

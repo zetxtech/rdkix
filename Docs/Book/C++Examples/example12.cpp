@@ -11,12 +11,12 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
 int main(int argc, char **argv) {
-  std::shared_ptr<RDKit::ROMol> mol1(RDKit::SmilesToMol("c1ccncc1"));
+  std::shared_ptr<RDKix::ROMol> mol1(RDKix::SmilesToMol("c1ccncc1"));
   std::string pickle;
-  RDKit::MolPickler::pickleMol(*mol1, pickle);
-  RDKit::ROMol mol2;
-  RDKit::MolPickler::molFromPickle(pickle, mol2);
-  std::cout << RDKit::MolToSmiles(mol2) << std::endl;
+  RDKix::MolPickler::pickleMol(*mol1, pickle);
+  RDKix::ROMol mol2;
+  RDKix::MolPickler::molFromPickle(pickle, mol2);
+  std::cout << RDKix::MolToSmiles(mol2) << std::endl;
 
   // writing to pickle file
   std::string smi_file = getenv("RDBASE");
@@ -24,17 +24,17 @@ int main(int argc, char **argv) {
   std::string pkl_name = "canonSmiles.long.bin";
 
   // tab-delimited file, SMILES in column 0, name in 1, no title line
-  RDKit::SmilesMolSupplier suppl(smi_file, "\t", 0, 1, false);
+  RDKix::SmilesMolSupplier suppl(smi_file, "\t", 0, 1, false);
   std::ofstream pickle_ostream(pkl_name.c_str(), std::ios_base::binary);
   int write_cnt = 0;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     // write all props (including _Name) to the pickle.  Default is not to:
-    // RDKit::MolPickler::pickleMol( *mol , pickle_ostream);
-    // RDKit::MolPickler::pickleMol( *mol , pickle_ostream,
-    // RDKit::PicklerOps::NoProps);
-    RDKit::MolPickler::pickleMol(*mol, pickle_ostream,
-                                 RDKit::PicklerOps::AllProps);
+    // RDKix::MolPickler::pickleMol( *mol , pickle_ostream);
+    // RDKix::MolPickler::pickleMol( *mol , pickle_ostream,
+    // RDKix::PicklerOps::NoProps);
+    RDKix::MolPickler::pickleMol(*mol, pickle_ostream,
+                                 RDKix::PicklerOps::AllProps);
     ++write_cnt;
   }
   pickle_ostream.close();
@@ -44,10 +44,10 @@ int main(int argc, char **argv) {
   std::ifstream pickle_istream(pkl_name.c_str(), std::ios_base::binary);
   int read_cnt = 0;
   while (!pickle_istream.eof()) {
-    RDKit::ROMol mol3;
+    RDKix::ROMol mol3;
     try {
-      RDKit::MolPickler::molFromPickle(pickle_istream, mol3);
-    } catch (RDKit::MolPicklerException &e) {
+      RDKix::MolPickler::molFromPickle(pickle_istream, mol3);
+    } catch (RDKix::MolPicklerException &e) {
       break;
     }
     if (!read_cnt) {

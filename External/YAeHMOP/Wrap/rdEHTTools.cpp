@@ -2,16 +2,16 @@
 //  Copyright (C) 2019 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdeht_array_API
 #include <RDBoost/python.h>
 #include <boost/python/list.hpp>
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "EHTTools.h"
 
 #include <RDBoost/boost_numpy.h>
@@ -21,7 +21,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -108,9 +108,9 @@ PyObject *getOrbitalEnergies(EHTTools::EHTResults &self) {
   return getVectorProp(self.orbitalEnergies.get(), self.numOrbitals);
 }
 
-python::tuple runCalc(const RDKit::ROMol &mol, int confId, bool keepMatrices) {
-  auto eRes = new RDKit::EHTTools::EHTResults();
-  bool ok = RDKit::EHTTools::runMol(mol, *eRes, confId, keepMatrices);
+python::tuple runCalc(const RDKix::ROMol &mol, int confId, bool keepMatrices) {
+  auto eRes = new RDKix::EHTTools::EHTResults();
+  bool ok = RDKix::EHTTools::runMol(mol, *eRes, confId, keepMatrices);
   return python::make_tuple(ok, transfer_to_python(eRes));
 }
 PyObject *getHamiltonian(EHTTools::EHTResults &self) {
@@ -139,13 +139,13 @@ struct EHT_wrapper {
   static void wrap() {
     std::string docString = "";
 
-    python::class_<RDKit::EHTTools::EHTResults, boost::noncopyable>(
+    python::class_<RDKix::EHTTools::EHTResults, boost::noncopyable>(
         "EHTResults", docString.c_str(), python::no_init)
-        .def_readonly("numOrbitals", &RDKit::EHTTools::EHTResults::numOrbitals)
+        .def_readonly("numOrbitals", &RDKix::EHTTools::EHTResults::numOrbitals)
         .def_readonly("numElectrons",
-                      &RDKit::EHTTools::EHTResults::numElectrons)
-        .def_readonly("fermiEnergy", &RDKit::EHTTools::EHTResults::fermiEnergy)
-        .def_readonly("totalEnergy", &RDKit::EHTTools::EHTResults::totalEnergy)
+                      &RDKix::EHTTools::EHTResults::numElectrons)
+        .def_readonly("fermiEnergy", &RDKix::EHTTools::EHTResults::fermiEnergy)
+        .def_readonly("totalEnergy", &RDKix::EHTTools::EHTResults::totalEnergy)
         .def("GetReducedChargeMatrix", getChargeMatrix, python::args("self"),
              "returns the reduced charge matrix")
         .def("GetReducedOverlapPopulationMatrix", getOPMatrix,
@@ -181,13 +181,13 @@ RETURNS: a 2-tuple:
   }
 };
 
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 BOOST_PYTHON_MODULE(rdEHTTools) {
   python::scope().attr("__doc__") =
       R"DOC(Module containing interface to the YAeHMOP extended Hueckel library.
 Please note that this interface should still be considered experimental and may
 change from one release to the next.)DOC";
-  rdkit_import_array();
+  rdkix_import_array();
 
-  RDKit::EHT_wrapper::wrap();
+  RDKix::EHT_wrapper::wrap();
 }

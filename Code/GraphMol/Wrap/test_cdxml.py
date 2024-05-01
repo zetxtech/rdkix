@@ -1,5 +1,5 @@
 #
-#  Copyright (C) 2003-2021  Greg Landrum and other RDKit contributors
+#  Copyright (C) 2003-2021  Greg Landrum and other RDKix contributors
 #         All Rights Reserved
 #
 """ This is a rough coverage test of the python wrapper
@@ -18,7 +18,7 @@ import tempfile
 import unittest
 from io import StringIO
 
-from rdkit import Chem
+from rdkix import Chem
 
 
 class TestCase(unittest.TestCase):

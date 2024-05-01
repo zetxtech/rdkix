@@ -26,9 +26,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-// for build & set RDBASE! => export RDBASE=/Users/GVALMTGG/Github/rdkit_mine/
+// for build & set RDBASE! => export RDBASE=/Users/GVALMTGG/Github/rdkix_mine/
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "EEM.h"
 #include "MolData3Ddescriptors.h"
@@ -38,7 +38,7 @@
 
 using namespace Eigen;
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace {
 
@@ -103,11 +103,11 @@ const float B3[] =
 
 // function to retrieve the atomtype value based on the "highest" (e.g. max)
 // bond type of an atom potential improvement : in the original publication they
-// don't have access to "Aromatic type" like in RDKit
-unsigned int getAtomtype(const ROMol &mol, const RDKit::Atom *atom) {
+// don't have access to "Aromatic type" like in RDKix
+unsigned int getAtomtype(const ROMol &mol, const RDKix::Atom *atom) {
   PRECONDITION(atom != nullptr, "bad atom argument")
   unsigned int t = 1;
-  RDKit::ROMol::OEDGE_ITER beg, end;
+  RDKix::ROMol::OEDGE_ITER beg, end;
   boost::tie(beg, end) = mol.getAtomBonds(atom);
   while (beg != end) {
     const Bond *bond = mol[*beg];
@@ -240,11 +240,11 @@ void EEM(ROMol &mol, std::vector<double> &res, int confId) {
   // copy molecule so that we can kekulize it
   RWMol wmol(mol);
   // kekulize is currently required but it could be remove if and only if:
-  // we use "Aromatic type"  in RDKit retrain the model without Kekulize
+  // we use "Aromatic type"  in RDKix retrain the model without Kekulize
   // that would be part of a future release if it's really important
   MolOps::Kekulize(wmol, true);
 
   getEEMs(wmol, res, numAtoms, confId);
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

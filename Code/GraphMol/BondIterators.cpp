@@ -3,14 +3,14 @@
 //  Copyright (C) 2002-2006 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "BondIterators.h"
 
-namespace RDKit {
+namespace RDKix {
 
 BondIterator_::BondIterator_(ROMol *mol) {
   _mol = mol;
@@ -141,4 +141,4 @@ ConstBondIterator_ ConstBondIterator_::operator--(int) {
   }
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

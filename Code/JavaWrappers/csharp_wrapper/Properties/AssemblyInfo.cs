@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RDKit2DotNet")]
+[assembly: AssemblyTitle("RDKix2DotNet")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NIBR")]
-[assembly: AssemblyProduct("RDKit2DotNet")]
+[assembly: AssemblyProduct("RDKix2DotNet")]
 [assembly: AssemblyCopyright("Copyright © NIBR 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

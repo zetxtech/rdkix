@@ -6,7 +6,7 @@ if(RDK_TEST_MMFF_COMPLIANCE)
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test_data
     )
   endif()
-rdkit_test(testMMFFForceField testMMFFForceField.cpp
+rdkix_test(testMMFFForceField testMMFFForceField.cpp
     LINK_LIBRARIES
     DistGeomHelpers ForceFieldHelpers  
     FileParsers MolTransforms SmilesParse SubstructMatch MolAlign )

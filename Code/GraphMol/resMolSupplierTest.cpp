@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -10,7 +10,7 @@
 #include <GraphMol/MolOps.h>
 #include <GraphMol/Resonance.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void addFormalChargeIndices(const ROMol *mol,
                             std::map<unsigned int, int> &fcMap) {
@@ -760,7 +760,7 @@ void testConjGrpPerception() {
   BOOST_LOG(rdInfoLog) << "-----------------------\n"
                        << "testConjGrpPerception" << std::endl;
   RWMol *mol1 = MolBlockToMol(R"SDF(
-     RDKit          2D
+     RDKix          2D
 
  14 15  0  0  0  0  0  0  0  0999 V2000
     3.7539   -1.2744    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -795,7 +795,7 @@ void testConjGrpPerception() {
 M  END
 )SDF");
   RWMol *mol2 = MolBlockToMol(R"SDF(
-     RDKit          2D
+     RDKix          2D
 
  14 15  0  0  0  0  0  0  0  0999 V2000
     1.0619   -1.6417    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0

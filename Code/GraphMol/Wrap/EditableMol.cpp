@@ -2,10 +2,10 @@
 //  Copyright (C) 2007-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,11 +14,11 @@
 
 #include "rdchem.h"
 // ours
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 class EditableMol : boost::noncopyable {
@@ -150,5 +150,5 @@ struct EditableMol_wrapper {
   };
 };
 
-}  // namespace RDKit
-void wrap_EditableMol() { RDKit::EditableMol_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_EditableMol() { RDKix::EditableMol_wrapper::wrap(); }

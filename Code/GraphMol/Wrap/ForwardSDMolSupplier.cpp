@@ -2,10 +2,10 @@
 //  Copyright (C) 2011-2019  Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -18,7 +18,7 @@
 // ours
 #include <RDGeneral/BadFileException.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/python_streambuf.h>
 #include "ContextManagers.h"
 
@@ -29,7 +29,7 @@ namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 namespace {
 
-class LocalForwardSDMolSupplier : public RDKit::ForwardSDMolSupplier {
+class LocalForwardSDMolSupplier : public RDKix::ForwardSDMolSupplier {
  public:
   LocalForwardSDMolSupplier(python::object &input, bool sanitize, bool removeHs,
                             bool strictParsing) {
@@ -60,7 +60,7 @@ class LocalForwardSDMolSupplier : public RDKit::ForwardSDMolSupplier {
       delete tmpStream;
       std::ostringstream errout;
       errout << "Bad input file " << filename;
-      throw RDKit::BadFileException(errout.str());
+      throw RDKix::BadFileException(errout.str());
     }
     dp_inStream = tmpStream;
     df_owner = true;
@@ -76,7 +76,7 @@ LocalForwardSDMolSupplier *FwdMolSupplIter(LocalForwardSDMolSupplier *self) {
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 std::string fsdMolSupplierClassDoc =
     "A class which supplies molecules from file-like object containing SD data.\n\
@@ -148,6 +148,6 @@ struct forwardsdmolsup_wrap {
              "processed when reading molecules");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_forwardsdsupplier() { RDKit::forwardsdmolsup_wrap::wrap(); }
+void wrap_forwardsdsupplier() { RDKix::forwardsdmolsup_wrap::wrap(); }

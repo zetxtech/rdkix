@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include "RDKitBase.h"
+#include "RDKixBase.h"
 #include <list>
 #include "QueryAtom.h"
 #include "QueryOps.h"
@@ -19,7 +19,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <boost/range/iterator_range.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 // Local utility functionality:
 namespace {
@@ -1333,4 +1333,4 @@ std::pair<bool, bool> hasQueryHs(const ROMol &mol) {
 }
 
 }  // namespace MolOps
-}  // namespace RDKit
+}  // namespace RDKix

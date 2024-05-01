@@ -5,7 +5,7 @@
 from distutils import sysconfig
 from distutils.core import Extension, setup
 
-from rdkit import RDConfig
+from rdkix import RDConfig
 
 save_init_posix = sysconfig._init_posix
 

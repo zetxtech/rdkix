@@ -3,10 +3,10 @@
 //  Copyright (C) 2023 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -26,7 +26,7 @@
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 
-namespace RDKit {
+namespace RDKix {
 
 class LocalMaeWriter : public MaeWriter {
  public:
@@ -39,7 +39,7 @@ class LocalMaeWriter : public MaeWriter {
     dp_ostream.reset(new streambuf::ostream(output));
   }
 
-  LocalMaeWriter(const std::string &fname) : RDKit::MaeWriter(fname) {}
+  LocalMaeWriter(const std::string &fname) : RDKix::MaeWriter(fname) {}
 
  private:
   std::unique_ptr<streambuf> dp_streambuf = nullptr;
@@ -122,6 +122,6 @@ struct wrap_maewriter {
     iterable_converter().from_python<std::vector<std::string>>();
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_maewriter() { RDKit::wrap_maewriter::wrap(); }
+void wrap_maewriter() { RDKix::wrap_maewriter::wrap(); }

@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLENUMERATOR_BUILD)
-rdkit_python_extension(rdMolEnumerator
+remove_definitions(-DRDKIX_MOLENUMERATOR_BUILD)
+rdkix_python_extension(rdMolEnumerator
                        rdMolEnumerator.cpp
                        DEST Chem
                        LINK_LIBRARIES

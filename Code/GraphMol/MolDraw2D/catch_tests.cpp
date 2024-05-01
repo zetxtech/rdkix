@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2019-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2019-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <catch2/catch_all.hpp>
 #include <numeric>
 #include <random>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include <RDGeneral/hash/hash.hpp>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -392,7 +392,7 @@ void check_file_hash(const std::string &filename,
 }
 }  // namespace
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("prepareAndDrawMolecule", "[drawing]") {
   SECTION("basics") {
@@ -3018,7 +3018,7 @@ TEST_CASE("Github #3744: Double bonds incorrectly drawn outside the ring",
           "[drawing]") {
   SECTION("SVG") {
     ROMOL_SPTR m1(MolBlockToMol(R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
     0.0684   -1.2135    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3913,7 +3913,7 @@ M  END
 
 TEST_CASE("Github #4519 bad placement of datafield labels") {
   auto mol1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3940,7 +3940,7 @@ M  END)CTAB"_ctab;
   REQUIRE(mol1);
 
   auto mol2 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3975,7 +3975,7 @@ M  END)CTAB"_ctab;
   REQUIRE(mol2);
 
   auto mol3 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4276,7 +4276,7 @@ M  END
   }
   SECTION("data labels") {
     auto mol1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4551,7 +4551,7 @@ TEST_CASE("Github #4764") {
 TEST_CASE("drawArc starting from wrong angle") {
   SECTION("basics") {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -1.2135   -0.7027    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6043,7 +6043,7 @@ TEST_CASE("Bad O position in aldehydes", "") {
   }
   {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  11 11  0  0  0  0  0  0  0  0999 V2000
    -4.2885    0.5445    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6397,7 +6397,7 @@ TEST_CASE("Github5947: Ellipse extremes not calculated correctly.") {
 TEST_CASE("Github5943: bad ellipses for atom end points") {
   std::string nameBase = "test_github5943";
   auto m = R"CTAB(ferrocene
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -6469,7 +6469,7 @@ M  END
 TEST_CASE("Github5949: fixed size for dative arrow heads") {
   std::string nameBase = "test_github5949";
   auto m = R"CTAB(ferrocene
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -7428,7 +7428,7 @@ TEST_CASE("Bad double bond - Github 6160") {
 TEST_CASE("No crossing for oddly drawn double bond - Github 6170") {
   std::string nameBase = "test_github6170";
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   8  7  0  0  0  0  0  0  0  0999 V2000
     3.0428   -1.6819    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7738,7 +7738,7 @@ TEST_CASE(
 TEST_CASE("Github #6416: crash with colinear atoms") {
   std::string name = "github6416.svg";
   auto m = R"CTAB(168010013
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -7850,7 +7850,7 @@ TEST_CASE("Github 6397 - chiral tag overlapping atom label") {
   };
   std::string nameBase = "test_github6397";
   auto m1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  1  0  0  0  0  0999 V2000
     2.3094   -1.6667    0.0000 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8065,7 +8065,7 @@ TEST_CASE("Github #6400: extra padding, no legend apparent") {
 TEST_CASE("Github #6504: double bonds not drawn correctly for sulfoximines") {
   std::string baseName = "github6504";
   auto m1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   7  6  0  0  0  0  0  0  0  0999 V2000
    -3.3489   -2.7067    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8086,7 +8086,7 @@ M  END
   // The bug report showed different manifestations of the problem
   // using the given coords and those generated from scratch.
   REQUIRE(m1);
-  std::unique_ptr<RDKit::ROMol> m2(new RDKit::ROMol(*m1));
+  std::unique_ptr<RDKix::ROMol> m2(new RDKix::ROMol(*m1));
   RDDepict::compute2DCoords(*m2);
 
   // The test, in both cases, is that the 2 ends of the lines
@@ -8148,7 +8148,7 @@ M  END
 TEST_CASE("Github #6569: placement of bond labels bad when atoms overlap") {
   std::string baseName = "github6569";
   auto m = R"CTAB(CHEMBL3612237
-     RDKit          2D
+     RDKix          2D
 
  14 15  0  0  0  0  0  0  0  0999 V2000
    -0.6828   -1.6239    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8264,7 +8264,7 @@ TEST_CASE("Lasso highlights") {
     }
     MolDraw2DSVG drawer(500, 500);
     drawer.drawOptions().multiColourHighlightStyle =
-        RDKit::MultiColourHighlightStyle::LASSO;
+        RDKix::MultiColourHighlightStyle::LASSO;
     drawer.drawOptions().addAtomIndices = true;
     drawer.drawMoleculeWithHighlights(*m, "Lasso 1", ha_map, hb_map, h_rads,
                                       h_lw_mult);
@@ -8297,7 +8297,7 @@ TEST_CASE("Lasso highlights") {
     std::map<int, int> h_lw_mult;
     MolDraw2DSVG drawer(500, 500);
     drawer.drawOptions().multiColourHighlightStyle =
-        RDKit::MultiColourHighlightStyle::LASSO;
+        RDKix::MultiColourHighlightStyle::LASSO;
     drawer.drawMoleculeWithHighlights(*m, "Lasso 2", ha_map, hb_map, h_rads,
                                       h_lw_mult);
     drawer.finishDrawing();
@@ -8330,7 +8330,7 @@ TEST_CASE("Lasso highlights") {
     std::map<int, int> h_lw_mult;
     MolDraw2DSVG drawer(500, 500);
     drawer.drawOptions().multiColourHighlightStyle =
-        RDKit::MultiColourHighlightStyle::LASSO;
+        RDKix::MultiColourHighlightStyle::LASSO;
     drawer.drawOptions().addAtomIndices = true;
     drawer.drawMoleculeWithHighlights(*m, "Lasso 3", ha_map, hb_map, h_rads,
                                       h_lw_mult);
@@ -8357,7 +8357,7 @@ TEST_CASE("Lasso highlights") {
     {
       MolDraw2DSVG drawer(500, 500);
       drawer.drawOptions().multiColourHighlightStyle =
-          RDKit::MultiColourHighlightStyle::LASSO;
+          RDKix::MultiColourHighlightStyle::LASSO;
       drawer.drawOptions().addAtomIndices = true;
       drawer.drawMoleculeWithHighlights(*m, "Lasso 4", ha_map, hb_map, h_rads,
                                         h_lw_mult);
@@ -8387,7 +8387,7 @@ TEST_CASE("Lasso highlights") {
     {
       MolDraw2DSVG drawer(500, 500);
       drawer.drawOptions().multiColourHighlightStyle =
-          RDKit::MultiColourHighlightStyle::LASSO;
+          RDKix::MultiColourHighlightStyle::LASSO;
       drawer.drawOptions().addAtomIndices = true;
       drawer.drawOptions().addBondIndices = true;
       drawer.drawMoleculeWithHighlights(*m, "Lasso 5", ha_map, hb_map, h_rads,
@@ -8410,7 +8410,7 @@ TEST_CASE("Lasso highlights") {
   {
     // Bug with large radii lassos.
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -8478,7 +8478,7 @@ M  END)CTAB"_ctab;
     drawer.drawOptions().fillHighlights = false;
     drawer.drawOptions().addAtomIndices = true;
     drawer.drawOptions().multiColourHighlightStyle =
-        RDKit::MultiColourHighlightStyle::LASSO;
+        RDKix::MultiColourHighlightStyle::LASSO;
     drawer.drawMoleculeWithHighlights(*m, "Lasso 6", ha_map, hb_map, h_rads,
                                       h_lw_mult);
     drawer.finishDrawing();
@@ -8492,7 +8492,7 @@ M  END)CTAB"_ctab;
   {
     // Bug with different radii in lassos.
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -8561,7 +8561,7 @@ M  END)CTAB"_ctab;
     drawer.drawOptions().fillHighlights = false;
     drawer.drawOptions().addAtomIndices = true;
     drawer.drawOptions().multiColourHighlightStyle =
-        RDKit::MultiColourHighlightStyle::LASSO;
+        RDKix::MultiColourHighlightStyle::LASSO;
     drawer.drawMoleculeWithHighlights(*m, "Lasso 7", ha_map, hb_map, h_rads,
                                       h_lw_mult);
     drawer.finishDrawing();
@@ -9122,7 +9122,7 @@ TEST_CASE("Github 6749 : various bad things in the lasso highlighting") {
   std::map<int, int> h_lw_mult;
   MolDraw2DSVG drawer(600, 400);
   drawer.drawOptions().multiColourHighlightStyle =
-      RDKit::MultiColourHighlightStyle::LASSO;
+      RDKix::MultiColourHighlightStyle::LASSO;
   drawer.drawOptions().fillHighlights = false;
   drawer.drawMoleculeWithHighlights(*mol, "Bad Lasso", ha_map, hb_map, h_rads,
                                     h_lw_mult);

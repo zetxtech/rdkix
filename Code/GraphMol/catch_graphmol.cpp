@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2018-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -16,9 +16,9 @@
 #include <random>
 #include <boost/format.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/new_canon.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/MonomerInfo.h>
@@ -30,7 +30,7 @@
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 #include <GraphMol/test_fixtures.h>
 
-using namespace RDKit;
+using namespace RDKix;
 #if 1
 TEST_CASE("SMILES Parsing works", "[molops]") {
   std::unique_ptr<RWMol> mol(SmilesToMol("C1CC1"));
@@ -1524,7 +1524,7 @@ TEST_CASE(
 TEST_CASE("github #3879: bad H coordinates on fused rings", "[addhs]") {
   SECTION("reported") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1596,7 +1596,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("non-chiral version") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1714,7 +1714,7 @@ M  END
   }
   SECTION("#3932: followup from #3879") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  21 22  0  0  0  0  0  0  0  0999 V2000
    -6.9959    0.0617    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2326,8 +2326,8 @@ TEST_CASE("conformer details") {
   CHECK(conf->getId() == cid);
 }
 
-#if !defined(_WIN32) || !defined(RDKIT_DYN_LINK)
-namespace RDKit {
+#if !defined(_WIN32) || !defined(RDKIX_DYN_LINK)
+namespace RDKix {
 namespace Canon {
 namespace details {
 bool atomHasFourthValence(const Atom *atom);
@@ -2335,7 +2335,7 @@ bool hasSingleHQuery(const Atom::QUERYATOM_QUERY *q);
 }  // namespace details
 void switchBondDir(Bond *bond);
 }  // namespace Canon
-}  // namespace RDKit
+}  // namespace RDKix
 TEST_CASE("canon details") {
   SECTION("h queries") {
     std::vector<std::pair<std::string, bool>> examples{
@@ -2346,13 +2346,13 @@ TEST_CASE("canon details") {
     for (const auto &pr : examples) {
       std::unique_ptr<RWMol> m{SmartsToMol(pr.first)};
       REQUIRE(m);
-      CHECK(RDKit::Canon::details::hasSingleHQuery(
+      CHECK(RDKix::Canon::details::hasSingleHQuery(
                 m->getAtomWithIdx(1)->getQuery()) == pr.second);
-      CHECK(RDKit::Canon::details::atomHasFourthValence(m->getAtomWithIdx(1)) ==
+      CHECK(RDKix::Canon::details::atomHasFourthValence(m->getAtomWithIdx(1)) ==
             pr.second);
       // artificial, but causes atomHasFourthValence to always return true
       m->getAtomWithIdx(1)->setNumExplicitHs(1);
-      CHECK(RDKit::Canon::details::atomHasFourthValence(m->getAtomWithIdx(1)));
+      CHECK(RDKix::Canon::details::atomHasFourthValence(m->getAtomWithIdx(1)));
     }
   }
 }
@@ -2960,14 +2960,14 @@ TEST_CASE("molecules with single bond to metal atom use dative instead") {
        "CCC1=[O+][Cu]2([O+]=C(CC)C1)[O+]=C(CC)CC(CC)=[O+]2"}};
   for (size_t i = 0; i < test_vals.size(); ++i) {
     INFO(test_vals[i].first);
-    RWMOL_SPTR m(RDKit::SmilesToMol(test_vals[i].first));
+    RWMOL_SPTR m(RDKix::SmilesToMol(test_vals[i].first));
     CHECK(MolToSmiles(*m) == test_vals[i].second);
   }
   // make sure we can call cleanupOrganometallics() on non-sanitized molecules
   for (size_t i = 0; i < test_vals.size(); ++i) {
     INFO(test_vals[i].first);
     bool sanitize = false;
-    RWMOL_SPTR m(RDKit::SmilesToMol(test_vals[i].first, 0, sanitize));
+    RWMOL_SPTR m(RDKix::SmilesToMol(test_vals[i].first, 0, sanitize));
     MolOps::cleanUpOrganometallics(*m);
     CHECK(MolToSmiles(*m) == test_vals[i].second);
   }
@@ -2983,7 +2983,7 @@ TEST_CASE(
   for (size_t j = 0; j < test_vals.size(); ++j) {
     std::string &smi = test_vals[j].first;
     std::string &canon_smi = test_vals[j].second;
-    RWMOL_SPTR m(RDKit::SmilesToMol(smi));
+    RWMOL_SPTR m(RDKix::SmilesToMol(smi));
     CHECK(MolToSmiles(*m) == canon_smi);
 
     // scramble the order and check
@@ -2994,7 +2994,7 @@ TEST_CASE(
     for (int i = 0; i < 100; ++i) {
       SmilesParserParams ps;
       ps.sanitize = false;
-      std::unique_ptr<ROMol> mol(RDKit::SmilesToMol(smi, ps));
+      std::unique_ptr<ROMol> mol(RDKix::SmilesToMol(smi, ps));
       std::shuffle(atomInds.begin(), atomInds.end(), g);
       std::unique_ptr<ROMol> randmol(MolOps::renumberAtoms(*mol, atomInds));
       std::unique_ptr<RWMol> rwrandmol(new RWMol(*randmol));
@@ -3087,7 +3087,7 @@ TEST_CASE(
 
 TEST_CASE("Remove atom updates bond ENDPTS prop") {
   auto m = R"CTAB(ferrocene-ish
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3131,34 +3131,34 @@ M  END
   REQUIRE(m);
   std::string sprop;
   auto bond = m->getBondWithIdx(12U);
-  CHECK(bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+  CHECK(bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop));
   CHECK(std::string("(5 1 2 3 4 5)") == sprop);
   m->removeAtom(2U);
   bond = m->getBondWithIdx(10U);
-  CHECK(bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+  CHECK(bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop));
   CHECK(std::string("(4 1 2 3 4)") == sprop);
   m->removeAtom(0U);
   m->removeAtom(0U);
   m->removeAtom(0U);
   m->removeAtom(0U);
-  CHECK(!bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+  CHECK(!bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                 sprop));
-  CHECK(!bond->getPropIfPresent(RDKit::common_properties::_MolFileBondAttach,
+  CHECK(!bond->getPropIfPresent(RDKix::common_properties::_MolFileBondAttach,
                                 sprop));
   // the original bond should now have index 6
   CHECK(bond->getIdx() == 6);
 
   // the other dative bond is now attached to different atom indices
   bond = m->getBondWithIdx(7U);
-  CHECK(bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+  CHECK(bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop));
   CHECK(std::string("(5 4 5 2 3 1)") == sprop);
   // remove atom 5 (6 in the file - the final methyl off the first
   // methyl-cyclopentadiene ring
   m->removeAtom(5U);
-  CHECK(bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+  CHECK(bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop));
   CHECK(std::string("(5 4 5 2 3 1)") == sprop);
 }
@@ -3254,7 +3254,7 @@ TEST_CASE(
 
   SECTION("original issue") {
     const std::string mb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3317,7 +3317,7 @@ M  END
 
   SECTION("pyrrole") {
     const std::string mb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3355,7 +3355,7 @@ M  END
 
   SECTION("pseudo-pyrrole") {
     const std::string mb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

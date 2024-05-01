@@ -3,10 +3,10 @@
 //  Copyright (C) 2001-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "PeriodicTable.h"
 #include <string>
@@ -19,7 +19,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <mutex>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 class std::unique_ptr<PeriodicTable> PeriodicTable::ds_instance = nullptr;
 
@@ -115,4 +115,4 @@ PeriodicTable *PeriodicTable::getTable() {
   return ds_instance.get();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

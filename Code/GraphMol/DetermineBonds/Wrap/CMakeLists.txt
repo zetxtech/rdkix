@@ -1,4 +1,4 @@
-rdkit_python_extension(rdDetermineBonds
+rdkix_python_extension(rdDetermineBonds
                        rdDetermineBonds.cpp
                        DEST Chem
                        LINK_LIBRARIES DetermineBonds 

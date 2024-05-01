@@ -2,10 +2,10 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/MolOps.h>
@@ -13,7 +13,7 @@
 #include <GraphMol/AtomIterators.h>
 #include <GraphMol/BondIterators.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolOps {
 ROMol *renumberAtoms(const ROMol &mol,
                      const std::vector<unsigned int> &newOrder) {
@@ -116,4 +116,4 @@ ROMol *renumberAtoms(const ROMol &mol,
 }
 
 };  // end of namespace MolOps
-};  // end of namespace RDKit
+};  // end of namespace RDKix

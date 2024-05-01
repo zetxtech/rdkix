@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "FragCatalogEntry.h"
 
 #include <RDGeneral/types.h>
 #include <RDGeneral/utils.h>
 #include <RDGeneral/StreamOps.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Subgraphs/SubgraphUtils.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
@@ -23,7 +23,7 @@
 #include <RDGeneral/hash/hash.hpp>
 #include <tuple>
 
-namespace RDKit {
+namespace RDKix {
 
 FragCatalogEntry::FragCatalogEntry(const ROMol *omol, const PATH_TYPE &path,
                                    const MatchVectType &aidToFid) {
@@ -258,4 +258,4 @@ void FragCatalogEntry::initFromString(const std::string &text) {
   // now start reading out values:
   initFromStream(ss);
 }
-}  // namespace RDKit
+}  // namespace RDKix

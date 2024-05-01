@@ -9,16 +9,16 @@ steps:
     conda config --add channels conda-forge
     conda config --set solver libmamba
     conda info -a
-    conda create --name rdkit_build $(python) cmake \
+    conda create --name rdkix_build $(python) cmake \
         libboost=$(boost_version) libboost-devel=$(boost_version) \
         libboost-python=$(boost_version) libboost-python-devel=$(boost_version) \
         numpy pillow eigen pandas \
         qt
-    conda activate rdkit_build
+    conda activate rdkix_build
   displayName: Setup build environment
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     mkdir build && cd build && \
     cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
@@ -45,13 +45,13 @@ steps:
   displayName: Configure build (Run CMake)
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     cd build
     make -j $( $(number_of_cores) ) install
   displayName: Build
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     export RDBASE=`pwd`
     export PYTHONPATH=${RDBASE}:${PYTHONPATH}
     export LD_LIBRARY_PATH=${RDBASE}/lib:${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}

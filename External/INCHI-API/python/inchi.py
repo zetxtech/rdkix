@@ -33,8 +33,8 @@ INCHI_AVAILABLE = True
 
 import logging
 
-from rdkit import RDLogger
-from rdkit.Chem import rdinchi
+from rdkix import RDLogger
+from rdkix.Chem import rdinchi
 
 logger = RDLogger.logger()
 
@@ -66,7 +66,7 @@ def MolFromInchi(inchi, sanitize=True, removeHs=True, logLevel=None, treatWarnin
     molecule  and error message are part of the excpetion
 
     Returns:
-    a rdkit.Chem.rdchem.Mol instance
+    a rdkix.Chem.rdchem.Mol instance
     """
   try:
     mol, retcode, message, log = rdinchi.InchiToMol(inchi, sanitize, removeHs)

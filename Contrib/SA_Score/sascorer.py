@@ -21,8 +21,8 @@ import os.path as op
 import pickle
 from collections import defaultdict
 
-from rdkit import Chem
-from rdkit.Chem import rdMolDescriptors
+from rdkix import Chem
+from rdkix.Chem import rdMolDescriptors
 
 _fscores = None
 

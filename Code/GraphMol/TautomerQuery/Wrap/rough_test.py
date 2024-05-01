@@ -1,12 +1,12 @@
 #
 # Created by Gareth Jones on 5/30/2020.
 #
-# Copyright 2020-2022 Schrodinger, Inc and other RDKit contributors
+# Copyright 2020-2022 Schrodinger, Inc and other RDKix contributors
 #  @@ All Rights Reserved @@
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 """ A rough test of Tautomer Queries 
 
 Rough in that only basic functionality is evaluated.
@@ -16,9 +16,9 @@ import os
 import pickle
 from unittest import TestCase, main
 import unittest
-from rdkit import Chem, DataStructs
-from rdkit.Chem import rdTautomerQuery
-from rdkit import rdBase
+from rdkix import Chem, DataStructs
+from rdkix.Chem import rdTautomerQuery
+from rdkix import rdBase
 
 
 class TautomerQueryTestCase(TestCase):

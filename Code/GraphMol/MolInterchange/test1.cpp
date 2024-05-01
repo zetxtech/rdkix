@@ -1,14 +1,14 @@
 //
 //  Copyright (C) 2018 Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/MolInterchange/MolInterchange.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -24,7 +24,7 @@
 #include <string>
 #include <fstream>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdErrorLog) << "test1: basics" << std::endl;
@@ -112,7 +112,7 @@ void test1() {
         "\"atoms\": [{\"z\": 6, \"impHs\": 2}, {\"z\": 8}, {\"z\": 26}], "
         "\"bonds\": [{\"atoms\": [0, 1], \"bo\": 2}, {\"atoms\": [1, 2], "
         "\"bo\": 0}], \"extensions\": [{\"formatVersion\": 1, "
-        "\"name\": \"rdkitRepresentation\", \"formatVersion\": 1,"
+        "\"name\": \"rdkixRepresentation\", \"formatVersion\": 1,"
         "\"toolkitVersion\": \"2018.03.1.dev1\", "
         "\"aromaticAtoms\": [], \"aromaticBonds\": [], \"cipRanks\": [0, 1, "
         "2], \"cipCodes\": [], \"atomRings\": []}]}]}";
@@ -433,7 +433,7 @@ void testGithub2046() {
     auto jsond = MolInterchange::MolToJSONData(*mol);
     auto mols = MolInterchange::JSONDataToMols(jsond);
     TEST_ASSERT(mols[0]->getAtomWithIdx(3)->getProp<unsigned int>(
-                    RDKit::common_properties::_CIPRank) > 0);
+                    RDKix::common_properties::_CIPRank) > 0);
   }
   BOOST_LOG(rdErrorLog) << "done" << std::endl;
 }
@@ -488,12 +488,12 @@ void testLocaleSwitcher() {
   }
 
   {
-    RDKit::Utils::LocaleSwitcher ls;
+    RDKix::Utils::LocaleSwitcher ls;
     sprintf(buffer, "%0.2f", d);
     CHECK_INVARIANT(std::string(buffer) == "-1.00", "Locale Switcher Fail");
     // test locale switcher recursion
     {
-      RDKit::Utils::LocaleSwitcher ls;
+      RDKix::Utils::LocaleSwitcher ls;
       sprintf(buffer, "%0.2f", d);
       CHECK_INVARIANT(std::string(buffer) == "-1.00", "Locale Switcher Fail");
     }

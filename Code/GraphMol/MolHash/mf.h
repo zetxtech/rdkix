@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2016-2022 NextMove Software and other RDKit contributors
+//  Copyright (C) 2016-2022 NextMove Software and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 #ifndef NMS_MOLFORMULA_H
 #define NMS_MOLFORMULA_H
 

@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
@@ -13,7 +13,7 @@
 
 // ours
 #include <GraphMol/FileParsers/MolWriters.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "rdchem.h"
 #include "ContextManagers.h"
 #include <RDBoost/PySequenceHolder.h>
@@ -21,7 +21,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 using boost_adaptbx::python::streambuf;
 SmilesWriter *getSmilesWriter(python::object &fileobj,
                               std::string delimiter = " ",
@@ -107,6 +107,6 @@ struct smiwriter_wrap {
              "Returns the number of molecules written so far.\n\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_smiwriter() { RDKit::smiwriter_wrap::wrap(); }
+void wrap_smiwriter() { RDKix::smiwriter_wrap::wrap(); }

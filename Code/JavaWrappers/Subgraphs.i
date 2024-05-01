@@ -38,9 +38,9 @@
 
 %include <GraphMol/Subgraphs/Subgraphs.h>
 %inline %{
-  std::vector<int> calcPathDiscriminators(RDKit::ROMol &mol,RDKit::PATH_TYPE &path){
+  std::vector<int> calcPathDiscriminators(RDKix::ROMol &mol,RDKix::PATH_TYPE &path){
     std::vector<int> res(3);
-    RDKit::Subgraphs::DiscrimTuple tpl=RDKit::Subgraphs::calcPathDiscriminators(mol,path);
+    RDKix::Subgraphs::DiscrimTuple tpl=RDKix::Subgraphs::calcPathDiscriminators(mol,path);
     res[0]=std::get<0>(tpl);
     res[1]=std::get<1>(tpl);
     res[2]=std::get<2>(tpl);

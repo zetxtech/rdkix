@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <list>
@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <RDGeneral/Ranking.h>
 
-namespace RDKit {
+namespace RDKix {
 
 void GetMolFileBondStereoInfo(const Bond *bond, const INT_MAP_INT &wedgeBonds,
                               const Conformer *conf, int &dirCode,
@@ -319,4 +319,4 @@ void translateChiralFlagToStereoGroups(ROMol &mol,
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

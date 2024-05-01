@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2008-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2008-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 //  Created by Greg Landrum, July 2008
@@ -18,7 +18,7 @@
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -31,7 +31,7 @@
 
 #include <string>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdInfoLog) << "testing canonical smiles generation" << std::endl;
@@ -261,7 +261,7 @@ void testStruChk() {
   BOOST_LOG(rdInfoLog) << "testing structure checking " << std::endl;
   {
     int errs = 0;
-    RDKit::ROMOL_SPTR m = AvalonTools::checkMol(errs, "c1ccccc1", true);
+    RDKix::ROMOL_SPTR m = AvalonTools::checkMol(errs, "c1ccccc1", true);
     TEST_ASSERT(errs == 0);
     m = AvalonTools::checkMol(errs, "c1c(R)cccc1C1(CC-C(C)C1)C", true);
     TEST_ASSERT(errs != 0);
@@ -453,7 +453,7 @@ void testInitStruChk() {
         std::string(std::tmpnam(nullptr)) + std::string("\n");
     int errs = AvalonTools::initCheckMol(struchk_init);
     TEST_ASSERT(!errs);
-    RDKit::ROMOL_SPTR m = AvalonTools::checkMol(errs, "c1ccccc1", true);
+    RDKix::ROMOL_SPTR m = AvalonTools::checkMol(errs, "c1ccccc1", true);
     AvalonTools::closeCheckMolFiles();
     TEST_ASSERT(errs == 0);
   }
@@ -549,7 +549,7 @@ void testBigMoleculeNoNewlineInInitString() {
   TEST_ASSERT(!errs);
   std::string bigMol =
       "CC(C)CC(C(=O)NC(CCSC)C(=O)NC(CC(=O)N)C(=O)NC(C(C)O)C(=O)O)NC(=O)C(CC1=CNC2=CC=CC=C21)NC(=O)C(CCC(=O)N)NC(=O)C(C(C)C)NC(=O)C(CC3=CC=CC=C3)NC(=O)C(CC(=O)O)NC(=O)C(CCC(=O)N)NC(=O)C(C)NC(=O)C(CCCNC(=N)N)NC(=O)C(CCCNC(=N)N)NC(=O)C(CO)NC(=O)C(CC(=O)O)NC(=O)C(CC(C)C)NC(=O)C(CC4=CC=C(C=C4)O)NC(=O)C(CCCCN)NC(=O)C(CO)NC(=O)C(CC5=CC=C(C=C5)O)NC(=O)C(CC(=O)O)NC(=O)C(CO)NC(=O)C(C(C)O)NC(=O)C(CC6=CC=CC=C6)NC(=O)C(C(C)O)NC(=O)CNC(=O)C(CCC(=O)N)NC(=O)C(CO)NC(=O)C(CC7=CN=CN7)N";
-  RDKit::ROMOL_SPTR m = AvalonTools::checkMol(errs, bigMol, true);
+  RDKix::ROMOL_SPTR m = AvalonTools::checkMol(errs, bigMol, true);
   AvalonTools::closeCheckMolFiles();
   TEST_ASSERT(errs == 0);
 }
@@ -572,7 +572,7 @@ void testCrashOnCtabMisalignment() {
   int errs = AvalonTools::initCheckMol(struchk_init.str());
   TEST_ASSERT(!errs);
   std::string ctab = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   3  2  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -606,7 +606,7 @@ void testCrashOnBondAtomIdxOutOfBounds() {
   int errs = AvalonTools::initCheckMol(struchk_init.str());
   TEST_ASSERT(!errs);
   std::string ctab = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   3  2  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

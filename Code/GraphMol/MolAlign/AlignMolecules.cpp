@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "AlignMolecules.h"
 #include <Geometry/Transform3D.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/MolTransforms/MolTransforms.h>
 #include <RDGeneral/RDThreads.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolAlign {
 
 namespace {
@@ -449,4 +449,4 @@ void alignMolConformers(ROMol &mol, const std::vector<unsigned int> *atomIds,
   }
 }
 }  // namespace MolAlign
-}  // namespace RDKit
+}  // namespace RDKix

@@ -3,22 +3,22 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <GraphMol/MonomerInfo.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 struct monomerinfo_wrapper {
   static void wrap() {
     std::string classDoc =
@@ -112,6 +112,6 @@ struct monomerinfo_wrapper {
         ;
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_monomerinfo() { RDKit::monomerinfo_wrapper::wrap(); }
+void wrap_monomerinfo() { RDKix::monomerinfo_wrapper::wrap(); }

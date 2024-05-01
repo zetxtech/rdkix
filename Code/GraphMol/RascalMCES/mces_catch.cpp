@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 David Cosgrove
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <chrono>
@@ -30,16 +30,16 @@
 // 'The Computer Journal', 45, 631-644 (2002).
 // https://eprints.whiterose.ac.uk/3568/1/willets3.pdf
 
-using namespace RDKit;
-using namespace RDKit::RascalMCES;
-using namespace RDKit::RascalMCES::details;
+using namespace RDKix;
+using namespace RDKix::RascalMCES;
+using namespace RDKix::RascalMCES::details;
 
-void check_smarts_ok(const RDKit::ROMol &mol1, const RDKit::ROMol &mol2,
+void check_smarts_ok(const RDKix::ROMol &mol1, const RDKix::ROMol &mol2,
                      const RascalResult &res) {
-  std::unique_ptr<RDKit::ROMol> qmol(RDKit::SmartsToMol(res.getSmarts()));
-  RDKit::MatchVectType dont_care;
-  REQUIRE(RDKit::SubstructMatch(mol1, *qmol, dont_care));
-  REQUIRE(RDKit::SubstructMatch(mol2, *qmol, dont_care));
+  std::unique_ptr<RDKix::ROMol> qmol(RDKix::SmartsToMol(res.getSmarts()));
+  RDKix::MatchVectType dont_care;
+  REQUIRE(RDKix::SubstructMatch(mol1, *qmol, dont_care));
+  REQUIRE(RDKix::SubstructMatch(mol2, *qmol, dont_care));
 }
 
 void check_expected_bonds(
@@ -114,7 +114,7 @@ TEST_CASE("Juglone vs Scopoletin test", "[basics]") {
       tier2Sim(*m1, *m2, degSeqs1, degSeqs2, bondLabels1, bondLabels2);
   REQUIRE_THAT(tier2_sim, Catch::Matchers::WithinAbs(0.5632, 0.0001));
 
-  // Note that this differs from the paper, because RDKit thinks both
+  // Note that this differs from the paper, because RDKix thinks both
   // rings in scopoletin are aromatic.
   opts.similarityThreshold = 0.5;
   auto res = rascalMCES(*m1, *m2, opts);
@@ -384,7 +384,7 @@ TEST_CASE("dyphylline similarities") {
   // a mystery - with 15 atoms and 16 bonds in the MCES, 0.48 is correct.  To
   // get 0.51 there would need to be 16 atoms in the MCES which doesn't look
   // right.
-  std::vector<std::tuple<std::shared_ptr<RDKit::RWMol>, std::string, double>> mols{
+  std::vector<std::tuple<std::shared_ptr<RDKix::RWMol>, std::string, double>> mols{
       {"CN1C=NC2=C1C(=O)N(C)C(=O)N(C)2"_smiles, "caffeine", 0.78},
       {"C12C(=O)NC(=O)NC(NC(=O)N2)=1"_smiles, "uric acid", 0.57},
       {"c1ccccc1CC(C)N(C)CCN1C=NC2=C1C(=O)N(C)C(=O)N(C)2"_smiles, "captagon",
@@ -464,8 +464,8 @@ TEST_CASE("bad aromatics 1") {
   RascalOptions opts;
   opts.similarityThreshold = 0.7;
   for (auto &test : tests) {
-    std::unique_ptr<RDKit::RWMol> m1(RDKit::SmilesToMol(std::get<0>(test)));
-    std::unique_ptr<RDKit::RWMol> m2(RDKit::SmilesToMol(std::get<1>(test)));
+    std::unique_ptr<RDKix::RWMol> m1(RDKix::SmilesToMol(std::get<0>(test)));
+    std::unique_ptr<RDKix::RWMol> m2(RDKix::SmilesToMol(std::get<1>(test)));
     opts.completeAromaticRings = true;
     auto res = rascalMCES(*m1, *m2, opts);
     REQUIRE(res.size() == 1);
@@ -532,8 +532,8 @@ TEST_CASE("single fragment") {
   for (auto &test : tests) {
     opts.ringMatchesRingOnly = true;
     opts.singleLargestFrag = false;
-    std::unique_ptr<RDKit::RWMol> m1(RDKit::SmilesToMol(std::get<0>(test)));
-    std::unique_ptr<RDKit::RWMol> m2(RDKit::SmilesToMol(std::get<1>(test)));
+    std::unique_ptr<RDKix::RWMol> m1(RDKix::SmilesToMol(std::get<0>(test)));
+    std::unique_ptr<RDKix::RWMol> m2(RDKix::SmilesToMol(std::get<1>(test)));
     auto res = rascalMCES(*m1, *m2, opts);
     REQUIRE(res.front().getNumFrags() == 2);
     REQUIRE(res.front().getBondMatches().size() == std::get<2>(test));
@@ -559,8 +559,8 @@ TEST_CASE("minimum fragment sizes") {
       };
   opts.similarityThreshold = 0.5;
   for (auto &test : tests) {
-    std::unique_ptr<RDKit::RWMol> m1(RDKit::SmilesToMol(std::get<0>(test)));
-    std::unique_ptr<RDKit::RWMol> m2(RDKit::SmilesToMol(std::get<1>(test)));
+    std::unique_ptr<RDKix::RWMol> m1(RDKix::SmilesToMol(std::get<0>(test)));
+    std::unique_ptr<RDKix::RWMol> m2(RDKix::SmilesToMol(std::get<1>(test)));
     opts.minFragSize = 1;
     auto res = rascalMCES(*m1, *m2, opts);
     REQUIRE(res.size() == 1);
@@ -586,8 +586,8 @@ TEST_CASE("maximum fragment separation") {
       };
   opts.similarityThreshold = 0.5;
   for (auto &test : tests) {
-    std::unique_ptr<RDKit::RWMol> m1(RDKit::SmilesToMol(std::get<0>(test)));
-    std::unique_ptr<RDKit::RWMol> m2(RDKit::SmilesToMol(std::get<1>(test)));
+    std::unique_ptr<RDKix::RWMol> m1(RDKix::SmilesToMol(std::get<0>(test)));
+    std::unique_ptr<RDKix::RWMol> m2(RDKix::SmilesToMol(std::get<1>(test)));
     {
       opts.maxFragSeparation = -1;
       auto res = rascalMCES(*m1, *m2, opts);
@@ -721,8 +721,8 @@ TEST_CASE("multiple cliques returned") {
 
   for (auto &test : tests) {
     opts.allBestMCESs = true;
-    std::unique_ptr<RDKit::RWMol> m1(RDKit::SmilesToMol(std::get<0>(test)));
-    std::unique_ptr<RDKit::RWMol> m2(RDKit::SmilesToMol(std::get<1>(test)));
+    std::unique_ptr<RDKix::RWMol> m1(RDKix::SmilesToMol(std::get<0>(test)));
+    std::unique_ptr<RDKix::RWMol> m2(RDKix::SmilesToMol(std::get<1>(test)));
 
     auto res = rascalMCES(*m1, *m2, opts);
     REQUIRE(res.size() == std::get<2>(test));
@@ -763,8 +763,8 @@ TEST_CASE("benchmarks") {
   g.seed(1);
   RascalOptions opts;
   for (const auto &test : tests) {
-    auto m1 = std::unique_ptr<ROMol>(RDKit::SmilesToMol(std::get<1>(test)));
-    auto m2 = std::unique_ptr<ROMol>(RDKit::SmilesToMol(std::get<2>(test)));
+    auto m1 = std::unique_ptr<ROMol>(RDKix::SmilesToMol(std::get<1>(test)));
+    auto m2 = std::unique_ptr<ROMol>(RDKix::SmilesToMol(std::get<2>(test)));
     opts.similarityThreshold = std::get<3>(test);
     std::vector<unsigned int> atom1Inds(m1->getNumAtoms(), 0);
     std::iota(atom1Inds.begin(), atom1Inds.end(), 0);
@@ -804,7 +804,7 @@ TEST_CASE("benchmarks") {
   }
 }
 
-// Anything starting FMCS is taken from the test data for RDKit's FMCS tests.
+// Anything starting FMCS is taken from the test data for RDKix's FMCS tests.
 TEST_CASE("FMCS test1Basics") {
   auto m1 = "CC1CCC(N)CC1"_smiles;
   REQUIRE(m1);
@@ -825,7 +825,7 @@ TEST_CASE("FMCS test1Basics") {
 }
 
 TEST_CASE("FMCS test32") {
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols{
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols{
       {"O=C(Nc1cc(S(N2CCOCC2)(=O)=O)ccc1N1CCOCC1)C=Cc1ccc(Cl)cc1 CHEMBL1515359"_smiles},
       {"c1ccc(C=CC(Nc2cc(S(N3CCOCC3)(=O)=O)ccc2N2CCOCC2)=O)cc1 CHEMBL1590658"_smiles},
       {"Cc1ccc(C=CC(=O)Nc2cc(S(N3CCOCC3)(=O)=O)ccc2N2CCOCC2)cc1 CHEMBL1447567"_smiles},
@@ -941,7 +941,7 @@ TEST_CASE("FMCS test32") {
 }
 
 TEST_CASE("FMCS test190") {
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols{
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols{
       {"COc1cc2nc(-c3cc(NC(=O)CSc4ccc(Cl)cc4)ccc3)oc2cc1  CHEMBL1479679"_smiles},
       {"COc1cc2nc(-c3cc(NC(=O)CSc4ccc(Cl)cc4)c(C)cc3)oc2cc1  CHEMBL1333382"_smiles},
       {"Cc1cc2oc(-c3cc(NC(=O)CSc4ccc(Cl)cc4)ccc3)nc2cc1  CHEMBL1437584"_smiles},
@@ -1059,7 +1059,7 @@ TEST_CASE("FMCS test190") {
 }
 
 TEST_CASE("FMCS test3") {
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols{
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols{
       {"CN(C)c1ccc(CC(=O)NCCCCCCCCCCNC23CC4CC(C2)CC(C3)C4)cc1 CHEMBL153934"_smiles},
       {"CN(C)c1ccc(CC(=O)NCCCCCCCNC23CC4CC(C2)CC(C3)C4)cc1 CHEMBL152361"_smiles},
       {"CN(C)c1ccc(CC(=O)NCCCCCCCCCCCCNC23CC4CC(C2)CC(C3)C4)cc1 CHEMBL157336"_smiles},

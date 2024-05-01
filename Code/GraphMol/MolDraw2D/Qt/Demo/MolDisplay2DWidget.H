@@ -4,7 +4,7 @@
 // AstraZeneca
 // 6th June 2014
 //
-// Qt Widget that draws am RDKit molecule using MolDraw2D.
+// Qt Widget that draws am RDKix molecule using MolDraw2D.
 
 #ifndef MOLDISPLAY2DWIDGET_H
 #define MOLDISPLAY2DWIDGET_H
@@ -24,7 +24,7 @@ class QPainter;
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
 class MolDraw2D;
 
@@ -73,6 +73,6 @@ private :
 
 };
 
-} // EO namespace RDKit
+} // EO namespace RDKix
 
 #endif // MOLDISPLAY2DWIDGET_H

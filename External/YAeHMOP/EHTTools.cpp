@@ -2,7 +2,7 @@
 // Copyright (C) 2018-2020 Greg Landrum
 //
 #include "EHTTools.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #ifdef RDK_BUILD_THREADSAFE_SSS
 #include <mutex>
@@ -13,7 +13,7 @@ extern "C" {
 #include <yaehmop/tightbind/bind.h>
 }
 
-namespace RDKit {
+namespace RDKix {
 namespace EHTTools {
 const std::string _EHTCharge = "_EHTCharge";
 const std::string _EHTMullikenOP = "_EHTMullikenOP";
@@ -45,7 +45,7 @@ bool runMol(const ROMol &mol, EHTResults &results, int confId,
   set_details_defaults(details);
   set_cell_defaults(unit_cell);
 
-  safe_strcpy(details->title, (char *)"RDKit job");
+  safe_strcpy(details->title, (char *)"RDKix job");
 
   // molecular calculation
   details->Execution_Mode = MOLECULAR;
@@ -160,4 +160,4 @@ bool runMol(const ROMol &mol, EHTResults &results, int confId,
 }
 
 }  // end of namespace EHTTools
-}  // end of namespace RDKit
+}  // end of namespace RDKix

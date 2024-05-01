@@ -1,3 +1,3 @@
-rdkit_test(testUFFForceField testUFFForceField.cpp 
+rdkix_test(testUFFForceField testUFFForceField.cpp 
 LINK_LIBRARIES ForceFieldHelpers SmilesParse SubstructMatch 
   FileParsers MolTransforms )

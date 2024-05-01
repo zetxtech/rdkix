@@ -1,9 +1,9 @@
 import os
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import rdConformerParser
-from rdkit.RDLogger import logger
+from rdkix import Chem, RDConfig
+from rdkix.Chem import rdConformerParser
+from rdkix.RDLogger import logger
 
 logger = logger()
 

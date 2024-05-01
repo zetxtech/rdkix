@@ -2,17 +2,17 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include "StructChecker.h"
 #include "Utilites.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 // ??? stereo parity
@@ -41,7 +41,7 @@ static const int CONVERTED_TO_2D = 8;
  * molecule *mp. The function returns a bit set integer which defines
  * the problems encountered.
  */
-RDKIT_STRUCTCHECKER_EXPORT int DubiousStereochemistry(RWMol &mol);
+RDKIX_STRUCTCHECKER_EXPORT int DubiousStereochemistry(RWMol &mol);
 
 /* FixDubious3DMolecule:
  * Checks if the structure has 3D coordinates and/or flat sp3-carbons with
@@ -50,30 +50,30 @@ RDKIT_STRUCTCHECKER_EXPORT int DubiousStereochemistry(RWMol &mol);
  * coordinates.
  * Real 3D structures without stereo designations go through untouched.
  */
-RDKIT_STRUCTCHECKER_EXPORT int FixDubious3DMolecule(RWMol &mol);
+RDKIX_STRUCTCHECKER_EXPORT int FixDubious3DMolecule(RWMol &mol);
 
 // Removes ill-defined stereodescriptors.
-RDKIT_STRUCTCHECKER_EXPORT void RemoveDubiousStereochemistry(RWMol &mol);
+RDKIX_STRUCTCHECKER_EXPORT void RemoveDubiousStereochemistry(RWMol &mol);
 
 /*
  * Checks if all potential stereocenters are either completely undefined
  * or attributed with hashes and wedges according to MDL rules.
  */
-RDKIT_STRUCTCHECKER_EXPORT bool CheckStereo(const ROMol &mol);
+RDKIX_STRUCTCHECKER_EXPORT bool CheckStereo(const ROMol &mol);
 
 /*
  * Checks if any two atoms in *mp come closer than 10% of the
  * average bond length or if an atom is too close the line
  * between two bonded atoms.
  */
-RDKIT_STRUCTCHECKER_EXPORT bool AtomClash(RWMol &mol, double clash_limit);
+RDKIX_STRUCTCHECKER_EXPORT bool AtomClash(RWMol &mol, double clash_limit);
 
 /*
  * Computes the stereo parity of atom number iatom in *mp relative
  * to its numbering. The immediate neighbours are defined by *nbp
  * to speed up processing.
  */
-RDKIT_STRUCTCHECKER_EXPORT int AtomParity(const ROMol &mol, unsigned iatom,
+RDKIX_STRUCTCHECKER_EXPORT int AtomParity(const ROMol &mol, unsigned iatom,
                                           const Neighbourhood &nbp);
 
 /*
@@ -81,8 +81,8 @@ RDKIT_STRUCTCHECKER_EXPORT int AtomParity(const ROMol &mol, unsigned iatom,
  * TRANS, or NONE depending on the ligands with the lowest numbering[].
  * It returns the number of defined double bonds found.
  */
-RDKIT_STRUCTCHECKER_EXPORT int CisTransPerception(
+RDKIX_STRUCTCHECKER_EXPORT int CisTransPerception(
     const ROMol &mol, const std::vector<RDGeom::Point3D> &points,
     const std::vector<unsigned> &numbering, std::vector<unsigned> &bondColor);
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

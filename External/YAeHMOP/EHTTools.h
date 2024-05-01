@@ -16,11 +16,11 @@
 #include <string>
 #include <memory>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace EHTTools {
 
-struct RDKIT_EHTLIB_EXPORT EHTResults {
+struct RDKIX_EHTLIB_EXPORT EHTResults {
   unsigned int numAtoms;
   unsigned int numOrbitals;
   unsigned int numElectrons;
@@ -41,10 +41,10 @@ struct RDKIT_EHTLIB_EXPORT EHTResults {
 
 //! Runs an extended Hueckel calculation for a molecule
 //!   The results are returned in the EHTResults structure
-RDKIT_EHTLIB_EXPORT bool runMol(
+RDKIX_EHTLIB_EXPORT bool runMol(
     const ROMol &mol, EHTResults &results, int confId = -1,
     bool preserveHamiltonianAndOverlapMatrices = false);
 
 }  // namespace EHTTools
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

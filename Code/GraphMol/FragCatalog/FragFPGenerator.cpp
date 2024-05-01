@@ -2,10 +2,10 @@
 // Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <Catalogs/Catalog.h>
 #include "FragFPGenerator.h"
@@ -15,11 +15,11 @@
 
 #include <RDGeneral/types.h>
 #include <DataStructs/BitVects.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Subgraphs/SubgraphUtils.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
 
-namespace RDKit {
+namespace RDKix {
 
 ExplicitBitVect *FragFPGenerator::getFPForMol(const ROMol &mol,
                                               const FragCatalog &fcat) {
@@ -234,4 +234,4 @@ void FragFPGenerator::computeFP(const ROMol &mol, const FragCatalog &fcat,
     **************************/
 #endif
 }
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,10 +1,10 @@
 //  Copyright (c) 2019 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "FilterCatalog.h"
@@ -18,11 +18,11 @@
 #include <future>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 boost::shared_ptr<FilterCatalogEntry> &makeBadSmilesEntry() {
   static boost::shared_ptr<FilterCatalogEntry> bad_smiles(
-      new FilterCatalogEntry("no valid RDKit molecule",
+      new FilterCatalogEntry("no valid RDKix molecule",
                              boost::shared_ptr<FilterMatcherBase>()));
   return bad_smiles;
 }
@@ -70,4 +70,4 @@ RunFilterCatalog(const FilterCatalog &fc,
   return results;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -30,13 +30,13 @@
 //
 
 #include <RDGeneral/export.h>
-#ifndef __RDKIT_FILTERDATA__
-#define __RDKIT_FILTERDATA__
+#ifndef __RDKIX_FILTERDATA__
+#define __RDKIX_FILTERDATA__
 
 #include "FilterCatalogEntry.h"
 #include "FilterCatalog.h"
 
-namespace RDKit {
+namespace RDKix {
 struct FilterData_t {
   const char *name;
   const char *smarts;
@@ -58,6 +58,6 @@ const FilterProperty_t *GetFilterProperties(
 FilterCatalogEntry *MakeFilterCatalogEntry(
     const FilterData_t &, unsigned int num_props = 0,
     const FilterProperty_t *props = nullptr);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

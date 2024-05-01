@@ -2,15 +2,15 @@
 //  Copyright (C) 2018 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <Geometry/point.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -22,14 +22,14 @@
 #include <string>
 namespace pt = boost::property_tree;
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 void ptreeToMol(RWMol *mol, const pt::ptree &molE) {
   PRECONDITION(mol, "no molecule");
   std::vector<RDGeom::Point3D> pts;
   bool is3D = false;
   for (const auto &atE : molE) {
-    if (atE.first == "rdkit:atom") {
+    if (atE.first == "rdkix:atom") {
       std::string asmi = atE.second.get<std::string>("<xmlattr>.atom-smiles");
       Atom *atom = SmilesToAtom(asmi);
       if (!atom) {
@@ -50,7 +50,7 @@ void ptreeToMol(RWMol *mol, const pt::ptree &molE) {
     }
   }
   for (const auto &atE : molE) {
-    if (atE.first == "rdkit:bond") {
+    if (atE.first == "rdkix:bond") {
       std::string asmi = atE.second.get<std::string>("<xmlattr>.bond-smiles");
       Bond *bond = SmilesToBond(asmi);
       if (!bond) {
@@ -74,7 +74,7 @@ void ptreeToMol(RWMol *mol, const pt::ptree &molE) {
 }
 }  // namespace
 
-RWMol *RDKitSVGToMol(std::istream *instream, bool sanitize, bool removeHs) {
+RWMol *RDKixSVGToMol(std::istream *instream, bool sanitize, bool removeHs) {
   PRECONDITION(instream, "bad stream");
   pt::ptree tree;
   pt::read_xml(*instream, tree);
@@ -83,7 +83,7 @@ RWMol *RDKitSVGToMol(std::istream *instream, bool sanitize, bool removeHs) {
   // const pt::ptree &childE = tree.get_child("svg", empty_ptree);
   const pt::ptree &molsE = tree.get_child("svg.metadata", empty_ptree);
   for (const auto &molE : molsE) {
-    if (molE.first == "rdkit:mol") {
+    if (molE.first == "rdkix:mol") {
       res = new RWMol();
       ptreeToMol(res, molE.second);
       if (res->getNumAtoms()) {
@@ -98,8 +98,8 @@ RWMol *RDKitSVGToMol(std::istream *instream, bool sanitize, bool removeHs) {
   }
   return res;
 }
-RWMol *RDKitSVGToMol(const std::string &svg, bool sanitize, bool removeHs) {
+RWMol *RDKixSVGToMol(const std::string &svg, bool sanitize, bool removeHs) {
   std::stringstream iss(svg);
-  return RDKitSVGToMol(&iss, sanitize, removeHs);
+  return RDKixSVGToMol(&iss, sanitize, removeHs);
 }
-}  // namespace RDKit
+}  // namespace RDKix

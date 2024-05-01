@@ -3,31 +3,31 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
 
 #include <RDBoost/Wrap.h>
 #include <RDBoost/python.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/CIPLabeler/CIPLabeler.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
 namespace python = boost::python;
-using RDKit::CIPLabeler::assignCIPLabels;
+using RDKix::CIPLabeler::assignCIPLabels;
 
 void rdMaxIterationsExceededTranslator(
-    RDKit::CIPLabeler::MaxIterationsExceeded const &x) {
+    RDKix::CIPLabeler::MaxIterationsExceeded const &x) {
   std::ostringstream ss;
   ss << x.what();
   PyErr_SetString(PyExc_RuntimeError, ss.str().c_str());
 }
 
-void assignCIPLabelsWrapHelper(RDKit::ROMol &mol,
+void assignCIPLabelsWrapHelper(RDKix::ROMol &mol,
                                const python::object &atomsToLabel,
                                const python::object &bondsToLabel,
                                unsigned int maxRecursiveIterations) {
@@ -55,7 +55,7 @@ BOOST_PYTHON_MODULE(rdCIPLabeler) {
       "Implementation.\nJ. Chem. Inf. Model. 2018, 58, 1755-1765.\n";
 
   python::register_exception_translator<
-      RDKit::CIPLabeler::MaxIterationsExceeded>(
+      RDKix::CIPLabeler::MaxIterationsExceeded>(
       &rdMaxIterationsExceededTranslator);
 
   std::string docString =

@@ -2,14 +2,14 @@
 //  Copyright (C) 2012-2016 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <RDGeneral/RDLog.h>
@@ -27,7 +27,7 @@ void testRDF() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName = pathName + "/Code/GraphMol/Descriptors/test_data/RDF.out";
 
   std::ifstream instrm(fName.c_str());
@@ -48,14 +48,14 @@ void testRDF() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> drdf;
 
-    RDKit::Descriptors::RDF(*m, drdf, -1);
+    RDKix::Descriptors::RDF(*m, drdf, -1);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -67,20 +67,20 @@ void testRDF() {
       if (fabs(ref) > 1) {
         if (fabs((ref - drdf[i]) / ref) > 0.02) {
           std::cerr << "value mismatch: pos" << i << " " << inm
-                    << " dragon: " << ref << " rdkit: " << drdf[i] << std::endl;
+                    << " dragon: " << ref << " rdkix: " << drdf[i] << std::endl;
         }
       }
 
       if (fabs(ref) <= 1) {
         if (fabs((ref - drdf[i])) > 0.02) {
           std::cerr << "value mismatch: pos" << i << " " << inm
-                    << " dragon: " << ref << " rdkit: " << drdf[i] << std::endl;
+                    << " dragon: " << ref << " rdkix: " << drdf[i] << std::endl;
         }
       }
       // FIX: this tolerance seems too high
       if (ref > 0.5 && fabs(ref - drdf[i]) / ref >= 0.02) {
         std::cerr << "value mismatch: pos" << i << " " << inm
-                  << " dragon: " << ref << " rdkit: " << drdf[i] << " "
+                  << " dragon: " << ref << " rdkix: " << drdf[i] << " "
                   << fabs(ref - drdf[i]) / ref << std::endl;
       }
       TEST_ASSERT(ref < 0.5 || fabs(ref - drdf[i]) / ref < 0.02);

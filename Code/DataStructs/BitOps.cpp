@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2012 greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "BitVects.h"
 #include "BitOps.h"
@@ -25,7 +25,7 @@
 #include <intrin.h>
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 
 int getBitId(const char*& text, int format, int size, int curr) {
   PRECONDITION(text, "no text");
@@ -43,7 +43,7 @@ int getBitId(const char*& text, int format, int size, int curr) {
     text += sizeof(tmp);
     res = tmp;
   } else if (format == 2) {  // run length encoded format
-    res = curr + RDKit::pullPackedIntFromString(text);
+    res = curr + RDKix::pullPackedIntFromString(text);
   }
   return res;
 }
@@ -173,9 +173,9 @@ bool AllProbeBitsMatch(const T1& probe, const std::string& pkl) {
   }
   return true;
 }
-template RDKIT_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
+template RDKIX_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
     const SparseBitVect& bv1, const std::string& pkl);
-template RDKIT_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
+template RDKIX_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
     const ExplicitBitVect& bv1, const std::string& pkl);
 template <typename T1>
 bool AllProbeBitsMatch(const T1& probe, const T1& ref) {
@@ -186,7 +186,7 @@ bool AllProbeBitsMatch(const T1& probe, const T1& ref) {
   }
   return true;
 }
-template RDKIT_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
+template RDKIX_DATASTRUCTS_EXPORT bool AllProbeBitsMatch(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
 // template bool AllProbeBitsMatch(const ExplicitBitVect& bv1,const
 // ExplicitBitVect &bv2);
@@ -771,108 +771,108 @@ void UpdateBitVectFromBinaryText(T1& bv1, const std::string& fps) {
   }
 }
 
-template RDKIT_DATASTRUCTS_EXPORT double TanimotoSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double TanimotoSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double TverskySimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double TverskySimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2, double a, double b);
-template RDKIT_DATASTRUCTS_EXPORT double CosineSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double CosineSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double KulczynskiSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double KulczynskiSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double DiceSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double DiceSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double SokalSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double SokalSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double McConnaugheySimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double McConnaugheySimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double AsymmetricSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double AsymmetricSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double BraunBlanquetSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double BraunBlanquetSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double RusselSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double RusselSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double RogotGoldbergSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double RogotGoldbergSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double OnBitSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double OnBitSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT int NumBitsInCommon(const SparseBitVect& bv1,
+template RDKIX_DATASTRUCTS_EXPORT int NumBitsInCommon(const SparseBitVect& bv1,
                                                       const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double AllBitSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double AllBitSimilarity(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT int NumOnBitsInCommon(
+template RDKIX_DATASTRUCTS_EXPORT int NumOnBitsInCommon(
     const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT IntVect
+template RDKIX_DATASTRUCTS_EXPORT IntVect
 OnBitsInCommon(const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT IntVect
+template RDKIX_DATASTRUCTS_EXPORT IntVect
 OffBitsInCommon(const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT DoubleVect
+template RDKIX_DATASTRUCTS_EXPORT DoubleVect
 OnBitProjSimilarity(const SparseBitVect& bv1, const SparseBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT DoubleVect
+template RDKIX_DATASTRUCTS_EXPORT DoubleVect
 OffBitProjSimilarity(const SparseBitVect& bv1, const SparseBitVect& bv2);
 
-template RDKIT_DATASTRUCTS_EXPORT double TanimotoSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double TanimotoSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double TverskySimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double TverskySimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2, double a, double b);
-template RDKIT_DATASTRUCTS_EXPORT double CosineSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double CosineSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double KulczynskiSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double KulczynskiSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double DiceSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double DiceSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double SokalSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double SokalSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double McConnaugheySimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double McConnaugheySimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double AsymmetricSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double AsymmetricSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double BraunBlanquetSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double BraunBlanquetSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double RusselSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double RusselSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double RogotGoldbergSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double RogotGoldbergSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double OnBitSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double OnBitSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT int NumBitsInCommon(
+template RDKIX_DATASTRUCTS_EXPORT int NumBitsInCommon(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT double AllBitSimilarity(
+template RDKIX_DATASTRUCTS_EXPORT double AllBitSimilarity(
     const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT IntVect
+template RDKIX_DATASTRUCTS_EXPORT IntVect
 OnBitsInCommon(const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT IntVect
+template RDKIX_DATASTRUCTS_EXPORT IntVect
 OffBitsInCommon(const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT DoubleVect
+template RDKIX_DATASTRUCTS_EXPORT DoubleVect
 OnBitProjSimilarity(const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
-template RDKIT_DATASTRUCTS_EXPORT DoubleVect
+template RDKIX_DATASTRUCTS_EXPORT DoubleVect
 OffBitProjSimilarity(const ExplicitBitVect& bv1, const ExplicitBitVect& bv2);
 
-template RDKIT_DATASTRUCTS_EXPORT SparseBitVect* FoldFingerprint(
+template RDKIX_DATASTRUCTS_EXPORT SparseBitVect* FoldFingerprint(
     const SparseBitVect&, unsigned int);
-template RDKIT_DATASTRUCTS_EXPORT ExplicitBitVect* FoldFingerprint(
+template RDKIX_DATASTRUCTS_EXPORT ExplicitBitVect* FoldFingerprint(
     const ExplicitBitVect&, unsigned int);
 
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToText(
     const SparseBitVect&);
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToText(
     const ExplicitBitVect&);
 
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToFPSText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToFPSText(
     const SparseBitVect&);
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToFPSText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToFPSText(
     const ExplicitBitVect&);
-template RDKIT_DATASTRUCTS_EXPORT void UpdateBitVectFromFPSText(
+template RDKIX_DATASTRUCTS_EXPORT void UpdateBitVectFromFPSText(
     SparseBitVect&, const std::string&);
-template RDKIT_DATASTRUCTS_EXPORT void UpdateBitVectFromFPSText(
+template RDKIX_DATASTRUCTS_EXPORT void UpdateBitVectFromFPSText(
     ExplicitBitVect&, const std::string&);
 
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToBinaryText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToBinaryText(
     const SparseBitVect&);
-template RDKIT_DATASTRUCTS_EXPORT std::string BitVectToBinaryText(
+template RDKIX_DATASTRUCTS_EXPORT std::string BitVectToBinaryText(
     const ExplicitBitVect&);
-template RDKIT_DATASTRUCTS_EXPORT void UpdateBitVectFromBinaryText(
+template RDKIX_DATASTRUCTS_EXPORT void UpdateBitVectFromBinaryText(
     SparseBitVect&, const std::string&);
-template RDKIT_DATASTRUCTS_EXPORT void UpdateBitVectFromBinaryText(
+template RDKIX_DATASTRUCTS_EXPORT void UpdateBitVectFromBinaryText(
     ExplicitBitVect&, const std::string&);
 
 // from here:

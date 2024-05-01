@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 David Cosgrove
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <chrono>
@@ -26,17 +26,17 @@
 TEST_CASE("Small test", "[basics]") {
   std::string fName = getenv("RDBASE");
   fName += "/Contrib/Fastcluster/cdk2.smi";
-  RDKit::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     if (!mol) {
       continue;
     }
     mols.push_back(mol);
   }
-  RDKit::RascalMCES::RascalClusterOptions clusOpts;
-  auto clusters = RDKit::RascalMCES::rascalCluster(mols, clusOpts);
+  RDKix::RascalMCES::RascalClusterOptions clusOpts;
+  auto clusters = RDKix::RascalMCES::rascalCluster(mols, clusOpts);
   REQUIRE(clusters.size() == 8);
   std::vector<size_t> expSizes{7, 7, 6, 2, 2, 2, 2, 20};
   for (size_t i = 0; i < 8; ++i) {
@@ -47,16 +47,16 @@ TEST_CASE("Small test", "[basics]") {
 TEST_CASE("BLSets subset", "[basics]") {
   std::string fName = getenv("RDBASE");
   fName += "/Code/GraphMol/RascalMCES/data/test_cluster1.smi";
-  RDKit::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     if (!mol) {
       continue;
     }
     mols.push_back(mol);
   }
-  auto clusters = RDKit::RascalMCES::rascalCluster(mols);
+  auto clusters = RDKix::RascalMCES::rascalCluster(mols);
   REQUIRE(clusters.size() == 12);
   std::vector<size_t> expSizes{8, 4, 4, 3, 3, 3, 2, 2, 2, 2, 2, 21};
   for (size_t i = 0; i < 12; ++i) {
@@ -68,18 +68,18 @@ TEST_CASE("ChEMBL 1907596") {
   std::string fName = getenv("RDBASE");
   fName += "/Code/GraphMol/RascalMCES/data/chembl_1907596.smi";
   std::cout << fName << std::endl;
-  RDKit::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     if (!mol) {
       continue;
     }
     mols.push_back(mol);
   }
-  RDKit::RascalMCES::RascalClusterOptions clusOpts;
+  RDKix::RascalMCES::RascalClusterOptions clusOpts;
   clusOpts.similarityCutoff = 0.7;
-  auto clusters = RDKit::RascalMCES::rascalCluster(mols, clusOpts);
+  auto clusters = RDKix::RascalMCES::rascalCluster(mols, clusOpts);
   REQUIRE(clusters.size() == 21);
   std::vector<size_t> expSizes{342, 71, 64, 33, 23, 11, 10, 6, 6, 5, 5,
                                4,   3,  3,  3,  3,  3,  2,  2, 2, 14};
@@ -91,17 +91,17 @@ TEST_CASE("ChEMBL 1907596") {
 TEST_CASE("Small Butina test", "[basics]") {
   std::string fName = getenv("RDBASE");
   fName += "/Contrib/Fastcluster/cdk2.smi";
-  RDKit::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     if (!mol) {
       continue;
     }
     mols.push_back(mol);
   }
-  RDKit::RascalMCES::RascalClusterOptions clusOpts;
-  auto clusters = RDKit::RascalMCES::rascalButinaCluster(mols, clusOpts);
+  RDKix::RascalMCES::RascalClusterOptions clusOpts;
+  auto clusters = RDKix::RascalMCES::rascalButinaCluster(mols, clusOpts);
   unsigned int numMols = 0;
   for (const auto &cl : clusters) {
     numMols += cl.size();
@@ -120,19 +120,19 @@ TEST_CASE("Small test, smaller number of threads", "[basics]") {
   // but at least we'll know that it runs ok.
   std::string fName = getenv("RDBASE");
   fName += "/Contrib/Fastcluster/cdk2.smi";
-  RDKit::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SmilesMolSupplier suppl(fName, "\t", 1, 0, false);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!suppl.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(suppl.next());
+    std::shared_ptr<RDKix::ROMol> mol(suppl.next());
     if (!mol) {
       continue;
     }
     mols.push_back(mol);
   }
   {
-    RDKit::RascalMCES::RascalClusterOptions clusOpts;
+    RDKix::RascalMCES::RascalClusterOptions clusOpts;
     clusOpts.numThreads = 2;
-    auto clusters = RDKit::RascalMCES::rascalCluster(mols, clusOpts);
+    auto clusters = RDKix::RascalMCES::rascalCluster(mols, clusOpts);
     REQUIRE(clusters.size() == 8);
     std::vector<size_t> expSizes{7, 7, 6, 2, 2, 2, 2, 20};
     for (size_t i = 0; i < 8; ++i) {
@@ -140,9 +140,9 @@ TEST_CASE("Small test, smaller number of threads", "[basics]") {
     }
   }
   {
-    RDKit::RascalMCES::RascalClusterOptions clusOpts;
+    RDKix::RascalMCES::RascalClusterOptions clusOpts;
     clusOpts.numThreads = -2;
-    auto clusters = RDKit::RascalMCES::rascalCluster(mols, clusOpts);
+    auto clusters = RDKix::RascalMCES::rascalCluster(mols, clusOpts);
     REQUIRE(clusters.size() == 8);
     std::vector<size_t> expSizes{7, 7, 6, 2, 2, 2, 2, 20};
     for (size_t i = 0; i < 8; ++i) {

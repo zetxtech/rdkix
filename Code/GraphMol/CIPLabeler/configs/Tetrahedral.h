@@ -3,16 +3,16 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #pragma once
 
 #include "Configuration.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 class Tetrahedral : public Configuration {
@@ -32,4 +32,4 @@ class Tetrahedral : public Configuration {
 };
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

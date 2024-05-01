@@ -2,15 +2,15 @@
 //  Copyright (C) 2019 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define CATCH_CONFIG_RUNNER
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/MolDraw2D/MolDraw2D.h>
@@ -24,7 +24,7 @@
 #include <QPainter>
 #include <QGuiApplication>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("basic generate PNGs", "[drawing][Qt]") {
   SECTION("with freetype") {

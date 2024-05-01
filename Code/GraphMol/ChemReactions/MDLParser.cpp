@@ -49,7 +49,7 @@
 
 #include "ReactionUtils.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void ParseV2000RxnBlock(std::istream &inStream, unsigned int &line,
@@ -396,4 +396,4 @@ ChemicalReaction *RxnFileToChemicalReaction(const std::string &fName,
   }
   return res;
 };
-}  // namespace RDKit
+}  // namespace RDKix

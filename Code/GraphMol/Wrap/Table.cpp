@@ -3,21 +3,21 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <string>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 
 PeriodicTable *GetTable() { return PeriodicTable::getTable(); }
 
@@ -172,5 +172,5 @@ struct table_wrapper {
         python::return_value_policy<python::reference_existing_object>());
   };
 };
-}  // namespace RDKit
-void wrap_table() { RDKit::table_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_table() { RDKix::table_wrapper::wrap(); }

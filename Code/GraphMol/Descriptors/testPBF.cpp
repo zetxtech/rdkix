@@ -2,15 +2,15 @@
 //  Copyright (C) 2012-2016 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <RDGeneral/RDLog.h>
@@ -27,16 +27,16 @@ void test1() {
   std::string pathName = getenv("RDBASE");
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.out";
   std::ifstream instrm(fName.c_str());
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
-    double dpbf = RDKit::Descriptors::PBF(*m);
+    double dpbf = RDKix::Descriptors::PBF(*m);
 
     std::string inm;
     double ref;
@@ -62,9 +62,9 @@ void testPBFEdges() {
     std::string sdfName =
         pathName + "/Code/GraphMol/Descriptors/test_data/linear.mol";
 
-    RDKit::ROMol *m = RDKit::MolFileToMol(sdfName);
+    RDKix::ROMol *m = RDKix::MolFileToMol(sdfName);
     TEST_ASSERT(m);
-    double dpbf = RDKit::Descriptors::PBF(*m);
+    double dpbf = RDKix::Descriptors::PBF(*m);
     TEST_ASSERT(dpbf <= 1e-4);
     delete m;
   }
@@ -73,9 +73,9 @@ void testPBFEdges() {
     std::string sdfName =
         pathName + "/Code/GraphMol/Descriptors/test_data/linear_2atom.mol";
 
-    RDKit::ROMol *m = RDKit::MolFileToMol(sdfName);
+    RDKix::ROMol *m = RDKix::MolFileToMol(sdfName);
     TEST_ASSERT(m);
-    double dpbf = RDKit::Descriptors::PBF(*m);
+    double dpbf = RDKix::Descriptors::PBF(*m);
     TEST_ASSERT(dpbf <= 1e-4);
     delete m;
   }
@@ -84,9 +84,9 @@ void testPBFEdges() {
     std::string sdfName =
         pathName + "/Code/GraphMol/Descriptors/test_data/planar.mol";
 
-    RDKit::ROMol *m = RDKit::MolFileToMol(sdfName);
+    RDKix::ROMol *m = RDKix::MolFileToMol(sdfName);
     TEST_ASSERT(m);
-    double dpbf = RDKit::Descriptors::PBF(*m);
+    double dpbf = RDKix::Descriptors::PBF(*m);
     TEST_ASSERT(dpbf <= 1e-4);
     delete m;
   }
@@ -95,24 +95,24 @@ void testPBFEdges() {
     std::string sdfName =
         pathName + "/Code/GraphMol/Descriptors/test_data/planar_3atom.mol";
 
-    RDKit::ROMol *m = RDKit::MolFileToMol(sdfName);
+    RDKix::ROMol *m = RDKix::MolFileToMol(sdfName);
     TEST_ASSERT(m);
-    double dpbf = RDKit::Descriptors::PBF(*m);
+    double dpbf = RDKix::Descriptors::PBF(*m);
     TEST_ASSERT(dpbf <= 1e-4);
     delete m;
   }
   {
-    RDKit::RWMol m;
+    RDKix::RWMol m;
     bool updateLabel = true;
     bool takeOwnership = true;
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addAtom(new RDKit::Atom(6), updateLabel, takeOwnership);
-    m.addConformer(new RDKit::Conformer(m.getNumAtoms()));
-    double dpbf = RDKit::Descriptors::PBF(m);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addAtom(new RDKix::Atom(6), updateLabel, takeOwnership);
+    m.addConformer(new RDKix::Conformer(m.getNumAtoms()));
+    double dpbf = RDKix::Descriptors::PBF(m);
     TEST_ASSERT(dpbf <= 1e-4);
   }
 

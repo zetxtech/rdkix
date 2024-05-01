@@ -2,15 +2,15 @@
 //  Copyright (C) 2020 Greg Landrum and T5 informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // derived from Dave Cosgrove's MolDraw2D
 //
-// This is a concrete class derived from MolDraw2D that uses RDKit to draw using
-// the JS canvas. This requires emscripten and is only intended for the RDKit
+// This is a concrete class derived from MolDraw2D that uses RDKix to draw using
+// the JS canvas. This requires emscripten and is only intended for the RDKix
 // Javascript builds
 
 #include <RDGeneral/export.h>
@@ -26,9 +26,9 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_MOLDRAW2D_EXPORT MolDraw2DJS : public MolDraw2D {
+class RDKIX_MOLDRAW2D_EXPORT MolDraw2DJS : public MolDraw2D {
  public:
   // initialize to use a particular ostream
   MolDraw2DJS(int width, int height, emscripten::val &context,
@@ -64,5 +64,5 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2DJS : public MolDraw2D {
   void initTextDrawer(bool noFreetype) override;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DSVG_H

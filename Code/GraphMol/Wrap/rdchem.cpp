@@ -3,14 +3,14 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdchem_array_API
 #include "rdchem.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SanitException.h>
 #include <RDBoost/Wrap.h>
 #include <RDBoost/import_array.h>
@@ -20,13 +20,13 @@
 
 #include "seqs.hpp"
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
-namespace RDKit {
+namespace RDKix {
 void tossit() { throw IndexErrorException(1); }
-}  // namespace RDKit
+}  // namespace RDKix
 
-void rdExceptionTranslator(RDKit::ConformerException const &) {
+void rdExceptionTranslator(RDKix::ConformerException const &) {
   PyErr_SetString(PyExc_ValueError, "Bad Conformer Id");
 }
 
@@ -97,11 +97,11 @@ T *next_ptr(O &self) {
 
 BOOST_PYTHON_MODULE(rdchem) {
   python::scope().attr("__doc__") =
-      "Module containing the core chemistry functionality of the RDKit";
-  RegisterListConverter<RDKit::Atom *>();
-  RegisterListConverter<RDKit::Bond *>();
-  RegisterListConverter<RDKit::CONFORMER_SPTR>();
-  rdkit_import_array();
+      "Module containing the core chemistry functionality of the RDKix";
+  RegisterListConverter<RDKix::Atom *>();
+  RegisterListConverter<RDKix::Bond *>();
+  RegisterListConverter<RDKix::CONFORMER_SPTR>();
+  rdkix_import_array();
 
   // this is one of those parts where I think I wish that I knew how to do
   // template meta-programming
@@ -112,7 +112,7 @@ BOOST_PYTHON_MODULE(rdchem) {
       .def("GetType", &MolSanitizeException::getType, python::args("self"));
   python::register_ptr_to_python<boost::shared_ptr<MolSanitizeException>>();
   molSanitizeExceptionType = createExceptionClass("MolSanitizeException");
-  python::register_exception_translator<RDKit::MolSanitizeException>(
+  python::register_exception_translator<RDKix::MolSanitizeException>(
       [&](const MolSanitizeException &exc) {
         sanitExceptionTranslator(exc, molSanitizeExceptionType);
       });
@@ -125,7 +125,7 @@ BOOST_PYTHON_MODULE(rdchem) {
   python::register_ptr_to_python<boost::shared_ptr<AtomSanitizeException>>();
   atomSanitizeExceptionType =
       createExceptionClass("AtomSanitizeException", molSanitizeExceptionType);
-  python::register_exception_translator<RDKit::AtomSanitizeException>(
+  python::register_exception_translator<RDKix::AtomSanitizeException>(
       [&](const AtomSanitizeException &exc) {
         sanitExceptionTranslator(exc, atomSanitizeExceptionType);
       });
@@ -136,7 +136,7 @@ BOOST_PYTHON_MODULE(rdchem) {
   python::register_ptr_to_python<boost::shared_ptr<AtomValenceException>>();
   atomValenceExceptionType =
       createExceptionClass("AtomValenceException", atomSanitizeExceptionType);
-  python::register_exception_translator<RDKit::AtomValenceException>(
+  python::register_exception_translator<RDKix::AtomValenceException>(
       [&](const AtomValenceException &exc) {
         sanitExceptionTranslator(exc, atomValenceExceptionType);
       });
@@ -147,7 +147,7 @@ BOOST_PYTHON_MODULE(rdchem) {
   python::register_ptr_to_python<boost::shared_ptr<AtomKekulizeException>>();
   atomKekulizeExceptionType =
       createExceptionClass("AtomKekulizeException", atomSanitizeExceptionType);
-  python::register_exception_translator<RDKit::AtomKekulizeException>(
+  python::register_exception_translator<RDKix::AtomKekulizeException>(
       [&](const AtomKekulizeException &exc) {
         sanitExceptionTranslator(exc, atomKekulizeExceptionType);
       });
@@ -159,7 +159,7 @@ BOOST_PYTHON_MODULE(rdchem) {
   python::register_ptr_to_python<boost::shared_ptr<KekulizeException>>();
   kekulizeExceptionType =
       createExceptionClass("KekulizeException", molSanitizeExceptionType);
-  python::register_exception_translator<RDKit::KekulizeException>(
+  python::register_exception_translator<RDKix::KekulizeException>(
       [&](const KekulizeException &exc) {
         sanitExceptionTranslator(exc, kekulizeExceptionType);
       });

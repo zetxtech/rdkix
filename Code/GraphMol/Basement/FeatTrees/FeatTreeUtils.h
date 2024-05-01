@@ -2,10 +2,10 @@
 //  Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file FeatTreeUtils.h
 
@@ -22,7 +22,7 @@
 #include "FeatTree.h"
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 typedef std::vector<int> INT_VECT;
 class ROMol;
 namespace FeatTrees {
@@ -35,5 +35,5 @@ void addBondsFromNonringAtoms(const ROMol &mol, FeatTreeGraph &featGraph,
 void addZeroNodes(FeatTreeGraph &featGraph);
 void replaceCycles(FeatTreeGraph &featGraph);
 }  // namespace FeatTrees
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

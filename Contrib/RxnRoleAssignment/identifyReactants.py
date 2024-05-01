@@ -35,8 +35,8 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
-from rdkit import Chem
-from rdkit.Chem import AllChem, rdqueries
+from rdkix import Chem
+from rdkix.Chem import AllChem, rdqueries
 
 from . import utils
 

@@ -13,7 +13,7 @@ class ChiralSet;
 
 //! A term to capture the violation of chirality at an atom center
 //!
-class RDKIT_DISTGEOMETRY_EXPORT ChiralViolationContrib
+class RDKIX_DISTGEOMETRY_EXPORT ChiralViolationContrib
     : public ForceFields::ForceFieldContrib {
  public:
   ChiralViolationContrib() {}

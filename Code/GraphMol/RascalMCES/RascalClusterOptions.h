@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Options for Rascal Clustering.  In general, the option names and defaults
 // are taken from the paper:
@@ -19,10 +19,10 @@
 #ifndef RASCALCLUSTEROPTIONS_H
 #define RASCALCLUSTEROPTIONS_H
 
-namespace RDKit {
+namespace RDKix {
 namespace RascalMCES {
 
-struct RDKIT_RASCALMCES_EXPORT RascalClusterOptions {
+struct RDKIX_RASCALMCES_EXPORT RascalClusterOptions {
   double similarityCutoff = 0.7; /* Similarity cutoff for clustering.  Initial
                                     clusters will have molecule pairs of at
                                     least this similarity. */
@@ -49,5 +49,5 @@ struct RDKIT_RASCALMCES_EXPORT RascalClusterOptions {
                           use 7 threads. */
 };
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // RASCALCLUSTEROPTIONS_H

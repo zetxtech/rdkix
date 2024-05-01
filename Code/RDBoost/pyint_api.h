@@ -1,6 +1,6 @@
 #include <RDGeneral/export.h>
-#ifndef RDKIT_PYINT_API_INCLUDED
-#define RDKIT_PYINT_API_INCLUDED
+#ifndef RDKIX_PYINT_API_INCLUDED
+#define RDKIX_PYINT_API_INCLUDED
 
 #if PY_MAJOR_VERSION >= 3
 #define PyInt_FromLong PyLong_FromLong

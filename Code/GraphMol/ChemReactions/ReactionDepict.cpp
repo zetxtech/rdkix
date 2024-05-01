@@ -35,7 +35,7 @@
 #include <GraphMol/Depictor/RDDepictor.h>
 
 namespace RDDepict {
-void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
+void compute2DCoordsForReaction(RDKix::ChemicalReaction &rxn, double spacing,
                                 bool updateProps, bool canonOrient,
                                 unsigned int nFlipsPerSample,
                                 unsigned int nSamples, int sampleSeed,
@@ -45,8 +45,8 @@ void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
        templIt != rxn.endReactantTemplates(); ++templIt) {
     if (updateProps) {
       (*templIt)->updatePropertyCache(false);
-      RDKit::MolOps::setConjugation(**templIt);
-      RDKit::MolOps::setHybridization(**templIt);
+      RDKix::MolOps::setConjugation(**templIt);
+      RDKix::MolOps::setHybridization(**templIt);
     }
     compute2DCoords(**templIt, nullptr, canonOrient, true, nFlipsPerSample,
                     nSamples, sampleSeed, permuteDeg4Nodes);
@@ -65,8 +65,8 @@ void compute2DCoordsForReaction(RDKit::ChemicalReaction &rxn, double spacing,
        templIt != rxn.endProductTemplates(); ++templIt) {
     if (updateProps) {
       (*templIt)->updatePropertyCache(false);
-      RDKit::MolOps::setConjugation(**templIt);
-      RDKit::MolOps::setHybridization(**templIt);
+      RDKix::MolOps::setConjugation(**templIt);
+      RDKix::MolOps::setHybridization(**templIt);
     }
     compute2DCoords(**templIt, nullptr, canonOrient, true, nFlipsPerSample,
                     nSamples, sampleSeed, permuteDeg4Nodes);

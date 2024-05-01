@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #define PY_ARRAY_UNIQUE_SYMBOL rdDistGeom_array_API
@@ -23,7 +23,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 int EmbedMolecule(ROMol &mol, unsigned int maxAttempts, int seed,
                   bool clearConfs, bool useRandomCoords, double boxSizeMult,
                   bool randNegEig, unsigned int numZeroFail,
@@ -224,7 +224,7 @@ void setBoundsMatrix(DGeomHelpers::EmbedParameters *self,
       new DistGeom::BoundsMatrix(nrows, sdata));
 }
 
-python::tuple getExpTorsHelper(const RDKit::ROMol &mol, bool useExpTorsions,
+python::tuple getExpTorsHelper(const RDKix::ROMol &mol, bool useExpTorsions,
                                bool useSmallRingTorsions,
                                bool useMacrocycleTorsions,
                                bool useBasicKnowledge, unsigned int version,
@@ -251,25 +251,25 @@ python::tuple getExpTorsHelper(const RDKit::ROMol &mol, bool useExpTorsions,
 }
 
 python::tuple getExpTorsHelperWithParams(
-    const RDKit::ROMol &mol, const RDKit::DGeomHelpers::EmbedParameters &ps) {
+    const RDKix::ROMol &mol, const RDKix::DGeomHelpers::EmbedParameters &ps) {
   return getExpTorsHelper(mol, ps.useExpTorsionAnglePrefs,
                           ps.useSmallRingTorsions, ps.useMacrocycleTorsions,
                           ps.useBasicKnowledge, ps.ETversion, ps.verbose);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdDistGeom) {
   python::scope().attr("__doc__") =
       "Module containing functions to compute atomic coordinates in 3D using "
       "distance geometry";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
-  // RegisterListConverter<RDKit::Atom*>();
+  // RegisterListConverter<RDKix::Atom*>();
 
   python::def(
-      "GetExperimentalTorsions", RDKit::getExpTorsHelper,
+      "GetExperimentalTorsions", RDKix::getExpTorsHelper,
       (python::arg("mol"), python::arg("useExpTorsionAnglePrefs") = true,
        python::arg("useSmallRingTorsions") = false,
        python::arg("useMacrocycleTorsions") = true,
@@ -277,7 +277,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
        python::arg("printExpTorsionAngles") = false),
       "returns information about the bonds corresponding to experimental torsions");
   python::def(
-      "GetExperimentalTorsions", RDKit::getExpTorsHelperWithParams,
+      "GetExperimentalTorsions", RDKix::getExpTorsHelperWithParams,
       (python::arg("mol"), python::arg("embedParams")),
       "returns information about the bonds corresponding to experimental torsions");
 
@@ -321,7 +321,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
     ID of the new conformation added to the molecule \n\
 \n";
   python::def(
-      "EmbedMolecule", RDKit::EmbedMolecule,
+      "EmbedMolecule", RDKix::EmbedMolecule,
       (python::arg("mol"), python::arg("maxAttempts") = 0,
        python::arg("randomSeed") = -1, python::arg("clearConfs") = true,
        python::arg("useRandomCoords") = false, python::arg("boxSizeMult") = 2.0,
@@ -379,7 +379,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
   - ignoreSmoothingFailures : try to embed the molecule even if triangle smoothing\n\
                of the bounds matrix fails.\n\
   - enforceChirality : enforce the correct chirality if chiral centers are present.\n\
-  - numThreads : number of threads to use while embedding. This only has an effect if the RDKit\n\
+  - numThreads : number of threads to use while embedding. This only has an effect if the RDKix\n\
                was built with multi-thread support.\n\
               If set to zero, the max supported by the system will be used.\n\
   - useExpTorsionAnglePrefs : impose experimental torsion angle preferences\n\
@@ -389,7 +389,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
     List of new conformation IDs \n\
 \n";
   python::def(
-      "EmbedMultipleConfs", RDKit::EmbedMultipleConfs,
+      "EmbedMultipleConfs", RDKix::EmbedMultipleConfs,
       (python::arg("mol"), python::arg("numConfs") = 10,
        python::arg("maxAttempts") = 0, python::arg("randomSeed") = -1,
        python::arg("clearConfs") = true, python::arg("useRandomCoords") = false,
@@ -406,131 +406,131 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
        python::arg("ETversion") = 1),
       docString.c_str());
 
-  python::enum_<RDKit::DGeomHelpers::EmbedFailureCauses>("EmbedFailureCauses")
+  python::enum_<RDKix::DGeomHelpers::EmbedFailureCauses>("EmbedFailureCauses")
       .value("INITIAL_COORDS",
-             RDKit::DGeomHelpers::EmbedFailureCauses::INITIAL_COORDS)
+             RDKix::DGeomHelpers::EmbedFailureCauses::INITIAL_COORDS)
       .value("FIRST_MINIMIZATION",
-             RDKit::DGeomHelpers::EmbedFailureCauses::FIRST_MINIMIZATION)
+             RDKix::DGeomHelpers::EmbedFailureCauses::FIRST_MINIMIZATION)
       .value("CHECK_TETRAHEDRAL_CENTERS",
-             RDKit::DGeomHelpers::EmbedFailureCauses::CHECK_TETRAHEDRAL_CENTERS)
+             RDKix::DGeomHelpers::EmbedFailureCauses::CHECK_TETRAHEDRAL_CENTERS)
       .value("CHECK_CHIRAL_CENTERS",
-             RDKit::DGeomHelpers::EmbedFailureCauses::CHECK_CHIRAL_CENTERS)
+             RDKix::DGeomHelpers::EmbedFailureCauses::CHECK_CHIRAL_CENTERS)
       .value("MINIMIZE_FOURTH_DIMENSION",
-             RDKit::DGeomHelpers::EmbedFailureCauses::MINIMIZE_FOURTH_DIMENSION)
+             RDKix::DGeomHelpers::EmbedFailureCauses::MINIMIZE_FOURTH_DIMENSION)
       .value("ETK_MINIMIZATION",
-             RDKit::DGeomHelpers::EmbedFailureCauses::ETK_MINIMIZATION)
+             RDKix::DGeomHelpers::EmbedFailureCauses::ETK_MINIMIZATION)
       .value("FINAL_CHIRAL_BOUNDS",
-             RDKit::DGeomHelpers::EmbedFailureCauses::FINAL_CHIRAL_BOUNDS)
+             RDKix::DGeomHelpers::EmbedFailureCauses::FINAL_CHIRAL_BOUNDS)
       .value("FINAL_CENTER_IN_VOLUME",
-             RDKit::DGeomHelpers::EmbedFailureCauses::FINAL_CENTER_IN_VOLUME)
+             RDKix::DGeomHelpers::EmbedFailureCauses::FINAL_CENTER_IN_VOLUME)
       .value("LINEAR_DOUBLE_BOND",
-             RDKit::DGeomHelpers::EmbedFailureCauses::LINEAR_DOUBLE_BOND)
+             RDKix::DGeomHelpers::EmbedFailureCauses::LINEAR_DOUBLE_BOND)
       .value("BAD_DOUBLE_BOND_STEREO",
-             RDKit::DGeomHelpers::EmbedFailureCauses::BAD_DOUBLE_BOND_STEREO)
+             RDKix::DGeomHelpers::EmbedFailureCauses::BAD_DOUBLE_BOND_STEREO)
       .export_values();
 
-  python::class_<RDKit::DGeomHelpers::EmbedParameters, boost::noncopyable>(
+  python::class_<RDKix::DGeomHelpers::EmbedParameters, boost::noncopyable>(
       "EmbedParameters", "Parameters controlling embedding")
       .def_readwrite("maxIterations",
-                     &RDKit::DGeomHelpers::EmbedParameters::maxIterations,
+                     &RDKix::DGeomHelpers::EmbedParameters::maxIterations,
                      "maximum number of embedding attempts to use for a "
                      "single conformation")
       .def_readwrite(
-          "numThreads", &RDKit::DGeomHelpers::EmbedParameters::numThreads,
+          "numThreads", &RDKix::DGeomHelpers::EmbedParameters::numThreads,
           "number of threads to use when embedding multiple conformations")
       .def_readwrite("randomSeed",
-                     &RDKit::DGeomHelpers::EmbedParameters::randomSeed,
+                     &RDKix::DGeomHelpers::EmbedParameters::randomSeed,
                      "seed for the random number generator")
       .def_readwrite("clearConfs",
-                     &RDKit::DGeomHelpers::EmbedParameters::clearConfs,
+                     &RDKix::DGeomHelpers::EmbedParameters::clearConfs,
                      "clear all existing conformations on the molecule")
       .def_readwrite("useRandomCoords",
-                     &RDKit::DGeomHelpers::EmbedParameters::useRandomCoords,
+                     &RDKix::DGeomHelpers::EmbedParameters::useRandomCoords,
                      "start the embedding from random coordinates instead of "
                      "using eigenvalues of the distance matrix")
       .def_readwrite(
-          "boxSizeMult", &RDKit::DGeomHelpers::EmbedParameters::boxSizeMult,
+          "boxSizeMult", &RDKix::DGeomHelpers::EmbedParameters::boxSizeMult,
           "determines the size of the box used for random coordinates")
       .def_readwrite("randNegEig",
-                     &RDKit::DGeomHelpers::EmbedParameters::randNegEig,
+                     &RDKix::DGeomHelpers::EmbedParameters::randNegEig,
                      "if the embedding yields a negative eigenvalue, pick "
                      "coordinates that correspond to this component at random")
       .def_readwrite(
-          "numZeroFail", &RDKit::DGeomHelpers::EmbedParameters::numZeroFail,
+          "numZeroFail", &RDKix::DGeomHelpers::EmbedParameters::numZeroFail,
           "fail embedding if we have at least this many zero eigenvalues")
       .def_readwrite("optimizerForceTol",
-                     &RDKit::DGeomHelpers::EmbedParameters::optimizerForceTol,
+                     &RDKix::DGeomHelpers::EmbedParameters::optimizerForceTol,
                      "the tolerance to be used during the distance-geometry "
                      "force field minimization")
       .def_readwrite(
           "ignoreSmoothingFailures",
-          &RDKit::DGeomHelpers::EmbedParameters::ignoreSmoothingFailures,
+          &RDKix::DGeomHelpers::EmbedParameters::ignoreSmoothingFailures,
           "try and embed the molecule if if triangle smoothing of "
           "the bounds matrix fails")
       .def_readwrite("enforceChirality",
-                     &RDKit::DGeomHelpers::EmbedParameters::enforceChirality,
+                     &RDKix::DGeomHelpers::EmbedParameters::enforceChirality,
                      "enforce correct chirilaty if chiral centers are present")
       .def_readwrite(
           "useExpTorsionAnglePrefs",
-          &RDKit::DGeomHelpers::EmbedParameters::useExpTorsionAnglePrefs,
+          &RDKix::DGeomHelpers::EmbedParameters::useExpTorsionAnglePrefs,
           "impose experimental torsion angle preferences")
       .def_readwrite("useBasicKnowledge",
-                     &RDKit::DGeomHelpers::EmbedParameters::useBasicKnowledge,
+                     &RDKix::DGeomHelpers::EmbedParameters::useBasicKnowledge,
                      "impose basic-knowledge constraints such as flat rings")
       .def_readwrite("ETversion",
-                     &RDKit::DGeomHelpers::EmbedParameters::ETversion,
+                     &RDKix::DGeomHelpers::EmbedParameters::ETversion,
                      "version of the experimental torsion-angle preferences")
-      .def_readwrite("verbose", &RDKit::DGeomHelpers::EmbedParameters::verbose,
+      .def_readwrite("verbose", &RDKix::DGeomHelpers::EmbedParameters::verbose,
                      "be verbose about configuration")
       .def_readwrite("pruneRmsThresh",
-                     &RDKit::DGeomHelpers::EmbedParameters::pruneRmsThresh,
+                     &RDKix::DGeomHelpers::EmbedParameters::pruneRmsThresh,
                      "used to filter multiple conformations: keep only "
                      "conformations that are at least this far apart from each "
                      "other")
       .def_readwrite(
           "onlyHeavyAtomsForRMS",
-          &RDKit::DGeomHelpers::EmbedParameters::onlyHeavyAtomsForRMS,
+          &RDKix::DGeomHelpers::EmbedParameters::onlyHeavyAtomsForRMS,
           "Only consider heavy atoms when doing RMS filtering")
       .def_readwrite(
           "embedFragmentsSeparately",
-          &RDKit::DGeomHelpers::EmbedParameters::embedFragmentsSeparately,
+          &RDKix::DGeomHelpers::EmbedParameters::embedFragmentsSeparately,
           "split the molecule into fragments and embed them separately")
       .def_readwrite(
           "useSmallRingTorsions",
-          &RDKit::DGeomHelpers::EmbedParameters::useSmallRingTorsions,
+          &RDKix::DGeomHelpers::EmbedParameters::useSmallRingTorsions,
           "impose small ring torsion angle preferences")
       .def_readwrite(
           "useMacrocycleTorsions",
-          &RDKit::DGeomHelpers::EmbedParameters::useMacrocycleTorsions,
+          &RDKix::DGeomHelpers::EmbedParameters::useMacrocycleTorsions,
           "impose macrocycle torsion angle preferences")
       .def_readwrite(
           "boundsMatForceScaling",
-          &RDKit::DGeomHelpers::EmbedParameters::boundsMatForceScaling,
+          &RDKix::DGeomHelpers::EmbedParameters::boundsMatForceScaling,
           "scale the weights of the atom pair distance restraints relative to "
           "the other types of restraints")
       .def_readwrite(
           "useSymmetryForPruning",
-          &RDKit::DGeomHelpers::EmbedParameters::useSymmetryForPruning,
+          &RDKix::DGeomHelpers::EmbedParameters::useSymmetryForPruning,
           "use molecule symmetry when doing the RMSD pruning. Note that this "
           "option automatically also sets onlyHeavyAtomsForRMS to true.")
-      .def("SetBoundsMat", &RDKit::setBoundsMatrix,
+      .def("SetBoundsMat", &RDKix::setBoundsMatrix,
            python::args("self", "boundsMatArg"),
            "set the distance-bounds matrix to be used (no triangle smoothing "
            "will be done on this) from a Numpy array")
-      .def("SetCPCI", &RDKit::setCPCI, python::args("self", "CPCIdict"),
+      .def("SetCPCI", &RDKix::setCPCI, python::args("self", "CPCIdict"),
            "set the customised pairwise Columb-like interaction to atom pairs."
            "used during structural minimisation stage")
       .def_readwrite("forceTransAmides",
-                     &RDKit::DGeomHelpers::EmbedParameters::forceTransAmides,
+                     &RDKix::DGeomHelpers::EmbedParameters::forceTransAmides,
                      "constrain amide bonds to be trans")
       .def_readwrite(
-          "trackFailures", &RDKit::DGeomHelpers::EmbedParameters::trackFailures,
+          "trackFailures", &RDKix::DGeomHelpers::EmbedParameters::trackFailures,
           "keep track of which checks during the embedding process fail")
-      .def("GetFailureCounts", &RDKit::getFailureCounts, python::args("self"),
+      .def("GetFailureCounts", &RDKix::getFailureCounts, python::args("self"),
            "returns the counts of each failure type")
       .def_readwrite(
           "enableSequentialRandomSeeds",
-          &RDKit::DGeomHelpers::EmbedParameters::enableSequentialRandomSeeds,
+          &RDKix::DGeomHelpers::EmbedParameters::enableSequentialRandomSeeds,
           "handle random number seeds so that conformer generation can be restarted");
 
   docString =
@@ -545,7 +545,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
     List of new conformation IDs \n\
 \n";
   python::def(
-      "EmbedMultipleConfs", RDKit::EmbedMultipleConfs2,
+      "EmbedMultipleConfs", RDKix::EmbedMultipleConfs2,
       (python::arg("mol"), python::arg("numConfs"), python::arg("params")),
       docString.c_str());
 
@@ -560,28 +560,28 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
  RETURNS:\n\n\
     ID of the new conformation added to the molecule \n\
 \n";
-  python::def("EmbedMolecule", RDKit::EmbedMolecule2,
+  python::def("EmbedMolecule", RDKix::EmbedMolecule2,
               (python::arg("mol"), python::arg("params")), docString.c_str());
   python::def(
-      "ETKDG", RDKit::getETKDG,
+      "ETKDG", RDKix::getETKDG,
       "Returns an EmbedParameters object for the ETKDG method - version 1.",
       python::return_value_policy<python::manage_new_object>());
   python::def(
-      "ETKDGv2", RDKit::getETKDGv2,
+      "ETKDGv2", RDKix::getETKDGv2,
       "Returns an EmbedParameters object for the ETKDG method - version 2.",
       python::return_value_policy<python::manage_new_object>());
-  python::def("srETKDGv3", RDKit::getsrETKDGv3,
+  python::def("srETKDGv3", RDKix::getsrETKDGv3,
               "Returns an EmbedParameters object for the ETKDG method - "
               "version 3 (small rings).",
               python::return_value_policy<python::manage_new_object>());
-  python::def("ETKDGv3", RDKit::getETKDGv3,
+  python::def("ETKDGv3", RDKix::getETKDGv3,
               "Returns an EmbedParameters object for the ETKDG method - "
               "version 3 (macrocycles).",
               python::return_value_policy<python::manage_new_object>());
-  python::def("ETDG", RDKit::getETDG,
+  python::def("ETDG", RDKix::getETDG,
               "Returns an EmbedParameters object for the ETDG method.",
               python::return_value_policy<python::manage_new_object>());
-  python::def("KDG", RDKit::getKDG,
+  python::def("KDG", RDKix::getKDG,
               "Returns an EmbedParameters object for the KDG method.",
               python::return_value_policy<python::manage_new_object>());
 
@@ -600,7 +600,7 @@ BOOST_PYTHON_MODULE(rdDistGeom) {
     the bounds matrix as a Numeric array with lower bounds in \n\
     the lower triangle and upper bounds in the upper triangle\n\
 \n";
-  python::def("GetMoleculeBoundsMatrix", RDKit::getMolBoundsMatrix,
+  python::def("GetMoleculeBoundsMatrix", RDKix::getMolBoundsMatrix,
               (python::arg("mol"), python::arg("set15bounds") = true,
                python::arg("scaleVDW") = false,
                python::arg("doTriangleSmoothing") = true,

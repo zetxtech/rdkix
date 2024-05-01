@@ -2,16 +2,16 @@
 //  Copyright (C) 2018 Novartis Institutes Of BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MonomerInfo.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/RDLog.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -22,7 +22,7 @@
 #include <iostream>
 
 using namespace std;
-using namespace RDKit;
+using namespace RDKix;
 
 // memory tests for valgrind
 void testRemoveAtomBond(RWMol &m, int atomidx, int bondidx) {
@@ -65,9 +65,9 @@ void test2() {
 }
 
 void testCopyConstructor() {
-  RDKit::RWMol mol1;
-  RDKit::RWMol mol2(mol1);
-  RDKit::RWMol mol3;
+  RDKix::RWMol mol1;
+  RDKix::RWMol mol2(mol1);
+  RDKix::RWMol mol3;
   mol3 = mol2;
 }
 

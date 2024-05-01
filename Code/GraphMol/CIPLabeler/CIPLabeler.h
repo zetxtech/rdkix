@@ -3,10 +3,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #pragma once
 
@@ -14,12 +14,12 @@
 
 #include <RDGeneral/export.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class ROMol;
 
 namespace CIPLabeler_detail {
-RDKIT_CIPLABELER_EXPORT bool decrementRemainingCallCountAndCheck();
+RDKIX_CIPLABELER_EXPORT bool decrementRemainingCallCountAndCheck();
 }
 
 namespace CIPLabeler {
@@ -32,7 +32,7 @@ namespace CIPLabeler {
   If that maximum value is exceeded, the following error is thrown
 */
 
-class RDKIT_CIPLABELER_EXPORT MaxIterationsExceeded
+class RDKIX_CIPLABELER_EXPORT MaxIterationsExceeded
     : public std::runtime_error {
  public:
   explicit MaxIterationsExceeded()
@@ -60,7 +60,7 @@ class RDKIT_CIPLABELER_EXPORT MaxIterationsExceeded
  *   \note Labels will be stored under the common_properties::_CIPCode
  *          property of the relevant atoms/bonds.
  */
-RDKIT_CIPLABELER_EXPORT void assignCIPLabels(
+RDKIX_CIPLABELER_EXPORT void assignCIPLabels(
     ROMol &mol, unsigned int maxRecursiveIterations = 0);
 
 /**
@@ -78,10 +78,10 @@ RDKIT_CIPLABELER_EXPORT void assignCIPLabels(
  *      100 iterations, and a 20,000 mw protein took about 600 iterations.
  *
  */
-RDKIT_CIPLABELER_EXPORT void assignCIPLabels(
+RDKIX_CIPLABELER_EXPORT void assignCIPLabels(
     ROMol &mol, const boost::dynamic_bitset<> &atoms,
     const boost::dynamic_bitset<> &bonds,
     unsigned int maxRecursiveIterations = 0);
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,4 +1,4 @@
-rdkit_headers(AndQuery.h
+rdkix_headers(AndQuery.h
               EqualityQuery.h
               GreaterEqualQuery.h
               GreaterQuery.h
@@ -12,5 +12,5 @@ rdkit_headers(AndQuery.h
               SetQuery.h
               XOrQuery.h DEST Query)
 
-rdkit_test(testQuery test.cpp LINK_LIBRARIES RDGeneral)
+rdkix_test(testQuery test.cpp LINK_LIBRARIES RDGeneral)
 

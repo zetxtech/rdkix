@@ -2,13 +2,13 @@
 //  Copyright (C) 2012-2018 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <RDGeneral/RDLog.h>
@@ -54,11 +54,11 @@ void testCoulombMat1() {
   std::string line;
   std::vector<std::string> tokens;
 
-  RDKit::ROMOL_SPTR mol(RDKit::MolFileToMol(mol_file, true, false));
+  RDKix::ROMOL_SPTR mol(RDKix::MolFileToMol(mol_file, true, false));
 
   std::vector<std::vector<double>> Mres;
   int confId = -1;
-  RDKit::Descriptors::CoulombMat(*mol, Mres, confId);
+  RDKix::Descriptors::CoulombMat(*mol, Mres, confId);
 
   for (const auto &v : Mres) {
     std::getline(instrmCM, line);

@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 // A class to hold the results of a RASCAL MCES determination
 // between 2 molecules.  Contains the bonds and atoms that
@@ -21,13 +21,13 @@
 
 #include <GraphMol/ROMol.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace RascalMCES {
 
-class RDKIT_RASCALMCES_EXPORT RascalResult {
+class RDKIX_RASCALMCES_EXPORT RascalResult {
  public:
-  RascalResult(const RDKit::ROMol &mol1, const RDKit::ROMol &mol2,
+  RascalResult(const RDKix::ROMol &mol1, const RDKix::ROMol &mol2,
                const std::vector<std::vector<int>> &adjMatrix1,
                const std::vector<std::vector<int>> &adjMatrix2,
                const std::vector<unsigned int> &clique,
@@ -133,7 +133,7 @@ class RDKIT_RASCALMCES_EXPORT RascalResult {
 
   // Make the fragments for either mol1 or mol2.  If molNum is not 1 or 2,
   // returns nullptr.
-  RDKit::ROMol *makeMolFrags(int molNum) const;
+  RDKix::ROMol *makeMolFrags(int molNum) const;
 
   int calcRingNonRingScore() const;
 
@@ -148,6 +148,6 @@ class RDKIT_RASCALMCES_EXPORT RascalResult {
 };
 
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif  // RASCALRESULT_H

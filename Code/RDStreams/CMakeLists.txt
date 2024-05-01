@@ -1,5 +1,5 @@
 
-rdkit_library(RDStreams streams.cpp)
-target_compile_definitions(RDStreams PRIVATE RDKIT_RDSTREAMS_BUILD)
+rdkix_library(RDStreams streams.cpp)
+target_compile_definitions(RDStreams PRIVATE RDKIX_RDSTREAMS_BUILD)
 
-rdkit_headers(streams.h DEST RDStreams)
+rdkix_headers(streams.h DEST RDStreams)

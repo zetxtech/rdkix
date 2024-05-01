@@ -1,4 +1,4 @@
-rdkit_python_extension(rdConformerParser rdConformerParser.cpp
+rdkix_python_extension(rdConformerParser rdConformerParser.cpp
                        DEST Chem
 			           LINK_LIBRARIES
 			           ConformerParser

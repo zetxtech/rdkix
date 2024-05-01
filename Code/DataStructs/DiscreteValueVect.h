@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_DISCRETE_VALUE_VECT_20050124__
@@ -16,12 +16,12 @@
 #include <cstring>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 // we require 32bit unsigneds using the std::uint32_t type:
 const unsigned int BITS_PER_INT = 32;
 
 //! a class for efficiently storing vectors of discrete values
-class RDKIT_DATASTRUCTS_EXPORT DiscreteValueVect {
+class RDKIX_DATASTRUCTS_EXPORT DiscreteValueVect {
  public:
   typedef boost::shared_array<std::uint32_t> DATA_SPTR;
 
@@ -134,13 +134,13 @@ class RDKIT_DATASTRUCTS_EXPORT DiscreteValueVect {
   void initFromText(const char *pkl, const unsigned int len);
 };
 
-RDKIT_DATASTRUCTS_EXPORT unsigned int computeL1Norm(
+RDKIX_DATASTRUCTS_EXPORT unsigned int computeL1Norm(
     const DiscreteValueVect &v1, const DiscreteValueVect &v2);
 
-RDKIT_DATASTRUCTS_EXPORT DiscreteValueVect
+RDKIX_DATASTRUCTS_EXPORT DiscreteValueVect
 operator+(const DiscreteValueVect &p1, const DiscreteValueVect &p2);
-RDKIT_DATASTRUCTS_EXPORT DiscreteValueVect
+RDKIX_DATASTRUCTS_EXPORT DiscreteValueVect
 operator-(const DiscreteValueVect &p1, const DiscreteValueVect &p2);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -2,10 +2,10 @@
 // Copyright (C) 2015-2018 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -17,7 +17,7 @@
 #ifdef RDK_BUILD_THREADSAFE_SSS
 #include <thread>
 
-namespace RDKit {
+namespace RDKix {
 inline unsigned int getNumThreadsToUse(int target) {
   if (target >= 1) {
     return static_cast<unsigned int>(target);
@@ -29,16 +29,16 @@ inline unsigned int getNumThreadsToUse(int target) {
     return 1;
   }
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 #else
 
-namespace RDKit {
+namespace RDKix {
 inline unsigned int getNumThreadsToUse(int target) {
   RDUNUSED_PARAM(target);
   return 1;
 }
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 
 #endif
