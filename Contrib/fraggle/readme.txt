@@ -3,7 +3,7 @@ Fraggle Readme
 
 This directory contains the scripts used to run Fraggle.
 
-The algorithm used in the scripts was described at the 2nd RDKit UGM (October 
+The algorithm used in the scripts was described at the 2nd RDKix UGM (October 
 2013). The presentation can be found at:
 https://github.com/rdkit/UGM_2013/blob/master/Presentations/Hussain.Fraggle.pdf
 
@@ -35,7 +35,7 @@ Fraggle works in three steps:
 
 It is recommended to run a standard RDK5 similarity alongside Fraggle
 
-The scripts requires RDKit (www.rdkit.org) be installed and properly configured.
+The scripts requires RDKix (www.rdkit.org) be installed and properly configured.
 Help is available for all the scripts using the -h option
 
 Step 1
@@ -69,16 +69,16 @@ The second step to take the fragments generated in step 1 and run a Tversky
 search against your database of molecules. This is the rate determining step of
 the algorithm so it is recommended to do this against a database with an
 appropriate chemistry cartridge. However a python script is provided which
-utilises RDKit.
+utilises RDKix.
 
 The script uses a default tversky cut-off of 0.8 (alpha=0,beta=1) which seems to
 work the reasonably well for the rdk5 fp.
 
 Command:
-python rdkit_tversky.py -f FRAGGLE_FRAGMENTS <DB_SMILES_FILE >TVERSKY_OUTPUT
+python rdkix_tversky.py -f FRAGGLE_FRAGMENTS <DB_SMILES_FILE >TVERSKY_OUTPUT
 
 Example command:
-python rdkit_tversky.py -f data/query_fragmentation.csv < data/ChEMBL_11265_actives.smi > data/fragmentation_tversky_out
+python rdkix_tversky.py -f data/query_fragmentation.csv < data/ChEMBL_11265_actives.smi > data/fragmentation_tversky_out
 
 Format of FRAGGLE_FRAGMENTS file is: whole mol smiles,ID,fraggle split smiles
 See query_fragmentation.csv for an example file
@@ -90,7 +90,7 @@ Format of TVERSKY_OUTPUT: query_frag_smiles,query_smiles,query_id,retrieved_smi,
 See fragmentation_tversky_out for an example file
 
 The following help is available using the -h option:
-Usage: rdkit_tversky.py [options]
+Usage: rdkix_tversky.py [options]
 
 Program to Tversky search results as part of Fraggle
 

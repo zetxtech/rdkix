@@ -3,15 +3,15 @@
 //  Copyright (C) 2001-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Conformer.h"
 #include "ROMol.h"
 
-namespace RDKit {
+namespace RDKix {
 
 void Conformer::initFromOther(const Conformer &conf) {
   RDProps::operator=(conf);
@@ -70,4 +70,4 @@ RDGeom::Point3D &Conformer::getAtomPos(unsigned int atomId) {
   URANGE_CHECK(atomId, d_positions.size());
   return d_positions[atomId];
 }
-}  // namespace RDKit
+}  // namespace RDKix

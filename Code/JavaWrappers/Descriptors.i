@@ -42,20 +42,20 @@
 %include <GraphMol/Descriptors/MQN.h>
 
 %inline %{
-  std::pair<double,double> calcCrippenDescriptors(const RDKit::ROMol &mol,
+  std::pair<double,double> calcCrippenDescriptors(const RDKix::ROMol &mol,
                                                    bool includeHs=true,bool force=false) {
     std::pair<double,double> res;
-    RDKit::Descriptors::calcCrippenDescriptors(mol, res.first, res.second, includeHs, force);
+    RDKix::Descriptors::calcCrippenDescriptors(mol, res.first, res.second, includeHs, force);
     return res;
   }
-  double calcMolLogP(const RDKit::ROMol &mol){
+  double calcMolLogP(const RDKix::ROMol &mol){
     double logp,mr;
-    RDKit::Descriptors::calcCrippenDescriptors(mol,logp,mr);
+    RDKix::Descriptors::calcCrippenDescriptors(mol,logp,mr);
     return logp;
   }
-  double calcMolMR(const RDKit::ROMol &mol){
+  double calcMolMR(const RDKix::ROMol &mol){
     double logp,mr;
-    RDKit::Descriptors::calcCrippenDescriptors(mol,logp,mr);
+    RDKix::Descriptors::calcCrippenDescriptors(mol,logp,mr);
     return mr;
   }
 

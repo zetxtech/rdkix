@@ -1,5 +1,5 @@
 XX_0000000001_001_001_001
-     RDKit          3D
+     RDKix          3D
 
   5  4  0  0  0  0  0  0  0  0999 V2000
    -0.0372    1.5779    0.0423 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -53,7 +53,7 @@ correct SMILES  3D structure successfully generated (#structures: 1; Protonation
 
 $$$$
 XX_0000000002_001_001_001
-     RDKit          3D
+     RDKix          3D
 
  12 12  0  0  0  0  0  0  0  0999 V2000
     0.1906    1.4156    0.2263 C   0  0  0  0  0  0  0  0  0  0  0  0

@@ -2,10 +2,10 @@
 // Copyright (c) 2016-2022 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MULTIFPBREADER_H_APR2016
@@ -23,7 +23,7 @@
 #include <DataStructs/FPBReader.h>
 #include <tuple>
 
-namespace RDKit {
+namespace RDKix {
 
 //! class for reading and searching multiple FPB files
 /*!
@@ -50,7 +50,7 @@ namespace RDKit {
   \c lazyRead mode.
 
 */
-class RDKIT_DATASTRUCTS_EXPORT MultiFPBReader {
+class RDKIX_DATASTRUCTS_EXPORT MultiFPBReader {
  public:
   typedef std::tuple<double, unsigned int, unsigned int> ResultTuple;
   MultiFPBReader() {}
@@ -135,7 +135,7 @@ class RDKIT_DATASTRUCTS_EXPORT MultiFPBReader {
     \param bv the query fingerprint
     \param threshold the minimum similarity to return
     \param numThreads  Sets the number of threads to use (more than one thread
-    will only be used if the RDKit was build with multithread support) If set to
+    will only be used if the RDKix was build with multithread support) If set to
     zero, the max supported by the system will be used.
 
   */
@@ -163,7 +163,7 @@ class RDKIT_DATASTRUCTS_EXPORT MultiFPBReader {
     \param cb the Tversky a coefficient
     \param threshold the minimum similarity to return
     \param numThreads  Sets the number of threads to use (more than one thread
-    will only be used if the RDKit was build with multithread support) If set to
+    will only be used if the RDKix was build with multithread support) If set to
     zero, the max supported by the system will be used.
 
   */
@@ -209,5 +209,5 @@ class RDKIT_DATASTRUCTS_EXPORT MultiFPBReader {
   MultiFPBReader(const MultiFPBReader &);
   MultiFPBReader &operator=(const MultiFPBReader &);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

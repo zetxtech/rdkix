@@ -25,18 +25,18 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef CoulombMatRDKIT_H_MAY2018
-#define CoulombMatRDKIT_H_MAY2018
+#ifndef CoulombMatRDKIX_H_MAY2018
+#define CoulombMatRDKIX_H_MAY2018
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string CoulombMatVersion = "1.0.0";
-RDKIT_DESCRIPTORS_EXPORT void CoulombMat(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT void CoulombMat(const ROMol &mol,
                                          std::vector<std::vector<double>> &res,
                                          int confId = -1);
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

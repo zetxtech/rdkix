@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_FRAG_FP_GENERATOR_H_
@@ -17,13 +17,13 @@
 #include "FragCatParams.h"
 
 class ExplicitBitVect;
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 typedef RDCatalog::HierarchCatalog<FragCatalogEntry, FragCatParams, int>
     FragCatalog;
 typedef std::vector<std::pair<int, int>> MatchVectType;
 
-class RDKIT_FRAGCATALOG_EXPORT FragFPGenerator {
+class RDKIX_FRAGCATALOG_EXPORT FragFPGenerator {
  public:
   FragFPGenerator() {}
 
@@ -33,6 +33,6 @@ class RDKIT_FRAGCATALOG_EXPORT FragFPGenerator {
   void computeFP(const ROMol &mol, const FragCatalog &fcat,
                  const MatchVectType &aidToFid, ExplicitBitVect *fp);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RGROUP_SCORE_H
 #define RGROUP_SCORE_H
@@ -14,7 +14,7 @@
 #include <vector>
 #include <deque>
 #include <set>
-namespace RDKit {
+namespace RDKix {
 
 //! iterate through all possible permutations of the rgroups
 struct CartesianProduct {
@@ -68,7 +68,7 @@ struct CartesianProduct {
   }
 };
 
-class RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupScorer {
+class RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupScorer {
  public:
   RGroupScorer(){};
   RGroupScorer(const std::vector<std::vector<size_t>> &permutations,
@@ -169,5 +169,5 @@ class RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupScorer {
   std::deque<State> d_store;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

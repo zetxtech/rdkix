@@ -33,8 +33,8 @@
 import pickle
 import sys
 
-from rdkit import DataStructs
-from rdkit.ML.Cluster import Butina
+from rdkix import DataStructs
+from rdkix.ML.Cluster import Butina
 
 # sims is the list of similarity thresholds used to generate clusters
 sims = [.9, .8, .7, .6]

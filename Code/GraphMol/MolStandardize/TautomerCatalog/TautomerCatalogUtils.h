@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_TAUTOMER_CATALOG_UTILS_H
 #define RD_TAUTOMER_CATALOG_UTILS_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "TautomerCatalogParams.h"
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -19,7 +19,7 @@
 #include <iostream>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace MolStandardize {
@@ -33,7 +33,7 @@ class TautomerCatalogParams;
 //} BondType;
 
 // typedef std::vector<ROMol*, std::string, std::string> tautomerTransform;
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerTransform {
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerTransform {
  public:
   ROMol* Mol = nullptr;
   std::vector<Bond::BondType> BondTypes;
@@ -63,19 +63,19 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerTransform {
   ~TautomerTransform() { delete Mol; }
 };
 
-RDKIT_MOLSTANDARDIZE_EXPORT std::vector<Bond::BondType> stringToBondType(
+RDKIX_MOLSTANDARDIZE_EXPORT std::vector<Bond::BondType> stringToBondType(
     std::string bond_str);
-RDKIT_MOLSTANDARDIZE_EXPORT std::vector<int> stringToCharge(
+RDKIX_MOLSTANDARDIZE_EXPORT std::vector<int> stringToCharge(
     std::string charge_str);
 
-RDKIT_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
+RDKIX_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
     std::string fileName);
-RDKIT_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
+RDKIX_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
     std::istream& inStream, int nToRead = -1);
-RDKIT_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
+RDKIX_MOLSTANDARDIZE_EXPORT std::vector<TautomerTransform> readTautomers(
     const std::vector<
         std::tuple<std::string, std::string, std::string, std::string>>& data);
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

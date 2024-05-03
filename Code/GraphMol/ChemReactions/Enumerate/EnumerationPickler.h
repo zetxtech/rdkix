@@ -35,26 +35,26 @@
 
 #include "EnumerationStrategyBase.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace EnumerationStrategyPickler {
 //! pickles a EnumerationStrategy and adds the results to a stream \c ss
-RDKIT_CHEMREACTIONS_EXPORT void pickle(
+RDKIX_CHEMREACTIONS_EXPORT void pickle(
     const boost::shared_ptr<EnumerationStrategyBase> &enumerator,
     std::ostream &ss);
-RDKIT_CHEMREACTIONS_EXPORT void pickle(
+RDKIX_CHEMREACTIONS_EXPORT void pickle(
     const boost::shared_ptr<EnumerationStrategyBase> &enumerator,
     std::string &s);
 
 //! constructs a EnumerationStrategy from a pickle stored in a string
 //!  Since an EnumerationStrategyBase is polymorphic, this must return
 //!  a shared pointer to the EnumerationStrategyBase
-RDKIT_CHEMREACTIONS_EXPORT boost::shared_ptr<EnumerationStrategyBase>
+RDKIX_CHEMREACTIONS_EXPORT boost::shared_ptr<EnumerationStrategyBase>
 fromPickle(std::istream &pickle);
 
 //!  a pointer to the EnumerationStrategyBase
-RDKIT_CHEMREACTIONS_EXPORT boost::shared_ptr<EnumerationStrategyBase>
+RDKIX_CHEMREACTIONS_EXPORT boost::shared_ptr<EnumerationStrategyBase>
 fromPickle(const std::string &pickle);
 }  // namespace EnumerationStrategyPickler
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

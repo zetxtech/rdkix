@@ -2,16 +2,16 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolEnumerator.h"
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/FileParsers/MolSGroupParsing.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolEnumerator {
 
 void PositionVariationOp::initFromMol(const ROMol &mol) {
@@ -52,7 +52,7 @@ void PositionVariationOp::initFromMol() {
       }
       d_dummiesAtEachPoint.push_back(bond->getOtherAtomIdx(atom->getIdx()));
       std::vector<unsigned int> oats =
-          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(
+          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(
               endpts, dp_mol->getNumAtoms(), false);
       // decrement the indices and do error checking and whatever additional
       // cleanup is required:
@@ -117,4 +117,4 @@ std::unique_ptr<ROMol> PositionVariationOp::operator()(
 
 }  // namespace MolEnumerator
 
-}  // namespace RDKit
+}  // namespace RDKix

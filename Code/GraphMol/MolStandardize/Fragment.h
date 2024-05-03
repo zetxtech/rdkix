@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FRAGMENT_REMOVER_H
@@ -16,19 +16,19 @@
 #include <GraphMol/MolStandardize/FragmentCatalog/FragmentCatalogParams.h>
 #include <GraphMol/MolStandardize/MolStandardize.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace MolStandardize {
 
-RDKIT_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
+RDKIX_MOLSTANDARDIZE_EXPORT extern const CleanupParameters
     defaultCleanupParameters;
 
 typedef RDCatalog::HierarchCatalog<FragmentCatalogEntry, FragmentCatalogParams,
                                    int>
     FragmentCatalog;
 
-class RDKIT_MOLSTANDARDIZE_EXPORT FragmentRemover {
+class RDKIX_MOLSTANDARDIZE_EXPORT FragmentRemover {
  public:
   FragmentRemover();
   FragmentRemover(const std::string fragmentFile, bool leave_last,
@@ -71,7 +71,7 @@ inline FragmentRemover *fragmentRemoverFromParams(
   }
 }
 
-class RDKIT_MOLSTANDARDIZE_EXPORT LargestFragmentChooser {
+class RDKIX_MOLSTANDARDIZE_EXPORT LargestFragmentChooser {
  public:
   //  LargestFragmentChooser() {}
   LargestFragmentChooser(bool preferOrganic = false)
@@ -101,6 +101,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT LargestFragmentChooser {
   bool countHeavyAtomsOnly{false};
 };  // class LargestFragmentChooser
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

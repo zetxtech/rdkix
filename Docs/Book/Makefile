@@ -89,17 +89,17 @@ qthelp: $(APIDOCS)
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/RDKit.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/RDKix.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/RDKit.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/RDKix.qhc"
 
 devhelp: $(APIDOCS)
 	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/RDKit"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/RDKit"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/RDKix"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/RDKix"
 	@echo "# devhelp"
 
 epub: $(APIDOCS)

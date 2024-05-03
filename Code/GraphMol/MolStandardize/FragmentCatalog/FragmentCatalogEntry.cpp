@@ -2,22 +2,22 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "FragmentCatalogEntry.h"
 
 #include <RDGeneral/types.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/StreamOps.h>
 #include <GraphMol/MolPickler.h>
 #include <iostream>
 #include <fstream>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
 // FragmentCatalogEntry::FragmentCatalogEntry(const ROMol *omol, const PATH_TYPE
@@ -77,4 +77,4 @@ void FragmentCatalogEntry::initFromString(const std::string &text) {
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,16 +2,16 @@
 //  Copyright (C) 2003-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SubstructUtils.h"
 #include <set>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/Substruct/SubstructUtils.h>
 
 #include <RDGeneral/BoostStartInclude.h>
@@ -21,7 +21,7 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace detail {
 // Helper class used by the sortMatchesByDegreeOfCoreSubstitution
@@ -33,8 +33,8 @@ class ScoreMatchesByDegreeOfCoreSubstitution {
  public:
   typedef std::pair<unsigned int, double> IdxScorePair;
   ScoreMatchesByDegreeOfCoreSubstitution(
-      const RDKit::ROMol &mol, const RDKit::ROMol &query,
-      const std::vector<RDKit::MatchVectType> &matches)
+      const RDKix::ROMol &mol, const RDKix::ROMol &query,
+      const std::vector<RDKix::MatchVectType> &matches)
       : d_mol(mol),
         d_query(query),
         d_matches(matches),
@@ -50,7 +50,7 @@ class ScoreMatchesByDegreeOfCoreSubstitution {
       d_matchIdxVsScore.emplace_back(i++, computeScore(match));
     }
   }
-  const RDKit::MatchVectType &getMostSubstitutedCoreMatch() {
+  const RDKix::MatchVectType &getMostSubstitutedCoreMatch() {
     if (d_minIdx == -1) {
       d_minIdx = std::min_element(d_matchIdxVsScore.begin(),
                                   d_matchIdxVsScore.end(), compare)
@@ -81,7 +81,7 @@ class ScoreMatchesByDegreeOfCoreSubstitution {
     return (molAtom->getAtomicNum() == 1 &&
             isAtomTerminalRGroupOrQueryHydrogen(queryAtom));
   }
-  double computeScore(const RDKit::MatchVectType &match) const {
+  double computeScore(const RDKix::MatchVectType &match) const {
     double penalty = 0.0;
     double i = 0.0;
     for (const auto &pair : match) {
@@ -93,9 +93,9 @@ class ScoreMatchesByDegreeOfCoreSubstitution {
     penalty += i / d_sumIndices;
     return penalty;
   }
-  const RDKit::ROMol &d_mol;
-  const RDKit::ROMol &d_query;
-  const std::vector<RDKit::MatchVectType> &d_matches;
+  const RDKix::ROMol &d_mol;
+  const RDKix::ROMol &d_query;
+  const std::vector<RDKix::MatchVectType> &d_matches;
   std::vector<IdxScorePair> d_matchIdxVsScore;
   double d_sumIndices;
   int d_minIdx;
@@ -292,4 +292,4 @@ std::string substructMatchParamsToJSON(const SubstructMatchParameters &params) {
   return ss.str();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

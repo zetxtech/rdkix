@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -15,10 +15,10 @@
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace TopologicalTorsion {
 
-class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionArguments
+class RDKIX_FINGERPRINTS_EXPORT TopologicalTorsionArguments
     : public FingerprintArguments {
  public:
   uint32_t d_torsionAtomCount = 4;
@@ -46,7 +46,7 @@ class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionArguments
 };
 
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionAtomEnv
+class RDKIX_FINGERPRINTS_EXPORT TopologicalTorsionAtomEnv
     : public AtomEnvironment<OutputType> {
   const OutputType d_bitId;
   const INT_VECT d_atomPath;
@@ -72,7 +72,7 @@ class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionAtomEnv
 };
 
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionEnvGenerator
+class RDKIX_FINGERPRINTS_EXPORT TopologicalTorsionEnvGenerator
     : public AtomEnvironmentGenerator<OutputType> {
  public:
   std::vector<AtomEnvironment<OutputType> *> getEnvironments(
@@ -116,7 +116,7 @@ class RDKIT_FINGERPRINTS_EXPORT TopologicalTorsionEnvGenerator
 
  */
 template <typename OutputType>
-RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType>
+RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType>
     *getTopologicalTorsionGenerator(
         bool includeChirality = false, uint32_t torsionAtomCount = 4,
         AtomInvariantsGenerator *atomInvariantsGenerator = nullptr,
@@ -124,6 +124,6 @@ RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType>
         std::vector<std::uint32_t> countBounds = {1, 2, 4, 8},
         bool ownsAtomInvGen = false);
 }  // namespace TopologicalTorsion
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

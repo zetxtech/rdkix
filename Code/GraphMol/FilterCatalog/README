@@ -1,4 +1,4 @@
-FilterCatalogs give RDKit the ability to screen out or reject undesirable molecules
+FilterCatalogs give RDKix the ability to screen out or reject undesirable molecules
 based on various criteria.  Supplied with RDKIt are the following filter sets:
 
   * PAINS - Pan assay interference patterns.  These are separated into three
@@ -30,7 +30,7 @@ The following is C++ and Python examples of how to filter molecules.
 [C++]
 
 #include <GraphMol/FilterCatalog.h>
-using namespace RDKit;
+using namespace RDKix;
 
     SmilesMolSupplier suppl(…);
 
@@ -86,7 +86,7 @@ using namespace RDKit;
 Python API
 
   import sys
-  from rdkit.Chem import FilterCatalog
+  from rdkix.Chem import FilterCatalog
 
   params = FilterCatalog.FilterCatalogParams()
   params.AddCatalog(FilterCatalogParams.FilterCatalogs.PAINS_A)

@@ -34,29 +34,29 @@
 #ifndef MOLDATA3DDESCRIPTORS_2017
 #define MOLDATA3DDESCRIPTORS_2017
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "Data3Ddescriptors.h"
 
-class RDKIT_DESCRIPTORS_EXPORT MolData3Ddescriptors {
+class RDKIX_DESCRIPTORS_EXPORT MolData3Ddescriptors {
  private:
   Data3Ddescriptors data3D;
 
  public:
   MolData3Ddescriptors();
-  std::vector<double> GetCharges(const RDKit::ROMol& mol);
-  std::vector<double> GetRelativeMW(const RDKit::ROMol& mol);
-  std::vector<double> GetCustomAtomProp(const RDKit::ROMol& mol,
+  std::vector<double> GetCharges(const RDKix::ROMol& mol);
+  std::vector<double> GetRelativeMW(const RDKix::ROMol& mol);
+  std::vector<double> GetCustomAtomProp(const RDKix::ROMol& mol,
                                         const std::string& customAtomPropName);
-  std::vector<double> GetRelativePol(const RDKit::ROMol& mol);
-  std::vector<double> GetRelativeRcov(const RDKit::ROMol& mol);
-  std::vector<double> GetRelativeENeg(const RDKit::ROMol& mol);
-  std::vector<double> GetRelativeIonPol(const RDKit::ROMol& mol);
-  std::vector<double> GetRelativeVdW(const RDKit::ROMol& mol);
+  std::vector<double> GetRelativePol(const RDKix::ROMol& mol);
+  std::vector<double> GetRelativeRcov(const RDKix::ROMol& mol);
+  std::vector<double> GetRelativeENeg(const RDKix::ROMol& mol);
+  std::vector<double> GetRelativeIonPol(const RDKix::ROMol& mol);
+  std::vector<double> GetRelativeVdW(const RDKix::ROMol& mol);
   std::vector<double> GetUn(int numAtoms);
   int GetPrincipalQuantumNumber(int AtomicNum);
-  std::vector<double> GetIState(const RDKit::ROMol& mol);
-  std::vector<double> GetIStateDrag(const RDKit::ROMol& mol);
-  std::vector<double> GetEState(const RDKit::ROMol& mol);
-  std::vector<double> GetEState2(const RDKit::ROMol& mol);
+  std::vector<double> GetIState(const RDKix::ROMol& mol);
+  std::vector<double> GetIStateDrag(const RDKix::ROMol& mol);
+  std::vector<double> GetEState(const RDKix::ROMol& mol);
+  std::vector<double> GetEState2(const RDKix::ROMol& mol);
 };
 #endif

@@ -32,7 +32,7 @@
 #include "Property.h"
 #include <RDGeneral/types.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Atom.h>
 #include <GraphMol/Descriptors/MolDescriptors.h>
 #include <GraphMol/Descriptors/Crippen.h>
@@ -42,7 +42,7 @@
 #include <mutex>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 namespace {
@@ -162,7 +162,7 @@ std::vector<std::string> Properties::getPropertyNames() const {
   return names;
 }
 
-std::vector<double> Properties::computeProperties(const RDKit::ROMol &mol,
+std::vector<double> Properties::computeProperties(const RDKix::ROMol &mol,
                                                   bool annotate) const {
   std::vector<double> res;
   res.reserve(m_properties.size());
@@ -175,7 +175,7 @@ std::vector<double> Properties::computeProperties(const RDKit::ROMol &mol,
   return res;
 }
 
-void Properties::annotateProperties(RDKit::ROMol &mol) const {
+void Properties::annotateProperties(RDKix::ROMol &mol) const {
   for (auto prop : m_properties) {
     mol.setProp<double>(prop->getName(), (*prop)(mol));
   }
@@ -188,4 +188,4 @@ PROP_RANGE_QUERY *makePropertyRangeQuery(const std::string &name, double min,
   return filter;
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2010 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 
@@ -30,12 +30,12 @@ void rdDepictExceptionTranslator(DepictException const &e) {
 
 namespace RDDepict {
 
-unsigned int Compute2DCoords(RDKit::ROMol &mol, bool canonOrient,
+unsigned int Compute2DCoords(RDKix::ROMol &mol, bool canonOrient,
                              bool clearConfs, python::dict &coordMap,
                              unsigned int nFlipsPerSample = 3,
                              unsigned int nSamples = 100, int sampleSeed = 100,
                              bool permuteDeg4Nodes = false,
-                             double bondLength = -1.0, bool forceRDKit = false,
+                             double bondLength = -1.0, bool forceRDKix = false,
                              bool useRingTemplates = false) {
   RDGeom::INT_POINT2D_MAP cMap;
   cMap.clear();
@@ -55,7 +55,7 @@ unsigned int Compute2DCoords(RDKit::ROMol &mol, bool canonOrient,
   unsigned int res;
   res = RDDepict::compute2DCoords(
       mol, &cMap, canonOrient, clearConfs, nFlipsPerSample, nSamples,
-      sampleSeed, permuteDeg4Nodes, forceRDKit, useRingTemplates);
+      sampleSeed, permuteDeg4Nodes, forceRDKix, useRingTemplates);
   if (bondLength > 0) {
     RDDepict::BOND_LEN = oBondLen;
   }
@@ -63,10 +63,10 @@ unsigned int Compute2DCoords(RDKit::ROMol &mol, bool canonOrient,
 }
 
 unsigned int Compute2DCoordsMimicDistmat(
-    RDKit::ROMol &mol, python::object distMat, bool canonOrient,
+    RDKix::ROMol &mol, python::object distMat, bool canonOrient,
     bool clearConfs, double weightDistMat, unsigned int nFlipsPerSample,
     unsigned int nSamples, int sampleSeed, bool permuteDeg4Nodes,
-    double bondLength = -1.0, bool forceRDKit = false) {
+    double bondLength = -1.0, bool forceRDKix = false) {
   PyObject *distMatPtr = distMat.ptr();
   if (!PyArray_Check(distMatPtr)) {
     throw_value_error("Argument isn't an array");
@@ -94,7 +94,7 @@ unsigned int Compute2DCoordsMimicDistmat(
   unsigned int res;
   res = RDDepict::compute2DCoordsMimicDistMat(
       mol, &dmat, canonOrient, clearConfs, weightDistMat, nFlipsPerSample,
-      nSamples, sampleSeed, permuteDeg4Nodes, forceRDKit);
+      nSamples, sampleSeed, permuteDeg4Nodes, forceRDKix);
   if (bondLength > 0) {
     RDDepict::BOND_LEN = oBondLen;
   }
@@ -102,15 +102,15 @@ unsigned int Compute2DCoordsMimicDistmat(
 }
 
 python::tuple GenerateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, RDKit::ROMol &reference, int confId,
-    python::object refPatt, bool acceptFailure, bool forceRDKit,
+    RDKix::ROMol &mol, RDKix::ROMol &reference, int confId,
+    python::object refPatt, bool acceptFailure, bool forceRDKix,
     bool allowRGroups) {
-  RDKit::ROMol *referencePattern = nullptr;
+  RDKix::ROMol *referencePattern = nullptr;
   if (refPatt != python::object()) {
-    referencePattern = python::extract<RDKit::ROMol *>(refPatt);
+    referencePattern = python::extract<RDKix::ROMol *>(refPatt);
   }
   auto matchVect = RDDepict::generateDepictionMatching2DStructure(
-      mol, reference, confId, referencePattern, acceptFailure, forceRDKit,
+      mol, reference, confId, referencePattern, acceptFailure, forceRDKix,
       allowRGroups);
   python::list atomMap;
   for (const auto &pair : matchVect) {
@@ -119,28 +119,28 @@ python::tuple GenerateDepictionMatching2DStructure(
   return python::tuple(atomMap);
 }
 
-void GenerateDepictionMatching2DStructureAtomMap(RDKit::ROMol &mol,
-                                                 RDKit::ROMol &reference,
+void GenerateDepictionMatching2DStructureAtomMap(RDKix::ROMol &mol,
+                                                 RDKix::ROMol &reference,
                                                  python::object atomMap,
-                                                 int confId, bool forceRDKit) {
-  std::unique_ptr<RDKit::MatchVectType> matchVect(translateAtomMap(atomMap));
+                                                 int confId, bool forceRDKix) {
+  std::unique_ptr<RDKix::MatchVectType> matchVect(translateAtomMap(atomMap));
 
   RDDepict::generateDepictionMatching2DStructure(mol, reference, *matchVect,
-                                                 confId, forceRDKit);
+                                                 confId, forceRDKix);
 }
 
-void GenerateDepictionMatching3DStructure(RDKit::ROMol &mol,
-                                          RDKit::ROMol &reference, int confId,
+void GenerateDepictionMatching3DStructure(RDKix::ROMol &mol,
+                                          RDKix::ROMol &reference, int confId,
                                           python::object refPatt,
                                           bool acceptFailure,
-                                          bool forceRDKit = false) {
-  RDKit::ROMol *referencePattern = nullptr;
+                                          bool forceRDKix = false) {
+  RDKix::ROMol *referencePattern = nullptr;
   if (refPatt) {
-    referencePattern = python::extract<RDKit::ROMol *>(refPatt);
+    referencePattern = python::extract<RDKix::ROMol *>(refPatt);
   }
 
   RDDepict::generateDepictionMatching3DStructure(
-      mol, reference, confId, referencePattern, acceptFailure, forceRDKit);
+      mol, reference, confId, referencePattern, acceptFailure, forceRDKix);
 }
 
 bool isCoordGenSupportAvailable() {
@@ -195,15 +195,15 @@ BOOST_PYTHON_MODULE(rdDepictor) {
   python::register_exception_translator<RDDepict::DepictException>(
       &rdDepictExceptionTranslator);
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   python::def("IsCoordGenSupportAvailable", isCoordGenSupportAvailable,
-              "Returns whether RDKit was built with CoordGen support.");
+              "Returns whether RDKix was built with CoordGen support.");
 
   python::def("SetPreferCoordGen", setPreferCoordGen, python::arg("val"),
 #ifdef RDK_BUILD_COORDGEN_SUPPORT
               "Sets whether or not the CoordGen library should be preferred to "
-              "the RDKit depiction library."
+              "the RDKix depiction library."
 #else
               "Has no effect (CoordGen support not enabled)"
 #endif
@@ -233,7 +233,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
       "GetPreferCoordGen", getPreferCoordGen,
 #ifdef RDK_BUILD_COORDGEN_SUPPORT
       "Return whether or not the CoordGen library is used for coordinate "
-      "generation in the RDKit depiction library."
+      "generation in the RDKix depiction library."
 #else
       "Always returns False (CoordGen support not enabled)"
 #endif
@@ -241,7 +241,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
 
   python::class_<UsingCoordGen, boost::noncopyable>(
       "UsingCoordGen",
-      "Context manager to temporarily set CoordGen library preference in RDKit depiction.",
+      "Context manager to temporarily set CoordGen library preference in RDKix depiction.",
       python::init<bool>("Constructor"))
       .def("__enter__", &UsingCoordGen::enter)
       .def("__exit__", &UsingCoordGen::exit);
@@ -265,7 +265,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
      permuteDeg4Nodes - allow permutation of bonds at a degree 4\n\
                  node during the sampling process \n\
      bondLength - change the default bond length for depiction \n\
-     forceRDKit - use RDKit to generate coordinates even if \n\
+     forceRDKix - use RDKix to generate coordinates even if \n\
                   preferCoordGen is set to true\n\
      useRingTemplates - use templates to generate coordinates of complex\n\
                   ring systems\n\n\
@@ -278,7 +278,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
        python::arg("coordMap") = python::dict(),
        python::arg("nFlipsPerSample") = 0, python::arg("nSample") = 0,
        python::arg("sampleSeed") = 0, python::arg("permuteDeg4Nodes") = false,
-       python::arg("bondLength") = -1.0, python::arg("forceRDKit") = false,
+       python::arg("bondLength") = -1.0, python::arg("forceRDKix") = false,
        python::arg("useRingTemplates") = false),
       docString.c_str());
 
@@ -306,7 +306,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
      permuteDeg4Nodes - allow permutation of bonds at a degree 4\n\
                  node during the sampling process \n\
      bondLength - change the default bond length for depiction \n\
-     forceRDKit - use RDKit to generate coordinates even if \n\
+     forceRDKix - use RDKix to generate coordinates even if \n\
                   preferCoordGen is set to true\n\n\
   RETURNS: \n\n\
      ID of the conformation added to the molecule\n";
@@ -317,7 +317,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
        python::arg("weightDistMat") = 0.5, python::arg("nFlipsPerSample") = 3,
        python::arg("nSample") = 100, python::arg("sampleSeed") = 100,
        python::arg("permuteDeg4Nodes") = true, python::arg("bondLength") = -1.0,
-       python::arg("forceRDKit") = false),
+       python::arg("forceRDKix") = false),
       docString.c_str());
 
   docString =
@@ -336,7 +336,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
   acceptFailure - (optional) if True, standard depictions will be generated \n\
                   for molecules that don't have a substructure match to the \n\
                   reference; if False, throws a DepictException.\n\
-  forceRDKit -    (optional) use RDKit to generate coordinates even if \n\
+  forceRDKix -    (optional) use RDKix to generate coordinates even if \n\
                   preferCoordGen is set to true\n\
   allowRGroups -  (optional) if True, terminal dummy atoms in the \n\
                   reference are ignored if they match an implicit \n\
@@ -350,7 +350,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
       RDDepict::GenerateDepictionMatching2DStructure,
       (python::arg("mol"), python::arg("reference"), python::arg("confId") = -1,
        python::arg("refPatt") = python::object(),
-       python::arg("acceptFailure") = false, python::arg("forceRDKit") = false,
+       python::arg("acceptFailure") = false, python::arg("forceRDKix") = false,
        python::arg("allowRGroups") = false),
       docString.c_str());
 
@@ -368,13 +368,13 @@ BOOST_PYTHON_MODULE(rdDepictor) {
                  be used to generate the atom mapping between the molecule \n\
                  and the reference. \n\
   confId -       (optional) the id of the reference conformation to use \n\
-  forceRDKit -   (optional) use RDKit to generate coordinates even if \n\
+  forceRDKix -   (optional) use RDKix to generate coordinates even if \n\
                  preferCoordGen is set to true\n";
   python::def(
       "GenerateDepictionMatching2DStructure",
       RDDepict::GenerateDepictionMatching2DStructureAtomMap,
       (python::arg("mol"), python::arg("reference"), python::arg("atomMap"),
-       python::arg("confId") = -1, python::arg("forceRDKit") = false),
+       python::arg("confId") = -1, python::arg("forceRDKix") = false),
       docString.c_str());
 
   docString =
@@ -394,7 +394,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
   acceptFailure - (optional) if True, standard depictions will be generated \n\
                   for molecules that don't match the reference or the\n\
                   referencePattern; if False, throws a DepictException.\n\
-  forceRDKit -    (optional) use RDKit to generate coordinates even if \n\
+  forceRDKix -    (optional) use RDKix to generate coordinates even if \n\
                   preferCoordGen is set to true";
 
   python::def(
@@ -402,7 +402,7 @@ BOOST_PYTHON_MODULE(rdDepictor) {
       RDDepict::GenerateDepictionMatching3DStructure,
       (python::arg("mol"), python::arg("reference"), python::arg("confId") = -1,
        python::arg("refPatt") = python::object(),
-       python::arg("acceptFailure") = false, python::arg("forceRDKit") = false),
+       python::arg("acceptFailure") = false, python::arg("forceRDKix") = false),
       docString.c_str());
 
   docString =
@@ -431,7 +431,7 @@ transformation such that its main axis is aligned along the X axis\n\
 (canonicalize >0, the default) or the Y axis (canonicalize <0).\n\
 If canonicalize is 0, no canonicalization takes place.\n\
 If scaleFactor is <0.0 (the default) the depiction is scaled such\n\
-that bond lengths conform to RDKit standards. The applied scaling\n\
+that bond lengths conform to RDKix standards. The applied scaling\n\
 factor is returned.\n\n\
 ARGUMENTS:\n\n\
 mol          - the molecule to be normalized\n\
@@ -442,7 +442,7 @@ canonicalize - (optional) if != 0, a canonical transformation is\n\
                If 0, no canonical transformation is applied.\n\
 scaleFactor  - (optional) if >0.0, the scaling factor to apply. The default\n\
                (-1.0) means that the depiction is automatically scaled\n\
-               such that bond lengths are the standard RDKit ones.\n\n\
+               such that bond lengths are the standard RDKix ones.\n\n\
 RETURNS: the applied scaling factor.";
 
   python::def(

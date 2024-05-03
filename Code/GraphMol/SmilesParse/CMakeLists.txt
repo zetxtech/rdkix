@@ -51,24 +51,24 @@ else(BISON_EXECUTABLE)
 endif(BISON_EXECUTABLE)
 
 
-rdkit_library(SmilesParse
+rdkix_library(SmilesParse
               SmilesParse.cpp SmilesParseOps.cpp
               SmilesWrite.cpp SmartsWrite.cpp CXSmilesOps.cpp
               ${BISON_OUTPUT_FILES}
               ${FLEX_OUTPUT_FILES}
               LINK_LIBRARIES GraphMol RDGeneral)
-target_compile_definitions(SmilesParse PRIVATE RDKIT_SMILESPARSE_BUILD)
+target_compile_definitions(SmilesParse PRIVATE RDKIX_SMILESPARSE_BUILD)
 
-rdkit_headers(primes.h
+rdkix_headers(primes.h
               SmartsWrite.h
               SmilesParse.h
               SmilesParseOps.h
               SmilesWrite.h DEST GraphMol/SmilesParse)
 
-rdkit_test(smiTest1 test.cpp LINK_LIBRARIES FileParsers SmilesParse )
-rdkit_test(smiTest2 test2.cpp LINK_LIBRARIES SmilesParse )
-rdkit_catch_test(cxsmilesTest cxsmiles_test.cpp LINK_LIBRARIES FileParsers SmilesParse )
+rdkix_test(smiTest1 test.cpp LINK_LIBRARIES FileParsers SmilesParse )
+rdkix_test(smiTest2 test2.cpp LINK_LIBRARIES SmilesParse )
+rdkix_catch_test(cxsmilesTest cxsmiles_test.cpp LINK_LIBRARIES FileParsers SmilesParse )
 
-rdkit_test(smaTest1 smatest.cpp LINK_LIBRARIES SmilesParse SubstructMatch  )
-rdkit_catch_test(smiTestCatch catch_tests.cpp LINK_LIBRARIES FileParsers SmilesParse )
-rdkit_catch_test(nontetrahedralCatch nontetrahedral_tests.cpp LINK_LIBRARIES FileParsers SmilesParse )
+rdkix_test(smaTest1 smatest.cpp LINK_LIBRARIES SmilesParse SubstructMatch  )
+rdkix_catch_test(smiTestCatch catch_tests.cpp LINK_LIBRARIES FileParsers SmilesParse )
+rdkix_catch_test(nontetrahedralCatch nontetrahedral_tests.cpp LINK_LIBRARIES FileParsers SmilesParse )

@@ -1,7 +1,7 @@
 import unittest
 
-from rdkit import Chem
-from rdkit.Chem import rdDeprotect as rd
+from rdkix import Chem
+from rdkix.Chem import rdDeprotect as rd
 
 
 class TestCase(unittest.TestCase):

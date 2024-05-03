@@ -3,13 +3,13 @@
 //   Copyright (C) 2002-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -18,7 +18,7 @@
 #include <iostream>
 #include <cstdlib>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 
 void test1() {

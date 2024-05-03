@@ -2,15 +2,15 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // This file contains an implementation of Butina clustering
 // (Butina JCICS 39 747-750 (1999)) using the RascalMCES
 // Johnson similarity metric.  It is largely a transliteration
-// of $RDBASE/rdkit/ML/Cluster/Butina.py.
+// of $RDBASE/rdkix/ML/Cluster/Butina.py.
 
 #include <algorithm>
 #include <iterator>
@@ -22,7 +22,7 @@
 #include <GraphMol/RascalMCES/RascalClusterOptions.h>
 #include <GraphMol/RascalMCES/RascalDetails.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace RascalMCES {
 namespace details {
@@ -115,4 +115,4 @@ std::vector<std::vector<unsigned int>> rascalButinaCluster(
   return clusters;
 }
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix

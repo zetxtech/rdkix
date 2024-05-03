@@ -45,33 +45,33 @@
 %include <GraphMol/AtomIterators.h>
 /* Equality testing operators have been overloaded, so we need to expose them in a different way.
    These 'rename' lines appear to have to precede the 'template' definitions. */
-%rename(eq) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>::operator==;
-%rename(ne) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>::operator!=;
-%rename(eq) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>::operator==;
-%rename(ne) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>::operator!=;
-%rename(eq) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator==;
-%rename(ne) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator!=;
-%rename(eq) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator==;
-%rename(ne) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator!=;
+%rename(eq) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>::operator==;
+%rename(ne) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>::operator!=;
+%rename(eq) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>::operator==;
+%rename(ne) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>::operator!=;
+%rename(eq) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator==;
+%rename(ne) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator!=;
+%rename(eq) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator==;
+%rename(ne) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator!=;
 /* Increment and decrement operators currently necessary */
-%rename(next) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>::operator++;
-%rename(next) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>::operator++;
-%rename(next) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator++;
-%rename(next) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator++;
-%rename(prev) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>::operator--;
-%rename(prev) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>::operator--;
-%rename(prev) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator--;
-%rename(prev) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator--;
+%rename(next) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>::operator++;
+%rename(next) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>::operator++;
+%rename(next) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator++;
+%rename(next) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator++;
+%rename(prev) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>::operator--;
+%rename(prev) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>::operator--;
+%rename(prev) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator--;
+%rename(prev) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator--;
 /* A better name for the iterator's Atom object */
-%rename(getAtom) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>::operator*;
-%rename(getAtom) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>::operator*;
-%rename(getAtom) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator*;
-%rename(getAtom) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>::operator*;
+%rename(getAtom) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>::operator*;
+%rename(getAtom) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>::operator*;
+%rename(getAtom) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator*;
+%rename(getAtom) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>::operator*;
 
-%template(AtomIterator) RDKit::AtomIterator_<RDKit::Atom,RDKit::ROMol>;
-%template(HeteroatomIterator) RDKit::HeteroatomIterator_<RDKit::Atom,RDKit::ROMol>;
-%template(AromaticAtomIterator) RDKit::AromaticAtomIterator_<RDKit::Atom,RDKit::ROMol>;
-%template(QueryAtomIterator) RDKit::QueryAtomIterator_<RDKit::Atom,RDKit::ROMol>;
+%template(AtomIterator) RDKix::AtomIterator_<RDKix::Atom,RDKix::ROMol>;
+%template(HeteroatomIterator) RDKix::HeteroatomIterator_<RDKix::Atom,RDKix::ROMol>;
+%template(AromaticAtomIterator) RDKix::AromaticAtomIterator_<RDKix::Atom,RDKix::ROMol>;
+%template(QueryAtomIterator) RDKix::QueryAtomIterator_<RDKix::Atom,RDKix::ROMol>;
 
 
 

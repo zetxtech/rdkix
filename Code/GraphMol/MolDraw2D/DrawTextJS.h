@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: Greg Landrum
 //
@@ -13,8 +13,8 @@
 // to draw text onto a picture.
 // Requires emscripten
 
-#ifndef RDKIT_DRAWTEXTJS_H
-#define RDKIT_DRAWTEXTJS_H
+#ifndef RDKIX_DRAWTEXTJS_H
+#define RDKIX_DRAWTEXTJS_H
 
 #include <iosfwd>
 
@@ -22,7 +22,7 @@
 #include <emscripten/val.h>
 #include <GraphMol/MolDraw2D/DrawTextNotFT.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 // ****************************************************************************
 
@@ -48,6 +48,6 @@ class DrawTextJS : public DrawTextNotFT {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWTEXTSVG_H
+#endif  // RDKIX_DRAWTEXTSVG_H

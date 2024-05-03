@@ -41,7 +41,7 @@
 
 #include <climits>  // to get CHAR_BIT # bits in a char
 
-namespace RDKit {
+namespace RDKix {
 bool FilterCatalogParams::addCatalog(FilterCatalogs catalog) {
   bool addedCatalog = false;
   // meh, not the best here... perhaps make num_catalogs?
@@ -251,4 +251,4 @@ bool FilterCatalogCanSerialize() {
   return false;
 #endif
 }
-}  // namespace RDKit
+}  // namespace RDKix

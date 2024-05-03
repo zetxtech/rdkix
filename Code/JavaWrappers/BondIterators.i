@@ -41,21 +41,21 @@
 %}
 
 
-%rename(BondIterator) RDKit::BondIterator_;
-%rename(ConstBondIterator) RDKit::ConstBondIterator_;
+%rename(BondIterator) RDKix::BondIterator_;
+%rename(ConstBondIterator) RDKix::ConstBondIterator_;
 /* Equality testing operators have been overloaded, so we need to expose them in a different way */
-%rename(eq) RDKit::BondIterator_::operator==;
-%rename(ne) RDKit::BondIterator_::operator!=;
-%rename(eq) RDKit::ConstBondIterator_::operator==;
-%rename(ne) RDKit::ConstBondIterator_::operator!=;
+%rename(eq) RDKix::BondIterator_::operator==;
+%rename(ne) RDKix::BondIterator_::operator!=;
+%rename(eq) RDKix::ConstBondIterator_::operator==;
+%rename(ne) RDKix::ConstBondIterator_::operator!=;
 /* Increment and decrement operators currently necessary */
-%rename(next) RDKit::BondIterator_::operator++;
-%rename(next) RDKit::ConstBondIterator_::operator++;
-%rename(prev) RDKit::BondIterator_::operator--;
-%rename(prev) RDKit::ConstBondIterator_::operator--;
+%rename(next) RDKix::BondIterator_::operator++;
+%rename(next) RDKix::ConstBondIterator_::operator++;
+%rename(prev) RDKix::BondIterator_::operator--;
+%rename(prev) RDKix::ConstBondIterator_::operator--;
 /* A better name for the iterator's Bond object */
-%rename(getBond) RDKit::BondIterator_::operator*;
-%rename(getBond) RDKit::ConstBondIterator_::operator*; 
+%rename(getBond) RDKix::BondIterator_::operator*;
+%rename(getBond) RDKix::ConstBondIterator_::operator*; 
 
 %include <GraphMol/BondIterators.h>
 

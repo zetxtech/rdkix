@@ -3,10 +3,10 @@
 //  2019, Daniel Probst, Reymond Group @ University of Bern
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -31,7 +31,7 @@
 
 #include "MHFP.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace MHFPFingerprints {
 
 MHFPEncoder::MHFPEncoder(unsigned int n_permutations, unsigned int seed)
@@ -118,7 +118,7 @@ std::vector<std::string> MHFPEncoder::CreateShingling(
   if (!min_radius) {
     for (auto atom : tmol.atoms()) {
       bool do_kekule = false;
-      const RDKit::Bond* bond_in = nullptr;
+      const RDKix::Bond* bond_in = nullptr;
       bool all_hs_explicit = false;
       bool isomeric_smiles = true;
 
@@ -259,4 +259,4 @@ std::vector<ExplicitBitVect> MHFPEncoder::EncodeSECFP(
 }
 
 }  // namespace MHFPFingerprints
-}  // namespace RDKit
+}  // namespace RDKix

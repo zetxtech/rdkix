@@ -3,10 +3,10 @@
 //  Copyright (C) 2009 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -24,14 +24,14 @@ namespace io = boost::iostreams;
 // ours
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/Wrap/ContextManagers.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/Wrap.h>
 
 #include "MolSupplier.h"
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 // ForwardSDMolSupplier cannot (yet?) be reset, so we have to override
 // the template that was defined in MolSupplier.h.
@@ -125,6 +125,6 @@ struct compressedsdmolsup_wrap {
                 python::return_value_policy<python::manage_new_object>());
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_compressedsdsupplier() { RDKit::compressedsdmolsup_wrap::wrap(); }
+void wrap_compressedsdsupplier() { RDKix::compressedsdmolsup_wrap::wrap(); }

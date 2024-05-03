@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2021  Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,14 +14,14 @@
 
 // ours
 #include <GraphMol/FileParsers/MolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/FileParseException.h>
 #include "MolSupplier.h"
 #include "ContextManagers.h"
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 SmilesMolSupplier *SmilesSupplierFromText(
     std::string text, std::string delimiter = " ", int smilesColumn = 0,
@@ -124,6 +124,6 @@ struct smimolsup_wrap {
         python::return_value_policy<python::manage_new_object>());
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_smisupplier() { RDKit::smimolsup_wrap::wrap(); }
+void wrap_smisupplier() { RDKix::smimolsup_wrap::wrap(); }

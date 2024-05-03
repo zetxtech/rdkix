@@ -44,7 +44,7 @@
 #include <ctime>
 #include <string>
 #include <iostream>
-#include "../../RDKitBase.h"
+#include "../../RDKixBase.h"
 #include "../../FileParsers/FileParsers.h"  //MOL single molecule !
 #include "../../FileParsers/MolSupplier.h"  //SDF
 #include "../../SmilesParse/SmilesParse.h"
@@ -57,7 +57,7 @@
 #include <windows.h>
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 
 unsigned long long T0;
 unsigned long long t0;
@@ -71,7 +71,7 @@ void printTime() {
 
 std::string getSmilesOnly(
     const char* smiles,
-    std::string* id = nullptr) {  // remove label, because RDKit parse FAILED
+    std::string* id = nullptr) {  // remove label, because RDKix parse FAILED
   const char* sp = strchr(smiles, ' ');
   unsigned int n = (sp ? sp - smiles + 1 : strlen(smiles));
   if (id) {
@@ -102,7 +102,7 @@ std::string getSmilesOnlyTxt(
 
 std::string getSmilesOnlyChEMBL(
     const char* smiles,
-    std::string* id = nullptr) {  // remove label, because RDKit parse FAILED
+    std::string* id = nullptr) {  // remove label, because RDKix parse FAILED
   const char* sp = strchr(smiles, '\t');
   if (sp) {
     unsigned int n = (sp ? sp - smiles + 1 : strlen(smiles));
@@ -271,7 +271,7 @@ void testFileMCSB(const char* test, unsigned int timeout = 30,
   p.Timeout = timeout;
   p.Threshold = 1.0;
 
-  fprintf(f, "#software RDKit C++ FMCS \n#options  timeout=%u threshold=%g\n",
+  fprintf(f, "#software RDKix C++ FMCS \n#options  timeout=%u threshold=%g\n",
           p.Timeout, p.Threshold);
   std::cout << "Perform test cases ... \n";
   for (std::list<std::vector<std::string>>::const_iterator tc =
@@ -904,7 +904,7 @@ void testChEMBL_TxtALL_chembl_II_sets(double th = 1.0) {
   fprintf(fcmd, "DEL %s\n",
           "chembl_II_sets.P.res.csv");  // clear before append results
   fprintf(fcmd, "SET PATH=%%PATH%%;C:/LIB\n");
-  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKit/RDKit_2013_09_1\n");
+  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKix/RDKix_2013_09_1\n");
   fprintf(
       fcmd,
       "ECHO P test;P Nmols;P status;P time,sec;P nAtoms;P nBonds;P MCS >%s\n",
@@ -1176,7 +1176,7 @@ double testFileSDF(const char* test) {
   std::cout << "\ntestFileSDF(): " << test << "\n";
   std::vector<ROMOL_SPTR> mols;
   std::string fn(test);
-  RDKit::SDMolSupplier suppl(fn);
+  RDKix::SDMolSupplier suppl(fn);
   while (!suppl.atEnd()) {
     ROMol* m = suppl.next();
     if (m) {
@@ -1271,15 +1271,15 @@ void testFileSDF_RandomSet(const char* test = "chembl13-10000-random-pairs.sdf",
           "test;Nmols;status;t,sec;nAtoms;nBonds;C++ MCS; E status;E t,sec;E "
           "nAtoms;E nBonds;E C++ MCS\n");
   std::string fn(std::string(path) + "/" + test);
-  RDKit::MolSupplier* suppl = nullptr;
+  RDKix::MolSupplier* suppl = nullptr;
   try {
     if ('f' == test[strlen(test) - 1]) {  // sdf file
-      suppl = new RDKit::SDMolSupplier(fn);
+      suppl = new RDKix::SDMolSupplier(fn);
     } else if ('i' == test[strlen(test) - 1]) {  // smi file
-      suppl = new RDKit::SmilesMolSupplier(fn);
+      suppl = new RDKix::SmilesMolSupplier(fn);
     }
   } catch (...) {
-    std::cout << "ERROR: RDKit could not load input file"
+    std::cout << "ERROR: RDKix could not load input file"
               << "\n";
     fclose(fcsv);
     fclose(fcmd);
@@ -1297,7 +1297,7 @@ void testFileSDF_RandomSet(const char* test = "chembl13-10000-random-pairs.sdf",
           (std::string(path) + "_" + test + ".P.csv")
               .c_str());  // clear before append results
   fprintf(fcmd, "SET PATH=%%PATH%%;C:/LIB\n");
-  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKit/RDKit_2013_09_1\n");
+  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKix/RDKix_2013_09_1\n");
   fprintf(
       fcmd,
       "ECHO P test;P Nmols;P status;P time,sec;P nAtoms;P nBonds;P MCS >%s\n",
@@ -1455,7 +1455,7 @@ void testFileSDF_RandomSet(const char* test = "chembl13-10000-random-pairs.sdf",
           (std::string(path) + "_" + test + ".BIG_MCS.P.csv")
               .c_str());  // clear before append results
   fprintf(fcmd, "SET PATH=%%PATH%%;C:/LIB\n");
-  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKit/RDKit_2013_09_1\n");
+  fprintf(fcmd, "SET PYTHONPATH=C:/Projects/RDKix/RDKix_2013_09_1\n");
   fprintf(
       fcmd,
       "ECHO P test;P Nmols;P status;P time,sec;P nAtoms;P nBonds;P MCS >%s\n",

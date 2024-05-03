@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrun and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrun and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <iostream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <ForceField/UFF/Params.h>
 #include <ForceField/UFF/BondStretch.h>
 #include <ForceField/UFF/AngleBend.h>
@@ -19,7 +19,7 @@
 #include <RDGeneral/RDLog.h>
 #include "AtomTyper.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace UFF {
 using namespace ForceFields::UFF;
 
@@ -618,12 +618,12 @@ bool getUFFTorsionParams(const ROMol &mol, unsigned int idx1, unsigned int idx2,
     }
   }
   if (res) {
-    res = (((hyb[0] == RDKit::Atom::SP2) || (hyb[0] == RDKit::Atom::SP3)) &&
-           ((hyb[1] == RDKit::Atom::SP2) || (hyb[1] == RDKit::Atom::SP3)));
+    res = (((hyb[0] == RDKix::Atom::SP2) || (hyb[0] == RDKix::Atom::SP3)) &&
+           ((hyb[1] == RDKix::Atom::SP2) || (hyb[1] == RDKix::Atom::SP3)));
   }
   if (res) {
     double bondOrder = bond->getBondTypeAsDouble();
-    if ((hyb[0] == RDKit::Atom::SP3) && (hyb[1] == RDKit::Atom::SP3)) {
+    if ((hyb[0] == RDKix::Atom::SP3) && (hyb[1] == RDKix::Atom::SP3)) {
       // general case:
       uffTorsionParams.V = sqrt(paramVect[0]->V1 * paramVect[1]->V1);
       // special case for single bonds between group 6 elements:
@@ -639,7 +639,7 @@ bool getUFFTorsionParams(const ROMol &mol, unsigned int idx1, unsigned int idx2,
         }
         uffTorsionParams.V = sqrt(V2 * V3);
       }
-    } else if ((hyb[0] == RDKit::Atom::SP2) && (hyb[1] == RDKit::Atom::SP2)) {
+    } else if ((hyb[0] == RDKix::Atom::SP2) && (hyb[1] == RDKix::Atom::SP2)) {
       uffTorsionParams.V =
           UFF::Utils::equation17(bondOrder, paramVect[0], paramVect[1]);
     } else {
@@ -647,9 +647,9 @@ bool getUFFTorsionParams(const ROMol &mol, unsigned int idx1, unsigned int idx2,
       uffTorsionParams.V = 1.0;
       if ((int)(bondOrder * 10) == 10) {
         // special case between group 6 sp3 and non-group 6 sp2:
-        if (((hyb[0] == RDKit::Atom::SP3) && UFF::Utils::isInGroup6(atNum[0]) &&
+        if (((hyb[0] == RDKix::Atom::SP3) && UFF::Utils::isInGroup6(atNum[0]) &&
              (!UFF::Utils::isInGroup6(atNum[1]))) ||
-            ((hyb[1] == RDKit::Atom::SP3) && UFF::Utils::isInGroup6(atNum[1]) &&
+            ((hyb[1] == RDKix::Atom::SP3) && UFF::Utils::isInGroup6(atNum[1]) &&
              (!UFF::Utils::isInGroup6(atNum[0])))) {
           uffTorsionParams.V =
               UFF::Utils::equation17(bondOrder, paramVect[0], paramVect[1]);
@@ -733,4 +733,4 @@ bool getUFFVdWParams(const ROMol &mol, unsigned int idx1, unsigned int idx2,
   return res;
 }
 }  // namespace UFF
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2010-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2010-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FILEPARSERUTILS_H
@@ -21,12 +21,12 @@
 #include "FileParserUtils.h"
 #include <string_view>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class Conformer;
 
 namespace FileParserUtils {
-RDKIT_FILEPARSERS_EXPORT inline std::string_view strip(
+RDKIX_FILEPARSERS_EXPORT inline std::string_view strip(
     std::string_view orig, std::string stripChars = " \t\r\n") {
   std::string_view res = orig;
   auto start = res.find_first_not_of(stripChars);
@@ -52,46 +52,46 @@ template <typename T>
 T stripSpacesAndCast(const std::string &input, bool acceptSpaces = false) {
   return stripSpacesAndCast<T>(std::string_view(input.c_str()), acceptSpaces);
 }
-RDKIT_FILEPARSERS_EXPORT int toInt(const std::string &input,
+RDKIX_FILEPARSERS_EXPORT int toInt(const std::string &input,
                                    bool acceptSpaces = true);
-RDKIT_FILEPARSERS_EXPORT unsigned int toUnsigned(const std::string &input,
+RDKIX_FILEPARSERS_EXPORT unsigned int toUnsigned(const std::string &input,
                                                  bool acceptSpaces = true);
-RDKIT_FILEPARSERS_EXPORT double toDouble(const std::string &input,
+RDKIX_FILEPARSERS_EXPORT double toDouble(const std::string &input,
                                          bool acceptSpaces = true);
-RDKIT_FILEPARSERS_EXPORT int toInt(const std::string_view input,
+RDKIX_FILEPARSERS_EXPORT int toInt(const std::string_view input,
                                    bool acceptSpaces = true);
-RDKIT_FILEPARSERS_EXPORT unsigned int toUnsigned(std::string_view input,
+RDKIX_FILEPARSERS_EXPORT unsigned int toUnsigned(std::string_view input,
                                                  bool acceptSpaces = true);
-RDKIT_FILEPARSERS_EXPORT double toDouble(const std::string_view input,
+RDKIX_FILEPARSERS_EXPORT double toDouble(const std::string_view input,
                                          bool acceptSpaces = true);
 
 // parses info from a V3000 CTAB into a molecule
-RDKIT_FILEPARSERS_EXPORT std::string getV3000CTAB(const ROMol &tmol,
+RDKIX_FILEPARSERS_EXPORT std::string getV3000CTAB(const ROMol &tmol,
                                                   int confId = -1);
 // reads a line from an MDL v3K CTAB
-RDKIT_FILEPARSERS_EXPORT std::string getV3000Line(std::istream *inStream,
+RDKIX_FILEPARSERS_EXPORT std::string getV3000Line(std::istream *inStream,
                                                   unsigned int &line);
 
 // nAtoms and nBonds are ignored on input, set on output
-RDKIT_FILEPARSERS_EXPORT bool ParseV3000CTAB(
+RDKIX_FILEPARSERS_EXPORT bool ParseV3000CTAB(
     std::istream *inStream, unsigned int &line, RWMol *mol, Conformer *&conf,
     bool &chiralityPossible, unsigned int &nAtoms, unsigned int &nBonds,
     bool strictParsing = true, bool expectMEND = true);
 
 // nAtoms and nBonds are used
-RDKIT_FILEPARSERS_EXPORT bool ParseV2000CTAB(
+RDKIX_FILEPARSERS_EXPORT bool ParseV2000CTAB(
     std::istream *inStream, unsigned int &line, RWMol *mol, Conformer *&conf,
     bool &chiralityPossible, unsigned int &nAtoms, unsigned int &nBonds,
     bool strictParsing = true);
 
 //! finishes up the processing (sanitization, etc.) of a molecule read from
 //! CTAB
-RDKIT_FILEPARSERS_EXPORT void finishMolProcessing(RWMol *res,
+RDKIX_FILEPARSERS_EXPORT void finishMolProcessing(RWMol *res,
                                                   bool chiralityPossible,
                                                   bool sanitize, bool removeHs);
 
 //! Deprecated, please use QueryOps::replaceAtomWithQueryAtom instead
-RDKIT_FILEPARSERS_EXPORT Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom);
+RDKIX_FILEPARSERS_EXPORT Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom);
 
 //! applies a particular property to the atoms as an atom property list
 template <typename T>
@@ -251,6 +251,6 @@ inline void createAtomStringPropertyList(
 }
 
 }  // namespace FileParserUtils
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -5,14 +5,14 @@
 import unittest
 from io import BytesIO
 
-from rdkit import Chem, RDConfig, rdBase
-from rdkit.Chem.rdmolops import _TestSetProps
+from rdkix import Chem, RDConfig, rdBase
+from rdkix.Chem.rdmolops import _TestSetProps
 
 class TestCase(unittest.TestCase):
 
   def setUp(self):
     self.sdf = b"""
-     RDKit  2D
+     RDKix  2D
 
   3  3  0  0  0  0  0  0  0  0999 V2000
     0.8660    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -104,14 +104,14 @@ $$$$"""
 
   def testGithubPR4160(self):
     # this shouldn't fail with a bad any cast anymore
-    from rdkit import Chem
+    from rdkix import Chem
     m = Chem.MolFromSmiles("CC")
     for a in m.GetAtoms():
       a.SetIntProp("foo", 1)
     Chem.CreateAtomIntPropertyList(m, "foo")
 
   def testSetProps(self):
-    from rdkit import Chem
+    from rdkix import Chem
     m = Chem.MolFromSmiles("CC")
 
     conf = Chem.Conformer(m.GetNumAtoms())
@@ -120,7 +120,7 @@ $$$$"""
     m.AddConformer(conf)
     
     _TestSetProps(m)
-    default_expected = {'bool': True, 'uint': 4294967295, 'double': 3.14159, 'svint': [0, 1, 2, -2], 'svuint': [0, 1, 2, 4294967294], 'svdouble': [0.0, 1.0, 2.0], 'svstring': ['The', 'RDKit']}
+    default_expected = {'bool': True, 'uint': 4294967295, 'double': 3.14159, 'svint': [0, 1, 2, -2], 'svuint': [0, 1, 2, 4294967294], 'svdouble': [0.0, 1.0, 2.0], 'svstring': ['The', 'RDKix']}
 
     def check(ob, prefix):
       expected = {prefix + k:v for k,v in default_expected.items()}      

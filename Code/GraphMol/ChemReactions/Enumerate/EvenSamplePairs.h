@@ -40,7 +40,7 @@
 #endif
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 //! EvenSamplePairsStrategy
 /*!  Randomly sample Pairs evenly from a collection of building blocks
       This is a good strategy for choosing a relatively small selection
@@ -52,7 +52,7 @@ namespace RDKit {
       See EnumeartionStrategyBase for more details.
 */
 
-class RDKIT_CHEMREACTIONS_EXPORT EvenSamplePairsStrategy
+class RDKIX_CHEMREACTIONS_EXPORT EvenSamplePairsStrategy
     : public EnumerationStrategyBase {
   boost::uint64_t m_numPermutationsProcessed{};
 
@@ -180,8 +180,8 @@ class RDKIT_CHEMREACTIONS_EXPORT EvenSamplePairsStrategy
   }
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-BOOST_CLASS_VERSION(RDKit::EvenSamplePairsStrategy, 1)
+BOOST_CLASS_VERSION(RDKix::EvenSamplePairsStrategy, 1)
 
 #endif

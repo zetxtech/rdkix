@@ -2,16 +2,16 @@
 //  Copyright (C) 2020-2021 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#ifndef RDKIT_MOLENUMERATOR_H
-#define RDKIT_MOLENUMERATOR_H
+#ifndef RDKIX_MOLENUMERATOR_H
+#define RDKIX_MOLENUMERATOR_H
 
 #include <RDGeneral/export.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 
 #include <vector>
@@ -19,7 +19,7 @@
 #include <string>
 #include <memory>
 
-namespace RDKit {
+namespace RDKix {
 class ChemicalReaction;
 namespace MolEnumerator {
 
@@ -30,7 +30,7 @@ void removeOrigIndices(ROMol &mol);
 }  // namespace detail
 
 //! abstract base class for the a molecule enumeration operation
-class RDKIT_MOLENUMERATOR_EXPORT MolEnumeratorOp {
+class RDKIX_MOLENUMERATOR_EXPORT MolEnumeratorOp {
  public:
   MolEnumeratorOp() {}
   virtual ~MolEnumeratorOp() {}
@@ -53,7 +53,7 @@ class RDKIT_MOLENUMERATOR_EXPORT MolEnumeratorOp {
  * has one dummy atom (which will be discarded). The other atom of the bond will
  * be connected to the atoms listed in the ENDPTS property
  */
-class RDKIT_MOLENUMERATOR_EXPORT PositionVariationOp : public MolEnumeratorOp {
+class RDKIX_MOLENUMERATOR_EXPORT PositionVariationOp : public MolEnumeratorOp {
  public:
   PositionVariationOp() {}
   PositionVariationOp(const std::shared_ptr<ROMol> mol) : dp_mol(mol) {
@@ -99,7 +99,7 @@ class RDKIT_MOLENUMERATOR_EXPORT PositionVariationOp : public MolEnumeratorOp {
 //! Molecule enumeration operation corresponding to LINKNODES
 /*!
  */
-class RDKIT_MOLENUMERATOR_EXPORT LinkNodeOp : public MolEnumeratorOp {
+class RDKIX_MOLENUMERATOR_EXPORT LinkNodeOp : public MolEnumeratorOp {
  public:
   LinkNodeOp() {}
   LinkNodeOp(const std::shared_ptr<ROMol> mol) : dp_mol(mol) {
@@ -164,7 +164,7 @@ class RDKIT_MOLENUMERATOR_EXPORT LinkNodeOp : public MolEnumeratorOp {
   not supported
 
  */
-class RDKIT_MOLENUMERATOR_EXPORT RepeatUnitOp : public MolEnumeratorOp {
+class RDKIX_MOLENUMERATOR_EXPORT RepeatUnitOp : public MolEnumeratorOp {
  public:
   RepeatUnitOp(){};
   RepeatUnitOp(const std::shared_ptr<ROMol> mol) : dp_mol(mol) {
@@ -231,7 +231,7 @@ class RDKIT_MOLENUMERATOR_EXPORT RepeatUnitOp : public MolEnumeratorOp {
 };
 
 //! Parameters used to control the molecule enumeration
-struct RDKIT_MOLENUMERATOR_EXPORT MolEnumeratorParams {
+struct RDKIX_MOLENUMERATOR_EXPORT MolEnumeratorParams {
   bool sanitize = false;
   size_t maxToEnumerate = 1000;
   bool doRandom = false;  //< not yet implemented
@@ -247,7 +247,7 @@ NOTE: the current implementation does not support molecules which include
 both LINKNODE and SRU features.
 
 */
-RDKIT_MOLENUMERATOR_EXPORT MolBundle
+RDKIX_MOLENUMERATOR_EXPORT MolBundle
 enumerate(const ROMol &mol, const std::vector<MolEnumeratorParams> &paramsList);
 
 //! Returns a MolBundle containing the molecules resulting from applying the
@@ -260,7 +260,7 @@ NOTE: the current implementation does not support molecules which include
 both LINKNODE and SRU features.
 
 */
-RDKIT_MOLENUMERATOR_EXPORT MolBundle enumerate(const ROMol &mol,
+RDKIX_MOLENUMERATOR_EXPORT MolBundle enumerate(const ROMol &mol,
                                                size_t maxPerOperation = 0);
 
 //! Returns a MolBundle containing the molecules resulting from applying the
@@ -271,6 +271,6 @@ inline MolBundle enumerate(const ROMol &mol,
   return enumerate(mol, v);
 };
 }  // namespace MolEnumerator
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

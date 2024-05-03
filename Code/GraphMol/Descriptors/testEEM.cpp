@@ -2,14 +2,14 @@
 //  Copyright (C) 2012-2017 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -30,7 +30,7 @@ void testEEM1() {
       pathName + "/Code/GraphMol/Descriptors/test_data/setEEM1.sdf";
   auto start = std::chrono::high_resolution_clock::now();
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/eem1.out";
@@ -53,7 +53,7 @@ void testEEM1() {
   int nDone = 0;
   int errorMols = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
@@ -67,7 +67,7 @@ void testEEM1() {
     int confId = -1;
     std::vector<double> charges;
 
-    RDKit::Descriptors::EEM(*m, charges, confId);
+    RDKix::Descriptors::EEM(*m, charges, confId);
     int numAtoms = m->getNumAtoms();
 
     for (int i = 0; i < numAtoms; i++) {
@@ -113,7 +113,7 @@ void testEEM2() {
       pathName + "/Code/GraphMol/Descriptors/test_data/setEEM2.sdf";
   auto start = std::chrono::high_resolution_clock::now();
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/eem2.out";
@@ -136,7 +136,7 @@ void testEEM2() {
   int nDone = 0;
   int errorMols = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
@@ -150,7 +150,7 @@ void testEEM2() {
     int confId = -1;
     std::vector<double> charges;
 
-    RDKit::Descriptors::EEM(*m, charges, confId);
+    RDKix::Descriptors::EEM(*m, charges, confId);
     int numAtoms = m->getNumAtoms();
 
     for (int i = 0; i < numAtoms; i++) {
@@ -171,7 +171,7 @@ void testEEM2() {
     if (errorAtoms > 0) {
       std::cout << "id" << nDone << ", name:" << inm << "\n";
       ++errorMols;
-      std::cout << RDKit::MolToSmiles(*m) << "\n";
+      std::cout << RDKix::MolToSmiles(*m) << "\n";
     }
 
     delete m;

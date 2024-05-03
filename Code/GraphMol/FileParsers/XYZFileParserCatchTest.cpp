@@ -1,7 +1,7 @@
 #include "RDGeneral/test.h"
 #include "catch.hpp"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
@@ -10,7 +10,7 @@
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 #include <RDGeneral/FileParseException.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("xyz file parser") {
   SECTION("basics") {

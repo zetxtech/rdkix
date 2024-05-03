@@ -31,13 +31,13 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::RWMol "
+%typemap(javaimports) RDKix::RWMol "
 /** 
 RWMol is a molecule class that is intended to be edited.
 <p>
 See documentation for ROMol for general remarks */"
 
-%javamethodmodifiers RDKit::RWMol::addAtom 	( 	ATOM_SPTR  	atom, 		bool  	updateLabel = true	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addAtom 	( 	ATOM_SPTR  	atom, 		bool  	updateLabel = true	  	) 			"
 /**
 <p>
 adds an Atom to our collection
@@ -51,11 +51,11 @@ updateLabel 	(optional) if this is true, the new Atom will be our activeAtom
 the new number of atoms
 <p>
 @notes
-Reimplemented from RDKit::ROMol.
+Reimplemented from RDKix::ROMol.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addAtom 	( 	Atom *  	atom, 		bool  	updateLabel = true, 		bool  	takeOwnership = false	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addAtom 	( 	Atom *  	atom, 		bool  	updateLabel = true, 		bool  	takeOwnership = false	  	) 			"
 /**
 <p>
 adds an Atom to our collection
@@ -68,11 +68,11 @@ takeOwnership 	(optional) if this is true, we take ownership of atom instead of 
 <p>
 @return
 the new number of atoms
-Reimplemented from RDKit::ROMol.
+Reimplemented from RDKix::ROMol.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addAtom 	( 	bool  	updateLabel = true 	 )  	"
+%javamethodmodifiers RDKix::RWMol::addAtom 	( 	bool  	updateLabel = true 	 )  	"
 /**
 <p>
 adds an empty Atom to our collection
@@ -87,7 +87,7 @@ the new number of atoms
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addBond 	( 	BOND_SPTR  	bsp 	 )  	"
+%javamethodmodifiers RDKix::RWMol::addBond 	( 	BOND_SPTR  	bsp 	 )  	"
 /**
 <p>
 adds a Bond to our collection
@@ -100,11 +100,11 @@ bond 	pointer to the Bond to add
 the new number of bonds
 <p>
 @notes
-Reimplemented from RDKit::ROMol.
+Reimplemented from RDKix::ROMol.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addBond 	( 	Bond *  	bond, 		bool  	takeOwnership = false	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addBond 	( 	Bond *  	bond, 		bool  	takeOwnership = false	  	) 			"
 /**
 <p>
 adds a Bond to our collection
@@ -116,25 +116,25 @@ takeOwnership 	(optional) if this is true, we take ownership of bond instead of 
 <p>
 @return
 the new number of bonds
-Reimplemented from RDKit::ROMol.
+Reimplemented from RDKix::ROMol.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addBond 	( 	Atom *  	beginAtom, 		Atom *  	endAtom, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addBond 	( 	Atom *  	beginAtom, 		Atom *  	endAtom, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addBond 	( 	Atom::ATOM_SPTR  	atom1, 		Atom::ATOM_SPTR  	atom2, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addBond 	( 	Atom::ATOM_SPTR  	atom1, 		Atom::ATOM_SPTR  	atom2, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::addBond 	( 	unsigned int  	beginAtomIdx, 		unsigned int  	endAtomIdx, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
+%javamethodmodifiers RDKix::RWMol::addBond 	( 	unsigned int  	beginAtomIdx, 		unsigned int  	endAtomIdx, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
 /**
 <p>
 adds a Bond between the indicated Atoms
@@ -146,7 +146,7 @@ the number of Bonds
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::createPartialBond 	( 	unsigned int  	beginAtomIdx, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
+%javamethodmodifiers RDKix::RWMol::createPartialBond 	( 	unsigned int  	beginAtomIdx, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
 /**
 <p>
 starts a Bond and sets its beginAtomIdx
@@ -176,7 +176,7 @@ the call to finishPartialBond() will take priority if you set the BondType in bo
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::finishPartialBond 	( 	unsigned int  	endAtomIdx, 		int  	bondBookmark, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
+%javamethodmodifiers RDKix::RWMol::finishPartialBond 	( 	unsigned int  	endAtomIdx, 		int  	bondBookmark, 		Bond::BondType  	order = Bond::UNSPECIFIED	  	) 			"
 /**
 <p>
 finishes a partially constructed bond
@@ -188,7 +188,7 @@ See the documentation for createPartialBond() for more details
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::getActiveAtom 	( 		 )  	"
+%javamethodmodifiers RDKix::RWMol::getActiveAtom 	( 		 )  	"
 /**
 <p>
 <p>
@@ -198,14 +198,14 @@ If we have an activeAtom, it will be returned, otherwise the results of getLastA
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::removeAtom 	( 	Atom *  	atom 	 )  	"
+%javamethodmodifiers RDKix::RWMol::removeAtom 	( 	Atom *  	atom 	 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::replaceAtom 	( 	unsigned int  	idx, 		Atom *  	atom, 		bool  	updateLabel = false	  	) 			"
+%javamethodmodifiers RDKix::RWMol::replaceAtom 	( 	unsigned int  	idx, 		Atom *  	atom, 		bool  	updateLabel = false	  	) 			"
 /**
 <p>
 replaces a particular Atom
@@ -219,7 +219,7 @@ updateLabel 	(optional) if this is true, the new Atom will be our activeAtom
 */
 public";
 
-%javamethodmodifiers RDKit::RWMol::setActiveAtom 	( 	unsigned int  	idx 	 )  	"
+%javamethodmodifiers RDKix::RWMol::setActiveAtom 	( 	unsigned int  	idx 	 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.

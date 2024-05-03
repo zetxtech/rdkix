@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# RDKit_unofficial_translation_JP documentation build configuration file, created by
+# RDKix_unofficial_translation_JP documentation build configuration file, created by
 # sphinx-quickstart on Sat Dec 29 12:41:54 2018.
 #
 # This file is execfile()d with the current directory set to its
@@ -101,7 +101,7 @@ html_sidebars = {'**': ['globaltoc.html', 'relations.html', 'searchbox.html']}
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RDKitdoc'
+htmlhelp_basename = 'RDKixdoc'
 
 # -- General configuration ------------------------------------------------
 
@@ -127,7 +127,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'RDKit_unofficial_translation_JP'
+project = 'RDKix_unofficial_translation_JP'
 copyright = '2018, anonymous'
 author = 'anonymous'
 
@@ -182,16 +182,16 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'RDKit_unofficial_translation_JP.tex',
-   'RDKit\\_unofficial\\_translation\\_JP Documentation', 'anonymous', 'manual'),
+  (master_doc, 'RDKix_unofficial_translation_JP.tex',
+   'RDKix\\_unofficial\\_translation\\_JP Documentation', 'anonymous', 'manual'),
 ]
 
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, 'rdkit_unofficial_translation_jp',
-              'RDKit_unofficial_translation_JP Documentation', [author], 1)]
+man_pages = [(master_doc, 'rdkix_unofficial_translation_jp',
+              'RDKix_unofficial_translation_JP Documentation', [author], 1)]
 
 # -- Options for Texinfo output -------------------------------------------
 
@@ -199,6 +199,6 @@ man_pages = [(master_doc, 'rdkit_unofficial_translation_jp',
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'RDKit_unofficial_translation_JP', 'RDKit_unofficial_translation_JP Documentation',
-   author, 'RDKit_unofficial_translation_JP', 'One line description of project.', 'Miscellaneous'),
+  (master_doc, 'RDKix_unofficial_translation_JP', 'RDKix_unofficial_translation_JP Documentation',
+   author, 'RDKix_unofficial_translation_JP', 'One line description of project.', 'Miscellaneous'),
 ]

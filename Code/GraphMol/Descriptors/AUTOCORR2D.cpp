@@ -31,14 +31,14 @@
 //
 // Guillaume GODIN access the AutoCorrelation 2D descriptors names in Dragon TDB
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "AUTOCORR2D.h"
 #include "MolData3Ddescriptors.h"
 #include <cmath>
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 namespace {
@@ -241,4 +241,4 @@ void AUTOCORR2D(const ROMol& mol, std::vector<double>& result,
   }
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

@@ -22,8 +22,8 @@ endif()
 
 set(boost_iostreams Boost::iostreams)
 endif(RDK_USE_BOOST_IOSTREAMS)
-rdkit_library(RDStreams streams.cpp
+rdkix_library(RDStreams streams.cpp
               LINK_LIBRARIES ${boost_iostreams} ${zlib_lib})
-target_compile_definitions(RDStreams PRIVATE RDKIT_RDSTREAMS_BUILD)
+target_compile_definitions(RDStreams PRIVATE RDKIX_RDSTREAMS_BUILD)
 
-rdkit_headers(streams.h DEST RDStreams)
+rdkix_headers(streams.h DEST RDStreams)

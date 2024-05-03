@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
@@ -15,15 +15,15 @@
 // It holds the information needed to draw an atom symbol, including
 // all the extra bits like isotope labels.
 
-#ifndef RDKIT_ATOMSYMBOL_H
-#define RDKIT_ATOMSYMBOL_H
+#ifndef RDKIX_ATOMSYMBOL_H
+#define RDKIX_ATOMSYMBOL_H
 
 #include <string>
 
 #include <GraphMol/MolDraw2D/DrawText.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class MolDraw2D;
 
@@ -81,6 +81,6 @@ class AtomSymbol {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_ATOMSYMBOL_H
+#endif  // RDKIX_ATOMSYMBOL_H

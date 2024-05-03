@@ -3,10 +3,10 @@
 //  Copyright (C) 2002-2011 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
@@ -24,7 +24,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <string>
 #include <cstdlib>
 
-namespace RDKit {
+namespace RDKix {
 SmilesMolSupplier::SmilesMolSupplier() { init(); }
 
 SmilesMolSupplier::SmilesMolSupplier(const std::string &fileName,
@@ -527,4 +527,4 @@ unsigned int SmilesMolSupplier::length() {
 }
 
 bool SmilesMolSupplier::atEnd() { return df_end; }
-}  // namespace RDKit
+}  // namespace RDKix

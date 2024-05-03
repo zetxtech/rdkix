@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_EMBEDDED_FRAG_H
@@ -17,16 +17,16 @@
 #include "DepictUtils.h"
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Bond;
-}  // namespace RDKit
+}  // namespace RDKix
 
 namespace RDDepict {
 typedef boost::shared_array<double> DOUBLE_SMART_PTR;
 
 //! Class that contains the data for an atoms that has already been embedded
-class RDKIT_DEPICTOR_EXPORT EmbeddedAtom {
+class RDKIX_DEPICTOR_EXPORT EmbeddedAtom {
  public:
   typedef enum { UNSPECIFIED = 0, CISTRANS, RING } EAtomType;
 
@@ -116,7 +116,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedAtom {
   RDGeom::Point2D normal;
 
   //! and these are the atom IDs of the neighbors that still need to be embedded
-  RDKit::INT_VECT neighs;
+  RDKix::INT_VECT neighs;
 
   // density of the atoms around this atoms
   // - this is sum of inverse of the square of distances to other atoms from
@@ -143,7 +143,7 @@ typedef INT_EATOM_MAP::const_iterator INT_EATOM_MAP_CI;
   - so at the end of the process  the whole molecule end up being one these
     embedded frag objects
 */
-class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
+class RDKIX_DEPICTOR_EXPORT EmbeddedFrag {
   // REVIEW: think about moving member functions up to global level and just
   // using
   // this class as a container
@@ -159,7 +159,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
   /*!
     A single Embedded Atom with this atom ID is added and placed at the origin
   */
-  EmbeddedFrag(unsigned int aid, const RDKit::ROMol *mol);
+  EmbeddedFrag(unsigned int aid, const RDKix::ROMol *mol);
 
   //! Constructor when the coordinates have been specified for a set of atoms
   /*!
@@ -174,7 +174,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
        this again depends on  atoms properly so that new neighbors can be added
        to them
   */
-  EmbeddedFrag(const RDKit::ROMol *mol,
+  EmbeddedFrag(const RDKix::ROMol *mol,
                const RDGeom::INT_POINT2D_MAP &coordMap);
 
   //! Initializer from a set of fused rings
@@ -185,7 +185,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     \param useRingTemplates whether to use ring system templates for generating
       initial coordinates
   */
-  EmbeddedFrag(const RDKit::ROMol *mol, const RDKit::VECT_INT_VECT &fusedRings,
+  EmbeddedFrag(const RDKix::ROMol *mol, const RDKix::VECT_INT_VECT &fusedRings,
                bool useRingTemplates);
 
   //! Initializer for a cis/trans system using the double bond
@@ -194,7 +194,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     \param dblBond   the double bond that is involved in the cis/trans
     configuration
   */
-  explicit EmbeddedFrag(const RDKit::Bond *dblBond);
+  explicit EmbeddedFrag(const RDKix::Bond *dblBond);
 
   //! Expand this embedded system by adding neighboring atoms or other embedded
   /// systems
@@ -204,7 +204,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     as we start merging them with the current fragment
 
   */
-  void expandEfrag(RDKit::INT_LIST &nratms, std::list<EmbeddedFrag> &efrags);
+  void expandEfrag(RDKix::INT_LIST &nratms, std::list<EmbeddedFrag> &efrags);
 
   //! Add a new non-ring atom to this object
   /*
@@ -247,7 +247,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     \param commAtms  a vector of ids of the common atoms
 
   */
-  void mergeWithCommon(EmbeddedFrag &embObj, RDKit::INT_VECT &commAtms);
+  void mergeWithCommon(EmbeddedFrag &embObj, RDKix::INT_VECT &commAtms);
 
   void mergeFragsWithComm(std::list<EmbeddedFrag> &efrags);
 
@@ -258,10 +258,10 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
   bool isDone() { return d_done; }
 
   //! Get the molecule that this embedded fragment belongs to
-  const RDKit::ROMol *getMol() const { return dp_mol; }
+  const RDKix::ROMol *getMol() const { return dp_mol; }
 
   //! Find the common atom ids between this fragment and a second one
-  RDKit::INT_VECT findCommonAtoms(const EmbeddedFrag &efrag2);
+  RDKix::INT_VECT findCommonAtoms(const EmbeddedFrag &efrag2);
 
   //! Find a neighbor to a non-ring atom among the already embedded atoms
   /*!
@@ -372,10 +372,10 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
   double totalDensity();
 
   // returns true if fused rings found a template
-  bool matchToTemplate(const RDKit::INT_VECT &ringSystemAtoms,
+  bool matchToTemplate(const RDKix::INT_VECT &ringSystemAtoms,
                        unsigned int ring_count);
 
-  void embedFusedRings(const RDKit::VECT_INT_VECT &fusedRings,
+  void embedFusedRings(const RDKix::VECT_INT_VECT &fusedRings,
                        bool useRingTemplates);
 
   void setupAttachmentPoints();
@@ -420,7 +420,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     like the neighbor information and the sweep angle
   */
   void mergeRing(const EmbeddedFrag &embRing, unsigned int nCommon,
-                 const RDKit::INT_VECT &pinAtoms);
+                 const RDKix::INT_VECT &pinAtoms);
 
   //! Reflect a fragment if necessary through a line connecting two atoms
   /*!
@@ -473,7 +473,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
                     clockwise or anti-clockwise order
     /param nringMap a map of atomId to coordinate map for the atoms in the ring
   */
-  void initFromRingCoords(const RDKit::INT_VECT &ring,
+  void initFromRingCoords(const RDKix::INT_VECT &ring,
                           const RDGeom::INT_POINT2D_MAP &nringMap);
 
   //! Helper function to addNonRingAtom to a specified atoms in the fragment
@@ -506,7 +506,7 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
   */
   void addAtomToAtomWithNoAng(
       unsigned int aid,
-      unsigned int toAid);  //, const RDKit::ROMol *mol);
+      unsigned int toAid);  //, const RDKix::ROMol *mol);
 
   //! Helper function to constructor that takes predefined coordinates
   /*!
@@ -532,8 +532,8 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
     \param aid        the atom id where we are centered right now
     \param doneNbrs   list of neighbors that are already embedded around aid
   */
-  void computeNbrsAndAng(unsigned int aid, const RDKit::INT_VECT &doneNbrs);
-  // const RDKit::ROMol *mol);
+  void computeNbrsAndAng(unsigned int aid, const RDKix::INT_VECT &doneNbrs);
+  // const RDKix::ROMol *mol);
 
   //! are we embedded with the final (molecule) coordinates
   bool d_done = false;
@@ -543,11 +543,11 @@ class RDKIT_DEPICTOR_EXPORT EmbeddedFrag {
   /// atom.
   INT_EATOM_MAP d_eatoms;
 
-  // RDKit::INT_DEQUE d_attachPts;
-  RDKit::INT_LIST d_attachPts;
+  // RDKix::INT_DEQUE d_attachPts;
+  RDKix::INT_LIST d_attachPts;
 
   // pointer to the owning molecule
-  const RDKit::ROMol *dp_mol = nullptr;
+  const RDKix::ROMol *dp_mol = nullptr;
 };
 }  // namespace RDDepict
 

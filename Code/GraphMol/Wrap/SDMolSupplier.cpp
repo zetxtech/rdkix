@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2019  Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,7 +14,7 @@
 
 // ours
 #include <GraphMol/FileParsers/MolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/PySequenceHolder.h>
 
 #include "MolSupplier.h"
@@ -22,7 +22,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 void setDataHelper(SDMolSupplier &self, const std::string &text, bool sanitize,
                    bool removeHs, bool strictParsing) {
   self.setData(text, sanitize, removeHs, strictParsing);
@@ -115,6 +115,6 @@ struct sdmolsup_wrap {
              "processed when reading molecules");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_sdsupplier() { RDKit::sdmolsup_wrap::wrap(); }
+void wrap_sdsupplier() { RDKix::sdmolsup_wrap::wrap(); }

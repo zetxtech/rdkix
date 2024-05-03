@@ -1,5 +1,5 @@
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -41,7 +41,7 @@
 
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/RGroupDecomposition/RGroupDecomp.h>
 #include <RDBoost/Wrap.h>
 #include <RDBoost/python_streambuf.h>
@@ -49,7 +49,7 @@
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 
-namespace RDKit {
+namespace RDKix {
 
 class RGroupDecompositionHelper {
   RGroupDecomposition *decomp;
@@ -186,48 +186,48 @@ python::object RGroupDecomp(python::object cores, python::object mols,
   } else {
     return make_tuple(decomp.GetRGroupsAsColumn(asSmiles), unmatched);
   }
-}  // namespace RDKit
+}  // namespace RDKix
 
 struct rgroupdecomp_wrapper {
   static void wrap() {
     bool noproxy = true;
-    RegisterVectorConverter<RDKit::ROMOL_SPTR>("MOL_SPTR_VECT", noproxy);
+    RegisterVectorConverter<RDKix::ROMOL_SPTR>("MOL_SPTR_VECT", noproxy);
 
     std::string docString = "";
-    python::enum_<RDKit::RGroupLabels>("RGroupLabels")
-        .value("IsotopeLabels", RDKit::IsotopeLabels)
-        .value("AtomMapLabels", RDKit::AtomMapLabels)
-        .value("AtomIndexLabels", RDKit::AtomIndexLabels)
-        .value("RelabelDuplicateLabels", RDKit::RelabelDuplicateLabels)
-        .value("MDLRGroupLabels", RDKit::MDLRGroupLabels)
-        .value("DummyAtomLabels", RDKit::DummyAtomLabels)
-        .value("AutoDetect", RDKit::AutoDetect)
+    python::enum_<RDKix::RGroupLabels>("RGroupLabels")
+        .value("IsotopeLabels", RDKix::IsotopeLabels)
+        .value("AtomMapLabels", RDKix::AtomMapLabels)
+        .value("AtomIndexLabels", RDKix::AtomIndexLabels)
+        .value("RelabelDuplicateLabels", RDKix::RelabelDuplicateLabels)
+        .value("MDLRGroupLabels", RDKix::MDLRGroupLabels)
+        .value("DummyAtomLabels", RDKix::DummyAtomLabels)
+        .value("AutoDetect", RDKix::AutoDetect)
         .export_values();
 
-    python::enum_<RDKit::RGroupMatching>("RGroupMatching")
-        .value("Greedy", RDKit::Greedy)
-        .value("GreedyChunks", RDKit::GreedyChunks)
-        .value("Exhaustive", RDKit::Exhaustive)
-        .value("NoSymmetrization", RDKit::NoSymmetrization)
-        .value("GA", RDKit::GA)
+    python::enum_<RDKix::RGroupMatching>("RGroupMatching")
+        .value("Greedy", RDKix::Greedy)
+        .value("GreedyChunks", RDKix::GreedyChunks)
+        .value("Exhaustive", RDKix::Exhaustive)
+        .value("NoSymmetrization", RDKix::NoSymmetrization)
+        .value("GA", RDKix::GA)
         .export_values();
 
-    python::enum_<RDKit::RGroupLabelling>("RGroupLabelling")
-        .value("AtomMap", RDKit::AtomMap)
-        .value("Isotope", RDKit::Isotope)
-        .value("MDLRGroup", RDKit::MDLRGroup)
+    python::enum_<RDKix::RGroupLabelling>("RGroupLabelling")
+        .value("AtomMap", RDKix::AtomMap)
+        .value("Isotope", RDKix::Isotope)
+        .value("MDLRGroup", RDKix::MDLRGroup)
         .export_values();
 
-    python::enum_<RDKit::RGroupCoreAlignment>("RGroupCoreAlignment")
+    python::enum_<RDKix::RGroupCoreAlignment>("RGroupCoreAlignment")
         // DEPRECATED, remove the folowing line in release 2021.03
-        .value("None", RDKit::NoAlignment)
-        .value("NoAlignment", RDKit::NoAlignment)
-        .value("MCS", RDKit::MCS)
+        .value("None", RDKix::NoAlignment)
+        .value("NoAlignment", RDKix::NoAlignment)
+        .value("MCS", RDKix::MCS)
         .export_values();
 
-    python::enum_<RDKit::RGroupScore>("RGroupScore")
-        .value("Match", RDKit::Match)
-        .value("FingerprintVariance", RDKit::FingerprintVariance)
+    python::enum_<RDKix::RGroupScore>("RGroupScore")
+        .value("Match", RDKix::Match)
+        .value("FingerprintVariance", RDKix::FingerprintVariance)
         .export_values();
 
     docString =
@@ -284,66 +284,66 @@ struct rgroupdecomp_wrapper {
         "    - doEnumeration: expand input cores into enumerated mol bundles\n"
         "    -allowMultipleRGroupsOnUnlabelled: permit more that one rgroup to "
         "be attached to an unlabelled core atom";
-    python::class_<RDKit::RGroupDecompositionParameters>(
+    python::class_<RDKix::RGroupDecompositionParameters>(
         "RGroupDecompositionParameters", docString.c_str(),
         python::init<>("Constructor, takes no arguments"))
 
-        .def_readwrite("labels", &RDKit::RGroupDecompositionParameters::labels)
+        .def_readwrite("labels", &RDKix::RGroupDecompositionParameters::labels)
         .def_readwrite("matchingStrategy",
-                       &RDKit::RGroupDecompositionParameters::matchingStrategy)
+                       &RDKix::RGroupDecompositionParameters::matchingStrategy)
         .def_readwrite("scoreMethod",
-                       &RDKit::RGroupDecompositionParameters::scoreMethod)
+                       &RDKix::RGroupDecompositionParameters::scoreMethod)
         .def_readwrite("rgroupLabelling",
-                       &RDKit::RGroupDecompositionParameters::rgroupLabelling)
+                       &RDKix::RGroupDecompositionParameters::rgroupLabelling)
         .def_readwrite("alignment",
-                       &RDKit::RGroupDecompositionParameters::alignment)
+                       &RDKix::RGroupDecompositionParameters::alignment)
         .def_readwrite("chunkSize",
-                       &RDKit::RGroupDecompositionParameters::chunkSize)
+                       &RDKix::RGroupDecompositionParameters::chunkSize)
         .def_readwrite(
             "onlyMatchAtRGroups",
-            &RDKit::RGroupDecompositionParameters::onlyMatchAtRGroups)
+            &RDKix::RGroupDecompositionParameters::onlyMatchAtRGroups)
         .def_readwrite(
             "removeAllHydrogenRGroups",
-            &RDKit::RGroupDecompositionParameters::removeAllHydrogenRGroups)
+            &RDKix::RGroupDecompositionParameters::removeAllHydrogenRGroups)
         .def_readwrite(
             "removeHydrogensPostMatch",
-            &RDKit::RGroupDecompositionParameters::removeHydrogensPostMatch)
+            &RDKix::RGroupDecompositionParameters::removeHydrogensPostMatch)
         .def_readwrite("timeout",
-                       &RDKit::RGroupDecompositionParameters::timeout)
+                       &RDKix::RGroupDecompositionParameters::timeout)
         .def_readwrite("gaPopulationSize",
-                       &RDKit::RGroupDecompositionParameters::gaPopulationSize)
+                       &RDKix::RGroupDecompositionParameters::gaPopulationSize)
         .def_readwrite(
             "gaMaximumOperations",
-            &RDKit::RGroupDecompositionParameters::gaMaximumOperations)
+            &RDKix::RGroupDecompositionParameters::gaMaximumOperations)
         .def_readwrite("gaNumberOperationsWithoutImprovement",
-                       &RDKit::RGroupDecompositionParameters::
+                       &RDKix::RGroupDecompositionParameters::
                            gaNumberOperationsWithoutImprovement)
         .def_readwrite("gaRandomSeed",
-                       &RDKit::RGroupDecompositionParameters::gaRandomSeed)
+                       &RDKix::RGroupDecompositionParameters::gaRandomSeed)
         .def_readwrite("gaNumberRuns",
-                       &RDKit::RGroupDecompositionParameters::gaNumberRuns)
+                       &RDKix::RGroupDecompositionParameters::gaNumberRuns)
         .def_readwrite("gaParallelRuns",
-                       &RDKit::RGroupDecompositionParameters::gaParallelRuns)
+                       &RDKix::RGroupDecompositionParameters::gaParallelRuns)
         .def_readwrite(
             "allowNonTerminalRGroups",
-            &RDKit::RGroupDecompositionParameters::allowNonTerminalRGroups)
+            &RDKix::RGroupDecompositionParameters::allowNonTerminalRGroups)
         .def_readwrite("removeAllHydrogenRGroupsAndLabels",
-                       &RDKit::RGroupDecompositionParameters::
+                       &RDKix::RGroupDecompositionParameters::
                            removeAllHydrogenRGroupsAndLabels)
         .def_readwrite("allowMultipleRGroupsOnUnlabelled",
-                       &RDKit::RGroupDecompositionParameters::
+                       &RDKix::RGroupDecompositionParameters::
                            allowMultipleRGroupsOnUnlabelled)
         .def_readwrite("doTautomers",
-                       &RDKit::RGroupDecompositionParameters::
+                       &RDKix::RGroupDecompositionParameters::
                            doTautomers)
         .def_readwrite("doEnumeration",
-                       &RDKit::RGroupDecompositionParameters::
+                       &RDKix::RGroupDecompositionParameters::
                            doEnumeration)
         .def_readonly(
             "substructMatchParams",
-            &RDKit::RGroupDecompositionParameters::substructmatchParams);
+            &RDKix::RGroupDecompositionParameters::substructmatchParams);
 
-    python::class_<RDKit::RGroupDecompositionHelper, boost::noncopyable>(
+    python::class_<RDKix::RGroupDecompositionHelper, boost::noncopyable>(
         "RGroupDecomposition", docString.c_str(),
         python::init<python::object>(
             "Construct from a molecule or sequence of molecules"))
@@ -405,17 +405,17 @@ struct rgroupdecomp_wrapper {
         "\n"
         "    unmatched is a vector of indices in the input mols that were not "
         "matched.\n";
-    python::def("RGroupDecompose", RDKit::RGroupDecomp,
+    python::def("RGroupDecompose", RDKix::RGroupDecomp,
                 (python::arg("cores"), python::arg("mols"),
                  python::arg("asSmiles") = false, python::arg("asRows") = true,
                  python::arg("options") = RGroupDecompositionParameters()),
                 docString.c_str());
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdRGroupDecomposition) {
   python::scope().attr("__doc__") =
       "Module containing RGroupDecomposition classes and functions.";
-  RDKit::rgroupdecomp_wrapper::wrap();
+  RDKix::rgroupdecomp_wrapper::wrap();
 }

@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_TRANSFORM_CATALOG_ENTRY_H__
@@ -16,12 +16,12 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include "TransformCatalogParams.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
-class RDKIT_MOLSTANDARDIZE_EXPORT TransformCatalogEntry
+class RDKIX_MOLSTANDARDIZE_EXPORT TransformCatalogEntry
     : public RDCatalog::CatalogEntry {
  public:
   TransformCatalogEntry() : d_descrip("") {
@@ -52,6 +52,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TransformCatalogEntry
 };  // class TransformCatalogEntry
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

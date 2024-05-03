@@ -41,19 +41,19 @@
 #include <boost/archive/archive_exception.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(RDKit::MolHolderBase)
-BOOST_SERIALIZATION_ASSUME_ABSTRACT(RDKit::FPHolderBase)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(RDKix::MolHolderBase)
+BOOST_SERIALIZATION_ASSUME_ABSTRACT(RDKix::FPHolderBase)
 
 namespace boost {
 namespace serialization {
 
 template <class Archive>
-void serialize(Archive &, RDKit::MolHolderBase &, const unsigned int) {}
+void serialize(Archive &, RDKix::MolHolderBase &, const unsigned int) {}
 
 template <class Archive>
-void save(Archive &ar, const RDKit::MolHolder &molholder,
+void save(Archive &ar, const RDKix::MolHolder &molholder,
           const unsigned int version) {
-  ar &boost::serialization::base_object<RDKit::MolHolderBase>(molholder);
+  ar &boost::serialization::base_object<RDKix::MolHolderBase>(molholder);
 
   if (version < 2) {
     std::int64_t pkl_count = molholder.getMols().size();
@@ -61,7 +61,7 @@ void save(Archive &ar, const RDKit::MolHolder &molholder,
 
     for (auto &mol : molholder.getMols()) {
       std::string pkl;
-      RDKit::MolPickler::pickleMol(*mol.get(), pkl);
+      RDKix::MolPickler::pickleMol(*mol.get(), pkl);
       ar << pkl;
     }
   } else {
@@ -70,11 +70,11 @@ void save(Archive &ar, const RDKit::MolHolder &molholder,
 }
 
 template <class Archive>
-void load(Archive &ar, RDKit::MolHolder &molholder,
+void load(Archive &ar, RDKix::MolHolder &molholder,
           const unsigned int version) {
-  ar &boost::serialization::base_object<RDKit::MolHolderBase>(molholder);
+  ar &boost::serialization::base_object<RDKix::MolHolderBase>(molholder);
 
-  std::vector<boost::shared_ptr<RDKit::ROMol>> &mols = molholder.getMols();
+  std::vector<boost::shared_ptr<RDKix::ROMol>> &mols = molholder.getMols();
   mols.clear();
 
   if (version < 2) {
@@ -84,7 +84,7 @@ void load(Archive &ar, RDKit::MolHolder &molholder,
     for (std::int64_t i = 0; i < pkl_count; ++i) {
       std::string pkl;
       ar >> pkl;
-      mols.push_back(boost::make_shared<RDKit::ROMol>(pkl));
+      mols.push_back(boost::make_shared<RDKix::ROMol>(pkl));
     }
   } else {
     ar &mols;
@@ -95,30 +95,30 @@ template <class Archive, class MolHolder>
 void serialize_strings(Archive &ar, MolHolder &molholder,
                        const unsigned int version) {
   RDUNUSED_PARAM(version);
-  ar &boost::serialization::base_object<RDKit::MolHolderBase>(molholder);
+  ar &boost::serialization::base_object<RDKix::MolHolderBase>(molholder);
   ar &molholder.getMols();
 }
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::CachedMolHolder &molholder,
+void serialize(Archive &ar, RDKix::CachedMolHolder &molholder,
                const unsigned int version) {
   serialize_strings(ar, molholder, version);
 }
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::CachedSmilesMolHolder &molholder,
+void serialize(Archive &ar, RDKix::CachedSmilesMolHolder &molholder,
                const unsigned int version) {
   serialize_strings(ar, molholder, version);
 }
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::CachedTrustedSmilesMolHolder &molholder,
+void serialize(Archive &ar, RDKix::CachedTrustedSmilesMolHolder &molholder,
                const unsigned int version) {
   serialize_strings(ar, molholder, version);
 }
 
 template <class Archive>
-void save(Archive &ar, const RDKit::FPHolderBase &fpholder,
+void save(Archive &ar, const RDKix::FPHolderBase &fpholder,
           const unsigned int version) {
   RDUNUSED_PARAM(version);
   std::vector<std::string> pickles;
@@ -129,7 +129,7 @@ void save(Archive &ar, const RDKit::FPHolderBase &fpholder,
 }
 
 template <class Archive>
-void load(Archive &ar, RDKit::FPHolderBase &fpholder,
+void load(Archive &ar, RDKix::FPHolderBase &fpholder,
           const unsigned int version) {
   RDUNUSED_PARAM(version);
   std::vector<std::string> pickles;
@@ -147,54 +147,54 @@ void load(Archive &ar, RDKit::FPHolderBase &fpholder,
 }
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::PatternHolder &pattern_holder,
+void serialize(Archive &ar, RDKix::PatternHolder &pattern_holder,
                const unsigned int version) {
   RDUNUSED_PARAM(version);
-  ar &boost::serialization::base_object<RDKit::FPHolderBase>(pattern_holder);
+  ar &boost::serialization::base_object<RDKix::FPHolderBase>(pattern_holder);
   if (Archive::is_saving::value &&
-      pattern_holder.getNumBits() != RDKit::PatternHolder::defaultNumBits()) {
+      pattern_holder.getNumBits() != RDKix::PatternHolder::defaultNumBits()) {
     ar &pattern_holder.getNumBits();
   } else if (Archive::is_loading::value) {
     try {
       ar &pattern_holder.getNumBits();
     } catch (boost::archive::archive_exception &) {
-      pattern_holder.getNumBits() = RDKit::PatternHolder::defaultNumBits();
+      pattern_holder.getNumBits() = RDKix::PatternHolder::defaultNumBits();
     }
   }
 }
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::TautomerPatternHolder &pattern_holder,
+void serialize(Archive &ar, RDKix::TautomerPatternHolder &pattern_holder,
                const unsigned int version) {
   RDUNUSED_PARAM(version);
-  ar &boost::serialization::base_object<RDKit::FPHolderBase>(pattern_holder);
+  ar &boost::serialization::base_object<RDKix::FPHolderBase>(pattern_holder);
   ar &pattern_holder.getNumBits();
 }
 
 template <class Archive>
-void serialize(Archive &, RDKit::KeyHolderBase &, const unsigned int) {}
+void serialize(Archive &, RDKix::KeyHolderBase &, const unsigned int) {}
 
 template <class Archive>
-void serialize(Archive &ar, RDKit::KeyFromPropHolder &key_holder,
+void serialize(Archive &ar, RDKix::KeyFromPropHolder &key_holder,
                const unsigned int) {
-  ar &boost::serialization::base_object<RDKit::KeyHolderBase>(key_holder);
+  ar &boost::serialization::base_object<RDKix::KeyHolderBase>(key_holder);
   ar &key_holder.getPropName();
   ar &key_holder.getKeys();
 }
 
 template <class Archive>
 void registerSubstructLibraryTypes(Archive &ar) {
-  ar.register_type(static_cast<RDKit::MolHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::CachedMolHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::CachedSmilesMolHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::CachedTrustedSmilesMolHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::PatternHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::TautomerPatternHolder *>(nullptr));
-  ar.register_type(static_cast<RDKit::KeyFromPropHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::MolHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::CachedMolHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::CachedSmilesMolHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::CachedTrustedSmilesMolHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::PatternHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::TautomerPatternHolder *>(nullptr));
+  ar.register_type(static_cast<RDKix::KeyFromPropHolder *>(nullptr));
 }
 
 template <class Archive>
-void save(Archive &ar, const RDKit::SubstructLibrary &slib,
+void save(Archive &ar, const RDKix::SubstructLibrary &slib,
           const unsigned int version) {
   RDUNUSED_PARAM(version);
   registerSubstructLibraryTypes(ar);
@@ -205,7 +205,7 @@ void save(Archive &ar, const RDKit::SubstructLibrary &slib,
 }
 
 template <class Archive>
-void load(Archive &ar, RDKit::SubstructLibrary &slib,
+void load(Archive &ar, RDKix::SubstructLibrary &slib,
           const unsigned int version) {
   RDUNUSED_PARAM(version);
   registerSubstructLibraryTypes(ar);
@@ -221,17 +221,17 @@ void load(Archive &ar, RDKit::SubstructLibrary &slib,
 }  // end namespace serialization
 }  // end namespace boost
 
-BOOST_CLASS_VERSION(RDKit::MolHolder, 2);
-BOOST_CLASS_VERSION(RDKit::CachedMolHolder, 1);
-BOOST_CLASS_VERSION(RDKit::CachedSmilesMolHolder, 1);
-BOOST_CLASS_VERSION(RDKit::CachedTrustedSmilesMolHolder, 1);
-BOOST_CLASS_VERSION(RDKit::PatternHolder, 1);
-BOOST_CLASS_VERSION(RDKit::TautomerPatternHolder, 1);
-BOOST_CLASS_VERSION(RDKit::SubstructLibrary, 2);
+BOOST_CLASS_VERSION(RDKix::MolHolder, 2);
+BOOST_CLASS_VERSION(RDKix::CachedMolHolder, 1);
+BOOST_CLASS_VERSION(RDKix::CachedSmilesMolHolder, 1);
+BOOST_CLASS_VERSION(RDKix::CachedTrustedSmilesMolHolder, 1);
+BOOST_CLASS_VERSION(RDKix::PatternHolder, 1);
+BOOST_CLASS_VERSION(RDKix::TautomerPatternHolder, 1);
+BOOST_CLASS_VERSION(RDKix::SubstructLibrary, 2);
 
-BOOST_SERIALIZATION_SPLIT_FREE(RDKit::MolHolder);
-BOOST_SERIALIZATION_SPLIT_FREE(RDKit::FPHolderBase);
-BOOST_SERIALIZATION_SPLIT_FREE(RDKit::SubstructLibrary);
+BOOST_SERIALIZATION_SPLIT_FREE(RDKix::MolHolder);
+BOOST_SERIALIZATION_SPLIT_FREE(RDKix::FPHolderBase);
+BOOST_SERIALIZATION_SPLIT_FREE(RDKix::SubstructLibrary);
 
 #endif
 #endif

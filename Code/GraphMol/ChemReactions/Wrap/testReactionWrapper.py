@@ -1,6 +1,6 @@
 #
 #  Copyright (c) 2007-2023, Novartis Institutes for BioMedical Research Inc. and
-#  other RDKit contributors
+#  other RDKix contributors
 #
 #  All rights reserved.
 #
@@ -37,9 +37,9 @@ import sys
 import unittest
 import tempfile 
 
-from rdkit import Chem, Geometry, RDConfig, rdBase
-from rdkit.Chem import AllChem, rdChemReactions
-from rdkit.Chem.SimpleEnum import Enumerator
+from rdkix import Chem, Geometry, RDConfig, rdBase
+from rdkix.Chem import AllChem, rdChemReactions
+from rdkix.Chem.SimpleEnum import Enumerator
 
 
 def feq(v1, v2, tol2=1e-4):
@@ -55,7 +55,7 @@ def ptEq(pt1, pt2, tol=1e-4):
 spec = importlib.util.spec_from_loader("TestPreprocess", loader=None)
 TestPreprocess = importlib.util.module_from_spec(spec)
 code = """
-from rdkit.Chem import rdChemReactions
+from rdkix.Chem import rdChemReactions
 def PreprocessReaction(*a, **kw):
     '''%s
     '''
@@ -483,7 +483,7 @@ M  END
     self.assertTrue(len(labels), 1)
 
   def test17bAddRecursiveQueriesToReaction(self):
-    from rdkit.Chem import FilterCatalog
+    from rdkix.Chem import FilterCatalog
     rxn = rdChemReactions.ReactionFromSmarts("[C:1][O:2].[N:3]>>[C:1][N:2]")
     self.assertTrue(rxn)
     rxn.Initialize()

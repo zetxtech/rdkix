@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2019 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "BoundsMatrix.h"
 #include "DistGeomUtils.h"
@@ -33,14 +33,14 @@ const double EIGVAL_TOL = 0.001;
 double pickRandomDistMat(const BoundsMatrix &mmat,
                          RDNumeric::SymmMatrix<double> &distMat, int seed) {
   if (seed > 0) {
-    RDKit::getRandomGenerator(seed);
+    RDKix::getRandomGenerator(seed);
   }
-  return pickRandomDistMat(mmat, distMat, RDKit::getDoubleRandomSource());
+  return pickRandomDistMat(mmat, distMat, RDKix::getDoubleRandomSource());
 }
 
 double pickRandomDistMat(const BoundsMatrix &mmat,
                          RDNumeric::SymmMatrix<double> &distMat,
-                         RDKit::double_source_type &rng) {
+                         RDKix::double_source_type &rng) {
   // make sure the sizes match up
   unsigned int npt = mmat.numRows();
   CHECK_INVARIANT(npt == distMat.numRows(), "Size mismatch");
@@ -69,15 +69,15 @@ bool computeInitialCoords(const RDNumeric::SymmMatrix<double> &distMat,
                           RDGeom::PointPtrVect &positions, bool randNegEig,
                           unsigned int numZeroFail, int seed) {
   if (seed > 0) {
-    RDKit::getRandomGenerator(seed);
+    RDKix::getRandomGenerator(seed);
   }
   return computeInitialCoords(distMat, positions,
-                              RDKit::getDoubleRandomSource(), randNegEig,
+                              RDKix::getDoubleRandomSource(), randNegEig,
                               numZeroFail);
 }
 bool computeInitialCoords(const RDNumeric::SymmMatrix<double> &distMat,
                           RDGeom::PointPtrVect &positions,
-                          RDKit::double_source_type &rng, bool randNegEig,
+                          RDKix::double_source_type &rng, bool randNegEig,
                           unsigned int numZeroFail) {
   unsigned int N = distMat.numRows();
   unsigned int nPt = positions.size();
@@ -162,13 +162,13 @@ bool computeInitialCoords(const RDNumeric::SymmMatrix<double> &distMat,
 bool computeRandomCoords(RDGeom::PointPtrVect &positions, double boxSize,
                          int seed) {
   if (seed > 0) {
-    RDKit::getRandomGenerator(seed);
+    RDKix::getRandomGenerator(seed);
   }
   return computeRandomCoords(positions, boxSize,
-                             RDKit::getDoubleRandomSource());
+                             RDKix::getDoubleRandomSource());
 }
 bool computeRandomCoords(RDGeom::PointPtrVect &positions, double boxSize,
-                         RDKit::double_source_type &rng) {
+                         RDKix::double_source_type &rng) {
   CHECK_INVARIANT(boxSize > 0.0, "bad boxSize");
 
   for (auto pt : positions) {

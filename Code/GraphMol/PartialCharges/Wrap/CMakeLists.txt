@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_PARTIALCHARGES_BUILD)
-rdkit_python_extension(rdPartialCharges
+remove_definitions(-DRDKIX_PARTIALCHARGES_BUILD)
+rdkix_python_extension(rdPartialCharges
                        rdPartialCharges.cpp
                        DEST Chem 
                        LINK_LIBRARIES PartialCharges ) 

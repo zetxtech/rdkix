@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_INFOTHEORY_BUILD)
-rdkit_python_extension(rdInfoTheory 
+remove_definitions(-DRDKIX_INFOTHEORY_BUILD)
+rdkix_python_extension(rdInfoTheory 
                        InfoBitRanker.cpp BitCorrMatGenerator.cpp 
                        rdInfoTheory.cpp 
                        DEST ML/InfoTheory

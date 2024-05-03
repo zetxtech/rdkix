@@ -2,10 +2,10 @@
 // Copyright (c) 2016 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FPBREADER_H_DEC2015
@@ -29,7 +29,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/shared_array.hpp>
 
-namespace RDKit {
+namespace RDKix {
 namespace detail {
 struct FPBReader_impl;
 }
@@ -55,7 +55,7 @@ struct FPBReader_impl;
   \c lazyRead mode.
 
 */
-class RDKIT_DATASTRUCTS_EXPORT FPBReader {
+class RDKIX_DATASTRUCTS_EXPORT FPBReader {
  public:
   FPBReader() {}
 
@@ -277,5 +277,5 @@ class RDKIT_DATASTRUCTS_EXPORT FPBReader {
     df_lazyRead = lazyRead;
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

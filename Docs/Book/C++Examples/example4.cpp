@@ -14,40 +14,40 @@
 #include <GraphMol/ForceFieldHelpers/MMFF/MMFF.h>
 
 int main(int argc, char **argv) {
-  std::shared_ptr<RDKit::ROMol> mol1(RDKit::SmilesToMol("C1CCC1"));
-  std::cout << RDKit::MolToMolBlock(*mol1) << std::endl;
+  std::shared_ptr<RDKix::ROMol> mol1(RDKix::SmilesToMol("C1CCC1"));
+  std::cout << RDKix::MolToMolBlock(*mol1) << std::endl;
 
   mol1->setProp("_Name", "cyclobutane");
-  std::cout << RDKit::MolToMolBlock(*mol1) << std::endl;
+  std::cout << RDKix::MolToMolBlock(*mol1) << std::endl;
 
   RDDepict::compute2DCoords(*mol1);
-  std::cout << RDKit::MolToMolBlock(*mol1) << std::endl;
+  std::cout << RDKix::MolToMolBlock(*mol1) << std::endl;
 
-  std::shared_ptr<RDKit::ROMol> mol2(RDKit::SmilesToMol("C1CCC1"));
+  std::shared_ptr<RDKix::ROMol> mol2(RDKix::SmilesToMol("C1CCC1"));
   mol2->setProp("_Name", "cyclobutane3D");
-  RDKit::DGeomHelpers::EmbedMolecule(*mol2);
-  RDKit::MMFF::MMFFOptimizeMolecule(*mol2, 1000, "MMFF94s");
-  std::cout << RDKit::MolToMolBlock(*mol2) << std::endl;
+  RDKix::DGeomHelpers::EmbedMolecule(*mol2);
+  RDKix::MMFF::MMFFOptimizeMolecule(*mol2, 1000, "MMFF94s");
+  std::cout << RDKix::MolToMolBlock(*mol2) << std::endl;
 
-  std::shared_ptr<RDKit::ROMol> mol3(RDKit::MolOps::addHs(*mol2));
-  RDKit::MMFF::MMFFOptimizeMolecule(*mol3, 1000, "MMFF94s");
-  std::cout << RDKit::MolToMolBlock(*mol3) << std::endl;
+  std::shared_ptr<RDKix::ROMol> mol3(RDKix::MolOps::addHs(*mol2));
+  RDKix::MMFF::MMFFOptimizeMolecule(*mol3, 1000, "MMFF94s");
+  std::cout << RDKix::MolToMolBlock(*mol3) << std::endl;
 
-  std::shared_ptr<RDKit::RWMol> mol4(new RDKit::RWMol(*mol3));
-  RDKit::MolOps::addHs(*mol4);
+  std::shared_ptr<RDKix::RWMol> mol4(new RDKix::RWMol(*mol3));
+  RDKix::MolOps::addHs(*mol4);
 
-  std::shared_ptr<RDKit::ROMol> mol3sp(RDKit::MolOps::addHs(*mol2));
+  std::shared_ptr<RDKix::ROMol> mol3sp(RDKix::MolOps::addHs(*mol2));
   mol3sp->setProp("_Name", "cyclobutaneSP");
-  RDKit::MMFF::MMFFOptimizeMolecule(*mol3sp, 1000, "MMFF94s");
-  std::cout << RDKit::MolToMolBlock(*mol3sp) << std::endl;
+  RDKix::MMFF::MMFFOptimizeMolecule(*mol3sp, 1000, "MMFF94s");
+  std::cout << RDKix::MolToMolBlock(*mol3sp) << std::endl;
 
-  std::shared_ptr<RDKit::ROMol> mol5(RDKit::MolOps::removeHs(*mol3));
-  RDKit::MolOps::removeHs(*mol4);
+  std::shared_ptr<RDKix::ROMol> mol5(RDKix::MolOps::removeHs(*mol3));
+  RDKix::MolOps::removeHs(*mol4);
 
   std::string file_root = getenv("RDBASE");
   file_root += "/Docs/Book";
 
   std::string mol_file = file_root + "/data/foo.mol";
   std::ofstream ofs(mol_file.c_str());
-  ofs << RDKit::MolToMolBlock(*mol5);
+  ofs << RDKix::MolToMolBlock(*mol5);
 }

@@ -7,8 +7,8 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Avalon import pyAvalonTools
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Avalon import pyAvalonTools
 
 struchk_conf_path = os.path.join(RDConfig.RDDataDir, 'struchk', '')
 struchk_log_path = ''

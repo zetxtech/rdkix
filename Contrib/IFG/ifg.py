@@ -1,9 +1,9 @@
 #
 #  Original authors: Richard Hall and Guillaume Godin
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 
 from collections import namedtuple
 
@@ -14,7 +14,7 @@ from collections import namedtuple
 # Guillaume Godin 2017
 # refine output function
 # astex_ifg: identify functional groups a la Ertl, J. Cheminform (2017) 9:36
-from rdkit import Chem
+from rdkix import Chem
 
 
 def merge(mol, marked, aset):

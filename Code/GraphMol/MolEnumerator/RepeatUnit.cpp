@@ -2,10 +2,10 @@
 //  Copyright (C) 2021 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolEnumerator.h"
 #include <RDGeneral/Exceptions.h>
@@ -21,7 +21,7 @@
 
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-namespace RDKit {
+namespace RDKix {
 namespace MolEnumerator {
 
 const std::string polymarker = "_polymeratom";
@@ -398,4 +398,4 @@ std::unique_ptr<ROMol> RepeatUnitOp::operator()(
 
 }  // namespace MolEnumerator
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_FMCS_BUILD)
-rdkit_python_extension(rdFMCS
+remove_definitions(-DRDKIX_FMCS_BUILD)
+rdkix_python_extension(rdFMCS
                        rdFMCS.cpp
                        DEST Chem 
                        LINK_LIBRARIES FMCS)

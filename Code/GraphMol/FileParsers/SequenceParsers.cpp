@@ -2,10 +2,10 @@
 //  Copyright (C) 2015,2016 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cstring>
 
@@ -18,7 +18,7 @@
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MonomerInfo.h>
 
-namespace RDKit {
+namespace RDKix {
 
 static Atom *CreateAAAtom(RWMol *mol, const char *name,
                           AtomPDBResidueInfo &info) {
@@ -1903,4 +1903,4 @@ RWMol *HELMToMol(const std::string &helm, bool sanitize) {
   return HELMToMol(helm.c_str(), sanitize);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

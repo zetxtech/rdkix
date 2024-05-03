@@ -1,16 +1,16 @@
 //
 //  Copyright (C) 2021 Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -18,7 +18,7 @@
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 #include "MolInterchange.h"
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("queries to JSON", "[query]") {
   SECTION("SMARTS 1") {
@@ -85,7 +85,7 @@ TEST_CASE("StereoGroups") {
   auto absmol = "CC(O)C[C@@H](C)F |a:4|"_smiles;
   REQUIRE(absmol);
   MolInterchange::JSONWriteParameters commonChemPs;
-  commonChemPs.useRDKitExtensions = false;
+  commonChemPs.useRDKixExtensions = false;
   SECTION("writing") {
     {
       auto json = MolInterchange::MolToJSONData(*ormol);
@@ -266,7 +266,7 @@ M  END)CTAB"_ctab;
   REQUIRE(supmol);
 
   MolInterchange::JSONWriteParameters commonChemPs;
-  commonChemPs.useRDKitExtensions = false;
+  commonChemPs.useRDKixExtensions = false;
   SECTION("writing") {
     {
       auto json = MolInterchange::MolToJSONData(*polymol);

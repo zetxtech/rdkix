@@ -31,11 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::RingInfo "
+%typemap(javaimports) RDKix::RingInfo "
 /** 
 A class to store information about a molecule's rings. */"
 
-%javamethodmodifiers RDKit::RingInfo::addRing 	( 	const INT_VECT &  	atomIndices, 		const INT_VECT &  	bondIndices	  	) 			"
+%javamethodmodifiers RDKix::RingInfo::addRing 	( 	const INT_VECT &  	atomIndices, 		const INT_VECT &  	bondIndices	  	) 			"
 /**
 <p>
 adds a ring to our data
@@ -54,7 +54,7 @@ the number of rings
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::atomRings 	( 		 )  	const "
+%javamethodmodifiers RDKix::RingInfo::atomRings 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -67,7 +67,7 @@ our atom-rings vectors
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::bondRings 	( 		 )  	const "
+%javamethodmodifiers RDKix::RingInfo::bondRings 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -80,7 +80,7 @@ our bond-rings vectors
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::isAtomInRingOfSize 	( 	unsigned int  	idx, 		unsigned int  	size	  	) 			const"
+%javamethodmodifiers RDKix::RingInfo::isAtomInRingOfSize 	( 	unsigned int  	idx, 		unsigned int  	size	  	) 			const"
 /**
 <p>
 <p>
@@ -93,7 +93,7 @@ whether or not the atom with index idx is in a size - ring.
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::isBondInRingOfSize 	( 	unsigned int  	idx, 		unsigned int  	size	  	) 			const"
+%javamethodmodifiers RDKix::RingInfo::isBondInRingOfSize 	( 	unsigned int  	idx, 		unsigned int  	size	  	) 			const"
 /**
 <p>
 <p>
@@ -106,7 +106,7 @@ whether or not the bond with index idx is in a size - ring.
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::minAtomRingSize 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::RingInfo::minAtomRingSize 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 <p>
@@ -119,7 +119,7 @@ the size of the smallest ring atom idx is involved in
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::minBondRingSize 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::RingInfo::minBondRingSize 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 <p>
@@ -132,7 +132,7 @@ the size of the smallest ring bond idx is involved in
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::numAtomRings 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::RingInfo::numAtomRings 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 <p>
@@ -145,7 +145,7 @@ the number of rings atom idx is involved in
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::numBondRings 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::RingInfo::numBondRings 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 <p>
@@ -158,7 +158,7 @@ the number of rings bond idx is involved in
 */
 public";
 
-%javamethodmodifiers RDKit::RingInfo::numRings 	( 		 )  	const"
+%javamethodmodifiers RDKix::RingInfo::numRings 	( 		 )  	const"
 /**
 <p>
 <p>

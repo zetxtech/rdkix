@@ -30,8 +30,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.n
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_ENUMERATE_H
-#define RDKIT_ENUMERATE_H
+#ifndef RDKIX_ENUMERATE_H
+#define RDKIX_ENUMERATE_H
 #include "EnumerateBase.h"
 
 /*! \file Enumerate.h
@@ -43,7 +43,7 @@ future releases.
 
 */
 
-namespace RDKit {
+namespace RDKix {
 
 //! This is a class for providing enumeration options that control
 ///  how enumerations are performed.
@@ -57,7 +57,7 @@ namespace RDKit {
      pass chemical sanitization.  Note that if the product template itself\n\
      does not pass sanitization, then none of the products will.
 */
-struct RDKIT_CHEMREACTIONS_EXPORT EnumerationParams {
+struct RDKIX_CHEMREACTIONS_EXPORT EnumerationParams {
   int reagentMaxMatchCount{INT_MAX};
   bool sanePartialProducts{false};
   EnumerationParams() {}
@@ -71,7 +71,7 @@ struct RDKIT_CHEMREACTIONS_EXPORT EnumerationParams {
 ///   with the reaction.
 /// rxn must be sanitized, initialized and preprocessed.
 ///  this happens automatically in EnumerateLibrary
-RDKIT_CHEMREACTIONS_EXPORT EnumerationTypes::BBS removeNonmatchingReagents(
+RDKIX_CHEMREACTIONS_EXPORT EnumerationTypes::BBS removeNonmatchingReagents(
     const ChemicalReaction &rxn, EnumerationTypes::BBS bbs,
     const EnumerationParams &params = EnumerationParams());
 
@@ -108,7 +108,7 @@ RDKIT_CHEMREACTIONS_EXPORT EnumerationTypes::BBS removeNonmatchingReagents(
    \endverbatim
  */
 
-class RDKIT_CHEMREACTIONS_EXPORT EnumerateLibrary
+class RDKIX_CHEMREACTIONS_EXPORT EnumerateLibrary
     : public EnumerateLibraryBase {
   EnumerationTypes::BBS m_bbs;
 
@@ -181,7 +181,7 @@ class RDKIT_CHEMREACTIONS_EXPORT EnumerateLibrary
 #endif
 };
 
-RDKIT_CHEMREACTIONS_EXPORT bool EnumerateLibraryCanSerialize();
+RDKIX_CHEMREACTIONS_EXPORT bool EnumerateLibraryCanSerialize();
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

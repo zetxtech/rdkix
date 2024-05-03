@@ -32,7 +32,7 @@
 
 #include <Geometry/point.h>
 #include <Numerics/Vector.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include "USRDescriptor.h"
@@ -41,7 +41,7 @@
 #include <boost/flyweight/key_value.hpp>
 #include <boost/flyweight/no_tracking.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void calcDistances(const RDGeom::Point3DConstPtrVect &coords,
@@ -134,14 +134,14 @@ class ss_matcher {
  public:
   ss_matcher(){};
   ss_matcher(const std::string &pattern) {
-    RDKit::RWMol *p = RDKit::SmartsToMol(pattern);
+    RDKix::RWMol *p = RDKix::SmartsToMol(pattern);
     TEST_ASSERT(p);
     m_matcher.reset(p);
   };
-  const RDKit::ROMol *getMatcher() const { return m_matcher.get(); };
+  const RDKix::ROMol *getMatcher() const { return m_matcher.get(); };
 
  private:
-  RDKit::ROMOL_SPTR m_matcher;
+  RDKix::ROMOL_SPTR m_matcher;
 };
 
 // Definitions for feature points from
@@ -323,4 +323,4 @@ double calcUSRScore(const std::vector<double> &d1,
 }
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix

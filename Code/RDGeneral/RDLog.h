@@ -1,11 +1,11 @@
 //
-// Copyright (C)  2005-2022 Greg Landrum and other RDKit contributors
+// Copyright (C)  2005-2022 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -28,7 +28,7 @@ namespace logging {
 typedef boost::iostreams::tee_device<std::ostream, std::ostream> RDTee;
 typedef boost::iostreams::stream<RDTee> RDTeeStream;
 
-class RDKIT_RDGENERAL_EXPORT rdLogger {
+class RDKIX_RDGENERAL_EXPORT rdLogger {
  public:
   std::ostream *dp_dest;
   bool df_owner;
@@ -97,15 +97,15 @@ class RDKIT_RDGENERAL_EXPORT rdLogger {
   rdLogger(const rdLogger &);
   rdLogger &operator=(const rdLogger &);
 };
-RDKIT_RDGENERAL_EXPORT void enable_logs(const char *arg);
-RDKIT_RDGENERAL_EXPORT void enable_logs(const std::string &arg);
-RDKIT_RDGENERAL_EXPORT void disable_logs(const char *arg);
-RDKIT_RDGENERAL_EXPORT void disable_logs(const std::string &arg);
-RDKIT_RDGENERAL_EXPORT std::string log_status();
+RDKIX_RDGENERAL_EXPORT void enable_logs(const char *arg);
+RDKIX_RDGENERAL_EXPORT void enable_logs(const std::string &arg);
+RDKIX_RDGENERAL_EXPORT void disable_logs(const char *arg);
+RDKIX_RDGENERAL_EXPORT void disable_logs(const std::string &arg);
+RDKIX_RDGENERAL_EXPORT std::string log_status();
 }  // namespace logging
 }  // namespace boost
 namespace RDLog {
-RDKIT_RDGENERAL_EXPORT std::ostream &toStream(std::ostream &);
+RDKIX_RDGENERAL_EXPORT std::ostream &toStream(std::ostream &);
 }
 #define BOOST_LOG(__arg__)                                      \
   if ((__arg__) && (__arg__->dp_dest) && (__arg__->df_enabled)) \
@@ -114,12 +114,12 @@ RDKIT_RDGENERAL_EXPORT std::ostream &toStream(std::ostream &);
 
 using RDLogger = std::shared_ptr<boost::logging::rdLogger>;
 
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdAppLog;
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdDebugLog;
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdInfoLog;
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdErrorLog;
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdWarningLog;
-RDKIT_RDGENERAL_EXPORT extern RDLogger rdStatusLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdAppLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdDebugLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdInfoLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdErrorLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdWarningLog;
+RDKIX_RDGENERAL_EXPORT extern RDLogger rdStatusLog;
 
 #else
 #define BOOST_LOG_NO_LIB
@@ -132,10 +132,10 @@ BOOST_DECLARE_LOG(rdWarningLog)
 BOOST_DECLARE_LOG(rdStatusLog)
 #endif
 namespace RDLog {
-RDKIT_RDGENERAL_EXPORT void InitLogs();
+RDKIX_RDGENERAL_EXPORT void InitLogs();
 
 using RDLoggerList = std::vector<RDLogger>;
-class RDKIT_RDGENERAL_EXPORT LogStateSetter : public boost::noncopyable {
+class RDKIX_RDGENERAL_EXPORT LogStateSetter : public boost::noncopyable {
  public:
   //! enables only the logs in the list, the current state will be restored when
   //! this object is destroyed

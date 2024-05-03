@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::Bond "
+%typemap(javaimports) RDKix::Bond "
 /** 
 class for representing a bond
 <p>
@@ -44,14 +44,14 @@ class for representing a bond
 <li>o Because they have no impact upon chemistry, all property operations are const, this allows extra flexibility for clients who need to store extra data on Bond objects.
  */"
 
-%javamethodmodifiers RDKit::Bond::clearProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::Bond::clearProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::clearProp 	( 	const char *  	key 	 )  	const "
+%javamethodmodifiers RDKix::Bond::clearProp 	( 	const char *  	key 	 )  	const "
 /**
 <p>
 clears the value of a property
@@ -64,7 +64,7 @@ clears the value of a property
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::copy 	( 		 )  	const "
+%javamethodmodifiers RDKix::Bond::copy 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -72,11 +72,11 @@ public";
 a copy
 <p>
 @notes
-Reimplemented in RDKit::QueryBond.
+Reimplemented in RDKix::QueryBond.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getBeginAtom 	( 		 )  	const"
+%javamethodmodifiers RDKix::Bond::getBeginAtom 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -89,7 +89,7 @@ a pointer to our begin Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getBeginAtomIdx 	( 		 )  	const "
+%javamethodmodifiers RDKix::Bond::getBeginAtomIdx 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -102,7 +102,7 @@ the index of our begin Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getEndAtom 	( 		 )  	const"
+%javamethodmodifiers RDKix::Bond::getEndAtom 	( 		 )  	const"
 /**
 <p>
 <p>
@@ -115,7 +115,7 @@ a pointer to our end Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getEndAtomIdx 	( 		 )  	const "
+%javamethodmodifiers RDKix::Bond::getEndAtomIdx 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -128,7 +128,7 @@ the index of our end Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getIdx 	( 		 )  	const "
+%javamethodmodifiers RDKix::Bond::getIdx 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -141,7 +141,7 @@ our index within the ROMol
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getOtherAtom 	( 	Atom const *  	what 	 )  	const"
+%javamethodmodifiers RDKix::Bond::getOtherAtom 	( 	Atom const *  	what 	 )  	const"
 /**
 <p>
 <p>
@@ -154,7 +154,7 @@ a pointer to the other Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getOtherAtomIdx 	( 	unsigned int  	thisIdx 	 )  	const"
+%javamethodmodifiers RDKix::Bond::getOtherAtomIdx 	( 	unsigned int  	thisIdx 	 )  	const"
 /**
 <p>
 given the index of one Atom, returns the index of the other
@@ -166,7 +166,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::Bond::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -174,7 +174,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::Bond::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 allows retrieval of a particular property value
@@ -191,14 +191,14 @@ res 	a reference to the storage location for the value.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getStereoAtoms 	( 		 )  	"
+%javamethodmodifiers RDKix::Bond::getStereoAtoms 	( 		 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::getValenceContrib 	( 	const Atom *  	at 	 )  	const"
+%javamethodmodifiers RDKix::Bond::getValenceContrib 	( 	const Atom *  	at 	 )  	const"
 /**
 <p>
 <p>
@@ -211,23 +211,23 @@ our contribution to the explicit valence of an Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::hasProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::Bond::hasProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::Match 	( 	const Bond::BOND_SPTR  	what 	 )  	const "
+%javamethodmodifiers RDKix::Bond::Match 	( 	const Bond::BOND_SPTR  	what 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 <p>
-Reimplemented in RDKit::QueryBond.
+Reimplemented in RDKix::QueryBond.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::Match 	( 	Bond const *  	what 	 )  	const "
+%javamethodmodifiers RDKix::Bond::Match 	( 	Bond const *  	what 	 )  	const "
 /**
 <p>
 <p>
@@ -236,18 +236,18 @@ whether or not we match the argument
 <p>
 @notes
 <li>for Bond objects, 'match' means that either one of the Bonds has bondType Bond::UNSPECIFIED or both Bonds have the same bondType.
-Reimplemented in RDKit::QueryBond.
+Reimplemented in RDKix::QueryBond.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setBeginAtom 	( 	Atom::ATOM_SPTR  	at 	 )  	"
+%javamethodmodifiers RDKix::Bond::setBeginAtom 	( 	Atom::ATOM_SPTR  	at 	 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setBeginAtom 	( 	Atom *  	at 	 )  	"
+%javamethodmodifiers RDKix::Bond::setBeginAtom 	( 	Atom *  	at 	 )  	"
 /**
 <p>
 sets our begin Atom
@@ -259,7 +259,7 @@ sets our begin Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setBeginAtomIdx 	( 	unsigned int  	what 	 )  	"
+%javamethodmodifiers RDKix::Bond::setBeginAtomIdx 	( 	unsigned int  	what 	 )  	"
 /**
 <p>
 sets the index of our begin Atom
@@ -271,14 +271,14 @@ sets the index of our begin Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setEndAtom 	( 	Atom::ATOM_SPTR  	at 	 )  	"
+%javamethodmodifiers RDKix::Bond::setEndAtom 	( 	Atom::ATOM_SPTR  	at 	 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setEndAtom 	( 	Atom *  	at 	 )  	"
+%javamethodmodifiers RDKix::Bond::setEndAtom 	( 	Atom *  	at 	 )  	"
 /**
 <p>
 sets our end Atom
@@ -290,7 +290,7 @@ sets our end Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setEndAtomIdx 	( 	unsigned int  	what 	 )  	"
+%javamethodmodifiers RDKix::Bond::setEndAtomIdx 	( 	unsigned int  	what 	 )  	"
 /**
 <p>
 sets the index of our end Atom
@@ -302,7 +302,7 @@ sets the index of our end Atom
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setIdx 	( 	unsigned int  	index 	 )  	"
+%javamethodmodifiers RDKix::Bond::setIdx 	( 	unsigned int  	index 	 )  	"
 /**
 <p>
 sets our index within the ROMol
@@ -315,7 +315,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::Bond::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -323,7 +323,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::Bond::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
 /**
 <p>
 sets a property value
@@ -337,7 +337,7 @@ computed 	(optional) allows the property to be flagged computed.
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::Bond::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates any of our lazy properties
@@ -349,7 +349,7 @@ calculates any of our lazy properties
 */
 public";
 
-%javamethodmodifiers RDKit::Bond::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::Bond::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates any of our lazy properties

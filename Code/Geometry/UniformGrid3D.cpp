@@ -3,10 +3,10 @@
 //   Copyright (C) 2005-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "UniformGrid3D.h"
 #include <DataStructs/DiscreteValueVect.h>
@@ -19,14 +19,14 @@
 constexpr double OFFSET_TOL = 1.e-8;
 constexpr double SPACING_TOL = 1.e-8;
 
-using namespace RDKit;
+using namespace RDKix;
 
 namespace RDGeom {
 unsigned int ci_GRIDPICKLE_VERSION = 0x1;
 
 UniformGrid3D::UniformGrid3D(const UniformGrid3D &other) : Grid3D(other) {
   PRECONDITION(other.dp_storage, "cannot copy an uninitialized grid");
-  auto *data = new RDKit::DiscreteValueVect(*other.dp_storage);
+  auto *data = new RDKix::DiscreteValueVect(*other.dp_storage);
   initGrid(other.d_numX * other.d_spacing, other.d_numY * other.d_spacing,
            other.d_numZ * other.d_spacing, other.d_spacing,
            other.dp_storage->getValueType(), other.d_offSet, data);
@@ -38,7 +38,7 @@ UniformGrid3D &UniformGrid3D::operator=(const UniformGrid3D &other) {
   }
   PRECONDITION(other.dp_storage, "cannot copy an uninitialized grid");
   delete dp_storage;
-  auto *data = new RDKit::DiscreteValueVect(*other.dp_storage);
+  auto *data = new RDKix::DiscreteValueVect(*other.dp_storage);
   initGrid(other.d_numX * other.d_spacing, other.d_numY * other.d_spacing,
            other.d_numZ * other.d_spacing, other.d_spacing,
            other.dp_storage->getValueType(), other.d_offSet, data);
@@ -47,8 +47,8 @@ UniformGrid3D &UniformGrid3D::operator=(const UniformGrid3D &other) {
 
 void UniformGrid3D::initGrid(
     double dimX, double dimY, double dimZ, double spacing,
-    RDKit::DiscreteValueVect::DiscreteValueType valType,
-    const RDGeom::Point3D &offSet, RDKit::DiscreteValueVect *data) {
+    RDKix::DiscreteValueVect::DiscreteValueType valType,
+    const RDGeom::Point3D &offSet, RDKix::DiscreteValueVect *data) {
   PRECONDITION(dimX > 0.0, "Invalid x-dimension for grid");
   PRECONDITION(dimY > 0.0, "Invalid y-dimension for grid");
   PRECONDITION(dimZ > 0.0, "Invalid z-dimension for grid");
@@ -65,7 +65,7 @@ void UniformGrid3D::initGrid(
   d_offSet = offSet;
   if (!data) {
     dp_storage =
-        new RDKit::DiscreteValueVect(valType, d_numX * d_numY * d_numZ);
+        new RDKix::DiscreteValueVect(valType, d_numX * d_numY * d_numZ);
   } else {
     dp_storage = data;
   }
@@ -289,8 +289,8 @@ UniformGrid3D &UniformGrid3D::operator|=(const UniformGrid3D &other) {
   PRECONDITION(compareParams(other), "incompatible grids");
 
   // EFF: we're probably doing too much copying here:
-  RDKit::DiscreteValueVect *newData =
-      new RDKit::DiscreteValueVect((*dp_storage) | (*other.dp_storage));
+  RDKix::DiscreteValueVect *newData =
+      new RDKix::DiscreteValueVect((*dp_storage) | (*other.dp_storage));
   delete dp_storage;
   dp_storage = newData;
   return *this;
@@ -302,8 +302,8 @@ UniformGrid3D &UniformGrid3D::operator&=(const UniformGrid3D &other) {
   PRECONDITION(compareParams(other), "incompatible grids");
 
   // EFF: we're probably doing too much copying here:
-  RDKit::DiscreteValueVect *newData =
-      new RDKit::DiscreteValueVect((*dp_storage) & (*other.dp_storage));
+  RDKix::DiscreteValueVect *newData =
+      new RDKix::DiscreteValueVect((*dp_storage) & (*other.dp_storage));
   delete dp_storage;
   dp_storage = newData;
   return *this;
@@ -384,7 +384,7 @@ void UniformGrid3D::initFromText(const char *pkl, const unsigned int length) {
   auto *buff = new char[pklSz];
   ss.read(buff, pklSz * sizeof(char));
   delete dp_storage;
-  dp_storage = new RDKit::DiscreteValueVect(buff, pklSz);
+  dp_storage = new RDKix::DiscreteValueVect(buff, pklSz);
   delete[] buff;
 }
 

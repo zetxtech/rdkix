@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2017-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2017-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file MolBundle.h
 
@@ -40,7 +40,7 @@
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/MolPickler.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 inline bool MolBundleCanSerialize() {
@@ -199,5 +199,5 @@ class FixedMolSizeMolBundle : public MolBundle {
   }
 };
 
-};  // namespace RDKit
+};  // namespace RDKix
 #endif

@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Brian P. Kelley
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RDK_SSSFACTORY
 #define RDK_SSSFACTORY
@@ -13,7 +13,7 @@
 #include "SubstructLibrary.h"
 #include <GraphMol/FileParsers/MolSupplier.h>
 
-namespace RDKit {
+namespace RDKix {
 //! Create pattern fingerprints for the given substructure library
 //!  The substructure library must not already have fingerprints
 /*
@@ -22,7 +22,7 @@ namespace RDKit {
      \param numThreads the number of threads to use, -1 for all threads
             [default 1]
 */
-RDKIT_SUBSTRUCTLIBRARY_EXPORT void addPatterns(
+RDKIX_SUBSTRUCTLIBRARY_EXPORT void addPatterns(
     SubstructLibrary &sslib, boost::shared_ptr<FPHolderBase> patterns,
     int numThreads = 1);
 
@@ -33,8 +33,8 @@ RDKIT_SUBSTRUCTLIBRARY_EXPORT void addPatterns(
      \param numThreads the number of threads to use, -1 for all threads
             [default 1]
 */
-RDKIT_SUBSTRUCTLIBRARY_EXPORT void addPatterns(SubstructLibrary &sslib,
+RDKIX_SUBSTRUCTLIBRARY_EXPORT void addPatterns(SubstructLibrary &sslib,
                                                int numThreads = 1);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

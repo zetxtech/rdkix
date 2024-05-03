@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/SequenceParsers.h>
 #include <GraphMol/FileParsers/SequenceWriters.h>
@@ -26,7 +26,7 @@
 #include <fstream>
 #include <filesystem>
 
-using namespace RDKit;
+using namespace RDKix;
 
 enum LoadAs { LoadAsMolOrRxn, LoadAsMol, LoadAsRxn };
 
@@ -158,7 +158,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*localVars.smilesMol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -177,7 +177,7 @@ class MrvTests {
         try {
           outMolStr =
               MolToMrvBlock(*localVars.smilesMol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         } catch (...) {
           throw;  // re-throw the error if not a kekule error
@@ -268,7 +268,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*localVars.mol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -287,7 +287,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*localVars.mol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -450,7 +450,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*localVars.mol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -469,7 +469,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*localVars.mol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &e) {
+        } catch (const RDKix::KekulizeException &e) {
           outMolStr = "";
         }
         if (outMolStr == "") {

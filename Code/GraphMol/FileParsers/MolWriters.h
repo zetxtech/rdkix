@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2017 Greg Landrum, Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -30,11 +30,11 @@ class Writer;
 
 #include <GraphMol/ROMol.h>
 
-namespace RDKit {
+namespace RDKix {
 
 static int defaultConfId = -1;
 
-class RDKIT_FILEPARSERS_EXPORT MolWriter : private boost::noncopyable {
+class RDKIX_FILEPARSERS_EXPORT MolWriter : private boost::noncopyable {
  public:
   virtual ~MolWriter() {}
   virtual void write(const ROMol &mol, int confId = defaultConfId) = 0;
@@ -46,7 +46,7 @@ class RDKIT_FILEPARSERS_EXPORT MolWriter : private boost::noncopyable {
 
 //! The SmilesWriter is for writing molecules and properties to
 //! delimited text files.
-class RDKIT_FILEPARSERS_EXPORT SmilesWriter : public MolWriter {
+class RDKIX_FILEPARSERS_EXPORT SmilesWriter : public MolWriter {
   /******************************************************************************
    * A Smiles Table writer - this is how it is used
    *  - create a SmilesWriter with a output file name (or a ostream), a
@@ -138,7 +138,7 @@ class RDKIT_FILEPARSERS_EXPORT SmilesWriter : public MolWriter {
 
 //! The SDWriter is for writing molecules and properties to
 //! SD files
-class RDKIT_FILEPARSERS_EXPORT SDWriter : public MolWriter {
+class RDKIX_FILEPARSERS_EXPORT SDWriter : public MolWriter {
   /**************************************************************************************
    * A SD file ( or stream) writer - this is how it is used
    *  - create a SDWriter with a output file name (or a ostream),
@@ -216,7 +216,7 @@ class RDKIT_FILEPARSERS_EXPORT SDWriter : public MolWriter {
 
 //! The TDTWriter is for writing molecules and properties to
 //! TDT files
-class RDKIT_FILEPARSERS_EXPORT TDTWriter : public MolWriter {
+class RDKIX_FILEPARSERS_EXPORT TDTWriter : public MolWriter {
   /**************************************************************************************
    * A TDT file ( or stream) writer - this is how it is used
    *  - create a TDTWriter with a output file name (or a ostream),
@@ -298,7 +298,7 @@ class RDKIT_FILEPARSERS_EXPORT TDTWriter : public MolWriter {
 
 //! The PDBWriter is for writing molecules to Brookhaven Protein
 //! DataBank format files.
-class RDKIT_FILEPARSERS_EXPORT PDBWriter : public MolWriter {
+class RDKIX_FILEPARSERS_EXPORT PDBWriter : public MolWriter {
  public:
   PDBWriter(const std::string &fileName, unsigned int flavor = 0);
   PDBWriter(std::ostream *outStream, bool takeOwnership = false,
@@ -349,7 +349,7 @@ class RDKIT_FILEPARSERS_EXPORT PDBWriter : public MolWriter {
 
 #ifdef RDK_BUILD_MAEPARSER_SUPPORT
 
-class RDKIT_FILEPARSERS_EXPORT MaeWriter : public MolWriter {
+class RDKIX_FILEPARSERS_EXPORT MaeWriter : public MolWriter {
   /**************************************************************************************
    * A highly experimental Maestro file (or stream) writer. Many features are
    * not supported yet, e.g. chirality and bond stereo, stereo groups, substance
@@ -420,6 +420,6 @@ class RDKIT_FILEPARSERS_EXPORT MaeWriter : public MolWriter {
 
 #endif  // RDK_BUILD_MAEPARSER_SUPPORT
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

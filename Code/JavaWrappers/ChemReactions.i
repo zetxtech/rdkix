@@ -32,7 +32,7 @@
 */
 
 %{
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <vector>
 
@@ -42,17 +42,17 @@
 #include <GraphMol/ChemReactions/ReactionPickler.h>
 %}
 
-%ignore RDKit::CDXMLToChemicalReactions;  //(const std::string &);
-%ignore RDKit::CDXMLFileToChemicalReactions; //(const std::string &);
-%ignore RDKit::CDXMLDataStreamToChemicalReactions; //(std::istream &);
+%ignore RDKix::CDXMLToChemicalReactions;  //(const std::string &);
+%ignore RDKix::CDXMLFileToChemicalReactions; //(const std::string &);
+%ignore RDKix::CDXMLDataStreamToChemicalReactions; //(std::istream &);
 
 %include <GraphMol/ChemReactions/Reaction.h>
 %include <GraphMol/ChemReactions/ReactionParser.h>
-%ignore RDKit::ChemicalReaction::validate(unsigned int &,unsigned int &,bool);
-%ignore RDKit::ChemicalReaction::validate(unsigned int &,unsigned int &);
-%ignore RDKit::isMoleculeReactantOfReaction(const ChemicalReaction &r,const ROMol &,
+%ignore RDKix::ChemicalReaction::validate(unsigned int &,unsigned int &,bool);
+%ignore RDKix::ChemicalReaction::validate(unsigned int &,unsigned int &);
+%ignore RDKix::isMoleculeReactantOfReaction(const ChemicalReaction &r,const ROMol &,
                                             unsigned int &);
-%ignore RDKit::isMoleculeProductOfReaction(const ChemicalReaction &r,const ROMol &,
+%ignore RDKix::isMoleculeProductOfReaction(const ChemicalReaction &r,const ROMol &,
                                             unsigned int &);
 
 
@@ -61,38 +61,38 @@
 %newobject ReactionFromRxnFile;
 %newobject ReduceProductToSideChains;
 
-%extend RDKit::ChemicalReaction {
-static RDKit::ChemicalReaction *ReactionFromSmarts(std::string sma,bool useSmiles=false){
-  RDKit::ChemicalReaction *res=RDKit::RxnSmartsToChemicalReaction(sma,0,useSmiles);
+%extend RDKix::ChemicalReaction {
+static RDKix::ChemicalReaction *ReactionFromSmarts(std::string sma,bool useSmiles=false){
+  RDKix::ChemicalReaction *res=RDKix::RxnSmartsToChemicalReaction(sma,0,useSmiles);
   if(res) res->initReactantMatchers();
   return res;
 };
-static RDKit::ChemicalReaction *ReactionFromRxnBlock(std::string block){
-  RDKit::ChemicalReaction *res=RDKit::RxnBlockToChemicalReaction(block);
+static RDKix::ChemicalReaction *ReactionFromRxnBlock(std::string block){
+  RDKix::ChemicalReaction *res=RDKix::RxnBlockToChemicalReaction(block);
   if(res) res->initReactantMatchers();
   return res;
 };
-static RDKit::ChemicalReaction *ReactionFromRxnFile(std::string filename){
-  RDKit::ChemicalReaction *res=RDKit::RxnFileToChemicalReaction(filename);
+static RDKix::ChemicalReaction *ReactionFromRxnFile(std::string filename){
+  RDKix::ChemicalReaction *res=RDKix::RxnFileToChemicalReaction(filename);
   if(res) res->initReactantMatchers();
   return res;
 };
 static std::string ReactionToSmarts(ChemicalReaction &rxn) {
-  return RDKit::ChemicalReactionToRxnSmarts(rxn);
+  return RDKix::ChemicalReactionToRxnSmarts(rxn);
 }
 static std::string ReactionToRxnBlock (const ChemicalReaction &rxn) {
-  return RDKit::ChemicalReactionToRxnBlock(rxn);
+  return RDKix::ChemicalReactionToRxnBlock(rxn);
 };
 /*
-static RDKit::ROMol *ReduceProductToSideChains(RDKit::ROMOL_SPTR product,
+static RDKix::ROMol *ReduceProductToSideChains(RDKix::ROMOL_SPTR product,
                                                bool addDummyAtoms=true) {
-  return RDKit::reduceProductToSideChains(product, addDummyAtoms);
+  return RDKix::reduceProductToSideChains(product, addDummyAtoms);
 };
 */
-static RDKit::ROMol *ReduceProductToSideChains(RDKit::ROMol *product,
+static RDKix::ROMol *ReduceProductToSideChains(RDKix::ROMol *product,
                                                bool addDummyAtoms=true) {
-  RDKit::ROMOL_SPTR mol(new RDKit::ROMol(*product));
-  return RDKit::reduceProductToSideChains(mol, addDummyAtoms);
+  RDKix::ROMOL_SPTR mol(new RDKix::ROMol(*product));
+  return RDKix::reduceProductToSideChains(mol, addDummyAtoms);
 };
 void compute2DCoordsForReaction(double spacing,
                                   bool updateProps,
@@ -113,16 +113,16 @@ void compute2DCoordsForReaction(double spacing,
 };
 std::vector<int> ToBinary(){
   std::string sres;
-  RDKit::ReactionPickler::pickleReaction(*($self),sres);
+  RDKix::ReactionPickler::pickleReaction(*($self),sres);
   std::vector<int> res(sres.length());
   std::copy(sres.begin(),sres.end(),res.begin());
   return res;
 };
-static RDKit::ChemicalReaction *RxnFromBinary(std::vector<int> pkl){
+static RDKix::ChemicalReaction *RxnFromBinary(std::vector<int> pkl){
   std::string sres;
   sres.resize(pkl.size());
   std::copy(pkl.begin(),pkl.end(),sres.begin());
-  RDKit::ChemicalReaction *res=new RDKit::ChemicalReaction(sres);
+  RDKix::ChemicalReaction *res=new RDKix::ChemicalReaction(sres);
   return res;
 };
 
@@ -147,8 +147,8 @@ static RDKit::ChemicalReaction *RxnFromBinary(std::vector<int> pkl){
 
 static std::vector<std::shared_ptr<ChemicalReaction>> CDXMLToChemicalReactions(
   const std::string &block, bool sanitize=false, bool removeHs=false) {
-  auto reactions = RDKit::CDXMLToChemicalReactions(block, sanitize, removeHs);
-  std::vector<std::shared_ptr<RDKit::ChemicalReaction>> result;
+  auto reactions = RDKix::CDXMLToChemicalReactions(block, sanitize, removeHs);
+  std::vector<std::shared_ptr<RDKix::ChemicalReaction>> result;
   for(auto &rxn : reactions) {
     result.emplace_back(rxn.release());
   }
@@ -157,8 +157,8 @@ static std::vector<std::shared_ptr<ChemicalReaction>> CDXMLToChemicalReactions(
 
 static std::vector<std::shared_ptr<ChemicalReaction>> CDXMLFileToChemicalReactions(
   const std::string &filename, bool sanitize=false, bool removeHs=false) {
-  auto reactions = RDKit::CDXMLFileToChemicalReactions(filename, sanitize, removeHs);
-  std::vector<std::shared_ptr<RDKit::ChemicalReaction>> result;
+  auto reactions = RDKix::CDXMLFileToChemicalReactions(filename, sanitize, removeHs);
+  std::vector<std::shared_ptr<RDKix::ChemicalReaction>> result;
   for(auto &rxn : reactions) {
     result.emplace_back(rxn.release());
   }

@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <numeric>
 #include "Charge.h"
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/new_canon.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <boost/range/adaptor/reversed.hpp>
 #include <RDGeneral/BoostStartInclude.h>
@@ -21,7 +21,7 @@
 #include <boost/flyweight/no_tracking.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
 // The default list of ChargeCorrections.
@@ -255,7 +255,7 @@ std::pair<unsigned int, std::vector<unsigned int>>
   // position is the position in the acid list.
   unsigned int position = 0;
   for (const auto &abpair : abpairs) {
-    RDKit::MatchVectType res;
+    RDKix::MatchVectType res;
     unsigned int matches = SubstructMatch(mol, *(abpair.first), res);
     if (matches > 0) {
       std::vector<unsigned int> occurrence;
@@ -276,7 +276,7 @@ std::pair<unsigned int, std::vector<unsigned int>> *Reionizer::weakestIonized(
   // position is the position in the acid list.
   unsigned int position = 0;
   for (const auto &abpair : boost::adaptors::reverse(abpairs)) {
-    RDKit::MatchVectType res;
+    RDKix::MatchVectType res;
     unsigned int matches = SubstructMatch(mol, *(abpair.second), res);
     if (matches > 0) {
       std::vector<unsigned int> occurrence;
@@ -519,4 +519,4 @@ void Uncharger::unchargeInPlace(RWMol &mol) {
 }  // namespace MolStandardize
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

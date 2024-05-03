@@ -2,10 +2,10 @@
 //  Copyright (C) 2019-2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "catch.hpp"
 
@@ -64,7 +64,7 @@ TEST_CASE("Conrec basics", "[conrec]") {
     outs << R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
                   xml:space='preserve'
 width='300px' height='300px' >
@@ -133,7 +133,7 @@ TEST_CASE("connectLineSegments", "[conrec]") {
     outs << R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
                   xml:space='preserve'
 width='300px' height='300px' >
@@ -206,7 +206,7 @@ TEST_CASE("super chunky", "[conrec]") {
     outs << R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
                   xml:space='preserve'
 width='300px' height='300px' >
@@ -231,7 +231,7 @@ width='300px' height='300px' >
     outs2 << R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
                   xml:space='preserve'
 width='300px' height='300px' >

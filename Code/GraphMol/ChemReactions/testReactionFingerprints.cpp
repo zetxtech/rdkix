@@ -33,7 +33,7 @@
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -43,7 +43,7 @@
 #include <GraphMol/ChemReactions/ReactionUtils.h>
 #include <GraphMol/Fingerprints/AtomPairs.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testStructuralFingerprintsReaction() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
@@ -445,7 +445,7 @@ void testStructuralFingerprintsReaction() {
     TEST_ASSERT(rxnq2);
 
     ReactionFingerprintParams params;
-    params.fpType = RDKitFP;
+    params.fpType = RDKixFP;
     params.fpSize = 4096;
 
     ExplicitBitVect *rxnFP = StructuralFingerprintChemReaction(*rxn, params);
@@ -479,7 +479,7 @@ void testStructuralFingerprintsReaction() {
     TEST_ASSERT(rxnq2);
 
     ReactionFingerprintParams params;
-    params.fpType = RDKitFP;
+    params.fpType = RDKixFP;
     params.fpSize = 4096;
 
     ExplicitBitVect *rxnFP = StructuralFingerprintChemReaction(*rxn, params);

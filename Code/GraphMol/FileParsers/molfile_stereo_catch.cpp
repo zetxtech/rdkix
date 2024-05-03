@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RDGeneral/test.h"
 #include "catch.hpp"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/FileParsers/MolWriters.h>
 #include <GraphMol/CIPLabeler/CIPLabeler.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Github #5863: failure in WedgeMolBonds") {
   SECTION("as reported") {
@@ -442,7 +442,7 @@ M  END
   }
   SECTION("track bond starting points") {
     auto m = R"CTAB(blah
-     RDKit          2D
+     RDKix          2D
 
   7  7  0  0  0  0  0  0  0  0999 V2000
    -3.1960  -20.3395    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

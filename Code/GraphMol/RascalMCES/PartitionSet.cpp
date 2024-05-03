@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -16,7 +16,7 @@
 
 #include "PartitionSet.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace RascalMCES {
 PartitionSet::PartitionSet(const std::vector<boost::dynamic_bitset<>> &modProd,
@@ -217,4 +217,4 @@ std::ostream &operator<<(std::ostream &os, const PartitionSet &pt) {
 }
 
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -53,7 +53,7 @@ We use the iterative power method, which works like this:
 
 
 */
-bool RDKIT_EIGENSOLVERS_EXPORT powerEigenSolver(
+bool RDKIX_EIGENSOLVERS_EXPORT powerEigenSolver(
     unsigned int numEig, DoubleSymmMatrix &mat, DoubleVector &eigenValues,
     DoubleMatrix *eigenVectors = nullptr, int seed = -1);
 //! \overload

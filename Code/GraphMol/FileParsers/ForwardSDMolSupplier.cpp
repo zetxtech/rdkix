@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2009-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2009-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/BadFileException.h>
@@ -25,7 +25,7 @@
 #include <sstream>
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 std::string strip(const std::string &orig) {
   // FIX: this can be more efficient
   // strip the end of line, white spaces and tabs
@@ -325,4 +325,4 @@ bool ForwardSDMolSupplier::atEnd() {
   PRECONDITION(dp_inStream, "no stream");
   return df_end;
 }
-}  // namespace RDKit
+}  // namespace RDKix

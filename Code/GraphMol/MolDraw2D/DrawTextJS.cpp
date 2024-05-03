@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: Greg Landrum
 // A concrete class derived from DrawText that uses the JS Canvas
@@ -19,9 +19,9 @@
 #include <GraphMol/MolDraw2D/MolDraw2DDetails.h>
 #include <boost/format.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
-std::string DrawColourToSVG(const RDKit::DrawColour &col);
+std::string DrawColourToSVG(const RDKix::DrawColour &col);
 
 namespace MolDraw2D_detail {
 // ****************************************************************************
@@ -105,5 +105,5 @@ void DrawTextJS::getStringRects(const std::string &text,
 }
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // __EMSCRIPTEN__

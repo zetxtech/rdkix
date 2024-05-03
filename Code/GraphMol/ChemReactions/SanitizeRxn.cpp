@@ -30,10 +30,10 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include "SanitizeRxn.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace RxnOps {
 
 // molAtomMapNumber ==> int
@@ -410,4 +410,4 @@ void sanitizeRxn(ChemicalReaction &rxn,
   return sanitizeRxn(rxn, ops, SANITIZE_ALL, params);
 }
 }  // namespace RxnOps
-}  // namespace RDKit
+}  // namespace RDKix

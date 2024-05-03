@@ -9,8 +9,8 @@ import os
 import pickle
 import unittest
 
-from rdkit import DataStructs as ds
-from rdkit import RDConfig
+from rdkix import DataStructs as ds
+from rdkix import RDConfig
 
 
 class TestCase(unittest.TestCase):

@@ -8,7 +8,7 @@ https://doi.org/10.1021/ci900450m
 Wagener, M., & Lommerse, J. P. (2006). "The quest for bioisosteric replacements." 
 Journal of chemical information and modeling, 46(2), 677-685.
 
-The scripts requires RDKit (www.rdkit.org) be installed and properly configured.
+The scripts requires RDKix (www.rdkit.org) be installed and properly configured.
 
 Help is available for all the scripts using the -h option
 
@@ -20,7 +20,7 @@ The program to generate the MMPs from a set is divided into two parts; fragmenta
 Before running the programs, make sure your input set of SMILES:
     - does not contain mixtures (salts etc.) 
     - does not contain "*" atoms
-    - has been canonicalised using RDKit.
+    - has been canonicalised using RDKix.
 
 If your smiles set doesn't satisfy the conditions above the programs are likely to fail or in the case of 
 canonicalisation result in not identifying MMPs involving H atom substitution.
@@ -150,8 +150,8 @@ search the MMP db. The types of searching that can be performed on the db are as
 4) Find all MMPs in the db where the LHS of the transform matches an input SMARTS 
 5) Find all MMPs that match the LHS and RHS SMARTS of the input transform
 
-The SMARTS searching utilises the DbCLI tools (http://code.google.com/p/rdkit/wiki/UsingTheDbCLI) that are part 
-of the RDKit distribution.
+The SMARTS searching utilises the DbCLI tools (http://code.google.com/p/rdkix/wiki/UsingTheDbCLI) that are part 
+of the RDKix distribution.
 
 Generating the db
 -----------------

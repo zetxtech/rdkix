@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2020-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx).
 //
@@ -13,7 +13,7 @@
 #include <GraphMol/MolDraw2D/DrawText.h>
 #include <GraphMol/MolDraw2D/MolDraw2DDetails.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // ****************************************************************************
@@ -722,4 +722,4 @@ std::ostream &operator<<(std::ostream &oss, const OrientType &o) {
 }
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

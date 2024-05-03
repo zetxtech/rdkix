@@ -6,15 +6,15 @@ from collections import Counter, defaultdict, namedtuple
 import numpy as np
 import pandas as pd
 
-from rdkit import Chem
-from rdkit.Chem import FilterCatalog, RDConfig, rdMolDescriptors
+from rdkix import Chem
+from rdkix.Chem import FilterCatalog, RDConfig, rdMolDescriptors
 
 FilterMatch = namedtuple(
   'FilterMatch',
   ('SubstructureMatches', 'Min_N_O_filter', 'Frac_N_O', 'Covalent', 'SpecialMol', 'SeverityScore'))
 
 
-# Build the filter catalog using the RDKit filterCatalog module
+# Build the filter catalog using the RDKix filterCatalog module
 def buildFilterCatalog():
 
   inhousefilter = pd.read_csv(

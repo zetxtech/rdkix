@@ -32,7 +32,7 @@
 #include "Filters.h"
 #include "FilterCatalog.h"
 
-namespace RDKit {
+namespace RDKix {
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // BRENK data
@@ -602,4 +602,4 @@ const FilterProperty_t* GetFilterProperties(
       return 0;
   }
 }
-}  // namespace RDKit
+}  // namespace RDKix

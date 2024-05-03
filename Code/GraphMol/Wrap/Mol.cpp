@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/QueryOps.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <RDBoost/Wrap.h>
@@ -30,7 +30,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 void MolClearComputedPropsHelper(const ROMol &mol, bool includeRings) {
   mol.clearComputedProps(includeRings);
@@ -63,7 +63,7 @@ python::object MolToBinaryWithProps(const ROMol &self, unsigned int props) {
 //  since molecules have a constructor that takes a binary string
 //  we only need to provide getinitargs()
 //
-struct mol_pickle_suite : rdkit_pickle_suite {
+struct mol_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const ROMol &self) {
     return python::make_tuple(MolToBinary(self));
   };
@@ -269,18 +269,18 @@ struct mol_wrapper {
     python::register_exception_translator<ConformerException>(
         &rdExceptionTranslator);
 
-    python::enum_<RDKit::PicklerOps::PropertyPickleOptions>(
+    python::enum_<RDKix::PicklerOps::PropertyPickleOptions>(
         "PropertyPickleOptions")
-        .value("NoProps", RDKit::PicklerOps::NoProps)
-        .value("MolProps", RDKit::PicklerOps::MolProps)
-        .value("AtomProps", RDKit::PicklerOps::AtomProps)
-        .value("BondProps", RDKit::PicklerOps::BondProps)
-        .value("QueryAtomData", RDKit::PicklerOps::QueryAtomData)
-        .value("PrivateProps", RDKit::PicklerOps::PrivateProps)
-        .value("ComputedProps", RDKit::PicklerOps::ComputedProps)
-        .value("AllProps", RDKit::PicklerOps::AllProps)
-        .value("CoordsAsDouble", RDKit::PicklerOps::CoordsAsDouble)
-        .value("NoConformers", RDKit::PicklerOps::NoConformers)
+        .value("NoProps", RDKix::PicklerOps::NoProps)
+        .value("MolProps", RDKix::PicklerOps::MolProps)
+        .value("AtomProps", RDKix::PicklerOps::AtomProps)
+        .value("BondProps", RDKix::PicklerOps::BondProps)
+        .value("QueryAtomData", RDKix::PicklerOps::QueryAtomData)
+        .value("PrivateProps", RDKix::PicklerOps::PrivateProps)
+        .value("ComputedProps", RDKix::PicklerOps::ComputedProps)
+        .value("AllProps", RDKix::PicklerOps::AllProps)
+        .value("CoordsAsDouble", RDKix::PicklerOps::CoordsAsDouble)
+        .value("NoConformers", RDKix::PicklerOps::NoConformers)
         .export_values();
     ;
 
@@ -294,48 +294,48 @@ struct mol_wrapper {
                 "Set the current global mol pickler options.");
 
     // REVIEW: There's probably a better place for this definition
-    python::class_<RDKit::SubstructMatchParameters, boost::noncopyable>(
+    python::class_<RDKix::SubstructMatchParameters, boost::noncopyable>(
         "SubstructMatchParameters",
         "Parameters controlling substructure matching")
         .def_readwrite(
-            "useChirality", &RDKit::SubstructMatchParameters::useChirality,
+            "useChirality", &RDKix::SubstructMatchParameters::useChirality,
             "Use chirality in determining whether or not atoms/bonds match")
         .def_readwrite(
             "useEnhancedStereo",
-            &RDKit::SubstructMatchParameters::useEnhancedStereo,
+            &RDKix::SubstructMatchParameters::useEnhancedStereo,
             "take enhanced stereochemistry into account while doing the match. "
             "This only has an effect if useChirality is also True.")
         .def_readwrite(
             "aromaticMatchesConjugated",
-            &RDKit::SubstructMatchParameters::aromaticMatchesConjugated,
+            &RDKix::SubstructMatchParameters::aromaticMatchesConjugated,
             "aromatic and conjugated bonds match each other")
         .def_readwrite(
             "useGenericMatchers",
-            &RDKit::SubstructMatchParameters::useGenericMatchers,
+            &RDKix::SubstructMatchParameters::useGenericMatchers,
             "use generic groups (=homology groups) as a post-filtering step "
             "(if any are present in the molecule)")
         .def_readwrite("useQueryQueryMatches",
-                       &RDKit::SubstructMatchParameters::useQueryQueryMatches,
+                       &RDKix::SubstructMatchParameters::useQueryQueryMatches,
                        "Consider query-query matches, not just simple matches")
         .def_readwrite("recursionPossible",
-                       &RDKit::SubstructMatchParameters::recursionPossible,
+                       &RDKix::SubstructMatchParameters::recursionPossible,
                        "Allow recursive queries")
-        .def_readwrite("uniquify", &RDKit::SubstructMatchParameters::uniquify,
+        .def_readwrite("uniquify", &RDKix::SubstructMatchParameters::uniquify,
                        "uniquify (by atom index) match results")
         .def_readwrite("maxMatches",
-                       &RDKit::SubstructMatchParameters::maxMatches,
+                       &RDKix::SubstructMatchParameters::maxMatches,
                        "maximum number of matches to return")
         .def_readwrite(
-            "numThreads", &RDKit::SubstructMatchParameters::numThreads,
+            "numThreads", &RDKix::SubstructMatchParameters::numThreads,
             "number of threads to use when multi-threading is possible."
             "0 selects the number of concurrent threads supported by the"
             "hardware. negative values are added to the number of concurrent"
             "threads supported by the hardware.")
         .def_readwrite(
-            "atomProperties", &RDKit::SubstructMatchParameters::atomProperties,
+            "atomProperties", &RDKix::SubstructMatchParameters::atomProperties,
             "atom properties that must be equivalent in order to match.")
         .def_readwrite(
-            "bondProperties", &RDKit::SubstructMatchParameters::bondProperties,
+            "bondProperties", &RDKix::SubstructMatchParameters::bondProperties,
             "bond properties that must be equivalent in order to match.")
         .def("setExtraFinalCheck", setSubstructMatchFinalCheck,
              python::with_custodian_and_ward<1, 2>(),
@@ -888,5 +888,5 @@ struct mol_wrapper {
   };
 };
 
-}  // namespace RDKit
-void wrap_mol() { RDKit::mol_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_mol() { RDKix::mol_wrapper::wrap(); }

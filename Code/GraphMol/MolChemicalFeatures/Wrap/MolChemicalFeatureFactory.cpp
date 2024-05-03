@@ -3,15 +3,15 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeatureFactory.h>
@@ -20,7 +20,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 // ----------------------------------------------------------------------------
 // NOTE: the reason we don't provide an interface to get all the
 // features from a molecule at the same time directly from C++ is a
@@ -110,6 +110,6 @@ struct featfactory_wrapper {
              "returns a particular feature (by index)");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_factory() { RDKit::featfactory_wrapper::wrap(); }
+void wrap_factory() { RDKix::featfactory_wrapper::wrap(); }

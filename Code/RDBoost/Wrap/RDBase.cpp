@@ -2,10 +2,10 @@
 // Copyright (c) 2004-2019 greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <iostream>
@@ -63,7 +63,7 @@ struct PyLogStream : std::ostream, std::streambuf {
     PyObject *logger = nullptr;
 
     if (module != nullptr) {
-      logger = PyObject_CallMethod(module, "getLogger", "s", "rdkit");
+      logger = PyObject_CallMethod(module, "getLogger", "s", "rdkix");
       Py_DECREF(module);
     }
 
@@ -133,10 +133,10 @@ void LogToPythonStderr() {
 }
 
 void WrapLogs() {
-  static PyErrStream debug;    //("RDKit DEBUG: ");
-  static PyErrStream error;    //("RDKit ERROR: ");
-  static PyErrStream warning;  //("RDKit WARNING: ");
-  static PyErrStream info;     //("RDKit INFO: ");
+  static PyErrStream debug;    //("RDKix DEBUG: ");
+  static PyErrStream error;    //("RDKix ERROR: ");
+  static PyErrStream warning;  //("RDKix WARNING: ");
+  static PyErrStream info;     //("RDKix INFO: ");
 
   if (!rdDebugLog || !rdInfoLog || !rdErrorLog || !rdWarningLog) {
     RDLog::InitLogs();
@@ -280,32 +280,32 @@ BOOST_PYTHON_MODULE(rdBase) {
 #endif
 
   python::def("_version", _version,
-              "Deprecated, use the constant rdkitVersion instead");
+              "Deprecated, use the constant rdkixVersion instead");
 
-  python::scope().attr("rdkitVersion") = RDKit::rdkitVersion;
-  python::scope().attr("boostVersion") = RDKit::boostVersion;
-  python::scope().attr("rdkitBuild") = RDKit::rdkitBuild;
+  python::scope().attr("rdkixVersion") = RDKix::rdkixVersion;
+  python::scope().attr("boostVersion") = RDKix::boostVersion;
+  python::scope().attr("rdkixBuild") = RDKix::rdkixBuild;
 
   python::def("LogToCppStreams", RDLog::InitLogs,
-              "Initialize RDKit logs with C++ streams");
+              "Initialize RDKix logs with C++ streams");
   python::def("LogToPythonLogger", LogToPythonLogger,
-              "Initialize RDKit logs with Python's logging module");
+              "Initialize RDKix logs with Python's logging module");
   python::def("LogToPythonStderr", LogToPythonStderr,
-              "Initialize RDKit logs with Python's stderr stream");
+              "Initialize RDKix logs with Python's stderr stream");
   python::def("WrapLogs", WrapLogs,
-              "Tee the RDKit logs to Python's stderr stream");
+              "Tee the RDKix logs to Python's stderr stream");
 
   python::def("EnableLog", EnableLog);
   python::def("DisableLog", DisableLog);
   python::def("LogStatus", LogStatus);
 
   python::def("LogDebugMsg", LogDebugMsg,
-              "Log a message to the RDKit debug logs");
-  python::def("LogInfoMsg", LogInfoMsg, "Log a message to the RDKit info logs");
+              "Log a message to the RDKix debug logs");
+  python::def("LogInfoMsg", LogInfoMsg, "Log a message to the RDKix info logs");
   python::def("LogWarningMsg", LogWarningMsg,
-              "Log a message to the RDKit warning logs");
+              "Log a message to the RDKix warning logs");
   python::def("LogErrorMsg", LogErrorMsg,
-              "Log a message to the RDKit error logs");
+              "Log a message to the RDKix error logs");
   python::def("LogMessage", LogMessage, "Log a message to any rdApp.* log");
 
   python::def("AttachFileToLog", AttachFileToLog,
@@ -316,7 +316,7 @@ BOOST_PYTHON_MODULE(rdBase) {
   python::def("SeedRandomNumberGenerator", seedRNG,
               "Provides a seed to the standard C random number generator\n"
               "This does not affect pure Python code, but is relevant to some "
-              "of the RDKit C++ components.",
+              "of the RDKix C++ components.",
               (python::arg("seed")));
 
   python_streambuf_wrapper::wrap();

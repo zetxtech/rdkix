@@ -5,10 +5,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef WIN32
 #define _USE_MATH_DEFINES
@@ -48,7 +48,7 @@ MMFFDefCollection::MMFFDefCollection(std::string mmffDef) {
     mmffDef = defaultMMFFDef;
   }
   std::istringstream inStream(mmffDef);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   unsigned int oldAtomType = 0;
   unsigned int atomType;
   while (!(inStream.eof())) {
@@ -60,7 +60,7 @@ MMFFDefCollection::MMFFDefCollection(std::string mmffDef) {
 
       // skip first token
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int atomType = boost::lexical_cast<unsigned int>(*token);
 #else
       atomType = (std::uint8_t)(boost::lexical_cast<unsigned int>(*token));
@@ -83,7 +83,7 @@ MMFFDefCollection::MMFFDefCollection(std::string mmffDef) {
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token));
       ++token;
       if (atomType != oldAtomType) {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
         d_params[atomType] = mmffDefObj;
 #else
         d_params.push_back(mmffDefObj);
@@ -91,7 +91,7 @@ MMFFDefCollection::MMFFDefCollection(std::string mmffDef) {
         oldAtomType = atomType;
       }
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 const std::string defaultMMFFDef =
@@ -430,7 +430,7 @@ MMFFPropCollection::MMFFPropCollection(std::string mmffProp) {
     mmffProp = defaultMMFFProp;
   }
   std::istringstream inStream(mmffProp);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFProp mmffPropObj;
@@ -438,7 +438,7 @@ MMFFPropCollection::MMFFPropCollection(std::string mmffProp) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int atomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
@@ -469,13 +469,13 @@ MMFFPropCollection::MMFFPropCollection(std::string mmffProp) {
       mmffPropObj.sbmb =
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token));
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[atomType] = mmffPropObj;
 #else
       d_params.push_back(mmffPropObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 const std::string defaultMMFFProp =
@@ -589,7 +589,7 @@ MMFFPBCICollection::MMFFPBCICollection(std::string mmffPBCI) {
     mmffPBCI = defaultMMFFPBCI;
   }
   std::istringstream inStream(mmffPBCI);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFPBCI mmffPBCIObj;
@@ -597,7 +597,7 @@ MMFFPBCICollection::MMFFPBCICollection(std::string mmffPBCI) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       // IMPORTANT: skip the first field
       ++token;
       unsigned int atomType = boost::lexical_cast<unsigned int>(*token);
@@ -610,13 +610,13 @@ MMFFPBCICollection::MMFFPBCICollection(std::string mmffPBCI) {
       ++token;
       mmffPBCIObj.fcadj = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[atomType] = mmffPBCIObj;
 #else
       d_params.push_back(mmffPBCIObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 const std::string defaultMMFFPBCI =
@@ -735,7 +735,7 @@ MMFFChgCollection::MMFFChgCollection(std::string mmffChg) {
     mmffChg = defaultMMFFChg;
   }
   std::istringstream inStream(mmffChg);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFChg mmffChgObj;
@@ -743,21 +743,21 @@ MMFFChgCollection::MMFFChgCollection(std::string mmffChg) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int bondType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_bondType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
@@ -766,13 +766,13 @@ MMFFChgCollection::MMFFChgCollection(std::string mmffChg) {
       ++token;
       mmffChgObj.bci = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[bondType][iAtomType][jAtomType] = mmffChgObj;
 #else
       d_params.push_back(mmffChgObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 const std::string defaultMMFFChg =
@@ -1295,7 +1295,7 @@ MMFFBondCollection::MMFFBondCollection(std::string mmffBond) {
     mmffBond = defaultMMFFBond;
   }
   std::istringstream inStream(mmffBond);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFBond mmffBondObj;
@@ -1303,21 +1303,21 @@ MMFFBondCollection::MMFFBondCollection(std::string mmffBond) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int bondType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_bondType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int atomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
@@ -1328,13 +1328,13 @@ MMFFBondCollection::MMFFBondCollection(std::string mmffBond) {
       ++token;
       mmffBondObj.r0 = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[bondType][atomType][jAtomType] = mmffBondObj;
 #else
       d_params.push_back(mmffBondObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -1853,7 +1853,7 @@ MMFFBndkCollection::MMFFBndkCollection(std::string mmffBndk) {
     mmffBndk = defaultMMFFBndk;
   }
   std::istringstream inStream(mmffBndk);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFBond mmffBondObj;
@@ -1861,14 +1861,14 @@ MMFFBndkCollection::MMFFBndkCollection(std::string mmffBndk) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomicNum = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomicNum.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomicNum = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomicNum.push_back(
@@ -1879,13 +1879,13 @@ MMFFBndkCollection::MMFFBndkCollection(std::string mmffBndk) {
       ++token;
       mmffBondObj.kb = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[iAtomicNum][jAtomicNum] = mmffBondObj;
 #else
       d_params.push_back(mmffBondObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -1966,7 +1966,7 @@ MMFFHerschbachLaurieCollection::MMFFHerschbachLaurieCollection(
     mmffHerschbachLaurie = defaultMMFFHerschbachLaurie;
   }
   std::istringstream inStream(mmffHerschbachLaurie);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFHerschbachLaurie mmffHerschbachLaurieObj;
@@ -1974,14 +1974,14 @@ MMFFHerschbachLaurieCollection::MMFFHerschbachLaurieCollection(
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iRow = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iRow.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jRow = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jRow.push_back((std::uint8_t)boost::lexical_cast<unsigned int>(*token));
@@ -1993,13 +1993,13 @@ MMFFHerschbachLaurieCollection::MMFFHerschbachLaurieCollection(
       ++token;
       mmffHerschbachLaurieObj.dp_ij = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[iRow][jRow] = mmffHerschbachLaurieObj;
 #else
       d_params.push_back(mmffHerschbachLaurieObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -2041,7 +2041,7 @@ MMFFCovRadPauEleCollection::MMFFCovRadPauEleCollection(
     mmffCovRadPauEle = defaultMMFFCovRadPauEle;
   }
   std::istringstream inStream(mmffCovRadPauEle);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFCovRadPauEle mmffCovRadPauEleObj;
@@ -2049,7 +2049,7 @@ MMFFCovRadPauEleCollection::MMFFCovRadPauEleCollection(
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int atomicNum = boost::lexical_cast<unsigned int>(*token);
 #else
       d_atomicNum.push_back(
@@ -2060,13 +2060,13 @@ MMFFCovRadPauEleCollection::MMFFCovRadPauEleCollection(
       ++token;
       mmffCovRadPauEleObj.chi = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[atomicNum] = mmffCovRadPauEleObj;
 #else
       d_params.push_back(mmffCovRadPauEleObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -2103,7 +2103,7 @@ MMFFAngleCollection::MMFFAngleCollection(std::string mmffAngle) {
   }
   std::istringstream inStream(mmffAngle);
 
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFAngle mmffAngleObj;
@@ -2111,28 +2111,28 @@ MMFFAngleCollection::MMFFAngleCollection(std::string mmffAngle) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int angleType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_angleType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int kAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_kAtomType.push_back(
@@ -2143,13 +2143,13 @@ MMFFAngleCollection::MMFFAngleCollection(std::string mmffAngle) {
       ++token;
       mmffAngleObj.theta0 = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[angleType][iAtomType][jAtomType][kAtomType] = mmffAngleObj;
 #else
       d_params.push_back(mmffAngleObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -4519,7 +4519,7 @@ MMFFStbnCollection::MMFFStbnCollection(std::string mmffStbn) {
     mmffStbn = defaultMMFFStbn;
   }
   std::istringstream inStream(mmffStbn);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFStbn mmffStbnObj;
@@ -4527,28 +4527,28 @@ MMFFStbnCollection::MMFFStbnCollection(std::string mmffStbn) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int stretchBendType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_stretchBendType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int kAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_kAtomType.push_back(
@@ -4559,13 +4559,13 @@ MMFFStbnCollection::MMFFStbnCollection(std::string mmffStbn) {
       ++token;
       mmffStbnObj.kbaKJI = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[stretchBendType][iAtomType][jAtomType][kAtomType] = mmffStbnObj;
 #else
       d_params.push_back(mmffStbnObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -4869,7 +4869,7 @@ MMFFDfsbCollection::MMFFDfsbCollection(std::string mmffDfsb) {
     mmffDfsb = defaultMMFFDfsb;
   }
   std::istringstream inStream(mmffDfsb);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFStbn mmffStbnObj;
@@ -4889,7 +4889,7 @@ MMFFDfsbCollection::MMFFDfsbCollection(std::string mmffDfsb) {
       ++token;
       d_params[iAtomicNum][jAtomicNum][kAtomicNum] = mmffStbnObj;
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 const std::string defaultMMFFDfsb =
@@ -4940,7 +4940,7 @@ MMFFOopCollection::MMFFOopCollection(const bool isMMFFs, std::string mmffOop) {
     mmffOop = (isMMFFs ? defaultMMFFsOop : defaultMMFFOop);
   }
   std::istringstream inStream(mmffOop);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFOop mmffOopObj;
@@ -4948,28 +4948,28 @@ MMFFOopCollection::MMFFOopCollection(const bool isMMFFs, std::string mmffOop) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int kAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_kAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int lAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_lAtomType.push_back(
@@ -4978,13 +4978,13 @@ MMFFOopCollection::MMFFOopCollection(const bool isMMFFs, std::string mmffOop) {
       ++token;
       mmffOopObj.koop = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[iAtomType][jAtomType][kAtomType][lAtomType] = mmffOopObj;
 #else
       d_params.push_back(mmffOopObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -5252,7 +5252,7 @@ MMFFTorCollection::MMFFTorCollection(const bool isMMFFs, std::string mmffTor) {
     mmffTor = (isMMFFs ? defaultMMFFsTor : defaultMMFFTor);
   }
   std::istringstream inStream(mmffTor);
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       MMFFTor mmffTorObj;
@@ -5260,35 +5260,35 @@ MMFFTorCollection::MMFFTorCollection(const bool isMMFFs, std::string mmffTor) {
       tokenizer tokens(inLine, tabSep);
       tokenizer::iterator token = tokens.begin();
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int torType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_torType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int iAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_iAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int jAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_jAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int kAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_kAtomType.push_back(
           (std::uint8_t)(boost::lexical_cast<unsigned int>(*token)));
 #endif
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       unsigned int lAtomType = boost::lexical_cast<unsigned int>(*token);
 #else
       d_lAtomType.push_back(
@@ -5301,14 +5301,14 @@ MMFFTorCollection::MMFFTorCollection(const bool isMMFFs, std::string mmffTor) {
       ++token;
       mmffTorObj.V3 = boost::lexical_cast<double>(*token);
       ++token;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       d_params[torType][iAtomType][jAtomType][kAtomType][lAtomType] =
           mmffTorObj;
 #else
       d_params.push_back(mmffTorObj);
 #endif
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -8250,7 +8250,7 @@ MMFFVdWCollection::MMFFVdWCollection(std::string mmffVdW) {
   }
   std::istringstream inStream(mmffVdW);
   bool firstLine = true;
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   while (!(inStream.eof())) {
     if (inLine[0] != '*') {
       boost::char_separator<char> tabSep("\t");
@@ -8270,7 +8270,7 @@ MMFFVdWCollection::MMFFVdWCollection(std::string mmffVdW) {
         ++token;
       } else {
         MMFFVdW mmffVdWObj;
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
         unsigned int atomType = boost::lexical_cast<unsigned int>(*token);
 #else
         d_atomType.push_back(
@@ -8289,14 +8289,14 @@ MMFFVdWCollection::MMFFVdWCollection(std::string mmffVdW) {
         ++token;
         mmffVdWObj.R_star =
             mmffVdWObj.A_i * pow(mmffVdWObj.alpha_i, this->power);
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
         d_params[atomType] = mmffVdWObj;
 #else
         d_params.push_back(mmffVdWObj);
 #endif
       }
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 

@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <fstream>
@@ -19,7 +19,7 @@
 #include <sstream>
 #include <boost/shared_ptr.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
@@ -28,7 +28,7 @@
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeatureFactory.h>
 #include <GraphMol/MolChemicalFeatures/FeatureParser.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
@@ -138,7 +138,7 @@ void test2() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   unsigned int tmpLine = 2;
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
@@ -156,7 +156,7 @@ void test2() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
   TEST_ASSERT(featDef->getFamily() == "HDONOR");
@@ -173,7 +173,7 @@ void test2() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
   TEST_ASSERT(featDef->getFamily() == "HDONOR");
@@ -191,7 +191,7 @@ void test2() {
       "  Weights 1.0\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   try {
     featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   } catch (FeatureFileParseException &) {
@@ -205,7 +205,7 @@ void test2() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   try {
     featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   } catch (FeatureFileParseException &) {
@@ -496,7 +496,7 @@ void testIssue224() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   unsigned int tmpLine = 2;
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
@@ -520,7 +520,7 @@ void testIssue224() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
   TEST_ASSERT(featDef->getFamily() == "HDONOR");
@@ -545,7 +545,7 @@ void testIssue224() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
   TEST_ASSERT(featDef->getFamily() == "HDONOR");
@@ -570,7 +570,7 @@ void testIssue224() {
       "EndFeature\n";
   ss.clear();
   ss.str(inText);
-  inLine = RDKit::getLine(ss);
+  inLine = RDKix::getLine(ss);
   featDef = Local::parseFeatureDef(ss, inLine, tmpLine, atomTypeDefs);
   TEST_ASSERT(featDef);
   TEST_ASSERT(featDef->getFamily() == "HDONOR");

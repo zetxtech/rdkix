@@ -1,14 +1,14 @@
 //
 //  Copyright (C) 2019  Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#ifndef RDKIT_PICKERHELPERS_H
-#define RDKIT_PICKERHELPERS_H
+#ifndef RDKIX_PICKERHELPERS_H
+#define RDKIX_PICKERHELPERS_H
 
 #include <vector>
 #include <DataStructs/BitOps.h>
@@ -56,4 +56,4 @@ class pyobjFunctor {
   python::object dp_obj;
 };
 
-#endif  // RDKIT_PICKERHELPERS_H
+#endif  // RDKIX_PICKERHELPERS_H

@@ -1,4 +1,4 @@
-rdkit_python_extension(rdMetricMatrixCalc rdMetricMatrixCalc.cpp
+rdkix_python_extension(rdMetricMatrixCalc rdMetricMatrixCalc.cpp
                        DEST DataManip/Metric
                        LINK_LIBRARIES
                        DataStructs)

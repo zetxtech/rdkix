@@ -31,9 +31,9 @@
 # Created by Greg Landrum and Anna Vulpetti, March 2009
 from CreateFps import GetMolFingerprint
 
-from rdkit import Chem, DataStructs
-from rdkit.ML.KNN.KNNRegressionModel import KNNRegressionModel
-from rdkit.RDLogger import logger
+from rdkix import Chem, DataStructs
+from rdkix.ML.KNN.KNNRegressionModel import KNNRegressionModel
+from rdkix.RDLogger import logger
 
 logger = logger()
 import sys

@@ -1,5 +1,5 @@
 #  Copyright (c) 2018-2021, Novartis Institutes for BioMedical Research Inc.
-#   and other RDKit contributors
+#   and other RDKix contributors
 #  All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,8 @@ import unittest
 from collections import OrderedDict
 
 # the RGD code can generate a lot of warnings. disable them
-from rdkit import Chem, RDLogger, rdBase
-from rdkit.Chem.rdRGroupDecomposition import (RGroupCoreAlignment,
+from rdkix import Chem, RDLogger, rdBase
+from rdkix.Chem.rdRGroupDecomposition import (RGroupCoreAlignment,
                                               RGroupDecompose,
                                               RGroupDecomposition,
                                               RGroupDecompositionParameters,
@@ -430,7 +430,7 @@ Cn1cnc2cc(Oc3cc(N4CCN(Cc5ccccc5-c5ccc(Cl)cc5)CC4)ccc3C(=O)NS(=O)(=O)c3ccc(NCCCN4
       self.assertEqual(items, expected_items)
 
     sdcores = """
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
     1.1100   -1.3431    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -457,7 +457,7 @@ V    9 *
 M  END
 $$$$
 
-     RDKit          2D
+     RDKix          2D
 
  12 13  0  0  0  0  0  0  0  0999 V2000
    -6.5623    0.3977    0.0000 R#  0  0  0  0  0  0  0  0  0  0  0  0

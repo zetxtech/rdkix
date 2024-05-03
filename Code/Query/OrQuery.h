@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_ORQUERY_H
@@ -17,7 +17,7 @@ namespace Queries {
 //! a Query implementing AND: requires any child to be \c true
 template <class MatchFuncArgType, class DataFuncArgType = MatchFuncArgType,
           bool needsConversion = false>
-class RDKIT_QUERY_EXPORT OrQuery
+class RDKIX_QUERY_EXPORT OrQuery
     : public Query<MatchFuncArgType, DataFuncArgType, needsConversion> {
  public:
   typedef Query<MatchFuncArgType, DataFuncArgType, needsConversion> BASE;

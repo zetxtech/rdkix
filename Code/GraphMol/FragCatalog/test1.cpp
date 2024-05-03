@@ -3,14 +3,14 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/RDLog.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -32,7 +32,7 @@
 #include <RDGeneral/FileParseException.h>
 #include <DataStructs/BitVects.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testMols(std::vector<std::unique_ptr<ROMol>> &mols, FragFPGenerator &fpGen,
               FragCatalog &fcat) {
@@ -281,7 +281,7 @@ void testFragmentWithoutSmarts() {
   for (const auto &smarts : data) {
     bool ok = false;
     std::istringstream input(smarts);
-    RDKit::MOL_SPTR_VECT groups;
+    RDKix::MOL_SPTR_VECT groups;
     try {
       groups = readFuncGroups(input);
     } catch (const Invar::Invariant &) {

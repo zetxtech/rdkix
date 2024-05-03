@@ -41,9 +41,9 @@
 %}
 
 // This prevents duplicate definitions in Java code (due to 2 C++ functions resolving to the same Java function)
-%ignore RDKit::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr, double, double);
-%ignore RDKit::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr,double);
-%ignore RDKit::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr);
+%ignore RDKix::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr, double, double);
+%ignore RDKix::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr,double);
+%ignore RDKix::DGeomHelpers::initBoundsMat(DistGeom::BoundsMatPtr);
 
 // This conflicts with definitions in UFF::, so ignore and make it a method on the bounds matrix
 %ignore DistGeom::constructForceField;
@@ -55,31 +55,31 @@
 %include <DistGeom/TriangleSmooth.h>
 
 
-%ignore RDKit::DGeomHelpers::EmbedMolecule;
-%ignore RDKit::DGeomHelpers::EmbedMultipleConfs;
+%ignore RDKix::DGeomHelpers::EmbedMolecule;
+%ignore RDKix::DGeomHelpers::EmbedMultipleConfs;
 // make sure the struct has a copy constructor:
-%copyctor RDKit::DGeomHelpers::EmbedParameters;
+%copyctor RDKix::DGeomHelpers::EmbedParameters;
 
 // we want to ignore the const global parameter objects because SWIG does a
 // poor job of making them read-only when they are exposed to Java.
-%ignore RDKit::DGeomHelpers::KDG;
-%ignore RDKit::DGeomHelpers::ETDG;
-%ignore RDKit::DGeomHelpers::ETKDG;
-%ignore RDKit::DGeomHelpers::ETKDGv2;
-%ignore RDKit::DGeomHelpers::ETKDGv3;
-%ignore RDKit::DGeomHelpers::srETKDGv3;
+%ignore RDKix::DGeomHelpers::KDG;
+%ignore RDKix::DGeomHelpers::ETDG;
+%ignore RDKix::DGeomHelpers::ETKDG;
+%ignore RDKix::DGeomHelpers::ETKDGv2;
+%ignore RDKix::DGeomHelpers::ETKDGv3;
+%ignore RDKix::DGeomHelpers::srETKDGv3;
 
 %include <GraphMol/DistGeomHelpers/Embedder.h>
 
 // create functions to return copies of the global parameter objects
-%newobject RDKit::DGeomHelpers::getKDG;
-%newobject RDKit::DGeomHelpers::getETDG;
-%newobject RDKit::DGeomHelpers::getETKDG;
-%newobject RDKit::DGeomHelpers::getETKDGv2;
-%newobject RDKit::DGeomHelpers::getETKDGv3;
-%newobject RDKit::DGeomHelpers::getsrETKDGv3;
+%newobject RDKix::DGeomHelpers::getKDG;
+%newobject RDKix::DGeomHelpers::getETDG;
+%newobject RDKix::DGeomHelpers::getETKDG;
+%newobject RDKix::DGeomHelpers::getETKDGv2;
+%newobject RDKix::DGeomHelpers::getETKDGv3;
+%newobject RDKix::DGeomHelpers::getsrETKDGv3;
 %inline {
-  namespace RDKit{
+  namespace RDKix{
     namespace DGeomHelpers {
       EmbedParameters *getKDG() {
         return new EmbedParameters(KDG);
@@ -110,7 +110,7 @@
       public:
 
       /* From Embedder.h */
-      static int EmbedMolecule(RDKit::ROMol &mol,
+      static int EmbedMolecule(RDKix::ROMol &mol,
         unsigned int maxIterations=0, int seed=-1,
         bool clearConfs=true,
         bool useRandomCoords=false,double boxSizeMult=2.0,
@@ -125,7 +125,7 @@
         bool verbose=false,
         double basinThresh=5.0) {
 
-        return RDKit::DGeomHelpers::EmbedMolecule(mol,
+        return RDKix::DGeomHelpers::EmbedMolecule(mol,
           maxIterations, seed,
           clearConfs,
           useRandomCoords, boxSizeMult,
@@ -141,11 +141,11 @@
           basinThresh);
       }
 
-      static int EmbedMolecule(RDKit::ROMol &mol,RDKit::DGeomHelpers::EmbedParameters &params) {
-        return RDKit::DGeomHelpers::EmbedMolecule(mol,params);
+      static int EmbedMolecule(RDKix::ROMol &mol,RDKix::DGeomHelpers::EmbedParameters &params) {
+        return RDKix::DGeomHelpers::EmbedMolecule(mol,params);
       }
 
-      static RDKit::INT_VECT EmbedMultipleConfs(RDKit::ROMol &mol,
+      static RDKix::INT_VECT EmbedMultipleConfs(RDKix::ROMol &mol,
         unsigned int numConfs=10,
         unsigned int maxIterations=30,
         int seed=-1, bool clearConfs=true,
@@ -161,7 +161,7 @@
         bool verbose=false,
         double basinThresh=5.0) {
 
-        return RDKit::DGeomHelpers::EmbedMultipleConfs(mol,
+        return RDKix::DGeomHelpers::EmbedMultipleConfs(mol,
           numConfs,
           maxIterations,
           seed, clearConfs,
@@ -177,18 +177,18 @@
           verbose,
           basinThresh);
       }
-      static RDKit::INT_VECT EmbedMultipleConfs(RDKit::ROMol &mol,
+      static RDKix::INT_VECT EmbedMultipleConfs(RDKix::ROMol &mol,
                                                 unsigned int numConfs,
-                                                RDKit::DGeomHelpers::EmbedParameters &params) {
-        return RDKit::DGeomHelpers::EmbedMultipleConfs(mol, numConfs, params);
+                                                RDKix::DGeomHelpers::EmbedParameters &params) {
+        return RDKix::DGeomHelpers::EmbedMultipleConfs(mol, numConfs, params);
       }
 
-      static void SetTopolBounds(RDKit::ROMol &mol,
+      static void SetTopolBounds(RDKix::ROMol &mol,
         DistGeom::BoundsMatrix* mmat,
         bool set15bounds=true, bool scaleVDW=false) {
 
         DistGeom::BoundsMatPtr* mmatAsSmartPtr = new DistGeom::BoundsMatPtr(mmat);
-        RDKit::DGeomHelpers::setTopolBounds(mol, *mmatAsSmartPtr, set15bounds, scaleVDW);
+        RDKix::DGeomHelpers::setTopolBounds(mol, *mmatAsSmartPtr, set15bounds, scaleVDW);
       }
 
       static ForceFields::ForceField *ConstructForceField(DistGeom::BoundsMatrix& mmat,

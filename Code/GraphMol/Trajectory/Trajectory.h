@@ -2,10 +2,10 @@
 // Copyright (C) 2003-2016 Sereina Riniker, Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -14,11 +14,11 @@
 #include <vector>
 #include "Snapshot.h"
 
-namespace RDKit {
+namespace RDKix {
 
 class ROMol;
 
-class RDKIT_TRAJECTORY_EXPORT Trajectory {
+class RDKIX_TRAJECTORY_EXPORT Trajectory {
  public:
   /*! \brief Constructor
       \param dimension represents the dimensionality of this Trajectory's
@@ -92,14 +92,14 @@ class RDKIT_TRAJECTORY_EXPORT Trajectory {
            into the traj Trajectory object
     \return the number of Snapshot objects read in
  */
-RDKIT_TRAJECTORY_EXPORT unsigned int readAmberTrajectory(
+RDKIX_TRAJECTORY_EXPORT unsigned int readAmberTrajectory(
     const std::string &fName, Trajectory &traj);
 /*! \brief Reads coordinates from a GROMOS trajectory file
            into the traj Trajectory object
     \return the number of Snapshot objects read in
  */
-RDKIT_TRAJECTORY_EXPORT unsigned int readGromosTrajectory(
+RDKIX_TRAJECTORY_EXPORT unsigned int readGromosTrajectory(
     const std::string &fName, Trajectory &traj);
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

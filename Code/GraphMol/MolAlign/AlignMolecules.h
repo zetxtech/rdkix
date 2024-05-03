@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_ALIGNMOLECULES_H_
@@ -15,13 +15,13 @@
 #include <Numerics/Vector.h>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 typedef std::vector<std::pair<int, int>> MatchVectType;
 
 class Conformer;
 class ROMol;
 namespace MolAlign {
-class RDKIT_MOLALIGN_EXPORT MolAlignException : public std::exception {
+class RDKIX_MOLALIGN_EXPORT MolAlignException : public std::exception {
  public:
   //! construct with an error message
   MolAlignException(const char *msg) : _msg(msg) {}
@@ -62,7 +62,7 @@ class RDKIT_MOLALIGN_EXPORT MolAlignException : public std::exception {
   <b>Returns</b>
   RMSD value
 */
-RDKIT_MOLALIGN_EXPORT double getAlignmentTransform(
+RDKIX_MOLALIGN_EXPORT double getAlignmentTransform(
     const ROMol &prbMol, const ROMol &refMol, RDGeom::Transform3D &trans,
     int prbCid = -1, int refCid = -1, const MatchVectType *atomMap = nullptr,
     const RDNumeric::DoubleVector *weights = nullptr, bool reflect = false,
@@ -93,7 +93,7 @@ RDKIT_MOLALIGN_EXPORT double getAlignmentTransform(
   <b>Returns</b>
   RMSD value
 */
-RDKIT_MOLALIGN_EXPORT double alignMol(
+RDKIX_MOLALIGN_EXPORT double alignMol(
     ROMol &prbMol, const ROMol &refMol, int prbCid = -1, int refCid = -1,
     const MatchVectType *atomMap = nullptr,
     const RDNumeric::DoubleVector *weights = nullptr, bool reflect = false,
@@ -106,7 +106,7 @@ RDKIT_MOLALIGN_EXPORT double alignMol(
   This function will attempt to align all permutations of matching atom
   orders in both molecules, for some molecules it will lead to 'combinatorial
   explosion' especially if hydrogens are present.
-  Use 'RDKit::MolAlign::getAlignmentTransform' to align molecules
+  Use 'RDKix::MolAlign::getAlignmentTransform' to align molecules
   without changing the atom order.
 
   \param prbMol     the molecule to be aligned to the reference
@@ -132,7 +132,7 @@ RDKIT_MOLALIGN_EXPORT double alignMol(
   <b>Returns</b>
   Best RMSD value found
 */
-RDKIT_MOLALIGN_EXPORT double getBestAlignmentTransform(
+RDKIX_MOLALIGN_EXPORT double getBestAlignmentTransform(
     const ROMol &prbMol, const ROMol &refMol, RDGeom::Transform3D &bestTrans,
     MatchVectType &bestMatch, int prbCid = -1, int refCid = -1,
     const std::vector<MatchVectType> &map = std::vector<MatchVectType>(),
@@ -147,7 +147,7 @@ RDKIT_MOLALIGN_EXPORT double getBestAlignmentTransform(
   This function will attempt to align all permutations of matching atom
   orders in both molecules, for some molecules it will lead to 'combinatorial
   explosion' especially if hydrogens are present.
-  Use 'RDKit::MolAlign::alignMol' to align molecules without changing the
+  Use 'RDKix::MolAlign::alignMol' to align molecules without changing the
   atom order.
 
   \param prbMol     the molecule to be aligned to the reference
@@ -169,7 +169,7 @@ RDKIT_MOLALIGN_EXPORT double getBestAlignmentTransform(
   <b>Returns</b>
   Best RMSD value found
 */
-RDKIT_MOLALIGN_EXPORT double getBestRMS(
+RDKIX_MOLALIGN_EXPORT double getBestRMS(
     ROMol &prbMol, const ROMol &refMol, int prbCid = -1, int refCid = -1,
     const std::vector<MatchVectType> &map = std::vector<MatchVectType>(),
     int maxMatches = 1e6, bool symmetrizeConjugatedTerminalGroups = true,
@@ -203,7 +203,7 @@ RDKIT_MOLALIGN_EXPORT double getBestRMS(
   <b>Returns</b>
   Best RMSD value found
 */
-RDKIT_MOLALIGN_EXPORT double CalcRMS(
+RDKIX_MOLALIGN_EXPORT double CalcRMS(
     ROMol &prbMol, const ROMol &refMol, int prbCid = -1, int refCid = -1,
     const std::vector<MatchVectType> &map = std::vector<MatchVectType>(),
     int maxMatches = 1e6, bool symmetrizeConjugatedTerminalGroups = true,
@@ -234,7 +234,7 @@ RDKIT_MOLALIGN_EXPORT double CalcRMS(
   <b>Returns</b>
   Best RMSD value found
 */
-RDKIT_MOLALIGN_EXPORT double CalcRMS(ROMol &prbMol, const ROMol &refMol,
+RDKIX_MOLALIGN_EXPORT double CalcRMS(ROMol &prbMol, const ROMol &refMol,
                                      int prbCid, int refCid,
                                      const std::vector<MatchVectType> &map,
                                      int maxMatches,
@@ -255,11 +255,11 @@ RDKIT_MOLALIGN_EXPORT double CalcRMS(ROMol &prbMol, const ROMol &refMol,
                    between the reference conformation and the other aligned
                    conformations
 */
-RDKIT_MOLALIGN_EXPORT void alignMolConformers(
+RDKIX_MOLALIGN_EXPORT void alignMolConformers(
     ROMol &mol, const std::vector<unsigned int> *atomIds = nullptr,
     const std::vector<unsigned int> *confIds = nullptr,
     const RDNumeric::DoubleVector *weights = nullptr, bool reflect = false,
     unsigned int maxIters = 50, std::vector<double> *RMSlist = nullptr);
 }  // namespace MolAlign
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

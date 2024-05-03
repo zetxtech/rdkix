@@ -45,7 +45,7 @@
 #include <iostream>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "../FileParsers/FileParsers.h"  //MOL single molecule !
 #include "../FileParsers/MolSupplier.h"  //SDF
 #include "../SmilesParse/SmilesParse.h"
@@ -60,7 +60,7 @@
 #include <windows.h>
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 
 unsigned long long T0;
 unsigned long long t0;
@@ -74,7 +74,7 @@ void printTime() {
 
 std::string getSmilesOnly(
     const char* smiles,
-    std::string* id = nullptr) {  // remove label, because RDKit parse FAILED
+    std::string* id = nullptr) {  // remove label, because RDKix parse FAILED
   const char* sp = strchr(smiles, ' ');
   unsigned int n = (sp ? sp - smiles + 1 : strlen(smiles));
   if (id) {
@@ -569,11 +569,11 @@ void testJnk1LigandsDistance() {
   const char* jnk1sdf = "/Code/GraphMol/FMCS/testData/Jnk1_ligands.sdf";
   std::string fn(rdbase + jnk1sdf);
 
-  std::unique_ptr<RDKit::MolSupplier> suppl;
+  std::unique_ptr<RDKix::MolSupplier> suppl;
   try {
-    suppl.reset(new RDKit::SDMolSupplier(fn));
+    suppl.reset(new RDKix::SDMolSupplier(fn));
   } catch (...) {
-    std::cerr << "ERROR: RDKit could not load input file" << std::endl;
+    std::cerr << "ERROR: RDKix could not load input file" << std::endl;
     TEST_ASSERT(false);
   }
   ROMol* m1 = nullptr;
@@ -1285,7 +1285,7 @@ void testInitialSeed2() {
     std::unique_ptr<ROMol> seed(SmartsToMol(initial_smarts));
     MatchVectType match;
     bool matched = SubstructMatch(*mols.back(), *seed, match);
-    BOOST_LOG(rdInfoLog) << (matched ? "RDKit MATCHED " : "RDKit DISmatched ")
+    BOOST_LOG(rdInfoLog) << (matched ? "RDKix MATCHED " : "RDKix DISmatched ")
                          << i << std::endl;
   }
   MCSParameters p;

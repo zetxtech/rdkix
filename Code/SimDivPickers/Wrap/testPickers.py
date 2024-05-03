@@ -4,9 +4,9 @@ import unittest
 
 import numpy
 
-from rdkit import DataStructs, RDConfig
-from rdkit.DataManip.Metric import rdMetricMatrixCalc as rdmmc
-from rdkit.SimDivFilters import rdSimDivPickers
+from rdkix import DataStructs, RDConfig
+from rdkix.DataManip.Metric import rdMetricMatrixCalc as rdmmc
+from rdkix.SimDivFilters import rdSimDivPickers
 
 
 class TestCase(unittest.TestCase):
@@ -105,7 +105,7 @@ class TestCase(unittest.TestCase):
     self.assertEqual(p1, p2)
 
   def testNonUniqueCrash(self):
-    from rdkit import DataStructs
+    from rdkix import DataStructs
     sz = 300
     nbits = 40
     nBitsToSet = int(nbits * .3)
@@ -152,7 +152,7 @@ class TestCase(unittest.TestCase):
     p1 = list(picker.Pick(m, nvs, N))
 
   def testBitVectorMaxMin(self):
-    from rdkit import DataStructs
+    from rdkix import DataStructs
     sz = 100
     nbits = 200
     nBitsToSet = int(nbits * .1)

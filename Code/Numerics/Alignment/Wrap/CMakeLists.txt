@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_ALIGNMENT_BUILD)
-rdkit_python_extension(rdAlignment
+remove_definitions(-DRDKIX_ALIGNMENT_BUILD)
+rdkix_python_extension(rdAlignment
                        rdAlignment.cpp
                        DEST Numerics 
                        LINK_LIBRARIES Alignment)
