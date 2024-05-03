@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_FRAGMENT_CATALOG_ENTRY_H__
@@ -15,12 +15,12 @@
 #include <GraphMol/Subgraphs/Subgraphs.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include "FragmentCatalogParams.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
-class RDKIT_MOLSTANDARDIZE_EXPORT FragmentCatalogEntry
+class RDKIX_MOLSTANDARDIZE_EXPORT FragmentCatalogEntry
     : public RDCatalog::CatalogEntry {
  public:
   FragmentCatalogEntry() : d_descrip("") {
@@ -55,6 +55,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT FragmentCatalogEntry
 };  // class FragmentCatalogEntry
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

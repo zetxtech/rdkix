@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 //  This software is based on the Chemaxon documentation for the MRV format:P
@@ -16,7 +16,7 @@
 #ifndef RD_MARVINDEFS_H
 #define RD_MARVINDEFS_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSGroupParsing.h>
 #include <RDGeneral/FileParseException.h>
@@ -34,7 +34,7 @@
 
 using boost::property_tree::ptree;
 
-namespace RDKit {
+namespace RDKix {
 
 const std::vector<std::string> sruSgroupConnectChoices{"hh", "ht", "eu"};
 const std::vector<std::string> marvinBondOrders{"1", "2", "3", "A"};
@@ -337,13 +337,13 @@ class MarvinMolBase {
 
   void clearMaps();
 
-  void prepSgroupsForRDKit();
-  void processSgroupsFromRDKit();
+  void prepSgroupsForRDKix();
+  void processSgroupsFromRDKix();
 
   virtual bool isPassiveRoleForExpansion() const;
   virtual bool isPassiveRoleForContraction() const;
   virtual void processSpecialSgroups();
-  virtual void parseMoleculeSpecific(RDKit::RWMol *mol,
+  virtual void parseMoleculeSpecific(RDKix::RWMol *mol,
                                      std::unique_ptr<SubstanceGroup> &sgroup,
                                      int sequenceId);
 
@@ -376,7 +376,7 @@ class MarvinSruCoModSgroup : public MarvinMolBase {
 
   std::string role() const override;
   bool hasAtomBondBlocks() const override;
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -404,7 +404,7 @@ class MarvinDataSgroup : public MarvinMolBase {
 
   std::string role() const override;
   bool hasAtomBondBlocks() const override;
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -429,7 +429,7 @@ class MarvinSuperatomSgroupExpanded : public MarvinMolBase {
   bool hasAtomBondBlocks() const override;
   bool isPassiveRoleForContraction() const override;
 
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -462,7 +462,7 @@ class MarvinMultipleSgroup : public MarvinMolBase {
   bool isPassiveRoleForContraction() const override;
   void processSpecialSgroups() override;
 
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -485,7 +485,7 @@ class MarvinMulticenterSgroup : public MarvinMolBase {
   std::string role() const override;
   bool hasAtomBondBlocks() const override;
   void processSpecialSgroups() override;
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -505,7 +505,7 @@ class MarvinGenericSgroup : public MarvinMolBase {
 
   std::string role() const override;
   bool hasAtomBondBlocks() const override;
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -527,7 +527,7 @@ class MarvinMonomerSgroup : public MarvinMolBase {
 
   std::string role() const override;
   bool hasAtomBondBlocks() const override;
-  void parseMoleculeSpecific(RDKit::RWMol *mol,
+  void parseMoleculeSpecific(RDKix::RWMol *mol,
                              std::unique_ptr<SubstanceGroup> &sgroup,
                              int sequenceId) override;
 };
@@ -611,7 +611,7 @@ class MarvinReaction {
 
   ~MarvinReaction();
 
-  void prepSgroupsForRDKit();
+  void prepSgroupsForRDKix();
 
   std::string toString();
   ptree toPtree() const;
@@ -628,6 +628,6 @@ class MarvinStereoGroup {
 
 template <typename T>
 bool getCleanNumber(std::string strToParse, T &outInt);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif  // RD_MARVINDEFS_H

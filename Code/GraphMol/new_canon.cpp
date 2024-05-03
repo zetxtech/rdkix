@@ -3,14 +3,14 @@
 //  Adapted from pseudo-code from Roger Sayle
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "new_canon.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <cstdint>
 #include <cstring>
@@ -18,7 +18,7 @@
 #include <cassert>
 // #define VERBOSE_CANON 1
 
-namespace RDKit {
+namespace RDKix {
 namespace Canon {
 
 namespace {
@@ -803,4 +803,4 @@ void chiralRankMolAtoms(const ROMol &mol, std::vector<unsigned int> &res) {
   }
 }
 }  // namespace Canon
-}  // namespace RDKit
+}  // namespace RDKix

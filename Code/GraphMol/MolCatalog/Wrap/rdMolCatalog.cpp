@@ -4,15 +4,15 @@
 //
 #include "rdMolCatalog.h"
 #include <RDBoost/python.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolCatalog/MolCatalog.h>
 #include <GraphMol/MolCatalog/MolCatalogEntry.h>
 #include <GraphMol/MolCatalog/MolCatalogParams.h>
 
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 namespace {
-struct molcatalog_pickle_suite : rdkit_pickle_suite {
+struct molcatalog_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const MolCatalog &self) {
     std::string res;
     res = self.Serialize();
@@ -21,7 +21,7 @@ struct molcatalog_pickle_suite : rdkit_pickle_suite {
   };
 };
 
-struct molcatalogentry_pickle_suite : rdkit_pickle_suite {
+struct molcatalogentry_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const MolCatalogEntry &self) {
     std::string res;
     res = self.Serialize();

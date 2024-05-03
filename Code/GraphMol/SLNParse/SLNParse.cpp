@@ -32,8 +32,8 @@
 //  Created by Greg Landrum, Sept. 2006
 //
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SLNParse/SLNParse.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
 #include <RDGeneral/RDLog.h>
@@ -41,7 +41,7 @@
 #include <boost/algorithm/string.hpp>
 #include <regex>
 
-int yysln_parse(const char *, std::vector<RDKit::RWMol *> *, bool, void *);
+int yysln_parse(const char *, std::vector<RDKix::RWMol *> *, bool, void *);
 int yysln_lex_init(void **);
 void yysln_set_extra(void *, void *);
 int yysln_lex_destroy(void *);
@@ -49,7 +49,7 @@ void setup_sln_string(const std::string &text, void *);
 extern int yysln_debug;
 
 int sln_parse(const std::string &inp, bool doQueries,
-              std::vector<RDKit::RWMol *> &molVect) {
+              std::vector<RDKix::RWMol *> &molVect) {
   void *scanner;
   TEST_ASSERT(!yysln_lex_init(&scanner));
   setup_sln_string(inp, scanner);
@@ -66,15 +66,15 @@ int sln_parse(const std::string &inp, bool doQueries,
   if (res == 1) {
     std::stringstream errout;
     errout << "Failed parsing SLN '" << inp << "'";
-    throw RDKit::SLNParseException(errout.str());
+    throw RDKix::SLNParseException(errout.str());
   }
 
   return res;
 }
 
-namespace RDKit {
+namespace RDKix {
 namespace SLNParse {
-std::vector<RDKit::RWMol *> molList_g;
+std::vector<RDKix::RWMol *> molList_g;
 
 void finalizeQueryMol(ROMol *mol, bool mergeHs) {
   PRECONDITION(mol, "bad query molecule");
@@ -156,7 +156,7 @@ RWMol *toMol(std::string inp, bool doQueries, int debugParse) {
   }
 
   RWMol *res = nullptr;
-  std::vector<RDKit::RWMol *> molVect;
+  std::vector<RDKix::RWMol *> molVect;
   try {
     sln_parse(inp, doQueries, molVect);
     if (molVect.size() > 0) {
@@ -254,4 +254,4 @@ void SLNParse::CleanupAfterParse(RWMol *mol) {
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

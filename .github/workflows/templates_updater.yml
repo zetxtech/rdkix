@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 env:
-  tpl_repo: 'rdkit/molecular_templates'
+  tpl_repo: 'rdkix/molecular_templates'
   tpl_hdr: 'template_smiles.h'
   rdk_hdr: 'Code/GraphMol/Depictor/TemplateSmiles.h'
 
@@ -18,7 +18,7 @@ jobs:
   check_header_changes_and_create_pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout RDKit
+      - name: Checkout RDKix
         uses: actions/checkout@v3
       - name: Checkout molecular_templates
         uses: actions/checkout@v3

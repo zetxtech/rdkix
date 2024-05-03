@@ -2,14 +2,14 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Validate.h"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -17,18 +17,18 @@
 
 #include <iostream>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 using namespace MolStandardize;
 
-void testRDKitValidation() {
-  BOOST_LOG(rdInfoLog) << "-----------------------\n Testing RDKit validation"
+void testRDKixValidation() {
+  BOOST_LOG(rdInfoLog) << "-----------------------\n Testing RDKix validation"
                        << std::endl;
 
   string smi1, smi2, smi3, smi4;
-  RDKitValidation vm;
+  RDKixValidation vm;
 
-  // testing RDKitDefault
+  // testing RDKixDefault
   smi1 = "CO(C)C";
   unique_ptr<ROMol> m1(SmilesToMol(smi1, 0, false));
   vector<ValidationErrorInfo> errout1 = vm.validate(*m1, true);
@@ -335,7 +335,7 @@ void testValidateSmiles() {
 }
 
 int main() {
-  testRDKitValidation();
+  testRDKixValidation();
   testMolVSValidation();
   testMolVSOptions();
   testAllowedAtomsValidation();

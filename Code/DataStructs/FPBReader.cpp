@@ -2,10 +2,10 @@
 // Copyright (c) 2016 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Implementation details here are taken from the file fpb_io.py from chemfp
 // (www.chemfp.org)
@@ -22,7 +22,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/scoped_array.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace detail {
 const unsigned int magicSize = 8;
@@ -202,7 +202,7 @@ boost::uint8_t *copyBytes(const FPBReader_impl *dp_impl, unsigned int which) {
 };
 
 // caller is responsible for delete'ing the result
-RDKIT_DATASTRUCTS_EXPORT boost::dynamic_bitset<> *bytesToBitset(
+RDKIX_DATASTRUCTS_EXPORT boost::dynamic_bitset<> *bytesToBitset(
     const boost::uint8_t *fpData, boost::uint32_t nBits) {
   unsigned int nBytes = nBits / 8;
   if (!(nBytes % sizeof(boost::dynamic_bitset<>::block_type))) {
@@ -218,7 +218,7 @@ RDKIT_DATASTRUCTS_EXPORT boost::dynamic_bitset<> *bytesToBitset(
 }
 
 // caller is responsible for delete []'ing the result
-RDKIT_DATASTRUCTS_EXPORT boost::uint8_t *bitsetToBytes(
+RDKIX_DATASTRUCTS_EXPORT boost::uint8_t *bitsetToBytes(
     const boost::dynamic_bitset<> &bitset) {
   unsigned int nBits = bitset.size();
   unsigned int nBytes = nBits / 8;
@@ -774,4 +774,4 @@ std::vector<unsigned int> FPBReader::getContainingNeighbors(
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

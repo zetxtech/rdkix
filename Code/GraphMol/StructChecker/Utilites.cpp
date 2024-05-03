@@ -1,12 +1,12 @@
 //
 //  Copyright (C) 2016-2022 Novartis Institutes for BioMedical Research and
-//  other RDKit contributors
+//  other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "../../RDGeneral/types.h"
 #include "../../Geometry/point.h"
@@ -14,7 +14,7 @@
 #include <algorithm>
 #include <tuple>
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 void SetupNeighbourhood(const ROMol &mol,
@@ -138,4 +138,4 @@ std::string LogNeighbourhood(
 }
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

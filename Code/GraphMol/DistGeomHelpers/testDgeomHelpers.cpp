@@ -2,15 +2,15 @@
 //  Copyright (C) 2004-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -40,7 +40,7 @@
 #include <boost/tokenizer.hpp>
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   boost::logging::disable_logs("rdApp.warning");
@@ -373,7 +373,7 @@ void test3() {
     for (i = 1; i < nat; i++) {
       for (j = 0; j < i; j++) {
         CHECK_INVARIANT(
-            RDKit::feq(distMat.getVal(i, j), distMatNew.getVal(i, j), 0.01),
+            RDKix::feq(distMat.getVal(i, j), distMatNew.getVal(i, j), 0.01),
             "");
       }
     }
@@ -523,8 +523,8 @@ void test15Dists() {
   DGeomHelpers::initBoundsMat(mat);
   DistGeom::BoundsMatPtr mmat(mat);
   DGeomHelpers::setTopolBounds(*m, mmat);
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(2, 6), 4.32, 0.01), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(2, 6), 4.16, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(2, 6), 4.32, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(2, 6), 4.16, 0.01), "");
   delete m;
 
   m = SmilesToMol("CC1=C(C(C)=CC=C2)C2=CC=C1");
@@ -533,10 +533,10 @@ void test15Dists() {
   DGeomHelpers::initBoundsMat(mmat);
   DGeomHelpers::setTopolBounds(*m, mmat);
 
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 4), 2.31, 0.01), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 4), 2.47, 0.01), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(4, 11), 4.11, 0.01), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(4, 11), 4.27, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 4), 2.31, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 4), 2.47, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(4, 11), 4.11, 0.01), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(4, 11), 4.27, 0.01), "");
 
   delete m;
 
@@ -547,10 +547,10 @@ void test15Dists() {
   DGeomHelpers::initBoundsMat(mmat);
   DGeomHelpers::setTopolBounds(*m, mmat);
 
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(0, 4), 4.1874), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(0, 4), 4.924), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getLowerBound(1, 5), 4.1874), "");
-  CHECK_INVARIANT(RDKit::feq(mmat->getUpperBound(1, 5), 4.924), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(0, 4), 4.1874), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(0, 4), 4.924), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getLowerBound(1, 5), 4.1874), "");
+  CHECK_INVARIANT(RDKix::feq(mmat->getUpperBound(1, 5), 4.924), "");
 
   delete m;
   m = SmilesToMol("NCc(c1)cccc1");
@@ -717,8 +717,8 @@ void testIssue251() {
   DistGeom::BoundsMatPtr bm(mat);
   DGeomHelpers::initBoundsMat(bm);
   DGeomHelpers::setTopolBounds(*m, bm);
-  TEST_ASSERT(RDKit::feq(bm->getLowerBound(0, 3), 2.67, 0.01));
-  TEST_ASSERT(RDKit::feq(bm->getUpperBound(0, 3), 2.79, 0.01));
+  TEST_ASSERT(RDKix::feq(bm->getLowerBound(0, 3), 2.67, 0.01));
+  TEST_ASSERT(RDKix::feq(bm->getUpperBound(0, 3), 2.79, 0.01));
   delete m;
 }
 
@@ -1442,7 +1442,7 @@ void testGithub256() {
 #ifdef RDK_TEST_MULTITHREADED
 void testMultiThreadMultiConf() {
   boost::char_separator<char> sep("|");
-  auto bldString = std::string(RDKit::rdkitBuild);
+  auto bldString = std::string(RDKix::rdkixBuild);
   tokenizer tokens(bldString, sep);
   std::vector<std::string> tokenVect(tokens.begin(), tokens.end());
   const double ENERGY_TOLERANCE = ((tokenVect[2] != "MINGW") ? 1.0e-6 : 1.0);
@@ -1468,7 +1468,7 @@ void testMultiThreadMultiConf() {
     ff2->initialize();
     double e2 = ff2->calcEnergy();
     const RDGeom::PointPtrVect &p2Vect = ff2->positions();
-    TEST_ASSERT(RDKit::feq(e1, e2, ENERGY_TOLERANCE));
+    TEST_ASSERT(RDKix::feq(e1, e2, ENERGY_TOLERANCE));
     TEST_ASSERT(pVect.size() == p2Vect.size());
     double msd = 0.0;
     for (unsigned int i = 0; i < pVect.size(); ++i) {
@@ -1680,7 +1680,7 @@ void testGithub971() {
     TEST_ASSERT(cid >= 0);
     MolOps::removeHs(*m);
     std::string expectedMb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
  19 21  0  0  0  0  0  0  0  0999 V2000
     1.1886   -1.4168    0.8579 C   0  0  0  0  0  0  0  0  0  0  0  0

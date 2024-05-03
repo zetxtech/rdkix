@@ -7,8 +7,8 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, Geometry, RDConfig
-from rdkit.Geometry import Point3D
+from rdkix import Chem, Geometry, RDConfig
+from rdkix.Geometry import Point3D
 
 
 def feq(v1, v2, tol2=1e-4):

@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/Wrap.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
@@ -16,13 +16,13 @@
 #include <iostream>
 #include <GraphMol/MolChemicalFeatures/FeatureParser.h>
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
 void wrap_MolChemicalFeat();
 void wrap_factory();
 void wrap_ChemicalFeatureUtils();
 
-namespace RDKit {
+namespace RDKix {
 MolChemicalFeatureFactory *buildFeatFactory(std::string fileName) {
   std::ifstream inStream(fileName.c_str());
   if (!inStream.is_open()) {
@@ -39,10 +39,10 @@ MolChemicalFeatureFactory *buildFeatFactoryFromString(std::string fdefString) {
   auto &instrm = static_cast<std::istream &>(inStream);
   return buildFeatureFactory(instrm);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 void translate_FeatureFileParse_error(
-    RDKit::FeatureFileParseException const &e) {
+    RDKix::FeatureFileParseException const &e) {
   std::stringstream err;
   err << "Error parsing feature file at line " << e.lineNo() << ":"
       << std::endl;
@@ -54,15 +54,15 @@ void translate_FeatureFileParse_error(
 BOOST_PYTHON_MODULE(rdMolChemicalFeatures) {
   python::scope().attr("__doc__") =
       "Module containing from chemical feature and functions to generate the";
-  python::register_exception_translator<RDKit::FeatureFileParseException>(
+  python::register_exception_translator<RDKix::FeatureFileParseException>(
       &translate_FeatureFileParse_error);
 
   python::def(
-      "BuildFeatureFactory", RDKit::buildFeatFactory,
+      "BuildFeatureFactory", RDKix::buildFeatFactory,
       "Construct a feature factory given a feature definition in a file",
       python::return_value_policy<python::manage_new_object>());
   python::def("BuildFeatureFactoryFromString",
-              RDKit::buildFeatFactoryFromString,
+              RDKix::buildFeatFactoryFromString,
               "Construct a feature factory given a feature definition block",
               python::return_value_policy<python::manage_new_object>());
 

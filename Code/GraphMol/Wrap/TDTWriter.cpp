@@ -2,10 +2,10 @@
 //  Copyright (C) 2005-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,7 +14,7 @@
 
 // ours
 #include <GraphMol/FileParsers/MolWriters.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "rdchem.h"
 #include "ContextManagers.h"
 #include <RDBoost/PySequenceHolder.h>
@@ -22,7 +22,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 using boost_adaptbx::python::streambuf;
 TDTWriter *getTDTWriter(python::object &fileobj) {
   // FIX: minor leak here
@@ -89,6 +89,6 @@ struct tdtwriter_wrap {
         .def("GetNumDigits", &TDTWriter::getNumDigits);
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_tdtwriter() { RDKit::tdtwriter_wrap::wrap(); }
+void wrap_tdtwriter() { RDKix::tdtwriter_wrap::wrap(); }

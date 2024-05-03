@@ -2,24 +2,24 @@
 //  Copyright (C) 2017 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RGROUP_DATA
 #define RGROUP_DATA
 
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "RGroupUtils.h"
 #include <DataStructs/ExplicitBitVect.h>
 #include <set>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 
 //! A single rgroup attached to a given core.
-struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupData {
+struct RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupData {
   boost::shared_ptr<RWMol> combinedMol;
   std::vector<boost::shared_ptr<ROMol>> mols;  // All the mols in the rgroup
   std::vector<std::string> smilesVect;         // used for rgroup equivalence
@@ -53,6 +53,6 @@ struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupData {
   //! we are using a set...)
   std::string getSmiles() const;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

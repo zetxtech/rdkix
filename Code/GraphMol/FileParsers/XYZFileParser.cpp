@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2022 Sreya Gogineni and other RDKit contributors
+//  Copyright (C) 2022 Sreya Gogineni and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/lexical_cast.hpp>
@@ -26,7 +26,7 @@
 #include <cstdio>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 
 void ParseExtraLine(const std::string &extraLine) {
   std::string whitespace{" \t"};
@@ -177,4 +177,4 @@ RWMol *XYZFileToMol(const std::string &fName) {
   return mol;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

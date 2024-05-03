@@ -1,25 +1,25 @@
 //
-//  Copyright (C) 2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 #include <GraphMol/SubstructLibrary/PatternFactory.h>
 #include <GraphMol/GeneralizedSubstruct/XQMol.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("querying with a molbundle") {
   std::vector<std::string> libSmiles = {"CCCC", "CCOC", "CCNC"};

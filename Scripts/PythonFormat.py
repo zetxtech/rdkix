@@ -1,6 +1,6 @@
 '''
 
-Script will test the RDkit python code for conformance with the agreed format using
+Script will test the RDkix python code for conformance with the agreed format using
 yapf.
 
 For each Python file that is found in $RDBASE (excluding the build and External

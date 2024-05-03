@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
@@ -18,7 +18,7 @@
 #include <DataStructs/MultiFPBReader.h>
 #include <DataStructs/BitOps.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1MultiFPBReaderBasics() {
   BOOST_LOG(rdInfoLog)

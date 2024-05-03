@@ -3,12 +3,12 @@
 //
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "EHTTools.h"
 
 #include <GraphMol/FileParsers/FileParsers.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 #if 1
 TEST_CASE("methanol", "[basics]") {

@@ -31,7 +31,7 @@ if(RDK_BUILD_SWIG_WRAPPERS)
 endif()
 
 if(RDK_BUILD_PGSQL)
-  add_subdirectory(PgSQL/rdkit)
+  add_subdirectory(PgSQL/rdkix)
 endif(RDK_BUILD_PGSQL)
 
 add_subdirectory(MinimalLib)

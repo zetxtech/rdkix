@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2018 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -14,7 +14,7 @@
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -30,7 +30,7 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <boost/math/special_functions/round.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 #ifdef RDK_TEST_MULTITHREADED
 namespace {
 void runblock_mmff(const std::vector<ROMol *> &mols) {

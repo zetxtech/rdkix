@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_REDUCEDGRAPHS_BUILD)
-rdkit_python_extension(rdReducedGraphs rdReducedGraphs.cpp
+remove_definitions(-DRDKIX_REDUCEDGRAPHS_BUILD)
+rdkix_python_extension(rdReducedGraphs rdReducedGraphs.cpp
                        DEST Chem
                        LINK_LIBRARIES
 LINK_LIBRARIES ReducedGraphs )

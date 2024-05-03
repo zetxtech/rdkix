@@ -2,10 +2,10 @@
 //  Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SCAFFOLDNETWORK_H
@@ -29,13 +29,13 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class ChemicalReaction;
 
 namespace ScaffoldNetwork {
 
-struct RDKIT_SCAFFOLDNETWORK_EXPORT ScaffoldNetworkParams {
+struct RDKIX_SCAFFOLDNETWORK_EXPORT ScaffoldNetworkParams {
   bool includeGenericScaffolds =
       true;  ///< include scaffolds with all atoms replaced by dummies
   bool includeGenericBondScaffolds =
@@ -72,17 +72,17 @@ enum class EdgeType {
   Initialize = 5         ///< molecule -> flattened molecule
 };
 
-struct RDKIT_SCAFFOLDNETWORK_EXPORT NetworkEdge {
+struct RDKIX_SCAFFOLDNETWORK_EXPORT NetworkEdge {
   size_t beginIdx;
   size_t endIdx;
   EdgeType type;
   NetworkEdge() : beginIdx(0), endIdx(0), type(EdgeType::Initialize) {}
   NetworkEdge(size_t bi, size_t ei, EdgeType typ)
       : beginIdx(bi), endIdx(ei), type(typ) {}
-  bool operator==(const RDKit::ScaffoldNetwork::NetworkEdge &o) const {
+  bool operator==(const RDKix::ScaffoldNetwork::NetworkEdge &o) const {
     return (beginIdx == o.beginIdx) && (endIdx == o.endIdx) && (type == o.type);
   }
-  bool operator!=(const RDKit::ScaffoldNetwork::NetworkEdge &o) const {
+  bool operator!=(const RDKix::ScaffoldNetwork::NetworkEdge &o) const {
     return (beginIdx != o.beginIdx) || (endIdx != o.endIdx) || (type != o.type);
   }
 #ifdef RDK_USE_BOOST_SERIALIZATION
@@ -98,7 +98,7 @@ struct RDKIT_SCAFFOLDNETWORK_EXPORT NetworkEdge {
 #endif
 };
 
-struct RDKIT_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork {
+struct RDKIX_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork {
   std::vector<std::string> nodes;  ///< SMILES for the scaffolds
   std::vector<unsigned>
       counts;  ///< number of times each scaffold was encountered
@@ -143,21 +143,21 @@ ScaffoldNetwork createScaffoldNetwork(const T &mols,
 }
 //! allows nodes to output nicely as strings
 inline std::ostream &operator<<(std::ostream &ostr,
-                                const RDKit::ScaffoldNetwork::EdgeType &e) {
+                                const RDKix::ScaffoldNetwork::EdgeType &e) {
   switch (e) {
-    case RDKit::ScaffoldNetwork::EdgeType::Fragment:
+    case RDKix::ScaffoldNetwork::EdgeType::Fragment:
       ostr << "Fragment";
       break;
-    case RDKit::ScaffoldNetwork::EdgeType::Generic:
+    case RDKix::ScaffoldNetwork::EdgeType::Generic:
       ostr << "Generic";
       break;
-    case RDKit::ScaffoldNetwork::EdgeType::GenericBond:
+    case RDKix::ScaffoldNetwork::EdgeType::GenericBond:
       ostr << "GenericBond";
       break;
-    case RDKit::ScaffoldNetwork::EdgeType::RemoveAttachment:
+    case RDKix::ScaffoldNetwork::EdgeType::RemoveAttachment:
       ostr << "RemoveAttachment";
       break;
-    case RDKit::ScaffoldNetwork::EdgeType::Initialize:
+    case RDKix::ScaffoldNetwork::EdgeType::Initialize:
       ostr << "Initialize";
       break;
     default:
@@ -168,7 +168,7 @@ inline std::ostream &operator<<(std::ostream &ostr,
 }
 //! allows edges to output nicely as strings
 inline std::ostream &operator<<(std::ostream &ostr,
-                                const RDKit::ScaffoldNetwork::NetworkEdge &e) {
+                                const RDKix::ScaffoldNetwork::NetworkEdge &e) {
   ostr << "NetworkEdge( " << e.beginIdx << "->" << e.endIdx
        << ", type:" << e.type << " )";
   return ostr;
@@ -176,16 +176,16 @@ inline std::ostream &operator<<(std::ostream &ostr,
 
 //! returns parameters for constructing scaffold networks using BRICS
 //! fragmentation
-RDKIT_SCAFFOLDNETWORK_EXPORT ScaffoldNetworkParams getBRICSNetworkParams();
+RDKIX_SCAFFOLDNETWORK_EXPORT ScaffoldNetworkParams getBRICSNetworkParams();
 
 }  // namespace ScaffoldNetwork
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
 namespace boost {
 namespace serialization {
 template <>
-struct version<RDKit::ScaffoldNetwork::ScaffoldNetwork> {
+struct version<RDKix::ScaffoldNetwork::ScaffoldNetwork> {
   BOOST_STATIC_CONSTANT(int, value = 1);
 };
 }  // namespace serialization

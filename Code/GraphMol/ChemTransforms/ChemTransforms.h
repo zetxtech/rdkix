@@ -2,10 +2,10 @@
 //  Copyright (C) 2006-2012 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_CHEMTRANSFORMS_H__
@@ -18,7 +18,7 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include "MolFragmenter.h"
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 typedef boost::shared_ptr<ROMol> ROMOL_SPTR;
 
@@ -35,7 +35,7 @@ typedef boost::shared_ptr<ROMol> ROMOL_SPTR;
     \return a copy of \c mol with the matching atoms and bonds (if any)
             removed.
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *deleteSubstructs(const ROMol &mol,
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *deleteSubstructs(const ROMol &mol,
                                                     const ROMol &query,
                                                     bool onlyFrags = false,
                                                     bool useChirality = false);
@@ -78,7 +78,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *deleteSubstructs(const ROMol &mol,
         and bonds (if any) replaced
 
 */
-RDKIT_CHEMTRANSFORMS_EXPORT std::vector<ROMOL_SPTR> replaceSubstructs(
+RDKIX_CHEMTRANSFORMS_EXPORT std::vector<ROMOL_SPTR> replaceSubstructs(
     const ROMol &mol, const ROMol &query, const ROMol &replacement,
     bool replaceAll = false, unsigned int replacementConnectionPoint = 0,
     bool useChirality = false);
@@ -97,7 +97,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT std::vector<ROMOL_SPTR> replaceSubstructs(
             removed and dummies at the connection points.
 */
 
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceSidechains(const ROMol &mol,
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *replaceSidechains(const ROMol &mol,
                                                      const ROMol &coreQuery,
                                                      bool useChirality = false);
 
@@ -133,7 +133,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceSidechains(const ROMol &mol,
             for deleting this molecule. If the core query is not matched, NULL
    is returned.
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
                                                const ROMol &core,
                                                const MatchVectType &matchVect,
                                                bool replaceDummies = true,
@@ -171,7 +171,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
             for deleting this molecule. If the core query is not matched, NULL
    is returned.
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
                                                const ROMol &coreQuery,
                                                bool replaceDummies = true,
                                                bool labelByIndex = false,
@@ -187,7 +187,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *replaceCore(const ROMol &mol,
     \return a new ROMol with the Murcko scaffold
             The client is responsible for deleting this molecule.
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *MurckoDecompose(const ROMol &mol);
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *MurckoDecompose(const ROMol &mol);
 
 //! \brief Combined two molecules to create a new one
 //!
@@ -202,7 +202,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *MurckoDecompose(const ROMol &mol);
             The new molecule has not been sanitized.
             The client is responsible for deleting this molecule.
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *combineMols(
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *combineMols(
     const ROMol &mol1, const ROMol &mol2,
     RDGeom::Point3D offset = RDGeom::Point3D(0, 0, 0));
 
@@ -227,7 +227,7 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *combineMols(
         in \c queries
 
 */
-RDKIT_CHEMTRANSFORMS_EXPORT void addRecursiveQueries(
+RDKIX_CHEMTRANSFORMS_EXPORT void addRecursiveQueries(
     ROMol &mol, const std::map<std::string, ROMOL_SPTR> &queries,
     const std::string &propName,
     std::vector<std::pair<unsigned int, std::string>> *reactantLabels =
@@ -247,20 +247,20 @@ RDKIT_CHEMTRANSFORMS_EXPORT void addRecursiveQueries(
     \param smartsColumn     - column with the SMARTS definitions of the queries
 
 */
-RDKIT_CHEMTRANSFORMS_EXPORT void parseQueryDefFile(
+RDKIX_CHEMTRANSFORMS_EXPORT void parseQueryDefFile(
     const std::string &filename, std::map<std::string, ROMOL_SPTR> &queryDefs,
     bool standardize = true, const std::string &delimiter = "\t",
     const std::string &comment = "//", unsigned int nameColumn = 0,
     unsigned int smartsColumn = 1);
 //! \overload
-RDKIT_CHEMTRANSFORMS_EXPORT void parseQueryDefFile(
+RDKIX_CHEMTRANSFORMS_EXPORT void parseQueryDefFile(
     std::istream *inStream, std::map<std::string, ROMOL_SPTR> &queryDefs,
     bool standardize = true, const std::string &delimiter = "\t",
     const std::string &comment = "//", unsigned int nameColumn = 0,
     unsigned int smartsColumn = 1);
 //! \brief equivalent to parseQueryDefFile() but the query definitions are
 /// explicitly passed in
-RDKIT_CHEMTRANSFORMS_EXPORT void parseQueryDefText(
+RDKIX_CHEMTRANSFORMS_EXPORT void parseQueryDefText(
     const std::string &queryDefText,
     std::map<std::string, ROMOL_SPTR> &queryDefs, bool standardize = true,
     const std::string &delimiter = "\t", const std::string &comment = "//",
@@ -268,12 +268,12 @@ RDKIT_CHEMTRANSFORMS_EXPORT void parseQueryDefText(
 
 namespace details {
 //! not recommended for use in other code
-RDKIT_CHEMTRANSFORMS_EXPORT void updateSubMolConfs(
+RDKIX_CHEMTRANSFORMS_EXPORT void updateSubMolConfs(
     const ROMol &mol, RWMol &res, boost::dynamic_bitset<> &removedAtoms);
-RDKIT_CHEMTRANSFORMS_EXPORT void copyStereoGroups(
+RDKIX_CHEMTRANSFORMS_EXPORT void copyStereoGroups(
     const std::map<const Atom *, Atom *> &molAtomMap, const ROMol &mol,
     RWMol &newMol);
 }  // namespace details
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

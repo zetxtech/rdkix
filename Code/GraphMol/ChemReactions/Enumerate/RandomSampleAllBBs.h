@@ -39,7 +39,7 @@
 #include <boost/random/uniform_int_distribution.hpp>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 //! RandomSampleAllBBsStrategy
 //!  Randomly sample rgroup indices
 
@@ -65,7 +65,7 @@ namespace RDKit {
   See EnumerationStrategyBase for more details and usage.
 */
 
-class RDKIT_CHEMREACTIONS_EXPORT RandomSampleAllBBsStrategy
+class RDKIX_CHEMREACTIONS_EXPORT RandomSampleAllBBsStrategy
     : public EnumerationStrategyBase {
   boost::uint64_t m_numPermutationsProcessed{0};
   size_t m_offset{0};
@@ -175,10 +175,10 @@ class RDKIT_CHEMREACTIONS_EXPORT RandomSampleAllBBsStrategy
   }
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::RandomSampleAllBBsStrategy, 1)
+BOOST_CLASS_VERSION(RDKix::RandomSampleAllBBsStrategy, 1)
 #endif
 
 #endif

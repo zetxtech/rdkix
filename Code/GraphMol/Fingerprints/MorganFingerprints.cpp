@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2009-2022, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -34,12 +34,12 @@
 //
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/MorganFingerprints.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MorganFingerprints {
 
 SparseIntVect<uint32_t> *getFingerprint(
@@ -52,7 +52,7 @@ SparseIntVect<uint32_t> *getFingerprint(
       MorganFingerprint::getMorganGenerator<std::uint32_t>(
           radius, countSimulation, useChirality, useBondTypes,
           onlyNonzeroInvariants, includeRedundantEnvironments));
-  RDKit::FingerprintFuncArguments args;
+  RDKix::FingerprintFuncArguments args;
   args.fromAtoms = fromAtoms;
   args.customAtomInvariants = invariants;
   AdditionalOutput ao;
@@ -97,7 +97,7 @@ SparseIntVect<uint32_t> *getHashedFingerprint(
           radius, countSimulation, useChirality, useBondTypes,
           onlyNonzeroInvariants, includeRedundantEnvironments, nullptr, nullptr,
           nBits));
-  RDKit::FingerprintFuncArguments args;
+  RDKix::FingerprintFuncArguments args;
   args.fromAtoms = fromAtoms;
   args.customAtomInvariants = invariants;
   AdditionalOutput ao;
@@ -133,7 +133,7 @@ ExplicitBitVect *getFingerprintAsBitVect(
           radius, countSimulation, useChirality, useBondTypes,
           onlyNonzeroInvariants, includeRedundantEnvironments, nullptr, nullptr,
           nBits));
-  RDKit::FingerprintFuncArguments args;
+  RDKix::FingerprintFuncArguments args;
   args.fromAtoms = fromAtoms;
   args.customAtomInvariants = invariants;
   AdditionalOutput ao;
@@ -155,4 +155,4 @@ ExplicitBitVect *getFingerprintAsBitVect(
 }
 
 }  // end of namespace MorganFingerprints
-}  // end of namespace RDKit
+}  // end of namespace RDKix

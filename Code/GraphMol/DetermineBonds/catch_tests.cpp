@@ -1,7 +1,7 @@
 #include "RDGeneral/test.h"
 #include "catch.hpp"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/DetermineBonds/DetermineBonds.h>
@@ -12,7 +12,7 @@
 #include <fstream>
 #include <GraphMol/Resonance.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Determine Connectivity") {
   SECTION("Van der Waals") {

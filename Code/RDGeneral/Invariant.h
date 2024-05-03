@@ -3,10 +3,10 @@
 // LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -48,7 +48,7 @@
 
 namespace Invar {
 
-class RDKIT_RDGENERAL_EXPORT Invariant : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT Invariant : public std::runtime_error {
  public:
   Invariant(const char* prefix, const char* mess, const char* expr,
             const char* const file, int line)
@@ -86,7 +86,7 @@ class RDKIT_RDGENERAL_EXPORT Invariant : public std::runtime_error {
 
   int line_d;
 };
-RDKIT_RDGENERAL_EXPORT std::ostream& operator<<(std::ostream& s,
+RDKIX_RDGENERAL_EXPORT std::ostream& operator<<(std::ostream& s,
                                                 const Invariant& inv);
 }  // end of namespace Invar
 

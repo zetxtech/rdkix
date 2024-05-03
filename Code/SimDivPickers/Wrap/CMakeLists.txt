@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_SIMDIVPICKERS_BUILD)
-rdkit_python_extension(rdSimDivPickers 
+remove_definitions(-DRDKIX_SIMDIVPICKERS_BUILD)
+rdkix_python_extension(rdSimDivPickers 
                        MaxMinPicker.cpp LeaderPicker.cpp HierarchicalClusterPicker.cpp 
                        rdSimDivPickers.cpp 
                        DEST SimDivFilters

@@ -37,9 +37,9 @@
 #include <Catalogs/CatalogParams.h>
 #include "FilterCatalogEntry.h"
 
-namespace RDKit {
+namespace RDKix {
 class FilterCatalog;
-class RDKIT_FILTERCATALOG_EXPORT FilterCatalogParams
+class RDKIX_FILTERCATALOG_EXPORT FilterCatalogParams
     : public RDCatalog::CatalogParams {
  public:
   enum FilterCatalogs {
@@ -119,7 +119,7 @@ class RDKIT_FILTERCATALOG_EXPORT FilterCatalogParams
 };
 
 typedef RDCatalog::Catalog<FilterCatalogEntry, FilterCatalogParams> FCatalog;
-class RDKIT_FILTERCATALOG_EXPORT FilterCatalog : public FCatalog {
+class RDKIX_FILTERCATALOG_EXPORT FilterCatalog : public FCatalog {
  public:
   // syntactic sugar for getMatch(es) return values.
   typedef boost::shared_ptr<FilterCatalogEntry> SENTRY;
@@ -247,7 +247,7 @@ class RDKIT_FILTERCATALOG_EXPORT FilterCatalog : public FCatalog {
   std::vector<SENTRY> d_entries;
 };
 
-RDKIT_FILTERCATALOG_EXPORT bool FilterCatalogCanSerialize();
+RDKIX_FILTERCATALOG_EXPORT bool FilterCatalogCanSerialize();
 
 //! Run a filter catalog on a set of smiles strings
 /*
@@ -257,14 +257,14 @@ RDKIT_FILTERCATALOG_EXPORT bool FilterCatalogCanSerialize();
   \returns a vector of vectors.  For each input smiles string, returns
                    a vector of shared_ptr::FilterMatchEntry objects.
                    If a molecule matches no filters, the vector will be empty.
-                   If a smiles can't be parsed, a 'no valid RDKit molecule'
+                   If a smiles can't be parsed, a 'no valid RDKix molecule'
                    catalog entry is returned.
 
 */
-RDKIT_FILTERCATALOG_EXPORT
+RDKIX_FILTERCATALOG_EXPORT
 std::vector<std::vector<boost::shared_ptr<const FilterCatalogEntry>>>
 RunFilterCatalog(const FilterCatalog &filterCatalog,
                  const std::vector<std::string> &smiles, int numThreads = 1);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

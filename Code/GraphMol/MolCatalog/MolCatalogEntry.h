@@ -10,11 +10,11 @@
 #include <fstream>
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 //! This class is used to store ROMol objects in a MolCatalog
-class RDKIT_MOLCATALOG_EXPORT MolCatalogEntry : public RDCatalog::CatalogEntry {
+class RDKIX_MOLCATALOG_EXPORT MolCatalogEntry : public RDCatalog::CatalogEntry {
  public:
   MolCatalogEntry() : d_descrip("") {
     dp_props = new Dict();
@@ -104,6 +104,6 @@ class RDKIT_MOLCATALOG_EXPORT MolCatalogEntry : public RDCatalog::CatalogEntry {
   unsigned int d_order{0};
   std::string d_descrip;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

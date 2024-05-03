@@ -2,10 +2,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_SHAPE_ENCODER_H_20050125_0800_
@@ -16,7 +16,7 @@ class UniformGrid3D;
 class Transform3D;
 }  // namespace RDGeom
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Conformer;
 namespace MolShapes {
@@ -40,7 +40,7 @@ namespace MolShapes {
   \param ignoreHs  if true, ignore the hydrogen atoms in the shape encoding
   process
 */
-RDKIT_SHAPEHELPERS_EXPORT void EncodeShape(
+RDKIX_SHAPEHELPERS_EXPORT void EncodeShape(
     const ROMol &mol, RDGeom::UniformGrid3D &grid, int confId = -1,
     const RDGeom::Transform3D *trans = nullptr, double vdwScale = 0.8,
     double stepSize = 0.25, int maxLayers = -1, bool ignoreHs = true);
@@ -64,10 +64,10 @@ RDKIT_SHAPEHELPERS_EXPORT void EncodeShape(
   \param ignoreHs  if true, ignore the hydrogen atoms in the shape encoding
   process
 */
-RDKIT_SHAPEHELPERS_EXPORT void EncodeShape(
+RDKIX_SHAPEHELPERS_EXPORT void EncodeShape(
     const Conformer &conf, RDGeom::UniformGrid3D &grid,
     const RDGeom::Transform3D *trans = nullptr, double vdwScale = 0.8,
     double stepSize = 0.25, int maxLayers = -1, bool ignoreHs = true);
 }  // namespace MolShapes
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

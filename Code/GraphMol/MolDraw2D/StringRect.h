@@ -1,23 +1,23 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Original author: David Cosgrove (CozChemIx).
 //
 // This is used by DrawText classes.  It is not intended for general use.
 
-#ifndef RDKIT_STRINGRECT_H
-#define RDKIT_STRINGRECT_H
+#ifndef RDKIX_STRINGRECT_H
+#define RDKIX_STRINGRECT_H
 
 #include <Geometry/point.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // for holding dimensions of the rectangle round a string.
@@ -118,6 +118,6 @@ struct StringRect {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_STRINGRECT_H
+#endif  // RDKIX_STRINGRECT_H

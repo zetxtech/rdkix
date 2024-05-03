@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
@@ -16,7 +16,7 @@
 #include <DataStructs/ExplicitBitVect.h>
 #include <DataStructs/FPBReader.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void _basicsTest(FPBReader &fps) {
   fps.init();
@@ -356,13 +356,13 @@ void test6LazyFPBReaderTanimotoNeighbors() {
 // need forward declarations of some of the detail functions (doesn't make sense
 // to include these in a public interface and there aren't enough of them to
 // make it worth adding a detail header)
-namespace RDKit {
+namespace RDKix {
 namespace detail {
 boost::dynamic_bitset<> *bytesToBitset(const std::uint8_t *fpData,
                                        std::uint32_t nBits);
 std::uint8_t *bitsetToBytes(const boost::dynamic_bitset<> &bitset);
 }  // namespace detail
-}  // namespace RDKit
+}  // namespace RDKix
 void test7BitsetDetails() {
   BOOST_LOG(rdInfoLog)
       << "-----------------------\n Testing some internal bitset details"
@@ -381,7 +381,7 @@ void test7BitsetDetails() {
       // -------------------
       // start with bytes -> a bitset
       boost::dynamic_bitset<> *dbs =
-          RDKit::detail::bytesToBitset(bytes.get(), fps.nBits());
+          RDKix::detail::bytesToBitset(bytes.get(), fps.nBits());
       TEST_ASSERT(dbs);
       TEST_ASSERT(dbs->size() == fps.nBits());
       TEST_ASSERT(dbs->count() == 17);
@@ -394,7 +394,7 @@ void test7BitsetDetails() {
 
       // -------------------
       // and now go the other way
-      std::uint8_t *newBytes = RDKit::detail::bitsetToBytes(*dbs);
+      std::uint8_t *newBytes = RDKix::detail::bitsetToBytes(*dbs);
       TEST_ASSERT(newBytes);
       for (unsigned int i = 0; i < fps.nBits() / 8; ++i) {
         TEST_ASSERT(newBytes[i] == bytes[i]);

@@ -2,17 +2,17 @@
 //  Copyright (C) 2006-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <RDGeneral/BoostStartInclude.h>
@@ -32,7 +32,7 @@
 #include <RDGeneral/BadFileException.h>
 #include <GraphMol/ChemTransforms/ChemTransforms.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace details {
 void updateSubMolConfs(const ROMol &mol, RWMol &res,
                        boost::dynamic_bitset<> &removedAtoms) {
@@ -1038,4 +1038,4 @@ void parseQueryDefText(const std::string &queryDefText,
   parseQueryDefFile(&inStream, queryDefs, standardize, delimiter, comment,
                     nameColumn, smartsColumn);
 }
-}  // end of namespace RDKit
+}  // end of namespace RDKix

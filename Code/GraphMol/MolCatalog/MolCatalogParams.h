@@ -9,10 +9,10 @@
 #include <string>
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 
 //! container for user parameters used to create a mol catalog
-class RDKIT_MOLCATALOG_EXPORT MolCatalogParams
+class RDKIX_MOLCATALOG_EXPORT MolCatalogParams
     : public RDCatalog::CatalogParams {
  public:
   MolCatalogParams() { d_typeStr = "MolCatalog Parameters"; }
@@ -35,6 +35,6 @@ class RDKIT_MOLCATALOG_EXPORT MolCatalogParams
   //! initialize from a string containing a pickle
   void initFromString(const std::string &text) override;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

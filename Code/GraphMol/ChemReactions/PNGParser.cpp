@@ -2,10 +2,10 @@
 //  Copyright (c) 2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -14,13 +14,13 @@
 #include <GraphMol/FileParsers/PNGParser.h>
 #include <boost/algorithm/string.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace PNGData {
 const std::string rxnSmilesTag = "ReactionSmiles";
 const std::string rxnSmartsTag = "ReactionSmarts";
 const std::string rxnRxnTag = "ReactionRxn";
-const std::string rxnPklTag = "rdkitReactionPKL";
+const std::string rxnPklTag = "rdkixReactionPKL";
 }  // namespace PNGData
 
 std::string addChemicalReactionToPNGStream(const ChemicalReaction &rxn,
@@ -81,4 +81,4 @@ ChemicalReaction *PNGStreamToChemicalReaction(std::istream &inStream) {
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

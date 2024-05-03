@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_GRAPHMOL_BUILD)
-rdkit_python_extension(rdchem
+remove_definitions(-DRDKIX_GRAPHMOL_BUILD)
+rdkix_python_extension(rdchem
                        rdchem.cpp Table.cpp Atom.cpp Bond.cpp Mol.cpp
                        Conformer.cpp RingInfo.cpp EditableMol.cpp MonomerInfo.cpp
                        ResonanceMolSupplier.cpp MolBundle.cpp StereoGroup.cpp SubstanceGroup.cpp
@@ -9,7 +9,7 @@ rdkit_python_extension(rdchem
                        SmilesParse ChemTransforms SubstructMatch GraphMol
                        MarvinParser)
 
-rdkit_python_extension(rdmolops
+rdkix_python_extension(rdmolops
                        rdmolops.cpp MolOps.cpp
                        ChiralityOps.cpp
                        DEST Chem
@@ -18,7 +18,7 @@ rdkit_python_extension(rdmolops
                        FileParsers SubstructMatch Fingerprints ChemTransforms
                        Subgraphs SmilesParse MolTransforms GraphMol)
 
-rdkit_python_extension(rdqueries
+rdkix_python_extension(rdqueries
                        rdqueries.cpp Queries.cpp
                        DEST Chem
                        LINK_LIBRARIES
@@ -54,7 +54,7 @@ set(rdmolfiles_sources rdmolfiles.cpp
 
 endif(RDK_BUILD_COMPRESSED_SUPPLIERS)
 
-rdkit_python_extension(rdmolfiles
+rdkix_python_extension(rdmolfiles
                        ${rdmolfiles_sources}
                        DEST Chem
                        LINK_LIBRARIES  SubstructMatch
@@ -62,7 +62,7 @@ rdkit_python_extension(rdmolfiles
                        MarvinParser
                        RDGeometryLib RDGeneral RDBoost)
 
-rdkit_python_extension(rdtrajectory
+rdkix_python_extension(rdtrajectory
                        Trajectory.cpp rdTrajectory.cpp
                        DEST Chem
                        LINK_LIBRARIES Trajectory RDGeometryLib RDGeneral RDBoost GraphMol)

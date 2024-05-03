@@ -5,10 +5,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Nonbonded.h"
 #include "Params.h"
@@ -83,7 +83,7 @@ double calcEleEnergy(unsigned int, unsigned int, double dist, double chargeTerm,
   double corr_dist = dist + 0.05;
   double const diel = 332.0716;
   double const sc1_4 = 0.75;
-  if (dielModel == RDKit::MMFF::DISTANCE) {
+  if (dielModel == RDKix::MMFF::DISTANCE) {
     corr_dist *= corr_dist;
   }
   return (diel * chargeTerm / corr_dist * (is1_4 ? sc1_4 : 1.0));
@@ -181,7 +181,7 @@ void EleContrib::getGrad(double *pos, double *grad) const {
   double *g1 = &(grad[3 * d_at1Idx]);
   double *g2 = &(grad[3 * d_at2Idx]);
   double corr_dist = dist + 0.05;
-  corr_dist *= ((d_dielModel == RDKit::MMFF::DISTANCE) ? corr_dist * corr_dist
+  corr_dist *= ((d_dielModel == RDKix::MMFF::DISTANCE) ? corr_dist * corr_dist
                                                        : corr_dist);
   double dE_dr = -332.0716 * (double)(d_dielModel)*d_chargeTerm / corr_dist *
                  (d_is1_4 ? 0.75 : 1.0);

@@ -1,19 +1,19 @@
 //
-//  Copyright (C) 2016-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2016-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
 #include <RDGeneral/BoostEndInclude.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <iostream>
 #include <algorithm>
 #include "SmilesWrite.h"
@@ -23,7 +23,7 @@
 #include <GraphMol/Chirality.h>
 
 namespace SmilesParseOps {
-using namespace RDKit;
+using namespace RDKix;
 
 const std::string cxsmilesindex = "_cxsmilesindex";
 const std::string cxsgTracker = "_sgTracker";
@@ -39,14 +39,14 @@ std::map<std::string, std::string> sgroupTypemap = {
     {"alt", "COP"}, {"ran", "COP"}, {"blk", "COP"}};
 
 template <typename Q>
-void addquery(Q *qry, std::string symbol, RDKit::RWMol &mol, unsigned int idx) {
+void addquery(Q *qry, std::string symbol, RDKix::RWMol &mol, unsigned int idx) {
   PRECONDITION(qry, "bad query");
   auto *qa = new QueryAtom(0);
   qa->setQuery(qry);
   qa->setNoImplicit(true);
   mol.replaceAtom(idx, qa);
   if (symbol != "") {
-    mol.getAtomWithIdx(idx)->setProp(RDKit::common_properties::atomLabel,
+    mol.getAtomWithIdx(idx)->setProp(RDKix::common_properties::atomLabel,
                                      symbol);
   }
 
@@ -168,7 +168,7 @@ std::string read_text_to(Iterator &first, Iterator last, std::string delims) {
         ++next;
       }
       if (next == last || *next != ';') {
-        throw RDKit::SmilesParseException(
+        throw RDKix::SmilesParseException(
             "failure parsing CXSMILES extensions: quoted block not terminated "
             "with ';'");
       }
@@ -323,7 +323,7 @@ Bond *get_bond_with_smiles_idx(const ROMol &mol, unsigned idx) {
   ((_bidx_) >= startBondIdx && (_bidx_) < startBondIdx + mol.getNumBonds())
 
 template <typename Iterator>
-bool parse_atom_values(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_atom_values(Iterator &first, Iterator last, RDKix::RWMol &mol,
                        unsigned int startAtomIdx) {
   if (first >= last || *first != ':') {
     return false;
@@ -333,7 +333,7 @@ bool parse_atom_values(Iterator &first, Iterator last, RDKit::RWMol &mol,
   while (first <= last && *first != '$') {
     std::string tkn = read_text_to(first, last, ";$");
     if (tkn != "" && VALID_ATIDX(atIdx)) {
-      mol.getAtomWithIdx(atIdx)->setProp(RDKit::common_properties::molFileValue,
+      mol.getAtomWithIdx(atIdx)->setProp(RDKix::common_properties::molFileValue,
                                          tkn);
     }
     ++atIdx;
@@ -349,7 +349,7 @@ bool parse_atom_values(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_atom_props(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_atom_props(Iterator &first, Iterator last, RDKix::RWMol &mol,
                       unsigned int startAtomIdx) {
   if (first >= last) {
     return false;
@@ -387,7 +387,7 @@ bool parse_atom_props(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_atom_labels(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_atom_labels(Iterator &first, Iterator last, RDKix::RWMol &mol,
                        unsigned int startAtomIdx) {
   if (first >= last || *first != '$') {
     return false;
@@ -398,7 +398,7 @@ bool parse_atom_labels(Iterator &first, Iterator last, RDKit::RWMol &mol,
     std::string tkn = read_text_to(first, last, ";$");
     if (!tkn.empty() && VALID_ATIDX(atIdx)) {
       mol.getAtomWithIdx(atIdx - startAtomIdx)
-          ->setProp(RDKit::common_properties::atomLabel, tkn);
+          ->setProp(RDKix::common_properties::atomLabel, tkn);
     }
     ++atIdx;
     if (first <= last && *first != '$') {
@@ -413,7 +413,7 @@ bool parse_atom_labels(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_coords(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_coords(Iterator &first, Iterator last, RDKix::RWMol &mol,
                   unsigned int startAtomIdx) {
   if (first >= last || *first != '(') {
     return false;
@@ -464,7 +464,7 @@ bool parse_coords(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_coordinate_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_coordinate_bonds(Iterator &first, Iterator last, RDKix::RWMol &mol,
                             Bond::BondType typ, unsigned int startAtomIdx,
                             unsigned int startBondIdx) {
   if (first >= last || (*first != 'C' && *first != 'H')) {
@@ -505,7 +505,7 @@ bool parse_coordinate_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_unsaturation(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_unsaturation(Iterator &first, Iterator last, RDKix::RWMol &mol,
                         unsigned int startAtomIdx) {
   if (first + 1 >= last || *first != 'u') {
     return false;
@@ -535,7 +535,7 @@ bool parse_unsaturation(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_ring_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_ring_bonds(Iterator &first, Iterator last, RDKix::RWMol &mol,
                       unsigned int startAtomIdx) {
   if (first >= last || *first != 'r' || first + 1 >= last ||
       *(first + 1) != 'b' || first + 2 >= last || *(first + 2) != ':') {
@@ -602,7 +602,7 @@ bool parse_ring_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_linknodes(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_linknodes(Iterator &first, Iterator last, RDKix::RWMol &mol,
                      unsigned int startAtomIdx) {
   // these look like: |LN:1:1.3.2.6,4:1.4.3.6|
   // that's two records:
@@ -684,7 +684,7 @@ bool parse_linknodes(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_data_sgroup(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_data_sgroup(Iterator &first, Iterator last, RDKix::RWMol &mol,
                        unsigned int startAtomIdx, unsigned int nSGroups) {
   // these look like: |SgD:2,1:FIELD:info::::|
   // example from CXSMILES docs:
@@ -765,8 +765,8 @@ bool parse_data_sgroup(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 namespace {
-std::vector<RDKit::SubstanceGroup>::iterator find_matching_sgroup(
-    std::vector<RDKit::SubstanceGroup> &sgs, unsigned int targetId) {
+std::vector<RDKix::SubstanceGroup>::iterator find_matching_sgroup(
+    std::vector<RDKix::SubstanceGroup> &sgs, unsigned int targetId) {
   return std::find_if(sgs.begin(), sgs.end(), [targetId](const auto &sg) {
     unsigned int pval;
     if (sg.getPropIfPresent(cxsmilesindex, pval)) {
@@ -779,7 +779,7 @@ std::vector<RDKit::SubstanceGroup>::iterator find_matching_sgroup(
 }
 }  // namespace
 template <typename Iterator>
-bool parse_sgroup_hierarchy(Iterator &first, Iterator last, RDKit::RWMol &mol) {
+bool parse_sgroup_hierarchy(Iterator &first, Iterator last, RDKix::RWMol &mol) {
   // these look like: |SgH:1:0|
   // from CXSMILES docs:
   //    SgH:parentSgroupIndex1:childSgroupIndex1.childSgroupIndex2,parentSgroupIndex2:childSgroupIndex1
@@ -836,7 +836,7 @@ bool parse_sgroup_hierarchy(Iterator &first, Iterator last, RDKit::RWMol &mol) {
 }
 
 template <typename Iterator>
-bool parse_polymer_sgroup(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_polymer_sgroup(Iterator &first, Iterator last, RDKix::RWMol &mol,
                           unsigned int startAtomIdx, unsigned int nSGroups) {
   // these look like:
   //    |Sg:n:6,1,2,4::hh&#44;f:6,0,:4,2,|
@@ -949,7 +949,7 @@ bool parse_polymer_sgroup(Iterator &first, Iterator last, RDKit::RWMol &mol,
 
 template <typename Iterator>
 bool parse_variable_attachments(Iterator &first, Iterator last,
-                                RDKit::RWMol &mol, unsigned int startAtomIdx) {
+                                RDKix::RWMol &mol, unsigned int startAtomIdx) {
   // these look like: CO*.C1=CC=NC=C1 |m:2:3.5.4|
   // that corresponds to replacing the bond to atom 2 with bonds to atom 3, 5,
   // or 4
@@ -1014,7 +1014,7 @@ bool parse_variable_attachments(Iterator &first, Iterator last,
 }
 
 template <typename Iterator>
-bool parse_wedged_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_wedged_bonds(Iterator &first, Iterator last, RDKix::RWMol &mol,
                         unsigned int startAtomIdx, unsigned int startBondIdx) {
   // these look like: CC(O)Cl |w:1.0|
   // also wD and wU for down and up wedges.
@@ -1118,7 +1118,7 @@ bool parse_wedged_bonds(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_doublebond_stereo(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_doublebond_stereo(Iterator &first, Iterator last, RDKix::RWMol &mol,
                              unsigned int, unsigned int startBondIdx,
                              Bond::BondStereo stereo) {
   // these look like: C1CCCC/C=C/CCC1 |ctu:5|
@@ -1187,7 +1187,7 @@ bool parse_doublebond_stereo(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_substitution(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_substitution(Iterator &first, Iterator last, RDKix::RWMol &mol,
                         unsigned int startAtomIdx) {
   if (first >= last || *first != 's' || first + 1 >= last ||
       *(first + 1) != ':') {
@@ -1232,7 +1232,7 @@ bool parse_substitution(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool processRadicalSection(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool processRadicalSection(Iterator &first, Iterator last, RDKix::RWMol &mol,
                            unsigned int numRadicalElectrons,
                            unsigned int startAtomIdx) {
   if (first >= last) {
@@ -1268,7 +1268,7 @@ bool processRadicalSection(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_radicals(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_radicals(Iterator &first, Iterator last, RDKix::RWMol &mol,
                     unsigned int startAtomIdx) {
   if (first >= last || *first != '^') {
     return false;
@@ -1310,7 +1310,7 @@ bool parse_radicals(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_enhanced_stereo(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_enhanced_stereo(Iterator &first, Iterator last, RDKix::RWMol &mol,
                            unsigned int startAtomIdx) {
   StereoGroupType group_type = StereoGroupType::STEREO_ABSOLUTE;
   if (*first == 'a') {
@@ -1385,7 +1385,7 @@ bool parse_enhanced_stereo(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 
 template <typename Iterator>
-bool parse_it(Iterator &first, Iterator last, RDKit::RWMol &mol,
+bool parse_it(Iterator &first, Iterator last, RDKix::RWMol &mol,
               unsigned int startAtomIdx, unsigned int startBondIdx) {
   if (first >= last || *first != '|') {
     return false;
@@ -1501,7 +1501,7 @@ bool parse_it(Iterator &first, Iterator last, RDKit::RWMol &mol,
 }
 }  // namespace parser
 
-void parseCXExtensions(RDKit::RWMol &mol, const std::string &extText,
+void parseCXExtensions(RDKix::RWMol &mol, const std::string &extText,
                        std::string::const_iterator &first,
                        unsigned int startAtomIdx, unsigned int startBondIdx) {
   // BOOST_LOG(rdWarningLog) << "parseCXNExtensions: " << extText << std::endl;
@@ -1509,14 +1509,14 @@ void parseCXExtensions(RDKit::RWMol &mol, const std::string &extText,
     return;
   }
   if (extText[0] != '|') {
-    throw RDKit::SmilesParseException(
+    throw RDKix::SmilesParseException(
         "CXSMILES extension does not start with |");
   }
   first = extText.begin();
   bool ok =
       parser::parse_it(first, extText.end(), mol, startAtomIdx, startBondIdx);
   if (!ok) {
-    throw RDKit::SmilesParseException("failure parsing CXSMILES extensions");
+    throw RDKix::SmilesParseException("failure parsing CXSMILES extensions");
   }
   processCXSmilesLabels(mol);
   mol.clearProp("_cxsmilesLabelsProcessed");
@@ -1524,7 +1524,7 @@ void parseCXExtensions(RDKit::RWMol &mol, const std::string &extText,
 }
 }  // end of namespace SmilesParseOps
 
-namespace RDKit {
+namespace RDKix {
 namespace SmilesWrite {
 namespace {
 
@@ -2312,4 +2312,4 @@ std::string getCXExtensions(const ROMol &mol, std::uint32_t flags) {
   return res;
 }
 }  // namespace SmilesWrite
-}  // namespace RDKit
+}  // namespace RDKix

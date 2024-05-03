@@ -36,8 +36,8 @@
 import re
 import sys
 
-from rdkit import Chem
-from rdkit.Chem import rdMMPA
+from rdkix import Chem
+from rdkix.Chem import rdMMPA
 
 
 def find_correct(f_array):
@@ -232,7 +232,7 @@ if __name__ == '__main__':
 optimization work.
 
 Original:
-~/RDKit_git/Contrib/mmpa > time head -100 ../../Data/Zinc/zim.smi | python rfrag.py > zim.frags.o
+~/RDKix_git/Contrib/mmpa > time head -100 ../../Data/Zinc/zim.smi | python rfrag.py > zim.frags.o
 
 real	0m9.752s
 user	0m9.704s

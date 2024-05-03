@@ -34,7 +34,7 @@
 //
 #include <RDGeneral/test.h>
 #include <iostream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SLNParse/SLNParse.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -44,62 +44,62 @@
 using namespace std;
 
 void test1() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test1 " << std::endl;
 
   sln = "CH4";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
 
   delete mol;
   sln = "CH3CH3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 0);
 
   delete mol;
   sln = "C[1]H2CH2CH2@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
 
   delete mol;
   sln = "C[2]H2CH2CH2@2";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
 
   delete mol;
   sln = "C[200]H2CH2CH2@200";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
 
   delete mol;
   sln = "C[1:foo]H2CH2CH2@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
 
   delete mol;
   sln = "C[foo;bar=1;baz=bletch]H4";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 0);
 
   delete mol;
   sln = "CH3CH(CH3)OCH3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 5);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 0);
@@ -110,7 +110,7 @@ void test1() {
 
   delete mol;
   sln = "CH3CH(CH3)OCH3.Cl";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 0);
@@ -123,7 +123,7 @@ void test1() {
 
   delete mol;
   sln = "H-O-H";
-  mol = RDKit::SLNToMol(sln, false);
+  mol = RDKix::SLNToMol(sln, false);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getAtomicNum() == 1);
@@ -132,13 +132,13 @@ void test1() {
 
   delete mol;
   sln = "HC(F)(Cl)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
 
   delete mol;
   sln = "CH3C(=O)H";
-  mol = RDKit::SLNToMol(sln, false);  //,1);
+  mol = RDKix::SLNToMol(sln, false);  //,1);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 7);
 
@@ -147,80 +147,80 @@ void test1() {
 }
 
 void test2() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test2: bond orders " << std::endl;
 
   sln = "CH3CH3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   sln = "CH2-CH2";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   sln = "CH2=CH2";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
 
   delete mol;
   sln = "CH#CH";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::TRIPLE);
+              RDKix::Bond::TRIPLE);
   delete mol;
 
   sln = "C[1]H-CH2-CH2-CH2-CH2-CH=@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(3, 4)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(4, 5)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(5, 0)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
 
   delete mol;
   sln = "C[1]H:CH:CH:CH:CH:CH:@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
   TEST_ASSERT(mol->getBondBetweenAtoms(3, 4)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
   TEST_ASSERT(mol->getBondBetweenAtoms(4, 5)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
   TEST_ASSERT(mol->getBondBetweenAtoms(5, 0)->getBondType() ==
-              RDKit::Bond::AROMATIC);
+              RDKix::Bond::AROMATIC);
 
   delete mol;
   BOOST_LOG(rdInfoLog) << "\tdone" << std::endl;
@@ -228,70 +228,70 @@ void test2() {
 
 void test3() {
   std::string pval;
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test3: atom properties " << std::endl;
 
   sln = "C[-]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -1);
 
   delete mol;
   sln = "C[charge=-]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -1);
 
   delete mol;
   sln = "C[charge=-1]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -1);
 
   delete mol;
   sln = "C[CHARGE=-1]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -1);
 
   delete mol;
   sln = "C[chARgE=-1]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -1);
 
   delete mol;
   sln = "C[1:-2]H2";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == -2);
 
   delete mol;
   sln = "C[1:+]H5";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == 1);
 
   delete mol;
   sln = "C[1:+2]H6";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getFormalCharge() == 2);
 
   delete mol;
   sln = "C[1:foo;bar=baz]H4";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->hasProp("foo"));
@@ -304,7 +304,7 @@ void test3() {
 
   delete mol;
   sln = "H[I=2]-C(-H[I=2])(F)F";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 5);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getIsotope() == 2);
@@ -312,7 +312,7 @@ void test3() {
 
   delete mol;
   sln = "C[*]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getNumExplicitHs() == 3);
@@ -325,7 +325,7 @@ void test3() {
 
   delete mol;
   sln = "CH[I=2]";
-  mol = RDKit::SLNToMol(sln);  //,true,1);
+  mol = RDKix::SLNToMol(sln);  //,true,1);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 2);
 #endif
@@ -333,21 +333,21 @@ void test3() {
   // but this should not be accepted:
   delete mol;
   sln = "CH4[I=13]";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
   delete mol;
   BOOST_LOG(rdInfoLog) << "\tdone" << std::endl;
 }
 
 void test4() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test4: hydrogen handling " << std::endl;
 
   sln = "CH4";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getNumExplicitHs() == 4);
@@ -356,7 +356,7 @@ void test4() {
 
   delete mol;
   sln = "C[-]H3";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getNumExplicitHs() == 3);
@@ -369,8 +369,8 @@ void test4() {
 
 void test5() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -378,7 +378,7 @@ void test5() {
 
 #if 1
   sln = "C[charge=+1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   TEST_ASSERT(patt->getAtomWithIdx(0)->getNumExplicitHs() == 0);
@@ -386,201 +386,201 @@ void test5() {
   TEST_ASSERT(patt->getAtomWithIdx(0)->getNumImplicitHs() == 0);
 
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
 
   delete patt;
   sln = "AnyAny";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete patt;
   sln = "Any-Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete patt;
   sln = "Any=Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "Any#Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete patt;
   sln = "Any:Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete patt;
   sln = "Any~Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete patt;
   sln = "C[charge=+1|charge=+2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C[CH2+](C)[CH+2]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   delete mol;
   smi = "C[CH2+](C)[N+2]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   delete mol;
   smi = "C[N+](C)[CH+2]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "C[charge=+1;HC=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C[CH2+](CC)[NH+]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0][0].second == 1);
 
   delete patt;
   sln = "Any[charge=+1;HC=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C[CH2+](CC)[NH+]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0][0].second == 1);
 
   delete patt;
   sln = "Any[charge=+1;!HC=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C[CH2+](CC)[NH+]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0][0].second == 4);
 
   delete mol;
   smi = "[H]CC[H]";
-  mol = RDKit::SmilesToMol(smi, 0, false);
+  mol = RDKix::SmilesToMol(smi, 0, false);
   TEST_ASSERT(mol);
-  RDKit::MolOps::sanitizeMol(*mol);
+  RDKix::MolOps::sanitizeMol(*mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
 
   delete patt;
   sln = "AnyAny";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
   delete patt;
   sln = "HevHev";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   delete patt;
   sln = "AnyHev";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
   delete patt;
 
   delete mol;
   smi = "FC(Cl)(Br)CI";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  RDKit::MolOps::sanitizeMol(*mol);
+  RDKix::MolOps::sanitizeMol(*mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
 
   sln = "HalC";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
   delete patt;
 #endif
 
   delete mol;
   smi = "CO[2H]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  RDKit::MolOps::sanitizeMol(*mol);
+  RDKix::MolOps::sanitizeMol(*mol);
   TEST_ASSERT(mol->getNumAtoms() == 3);
 
   sln = "H";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   delete patt;
 
   sln = "H[i=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
   delete patt;
 
   sln = "H[i=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   delete patt;
 
   sln = "Het";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   delete patt;
 
   delete mol;
@@ -589,151 +589,151 @@ void test5() {
 
 void test6() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test6: ring queries " << std::endl;
 
   sln = "C[rbc=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   TEST_ASSERT(!patt->getAtomWithIdx(0)->hasProp("rbc"));
 
   smi = "C1CC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete mol;
   smi = "C1C2C1C2";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete mol;
   smi = "CCC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete patt;
   sln = "C[rbc=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   delete mol;
   smi = "C1CC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   smi = "CCC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete patt;
   sln = "C[rbc=3]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   delete mol;
   smi = "C1CC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   smi = "C1C2C1C2";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   // test case sensitivity, just because we should:
   delete patt;
   sln = "C[rBC=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   TEST_ASSERT(!patt->getAtomWithIdx(0)->hasProp("rbc"));
 
   delete mol;
   smi = "C1CC1C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete patt;
   sln = "C[r]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   delete mol;
   smi = "C1CC1C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete patt;
   sln = "C[1:rbc=f]CCC@1";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 4);
 
   delete mol;
   smi = "C1CCC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete mol;
   smi = "C1CC2C1CC2";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete patt;
   sln = "C[1:rbc=f]C[rbc=f]CC@1";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 4);
 
   delete mol;
   smi = "C1CCC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   smi = "C1CC2C1CC2";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete patt;
   sln = "C[1:rbc=f]C[rbc=f]C[rbc=f]C@1";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 4);
 
   delete mol;
   smi = "C1CCC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete mol;
   smi = "C1CC2C1CC2";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
 
   delete mol;
   delete patt;
@@ -742,161 +742,161 @@ void test6() {
 
 void test7() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test7: qualified queries " << std::endl;
 
   sln = "C[charge=+1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "C[charge<1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete patt;
   sln = "C[charge<=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete patt;
   sln = "C[charge>=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "C[charge>1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "C[charge!=0]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   sln = "C[charge!=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
 
   delete mol;
   smi = "C[CH2+](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
 
   delete mol;
   smi = "C[CH](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
 
   delete mol;
   smi = "C[CH3+2](C)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
 
   delete mol;
   delete patt;
@@ -905,22 +905,22 @@ void test7() {
 
 void test8() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test8: more complex atom properties " << std::endl;
 
   sln = "Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 4);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 4);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[1][0].second == 1);
   TEST_ASSERT(mV[2][0].second == 2);
@@ -928,20 +928,20 @@ void test8() {
 
   delete patt;
   sln = "CO[F]C";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 3);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 2);
 
   delete patt;
   sln = "Any[TBO=4]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   // CHECK: should TBO really match both Cs here or only atom 3 (i.e. should it
   // be degree or valence)?
   TEST_ASSERT(mV.size() == 2);
@@ -950,116 +950,116 @@ void test8() {
 
   delete patt;
   sln = "Any[TAC=2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0][0].second == 2);
 
   delete patt;
   sln = "Any[TAC>2]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[1][0].second == 3);
 
   delete patt;
   sln = "Any[HC=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
 
   delete patt;
   sln = "Any[HC=0]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0][0].second == 1);
   TEST_ASSERT(mV[1][0].second == 2);
 
   delete patt;
   sln = "Any[HC=F]H3";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0][0].second == 3);
 
   delete patt;
   sln = "Any[HAC>1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[1][0].second == 2);
 
   delete patt;
   sln = "Any[HAC=1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0][0].second == 1);
   TEST_ASSERT(mV[1][0].second == 3);
 
   delete patt;
   sln = "Any[HAC=F]~Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0][0].second == 1);
   TEST_ASSERT(mV[1][0].second == 3);
 
   delete patt;
   sln = "AnyAny[TAC=F]Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 3);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0][1].second == 2);
 
   delete mol;
   smi = "CCC=C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete patt;
   sln = "CC";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
 
   delete patt;
   sln = "CC[F]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete patt;
   sln = "CC[F]H3";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
 
   delete patt;
   delete mol;
@@ -1068,80 +1068,80 @@ void test8() {
 
 void test9() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test9: recursive SLNs " << std::endl;
 
   sln = "Any[is=Cl,Br,I]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   smi = "C(=O)Cl";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 2);
 
   delete mol;
   smi = "C(=O)Br";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 2);
 
   delete mol;
   smi = "C(=O)I";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 2);
 
   delete mol;
   smi = "C(=O)C";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
 
   delete patt;
   sln = "C[is=C=O]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
 
   delete mol;
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
 
   delete patt;
   sln = "Any[is=C,O;charge=-1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 0);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 0);
   delete mol;
   smi = "C(=O)[O-]";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 2);
@@ -1149,14 +1149,14 @@ void test9() {
   delete patt;
   // make sure we aren't case sensitive:
   sln = "Any[Is=C,O;charge=-1]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "[C-](=O)O";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
@@ -1164,14 +1164,14 @@ void test9() {
   delete patt;
   // check handling of 'not':
   sln = "Any[not=N,O]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C(=O)OCN";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV.size() == 2);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
@@ -1185,8 +1185,8 @@ void test9() {
 
 void test10() {
   std::string pval;
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -1194,13 +1194,13 @@ void test10() {
 
   // do recursions in the 'is':
   sln = "Any[is=C[is=Any=O],O]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 3);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 3);
   TEST_ASSERT(mV.size() == 3);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
@@ -1212,14 +1212,14 @@ void test10() {
   // do recursions in the 'not':
   delete patt;
   sln = "Any[not=C[is=Any=O],O]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 3);
@@ -1227,34 +1227,34 @@ void test10() {
 
   // move the anchor:
   sln = "C[is=C=O]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
   delete mol;
   smi = "C(=O)OC";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
   delete patt;
 
   sln = "C[is=O=C*]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 1);
   TEST_ASSERT(mV[0][0].second == 0);
   delete patt;
 
   sln = "C[is=O=C]";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 1);
-  TEST_ASSERT(!RDKit::SubstructMatch(*mol, *patt, mV));
+  TEST_ASSERT(!RDKix::SubstructMatch(*mol, *patt, mV));
   delete patt;
 
   delete mol;
@@ -1264,23 +1264,23 @@ void test10() {
 
 void test11() {
   std::string pval, cip;
-  RDKit::RWMol *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test11: chiral SLNs " << std::endl;
 
   sln = "CH(Cl)(F)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getAtomWithIdx(0)->getChiralTag() ==
-              RDKit::Atom::CHI_UNSPECIFIED);
+              RDKix::Atom::CHI_UNSPECIFIED);
 
   delete mol;
   sln = "C[s=N]H(Cl)(F)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   std::cerr << sln << " -> " << MolToSmiles(*mol, true) << " "
@@ -1290,14 +1290,14 @@ void test11() {
 
   delete mol;
   sln = "ClC[s=i]H(F)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
 // mol->debugMol(std::cerr);
 #if 0
-  RDKit::MolOps::assignAtomChiralCodes(*mol);
-  TEST_ASSERT(mol->getAtomWithIdx(1)->hasProp(RDKit::common_properties::_CIPCode));
-  mol->getAtomWithIdx(1)->getProp(RDKit::common_properties::_CIPCode,cip);
+  RDKix::MolOps::assignAtomChiralCodes(*mol);
+  TEST_ASSERT(mol->getAtomWithIdx(1)->hasProp(RDKix::common_properties::_CIPCode));
+  mol->getAtomWithIdx(1)->getProp(RDKix::common_properties::_CIPCode,cip);
   TEST_ASSERT(cip=="R");
 #endif
   std::cerr << sln << " -> " << MolToSmiles(*mol, true) << " "
@@ -1307,7 +1307,7 @@ void test11() {
 
   delete mol;
   sln = "FC[s=N]H(Cl)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   std::cerr << sln << " -> " << MolToSmiles(*mol, true) << " "
             << mol->getNumAtoms() << std::endl;
@@ -1316,7 +1316,7 @@ void test11() {
 
   delete mol;
   sln = "FC[s=N]H(Br)Cl";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   std::cerr << sln << " -> " << MolToSmiles(*mol, true) << " "
@@ -1326,7 +1326,7 @@ void test11() {
 
   delete mol;
   sln = "HC[s=N](Cl)(F)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   std::cerr << sln << " -> " << MolToSmiles(*mol, true) << " "
@@ -1336,7 +1336,7 @@ void test11() {
 
   delete mol;
   sln = "C[s=i]H(Cl)(F)Br";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   smi = MolToSmiles(*mol, true);
@@ -1349,22 +1349,22 @@ void test11() {
 }
 
 void test12() {
-  RDKit::RWMol *patt, *mol;
-  std::vector<RDKit::MatchVectType> mV;
+  RDKix::RWMol *patt, *mol;
+  std::vector<RDKix::MatchVectType> mV;
   std::string sln, smi;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test12: bond queries and properties " << std::endl;
 
   sln = "Any-Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
 
   smi = "C=CN";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV.size() == 1);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 1);
@@ -1372,10 +1372,10 @@ void test12() {
 
   delete patt;
   sln = "Any~Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 1);
@@ -1385,10 +1385,10 @@ void test12() {
 
   delete patt;
   sln = "Any-=Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 1);
@@ -1398,10 +1398,10 @@ void test12() {
 
   delete patt;
   sln = "Any=-Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 1);
@@ -1411,30 +1411,30 @@ void test12() {
 
   delete patt;
   sln = "Any-:Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 1);
   TEST_ASSERT(mV[0][1].second == 2);
 
   sln = "Any-[type=2]Any";
   delete patt;
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 1);
   delete patt;
 
   sln = "Any-[type=2|type=1]Any";
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
   TEST_ASSERT(mV[0][1].second == 1);
@@ -1444,25 +1444,25 @@ void test12() {
 
   sln = "O~[r]C";
   delete patt;
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
 
   delete mol;
   smi = "O=CC1COC1";
-  mol = RDKit::SmilesToMol(smi);
+  mol = RDKix::SmilesToMol(smi);
   TEST_ASSERT(mol);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 2);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 2);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 4);
   TEST_ASSERT(mV[1][0].second == 4);
 
   sln = "O~[!r]C";
   delete patt;
-  patt = RDKit::SLNQueryToMol(sln);
+  patt = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(patt);
   TEST_ASSERT(patt->getNumAtoms() == 2);
-  TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+  TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
   TEST_ASSERT(mV[0].size() == 2);
   TEST_ASSERT(mV[0][0].second == 0);
 
@@ -1472,14 +1472,14 @@ void test12() {
 }
 
 void test13() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test13: ring closure details " << std::endl;
 
   sln = "C[1]H2CH2CH2CH2CH2CH2@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
@@ -1487,7 +1487,7 @@ void test13() {
 
   delete mol;
   sln = "C[1]H2CH2(CH2CH2CH2CH2@1)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
@@ -1495,7 +1495,7 @@ void test13() {
 
   delete mol;
   sln = "CH2(C[1]H2)CH2(CH2CH2CH2@1)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 6);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
@@ -1503,7 +1503,7 @@ void test13() {
 
   delete mol;
   sln = "C[1]H2CH2CH2CH2C[2]HCH@1CH2CH2@2";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 8);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 2);
@@ -1512,7 +1512,7 @@ void test13() {
 
   delete mol;
   sln = "C[1]H2(CH2(CH2(CH2(C[2]H(CH@1(CH2(CH2@2)))))))";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 8);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 2);
@@ -1521,7 +1521,7 @@ void test13() {
 
   delete mol;
   sln = "C[1](CH2CH2CH(CH2CH2@1)CH2CH2@1)Cl";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 9);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 3);
@@ -1531,107 +1531,107 @@ void test13() {
 
   delete mol;
   sln = "CH2(CH2@1)CH2(C[1]H2)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
 
   delete mol;
   sln = "CH2(CH2@1)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
 
   delete mol;
   sln = "C[1]H-CH2-C(@1)=O";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 0)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
 
   delete mol;
   sln = "C[1]H-CH2-CH(@1)O";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 0)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   sln = "C[1]H-CH2-C(=@1)O";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 0)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   sln = "C[1]H-CH2-C(O)=@1";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 0)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   sln = "C[1]H-CH2-C(O)(=@1)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 4);
   TEST_ASSERT(mol->getRingInfo()->numRings() == 1);
   TEST_ASSERT(mol->getBondBetweenAtoms(0, 1)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(1, 2)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 0)->getBondType() ==
-              RDKit::Bond::DOUBLE);
+              RDKix::Bond::DOUBLE);
   TEST_ASSERT(mol->getBondBetweenAtoms(2, 3)->getBondType() ==
-              RDKit::Bond::SINGLE);
+              RDKix::Bond::SINGLE);
 
   delete mol;
   BOOST_LOG(rdInfoLog) << "\tdone" << std::endl;
 }
 
 void test14() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "Test14: error catching " << std::endl;
 
   sln = "CH2(C@1H2)CH2(CH2CH2C[1]H2)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
 
   delete mol;
   sln = "CH2(CH2[1])CH2(CH2CH2CH2@1)";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
 
   delete mol;
@@ -1639,7 +1639,7 @@ void test14() {
 }
 
 void test15() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -1647,7 +1647,7 @@ void test15() {
 
   {
     sln = "CH4<blah>";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->hasProp("blah"));
     delete mol;
@@ -1655,18 +1655,18 @@ void test15() {
 
   {
     sln = "CH4<name=methane>";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
-    TEST_ASSERT(mol->hasProp(RDKit::common_properties::_Name));
+    TEST_ASSERT(mol->hasProp(RDKix::common_properties::_Name));
     std::string sval;
-    mol->getProp(RDKit::common_properties::_Name, sval);
+    mol->getProp(RDKix::common_properties::_Name, sval);
     TEST_ASSERT(sval == "methane");
     delete mol;
   }
 
   {
     sln = "CH4<blah;foo=\"1\">";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->hasProp("blah"));
     TEST_ASSERT(mol->hasProp("foo"));
@@ -1677,7 +1677,7 @@ void test15() {
   }
   {
     sln = "CH4<blah;foo=1>";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->hasProp("blah"));
     TEST_ASSERT(mol->hasProp("foo"));
@@ -1690,11 +1690,11 @@ void test15() {
     sln =
         "CH4<name=\"methane\";blah;coord2d=(1,0);too.small;test=lots and-lots "
         "of special,characters all at once.>";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->hasProp("blah"));
     std::string sval;
-    mol->getProp(RDKit::common_properties::_Name, sval);
+    mol->getProp(RDKix::common_properties::_Name, sval);
     TEST_ASSERT(sval == "methane");
     mol->getProp("coord2d", sval);
     TEST_ASSERT(sval == "(1,0)");
@@ -1709,7 +1709,7 @@ void test15() {
     // Though it isn't part of the spec,
     // sometimes we have multiple ctab property blocks:
     sln = "CH4<foo=1><bar=2>";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->hasProp("foo"));
     TEST_ASSERT(mol->hasProp("bar"));
@@ -1725,7 +1725,7 @@ void test15() {
 }
 
 void test16() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -1733,7 +1733,7 @@ void test16() {
 
   {
     sln = "CH3ZCH3{Z:O}";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 3);
     TEST_ASSERT(mol->getAtomWithIdx(1)->getAtomicNum() == 8);
@@ -1741,7 +1741,7 @@ void test16() {
   }
   {
     sln = "CH3ZGCH3{Z:O}{G:N}";
-    mol = RDKit::SLNToMol(sln);
+    mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 4);
     TEST_ASSERT(mol->getAtomWithIdx(1)->getAtomicNum() == 8);
@@ -1760,7 +1760,7 @@ void testIssue278() {
 
   {
     std::string sln = "Any[IS=C(=O)]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1768,7 +1768,7 @@ void testIssue278() {
   }
   {
     std::string sln = "Any[NOT=C(=O)]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1776,7 +1776,7 @@ void testIssue278() {
   }
   {
     std::string sln = "Any[IS=C(=O)]";
-    RDKit::RWMol *mol = RDKit::SLNToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1784,7 +1784,7 @@ void testIssue278() {
   }
   {
     std::string sln = "Any[NOT=C(=O)]";
-    RDKit::RWMol *mol = RDKit::SLNToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1798,7 +1798,7 @@ void testIssue277() {
 
   {
     std::string sln = "Any[NOT=C,IS=O]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1806,7 +1806,7 @@ void testIssue277() {
   }
   {
     std::string sln = "Any[NOT=C;IS=O]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1814,7 +1814,7 @@ void testIssue277() {
   }
   {
     std::string sln = "Any[NOT=C&IS=O]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1822,7 +1822,7 @@ void testIssue277() {
   }
   {
     std::string sln = "Any[NOT=C,N&IS=O,S]";
-    RDKit::RWMol *mol = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *mol = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(mol);
     TEST_ASSERT(mol->getNumAtoms() == 1);
     TEST_ASSERT(mol->getAtomWithIdx(0)->hasQuery());
@@ -1830,16 +1830,16 @@ void testIssue277() {
   }
   {
     std::string sln = "Hev[!r;NOT=N]";
-    RDKit::RWMol *patt = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *patt = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(patt);
     TEST_ASSERT(patt->getNumAtoms() == 1);
     TEST_ASSERT(patt->getAtomWithIdx(0)->hasQuery());
 
     std::string smi = "CC1CC1N";
-    RDKit::RWMol *mol = RDKit::SmilesToMol(smi);
-    std::vector<RDKit::MatchVectType> mV;
+    RDKix::RWMol *mol = RDKix::SmilesToMol(smi);
+    std::vector<RDKix::MatchVectType> mV;
     TEST_ASSERT(mol);
-    TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+    TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
     TEST_ASSERT(mV.size() == 1);
     TEST_ASSERT(mV[0].size() == 1);
     TEST_ASSERT(mV[0][0].second == 0);
@@ -1849,16 +1849,16 @@ void testIssue277() {
   }
   {
     std::string sln = "Hev[!r&NOT=N]";
-    RDKit::RWMol *patt = RDKit::SLNQueryToMol(sln);
+    RDKix::RWMol *patt = RDKix::SLNQueryToMol(sln);
     TEST_ASSERT(patt);
     TEST_ASSERT(patt->getNumAtoms() == 1);
     TEST_ASSERT(patt->getAtomWithIdx(0)->hasQuery());
 
     std::string smi = "CC1CC1N";
-    RDKit::RWMol *mol = RDKit::SmilesToMol(smi);
-    std::vector<RDKit::MatchVectType> mV;
+    RDKix::RWMol *mol = RDKix::SmilesToMol(smi);
+    std::vector<RDKix::MatchVectType> mV;
     TEST_ASSERT(mol);
-    TEST_ASSERT(RDKit::SubstructMatch(*mol, *patt, mV) == 1);
+    TEST_ASSERT(RDKix::SubstructMatch(*mol, *patt, mV) == 1);
     TEST_ASSERT(mV.size() == 1);
     TEST_ASSERT(mV[0].size() == 1);
     TEST_ASSERT(mV[0][0].second == 0);
@@ -1916,7 +1916,7 @@ void testIssue277() {
         "EOF"};
     unsigned int i = 0;
     while (slns[i] != "EOF") {
-      RDKit::RWMol *mol = RDKit::SLNQueryToMol(slns[i++]);
+      RDKix::RWMol *mol = RDKix::SLNQueryToMol(slns[i++]);
       TEST_ASSERT(mol);
       delete mol;
     }
@@ -1926,7 +1926,7 @@ void testIssue277() {
 }
 
 void test17() {
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   std::string sln;
 
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -1934,29 +1934,29 @@ void test17() {
 
   // test whitespace at end
   sln = "CH4 \t";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
 
   delete mol;
   sln = "CH4\t";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(mol);
   TEST_ASSERT(mol->getNumAtoms() == 1);
 
   delete mol;
   sln = "CH4\tfff";
-  mol = RDKit::SLNToMol(sln);
+  mol = RDKix::SLNToMol(sln);
   TEST_ASSERT(!mol);
 
   delete mol;
   sln = "C[charge=+1] \t";
-  mol = RDKit::SLNQueryToMol(sln);
+  mol = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(mol);
 
   delete mol;
   sln = "C[charge=+1] \tfoo";
-  mol = RDKit::SLNQueryToMol(sln);
+  mol = RDKix::SLNQueryToMol(sln);
   TEST_ASSERT(!mol);
   delete mol;
 }

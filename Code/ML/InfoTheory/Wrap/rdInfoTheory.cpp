@@ -2,10 +2,10 @@
 //
 //  Copyright (C) 2003-2008 Greg Landrum and Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdinfotheory_array_API
 #include <RDBoost/Wrap.h>
@@ -117,7 +117,7 @@ BOOST_PYTHON_MODULE(rdInfoTheory) {
       "Module containing bunch of functions for information metrics and a "
       "ranker to rank bits";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   wrap_ranker();
   wrap_corrmatgen();

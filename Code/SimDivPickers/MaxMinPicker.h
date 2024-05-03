@@ -3,10 +3,10 @@
 //  Copyright (C) 2017 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MAXMINPICKER_H
@@ -32,7 +32,7 @@ namespace RDPickers {
  *  aimed at diversity. See documentation for "pick()" member function for the
  *algorithm details
  */
-class RDKIT_SIMDIVPICKERS_EXPORT MaxMinPicker : public DistPicker {
+class RDKIX_SIMDIVPICKERS_EXPORT MaxMinPicker : public DistPicker {
  public:
   /*! \brief Default Constructor
    *
@@ -59,19 +59,19 @@ class RDKIT_SIMDIVPICKERS_EXPORT MaxMinPicker : public DistPicker {
    *                 random number.
    */
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize) const;
 
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize,
-                           const RDKit::INT_VECT &firstPicks,
+                           const RDKix::INT_VECT &firstPicks,
                            int seed = -1) const;
 
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize,
-                           const RDKit::INT_VECT &firstPicks, int seed,
+                           const RDKix::INT_VECT &firstPicks, int seed,
                            double &threshold) const;
 
   /*! \brief Contains the implementation for the MaxMin diversity picker
@@ -110,8 +110,8 @@ class RDKIT_SIMDIVPICKERS_EXPORT MaxMinPicker : public DistPicker {
    *                 If this is <0 the generator will be seeded with a
    *                 random number.
    */
-  RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
-                       unsigned int pickSize, RDKit::INT_VECT firstPicks,
+  RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
+                       unsigned int pickSize, RDKix::INT_VECT firstPicks,
                        int seed = -1) const {
     CHECK_INVARIANT(distMat, "Invalid Distance Matrix");
     if (!poolSize) {
@@ -125,9 +125,9 @@ class RDKIT_SIMDIVPICKERS_EXPORT MaxMinPicker : public DistPicker {
   }
 
   /*! \overload */
-  RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
+  RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
                        unsigned int pickSize) const override {
-    RDKit::INT_VECT iv;
+    RDKix::INT_VECT iv;
     return pick(distMat, poolSize, pickSize, iv);
   }
 };
@@ -141,9 +141,9 @@ struct MaxMinPickInfo {
 // we implement this here in order to allow arbitrary functors without link
 // errors
 template <typename T>
-RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize,
-                                       const RDKit::INT_VECT &firstPicks,
+                                       const RDKix::INT_VECT &firstPicks,
                                        int seed, double &threshold) const {
   if (!poolSize) {
     throw ValueErrorException("empty pool to pick from");
@@ -153,7 +153,7 @@ RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
     throw ValueErrorException("pickSize cannot be larger than the poolSize");
   }
 
-  RDKit::INT_VECT picks;
+  RDKix::INT_VECT picks;
 
   unsigned int memsize = (unsigned int)(poolSize * sizeof(MaxMinPickInfo));
   MaxMinPickInfo *pinfo = new MaxMinPickInfo[memsize];
@@ -185,7 +185,7 @@ RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
     picked = 1;
 
   } else {
-    for (RDKit::INT_VECT::const_iterator pIdx = firstPicks.begin();
+    for (RDKix::INT_VECT::const_iterator pIdx = firstPicks.begin();
          pIdx != firstPicks.end(); ++pIdx) {
       pick = static_cast<unsigned int>(*pIdx);
       if (pick >= poolSize) {
@@ -280,9 +280,9 @@ RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
 }
 
 template <typename T>
-RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize,
-                                       const RDKit::INT_VECT &firstPicks,
+                                       const RDKix::INT_VECT &firstPicks,
                                        int seed) const {
   double threshold = -1.0;
   return MaxMinPicker::lazyPick(func, poolSize, pickSize, firstPicks, seed,
@@ -290,9 +290,9 @@ RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
 }
 
 template <typename T>
-RDKit::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT MaxMinPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize) const {
-  RDKit::INT_VECT firstPicks;
+  RDKix::INT_VECT firstPicks;
   double threshold = -1.0;
   int seed = -1;
   return MaxMinPicker::lazyPick(func, poolSize, pickSize, firstPicks, seed,

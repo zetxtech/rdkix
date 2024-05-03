@@ -1,8 +1,8 @@
-rdkit_library(ConformerParser ConformerParser.cpp
+rdkix_library(ConformerParser ConformerParser.cpp
               LINK_LIBRARIES GraphMol)
-target_compile_definitions(SmilesParse PRIVATE RDKIT_CONFORMERPARSER_BUILD)
+target_compile_definitions(SmilesParse PRIVATE RDKIX_CONFORMERPARSER_BUILD)
 
-rdkit_test(testConformerParser test.cpp
+rdkix_test(testConformerParser test.cpp
            LINK_LIBRARIES ConformerParser FileParsers SmilesParse
            GraphMol RDGeometryLib RDGeneral)
 

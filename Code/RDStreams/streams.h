@@ -6,14 +6,14 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
-namespace RDKit {
+namespace RDKix {
 // gzstream from a file
-class RDKIT_RDSTREAMS_EXPORT gzstream
+class RDKIX_RDSTREAMS_EXPORT gzstream
     : public boost::iostreams::filtering_istream {
   std::ifstream is;
 
  public:
   gzstream(const std::string &fname);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

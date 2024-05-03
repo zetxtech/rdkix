@@ -2,10 +2,10 @@
 //  Copyright (C) 2018-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef _MSC_VER
 #pragma warning(disable : 4503)
@@ -13,8 +13,8 @@
 
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <GraphMol/StereoGroup.h>
 
@@ -52,7 +52,7 @@ using namespace Queries;
 #endif
 namespace rj = rapidjson;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolInterchange {
 
@@ -674,13 +674,13 @@ void readQueries(RWMol *mol, const rj::Value &repVal,
                  const DefaultValueCache &bondDefaults,
                  const JSONParseParameters &params) {
   PRECONDITION(mol, "no molecule");
-  PRECONDITION(repVal["name"].GetString() == std::string("rdkitQueries"),
+  PRECONDITION(repVal["name"].GetString() == std::string("rdkixQueries"),
                "bad queries");
   if (!repVal.HasMember("formatVersion")) {
     throw FileParseException("Bad Format: missing format_version");
   }
   if (repVal["formatVersion"].GetInt() > currentQueryRepresentationVersion) {
-    BOOST_LOG(rdWarningLog) << "RDKit query representation format version "
+    BOOST_LOG(rdWarningLog) << "RDKix query representation format version "
                             << repVal["formatVersion"].GetInt()
                             << " too recent. Ignoring it." << std::endl;
     return;
@@ -745,16 +745,16 @@ void readQueries(RWMol *mol, const rj::Value &repVal,
   }
 }
 
-void readRDKitRepresentation(RWMol *mol, const rj::Value &repVal,
+void readRDKixRepresentation(RWMol *mol, const rj::Value &repVal,
                              const JSONParseParameters &params) {
   PRECONDITION(mol, "no molecule");
-  PRECONDITION(repVal["name"].GetString() == std::string("rdkitRepresentation"),
+  PRECONDITION(repVal["name"].GetString() == std::string("rdkixRepresentation"),
                "bad representation");
   if (!repVal.HasMember("formatVersion")) {
     throw FileParseException("Bad Format: missing format_version");
   }
-  if (repVal["formatVersion"].GetInt() > currentRDKitRepresentationVersion) {
-    BOOST_LOG(rdWarningLog) << "RDKit representation format version "
+  if (repVal["formatVersion"].GetInt() > currentRDKixRepresentationVersion) {
+    BOOST_LOG(rdWarningLog) << "RDKix representation format version "
                             << repVal["formatVersion"].GetInt()
                             << " too recent. Ignoring it." << std::endl;
     return;
@@ -900,11 +900,11 @@ void processMol(RWMol *mol, const rj::Value &molval,
         throw FileParseException(
             "Bad Format: representation has no name member");
       }
-      if (propVal["name"].GetString() == std::string("rdkitRepresentation")) {
-        readRDKitRepresentation(mol, propVal, params);
+      if (propVal["name"].GetString() == std::string("rdkixRepresentation")) {
+        readRDKixRepresentation(mol, propVal, params);
       } else if (propVal["name"].GetString() == std::string("partialCharges")) {
         readPartialCharges(mol, propVal, params);
-      } else if (propVal["name"].GetString() == std::string("rdkitQueries")) {
+      } else if (propVal["name"].GetString() == std::string("rdkixQueries")) {
         readQueries(mol, propVal, atomDefaults, bondDefaults, params);
       }
     }
@@ -928,14 +928,14 @@ std::vector<boost::shared_ptr<ROMol>> DocToMols(
     if (doc["commonchem"]["version"].GetInt() != currentMolJSONVersion) {
       throw FileParseException("Bad Format: bad version in JSON");
     }
-  } else if (doc.HasMember("rdkitjson")) {
-    if (!doc["rdkitjson"].HasMember("version")) {
+  } else if (doc.HasMember("rdkixjson")) {
+    if (!doc["rdkixjson"].HasMember("version")) {
       throw FileParseException("Bad Format: missing version in JSON");
     }
     // FIX: we want to be backwards compatible
     // Version 10 files can be read by 11, but not vice versa.
-    if (int jsonVersion = doc["rdkitjson"]["version"].GetInt();
-        jsonVersion > currentRDKitJSONVersion || jsonVersion < 10) {
+    if (int jsonVersion = doc["rdkixjson"]["version"].GetInt();
+        jsonVersion > currentRDKixJSONVersion || jsonVersion < 10) {
       throw FileParseException("Bad Format: bad version in JSON");
     }
   } else {
@@ -996,4 +996,4 @@ std::vector<boost::shared_ptr<ROMol>> JSONDataToMols(
 }
 
 }  // namespace MolInterchange
-}  // end of namespace RDKit
+}  // end of namespace RDKix

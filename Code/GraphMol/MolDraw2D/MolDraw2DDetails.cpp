@@ -2,10 +2,10 @@
 //  Copyright (C) 2015-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <GraphMol/MolDraw2D/MolDraw2DDetails.h>
@@ -18,9 +18,9 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
-// implementation from $RDBASE/rdkit/sping/pid.py
+// implementation from $RDBASE/rdkix/sping/pid.py
 void arcPoints(const Point2D &cds1, const Point2D &cds2,
                std::vector<Point2D> &res, float startAng, float extent) {
   // Note: this implementation is simple and not particularly efficient.
@@ -403,7 +403,7 @@ std::vector<std::tuple<Point2D, Point2D, Point2D, Point2D>> getWavyLineSegments(
   return res;
 }
 
-RDKIT_MOLDRAW2D_EXPORT void calcArrowHead(Point2D &arrowEnd, Point2D &arrow1,
+RDKIX_MOLDRAW2D_EXPORT void calcArrowHead(Point2D &arrowEnd, Point2D &arrow1,
                                           Point2D &arrow2,
                                           const Point2D &arrowBegin,
                                           bool asPolygon, double frac,
@@ -485,4 +485,4 @@ void adjustLineEndForEllipse(const Point2D &centre, double xradius,
 }
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,16 +2,16 @@
 #  Copyright (C) 2018 Greg Landrum
 #   All Rights Reserved
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 import os
 import sys
 import time
 
-from rdkit import RDConfig, TestRunner
+from rdkix import RDConfig, TestRunner
 
 if __name__ == '__main__':
   script = 'test_list.py'

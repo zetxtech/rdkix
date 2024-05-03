@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDThreads.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/Resonance.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/Chirality.h>
@@ -36,7 +36,7 @@
 
 using boost::make_iterator_range;
 
-namespace RDKit {
+namespace RDKix {
 namespace detail {
 
 namespace {
@@ -732,4 +732,4 @@ void MatchSubqueries(const ROMol &mol, QueryAtom::QUERYATOM_QUERY *query,
 }
 
 }  // end of namespace detail
-}  // namespace RDKit
+}  // namespace RDKix

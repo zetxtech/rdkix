@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/MonomerInfo.h>
 #include <GraphMol/MolPickler.h>
@@ -33,7 +33,7 @@
 #include <fstream>
 #include <boost/lexical_cast.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdInfoLog) << "testing atom query parsing" << std::endl;
@@ -5149,7 +5149,7 @@ void testMarvinSMATag() {
     TEST_ASSERT(m->getAtomWithIdx(3)->getProp<std::string>(
                     common_properties::MRV_SMA) == "[#7;H2A]");
     // this should be similar to [#7;AH2:4][c;r6:3]:[c;r6:1]-[#16H1:2]
-    //  RDKit makes these recursive smarts, not "ANDED" smarts which are a
+    //  RDKix makes these recursive smarts, not "ANDED" smarts which are a
     //  simpler case
     std::string sma = MolToSmarts(*m);
     TEST_ASSERT(sma ==
@@ -5179,7 +5179,7 @@ void testGithub1689() {
                        << std::endl;
 
   std::string molb =
-      "rdkit_blank_line_before_M_END_test.sdf\n"
+      "rdkix_blank_line_before_M_END_test.sdf\n"
       "  ChemDraw12181709392D\n"
       "\n"
       "  2  1  0  0  0  0  0  0  0  0999 V2000\n"
@@ -5422,12 +5422,12 @@ void testLocaleSwitcher() {
   }
 
   {
-    RDKit::Utils::LocaleSwitcher ls;
+    RDKix::Utils::LocaleSwitcher ls;
     sprintf(buffer, "%0.2f", d);
     CHECK_INVARIANT(std::string(buffer) == "-1.00", "Locale Switcher Fail");
     // test locale switcher recursion
     {
-      RDKit::Utils::LocaleSwitcher ls;
+      RDKix::Utils::LocaleSwitcher ls;
       sprintf(buffer, "%0.2f", d);
       CHECK_INVARIANT(std::string(buffer) == "-1.00", "Locale Switcher Fail");
     }

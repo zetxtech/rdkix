@@ -1,12 +1,12 @@
 //
 // Created by Gareth Jones on 5/30/2020.
 //
-// Copyright 2020-2022 Schrodinger, Inc and other RDKit contributors
+// Copyright 2020-2022 Schrodinger, Inc and other RDKix contributors
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 #include <RDBoost/Wrap.h>
 #include <RDBoost/python.h>
@@ -18,7 +18,7 @@
 
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 
@@ -135,8 +135,8 @@ PyObject *tautomerGetSubstructMatchesWithTautomers(
 
 }  // namespace
 
-namespace RDKit {
-struct tautomerquery_pickle_suite : rdkit_pickle_suite {
+namespace RDKix {
+struct tautomerquery_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const TautomerQuery &self) {
     if (!TautomerQueryCanSerialize()) {
       throw_runtime_error("Pickling of TautomerQuery instances is not enabled");
@@ -165,7 +165,7 @@ python::object TQToBinary(const TautomerQuery &tq) {
   return python::object(
       python::handle<>(PyBytes_FromStringAndSize(res.c_str(), res.length())));
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 struct TautomerQuery_wrapper {
   static void wrap() {
@@ -236,7 +236,7 @@ struct TautomerQuery_wrapper {
     python::def(
         "TautomerQueryCanSerialize", TautomerQueryCanSerialize,
         "Returns True if the TautomerQuery is serializable "
-        "(requires that the RDKit was built with boost::serialization)");
+        "(requires that the RDKix was built with boost::serialization)");
   }
 };
 

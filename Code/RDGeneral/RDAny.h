@@ -29,8 +29,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RDANY_H
-#define RDKIT_RDANY_H
+#ifndef RDKIX_RDANY_H
+#define RDKIX_RDANY_H
 #include <any>
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/utility.hpp>
@@ -43,7 +43,7 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
-namespace RDKit {
+namespace RDKix {
 
 // RDValue does not dynamically create POD types (kind of like
 //  cdiggins::any)  However, it doesn't use RTTI type info
@@ -213,5 +213,5 @@ typename boost::disable_if<boost::is_arithmetic<T>, T>::type from_rdany(
   return rdany_cast<T>(arg);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

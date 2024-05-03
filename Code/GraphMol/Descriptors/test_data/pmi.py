@@ -2,16 +2,16 @@
 # Copyright (C) 2016 Greg Landrum
 #
 #   @@ All Rights Reserved @@
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 
 import numpy as np
 
 # generates reference data for the PMI descriptors
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkix import Chem
+from rdkix.Chem import AllChem
 
 
 def GetMoments(mol, includeWeights):

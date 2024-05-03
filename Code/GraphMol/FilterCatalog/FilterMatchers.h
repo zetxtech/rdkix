@@ -34,7 +34,7 @@
 #define __RD_FILTER_MATCHER_H__
 #include <utility>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include "FilterMatcherBase.h"
 #include <GraphMol/MolPickler.h>
@@ -45,7 +45,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 std::string getArgName(const boost::shared_ptr<FilterMatcherBase> &arg) {
@@ -57,7 +57,7 @@ std::string getArgName(const boost::shared_ptr<FilterMatcherBase> &arg) {
 }  // namespace
 
 namespace FilterMatchOps {
-class RDKIT_FILTERCATALOG_EXPORT And : public FilterMatcherBase {
+class RDKIX_FILTERCATALOG_EXPORT And : public FilterMatcherBase {
   boost::shared_ptr<FilterMatcherBase> arg1;
   boost::shared_ptr<FilterMatcherBase> arg2;
 
@@ -125,7 +125,7 @@ class RDKIT_FILTERCATALOG_EXPORT And : public FilterMatcherBase {
 #endif
 };
 
-class RDKIT_FILTERCATALOG_EXPORT Or : public FilterMatcherBase {
+class RDKIX_FILTERCATALOG_EXPORT Or : public FilterMatcherBase {
   boost::shared_ptr<FilterMatcherBase> arg1;
   boost::shared_ptr<FilterMatcherBase> arg2;
 
@@ -185,7 +185,7 @@ class RDKIT_FILTERCATALOG_EXPORT Or : public FilterMatcherBase {
 #endif
 };
 
-class RDKIT_FILTERCATALOG_EXPORT Not : public FilterMatcherBase {
+class RDKIX_FILTERCATALOG_EXPORT Not : public FilterMatcherBase {
   boost::shared_ptr<FilterMatcherBase> arg1;
 
  public:
@@ -240,8 +240,8 @@ class RDKIT_FILTERCATALOG_EXPORT Not : public FilterMatcherBase {
 };
 }  // namespace FilterMatchOps
 
-RDKIT_FILTERCATALOG_EXPORT extern const char *SMARTS_MATCH_NAME_DEFAULT;
-class RDKIT_FILTERCATALOG_EXPORT SmartsMatcher : public FilterMatcherBase {
+RDKIX_FILTERCATALOG_EXPORT extern const char *SMARTS_MATCH_NAME_DEFAULT;
+class RDKIX_FILTERCATALOG_EXPORT SmartsMatcher : public FilterMatcherBase {
   ROMOL_SPTR d_pattern;
   unsigned int d_min_count{0};
   unsigned int d_max_count;
@@ -380,7 +380,7 @@ class RDKIT_FILTERCATALOG_EXPORT SmartsMatcher : public FilterMatcherBase {
 //
 //  which will return the SmartsMatcher FilterMatch only if no patterns
 //    in the exclusion list are found.
-class RDKIT_FILTERCATALOG_EXPORT ExclusionList : public FilterMatcherBase {
+class RDKIX_FILTERCATALOG_EXPORT ExclusionList : public FilterMatcherBase {
   std::vector<boost::shared_ptr<FilterMatcherBase>> d_offPatterns;
 
  public:
@@ -465,7 +465,7 @@ class RDKIT_FILTERCATALOG_EXPORT ExclusionList : public FilterMatcherBase {
 #endif
 };
 
-class RDKIT_FILTERCATALOG_EXPORT FilterHierarchyMatcher
+class RDKIX_FILTERCATALOG_EXPORT FilterHierarchyMatcher
     : public FilterMatcherBase {
   std::vector<boost::shared_ptr<FilterHierarchyMatcher>> d_children;
   boost::shared_ptr<FilterMatcherBase> d_matcher;
@@ -569,12 +569,12 @@ void registerFilterMatcherTypes(Archive &ar) {
   ar.register_type(static_cast<FilterHierarchyMatcher *>(nullptr));
 }
 #endif
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::SmartsMatcher, 1)
-BOOST_CLASS_VERSION(RDKit::ExclusionList, 1)
-BOOST_CLASS_VERSION(RDKit::FilterHierarchyMatcher, 1)
+BOOST_CLASS_VERSION(RDKix::SmartsMatcher, 1)
+BOOST_CLASS_VERSION(RDKix::ExclusionList, 1)
+BOOST_CLASS_VERSION(RDKix::FilterHierarchyMatcher, 1)
 #endif
 
 #endif

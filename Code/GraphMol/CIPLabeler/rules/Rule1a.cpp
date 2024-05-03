@@ -2,16 +2,16 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "Rule1a.h"
 #include "../Mancude.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 Rule1a::Rule1a() = default;
@@ -25,4 +25,4 @@ int Rule1a::compare(const Edge *a, const Edge *b) const {
 }
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

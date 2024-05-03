@@ -2,10 +2,10 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_REDUCEDGRAPHS_H_
@@ -16,7 +16,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <Numerics/Vector.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace ReducedGraphs {
@@ -31,7 +31,7 @@ namespace ReducedGraphs {
   - the caller is responsible for <tt>delete</tt>ing the result
 
 */
-RDKIT_REDUCEDGRAPHS_EXPORT ROMol *generateMolExtendedReducedGraph(
+RDKIX_REDUCEDGRAPHS_EXPORT ROMol *generateMolExtendedReducedGraph(
     const ROMol &mol,
     std::vector<boost::dynamic_bitset<>> *atomTypes = nullptr);
 //! \brief Generates a ErG fingerprint vector for a molecule that's already a
@@ -52,7 +52,7 @@ RDKIT_REDUCEDGRAPHS_EXPORT ROMol *generateMolExtendedReducedGraph(
   - the caller is responsible for <tt>delete</tt>ing the result
 
 */
-RDKIT_REDUCEDGRAPHS_EXPORT RDNumeric::DoubleVector *
+RDKIX_REDUCEDGRAPHS_EXPORT RDNumeric::DoubleVector *
 generateErGFingerprintForReducedGraph(
     const ROMol &mol, std::vector<boost::dynamic_bitset<>> *atomTypes = nullptr,
     double fuzzIncrement = 0.3, unsigned int minPath = 1,
@@ -75,11 +75,11 @@ generateErGFingerprintForReducedGraph(
   - the caller is responsible for <tt>delete</tt>ing the result
 
 */
-RDKIT_REDUCEDGRAPHS_EXPORT RDNumeric::DoubleVector *getErGFingerprint(
+RDKIX_REDUCEDGRAPHS_EXPORT RDNumeric::DoubleVector *getErGFingerprint(
     const ROMol &mol, std::vector<boost::dynamic_bitset<>> *atomTypes = nullptr,
     double fuzzIncrement = 0.3, unsigned int minPath = 1,
     unsigned int maxPath = 15);
 }  // namespace ReducedGraphs
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

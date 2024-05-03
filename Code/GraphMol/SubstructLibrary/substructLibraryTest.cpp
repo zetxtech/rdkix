@@ -34,8 +34,8 @@
 #include <iostream>
 
 // RD bits
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 #include <GraphMol/SubstructLibrary/PatternFactory.h>
 
@@ -46,7 +46,7 @@
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 boost::dynamic_bitset<> runTest(SubstructLibrary &ssslib, const ROMol &pattern,

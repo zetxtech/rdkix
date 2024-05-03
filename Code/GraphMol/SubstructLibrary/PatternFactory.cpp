@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Brian P. Kelley
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SubstructLibrary.h"
 #include "PatternFactory.h"
@@ -16,7 +16,7 @@
 #include <future>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 void fillPatterns(const SubstructLibrary &slib, const FPHolderBase &fph,
                   std::vector<ExplicitBitVect *> &fps, unsigned int start,
@@ -88,4 +88,4 @@ void addPatterns(SubstructLibrary &sslib,
   internalAddPatterns(sslib, numThreads, &patterns);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

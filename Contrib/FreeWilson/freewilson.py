@@ -1,10 +1,10 @@
 # Copyright (C) Brian Kelley 2021
 #
 #   @@ All Rights Reserved @@
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 """
 Free Wilson Analysis
@@ -125,7 +125,7 @@ input structures
 
 
 ```
->>> from rdkit.Chem import rdFMCS
+>>> from rdkix.Chem import rdFMCS
 >>> mcs = rdFMCS.FindMCS(mols[0:8], threshold=0.8, atomCompare=rdFMCS.AtomCompare.CompareAny,
 ...                      completeRingsOnly=True)                           # doctest: +SKIP
 >>> decomp = FWDecompose(mcs.queryMol, mols, scores)                       # doctest: +SKIP
@@ -145,9 +145,9 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import r2_score
 from tqdm import tqdm
 
-from rdkit import Chem, rdBase
-from rdkit.Chem import Descriptors, molzip
-from rdkit.Chem import rdRGroupDecomposition as rgd
+from rdkix import Chem, rdBase
+from rdkix.Chem import Descriptors, molzip
+from rdkix.Chem import rdRGroupDecomposition as rgd
 
 logger = logging.getLogger("freewilson")
 
@@ -270,7 +270,7 @@ class FreeWilsonDecomposition:
       r2 - regression r squared
       descriptors - set of the descriptors for molecules in the training set
                     used to not enumerate existing molecules
-      row_decomposition - original rgroup decomposition (With row key 'molecule' is an rdkit molecule)
+      row_decomposition - original rgroup decomposition (With row key 'molecule' is an rdkix molecule)
     """
 
   def __init__(self, rgroups, rgroup_to_descriptor_idx, fitter, r2, descriptors, row_decomposition,
@@ -312,7 +312,7 @@ def FWDecompose(scaffolds, mols, scores,
         : param scores : list of floating point numbers for the regression (
                              you may need convert these to their logs in some cases)
         : param decomp_params : RgroupDecompositionParams default [
-                                    default_decomp_params = rdkit.Chem.rdRGroupDecomposition.RGroupDecompositionParameters()
+                                    default_decomp_params = rdkix.Chem.rdRGroupDecomposition.RGroupDecompositionParameters()
                                     default_decomp_params.matchingStrategy = rgd.GA
                                     default_decomp_params.onlyMatchAtRGroups = False
                                    ]
@@ -320,9 +320,9 @@ def FWDecompose(scaffolds, mols, scores,
                                 set onlyMatchAtRGroups to True
 
 
-        >>> from rdkit import Chem
+        >>> from rdkix import Chem
         >>> from freewilson import FWBuild, FWDecompose
-        >>> from rdkit.Chem import Descriptors
+        >>> from rdkix.Chem import Descriptors
         >>> scaffold = Chem.MolFromSmiles("c1cccnc1")
         >>> mols = [Chem.MolFromSmiles("c1cccnc1"+"C"*(i+1)) for i in range(100)]
         >>> scores = [Descriptors.MolLogP(m) for m in mols]
@@ -620,8 +620,8 @@ def predictions_to_csv(outstream, decomposition: FreeWilsonDecomposition, predic
 
 def test_freewilson():
   # some simple tests
-  from rdkit import Chem
-  from rdkit.Chem import Descriptors
+  from rdkix import Chem
+  from rdkix.Chem import Descriptors
   assert dummypat.findall("C[*:1]N.[H][*:2]") == ['1', '2']
   assert dummypat.findall("C[*:1]N.[HH][*:2]") == ['1', '2']
   assert dummypat.findall("C[*:1]N.[2H][*:2]") == ['1', '2']

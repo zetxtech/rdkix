@@ -2,16 +2,16 @@
 //  Copyright (C) 2004-2019 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RingInfo.h"
 #include <RDGeneral/Invariant.h>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 RingInfo::INT_VECT RingInfo::atomRingSizes(unsigned int idx) const {
   PRECONDITION(df_init, "RingInfo not initialized");
 
@@ -309,4 +309,4 @@ void RingInfo::preallocate(unsigned int numAtoms, unsigned int numBonds) {
   d_atomMembers.resize(numAtoms);
   d_bondMembers.resize(numBonds);
 }
-}  // namespace RDKit
+}  // namespace RDKix

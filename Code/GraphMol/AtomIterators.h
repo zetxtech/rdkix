@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2006 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file AtomIterators.h
 
@@ -23,12 +23,12 @@
                                  // template instantiation request
 #endif
 
-namespace RDKit {
+namespace RDKix {
 class QueryAtom;
 
 //! A general random access iterator
 template <class Atom_, class Mol_>
-class RDKIT_GRAPHMOL_EXPORT AtomIterator_ {
+class RDKIX_GRAPHMOL_EXPORT AtomIterator_ {
  public:
   typedef AtomIterator_<Atom_, Mol_> ThisType;
   AtomIterator_() : _mol(nullptr) {}
@@ -71,7 +71,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomIterator_ {
 
 //! Iterate over heteroatoms, this is bidirectional
 template <class Atom_, class Mol_>
-class RDKIT_GRAPHMOL_EXPORT HeteroatomIterator_ {
+class RDKIX_GRAPHMOL_EXPORT HeteroatomIterator_ {
  public:
   typedef HeteroatomIterator_<Atom_, Mol_> ThisType;
   HeteroatomIterator_() : _mol(nullptr) {}
@@ -108,7 +108,7 @@ class RDKIT_GRAPHMOL_EXPORT HeteroatomIterator_ {
 
 //! Iterate over aromatic atoms, this is bidirectional
 template <class Atom_, class Mol_>
-class RDKIT_GRAPHMOL_EXPORT AromaticAtomIterator_ {
+class RDKIX_GRAPHMOL_EXPORT AromaticAtomIterator_ {
  public:
   typedef AromaticAtomIterator_<Atom_, Mol_> ThisType;
   AromaticAtomIterator_() : _mol(nullptr) {}
@@ -141,7 +141,7 @@ class RDKIT_GRAPHMOL_EXPORT AromaticAtomIterator_ {
 
 //! Iterate over atoms matching a query. This is bidirectional.
 template <class Atom_, class Mol_>
-class RDKIT_GRAPHMOL_EXPORT QueryAtomIterator_ {
+class RDKIX_GRAPHMOL_EXPORT QueryAtomIterator_ {
  public:
   typedef QueryAtomIterator_<Atom_, Mol_> ThisType;
   QueryAtomIterator_() : _mol(nullptr) {}
@@ -175,7 +175,7 @@ class RDKIT_GRAPHMOL_EXPORT QueryAtomIterator_ {
 
 //! Iterate over atoms matching a query function. This is bidirectional.
 template <class Atom_, class Mol_>
-class RDKIT_GRAPHMOL_EXPORT MatchingAtomIterator_ {
+class RDKIX_GRAPHMOL_EXPORT MatchingAtomIterator_ {
  public:
   typedef MatchingAtomIterator_<Atom_, Mol_> ThisType;
   MatchingAtomIterator_() : _mol(nullptr), _qF(nullptr) {}
@@ -207,6 +207,6 @@ class RDKIT_GRAPHMOL_EXPORT MatchingAtomIterator_ {
   int _findPrev(int from);
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

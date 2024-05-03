@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <GraphMol/GraphMol.h>
@@ -16,12 +16,12 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 void ComputeGasteigerCharges(const ROMol &mol, int nIter,
                              bool throwOnParamFailure) {
   computeGasteigerCharges(&mol, nIter, throwOnParamFailure);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdPartialCharges) {
   python::scope().attr("__doc__") =
@@ -45,7 +45,7 @@ BOOST_PYTHON_MODULE(rdPartialCharges) {
     - throwOnParamFailure : toggles whether or not an exception should be raised if parameters\n\
       for an atom cannot be found.  If this is false (the default), all parameters for unknown\n\
       atoms will be set to zero.  This has the effect of removing that atom from the iteration.\n\n";
-  python::def("ComputeGasteigerCharges", RDKit::ComputeGasteigerCharges,
+  python::def("ComputeGasteigerCharges", RDKix::ComputeGasteigerCharges,
               (python::arg("mol"), python::arg("nIter") = 12,
                python::arg("throwOnParamFailure") = false),
               docString.c_str());

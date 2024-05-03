@@ -10,11 +10,11 @@
 #include <GraphMol/MolCatalog/MolCatalogEntry.h>
 #include <GraphMol/MolCatalog/MolCatalogParams.h>
 
-namespace RDKit {
+namespace RDKix {
 
 //! a hierarchical catalog for holding molecules
 typedef RDCatalog::HierarchCatalog<MolCatalogEntry, MolCatalogParams, int>
     MolCatalog;
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

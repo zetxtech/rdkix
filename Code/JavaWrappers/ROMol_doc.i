@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::ROMol "
+%typemap(javaimports) RDKix::ROMol "
 /** 
 ROMol is a molecule class that is intended to have a fixed topology.
 <p>
@@ -52,7 +52,7 @@ If you need to be manipulating the molecule (e.g. adding or deleting atoms or bo
 <li>information about rings (SSSR and the like) is stored in the molecule's RingInfo pointer.
  */"
 
-%javamethodmodifiers RDKit::ROMol::addConformer 	( 	Conformer *  	conf, 		bool  	assignId = false	  	) 			"
+%javamethodmodifiers RDKix::ROMol::addConformer 	( 	Conformer *  	conf, 		bool  	assignId = false	  	) 			"
 /**
 <p>
 Add a new conformation to the molecule.
@@ -65,63 +65,63 @@ assignId 	- a unique ID will be assigned to the conformation if true otherwise i
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::beginAromaticAtoms 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::beginAromaticAtoms 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::beginAtoms 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::beginAtoms 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::beginBonds 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::beginBonds 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::beginHeteros 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::beginHeteros 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::beginQueryAtoms 	( 	QueryAtom const *  	what 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::beginQueryAtoms 	( 	QueryAtom const *  	what 	 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::clearAtomBookmark 	( 	const int  	mark, 		ATOM_SPTR  	atom	  	) 			"
+%javamethodmodifiers RDKix::ROMol::clearAtomBookmark 	( 	const int  	mark, 		ATOM_SPTR  	atom	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::clearBondBookmark 	( 	int  	mark, 		BOND_SPTR  	bond	  	) 			"
+%javamethodmodifiers RDKix::ROMol::clearBondBookmark 	( 	int  	mark, 		BOND_SPTR  	bond	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::clearProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::ROMol::clearProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::clearProp 	( 	const char *  	key 	 )  	const "
+%javamethodmodifiers RDKix::ROMol::clearProp 	( 	const char *  	key 	 )  	const "
 /**
 <p>
 clears the value of a property
@@ -134,42 +134,42 @@ clears the value of a property
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::endAromaticAtoms 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::endAromaticAtoms 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::endAtoms 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::endAtoms 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::endBonds 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::endBonds 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::endHeteros 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::endHeteros 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::endQueryAtoms 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::endQueryAtoms 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getAtomBonds 	( 	Atom const *  	at 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getAtomBonds 	( 	Atom const *  	at 	 )  	const"
 /**
 <p>
 provides access to all Bond objects connected to an Atom
@@ -205,21 +205,21 @@ or, if you need a non-const Bond *:
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getAtomDegree 	( 	Atom::ATOM_SPTR  	at 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getAtomDegree 	( 	Atom::ATOM_SPTR  	at 	 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getAtomNeighbors 	( 	Atom::ATOM_SPTR  	at 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getAtomNeighbors 	( 	Atom::ATOM_SPTR  	at 	 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getAtomNeighbors 	( 	Atom const *  	at 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getAtomNeighbors 	( 	Atom const *  	at 	 )  	const"
 /**
 <p>
 provides access to all neighbors around an Atom
@@ -244,49 +244,49 @@ const ATOM_SPTR at=molPtr[*nbrIdx];
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getAtomWithIdx 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getAtomWithIdx 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getBondBetweenAtoms 	( 	unsigned int  	idx1, 		unsigned int  	idx2	  	) 			const"
+%javamethodmodifiers RDKix::ROMol::getBondBetweenAtoms 	( 	unsigned int  	idx1, 		unsigned int  	idx2	  	) 			const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getBondWithIdx 	( 	unsigned int  	idx 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getBondWithIdx 	( 	unsigned int  	idx 	 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getConformer 	( 	int  	id = -1 	 )  	"
+%javamethodmodifiers RDKix::ROMol::getConformer 	( 	int  	id = -1 	 )  	"
 /**
 <p>
 return the conformer with a specified ID if the ID is negative the first conformation will be returned
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getConformer 	( 	int  	id = -1 	 )  	const"
+%javamethodmodifiers RDKix::ROMol::getConformer 	( 	int  	id = -1 	 )  	const"
 /**
 <p>
 return the conformer with a specified ID if the ID is negative the first conformation will be returned
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getEdges 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::getEdges 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getEdges 	( 		 )  	"
+%javamethodmodifiers RDKix::ROMol::getEdges 	( 		 )  	"
 /**
 <p>
 <p>
@@ -307,7 +307,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::ROMol::getProp 	( 	const std::string  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -315,7 +315,7 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
+%javamethodmodifiers RDKix::ROMol::getProp 	( 	const char *  	key, 		T &  	res	  	) 			const "
 /**
 <p>
 allows retrieval of a particular property value
@@ -332,7 +332,7 @@ res 	a reference to the storage location for the value.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getRingInfo 	( 		 )  	const "
+%javamethodmodifiers RDKix::ROMol::getRingInfo 	( 		 )  	const "
 /**
 <p>
 <p>
@@ -342,7 +342,7 @@ a pointer to our RingInfo structure Note: the client should not delete this.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getTopology 	( 		 )  	const "
+%javamethodmodifiers RDKix::ROMol::getTopology 	( 		 )  	const "
 /**
 <p>
 brief returns a pointer to our underlying BGL object
@@ -360,14 +360,14 @@ Here's an example:
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getVertices 	( 		 )  	const"
+%javamethodmodifiers RDKix::ROMol::getVertices 	( 		 )  	const"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::getVertices 	( 		 )  	"
+%javamethodmodifiers RDKix::ROMol::getVertices 	( 		 )  	"
 /**
 <p>
 <p>
@@ -388,29 +388,21 @@ ATOM_SPTR at2=mol[*atBegin];
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::hasProp 	( 	const std::string  	key 	 )  	const "
+%javamethodmodifiers RDKix::ROMol::hasProp 	( 	const std::string  	key 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::setAtomBookmark 	( 	Atom *  	at, 		int  	mark	  	) 			"
+%javamethodmodifiers RDKix::ROMol::setAtomBookmark 	( 	Atom *  	at, 		int  	mark	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::setBondBookmark 	( 	Bond *  	bond, 		int  	mark	  	) 			"
-/**
-<p>
-This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
-template<typename T >
-*/
-public";
-
-%javamethodmodifiers RDKit::ROMol::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::ROMol::setBondBookmark 	( 	Bond *  	bond, 		int  	mark	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
@@ -418,7 +410,15 @@ template<typename T >
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+%javamethodmodifiers RDKix::ROMol::setProp 	( 	const std::string  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
+/**
+<p>
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+template<typename T >
+*/
+public";
+
+%javamethodmodifiers RDKix::ROMol::setProp 	( 	const char *  	key, 		T  	val, 		bool  	computed = false	  	) 			const "
 /**
 <p>
 sets a property value
@@ -432,7 +432,7 @@ computed 	(optional) allows the property to be flagged computed.
 */
 public";
 
-%javamethodmodifiers RDKit::ROMol::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
+%javamethodmodifiers RDKix::ROMol::updatePropertyCache 	( 	bool  	strict = true 	 )  	"
 /**
 <p>
 calculates any of our lazy properties

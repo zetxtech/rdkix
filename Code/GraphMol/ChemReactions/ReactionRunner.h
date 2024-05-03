@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2014-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -39,7 +39,7 @@
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ROMol.h>
 
-namespace RDKit {
+namespace RDKix {
 //! Runs the reaction on a set of reactants
 /*!
   \param rxn:       the template reaction we are interested
@@ -57,7 +57,7 @@ namespace RDKit {
   map multiple times onto its reactant. This leads to multiple possible result
   sets.
 */
-RDKIT_CHEMREACTIONS_EXPORT std::vector<MOL_SPTR_VECT> run_Reactants(
+RDKIX_CHEMREACTIONS_EXPORT std::vector<MOL_SPTR_VECT> run_Reactants(
     const ChemicalReaction& rxn, const MOL_SPTR_VECT& reactants,
     unsigned int maxProducts = 1000);
 
@@ -76,11 +76,11 @@ RDKIT_CHEMREACTIONS_EXPORT std::vector<MOL_SPTR_VECT> run_Reactants(
 
 */
 
-RDKIT_CHEMREACTIONS_EXPORT std::vector<MOL_SPTR_VECT> run_Reactant(
+RDKIX_CHEMREACTIONS_EXPORT std::vector<MOL_SPTR_VECT> run_Reactant(
     const ChemicalReaction& rxn, const ROMOL_SPTR& reactant,
     unsigned int reactantIdx);
 
-RDKIT_CHEMREACTIONS_EXPORT bool run_Reactant(const ChemicalReaction& rxn,
+RDKIX_CHEMREACTIONS_EXPORT bool run_Reactant(const ChemicalReaction& rxn,
                                              RWMol& reactant,
                                              bool removeUnmatchedAtoms = true);
 
@@ -100,18 +100,18 @@ RDKIT_CHEMREACTIONS_EXPORT bool run_Reactant(const ChemicalReaction& rxn,
   atommap bonded
 */
 
-RDKIT_CHEMREACTIONS_EXPORT ROMol* reduceProductToSideChains(
+RDKIX_CHEMREACTIONS_EXPORT ROMol* reduceProductToSideChains(
     const ROMOL_SPTR& product, bool addDummyAtoms = true);
 
 namespace ReactionRunnerUtils {
-RDKIT_CHEMREACTIONS_EXPORT MOL_SPTR_VECT generateOneProductSet(
+RDKIX_CHEMREACTIONS_EXPORT MOL_SPTR_VECT generateOneProductSet(
     const ChemicalReaction& rxn, const MOL_SPTR_VECT& reactants,
     const std::vector<MatchVectType>& reactantsMatch);
 
-RDKIT_CHEMREACTIONS_EXPORT RWMOL_SPTR
+RDKIX_CHEMREACTIONS_EXPORT RWMOL_SPTR
 convertTemplateToMol(const ROMOL_SPTR prodTemplateSptr);
 }  // namespace ReactionRunnerUtils
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

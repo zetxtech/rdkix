@@ -34,37 +34,37 @@
 #include "../inchi.h"
 
 namespace {
-boost::python::tuple MolToInchi(const RDKit::ROMol& mol, std::string options) {
-  RDKit::ExtraInchiReturnValues rv;
+boost::python::tuple MolToInchi(const RDKix::ROMol& mol, std::string options) {
+  RDKix::ExtraInchiReturnValues rv;
   const char* _options = nullptr;
   if (options.size()) {
     _options = options.c_str();
   }
-  std::string inchi = RDKit::MolToInchi(mol, rv, _options);
+  std::string inchi = RDKix::MolToInchi(mol, rv, _options);
   return boost::python::make_tuple(inchi, rv.returnCode, rv.messagePtr,
                                    rv.logPtr, rv.auxInfoPtr);
 }
 
 boost::python::tuple MolBlockToInchi(const std::string& molblock,
                                      std::string options) {
-  RDKit::ExtraInchiReturnValues rv;
+  RDKix::ExtraInchiReturnValues rv;
   const char* _options = nullptr;
   if (options.size()) {
     _options = options.c_str();
   }
-  std::string inchi = RDKit::MolBlockToInchi(molblock, rv, _options);
+  std::string inchi = RDKix::MolBlockToInchi(molblock, rv, _options);
   return boost::python::make_tuple(inchi, rv.returnCode, rv.messagePtr,
                                    rv.logPtr, rv.auxInfoPtr);
 }
 boost::python::tuple InchiToMol(const std::string& inchi, bool sanitize,
                                 bool removeHs) {
-  RDKit::ExtraInchiReturnValues rv;
-  RDKit::ROMol* mol = RDKit::InchiToMol(inchi, rv, sanitize, removeHs);
+  RDKix::ExtraInchiReturnValues rv;
+  RDKix::ROMol* mol = RDKix::InchiToMol(inchi, rv, sanitize, removeHs);
   if (mol == nullptr) {
     return boost::python::make_tuple(boost::python::object(), rv.returnCode,
                                      rv.messagePtr, rv.logPtr);
   } else {
-    return boost::python::make_tuple(RDKit::ROMOL_SPTR(mol), rv.returnCode,
+    return boost::python::make_tuple(RDKix::ROMOL_SPTR(mol), rv.returnCode,
                                      rv.messagePtr, rv.logPtr);
   }
 }
@@ -129,7 +129,7 @@ BOOST_PYTHON_MODULE(rdinchi) {
                       boost::python::arg("options") = std::string()),
                      docString.c_str());
   docString = "return the InChI key for an InChI string";
-  boost::python::def("InchiToInchiKey", RDKit::InchiToInchiKey,
+  boost::python::def("InchiToInchiKey", RDKix::InchiToInchiKey,
                      (boost::python::arg("inchi")), docString.c_str());
   docString =
       "return the InChI key for a ROMol molecule.\n\
@@ -144,7 +144,7 @@ BOOST_PYTHON_MODULE(rdinchi) {
       https://www.inchi-trust.org/downloads/\n\
   Returns: the InChI key\n";
   boost::python::def(
-      "MolToInchiKey", RDKit::MolToInchiKey,
+      "MolToInchiKey", RDKix::MolToInchiKey,
       (boost::python::arg("mol"), boost::python::arg("options") = ""),
       docString.c_str());
 }

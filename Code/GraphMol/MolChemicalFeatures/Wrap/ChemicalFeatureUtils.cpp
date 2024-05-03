@@ -3,22 +3,22 @@
 //  Copyright (C) 2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <boost/dynamic_bitset.hpp>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeatureFactory.h>
 #include <ChemicalFeatures/FreeChemicalFeature.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 python::object GetAtomMatch(python::object featMatch, int maxAts = 1024) {
   python::list res;
   unsigned int nEntries =
@@ -92,8 +92,8 @@ struct ChemicalFeatureUtils_wrapper {
  Otherwise a list of lists of atom indices is returned.\n");
   }
 };
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 void wrap_ChemicalFeatureUtils() {
-  RDKit::ChemicalFeatureUtils_wrapper::wrap();
+  RDKix::ChemicalFeatureUtils_wrapper::wrap();
 }

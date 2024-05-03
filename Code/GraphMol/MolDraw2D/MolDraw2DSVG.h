@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2015-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2015-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // derived from Dave Cosgrove's MolDraw2D
 //
-// This is a concrete class derived from MolDraw2D that uses RDKit to draw a
+// This is a concrete class derived from MolDraw2D that uses RDKix to draw a
 // molecule into an SVG file
 
 #include <RDGeneral/export.h>
@@ -22,9 +22,9 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_MOLDRAW2D_EXPORT MolDraw2DSVG : public MolDraw2D {
+class RDKIX_MOLDRAW2D_EXPORT MolDraw2DSVG : public MolDraw2D {
  public:
   // initialize to use a particular ostream
   MolDraw2DSVG(int width, int height, std::ostream &os, int panelWidth = -1,
@@ -84,5 +84,5 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2DSVG : public MolDraw2D {
   void outputClasses();
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DSVG_H

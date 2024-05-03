@@ -1,5 +1,5 @@
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -41,7 +41,7 @@
 #include <GraphMol/GeneralizedSubstruct/XQMol.h>
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 using namespace GeneralizedSubstruct;
 
@@ -592,4 +592,4 @@ void SubstructLibrary::initFromString(const std::string &text) {
   initFromStream(ss);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

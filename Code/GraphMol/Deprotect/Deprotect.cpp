@@ -1,22 +1,22 @@
 //
-//  Copyright (C) 2020-2021 Brian P Kelley, Joann Prescott-Roy and other RDKit
+//  Copyright (C) 2020-2021 Brian P Kelley, Joann Prescott-Roy and other RDKix
 //  contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Deprotect.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/ChemReactions/ReactionParser.h>
 
 #include <boost/smart_ptr.hpp>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 namespace Deprotect {
 DeprotectData::DeprotectData(std::string deprotection_class,
                              const std::string &reaction_smarts,
@@ -187,4 +187,4 @@ bool deprotectInPlace(RWMol &mol,
 };
 
 }  // namespace Deprotect
-}  // namespace RDKit
+}  // namespace RDKix

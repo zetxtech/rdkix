@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 //! \file QueryOps.h
@@ -16,7 +16,7 @@
 #ifndef RD_QUERY_OPS_H
 #define RD_QUERY_OPS_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <Query/QueryObjects.h>
 #include <Query/Query.h>
 #include <DataStructs/BitVects.h>
@@ -27,7 +27,7 @@
 #include <utility>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 typedef Queries::Query<bool, Atom const *, true> ATOM_BOOL_QUERY;
 typedef Queries::Query<bool, Bond const *, true> BOND_BOOL_QUERY;
 
@@ -236,8 +236,8 @@ static inline int queryAtomNumAliphaticHeteroatomNbrs(Atom const *at) {
   return res;
 };
 
-RDKIT_GRAPHMOL_EXPORT unsigned int queryAtomBondProduct(Atom const *at);
-RDKIT_GRAPHMOL_EXPORT unsigned int queryAtomAllBondProduct(Atom const *at);
+RDKIX_GRAPHMOL_EXPORT unsigned int queryAtomBondProduct(Atom const *at);
+RDKIX_GRAPHMOL_EXPORT unsigned int queryAtomAllBondProduct(Atom const *at);
 
 // -------------------------------------------------
 // common bond queries
@@ -293,7 +293,7 @@ static inline int queryAtomHasRingBond(Atom const *at) {
   }
   return 0;
 };
-RDKIT_GRAPHMOL_EXPORT int queryIsAtomBridgehead(Atom const *at);
+RDKIX_GRAPHMOL_EXPORT int queryIsAtomBridgehead(Atom const *at);
 
 static inline int queryIsBondInRing(Bond const *bond) {
   return bond->getOwningMol().getRingInfo()->numBondRings(bond->getIdx()) != 0;
@@ -364,7 +364,7 @@ T *makeAtomNumQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomNum, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumQuery(int what);
 
 //! returns a Query for matching atomic number and aromaticity
 template <class T>
@@ -373,7 +373,7 @@ T *makeAtomTypeQuery(int num, int aromatic, const std::string &descr) {
                                 descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTypeQuery(int num,
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTypeQuery(int num,
                                                            int aromatic);
 
 //! returns a Query for matching implicit valence
@@ -382,7 +382,7 @@ T *makeAtomImplicitValenceQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomImplicitValence, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomImplicitValenceQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomImplicitValenceQuery(int what);
 
 //! returns a Query for matching explicit valence
 template <class T>
@@ -390,7 +390,7 @@ T *makeAtomExplicitValenceQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomExplicitValence, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomExplicitValenceQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomExplicitValenceQuery(int what);
 
 //! returns a Query for matching total valence
 template <class T>
@@ -398,7 +398,7 @@ T *makeAtomTotalValenceQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomTotalValence, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTotalValenceQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTotalValenceQuery(int what);
 
 //! returns a Query for matching explicit degree
 template <class T>
@@ -406,7 +406,7 @@ T *makeAtomExplicitDegreeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomExplicitDegree, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomExplicitDegreeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomExplicitDegreeQuery(int what);
 
 //! returns a Query for matching atomic degree
 template <class T>
@@ -414,7 +414,7 @@ T *makeAtomTotalDegreeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomTotalDegree, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTotalDegreeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomTotalDegreeQuery(int what);
 
 //! returns a Query for matching heavy atom degree
 template <class T>
@@ -422,7 +422,7 @@ T *makeAtomHeavyAtomDegreeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomHeavyAtomDegree, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHeavyAtomDegreeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHeavyAtomDegreeQuery(int what);
 
 //! returns a Query for matching hydrogen count
 template <class T>
@@ -430,7 +430,7 @@ T *makeAtomHCountQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomHCount, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHCountQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHCountQuery(int what);
 
 //! returns a Query for matching ring atoms
 template <class T>
@@ -438,7 +438,7 @@ T *makeAtomHasImplicitHQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomHasImplicitH, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasImplicitHQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasImplicitHQuery();
 
 //! returns a Query for matching implicit hydrogen count
 template <class T>
@@ -446,7 +446,7 @@ T *makeAtomImplicitHCountQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomImplicitHCount, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomImplicitHCountQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomImplicitHCountQuery(int what);
 
 //! returns a Query for matching the \c isAromatic flag
 template <class T>
@@ -454,7 +454,7 @@ T *makeAtomAromaticQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomAromatic, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomAromaticQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomAromaticQuery();
 
 //! returns a Query for matching aliphatic atoms
 template <class T>
@@ -462,7 +462,7 @@ T *makeAtomAliphaticQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomAliphatic, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomAliphaticQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomAliphaticQuery();
 
 //! returns a Query for matching atoms with a particular mass
 template <class T>
@@ -471,7 +471,7 @@ T *makeAtomMassQuery(int what, const std::string &descr) {
                                 queryAtomMass, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMassQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMassQuery(int what);
 
 //! returns a Query for matching atoms with a particular isotope
 template <class T>
@@ -479,7 +479,7 @@ T *makeAtomIsotopeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomIsotope, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomIsotopeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomIsotopeQuery(int what);
 
 //! returns a Query for matching formal charge
 template <class T>
@@ -487,7 +487,7 @@ T *makeAtomFormalChargeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomFormalCharge, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomFormalChargeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomFormalChargeQuery(int what);
 
 //! returns a Query for matching negative formal charges (i.e. a query val of 1
 //! matches a formal charge of -1)
@@ -496,7 +496,7 @@ T *makeAtomNegativeFormalChargeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomNegativeFormalCharge, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNegativeFormalChargeQuery(
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNegativeFormalChargeQuery(
     int what);
 
 //! returns a Query for matching hybridization
@@ -505,7 +505,7 @@ T *makeAtomHybridizationQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomHybridization, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHybridizationQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHybridizationQuery(int what);
 
 //! returns a Query for matching the number of radical electrons
 template <class T>
@@ -513,7 +513,7 @@ T *makeAtomNumRadicalElectronsQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomNumRadicalElectrons, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumRadicalElectronsQuery(
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumRadicalElectronsQuery(
     int what);
 
 //! returns a Query for matching whether or not chirality has been set on the
@@ -523,7 +523,7 @@ T *makeAtomHasChiralTagQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomHasChiralTag, descr);
 }
 //! \overloadquery
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasChiralTagQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasChiralTagQuery();
 
 //! returns a Query for matching whether or not a potentially chiral atom is
 //! missing a chiral tag
@@ -532,7 +532,7 @@ T *makeAtomMissingChiralTagQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomMissingChiralTag, descr);
 }
 //! \overloadquery
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMissingChiralTagQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMissingChiralTagQuery();
 
 //! returns a Query for matching atoms with unsaturation:
 template <class T>
@@ -540,7 +540,7 @@ T *makeAtomUnsaturatedQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryAtomUnsaturated, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomUnsaturatedQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomUnsaturatedQuery();
 
 //! returns a Query for matching ring atoms
 template <class T>
@@ -548,7 +548,7 @@ T *makeAtomInRingQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryIsAtomInRing, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInRingQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInRingQuery();
 
 //! returns a Query for matching atoms in a particular number of rings
 template <class T>
@@ -556,10 +556,10 @@ T *makeAtomInNRingsQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryIsAtomInNRings, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInNRingsQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInNRingsQuery(int what);
 
 //! returns a Query for matching atoms in rings of a particular size
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInRingOfSizeQuery(int tgt);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomInRingOfSizeQuery(int tgt);
 
 //! returns a Query for matching an atom's minimum ring size
 template <class T>
@@ -567,7 +567,7 @@ T *makeAtomMinRingSizeQuery(int tgt, const std::string &descr) {
   return makeAtomSimpleQuery<T>(tgt, queryAtomMinRingSize, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMinRingSizeQuery(int tgt);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomMinRingSizeQuery(int tgt);
 
 //! returns a Query for matching atoms with a particular number of ring bonds
 template <class T>
@@ -575,30 +575,30 @@ T *makeAtomRingBondCountQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomRingBondCount, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomRingBondCountQuery(int what);
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomRingBondCountQuery(int what);
 
 //! returns a Query for matching generic A atoms (heavy atoms)
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAAtomQuery();
 //! returns a Query for matching generic AH atoms (any atom)
-RDKIT_GRAPHMOL_EXPORT ATOM_NULL_QUERY *makeAHAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_NULL_QUERY *makeAHAtomQuery();
 //! returns a Query for matching generic Q atoms (heteroatoms)
-RDKIT_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeQAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeQAtomQuery();
 //! returns a Query for matching generic QH atoms (heteroatom or H)
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeQHAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeQHAtomQuery();
 //! returns a Query for matching generic X atoms (halogens)
-RDKIT_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeXAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeXAtomQuery();
 //! returns a Query for matching generic XH atoms (halogen or H)
-RDKIT_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeXHAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeXHAtomQuery();
 //! returns a Query for matching generic M atoms (metals)
-RDKIT_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeMAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeMAtomQuery();
 //! returns a Query for matching generic MH atoms (metals or H)
-RDKIT_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeMHAtomQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_OR_QUERY *makeMHAtomQuery();
 
 // We support the same special atom queries that we can read from
 // CXSMILES
 const std::vector<std::string> complexQueries = {"A", "AH", "Q", "QH",
                                                  "X", "XH", "M", "MH"};
-RDKIT_GRAPHMOL_EXPORT void convertComplexNameToQuery(Atom *query, std::string_view symb);
+RDKIX_GRAPHMOL_EXPORT void convertComplexNameToQuery(Atom *query, std::string_view symb);
 
 //! returns a Query for matching atoms that have ring bonds
 template <class T>
@@ -606,7 +606,7 @@ T *makeAtomHasRingBondQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(1, queryAtomHasRingBond, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasRingBondQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasRingBondQuery();
 
 //! returns a Query for matching the number of heteroatom neighbors
 template <class T>
@@ -614,7 +614,7 @@ T *makeAtomNumHeteroatomNbrsQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomNumHeteroatomNbrs, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumHeteroatomNbrsQuery(
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNumHeteroatomNbrsQuery(
     int what);
 
 //! returns a Query for matching atoms that have heteroatom neighbors
@@ -623,7 +623,7 @@ T *makeAtomHasHeteroatomNbrsQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(1, queryAtomHasHeteroatomNbrs, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasHeteroatomNbrsQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomHasHeteroatomNbrsQuery();
 
 //! returns a Query for matching the number of aliphatic heteroatom neighbors
 template <class T>
@@ -632,7 +632,7 @@ T *makeAtomNumAliphaticHeteroatomNbrsQuery(int what, const std::string &descr) {
                                 descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *
 makeAtomNumAliphaticHeteroatomNbrsQuery(int what);
 
 //! returns a Query for matching atoms that have heteroatom neighbors
@@ -641,7 +641,7 @@ T *makeAtomHasAliphaticHeteroatomNbrsQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(1, queryAtomHasAliphaticHeteroatomNbrs, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *
 makeAtomHasAliphaticHeteroatomNbrsQuery();
 
 //! returns a Query for matching the number of non-hydrogen neighbors
@@ -650,7 +650,7 @@ T *makeAtomNonHydrogenDegreeQuery(int what, const std::string &descr) {
   return makeAtomSimpleQuery<T>(what, queryAtomNonHydrogenDegree, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNonHydrogenDegreeQuery(
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomNonHydrogenDegreeQuery(
     int what);
 
 //! returns a Query for matching bridgehead atoms
@@ -659,39 +659,39 @@ T *makeAtomIsBridgeheadQuery(const std::string &descr) {
   return makeAtomSimpleQuery<T>(true, queryIsAtomBridgehead, descr);
 }
 //! \overload
-RDKIT_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomIsBridgeheadQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_EQUALS_QUERY *makeAtomIsBridgeheadQuery();
 
 //! returns a Query for matching bond orders
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondOrderEqualsQuery(
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondOrderEqualsQuery(
     Bond::BondType what);
 //! returns a Query for unspecified SMARTS bonds
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrAromaticBondQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrAromaticBondQuery();
 //! returns a Query for double|aromatic bonds
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeDoubleOrAromaticBondQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeDoubleOrAromaticBondQuery();
 //! returns a Query for single|double bonds
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrDoubleBondQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrDoubleBondQuery();
 //! returns a Query for tautomeric bonds
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *
 makeSingleOrDoubleOrAromaticBondQuery();
 
 //! returns a Query for matching bond directions
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondDirEqualsQuery(
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondDirEqualsQuery(
     Bond::BondDir what);
 //! returns a Query for matching bonds with stereo set
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondHasStereoQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondHasStereoQuery();
 //! returns a Query for matching ring bonds
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondIsInRingQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondIsInRingQuery();
 //! returns a Query for matching bonds in rings of a particular size
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondInRingOfSizeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondInRingOfSizeQuery(int what);
 //! returns a Query for matching a bond's minimum ring size
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondMinRingSizeQuery(int what);
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondMinRingSizeQuery(int what);
 //! returns a Query for matching bonds in a particular number of rings
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondInNRingsQuery(int tgt);
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeBondInNRingsQuery(int tgt);
 
 //! returns a Query for matching any bond
-RDKIT_GRAPHMOL_EXPORT BOND_NULL_QUERY *makeBondNullQuery();
+RDKIX_GRAPHMOL_EXPORT BOND_NULL_QUERY *makeBondNullQuery();
 //! returns a Query for matching any atom
-RDKIT_GRAPHMOL_EXPORT ATOM_NULL_QUERY *makeAtomNullQuery();
+RDKIX_GRAPHMOL_EXPORT ATOM_NULL_QUERY *makeAtomNullQuery();
 
 static inline int queryAtomRingMembership(Atom const *at) {
   return static_cast<int>(
@@ -704,7 +704,7 @@ static inline int queryAtomRingMembership(Atom const *at) {
 // incorrect code if we don't do this... so let's do it.
 typedef Atom const *ConstAtomPtr;
 
-class RDKIT_GRAPHMOL_EXPORT AtomRingQuery
+class RDKIX_GRAPHMOL_EXPORT AtomRingQuery
     : public Queries::EqualityQuery<int, ConstAtomPtr, true> {
  public:
   AtomRingQuery() : Queries::EqualityQuery<int, ConstAtomPtr, true>(-1) {
@@ -745,7 +745,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomRingQuery
 };
 
 //! allows use of recursive structure queries (e.g. recursive SMARTS)
-class RDKIT_GRAPHMOL_EXPORT RecursiveStructureQuery
+class RDKIX_GRAPHMOL_EXPORT RecursiveStructureQuery
     : public Queries::SetQuery<int, Atom const *, true> {
  public:
   RecursiveStructureQuery() : Queries::SetQuery<int, Atom const *, true>() {
@@ -1077,24 +1077,24 @@ Queries::EqualityQuery<int, const Target *, true> *makePropQuery(
       propname, val, tolerance);
 }
 
-RDKIT_GRAPHMOL_EXPORT bool isComplexQuery(const Bond *b);
-RDKIT_GRAPHMOL_EXPORT bool isComplexQuery(const Atom *a);
-RDKIT_GRAPHMOL_EXPORT bool isAtomAromatic(const Atom *a);
-RDKIT_GRAPHMOL_EXPORT bool isAtomListQuery(const Atom *a);
-RDKIT_GRAPHMOL_EXPORT void getAtomListQueryVals(const Atom::QUERYATOM_QUERY *q,
+RDKIX_GRAPHMOL_EXPORT bool isComplexQuery(const Bond *b);
+RDKIX_GRAPHMOL_EXPORT bool isComplexQuery(const Atom *a);
+RDKIX_GRAPHMOL_EXPORT bool isAtomAromatic(const Atom *a);
+RDKIX_GRAPHMOL_EXPORT bool isAtomListQuery(const Atom *a);
+RDKIX_GRAPHMOL_EXPORT void getAtomListQueryVals(const Atom::QUERYATOM_QUERY *q,
                                                 std::vector<int> &vals);
 
 namespace QueryOps {
-RDKIT_GRAPHMOL_EXPORT void completeMolQueries(
+RDKIX_GRAPHMOL_EXPORT void completeMolQueries(
     RWMol *mol, unsigned int magicVal = 0xDEADBEEF);
-RDKIT_GRAPHMOL_EXPORT Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom);
+RDKIX_GRAPHMOL_EXPORT Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom);
 
-RDKIT_GRAPHMOL_EXPORT void finalizeQueryFromDescription(
+RDKIX_GRAPHMOL_EXPORT void finalizeQueryFromDescription(
     Queries::Query<int, Atom const *, true> *query, Atom const *owner);
-RDKIT_GRAPHMOL_EXPORT void finalizeQueryFromDescription(
+RDKIX_GRAPHMOL_EXPORT void finalizeQueryFromDescription(
     Queries::Query<int, Bond const *, true> *query, Bond const *owner);
 
-RDKIT_GRAPHMOL_EXPORT bool hasBondTypeQuery(
+RDKIX_GRAPHMOL_EXPORT bool hasBondTypeQuery(
     const Queries::Query<int, Bond const *, true> &qry);
 inline bool hasBondTypeQuery(const Bond &bond) {
   if (!bond.hasQuery()) {
@@ -1102,7 +1102,7 @@ inline bool hasBondTypeQuery(const Bond &bond) {
   }
   return hasBondTypeQuery(*bond.getQuery());
 }
-RDKIT_GRAPHMOL_EXPORT bool hasComplexBondTypeQuery(
+RDKIX_GRAPHMOL_EXPORT bool hasComplexBondTypeQuery(
     const Queries::Query<int, Bond const *, true> &qry);
 inline bool hasComplexBondTypeQuery(const Bond &bond) {
   if (!bond.hasQuery()) {
@@ -1112,5 +1112,5 @@ inline bool hasComplexBondTypeQuery(const Bond &bond) {
 }
 
 }  // namespace QueryOps
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

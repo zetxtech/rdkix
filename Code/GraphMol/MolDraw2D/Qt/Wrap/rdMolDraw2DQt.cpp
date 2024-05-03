@@ -2,10 +2,10 @@
 //  Copyright (C) 2015-2019 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <RDBoost/Wrap.h>
@@ -18,7 +18,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 MolDraw2DQt *moldrawFromQPainter(int width, int height, size_t ptr,
                                  int panelWidth, int panelHeight) {
   if (!ptr) {
@@ -28,19 +28,19 @@ MolDraw2DQt *moldrawFromQPainter(int width, int height, size_t ptr,
   return new MolDraw2DQt(width, height, qptr, panelWidth, panelHeight);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdMolDraw2DQt) {
   python::scope().attr("__doc__") =
       "Module containing a C++ implementation of 2D molecule drawing using Qt";
 
-  python::scope().attr("rdkitQtVersion") = RDKit::rdkitQtVersion;
+  python::scope().attr("rdkixQtVersion") = RDKix::rdkixQtVersion;
 
   std::string docString = "Qt molecule drawer";
-  python::class_<RDKit::MolDraw2DQt, python::bases<RDKit::MolDraw2D>,
+  python::class_<RDKix::MolDraw2DQt, python::bases<RDKix::MolDraw2D>,
                  boost::noncopyable>("MolDraw2DQt", docString.c_str(),
                                      python::no_init);
-  python::def("MolDraw2DFromQPainter_", RDKit::moldrawFromQPainter,
+  python::def("MolDraw2DFromQPainter_", RDKix::moldrawFromQPainter,
               (python::arg("width"), python::arg("height"),
                python::arg("pointer_to_QPainter"),
                python::arg("panelWidth") = -1, python::arg("panelHeight") = -1),

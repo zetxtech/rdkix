@@ -12,12 +12,12 @@ import os
 import pickle
 import unittest
 
-from rdkit import RDConfig
-from rdkit.RDLogger import logger
+from rdkix import RDConfig
+from rdkix.RDLogger import logger
 
 logger = logger()
-from rdkit import Chem, DataStructs
-from rdkit.Chem import FragmentCatalog
+from rdkix import Chem, DataStructs
+from rdkix.Chem import FragmentCatalog
 
 
 class TestCase(unittest.TestCase):

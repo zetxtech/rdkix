@@ -3,14 +3,14 @@
 // Copyright (C)  2013 Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/MolWriters.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -35,7 +35,7 @@
 #define FCON_TOLERANCE 0.05
 #define ENERGY_TOLERANCE 0.025
 
-using namespace RDKit;
+using namespace RDKix;
 
 bool fexist(std::string filename) {
   std::ifstream ifStream(filename.c_str());
@@ -1423,7 +1423,7 @@ void testMMFFAllConstraints() {
 
   std::string molBlock =
       "butane\n"
-      "     RDKit          3D\n"
+      "     RDKix          3D\n"
       "butane\n"
       " 17 16  0  0  0  0  0  0  0  0999 V2000\n"
       "    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
@@ -1460,33 +1460,33 @@ void testMMFFAllConstraints() {
       "  9 11  1  0  0  0  0\n"
       "  9 12  1  0  0  0  0\n"
       "M  END\n";
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
   ForceFields::ForceField *field;
   MMFF::MMFFMolProperties *mmffMolProperties;
 
   // distance constraints
   ForceFields::MMFF::DistanceConstraintContrib *dc;
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
   MolTransforms::setBondLength(mol->getConformer(), 1, 3, 2.0);
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   TEST_ASSERT(field);
   field->initialize();
   dc = new ForceFields::MMFF::DistanceConstraintContrib(field, 1, 3, 2.0, 2.0,
                                                         1.0e5);
   field->contribs().push_back(ForceFields::ContribPtr(dc));
   field->minimize();
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(
       MolTransforms::getBondLength(mol->getConformer(), 1, 3), 2.0, 0.1));
   delete field;
   delete mmffMolProperties;
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   field->initialize();
   dc = new ForceFields::MMFF::DistanceConstraintContrib(field, 1, 3, true, -0.2,
                                                         0.2, 1.0e5);
@@ -1499,33 +1499,33 @@ void testMMFFAllConstraints() {
 
   // angle constraints
   ForceFields::MMFF::AngleConstraintContrib *ac;
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
   MolTransforms::setAngleDeg(mol->getConformer(), 1, 3, 6, 90.0);
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   TEST_ASSERT(field);
   field->initialize();
   ac = new ForceFields::MMFF::AngleConstraintContrib(field, 1, 3, 6, 90.0, 90.0,
                                                      100.0);
   field->contribs().push_back(ForceFields::ContribPtr(ac));
   field->minimize();
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(
       MolTransforms::getAngleDeg(mol->getConformer(), 1, 3, 6), 90.0, 0.5));
   delete field;
   delete mmffMolProperties;
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   field->initialize();
   ac = new ForceFields::MMFF::AngleConstraintContrib(field, 1, 3, 6, true,
                                                      -10.0, 10.0, 100.0);
   field->contribs().push_back(ForceFields::ContribPtr(ac));
   field->minimize();
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(
       MolTransforms::getAngleDeg(mol->getConformer(), 1, 3, 6), 100.0, 0.5));
   delete field;
   delete mmffMolProperties;
@@ -1533,13 +1533,13 @@ void testMMFFAllConstraints() {
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   field->initialize();
   ac = new ForceFields::MMFF::AngleConstraintContrib(field, 1, 3, 6, false,
                                                      -10.0, 10.0, 100.0);
   field->contribs().push_back(ForceFields::ContribPtr(ac));
   field->minimize();
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(
       MolTransforms::getAngleDeg(mol->getConformer(), 1, 3, 6), 10.0, 0.5));
   delete field;
   delete mmffMolProperties;
@@ -1547,13 +1547,13 @@ void testMMFFAllConstraints() {
 
   // torsion constraints
   ForceFields::MMFF::TorsionConstraintContrib *tc;
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
   MolTransforms::setDihedralDeg(mol->getConformer(), 1, 3, 6, 8, 15.0);
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   TEST_ASSERT(field);
   field->initialize();
   tc = new ForceFields::MMFF::TorsionConstraintContrib(field, 1, 3, 6, 8, 10.0,
@@ -1563,7 +1563,7 @@ void testMMFFAllConstraints() {
   std::cerr << MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8)
             << std::endl;
   TEST_ASSERT(
-      RDKit::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
+      RDKix::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
                  10.0, 0.5));
   delete field;
   delete mmffMolProperties;
@@ -1571,14 +1571,14 @@ void testMMFFAllConstraints() {
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   field->initialize();
   tc = new ForceFields::MMFF::TorsionConstraintContrib(field, 1, 3, 6, 8, true,
                                                        -1.0, 1.0, 100.0);
   field->contribs().push_back(ForceFields::ContribPtr(tc));
   field->minimize();
   TEST_ASSERT(
-      RDKit::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
+      RDKix::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
                  -30.0, 1.5));
   delete field;
   delete mmffMolProperties;
@@ -1586,14 +1586,14 @@ void testMMFFAllConstraints() {
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   field->initialize();
   tc = new ForceFields::MMFF::TorsionConstraintContrib(field, 1, 3, 6, 8, false,
                                                        -10.0, -8.0, 100.0);
   field->contribs().push_back(ForceFields::ContribPtr(tc));
   field->minimize(500);
   TEST_ASSERT(
-      RDKit::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
+      RDKix::feq(MolTransforms::getDihedralDeg(mol->getConformer(), 1, 3, 6, 8),
                  -9.0, 2.0));
   delete field;
   delete mmffMolProperties;
@@ -1601,12 +1601,12 @@ void testMMFFAllConstraints() {
 
   // position constraints
   ForceFields::MMFF::PositionConstraintContrib *pc;
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
   mmffMolProperties = new MMFF::MMFFMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties);
   TEST_ASSERT(mmffMolProperties->isValid());
-  field = RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+  field = RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
   TEST_ASSERT(field);
   field->initialize();
   RDGeom::Point3D p = mol->getConformer().getAtomPos(1);
@@ -1620,9 +1620,9 @@ void testMMFFAllConstraints() {
   delete mol;
 
   // fixed atoms
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
-  field = RDKit::MMFF::constructForceField(*mol);
+  field = RDKix::MMFF::constructForceField(*mol);
   TEST_ASSERT(field);
   field->initialize();
   RDGeom::Point3D fp = mol->getConformer().getAtomPos(1);
@@ -1642,7 +1642,7 @@ void testMMFFTorsionConstraints() {
             << std::endl;
 
   std::string molBlock = R"(
-     RDKit          3D
+     RDKix          3D
 
  11 10  0  0  0  0  0  0  0  0999 V2000
    -1.6091   -0.3348   -0.0457 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1668,10 +1668,10 @@ void testMMFFTorsionConstraints() {
  10 11  1  0  0  0  0
 M  END
 )";
-  RDKit::RWMol *mol;
+  RDKix::RWMol *mol;
 
   // torsion constraints
-  mol = RDKit::MolBlockToMol(molBlock, true, false);
+  mol = RDKix::MolBlockToMol(molBlock, true, false);
   TEST_ASSERT(mol);
   std::vector<double> e;
   for (double d : {0.0001, 0.0}) {
@@ -1679,7 +1679,7 @@ M  END
     MMFF::MMFFMolProperties mmffMolProperties(*mol);
     TEST_ASSERT(mmffMolProperties.isValid());
     ForceFields::ForceField *field =
-        RDKit::MMFF::constructForceField(*mol, &mmffMolProperties);
+        RDKix::MMFF::constructForceField(*mol, &mmffMolProperties);
     TEST_ASSERT(field);
     field->initialize();
     auto *tc = new ForceFields::MMFF::TorsionConstraintContrib(field, 0, 3, 6,
@@ -1687,12 +1687,12 @@ M  END
     field->contribs().push_back(ForceFields::ContribPtr(tc));
     field->minimize();
     e.push_back(field->calcEnergy());
-    TEST_ASSERT(RDKit::feq(
+    TEST_ASSERT(RDKix::feq(
         MolTransforms::getDihedralDeg(mol->getConformer(), 0, 3, 6, 9), d,
         0.5));
     delete field;
   }
-  TEST_ASSERT(RDKit::feq(e[0], e[1], 0.5));
+  TEST_ASSERT(RDKix::feq(e[0], e[1], 0.5));
   delete mol;
 
   std::cerr << "  done" << std::endl;
@@ -1704,7 +1704,7 @@ void testMMFFCopy() {
 
   std::string molBlock =
       "butane\n"
-      "     RDKit          3D\n"
+      "     RDKix          3D\n"
       "butane\n"
       " 17 16  0  0  0  0  0  0  0  0999 V2000\n"
       "    0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
@@ -1743,9 +1743,9 @@ void testMMFFCopy() {
       "M  END\n";
 
   {
-    RDKit::RWMol *mol = RDKit::MolBlockToMol(molBlock, true, false);
+    RDKix::RWMol *mol = RDKix::MolBlockToMol(molBlock, true, false);
     TEST_ASSERT(mol);
-    auto *cmol = new RDKit::RWMol(*mol);
+    auto *cmol = new RDKix::RWMol(*mol);
     TEST_ASSERT(cmol);
 
     MMFF::MMFFMolProperties *mmffMolProperties =
@@ -1753,7 +1753,7 @@ void testMMFFCopy() {
     TEST_ASSERT(mmffMolProperties);
     TEST_ASSERT(mmffMolProperties->isValid());
     ForceFields::ForceField *field =
-        RDKit::MMFF::constructForceField(*mol, mmffMolProperties);
+        RDKix::MMFF::constructForceField(*mol, mmffMolProperties);
     TEST_ASSERT(field);
     field->initialize();
     auto *dc = new ForceFields::MMFF::DistanceConstraintContrib(
@@ -1772,16 +1772,16 @@ void testMMFFCopy() {
     cfield->minimize();
     TEST_ASSERT(MolTransforms::getBondLength(cmol->getConformer(), 1, 3) >
                 1.99);
-    TEST_ASSERT(RDKit::feq(field->calcEnergy(), cfield->calcEnergy()));
+    TEST_ASSERT(RDKix::feq(field->calcEnergy(), cfield->calcEnergy()));
 
-    const RDKit::Conformer &conf = mol->getConformer();
-    const RDKit::Conformer &cconf = cmol->getConformer();
+    const RDKix::Conformer &conf = mol->getConformer();
+    const RDKix::Conformer &cconf = cmol->getConformer();
     for (unsigned int i = 0; i < mol->getNumAtoms(); i++) {
       RDGeom::Point3D p = conf.getAtomPos(i);
       RDGeom::Point3D cp = cconf.getAtomPos(i);
-      TEST_ASSERT(RDKit::feq(p.x, cp.x));
-      TEST_ASSERT(RDKit::feq(p.y, cp.y));
-      TEST_ASSERT(RDKit::feq(p.z, cp.z));
+      TEST_ASSERT(RDKix::feq(p.x, cp.x));
+      TEST_ASSERT(RDKix::feq(p.y, cp.y));
+      TEST_ASSERT(RDKix::feq(p.z, cp.z));
     }
 
     delete field;
@@ -1798,7 +1798,7 @@ void testMMFFButaneScan() {
   std::cerr << "Unit test for MMFF butane scan." << std::endl;
 
   auto molblock = R"(
-     RDKit          3D
+     RDKix          3D
 
  14 13  0  0  0  0  0  0  0  0999 V2000
    -1.5575    0.5684   -0.1320 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1863,7 +1863,7 @@ M  END
   MMFF::MMFFMolProperties mmffMolProperties(*mol);
   TEST_ASSERT(mmffMolProperties.isValid());
   std::unique_ptr<ForceFields::ForceField> globalFF(
-      RDKit::MMFF::constructForceField(*mol, &mmffMolProperties));
+      RDKix::MMFF::constructForceField(*mol, &mmffMolProperties));
   TEST_ASSERT(globalFF);
   globalFF->initialize();
   std::unique_ptr<ROMol> mol2(new ROMol(*mol));
@@ -1873,7 +1873,7 @@ M  END
   MolTransforms::setDihedralDeg(mol2->getConformer(), 0, 1, 2, 3, start);
   for (int diheIn = start; diheIn < end; diheIn += incr) {
     std::unique_ptr<ForceFields::ForceField> localFF(
-        RDKit::MMFF::constructForceField(*mol2, &mmffMolProperties));
+        RDKix::MMFF::constructForceField(*mol2, &mmffMolProperties));
     TEST_ASSERT(localFF);
     localFF->initialize();
     auto *tc = new ForceFields::MMFF::TorsionConstraintContrib(
@@ -1895,9 +1895,9 @@ M  END
     diheEnergyVect.emplace_back(diheOut, energy);
   }
   for (size_t i = 0; i < diheEnergyVect.size(); ++i) {
-    TEST_ASSERT(RDKit::feq(diheEnergyVect.at(i).first,
+    TEST_ASSERT(RDKix::feq(diheEnergyVect.at(i).first,
                            expectedDiheEnergyVect.at(i).first, 1.0));
-    TEST_ASSERT(RDKit::feq(diheEnergyVect.at(i).second,
+    TEST_ASSERT(RDKix::feq(diheEnergyVect.at(i).second,
                            expectedDiheEnergyVect.at(i).second, 0.2));
   }
 

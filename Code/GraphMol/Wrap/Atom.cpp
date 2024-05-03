@@ -2,17 +2,17 @@
 //  Copyright (C) 2003-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <string>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/MonomerInfo.h>
 #include <RDGeneral/types.h>
@@ -26,7 +26,7 @@
 #include <algorithm>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 void expandQuery(QueryAtom *self, const QueryAtom *other,
                  Queries::CompositeQueryType how, bool maintainOrder) {
   if (other->hasQuery()) {
@@ -503,5 +503,5 @@ These cannot currently be constructed directly from Python\n";
         "'C<xxx>'\n");
   }
 };
-}  // namespace RDKit
-void wrap_atom() { RDKit::atom_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_atom() { RDKix::atom_wrapper::wrap(); }

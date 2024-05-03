@@ -1,11 +1,11 @@
 if (RDK_USE_BOOST_SERIALIZATION AND Boost_SERIALIZATION_LIBRARY)
-    set(RDKit_SERIALIZATION_LIBS ${Boost_SERIALIZATION_LIBRARY})
+    set(RDKix_SERIALIZATION_LIBS ${Boost_SERIALIZATION_LIBRARY})
 else ()
     message("== Making SubstructLibrary without boost Serialization support")
-    set(RDKit_SERIALIZATION_LIBS)
+    set(RDKix_SERIALIZATION_LIBS)
 endif ()
 
-rdkit_library(GraphMol
+rdkix_library(GraphMol
         Atom.cpp QueryAtom.cpp QueryBond.cpp Bond.cpp
         MolOps.cpp FindRings.cpp ROMol.cpp RWMol.cpp PeriodicTable.cpp
         atomic_data.cpp QueryOps.cpp MolPickler.cpp Canon.cpp
@@ -16,8 +16,8 @@ rdkit_library(GraphMol
         new_canon.cpp SubstanceGroup.cpp FindStereo.cpp MonomerInfo.cpp
         NontetrahedralStereo.cpp WedgeBonds.cpp
         SHARED
-        LINK_LIBRARIES RDGeometryLib RDGeneral ${RDKit_SERIALIZATION_LIBS})
-target_compile_definitions(GraphMol PRIVATE RDKIT_GRAPHMOL_BUILD)
+        LINK_LIBRARIES RDGeometryLib RDGeneral ${RDKix_SERIALIZATION_LIBS})
+target_compile_definitions(GraphMol PRIVATE RDKIX_GRAPHMOL_BUILD)
 if (RDK_USE_URF)
     target_link_libraries(GraphMol PUBLIC ${RDK_URF_LIBS})
     if (NOT WIN32 AND RDK_INSTALL_STATIC_LIBS)
@@ -25,7 +25,7 @@ if (RDK_USE_URF)
     endif ()
 endif ()
 
-rdkit_headers(Atom.h
+rdkix_headers(Atom.h
         atomic_data.h
         AtomIterators.h
         Bond.h
@@ -41,8 +41,8 @@ rdkit_headers(Atom.h
         QueryAtom.h
         QueryBond.h
         QueryOps.h
-        RDKitBase.h
-        RDKitQueries.h
+        RDKixBase.h
+        RDKixQueries.h
         Resonance.h
         RingInfo.h
         Rings.h
@@ -130,71 +130,71 @@ add_subdirectory(Abbreviations)
 add_subdirectory(GeneralizedSubstruct)
 
 
-rdkit_test(graphmolTest1 test1.cpp LINK_LIBRARIES FileParsers SmilesParse GraphMol
+rdkix_test(graphmolTest1 test1.cpp LINK_LIBRARIES FileParsers SmilesParse GraphMol
         SubstructMatch ForceFieldHelpers ForceField)
 
-rdkit_test(graphmolcpTest cptest.cpp LINK_LIBRARIES SmilesParse GraphMol)
+rdkix_test(graphmolcpTest cptest.cpp LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_test(graphmolqueryTest querytest.cpp LINK_LIBRARIES SubstructMatch SmilesParse GraphMol)
+rdkix_test(graphmolqueryTest querytest.cpp LINK_LIBRARIES SubstructMatch SmilesParse GraphMol)
 
-rdkit_test(graphmolMolOpsTest molopstest.cpp
+rdkix_test(graphmolMolOpsTest molopstest.cpp
         LINK_LIBRARIES SubstructMatch FileParsers
         SmilesParse GraphMol)
 
-rdkit_test(graphmoltestChirality testChirality.cpp
+rdkix_test(graphmoltestChirality testChirality.cpp
         LINK_LIBRARIES SmilesParse FileParsers
         GraphMol)
 
-rdkit_test(graphmoltestPickler testPickler.cpp
+rdkix_test(graphmoltestPickler testPickler.cpp
         LINK_LIBRARIES SmilesParse SubstructMatch FileParsers GraphMol)
 
-rdkit_test(graphmoltestPicklerGlobalSetting testPicklerGlobalSettings.cpp
+rdkix_test(graphmoltestPicklerGlobalSetting testPicklerGlobalSettings.cpp
         LINK_LIBRARIES SmilesParse SubstructMatch FileParsers GraphMol)
 
-rdkit_test(graphmolIterTest itertest.cpp LINK_LIBRARIES SmilesParse GraphMol)
+rdkix_test(graphmolIterTest itertest.cpp LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_test(hanoiTest hanoitest.cpp LINK_LIBRARIES
+rdkix_test(hanoiTest hanoitest.cpp LINK_LIBRARIES
         SubstructMatch SmilesParse FileParsers GraphMol
         )
 
-rdkit_test(graphmolMemTest1 memtest1.cpp LINK_LIBRARIES SmilesParse GraphMol)
+rdkix_test(graphmolMemTest1 memtest1.cpp LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_test(resMolSupplierTest resMolSupplierTest.cpp
+rdkix_test(resMolSupplierTest resMolSupplierTest.cpp
         LINK_LIBRARIES SmilesParse GraphMol SubstructMatch FileParsers)
 
-rdkit_test(molBundleTest testMolBundle.cpp
+rdkix_test(molBundleTest testMolBundle.cpp
         LINK_LIBRARIES SmilesParse GraphMol SubstructMatch FileParsers)
 
-rdkit_test(testSGroup testSGroup.cpp LINK_LIBRARIES FileParsers GraphMol)
+rdkix_test(testSGroup testSGroup.cpp LINK_LIBRARIES FileParsers GraphMol)
 
-rdkit_test(test-valgrind test-valgrind.cpp LINK_LIBRARIES SmilesParse GraphMol)
+rdkix_test(test-valgrind test-valgrind.cpp LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_catch_test(graphmolTestsCatch catch_graphmol.cpp
+rdkix_catch_test(graphmolTestsCatch catch_graphmol.cpp
         LINK_LIBRARIES SubstructMatch FileParsers SmilesParse GraphMol)
 
-rdkit_catch_test(graphmolOrganometallicsCatch catch_organometallics.cpp
+rdkix_catch_test(graphmolOrganometallicsCatch catch_organometallics.cpp
         LINK_LIBRARIES FileParsers SmilesParse GraphMol)
 
-rdkit_catch_test(graphmolSGroupCatch catch_sgroups.cpp
+rdkix_catch_test(graphmolSGroupCatch catch_sgroups.cpp
         LINK_LIBRARIES SmilesParse FileParsers GraphMol)
 
-rdkit_catch_test(graphmolAdjustQueryCatch catch_adjustquery.cpp
+rdkix_catch_test(graphmolAdjustQueryCatch catch_adjustquery.cpp
         LINK_LIBRARIES SubstructMatch FileParsers SmilesParse GraphMol)
 
-rdkit_catch_test(chiralityTestsCatch catch_chirality.cpp
+rdkix_catch_test(chiralityTestsCatch catch_chirality.cpp
         LINK_LIBRARIES FileParsers SmilesParse GraphMol)
 
-rdkit_catch_test(canonTestsCatch catch_canon.cpp
+rdkix_catch_test(canonTestsCatch catch_canon.cpp
         LINK_LIBRARIES FileParsers SmilesParse GraphMol)
 
-rdkit_catch_test(moliteratorTestsCatch catch_moliterators.cpp
+rdkix_catch_test(moliteratorTestsCatch catch_moliterators.cpp
         LINK_LIBRARIES SubstructMatch SmilesParse GraphMol)
 
-rdkit_catch_test(queryTestsCatch catch_queries.cpp
+rdkix_catch_test(queryTestsCatch catch_queries.cpp
         LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_catch_test(molbundleTestsCatch catch_molbundle.cpp
+rdkix_catch_test(molbundleTestsCatch catch_molbundle.cpp
         LINK_LIBRARIES SmilesParse GraphMol)
 
-rdkit_catch_test(pickleTestsCatch catch_pickles.cpp
+rdkix_catch_test(pickleTestsCatch catch_pickles.cpp
         LINK_LIBRARIES FileParsers SmilesParse GraphMol)

@@ -152,7 +152,7 @@ def run_subs_query(subs):
 
 def run_subs_smarts_query(subs_smarts):
 
-  #set os environment for rdkit to use sqllite
+  #set os environment for rdkix to use sqllite
   os.environ['RD_USESQLLITE'] = '1'
   temp_core_ni_file = 'temp_core_ni_file_%s' % (os.getpid())
   cmd = "python $RDBASE/Projects/DbCLI/SearchDb.py --dbDir=%s_smarts --smarts='%s' --silent >%s" % (
@@ -206,7 +206,7 @@ def run_trans_smarts_query(transform):
   matching_lhs = []
   matching_rhs = []
 
-  #set os environment for rdkit to use sqllite
+  #set os environment for rdkix to use sqllite
   os.environ['RD_USESQLLITE'] = '1'
 
   cmd = "python $RDBASE/Projects/DbCLI/SearchDb.py --dbDir=%s_smarts --smarts='%s' --silent" % (pre,

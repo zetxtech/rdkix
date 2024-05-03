@@ -1,21 +1,21 @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RDPROPS_H
-#define RDKIT_RDPROPS_H
+#ifndef RDKIX_RDPROPS_H
+#define RDKIX_RDPROPS_H
 #include "Dict.h"
 #include "types.h"
 
-namespace RDKit {
+namespace RDKix {
 
 class RDProps {
  protected:
   mutable Dict d_props;
   // It is a quirk of history that this is mutable
-  //  as the RDKit allows properties to be set
+  //  as the RDKix allows properties to be set
   //  on const objects.
 
  public:
@@ -47,8 +47,8 @@ class RDProps {
     const STR_VECT &tmp = d_props.keys();
     STR_VECT res, computed;
     if (!includeComputed &&
-        getPropIfPresent(RDKit::detail::computedPropName, computed)) {
-      computed.push_back(RDKit::detail::computedPropName);
+        getPropIfPresent(RDKix::detail::computedPropName, computed)) {
+      computed.push_back(RDKix::detail::computedPropName);
     }
 
     auto pos = tmp.begin();
@@ -77,10 +77,10 @@ class RDProps {
   void setProp(const std::string &key, T val, bool computed = false) const {
     if (computed) {
       STR_VECT compLst;
-      getPropIfPresent(RDKit::detail::computedPropName, compLst);
+      getPropIfPresent(RDKix::detail::computedPropName, compLst);
       if (std::find(compLst.begin(), compLst.end(), key) == compLst.end()) {
         compLst.push_back(key);
-        d_props.setVal(RDKit::detail::computedPropName, compLst);
+        d_props.setVal(RDKix::detail::computedPropName, compLst);
       }
     }
     d_props.setVal(key, val);
@@ -135,11 +135,11 @@ class RDProps {
   //! \overload
   void clearProp(const std::string &key) const {
     STR_VECT compLst;
-    if (getPropIfPresent(RDKit::detail::computedPropName, compLst)) {
+    if (getPropIfPresent(RDKix::detail::computedPropName, compLst)) {
       auto svi = std::find(compLst.begin(), compLst.end(), key);
       if (svi != compLst.end()) {
         compLst.erase(svi);
-        d_props.setVal(RDKit::detail::computedPropName, compLst);
+        d_props.setVal(RDKix::detail::computedPropName, compLst);
       }
     }
     d_props.clearVal(key);
@@ -148,12 +148,12 @@ class RDProps {
   //! clears all of our \c computed \c properties
   void clearComputedProps() const {
     STR_VECT compLst;
-    if (getPropIfPresent(RDKit::detail::computedPropName, compLst)) {
+    if (getPropIfPresent(RDKix::detail::computedPropName, compLst)) {
       for (const auto &sv : compLst) {
         d_props.clearVal(sv);
       }
       compLst.clear();
-      d_props.setVal(RDKit::detail::computedPropName, compLst);
+      d_props.setVal(RDKix::detail::computedPropName, compLst);
     }
   }
 
@@ -167,5 +167,5 @@ class RDProps {
     d_props.update(source.getDict(), preserveExisting);
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

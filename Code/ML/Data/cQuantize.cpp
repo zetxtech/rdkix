@@ -1,10 +1,10 @@
 //
 // Copyright 2003-2008 Rational Discovery LLC and Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cstring>
 
@@ -353,7 +353,7 @@ static python::list cQuantize_FindStartPoints(python::object values,
 }
 
 BOOST_PYTHON_MODULE(cQuantize) {
-  rdkit_import_array();
+  rdkix_import_array();
 
   python::def("_RecurseOnBounds", cQuantize_RecurseOnBounds,
               (python::arg("vals"), python::arg("pyCuts"), python::arg("which"),

@@ -40,22 +40,22 @@
 %include <DataStructs/BitVects.h>
 %include <DataStructs/SparseIntVect.h>
 
-%rename(eq) RDKit::SparseIntVect<boost::uint32_t>::operator==;
-%rename(ne) RDKit::SparseIntVect<boost::uint32_t>::operator!=;
-%rename(eq) RDKit::SparseIntVect<boost::int32_t>::operator==;
-%rename(ne) RDKit::SparseIntVect<boost::int32_t>::operator!=;
-%rename(eq) RDKit::SparseIntVect<boost::int64_t>::operator==;
-%rename(ne) RDKit::SparseIntVect<boost::int64_t>::operator!=;
+%rename(eq) RDKix::SparseIntVect<boost::uint32_t>::operator==;
+%rename(ne) RDKix::SparseIntVect<boost::uint32_t>::operator!=;
+%rename(eq) RDKix::SparseIntVect<boost::int32_t>::operator==;
+%rename(ne) RDKix::SparseIntVect<boost::int32_t>::operator!=;
+%rename(eq) RDKix::SparseIntVect<boost::int64_t>::operator==;
+%rename(ne) RDKix::SparseIntVect<boost::int64_t>::operator!=;
 
-%template(SparseIntVectu32) RDKit::SparseIntVect<boost::uint32_t>;
-%template(SparseIntVect32) RDKit::SparseIntVect<boost::int32_t>;
-%template(SparseIntVect64) RDKit::SparseIntVect<boost::int64_t>;
+%template(SparseIntVectu32) RDKix::SparseIntVect<boost::uint32_t>;
+%template(SparseIntVect32) RDKix::SparseIntVect<boost::int32_t>;
+%template(SparseIntVect64) RDKix::SparseIntVect<boost::int64_t>;
 
-%ignore RDKit::SparseIntVect<boost::uint32_t>::getNonzeroElements const;
-%ignore RDKit::SparseIntVect<boost::int32_t>::getNonzeroElements const;
-%ignore RDKit::SparseIntVect<boost::int64_t>::getNonzeroElements const;
+%ignore RDKix::SparseIntVect<boost::uint32_t>::getNonzeroElements const;
+%ignore RDKix::SparseIntVect<boost::int32_t>::getNonzeroElements const;
+%ignore RDKix::SparseIntVect<boost::int64_t>::getNonzeroElements const;
 
-%extend RDKit::SparseIntVect<boost::uint32_t> {
+%extend RDKix::SparseIntVect<boost::uint32_t> {
   std::vector<std::pair<boost::uint32_t, int> > getNonzero() const{
     std::vector<std::pair<boost::uint32_t, int> > res;
     for(std::map<boost::uint32_t,int>::const_iterator es=$self->getNonzeroElements().begin();
@@ -65,7 +65,7 @@
     return res;
   }
 }
-%extend RDKit::SparseIntVect<boost::int32_t> {
+%extend RDKix::SparseIntVect<boost::int32_t> {
   std::vector<std::pair<boost::int32_t, int> > getNonzero() const{
     std::vector<std::pair<boost::int32_t, int> > res;
     for(std::map<boost::int32_t,int>::const_iterator es=$self->getNonzeroElements().begin();
@@ -75,7 +75,7 @@
     return res;
   }
 }
-%extend RDKit::SparseIntVect<boost::int64_t> {
+%extend RDKix::SparseIntVect<boost::int64_t> {
   std::vector<std::pair<boost::int64_t, int> > getNonzero() const{
     std::vector<std::pair<boost::int64_t, int> > res;
     for(std::map<boost::int64_t,int>::const_iterator es=$self->getNonzeroElements().begin();

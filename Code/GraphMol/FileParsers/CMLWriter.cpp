@@ -7,10 +7,10 @@
 //  http://www.xml-cml.org/schema/schema3/schema.xsd
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "FileParsers.h"
@@ -28,7 +28,7 @@
 #define FALLTHROUGH
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 boost::property_tree::ptree molToPTree(const ROMol& mol, int confId,
                                        bool kekulize) {
@@ -200,7 +200,7 @@ boost::property_tree::ptree molToPTree(const ROMol& mol, int confId,
         case Bond::DATIVER:
           bond.put("<xmlattr>.order", 'S');
           break;
-        // XXX RDKit extension: bond orders greater than 3
+        // XXX RDKix extension: bond orders greater than 3
         case Bond::QUADRUPLE:
           bond.put("<xmlattr>.order", 4);
           break;
@@ -210,7 +210,7 @@ boost::property_tree::ptree molToPTree(const ROMol& mol, int confId,
         case Bond::HEXTUPLE:
           bond.put("<xmlattr>.order", 6);
           break;
-        // XXX RDKit extension: half-integer orders
+        // XXX RDKix extension: half-integer orders
         case Bond::THREECENTER:
           bond.put("<xmlattr>.order", "0.5");
           break;
@@ -277,4 +277,4 @@ void MolToCMLFile(const ROMol& mol, const std::string& fName, int confId,
   MolToCMLBlock(ofs, mol, confId, kekulize);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

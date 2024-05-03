@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file Metal.h
 
@@ -18,7 +18,7 @@
 
 #include <GraphMol/ROMol.h>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
@@ -31,7 +31,7 @@ namespace MolStandardize {
     -
 */
 
-struct RDKIT_MOLSTANDARDIZE_EXPORT MetalDisconnectorOptions {
+struct RDKIX_MOLSTANDARDIZE_EXPORT MetalDisconnectorOptions {
   bool splitGrignards = false;  // Whether to split Grignard-type complexes.
   bool splitAromaticC = false;  // Whether to split metal-aromatic C bonds.
   bool adjustCharges = true;    // Whether to adjust charges on ligand atoms.
@@ -41,7 +41,7 @@ struct RDKIT_MOLSTANDARDIZE_EXPORT MetalDisconnectorOptions {
               // that has the _MolFileBondEndPts prop set.
 };
 
-class RDKIT_MOLSTANDARDIZE_EXPORT MetalDisconnector {
+class RDKIX_MOLSTANDARDIZE_EXPORT MetalDisconnector {
  public:
   MetalDisconnector(
       const MetalDisconnectorOptions &options = MetalDisconnectorOptions());
@@ -82,15 +82,15 @@ accordingly.
 
   const MetalDisconnectorOptions d_options;
 
-  void adjust_charges(RDKit::RWMol &mol, std::map<int, NonMetal> &nonMetals,
+  void adjust_charges(RDKix::RWMol &mol, std::map<int, NonMetal> &nonMetals,
                       std::map<int, int> &metalChargeExcess);
   // Remove any dummy atoms that are bonded to a metal and have the ENDPTS
   // prop.  These are assumed to marking a haptic bond from the aotms in
   // ENDPTS to the metal, e.g. in ferrocene.
-  void remove_haptic_dummies(RDKit::RWMol &mol);
+  void remove_haptic_dummies(RDKix::RWMol &mol);
 
 };  // class Metal
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

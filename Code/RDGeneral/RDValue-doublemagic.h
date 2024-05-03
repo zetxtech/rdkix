@@ -29,8 +29,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RDVALUE_PTRMAGIC_H
-#define RDKIT_RDVALUE_PTRMAGIC_H
+#ifndef RDKIX_RDVALUE_PTRMAGIC_H
+#define RDKIX_RDVALUE_PTRMAGIC_H
 
 #include <cstdint>
 #include <cassert>
@@ -52,7 +52,7 @@
 
 #define RDVALUE_HASBOOL
 
-namespace RDKit {
+namespace RDKix {
 
 // Inspired by
 // https://nikic.github.io/2012/02/02/Pointer-magic-for-efficient-dynamic-value-representations.html
@@ -474,5 +474,5 @@ inline bool rdvalue_cast<bool>(RDValue_cast_t v) {
   throw std::bad_any_cast();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cmath>
 
@@ -21,7 +21,7 @@
 #include <RDGeneral/types.h>
 #include <RDGeneral/Dict.h>
 
-namespace RDKit {
+namespace RDKix {
 
 bool isAromaticAtom(const Atom &atom) {
   if (atom.getIsAromatic()) {
@@ -838,9 +838,9 @@ std::string getSupplementalSmilesLabel(const Atom *atom) {
   return label;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-std::ostream &operator<<(std::ostream &target, const RDKit::Atom &at) {
+std::ostream &operator<<(std::ostream &target, const RDKix::Atom &at) {
   target << at.getIdx() << " " << at.getAtomicNum() << " " << at.getSymbol();
   target << " chg: " << at.getFormalCharge();
   target << "  deg: " << at.getDegree();

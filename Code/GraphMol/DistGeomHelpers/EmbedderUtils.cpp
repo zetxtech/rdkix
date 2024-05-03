@@ -2,10 +2,10 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Embedder.h"
 
@@ -15,7 +15,7 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace DGeomHelpers {
 
 #define PT_OPT_GET(opt) params.opt = pt.get(#opt, params.opt)
@@ -73,4 +73,4 @@ void updateEmbedParametersFromJSON(EmbedParameters &params,
   }
 }
 }  // namespace DGeomHelpers
-}  // namespace RDKit
+}  // namespace RDKix

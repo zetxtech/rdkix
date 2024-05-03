@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::Conformer "
+%typemap(javaimports) RDKix::Conformer "
 /** 
 The class for representing 2D or 3D conformation of a molecule.
 <p>
@@ -41,7 +41,7 @@ This class contains
     * a vector of 3D points (positions of atoms)
  */"
 
-%javamethodmodifiers RDKit::Conformer::resize 	( 	unsigned int  	size 	 )  	"
+%javamethodmodifiers RDKix::Conformer::resize 	( 	unsigned int  	size 	 )  	"
 /**
 <p>
 Resize the conformer so that more atoms location can be added. Useful, for e.g., when adding hydrogens

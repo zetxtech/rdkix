@@ -3,17 +3,17 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #pragma once
 
 #include <vector>
 #include "Priority.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 class SequenceRule;
@@ -47,4 +47,4 @@ class Sort {
 };  // namespace CIPLabeler
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix
