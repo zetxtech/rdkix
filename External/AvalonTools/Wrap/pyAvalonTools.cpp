@@ -19,32 +19,32 @@ namespace python = boost::python;
 
 namespace {
 
-RDKit::SparseIntVect<boost::uint32_t> *getAvalonCountFP(const RDKit::ROMol &mol,
+RDKix::SparseIntVect<boost::uint32_t> *getAvalonCountFP(const RDKix::ROMol &mol,
                                                         unsigned int nBits,
                                                         bool isQuery,
                                                         unsigned int bitFlags) {
-  auto *res = new RDKit::SparseIntVect<boost::uint32_t>(nBits);
+  auto *res = new RDKix::SparseIntVect<boost::uint32_t>(nBits);
   AvalonTools::getAvalonCountFP(mol, *res, nBits, isQuery, bitFlags);
   return res;
 }
-RDKit::SparseIntVect<boost::uint32_t> *getAvalonCountFP(const std::string &data,
+RDKix::SparseIntVect<boost::uint32_t> *getAvalonCountFP(const std::string &data,
                                                         bool isSmiles,
                                                         unsigned int nBits,
                                                         bool isQuery,
                                                         unsigned int bitFlags) {
-  auto *res = new RDKit::SparseIntVect<boost::uint32_t>(nBits);
+  auto *res = new RDKix::SparseIntVect<boost::uint32_t>(nBits);
   AvalonTools::getAvalonCountFP(data, isSmiles, *res, nBits, isQuery, bitFlags);
   return res;
 }
 
-ExplicitBitVect *getAvalonFP(const RDKit::ROMol &mol, unsigned int nBits,
+ExplicitBitVect *getAvalonFP(const RDKix::ROMol &mol, unsigned int nBits,
                              bool isQuery, bool resetVect,
                              unsigned int bitFlags) {
   auto *res = new ExplicitBitVect(nBits);
   AvalonTools::getAvalonFP(mol, *res, nBits, isQuery, resetVect, bitFlags);
   return res;
 }
-python::list getAvalonFPAsWords(const RDKit::ROMol &mol, unsigned int nBits,
+python::list getAvalonFPAsWords(const RDKix::ROMol &mol, unsigned int nBits,
                                 bool isQuery, bool resetVect,
                                 unsigned int bitFlags) {
   std::vector<boost::uint32_t> words;
@@ -81,13 +81,13 @@ python::list getAvalonFPAsWords(const std::string &data, bool isSmiles,
 
 python::tuple CheckMolecule(const std::string &data, bool isSmiles) {
   int errs = 0;
-  RDKit::ROMOL_SPTR rMol = AvalonTools::checkMol(errs, data, isSmiles);
+  RDKix::ROMOL_SPTR rMol = AvalonTools::checkMol(errs, data, isSmiles);
   return python::make_tuple(errs, rMol);
   ;
 }
-python::tuple CheckMolecule(RDKit::ROMol &mol) {
+python::tuple CheckMolecule(RDKix::ROMol &mol) {
   int errs = 0;
-  RDKit::ROMOL_SPTR rMol = AvalonTools::checkMol(errs, mol);
+  RDKix::ROMOL_SPTR rMol = AvalonTools::checkMol(errs, mol);
   return python::make_tuple(errs, rMol);
   ;
 }
@@ -128,20 +128,20 @@ BOOST_PYTHON_MODULE(pyAvalonTools) {
 The functions currently exposed are:\n\
   - GetCanonSmiles()   : return the canonical smiles for a molecule\n\
   - GetAvalonFP()      : return the Avalon fingerprint for a molecule as\n\
-                         an RDKit ExplicitBitVector\n\
+                         an RDKix ExplicitBitVector\n\
   - GetAvalonCountFP()      : return the Avalon fingerprint for a molecule as\n\
-                              an RDKit SparseIntVector\n\
+                              an RDKix SparseIntVector\n\
   - Generate2DCoords() : use the Avalon coordinate generator to create\n\
                          a set of 2D coordinates for a molecule\n\
-Each function can be called with either an RDKit molecule or some\n\
+Each function can be called with either an RDKix molecule or some\n\
 molecule data as text (e.g. a SMILES or an MDL mol block).\n\
 \n\
 See the individual docstrings for more information.\n\
 ";
 
-  std::string docString = "returns canonical smiles for an RDKit molecule";
+  std::string docString = "returns canonical smiles for an RDKix molecule";
   python::def("GetCanonSmiles",
-              (std::string(*)(RDKit::ROMol &, int))AvalonTools::getCanonSmiles,
+              (std::string(*)(RDKix::ROMol &, int))AvalonTools::getCanonSmiles,
               (python::arg("mol"), python::arg("flags") = -1),
               docString.c_str());
   docString =
@@ -154,9 +154,9 @@ MDL mol data is assumed.";
               (python::arg("molData"), python::arg("isSmiles"),
                python::arg("flags") = -1),
               docString.c_str());
-  docString = "returns the Avalon fingerprint for an RDKit molecule";
+  docString = "returns the Avalon fingerprint for an RDKix molecule";
   python::def("GetAvalonFP",
-              (ExplicitBitVect * (*)(const RDKit::ROMol &, unsigned int, bool,
+              (ExplicitBitVect * (*)(const RDKix::ROMol &, unsigned int, bool,
                                      bool, unsigned int)) getAvalonFP,
               (python::arg("mol"), python::arg("nBits") = 512,
                python::arg("isQuery") = false, python::arg("resetVect") = false,
@@ -176,9 +176,9 @@ MDL mol data is assumed.";
                python::arg("bitFlags") = AvalonTools::avalonSimilarityBits),
               docString.c_str(),
               python::return_value_policy<python::manage_new_object>());
-  docString = "Generates 2d coordinates for an RDKit molecule";
+  docString = "Generates 2d coordinates for an RDKix molecule";
   python::def("Generate2DCoords",
-              (unsigned int (*)(RDKit::ROMol &, bool))AvalonTools::set2DCoords,
+              (unsigned int (*)(RDKix::ROMol &, bool))AvalonTools::set2DCoords,
               (python::arg("mol"), python::arg("clearConfs") = true),
               docString.c_str());
   docString =
@@ -191,19 +191,19 @@ MDL mol data is assumed.";
       (python::arg("molData"), python::arg("isSmiles")), docString.c_str());
 
   docString =
-      "returns the Avalon fingerprint for an RDKit molecule as a list of ints";
+      "returns the Avalon fingerprint for an RDKix molecule as a list of ints";
   python::def("GetAvalonFPAsWords",
-              (python::list(*)(const RDKit::ROMol &, unsigned int, bool, bool,
+              (python::list(*)(const RDKix::ROMol &, unsigned int, bool, bool,
                                unsigned int))getAvalonFPAsWords,
               (python::arg("mol"), python::arg("nBits") = 512,
                python::arg("isQuery") = false, python::arg("resetVect") = false,
                python::arg("bitFlags") = AvalonTools::avalonSimilarityBits),
               docString.c_str());
 
-  docString = "returns the Avalon count fingerprint for an RDKit molecule";
+  docString = "returns the Avalon count fingerprint for an RDKix molecule";
   python::def("GetAvalonCountFP",
-              (RDKit::SparseIntVect<boost::uint32_t> *
-               (*)(const RDKit::ROMol &, unsigned int, bool, unsigned int))
+              (RDKix::SparseIntVect<boost::uint32_t> *
+               (*)(const RDKix::ROMol &, unsigned int, bool, unsigned int))
                   getAvalonCountFP,
               (python::arg("mol"), python::arg("nBits") = 512,
                python::arg("isQuery") = false,
@@ -215,7 +215,7 @@ MDL mol data is assumed.";
 If the isSmiles argument is true, the data is assumed to be SMILES, otherwise\n\
 MDL mol data is assumed.";
   python::def("GetAvalonCountFP",
-              (RDKit::SparseIntVect<boost::uint32_t> *
+              (RDKix::SparseIntVect<boost::uint32_t> *
                (*)(const std::string &, bool, unsigned int, bool, unsigned int))
                   getAvalonCountFP,
               (python::arg("molData"), python::arg("isSmiles"),
@@ -262,11 +262,11 @@ the return tuple. Otherwise, None is returned.";
               docString.c_str());
 
   docString =
-      "check a molecule passed in as an RDKit molecule.\n\
+      "check a molecule passed in as an RDKix molecule.\n\
 The first member of the return tuple contains the bit-encoded corrections made to the molecule.\n\
 If possible, the molecule (corrected when appropriate) is returned as the second member of \n\
 the return tuple. Otherwise, None is returned.";
-  python::def("CheckMolecule", (python::tuple(*)(RDKit::ROMol &))CheckMolecule,
+  python::def("CheckMolecule", (python::tuple(*)(RDKix::ROMol &))CheckMolecule,
               (python::arg("mol")), docString.c_str());
 
   docString =

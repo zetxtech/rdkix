@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -13,7 +13,7 @@
 #include <iostream>
 #include <fstream>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -22,16 +22,16 @@
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
-void inorganicSanitize(RDKit::RWMol &mol) {
+void inorganicSanitize(RDKix::RWMol &mol) {
   unsigned int failed = 0;
-  unsigned int flags = RDKit::MolOps::SANITIZE_ALL;
-  flags &= ~RDKit::MolOps::SANITIZE_CLEANUP;
-  flags &= ~RDKit::MolOps::SANITIZE_PROPERTIES;
+  unsigned int flags = RDKix::MolOps::SANITIZE_ALL;
+  flags &= ~RDKix::MolOps::SANITIZE_CLEANUP;
+  flags &= ~RDKix::MolOps::SANITIZE_PROPERTIES;
 
   mol.updatePropertyCache(false);
-  RDKit::MolOps::sanitizeMol(mol, failed, flags);
+  RDKix::MolOps::sanitizeMol(mol, failed, flags);
 }
 
 TEST_CASE("bulk parse test") {

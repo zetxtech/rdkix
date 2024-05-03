@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
@@ -13,8 +13,8 @@
 // It is not part of the public API and is not intended to be used except
 // by MolDraw2D.
 
-#ifndef RDKIT_DRAWMOL_H
-#define RDKIT_DRAWMOL_H
+#ifndef RDKIX_DRAWMOL_H
+#define RDKIX_DRAWMOL_H
 
 #include <map>
 #include <string>
@@ -26,7 +26,7 @@
 #include <GraphMol/MolDraw2D/DrawShape.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class Atom;
 class Bond;
@@ -360,6 +360,6 @@ bool areBondsParallel(const Point2D &at1, const Point2D &at2,
 const Atom *otherNeighbor(const Atom *firstAtom, const Atom *secondAtom,
                           int nborNum, const ROMol &mol);
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWMOL_H
+#endif  // RDKIX_DRAWMOL_H

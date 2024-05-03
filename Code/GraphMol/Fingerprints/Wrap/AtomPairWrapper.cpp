@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2021 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/python.hpp>
@@ -13,11 +13,11 @@
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 #include <RDBoost/Wrap.h>
 
-using namespace RDKit;
-using namespace RDKit::AtomPair;
+using namespace RDKix;
+using namespace RDKix::AtomPair;
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 namespace AtomPairWrapper {
 template <typename OutputType>
 FingerprintGenerator<OutputType> *getAtomPairGenerator(
@@ -105,4 +105,4 @@ void exportAtompair() {
 }
 }  // namespace AtomPairWrapper
 
-}  // namespace RDKit
+}  // namespace RDKix

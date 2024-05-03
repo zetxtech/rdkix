@@ -68,27 +68,27 @@ endif()
 set (freesasa_h ${FREESASA_SRC_DIR}/src/freesasa.h)
 file(READ ${freesasa_h} freesasa_h_data)
 string(REGEX REPLACE "(#include <stdio.h>)" "\\1\n#include <RDGeneral/export.h>" freesasa_h_data "${freesasa_h_data}")
-string(REGEX REPLACE "([^R][^D][^K][^I][^T][^_][^F][^R][^E][^E][^S][^A][^S][^A][^_][^C][^L][^I][^B][^_][^E][^X][^P][^O][^R][^T][^ ])(extern const)" "\\1RDKIT_FREESASA_CLIB_EXPORT \\2" freesasa_h_data "${freesasa_h_data}")
+string(REGEX REPLACE "([^R][^D][^K][^I][^T][^_][^F][^R][^E][^E][^S][^A][^S][^A][^_][^C][^L][^I][^B][^_][^E][^X][^P][^O][^R][^T][^ ])(extern const)" "\\1RDKIX_FREESASA_CLIB_EXPORT \\2" freesasa_h_data "${freesasa_h_data}")
 file(WRITE ${freesasa_h} "${freesasa_h_data}")
 
 add_definitions(-DUSE_THREADS=0)
 add_definitions(-DUSE_JSON=0)
 add_definitions(-DUSE_XML=0)
-rdkit_library(freesasa_clib ${freesasa_clib_srcs})
-target_compile_definitions(freesasa_clib PRIVATE RDKIT_FREESASALIB_BUILD)
+rdkix_library(freesasa_clib ${freesasa_clib_srcs})
+target_compile_definitions(freesasa_clib PRIVATE RDKIX_FREESASALIB_BUILD)
 
 if((MSVC AND RDK_INSTALL_DLLS_MSVC) OR ((NOT MSVC) AND WIN32))
   set_target_properties(freesasa_clib PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
 include_directories("${FREESASA_SRC_DIR}/src")
 
-rdkit_library(FreeSASALib RDFreeSASA.cpp SHARED 
+rdkix_library(FreeSASALib RDFreeSASA.cpp SHARED 
     LINK_LIBRARIES freesasa_clib GraphMol )
-target_compile_definitions(FreeSASALib PRIVATE RDKIT_FREESASALIB_BUILD)
+target_compile_definitions(FreeSASALib PRIVATE RDKIX_FREESASALIB_BUILD)
 
-rdkit_headers(RDFreeSASA.h DEST GraphMol)
+rdkix_headers(RDFreeSASA.h DEST GraphMol)
 
-rdkit_test(testFreeSASALib testFreeSASA.cpp
+rdkix_test(testFreeSASALib testFreeSASA.cpp
            LINK_LIBRARIES FreeSASALib FileParsers SmilesParse )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

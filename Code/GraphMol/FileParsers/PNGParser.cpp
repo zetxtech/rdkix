@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // details of how to handle the PNG file taken from OpenBabel's PNG handling
@@ -28,12 +28,12 @@
 #include <boost/iostreams/filter/zlib.hpp>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 namespace PNGData {
 const std::string smilesTag = "SMILES";
 const std::string molTag = "MOL";
-const std::string pklTag = "rdkitPKL";
+const std::string pklTag = "rdkixPKL";
 }  // namespace PNGData
 
 namespace {
@@ -133,7 +133,7 @@ std::vector<std::pair<std::string, std::string>> PNGStreamToMetadata(
         value = "";
         if (!alreadyWarned) {
           BOOST_LOG(rdWarningLog)
-              << "compressed metadata found in PNG, but the RDKit was not "
+              << "compressed metadata found in PNG, but the RDKix was not "
                  "compiled with support for this. Skipping it."
               << std::endl;
           alreadyWarned = true;
@@ -317,4 +317,4 @@ std::vector<std::unique_ptr<ROMol>> PNGStreamToMols(
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

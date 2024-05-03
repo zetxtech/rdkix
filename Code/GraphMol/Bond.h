@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_BOND_H
@@ -22,7 +22,7 @@
 #include <RDGeneral/RDProps.h>
 #include <GraphMol/details.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 class Atom;
@@ -44,7 +44,7 @@ class Atom;
           clients who need to store extra data on Bond objects.
 
 */
-class RDKIT_GRAPHMOL_EXPORT Bond : public RDProps {
+class RDKIX_GRAPHMOL_EXPORT Bond : public RDProps {
   friend class RWMol;
   friend class ROMol;
 
@@ -382,12 +382,12 @@ class RDKIT_GRAPHMOL_EXPORT Bond : public RDProps {
 
 //! returns twice the \c bondType
 //! (e.g. SINGLE->2, AROMATIC->3, etc.)
-RDKIT_GRAPHMOL_EXPORT extern uint8_t getTwiceBondType(const RDKit::Bond &b);
+RDKIX_GRAPHMOL_EXPORT extern uint8_t getTwiceBondType(const RDKix::Bond &b);
 
-};  // namespace RDKit
+};  // namespace RDKix
 
 //! allows Bond objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT extern std::ostream &operator<<(std::ostream &target,
-                                                      const RDKit::Bond &b);
+RDKIX_GRAPHMOL_EXPORT extern std::ostream &operator<<(std::ostream &target,
+                                                      const RDKix::Bond &b);
 
 #endif

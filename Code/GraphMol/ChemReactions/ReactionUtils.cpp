@@ -37,7 +37,7 @@
 #include <GraphMol/Descriptors/MolDescriptors.h>
 #include <cmath>
 
-namespace RDKit {
+namespace RDKix {
 
 MOL_SPTR_VECT::const_iterator getStartIterator(const ChemicalReaction &rxn,
                                                ReactionMoleculeType t) {
@@ -74,8 +74,8 @@ MOL_SPTR_VECT::const_iterator getEndIterator(const ChemicalReaction &rxn,
 namespace {
 
 bool hasReactionMoleculeTemplateSubstructMatch(
-    const RDKit::ChemicalReaction &rxn,
-    const RDKit::ChemicalReaction &query_rxn, RDKit::ReactionMoleculeType t) {
+    const RDKix::ChemicalReaction &rxn,
+    const RDKix::ChemicalReaction &query_rxn, RDKix::ReactionMoleculeType t) {
   for (auto begin = getStartIterator(rxn, t); begin != getEndIterator(rxn, t);
        ++begin) {
     for (auto begin_query = getStartIterator(query_rxn, t);
@@ -358,4 +358,4 @@ void removeMappingNumbersFromReactions(const ChemicalReaction &rxn) {
   removeMappingNumbersFromReactionMoleculeTemplate(rxn.getReactants());
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

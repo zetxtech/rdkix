@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SUBSTRUCTMATCH_H
@@ -27,7 +27,7 @@
 
 #include <GraphMol/StereoGroup.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Atom;
 class Bond;
@@ -38,7 +38,7 @@ class MolBundle;
 //!   The format is (queryAtomIdx, molAtomIdx)
 typedef std::vector<std::pair<int, int>> MatchVectType;
 
-struct RDKIT_SUBSTRUCTMATCH_EXPORT SubstructMatchParameters {
+struct RDKIX_SUBSTRUCTMATCH_EXPORT SubstructMatchParameters {
   bool useChirality = false;  //!< Use chirality in determining whether or not
                               //!< atoms/bonds match
   bool useEnhancedStereo = false;  //!< Use enhanced stereochemistry in
@@ -71,9 +71,9 @@ struct RDKIT_SUBSTRUCTMATCH_EXPORT SubstructMatchParameters {
   SubstructMatchParameters() {}
 };
 
-RDKIT_SUBSTRUCTMATCH_EXPORT void updateSubstructMatchParamsFromJSON(
+RDKIX_SUBSTRUCTMATCH_EXPORT void updateSubstructMatchParamsFromJSON(
     SubstructMatchParameters &params, const std::string &json);
-RDKIT_SUBSTRUCTMATCH_EXPORT std::string substructMatchParamsToJSON(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::string substructMatchParamsToJSON(
     const SubstructMatchParameters &params);
 
 //! Find a substructure match for a query in a molecule
@@ -85,7 +85,7 @@ RDKIT_SUBSTRUCTMATCH_EXPORT std::string substructMatchParamsToJSON(
     \return The matches, if any
 
 */
-RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     const ROMol &mol, const ROMol &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
 
@@ -98,17 +98,17 @@ RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     \return The matches, if any
 
 */
-RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     ResonanceMolSupplier &resMolSuppl, const ROMol &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
 
-RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     const MolBundle &bundle, const ROMol &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
-RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     const ROMol &mol, const MolBundle &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
-RDKIT_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_SUBSTRUCTMATCH_EXPORT std::vector<MatchVectType> SubstructMatch(
     const MolBundle &bundle, const MolBundle &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
 
@@ -229,7 +229,7 @@ inline unsigned int SubstructMatch(ResonanceMolSupplier &resMolSupplier,
 
 //! Class used as a final step to confirm whether or not a given atom->atom
 //! mapping is a valid substructure match.
-class RDKIT_SUBSTRUCTMATCH_EXPORT MolMatchFinalCheckFunctor {
+class RDKIX_SUBSTRUCTMATCH_EXPORT MolMatchFinalCheckFunctor {
  public:
   MolMatchFinalCheckFunctor(const ROMol &query, const ROMol &mol,
                             const SubstructMatchParameters &ps);
@@ -251,6 +251,6 @@ class RDKIT_SUBSTRUCTMATCH_EXPORT MolMatchFinalCheckFunctor {
   std::unordered_set<HashedStorageType> matchesSeen;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -2,21 +2,21 @@
 //  Copyright (C) 2015,2016 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cstring>
 #include <cstdio>
 #include <string>
 
 #include "SequenceWriters.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/MonomerInfo.h>
 
-namespace RDKit {
+namespace RDKix {
 
 static char getOneLetterAACode(const AtomPDBResidueInfo *info) {
   const char *ptr = info->getResidueName().c_str();
@@ -762,4 +762,4 @@ std::string MolToHELM(const ROMol &mol) {
   return result;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,4 +1,4 @@
-rdkit_python_extension(rdCoordGen
+rdkix_python_extension(rdCoordGen
                        rdCoordGen.cpp
                        DEST Chem
                        LINK_LIBRARIES

@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
@@ -101,7 +101,7 @@ static inline unsigned long long nanoClock(
   return t.tv_usec + t.tv_sec * 1000000ULL;
 }
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 
 #ifdef VERBOSE_STATISTICS_ON
@@ -130,4 +130,4 @@ struct ExecStatistics {
 };
 #endif
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

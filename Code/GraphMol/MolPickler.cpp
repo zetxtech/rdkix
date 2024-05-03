@@ -2,13 +2,13 @@
 //  Copyright (C) 2001-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/MonomerInfo.h>
@@ -32,7 +32,7 @@
 using std::int32_t;
 using std::uint32_t;
 
-namespace RDKit {
+namespace RDKix {
 
 const int32_t MolPickler::versionMajor = 15;
 const int32_t MolPickler::versionMinor = 0;
@@ -168,11 +168,11 @@ class PropTracker {
   // to update the pickle format.
   // the properties themselves are stored as std::int8_t
   const std::vector<std::pair<std::string, std::uint16_t>> explicitBondProps = {
-      {RDKit::common_properties::_MolFileBondType, 0x1},
-      {RDKit::common_properties::_MolFileBondStereo, 0x2},
-      {RDKit::common_properties::_MolFileBondCfg, 0x4},
-      {RDKit::common_properties::_MolFileBondQuery, 0x8},
-      {RDKit::common_properties::molStereoCare, 0x10},
+      {RDKix::common_properties::_MolFileBondType, 0x1},
+      {RDKix::common_properties::_MolFileBondStereo, 0x2},
+      {RDKix::common_properties::_MolFileBondCfg, 0x4},
+      {RDKix::common_properties::_MolFileBondQuery, 0x8},
+      {RDKix::common_properties::molStereoCare, 0x10},
   };
   // this is stored as bitflags in a byte, so don't exceed 8 entries or we need
   // to update the pickle format.
@@ -386,10 +386,10 @@ QueryDetails getQueryDetails(const Query<int, T const *, true> *query) {
     throw MolPicklerException("do not know how to pickle part of the query.");
   }
 }
-template RDKIT_GRAPHMOL_EXPORT QueryDetails getQueryDetails<RDKit::Atom>(
-    const Queries::Query<int, RDKit::Atom const *, true> *query);
-template RDKIT_GRAPHMOL_EXPORT QueryDetails getQueryDetails<RDKit::Bond>(
-    const Queries::Query<int, RDKit::Bond const *, true> *query);
+template RDKIX_GRAPHMOL_EXPORT QueryDetails getQueryDetails<RDKix::Atom>(
+    const Queries::Query<int, RDKix::Atom const *, true> *query);
+template RDKIX_GRAPHMOL_EXPORT QueryDetails getQueryDetails<RDKix::Bond>(
+    const Queries::Query<int, RDKix::Bond const *, true> *query);
 
 }  // namespace PicklerOps
 
@@ -855,7 +855,7 @@ AtomMonomerInfo *unpickleAtomMonomerInfo(std::istream &ss, int version) {
             "did not find expected end of atom monomer info");
       }
       res =
-          new AtomMonomerInfo(RDKit::AtomMonomerInfo::AtomMonomerType(typ), nm);
+          new AtomMonomerInfo(RDKix::AtomMonomerInfo::AtomMonomerType(typ), nm);
       break;
     case AtomMonomerInfo::PDBRESIDUE:
       res = static_cast<AtomMonomerInfo *>(new AtomPDBResidueInfo(nm));
@@ -2361,7 +2361,7 @@ void MolPickler::_depickleStereo(std::istream &ss, ROMol *mol, int version) {
     for (unsigned group = 0u; group < numGroups; ++group) {
       T tmpT;
       streamRead(ss, tmpT, version);
-      const auto groupType = static_cast<RDKit::StereoGroupType>(tmpT);
+      const auto groupType = static_cast<RDKix::StereoGroupType>(tmpT);
 
       unsigned gId = 0;
       if (version >= 14010 && groupType != StereoGroupType::STEREO_ABSOLUTE) {
@@ -2578,4 +2578,4 @@ void MolPickler::_addBondFromPickleV1(std::istream &ss, ROMol *mol) {
   }
   mol->addBond(bond, true);
 }
-};  // namespace RDKit
+};  // namespace RDKix

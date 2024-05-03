@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Dan Nealschneider
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,12 +14,12 @@
 
 // ours
 #include <RDBoost/Wrap.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 std::string stereoGroupClassDoc =
@@ -54,10 +54,10 @@ python::object getAtomsHelper(StereoGroup &sg) {
 
 struct stereogroup_wrap {
   static void wrap() {
-    python::enum_<RDKit::StereoGroupType>("StereoGroupType")
-        .value("STEREO_ABSOLUTE", RDKit::StereoGroupType::STEREO_ABSOLUTE)
-        .value("STEREO_OR", RDKit::StereoGroupType::STEREO_OR)
-        .value("STEREO_AND", RDKit::StereoGroupType::STEREO_AND)
+    python::enum_<RDKix::StereoGroupType>("StereoGroupType")
+        .value("STEREO_ABSOLUTE", RDKix::StereoGroupType::STEREO_ABSOLUTE)
+        .value("STEREO_OR", RDKix::StereoGroupType::STEREO_OR)
+        .value("STEREO_AND", RDKix::StereoGroupType::STEREO_AND)
         .export_values();
 
     python::class_<StereoGroup, boost::shared_ptr<StereoGroup>>(
@@ -86,10 +86,10 @@ struct stereogroup_wrap {
                     python::with_custodian_and_ward_postcall<0, 2>>());
 
     python::def(
-        "ForwardStereoGroupIds", &RDKit::forwardStereoGroupIds,
+        "ForwardStereoGroupIds", &RDKix::forwardStereoGroupIds,
         "Forward the original Stereo Group IDs when exporting the Mol.");
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_stereogroup() { RDKit::stereogroup_wrap::wrap(); }
+void wrap_stereogroup() { RDKix::stereogroup_wrap::wrap(); }

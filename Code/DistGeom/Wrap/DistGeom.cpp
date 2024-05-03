@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDBoost/python.h>
@@ -32,7 +32,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 bool doTriangleSmoothing(python::object boundsMatArg, double tol) {
   PyObject *boundsMatObj = boundsMatArg.ptr();
   if (!PyArray_Check(boundsMatObj)) {
@@ -171,13 +171,13 @@ PyObject *embedBoundsMatrix(python::object boundsMatArg, int maxIters = 10,
 
   return PyArray_Return(res);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(DistGeom) {
   python::scope().attr("__doc__") =
       "Module containing functions for basic distance geometry operations";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   std::string docString;
 
@@ -191,7 +191,7 @@ BOOST_PYTHON_MODULE(DistGeom) {
  RETURNS:\n\n\
     a boolean indicating whether or not the smoothing worked.\n\
 \n";
-  python::def("DoTriangleSmoothing", RDKit::doTriangleSmoothing,
+  python::def("DoTriangleSmoothing", RDKix::doTriangleSmoothing,
               (python::arg("boundsMatrix"), python::arg("tol") = 0.),
               docString.c_str());
 
@@ -212,7 +212,7 @@ BOOST_PYTHON_MODULE(DistGeom) {
     a Numeric array of doubles with the coordinates\n\
 \n";
   python::def(
-      "EmbedBoundsMatrix", RDKit::embedBoundsMatrix,
+      "EmbedBoundsMatrix", RDKix::embedBoundsMatrix,
       (python::arg("boundsMatrix"), python::arg("maxIters") = 10,
        python::arg("randomizeOnFailure") = false,
        python::arg("numZeroFail") = 2, python::arg("weights") = python::list(),

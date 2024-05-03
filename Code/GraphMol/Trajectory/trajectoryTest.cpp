@@ -3,10 +3,10 @@
 //   Copyright (C) 2016 Sereina Riniker, Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -22,7 +22,7 @@
 #include <GraphMol/FileParsers/MolWriters.h>
 #include <RDGeneral/Invariant.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testSnapshot() {
   {
@@ -85,27 +85,27 @@ void testTrajectory2D() {
     TEST_ASSERT(e);
   }
   for (unsigned int i = 0; i < np; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getPoint2D(i).x),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getPoint2D(i).x),
                            static_cast<double>(i * dim)));
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getPoint2D(i).y),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getPoint2D(i).y),
                            static_cast<double>(i * dim + 1)));
     bool e = false;
     try {
       TEST_ASSERT(
-          RDKit::feq(std::round(traj.getSnapshot(0).getPoint3D(i).z), 0.0));
+          RDKix::feq(std::round(traj.getSnapshot(0).getPoint3D(i).z), 0.0));
     } catch (...) {
       e = true;
     }
     TEST_ASSERT(!e);
   }
   for (unsigned int i = 0; i < ns; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(i).getEnergy()),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(i).getEnergy()),
                            static_cast<double>(i)));
   }
   traj.removeSnapshot(0);
   TEST_ASSERT(traj.size() == ns - 1);
   for (unsigned int i = 0; i < ns - 1; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(i).getEnergy()),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(i).getEnergy()),
                            static_cast<double>(i + 1)));
   }
   traj.insertSnapshot(0, Snapshot(c, 999.0));
@@ -113,9 +113,9 @@ void testTrajectory2D() {
   Snapshot copySnapshot(traj.getSnapshot(0));
   traj.addSnapshot(copySnapshot);
   TEST_ASSERT(traj.size() == ns + 1);
-  TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getEnergy()), 999.0));
-  TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(1).getEnergy()), 1.0));
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getEnergy()), 999.0));
+  TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(1).getEnergy()), 1.0));
+  TEST_ASSERT(RDKix::feq(
       std::round(traj.getSnapshot(traj.size() - 1).getEnergy()), 999.0));
   Trajectory traj2(traj);
   BOOST_LOG(rdErrorLog) << "done" << std::endl;
@@ -157,11 +157,11 @@ void testTrajectory3D() {
     TEST_ASSERT(e);
   }
   for (unsigned int i = 0; i < np; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getPoint3D(i).x),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getPoint3D(i).x),
                            static_cast<double>(i * dim)));
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getPoint3D(i).y),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getPoint3D(i).y),
                            static_cast<double>(i * dim + 1)));
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getPoint3D(i).z),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getPoint3D(i).z),
                            static_cast<double>(i * dim + 2)));
     if (!i) {
       bool e = false;
@@ -174,13 +174,13 @@ void testTrajectory3D() {
     }
   }
   for (unsigned int i = 0; i < ns; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(i).getEnergy()),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(i).getEnergy()),
                            static_cast<double>(i)));
   }
   traj.removeSnapshot(0);
   TEST_ASSERT(traj.size() == ns - 1);
   for (unsigned int i = 0; i < ns - 1; ++i) {
-    TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(i).getEnergy()),
+    TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(i).getEnergy()),
                            static_cast<double>(i + 1)));
   }
   traj.insertSnapshot(0, Snapshot(c, 999.0));
@@ -188,9 +188,9 @@ void testTrajectory3D() {
   Snapshot copySnapshot(traj.getSnapshot(0));
   traj.addSnapshot(copySnapshot);
   TEST_ASSERT(traj.size() == ns + 1);
-  TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(0).getEnergy()), 999.0));
-  TEST_ASSERT(RDKit::feq(std::round(traj.getSnapshot(1).getEnergy()), 1.0));
-  TEST_ASSERT(RDKit::feq(
+  TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(0).getEnergy()), 999.0));
+  TEST_ASSERT(RDKix::feq(std::round(traj.getSnapshot(1).getEnergy()), 1.0));
+  TEST_ASSERT(RDKix::feq(
       std::round(traj.getSnapshot(traj.size() - 1).getEnergy()), 999.0));
   Trajectory traj2(traj);
   BOOST_LOG(rdErrorLog) << "done" << std::endl;
@@ -312,7 +312,7 @@ void testAddConformersFromTrajectory() {
                        << std::endl;
   std::string molBlock =
       "\n"
-      "     RDKit          3D\n"
+      "     RDKix          3D\n"
       "\n"
       " 71 74  0  0  0  0  0  0  0  0999 V2000\n"
       "    8.2543    3.1901   -0.3005 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
@@ -519,8 +519,8 @@ void testAddConformersFromAmberTrajectory() {
       traj.addConformersToMol(*mol);
       TEST_ASSERT(mol->getNumConformers() == i + 1);
       TEST_ASSERT(mol->getConformer(i).getNumAtoms() == 3);
-      TEST_ASSERT(RDKit::feq(mol->getConformer(i).getAtomPos(0).x, 0.1941767));
-      TEST_ASSERT(RDKit::feq(mol->getConformer(i).getAtomPos(2).z, -0.4088006));
+      TEST_ASSERT(RDKix::feq(mol->getConformer(i).getAtomPos(0).x, 0.1941767));
+      TEST_ASSERT(RDKix::feq(mol->getConformer(i).getAtomPos(2).z, -0.4088006));
     }
     mol->clearConformers();
     bool e = false;
@@ -564,8 +564,8 @@ void testAddConformersFromGromosTrajectory() {
       traj.addConformersToMol(*mol);
       TEST_ASSERT(mol->getNumConformers() == i + 1);
       TEST_ASSERT(mol->getConformer(i).getNumAtoms() == 3);
-      TEST_ASSERT(RDKit::feq(mol->getConformer(i).getAtomPos(0).x, 1.941767));
-      TEST_ASSERT(RDKit::feq(mol->getConformer(i).getAtomPos(2).z, -4.088006));
+      TEST_ASSERT(RDKix::feq(mol->getConformer(i).getAtomPos(0).x, 1.941767));
+      TEST_ASSERT(RDKix::feq(mol->getConformer(i).getAtomPos(2).z, -4.088006));
     }
     mol->clearConformers();
     bool e = false;

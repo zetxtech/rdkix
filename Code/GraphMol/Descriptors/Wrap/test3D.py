@@ -1,8 +1,8 @@
 import os
 
-from rdkit import Chem, RDConfig, rdBase
-from rdkit.Chem import AllChem
-from rdkit.Chem import rdMolDescriptors as rdMD
+from rdkix import Chem, RDConfig, rdBase
+from rdkix.Chem import AllChem
+from rdkix.Chem import rdMolDescriptors as rdMD
 
 haveDescrs3D = hasattr(rdMD, 'CalcAUTOCORR3D')
 

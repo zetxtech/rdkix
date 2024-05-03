@@ -2,21 +2,21 @@
 //  Copyright (C) 2020-2022 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 
 #include <RDBoost/Wrap.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 struct chiralityops_wrapper {
   static void wrap() {
     RegisterVectorConverter<Chirality::StereoInfo>();
@@ -33,6 +33,6 @@ and results may change in a future release.",
         python::with_custodian_and_ward_postcall<0, 1>());
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_chiralityops() { RDKit::chiralityops_wrapper::wrap(); }
+void wrap_chiralityops() { RDKix::chiralityops_wrapper::wrap(); }

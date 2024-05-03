@@ -3,7 +3,7 @@ import unittest
 
 import sascorer
 
-from rdkit import Chem, RDConfig
+from rdkix import Chem, RDConfig
 
 print(sascorer.__file__)
 

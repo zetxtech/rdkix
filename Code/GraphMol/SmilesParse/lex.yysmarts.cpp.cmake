@@ -1,6 +1,6 @@
-#line 2 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 2 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
-#line 4 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 4 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -814,14 +814,14 @@ extern "C" int fileno(FILE*);
 #endif
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smarts.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 //static PeriodicTable * gl_ptab = PeriodicTable::getTable();
 
@@ -876,9 +876,9 @@ size_t setup_smarts_string(const std::string &text,yyscan_t yyscanner){
 
 }
 
-#line 880 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 880 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
-#line 882 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 882 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 #define INITIAL 0
 #define IN_ATOM_STATE 1
@@ -1174,7 +1174,7 @@ YY_DECL
     }
 
 
-#line 1178 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 1178 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1944,7 +1944,7 @@ YY_RULE_SETUP
 #line 458 "smarts.ll"
 ECHO;
 	YY_BREAK
-#line 1948 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 1948 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

@@ -30,9 +30,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // Adding GETAWAY descriptors by Guillaume Godin
-// for build & set RDBASE! => export RDBASE=/Users/mbp/Github/rdkit_mine/
+// for build & set RDBASE! => export RDBASE=/Users/mbp/Github/rdkix_mine/
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 
 #include "GETAWAY.h"
@@ -56,7 +56,7 @@
 
 using namespace Eigen;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Descriptors {
 
@@ -318,7 +318,7 @@ std::vector<int> GetHeavyList(const ROMol& mol) {
   std::vector<int> HeavyList;
   HeavyList.reserve(numAtoms);
   for (int i = 0; i < numAtoms; ++i) {
-    const RDKit::Atom* atom = mol.getAtomWithIdx(i);
+    const RDKix::Atom* atom = mol.getAtomWithIdx(i);
     HeavyList.push_back(int(atom->getAtomicNum() > 1));
   }
   return HeavyList;
@@ -400,7 +400,7 @@ void getGETAWAYDescCustom(MatrixXd H, MatrixXd R, MatrixXd Adj, int numAtoms,
 
   // use the PBF to determine 2D vs 3D (with Threshold)
   // determine if this is a plane molecule
-  double pbf = RDKit::Descriptors::PBF(mol);
+  double pbf = RDKix::Descriptors::PBF(mol);
   double D;
   if (pbf < 1.e-5) {
     D = 2.0;
@@ -623,7 +623,7 @@ void getGETAWAYDesc(MatrixXd H, MatrixXd R, MatrixXd Adj, int numAtoms,
 
   // use the PBF to determine 2D vs 3D (with Threshold)
   // determine if this is a plane molecule
-  double pbf = RDKit::Descriptors::PBF(mol);
+  double pbf = RDKix::Descriptors::PBF(mol);
   double D;
   if (pbf < 1.e-5) {
     D = 2.0;
@@ -1259,4 +1259,4 @@ void GETAWAY(const ROMol& mol, std::vector<double>& res, int confId,
 }
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

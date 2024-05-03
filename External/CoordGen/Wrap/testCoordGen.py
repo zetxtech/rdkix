@@ -1,18 +1,18 @@
 #  Copyright (c) 2017 Greg Landrum
 #  All rights reserved.
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 
 import copy
 import os
 import sys
 import unittest
 
-from rdkit import Chem, Geometry
-from rdkit.Chem import rdCoordGen, rdMolAlign
+from rdkix import Chem, Geometry
+from rdkix.Chem import rdCoordGen, rdMolAlign
 
 
 def compareConfs(c1, c2, match, tol=1e-2, alignIt=False):

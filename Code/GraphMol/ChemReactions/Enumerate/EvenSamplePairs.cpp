@@ -33,7 +33,7 @@
 #include <boost/format.hpp>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 
 using namespace EnumerationTypes;
 // Based on an implementation from a correspondance with Bernd Rohde.
@@ -308,4 +308,4 @@ std::string EvenSamplePairsStrategy::stats() const {
      << std::endl;
   return ss.str();
 }
-}  // namespace RDKit
+}  // namespace RDKix

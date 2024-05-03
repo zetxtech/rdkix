@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLINTERCHANGE_BUILD)
-rdkit_python_extension(rdMolInterchange
+remove_definitions(-DRDKIX_MOLINTERCHANGE_BUILD)
+rdkix_python_extension(rdMolInterchange
                        rdMolInterchange.cpp
                        DEST Chem
                        LINK_LIBRARIES MolInterchange)

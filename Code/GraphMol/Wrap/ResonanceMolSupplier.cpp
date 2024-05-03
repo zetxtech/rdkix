@@ -5,10 +5,10 @@
 //  Copyright (C) 2003-2010  Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -16,7 +16,7 @@
 #include <string>
 
 // ours
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Resonance.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <RDBoost/PySequenceHolder.h>
@@ -26,7 +26,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 PyObject *GetResonanceSubstructMatches(
     ResonanceMolSupplier &suppl, const ROMol &query, bool uniquify = false,
@@ -330,6 +330,6 @@ struct resmolsup_wrap {
              "query.\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_resmolsupplier() { RDKit::resmolsup_wrap::wrap(); }
+void wrap_resmolsupplier() { RDKix::resmolsup_wrap::wrap(); }

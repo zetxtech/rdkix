@@ -6,7 +6,7 @@ if(RDK_BUILD_DESCRIPTORS3D)
 endif(RDK_BUILD_DESCRIPTORS3D)
 
 
-rdkit_library(Descriptors
+rdkix_library(Descriptors
               Crippen.cpp BCUT.cpp MolDescriptors.cpp MolSurf.cpp Lipinski.cpp ConnectivityDescriptors.cpp
               MQN.cpp
               Property.cpp
@@ -16,9 +16,9 @@ rdkit_library(Descriptors
               ${DESC3D_SOURCES}
               LINK_LIBRARIES PartialCharges SmilesParse FileParsers Subgraphs SubstructMatch MolTransforms GraphMol
                  EigenSolvers RDGeneral)
-target_compile_definitions(Descriptors PRIVATE RDKIT_DESCRIPTORS_BUILD)
+target_compile_definitions(Descriptors PRIVATE RDKIX_DESCRIPTORS_BUILD)
 
-rdkit_headers(Crippen.h BCUT.h Lipinski.h
+rdkix_headers(Crippen.h BCUT.h Lipinski.h
               MolDescriptors.h
               MolSurf.h
               ConnectivityDescriptors.h MQN.h
@@ -30,44 +30,44 @@ rdkit_headers(Crippen.h BCUT.h Lipinski.h
               ${DESC3D_HDRS}
               DEST GraphMol/Descriptors)
 
-rdkit_test(testDescriptors test.cpp
+rdkix_test(testDescriptors test.cpp
 LINK_LIBRARIES PartialCharges Descriptors )
 
-rdkit_test(testAUTOCORR2D testAUTOCORR2D.cpp
+rdkix_test(testAUTOCORR2D testAUTOCORR2D.cpp
 LINK_LIBRARIES  Descriptors )
 
-rdkit_test(testATF testATF.cpp
+rdkix_test(testATF testATF.cpp
 LINK_LIBRARIES  Descriptors )
 
 if(RDK_HAS_EIGEN)
-  rdkit_test(testBCUT testBCUT.cpp
+  rdkix_test(testBCUT testBCUT.cpp
   LINK_LIBRARIES  Descriptors )
 endif(RDK_HAS_EIGEN)
 
 if(RDK_BUILD_DESCRIPTORS3D)
-  rdkit_test(testEEM testEEM.cpp
+  rdkix_test(testEEM testEEM.cpp
 LINK_LIBRARIES  Descriptors )
-  rdkit_test(testPBF testPBF.cpp
+  rdkix_test(testPBF testPBF.cpp
 LINK_LIBRARIES  Descriptors )
- rdkit_test(testRDFcustom testRDFcustom.cpp
+ rdkix_test(testRDFcustom testRDFcustom.cpp
 LINK_LIBRARIES  Descriptors )
- rdkit_test(testRDF testRDF.cpp
+ rdkix_test(testRDF testRDF.cpp
 LINK_LIBRARIES  Descriptors )
- rdkit_test(testMORSE testMORSE.cpp
+ rdkix_test(testMORSE testMORSE.cpp
 LINK_LIBRARIES  Descriptors )
-rdkit_test(test3D test3D.cpp
+rdkix_test(test3D test3D.cpp
 LINK_LIBRARIES  Descriptors )
-  rdkit_test(testWHIM testWHIM.cpp
+  rdkix_test(testWHIM testWHIM.cpp
 LINK_LIBRARIES  Descriptors )
-  rdkit_test(testGETAWAY testGETAWAY.cpp
+  rdkix_test(testGETAWAY testGETAWAY.cpp
 LINK_LIBRARIES  Descriptors )
-  rdkit_test(testAUTOCORR3D testAUTOCORR3D.cpp
+  rdkix_test(testAUTOCORR3D testAUTOCORR3D.cpp
 LINK_LIBRARIES  Descriptors )
- rdkit_test(testCoulombMat testCoulombMat.cpp
+ rdkix_test(testCoulombMat testCoulombMat.cpp
 LINK_LIBRARIES  Descriptors ForceFieldHelpers DistGeomHelpers  )
 endif(RDK_BUILD_DESCRIPTORS3D)
 
-rdkit_catch_test(descriptorsTestCatch catch_tests.cpp LINK_LIBRARIES Descriptors SmilesParse FileParsers)
+rdkix_catch_test(descriptorsTestCatch catch_tests.cpp LINK_LIBRARIES Descriptors SmilesParse FileParsers)
 
 if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)

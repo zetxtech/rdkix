@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2017-2023 Sereina Riniker and other RDKit contributors
+//  Copyright (C) 2017-2023 Sereina Riniker and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "TorsionPreferences.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <Geometry/Utils.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -30,7 +30,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
 namespace ForceFields {
 namespace CrystalFF {
-using namespace RDKit;
+using namespace RDKix;
 
 // the "macrocycle" patterns for ETKDGv3 use a minimum ring size of 9
 const unsigned int MIN_MACROCYCLE_SIZE = 9;
@@ -105,7 +105,7 @@ ExpTorsionAngleCollection::ExpTorsionAngleCollection(
   boost::char_separator<char> tabSep(" ", "", boost::drop_empty_tokens);
   std::istringstream inStream(paramData);
 
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   unsigned int torsionIdx = 0;
   while (!inStream.eof()) {
     if (inLine[0] != '#') {
@@ -135,14 +135,14 @@ ExpTorsionAngleCollection::ExpTorsionAngleCollection(
       }
       d_params.push_back(std::move(angle));
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }  // while loop
   // std::cerr << "Exp. torsion angles = " << d_params.size() << " "
   //    << d_params[d_params.size()-1].smarts << std::endl;
 }
 
 void getExperimentalTorsions(
-    const RDKit::ROMol &mol, CrystalFFDetails &details,
+    const RDKix::ROMol &mol, CrystalFFDetails &details,
     std::vector<std::tuple<unsigned int, std::vector<unsigned int>,
                            const ExpTorsionAngle *>> &torsionBonds,
     bool useExpTorsions, bool useSmallRingTorsions, bool useMacrocycleTorsions,
@@ -355,7 +355,7 @@ void getExperimentalTorsions(
 
 }  // end function
 
-void getExperimentalTorsions(const RDKit::ROMol &mol, CrystalFFDetails &details,
+void getExperimentalTorsions(const RDKix::ROMol &mol, CrystalFFDetails &details,
                              bool useExpTorsions, bool useSmallRingTorsions,
                              bool useMacrocycleTorsions, bool useBasicKnowledge,
                              unsigned int version, bool verbose) {

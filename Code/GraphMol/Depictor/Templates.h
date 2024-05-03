@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <GraphMol/ROMol.h>
@@ -19,7 +19,7 @@
 #include <unordered_map>
 
 namespace RDDepict {
-class RDKIT_DEPICTOR_EXPORT CoordinateTemplates {
+class RDKIX_DEPICTOR_EXPORT CoordinateTemplates {
  public:
   //! returns a reference to the singleton CoordinateTemplates
   /*
@@ -43,7 +43,7 @@ class RDKIT_DEPICTOR_EXPORT CoordinateTemplates {
     return false;
   }
 
-  const std::vector<std::shared_ptr<RDKit::ROMol>>& getMatchingTemplates(
+  const std::vector<std::shared_ptr<RDKix::ROMol>>& getMatchingTemplates(
       unsigned int atomCount) {
     return m_templates[atomCount];
   }
@@ -63,13 +63,13 @@ class RDKIT_DEPICTOR_EXPORT CoordinateTemplates {
         - consists of only 1 fragment
 
    */
-  static void assertValidTemplate(RDKit::ROMol& mol, const std::string& smiles);
+  static void assertValidTemplate(RDKix::ROMol& mol, const std::string& smiles);
 
   void loadDefaultTemplates() {
     clearTemplates();
     // load default templates into m_templates map by atom count
     for (const auto& smiles : TEMPLATE_SMILES) {
-      std::shared_ptr<RDKit::ROMol> mol(RDKit::SmilesToMol(smiles));
+      std::shared_ptr<RDKix::ROMol> mol(RDKix::SmilesToMol(smiles));
       m_templates[mol->getNumAtoms()].push_back(mol);
     }
   }
@@ -91,9 +91,9 @@ class RDKIT_DEPICTOR_EXPORT CoordinateTemplates {
   void loadTemplatesFromPath(
       const std::string& templatePath,
       std::unordered_map<
-          unsigned int, std::vector<std::shared_ptr<RDKit::ROMol>>>& templates);
+          unsigned int, std::vector<std::shared_ptr<RDKix::ROMol>>>& templates);
 
-  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKit::ROMol>>>
+  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKix::ROMol>>>
       m_templates;
 };
 }  // namespace RDDepict

@@ -1,25 +1,25 @@
 //
-//  Copyright (c) 2023, Greg Landrum and other RDKit contributors
+//  Copyright (c) 2023, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
 #include <cstdint>
 #include <variant>
 #include <sstream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/MolEnumerator/MolEnumerator.h>
 
 #include "XQMol.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace GeneralizedSubstruct {
 
 ExtendedQueryMol::ExtendedQueryMol(const std::string &text, bool isJSON) {
@@ -58,12 +58,12 @@ std::vector<MatchVectType> SubstructMatch(
     const SubstructMatchParameters &params) {
   std::vector<MatchVectType> res;
   if (std::holds_alternative<ExtendedQueryMol::RWMol_T>(query.xqmol)) {
-    res = RDKit::SubstructMatch(
+    res = RDKix::SubstructMatch(
         mol, *std::get<ExtendedQueryMol::RWMol_T>(query.xqmol), params);
 #ifdef RDK_USE_BOOST_SERIALIZATION
   } else if (std::holds_alternative<ExtendedQueryMol::MolBundle_T>(
                  query.xqmol)) {
-    res = RDKit::SubstructMatch(
+    res = RDKix::SubstructMatch(
         mol, *std::get<ExtendedQueryMol::MolBundle_T>(query.xqmol), params);
   } else if (std::holds_alternative<ExtendedQueryMol::TautomerQuery_T>(
                  query.xqmol)) {
@@ -153,4 +153,4 @@ ExtendedQueryMol createExtendedQueryMol(const RWMol &mol, bool doEnumeration,
   }
 }
 }  // namespace GeneralizedSubstruct
-}  // namespace RDKit
+}  // namespace RDKix

@@ -31,10 +31,10 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::SDMolSupplier "
+%typemap(javaimports) RDKix::SDMolSupplier "
 /** A molecule supplier deriving its molecules from an SD file */"
 
-%javamethodmodifiers RDKit::SDMolSupplier::SDMolSupplier 	( 	const std::string &  	fileName, 		bool  	sanitize = true, 		bool  	removeHs = true	  	) 			"
+%javamethodmodifiers RDKix::SDMolSupplier::SDMolSupplier 	( 	const std::string &  	fileName, 		bool  	sanitize = true, 		bool  	removeHs = true	  	) 			"
 /**
 <p>
 <p>
@@ -46,7 +46,7 @@ removeHs 	- if true remove Hs from the molecule before returning it (triggers sa
 */
 public";
 
-%javamethodmodifiers RDKit::SDMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
+%javamethodmodifiers RDKix::SDMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
 /**
 <p>
 <p>
@@ -59,7 +59,7 @@ idx 	- which item to return
 */
 public";
 
-%javamethodmodifiers RDKit::SDMolSupplier::setStreamIndices 	( 	const std::vector< std::streampos > &  	locs 	 )  	"
+%javamethodmodifiers RDKix::SDMolSupplier::setStreamIndices 	( 	const std::vector< std::streampos > &  	locs 	 )  	"
 /**
 <p>
 Resets our internal state and sets the indices of molecules in the stream. The client should be *very* careful about calling this method, as it's trivial to end up with a completely useless supplier.

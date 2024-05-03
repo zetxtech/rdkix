@@ -1,4 +1,4 @@
-rdkit_python_extension(rdinchi
+rdkix_python_extension(rdinchi
                        pyInchi.cpp
 		       DEST Chem
                        LINK_LIBRARIES 

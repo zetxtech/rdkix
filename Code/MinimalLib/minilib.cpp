@@ -1,12 +1,12 @@
 //
 //
-//  Copyright (C) 2019-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2019-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
 #include <iostream>
@@ -14,7 +14,7 @@
 #include "common.h"
 
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -48,7 +48,7 @@
 
 namespace rj = rapidjson;
 
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 static const char *NO_SUPPORT_FOR_PATTERN_FPS = "This SubstructLibrary was built without support for pattern fps";
@@ -231,17 +231,17 @@ std::string JSMol::get_topological_torsion_fp_as_binary_text(
   return res;
 }
 
-std::string JSMol::get_rdkit_fp(const std::string &details) const {
+std::string JSMol::get_rdkix_fp(const std::string &details) const {
   assert(d_mol);
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(*d_mol, details.c_str());
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(*d_mol, details.c_str());
   std::string res = BitVectToText(*fp);
   return res;
 }
 
-std::string JSMol::get_rdkit_fp_as_binary_text(
+std::string JSMol::get_rdkix_fp_as_binary_text(
     const std::string &details) const {
   assert(d_mol);
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(*d_mol, details.c_str());
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(*d_mol, details.c_str());
   std::string res = BitVectToBinaryText(*fp);
   return res;
 }
@@ -593,12 +593,12 @@ unsigned int JSMol::get_num_bonds() const {
 
 #ifdef RDK_BUILD_MINIMAL_LIB_MMPA
 namespace {
-bool mmpaFragmentMol(const ROMol &mol, std::vector<RDKit::ROMOL_SPTR> &cores,
-                     std::vector<RDKit::ROMOL_SPTR> &sidechains,
+bool mmpaFragmentMol(const ROMol &mol, std::vector<RDKix::ROMOL_SPTR> &cores,
+                     std::vector<RDKix::ROMOL_SPTR> &sidechains,
                      unsigned int minCuts, unsigned int maxCuts,
                      unsigned int maxCutBonds) {
-  std::vector<std::pair<RDKit::ROMOL_SPTR, RDKit::ROMOL_SPTR>> mmpaFrags;
-  if (!RDKit::MMPA::fragmentMol(mol, mmpaFrags, minCuts, maxCuts,
+  std::vector<std::pair<RDKix::ROMOL_SPTR, RDKix::ROMOL_SPTR>> mmpaFrags;
+  if (!RDKix::MMPA::fragmentMol(mol, mmpaFrags, minCuts, maxCuts,
                                 maxCutBonds)) {
     return false;
   }
@@ -618,8 +618,8 @@ bool mmpaFragmentMol(const ROMol &mol, std::vector<RDKit::ROMOL_SPTR> &cores,
 std::pair<JSMolList *, JSMolList *> JSMol::get_mmpa_frags(
     unsigned int minCuts, unsigned int maxCuts,
     unsigned int maxCutBonds) const {
-  std::vector<RDKit::ROMOL_SPTR> cores;
-  std::vector<RDKit::ROMOL_SPTR> sidechains;
+  std::vector<RDKix::ROMOL_SPTR> cores;
+  std::vector<RDKix::ROMOL_SPTR> sidechains;
   if (!mmpaFragmentMol(*d_mol, cores, sidechains, minCuts, maxCuts,
                        maxCutBonds)) {
     return std::make_pair(nullptr, nullptr);
@@ -661,7 +661,7 @@ JSMol *JSMolList::at(size_t idx) const {
   if (idx < d_mols.size()) {
     const auto &molSptr = d_mols.at(idx);
     if (molSptr) {
-      res = new JSMol(new RDKit::RWMol(*molSptr));
+      res = new JSMol(new RDKix::RWMol(*molSptr));
     }
   }
   return res;
@@ -849,7 +849,7 @@ JSReaction *get_rxn(const std::string &input, const std::string &details_json) {
 }
 #endif
 
-std::string version() { return std::string(rdkitVersion); }
+std::string version() { return std::string(rdkixVersion); }
 
 void prefer_coordgen(bool useCoordGen) {
 #ifdef RDK_BUILD_COORDGEN_SUPPORT
@@ -877,7 +877,7 @@ MCSResult getMcsResult(const JSMolList &molList,
   if (!details_json.empty()) {
     parseMCSParametersJSON(details_json.c_str(), &p);
   }
-  return RDKit::findMCS(molList.mols(), &p);
+  return RDKix::findMCS(molList.mols(), &p);
 }
 } // namespace
 
@@ -927,10 +927,10 @@ JSMol *get_mcs_as_mol(const JSMolList &molList,
 }
 #endif
 
-RDKit::MinimalLib::LogHandle::LoggingFlag
-    RDKit::MinimalLib::LogHandle::d_loggingNeedsInit = true;
+RDKix::MinimalLib::LogHandle::LoggingFlag
+    RDKix::MinimalLib::LogHandle::d_loggingNeedsInit = true;
 
-JSLog::JSLog(RDKit::MinimalLib::LogHandle *logHandle) : d_logHandle(logHandle) {
+JSLog::JSLog(RDKix::MinimalLib::LogHandle *logHandle) : d_logHandle(logHandle) {
   assert(d_logHandle);
 }
 
@@ -941,16 +941,16 @@ std::string JSLog::get_buffer() const { return d_logHandle->getBuffer(); }
 void JSLog::clear_buffer() const { d_logHandle->clearBuffer(); }
 
 JSLog *set_log_tee(const std::string &log_name) {
-  auto logHandle = RDKit::MinimalLib::LogHandle::setLogTee(log_name.c_str());
+  auto logHandle = RDKix::MinimalLib::LogHandle::setLogTee(log_name.c_str());
   return logHandle ? new JSLog(logHandle) : nullptr;
 }
 
 JSLog *set_log_capture(const std::string &log_name) {
   auto logHandle =
-      RDKit::MinimalLib::LogHandle::setLogCapture(log_name.c_str());
+      RDKix::MinimalLib::LogHandle::setLogCapture(log_name.c_str());
   return logHandle ? new JSLog(logHandle) : nullptr;
 }
 
-void enable_logging() { RDKit::MinimalLib::LogHandle::enableLogging(); }
+void enable_logging() { RDKix::MinimalLib::LogHandle::enableLogging(); }
 
-void disable_logging() { RDKit::MinimalLib::LogHandle::disableLogging(); }
+void disable_logging() { RDKix::MinimalLib::LogHandle::disableLogging(); }

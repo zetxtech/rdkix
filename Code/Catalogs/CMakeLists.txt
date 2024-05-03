@@ -1,10 +1,10 @@
 
-rdkit_library(Catalogs 
+rdkix_library(Catalogs 
               Catalog.cpp CatalogParams.cpp CatalogEntry.cpp
               LINK_LIBRARIES RDGeneral)
-target_compile_definitions(Catalogs PRIVATE RDKIT_CATALOGS_BUILD)
+target_compile_definitions(Catalogs PRIVATE RDKIX_CATALOGS_BUILD)
 
-rdkit_headers(CatalogEntry.h
+rdkix_headers(CatalogEntry.h
               Catalog.h
               CatalogParams.h DEST Catalogs)
 

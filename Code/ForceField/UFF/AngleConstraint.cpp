@@ -5,10 +5,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "AngleConstraint.h"
 #include "Params.h"
@@ -27,8 +27,8 @@ AngleConstraintContrib::AngleConstraintContrib(
   URANGE_CHECK(idx3, owner->positions().size());
   PRECONDITION(!(minAngleDeg > maxAngleDeg),
                "minAngleDeg must be <= maxAngleDeg");
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(minAngleDeg);
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(maxAngleDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(minAngleDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(maxAngleDeg);
 
   dp_forceField = owner;
   d_at1Idx = idx1;
@@ -69,8 +69,8 @@ AngleConstraintContrib::AngleConstraintContrib(
   d_at3Idx = idx3;
   minAngleDeg += angle;
   maxAngleDeg += angle;
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(minAngleDeg);
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(maxAngleDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(minAngleDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(maxAngleDeg);
   d_minAngleDeg = minAngleDeg;
   d_maxAngleDeg = maxAngleDeg;
   d_forceConstant = forceConst;

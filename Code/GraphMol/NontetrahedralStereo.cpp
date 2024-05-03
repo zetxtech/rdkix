@@ -1,20 +1,20 @@
 //
-//  Copyright (C) 2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
 
 #include "Chirality.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Chirality {
 
@@ -252,7 +252,7 @@ int isTrigonalBipyramidalAxialBond(const Atom *cen, const Bond *qry) {
     return false;
   }
   unsigned int perm = 0;
-  cen->getPropIfPresent(RDKit::common_properties::_chiralPermutation, perm);
+  cen->getPropIfPresent(RDKix::common_properties::_chiralPermutation, perm);
   if (perm == 0 || perm > 20) return 0;
 
   unsigned int count = 0;
@@ -430,12 +430,12 @@ double getIdealAngleBetweenLigands(const Atom *cen, const Atom *lig1,
 Bond *getTrigonalBipyramidalAxialBond(const Atom *cen, int axial) {
   PRECONDITION(cen, "bad center pointer");
   PRECONDITION(cen->hasOwningMol(), "no owning mol");
-  if (cen->getChiralTag() != RDKit::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL ||
+  if (cen->getChiralTag() != RDKix::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL ||
       cen->getDegree() > 5)
     return nullptr;
 
   unsigned int perm = 0;
-  cen->getPropIfPresent(RDKit::common_properties::_chiralPermutation, perm);
+  cen->getPropIfPresent(RDKix::common_properties::_chiralPermutation, perm);
   if (perm == 0 || perm > 20) return 0;
 
   unsigned int idx = (axial != -1) ? trigonalbipyramidal_axial[perm][0]
@@ -525,4 +525,4 @@ unsigned int getChiralPermutation(const Atom *cen, const INT_LIST &probe) {
 }
 
 }  // namespace Chirality
-}  // namespace RDKit
+}  // namespace RDKix

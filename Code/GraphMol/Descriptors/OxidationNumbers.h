@@ -3,10 +3,10 @@
 //  All rights reserved.
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Calculate the oxidation numbers (states) of the atoms in a molecule.
@@ -20,7 +20,7 @@
 #ifndef RD_OXIDATION_NUMBERS_MAR2023
 #define RD_OXIDATION_NUMBERS_MAR2023
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 class ROMol;
 namespace Descriptors {
@@ -33,8 +33,8 @@ namespace Descriptors {
  *
  * @param mol the molecule of interest
  */
-RDKIT_DESCRIPTORS_EXPORT void calcOxidationNumbers(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT void calcOxidationNumbers(const ROMol &mol);
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 #endif

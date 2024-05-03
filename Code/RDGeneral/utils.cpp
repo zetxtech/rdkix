@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2020 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "utils.h"
 #include <cmath>
@@ -14,7 +14,7 @@
 #include <boost/format.hpp>
 #include "versions.h"
 
-namespace RDKit {
+namespace RDKix {
 static rng_type generator(42u);
 uniform_double dist(0.0, 1.0);
 static double_source_type dbRandSource(generator, dist);
@@ -136,6 +136,6 @@ int firstThousandPrimes[NUM_PRIMES_AVAIL] = {
 };
 
 std::string augmentTagName(const std::string &tag) {
-  return (boost::format("%s rdkit %s") % tag % rdkitVersion).str();
+  return (boost::format("%s rdkix %s") % tag % rdkixVersion).str();
 }
-}  // namespace RDKit
+}  // namespace RDKix

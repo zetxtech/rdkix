@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -13,7 +13,7 @@
 #include <string>
 
 // ours
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <RDBoost/PySequenceHolder.h>
 
@@ -21,15 +21,15 @@
 namespace python = boost::python;
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-struct molbundle_pickle_suite : rdkit_pickle_suite {
-  static python::tuple getinitargs(const RDKit::MolBundle &self) {
+struct molbundle_pickle_suite : rdkix_pickle_suite {
+  static python::tuple getinitargs(const RDKix::MolBundle &self) {
     auto res = self.serialize();
     return python::make_tuple(python::object(python::handle<>(
         PyBytes_FromStringAndSize(res.c_str(), res.length()))));
   };
 };
 
-python::object BundleToBinary(const RDKit::MolBundle &self) {
+python::object BundleToBinary(const RDKix::MolBundle &self) {
   auto res = self.serialize();
   python::object retval = python::object(
       python::handle<>(PyBytes_FromStringAndSize(res.c_str(), res.length())));
@@ -37,20 +37,20 @@ python::object BundleToBinary(const RDKit::MolBundle &self) {
 }
 
 #else
-struct molbundle_pickle_suite : rdkit_pickle_suite {
-  static python::tuple getinitargs(const RDKit::MolBundle &) {
+struct molbundle_pickle_suite : rdkix_pickle_suite {
+  static python::tuple getinitargs(const RDKix::MolBundle &) {
     throw_runtime_error("Pickling of MolBundle instances is not enabled");
     return python::tuple();  // warning suppression, we never get here
   };
 };
 
-python::object BundleToBinary(const RDKit::MolBundle &) {
+python::object BundleToBinary(const RDKix::MolBundle &) {
   throw_runtime_error("Pickling of MolBundle instances is not enabled");
   return python::object();  // warning suppression, we never get here
 }
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 std::string molBundleClassDoc =
     "A class for storing groups of related molecules.\n\
@@ -334,6 +334,6 @@ struct molbundle_wrap {
                 "(requires boost serialization");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_molbundle() { RDKit::molbundle_wrap::wrap(); }
+void wrap_molbundle() { RDKix::molbundle_wrap::wrap(); }

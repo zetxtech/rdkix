@@ -33,7 +33,7 @@
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -42,7 +42,7 @@
 #include <GraphMol/RGroupDecomposition/RGroupDecompData.h>
 #include <GraphMol/RGroupDecomposition/RGroupGa.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testCoresLabelledProperly() {
   // Tests for an error in RGroupDecompositionParameters::prepareCore where

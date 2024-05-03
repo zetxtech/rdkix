@@ -31,7 +31,7 @@
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -49,7 +49,7 @@
 
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-using namespace RDKit;
+using namespace RDKix;
 
 #ifdef DEBUG
 const bool DOASSERT = false;
@@ -200,7 +200,7 @@ void testGaBatch() {
   decomp.process();
   RGroupRows rows = decomp.getRGroupsAsRows();
   bool isParallelGaEnabled =
-      (sstrm.str().find("This RDKit build does not enable GA parallel runs") ==
+      (sstrm.str().find("This RDKix build does not enable GA parallel runs") ==
        std::string::npos);
 #ifdef RDK_TEST_MULTITHREADED
   TEST_ASSERT(isParallelGaEnabled);
@@ -1129,7 +1129,7 @@ Br[*:3]
     // Still three groups added, but bromine and fluorine
     // are not aligned between R1 and R3
     RGroupDecompositionParameters ps;
-    ps.matchingStrategy = RDKit::NoSymmetrization;
+    ps.matchingStrategy = RDKix::NoSymmetrization;
     RGroupDecomposition decomp(*core, ps);
     decomp.add(*m1);
     decomp.add(*m2);
@@ -1333,7 +1333,7 @@ Cn1cnc2cc(Oc3cc(N4CCN(Cc5ccccc5-c5ccc(Cl)cc5)CC4)ccc3C(=O)NS(=O)(=O)c3ccc(NCCCN4
 #else
     ps.timeout = 25.0;
 #endif
-    ps.matchingStrategy = RDKit::NoSymmetrization;
+    ps.matchingStrategy = RDKix::NoSymmetrization;
     std::cerr << "bulk, no symmetry" << std::endl;
     std::vector<ROMOL_SPTR> cores;
     cores.push_back(ROMOL_SPTR(new ROMol(*core)));
@@ -1599,7 +1599,7 @@ void testMultiCorePreLabelled() {
   };
 
   std::string sdcores = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
     1.1100   -1.3431    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1626,7 +1626,7 @@ V    9 *
 M  END
 $$$$
 
-     RDKit          2D
+     RDKix          2D
 
  12 13  0  0  0  0  0  0  0  0999 V2000
    -6.5623    0.3977    0.0000 R#  0  0  0  0  0  0  0  0  0  0  0  0
@@ -1782,7 +1782,7 @@ void testCoreWithRGroupAdjQuery() {
   BOOST_LOG(rdInfoLog) << "test core with query atom adjacent to R-group"
                        << std::endl;
   std::string sdcore_query = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  0  0  0  0  0  0  0999 V2000
    -3.6689   -0.8582    0.0000 R#  0  0  0  0  0  1  0  0  0  0  0  0
@@ -1954,7 +1954,7 @@ void testGeminalRGroups() {
       << "********************************************************\n";
   BOOST_LOG(rdInfoLog) << "test core with geminal R-groups" << std::endl;
   std::string core_ctab = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   8  8  0  0  0  0  0  0  0  0999 V2000
    -0.6026    1.2267    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2176,7 +2176,7 @@ void testAddedRGroupsHaveCoords() {
   BOOST_LOG(rdInfoLog) << "test added R groups have non-zero coords"
                        << std::endl;
   auto core = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 14  0  0  0  0  0  0  0  0999 V2000
    -3.9955    2.1866    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2378,7 +2378,7 @@ void testDoNotAddUnnecessaryRLabels() {
     for (unsigned int i = 0; i < 2; ++i) {
       RGroupDecompositionParameters ps;
       if (i) {
-        ps.matchingStrategy = RDKit::NoSymmetrization;
+        ps.matchingStrategy = RDKix::NoSymmetrization;
       }
       RGroupDecomposition decomp(*core, ps);
       TEST_ASSERT(decomp.add(*m1) == 0);
@@ -2789,7 +2789,7 @@ void atomDegreePreconditionBug() {
       << std::endl;
 
   auto structure = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  12 12  0  0  0  0  0  0  0  0999 V2000
     3.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2921,7 +2921,7 @@ M  END
 )CTAB"_ctab;
 
   auto test = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  20 21  0  0  0  0  0  0  0  0999 V2000
    -2.6437    1.7625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3301,7 +3301,7 @@ void testGitHub5631() {
       << "Test that Github563 (proper placement of core R groups) is fixed"
       << std::endl;
   auto core = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  12 12  0  0  0  0  0  0  0  0999 V2000
    -3.4154    3.2137    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

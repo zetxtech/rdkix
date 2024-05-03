@@ -2,10 +2,10 @@
 //  Copyright (C) 2015 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
@@ -14,13 +14,13 @@
 #include <iostream>
 
 // RD bits
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "GasteigerCharges.h"
 #include "GasteigerParams.h"
 
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testGitHubIssue485() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;

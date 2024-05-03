@@ -57,7 +57,7 @@
 
 %{
 
-  RDKit::MCSResult findMCS(const std::vector<RDKit::ROMOL_SPTR>& mols){
-    RDKit::findMCS(mols,static_cast<const RDKit::MCSParameters *>(NULL));
+  RDKix::MCSResult findMCS(const std::vector<RDKix::ROMOL_SPTR>& mols){
+    RDKix::findMCS(mols,static_cast<const RDKix::MCSParameters *>(NULL));
   };
 %}

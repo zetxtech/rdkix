@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
-# define YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
+#ifndef YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
+# define YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -106,12 +106,12 @@ union YYSTYPE
 #line 81 "smarts.yy"
 
   int                      moli;
-  RDKit::QueryAtom * atom;
-  RDKit::QueryBond * bond;
-  RDKit::Atom::ChiralType chiraltype;
+  RDKix::QueryAtom * atom;
+  RDKix::QueryBond * bond;
+  RDKix::Atom::ChiralType chiraltype;
   int                      ival;
 
-#line 115 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
+#line 115 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -122,7 +122,7 @@ typedef union YYSTYPE YYSTYPE;
 
 
 
-int yysmarts_parse (const char *input, std::vector<RDKit::RWMol *> *molList, RDKit::Atom* &lastAtom, RDKit::Bond* &lastBond, unsigned &numAtomsParsed, unsigned &numBondsParsed, std::list<unsigned int> *branchPoints, void *scanner, int& start_token);
+int yysmarts_parse (const char *input, std::vector<RDKix::RWMol *> *molList, RDKix::Atom* &lastAtom, RDKix::Bond* &lastBond, unsigned &numAtomsParsed, unsigned &numBondsParsed, std::list<unsigned int> *branchPoints, void *scanner, int& start_token);
 
 /* "%code provides" blocks.  */
 #line 74 "smarts.yy"
@@ -132,6 +132,6 @@ int yysmarts_parse (const char *input, std::vector<RDKit::RWMol *> *molList, RDK
                (YYSTYPE * yylval_param , yyscan_t yyscanner, int& start_token)
 #endif
 
-#line 136 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
+#line 136 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
 
-#endif /* !YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED  */
+#endif /* !YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED  */

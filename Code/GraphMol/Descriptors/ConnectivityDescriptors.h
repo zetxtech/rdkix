@@ -2,10 +2,10 @@
 //  Copyright (C) 2012-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file ConnectivityDescriptors.h
@@ -21,7 +21,7 @@
 #include <vector>
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 
@@ -31,7 +31,7 @@ namespace Descriptors {
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi0v(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi0v(const ROMol &mol, bool force = false);
 const std::string chi0vVersion = "1.2.0";
 //! From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
 /*!
@@ -39,7 +39,7 @@ const std::string chi0vVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi1v(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi1v(const ROMol &mol, bool force = false);
 const std::string chi1vVersion = "1.2.0";
 //! From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
 /*!
@@ -47,7 +47,7 @@ const std::string chi1vVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi2v(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi2v(const ROMol &mol, bool force = false);
 const std::string chi2vVersion = "1.2.0";
 //! From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
 /*!
@@ -55,7 +55,7 @@ const std::string chi2vVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi3v(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi3v(const ROMol &mol, bool force = false);
 const std::string chi3vVersion = "1.2.0";
 //! From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
 /*!
@@ -63,7 +63,7 @@ const std::string chi3vVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi4v(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi4v(const ROMol &mol, bool force = false);
 const std::string chi4vVersion = "1.2.0";
 //! From equations (5),(9) and (10) of Rev. Comp. Chem. vol 2, 367-422, (1991)
 /*!
@@ -72,7 +72,7 @@ const std::string chi4vVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChiNv(const ROMol &mol, unsigned int n,
+RDKIX_DESCRIPTORS_EXPORT double calcChiNv(const ROMol &mol, unsigned int n,
                                           bool force = false);
 const std::string chiNvVersion = "1.2.0";
 
@@ -83,7 +83,7 @@ const std::string chiNvVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi0n(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi0n(const ROMol &mol, bool force = false);
 const std::string chi0nVersion = "1.2.0";
 //! Similar to Hall Kier ChiXv, but uses nVal instead of valence
 //!   This makes a big difference after we get out of the first row.
@@ -92,7 +92,7 @@ const std::string chi0nVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi1n(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi1n(const ROMol &mol, bool force = false);
 const std::string chi1nVersion = "1.2.0";
 //! Similar to Hall Kier ChiXv, but uses nVal instead of valence
 //!   This makes a big difference after we get out of the first row.
@@ -101,7 +101,7 @@ const std::string chi1nVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi2n(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi2n(const ROMol &mol, bool force = false);
 const std::string chi2nVersion = "1.2.0";
 //! Similar to Hall Kier ChiXv, but uses nVal instead of valence
 //!   This makes a big difference after we get out of the first row.
@@ -110,7 +110,7 @@ const std::string chi2nVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi3n(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi3n(const ROMol &mol, bool force = false);
 const std::string chi3nVersion = "1.2.0";
 //! Similar to Hall Kier ChiXv, but uses nVal instead of valence
 //!   This makes a big difference after we get out of the first row.
@@ -119,7 +119,7 @@ const std::string chi3nVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChi4n(const ROMol &mol, bool force = false);
+RDKIX_DESCRIPTORS_EXPORT double calcChi4n(const ROMol &mol, bool force = false);
 const std::string chi4nVersion = "1.2.0";
 //! Similar to Hall Kier ChiXv, but uses nVal instead of valence
 //!   This makes a big difference after we get out of the first row.
@@ -129,7 +129,7 @@ const std::string chi4nVersion = "1.2.0";
   \param force         forces the value to be recalculated instead
                        of pulled from the cache
 */
-RDKIT_DESCRIPTORS_EXPORT double calcChiNn(const ROMol &mol, unsigned int n,
+RDKIX_DESCRIPTORS_EXPORT double calcChiNn(const ROMol &mol, unsigned int n,
                                           bool force = false);
 const std::string chiNnVersion = "1.2.0";
 
@@ -147,7 +147,7 @@ const std::string chiNnVersion = "1.2.0";
                        necessarily sum to the full value.
                        Note: this can be a time-consuming calculation.
 */
-RDKIT_DESCRIPTORS_EXPORT double calcHallKierAlpha(
+RDKIX_DESCRIPTORS_EXPORT double calcHallKierAlpha(
     const ROMol &mol, std::vector<double> *atomContribs = nullptr);
 const std::string hallKierAlphaVersion = "1.2.0";
 
@@ -160,7 +160,7 @@ const std::string hallKierAlphaVersion = "1.2.0";
 /*!
   \param mol           the molecule of interest
 */
-RDKIT_DESCRIPTORS_EXPORT double calcKappa1(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcKappa1(const ROMol &mol);
 const std::string kappa1Version = "1.1.0";
 
 //! calculate the Hall-Kier kappa2 value for a molecule
@@ -172,7 +172,7 @@ const std::string kappa1Version = "1.1.0";
 /*!
   \param mol           the molecule of interest
 */
-RDKIT_DESCRIPTORS_EXPORT double calcKappa2(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcKappa2(const ROMol &mol);
 const std::string kappa2Version = "1.1.0";
 
 //! calculate the Hall-Kier kappa3 value for a molecule
@@ -185,7 +185,7 @@ const std::string kappa2Version = "1.1.0";
 /*!
   \param mol           the molecule of interest
 */
-RDKIT_DESCRIPTORS_EXPORT double calcKappa3(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcKappa3(const ROMol &mol);
 const std::string kappa3Version = "1.1.0";
 
 //! calculate the Kier Phi value for a molecule
@@ -197,15 +197,15 @@ const std::string kappa3Version = "1.1.0";
 /*!
   \param mol           the molecule of interest
 */
-RDKIT_DESCRIPTORS_EXPORT double calcPhi(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcPhi(const ROMol &mol);
 const std::string PhiVersion = "1.0.0";
 
 namespace detail {
-RDKIT_DESCRIPTORS_EXPORT void hkDeltas(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT void hkDeltas(const ROMol &mol,
                                        std::vector<double> &deltas, bool force);
 }
 
 }  // end of namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

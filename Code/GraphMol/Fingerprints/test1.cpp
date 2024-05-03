@@ -2,14 +2,14 @@
 //  Copyright (C) 2003-2018 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
@@ -26,7 +26,7 @@
 #include <string>
 #include <boost/version.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdInfoLog) << "testing basics" << std::endl;
@@ -1986,9 +1986,9 @@ void testMorganAtomInfoRedundantEnv() {
   BOOST_LOG(rdErrorLog) << "  done" << std::endl;
 }
 
-void testRDKitFPOptions() {
+void testRDKixFPOptions() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
-  BOOST_LOG(rdInfoLog) << "testing RDKit fingerprint options" << std::endl;
+  BOOST_LOG(rdInfoLog) << "testing RDKix fingerprint options" << std::endl;
   {
     std::string smi = "C1=CC=CC=C1";
     RWMol *m1 = SmilesToMol(smi);
@@ -2222,10 +2222,10 @@ void testPairsAndTorsionsOptions() {
   BOOST_LOG(rdInfoLog) << "done" << std::endl;
 }
 
-void testRDKitFromAtoms() {
+void testRDKixFromAtoms() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog)
-      << "testing RDKit fingerprints rooted at particular atoms" << std::endl;
+      << "testing RDKix fingerprints rooted at particular atoms" << std::endl;
   {
     std::string smi = "CCCCCC";
     RWMol *m1 = SmilesToMol(smi);
@@ -2400,9 +2400,9 @@ void testMACCS() {
   BOOST_LOG(rdInfoLog) << "done" << std::endl;
 }
 
-void testRDKitAtomBits() {
+void testRDKixAtomBits() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
-  BOOST_LOG(rdInfoLog) << "testing RDKit fingerprints reporting atomBits"
+  BOOST_LOG(rdInfoLog) << "testing RDKix fingerprints reporting atomBits"
                        << std::endl;
   {
     std::string smi = "CCCCCC";
@@ -3887,7 +3887,7 @@ void testGitHubIssue3723() {
       << std::endl;
 
   auto molblock = R"CTAB(mol
-     RDKit          3D
+     RDKix          3D
 
   7  6  0  0  0  0  0  0  0  0999 V2000
    -0.0922   -0.0921   -0.0922 Al  0  0  0  0  0  3  0  0  0  0  0  0
@@ -3945,11 +3945,11 @@ int main(int argc, char *argv[]) {
   testIgnoreTorsions();
   testMorganAtomInfo();
   testMorganAtomInfoRedundantEnv();
-  testRDKitFPOptions();
+  testRDKixFPOptions();
   testPairsAndTorsionsOptions();
   testMACCS();
-  testRDKitFromAtoms();
-  testRDKitAtomBits();
+  testRDKixFromAtoms();
+  testRDKixAtomBits();
   testChiralPairs();
   testChiralTorsions();
   testGitHubIssue25();

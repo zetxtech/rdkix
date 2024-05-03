@@ -37,7 +37,7 @@ import subprocess
 import sys
 from optparse import OptionParser
 
-from rdkit import Chem
+from rdkix import Chem
 
 
 def heavy_atom_count(smi):
@@ -263,9 +263,9 @@ if (options.sma):
 
   outfile.close()
 
-  #set os environment for rdkit to use sqllite
+  #set os environment for rdkix to use sqllite
   os.environ['RD_USESQLLITE'] = '1'
-  #use the DbCli utility in RDKit: http://code.google.com/p/rdkit/wiki/UsingTheDbCLI
+  #use the DbCli utility in RDKix: http://code.google.com/p/rdkix/wiki/UsingTheDbCLI
   cmd = 'python $RDBASE/Projects/DbCLI/CreateDb.py --dbDir=%s_smarts --molFormat=smiles %s --noPairs --noFingerprints --noDescriptors --noProps --noMorganFps --noSmiles --silent' % (
     pre, temp_core_ni_file)
   subprocess.Popen(cmd, shell=True).wait()

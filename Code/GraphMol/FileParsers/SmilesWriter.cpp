@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2008  Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <fstream>
 #include <iostream>
@@ -24,7 +24,7 @@
 #include "MolWriters.h"
 #include "FileParsers.h"
 
-namespace RDKit {
+namespace RDKix {
 
 SmilesWriter::SmilesWriter(const std::string &fileName,
                            const std::string &delimiter,
@@ -149,4 +149,4 @@ void SmilesWriter::write(const ROMol &mol, int) {
   (*dp_ostream) << "\n";
   d_molid++;
 }
-}  // namespace RDKit
+}  // namespace RDKix

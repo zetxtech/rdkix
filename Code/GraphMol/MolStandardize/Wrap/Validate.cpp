@@ -2,22 +2,22 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/Wrap.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolStandardize/Validate.h>
 
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 
-python::list rdkitValidate(MolStandardize::RDKitValidation &self,
+python::list rdkixValidate(MolStandardize::RDKixValidation &self,
                            const ROMol &mol, const bool reportAllFailures) {
   python::list res;
   std::vector<MolStandardize::ValidationErrorInfo> errout =
@@ -125,9 +125,9 @@ struct validate_wrapper {
   static void wrap() {
     std::string docString = "";
 
-    python::class_<MolStandardize::RDKitValidation, boost::noncopyable>(
-        "RDKitValidation", python::init<>())
-        .def("validate", rdkitValidate,
+    python::class_<MolStandardize::RDKixValidation, boost::noncopyable>(
+        "RDKixValidation", python::init<>())
+        .def("validate", rdkixValidate,
              (python::arg("self"), python::arg("mol"),
               python::arg("reportAllFailures") = false),
              "");

@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2018 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include "AlignMolecules.h"
@@ -26,7 +26,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testMMFFO3A() {
   std::string rdbase = getenv("RDBASE");
@@ -55,8 +55,8 @@ void testMMFFO3A() {
   delete refMol;
   // newMol->close();
   // std::cerr<<cumScore<<","<<sqrt(cumMsd)<<std::endl;
-  TEST_ASSERT(RDKit::feq(cumScore, 6941.8, 1));
-  TEST_ASSERT(RDKit::feq(sqrt(cumMsd), .345, .001));
+  TEST_ASSERT(RDKix::feq(cumScore, 6941.8, 1));
+  TEST_ASSERT(RDKix::feq(sqrt(cumMsd), .345, .001));
 }
 
 void testCrippenO3A() {
@@ -100,8 +100,8 @@ void testCrippenO3A() {
   delete refMol;
   // newMol->close();
   // std::cerr<<cumScore<<","<<sqrt(cumMsd)<<std::endl;
-  TEST_ASSERT(RDKit::feq(cumScore, 4918.1, 1));
-  TEST_ASSERT(RDKit::feq(sqrt(cumMsd), .304, .001));
+  TEST_ASSERT(RDKix::feq(cumScore, 4918.1, 1));
+  TEST_ASSERT(RDKix::feq(sqrt(cumMsd), .304, .001));
 }
 
 void testMMFFO3AMolHist() {
@@ -138,8 +138,8 @@ void testMMFFO3AMolHist() {
   delete refMol;
   // newMol->close();
   // std::cerr<<cumScore<<","<<sqrt(cumMsd)<<std::endl;
-  TEST_ASSERT(RDKit::feq(cumScore, 6941.8, 1));
-  TEST_ASSERT(RDKit::feq(sqrt(cumMsd), .345, .001));
+  TEST_ASSERT(RDKix::feq(cumScore, 6941.8, 1));
+  TEST_ASSERT(RDKix::feq(sqrt(cumMsd), .345, .001));
 }
 
 void testCrippenO3AMolHist() {
@@ -189,8 +189,8 @@ void testCrippenO3AMolHist() {
   delete refMol;
   // newMol->close();
   // std::cerr<<cumScore<<","<<sqrt(cumMsd)<<std::endl;
-  TEST_ASSERT(RDKit::feq(cumScore, 4918.1, 1));
-  TEST_ASSERT(RDKit::feq(sqrt(cumMsd), .304, .001));
+  TEST_ASSERT(RDKix::feq(cumScore, 4918.1, 1));
+  TEST_ASSERT(RDKix::feq(sqrt(cumMsd), .304, .001));
 }
 
 void testMMFFO3AConstraints() {

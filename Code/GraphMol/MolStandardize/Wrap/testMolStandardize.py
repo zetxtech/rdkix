@@ -8,10 +8,10 @@ import sys
 import unittest
 from datetime import datetime, timedelta
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Chem.MolStandardize import rdMolStandardize
-from rdkit.Chem.rdchem import Atom
-from rdkit.Geometry import rdGeometry as geom
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Chem.MolStandardize import rdMolStandardize
+from rdkix.Chem.rdchem import Atom
+from rdkix.Geometry import rdGeometry as geom
 
 
 class TestCase(unittest.TestCase):
@@ -263,7 +263,7 @@ class TestCase(unittest.TestCase):
 
 
   def test9Validate(self):
-    vm = rdMolStandardize.RDKitValidation()
+    vm = rdMolStandardize.RDKixValidation()
     mol = Chem.MolFromSmiles("CO(C)C", sanitize=False)
     msg = vm.validate(mol)
     self.assertEqual(len(msg), 1)

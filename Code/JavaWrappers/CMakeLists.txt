@@ -2,24 +2,24 @@ find_package(SWIG REQUIRED)
 include(${SWIG_USE_FILE})
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
-include_directories(${RDKit_CodeDir})
+include_directories(${RDKix_CodeDir})
 include_directories(${Boost_INCLUDE_DIRS})
 
 SET(CMAKE_SWIG_FLAGS "")
 
 
-set(swigRDKitLibSuffix "")
+set(swigRDKixLibSuffix "")
 if(RDK_SWIG_STATIC AND (NOT WIN32))
-  set(swigRDKitLibSuffix "_static")
+  set(swigRDKixLibSuffix "_static")
 endif()
-set(swigRDKitLibList "")
+set(swigRDKixLibList "")
 if(RDK_BUILD_AVALON_SUPPORT)
-  set(swigRDKitLibList "${swigRDKitLibList}AvalonLib;avalon_clib;")
+  set(swigRDKixLibList "${swigRDKixLibList}AvalonLib;avalon_clib;")
 endif(RDK_BUILD_AVALON_SUPPORT)
 if(RDK_BUILD_INCHI_SUPPORT)
-  set(swigRDKitLibList "${swigRDKitLibList}RDInchiLib;${INCHI_LIBRARIES};")
+  set(swigRDKixLibList "${swigRDKixLibList}RDInchiLib;${INCHI_LIBRARIES};")
 endif(RDK_BUILD_INCHI_SUPPORT)
-set(swigRDKitLibList "${swigRDKitLibList}"
+set(swigRDKixLibList "${swigRDKixLibList}"
   "GeneralizedSubstruct;Abbreviations;ScaffoldNetwork;MolHash;RGroupDecomposition;SubstructLibrary;TautomerQuery;"
   "MolEnumerator;"
   "MolStandardize;FilterCatalog;Catalogs;FMCS;MolDraw2D;FileParsers;SmilesParse;MarvinParser;"
@@ -30,20 +30,20 @@ set(swigRDKitLibList "${swigRDKitLibList}"
   "Alignment;SimDivPickers;RDGeometryLib;RDStreams;RDGeneral;"
 )
 if(RDK_USE_URF)
-  set(swigRDKitLibList "${swigRDKitLibList};${RDK_URF_LIBS};")
+  set(swigRDKixLibList "${swigRDKixLibList};${RDK_URF_LIBS};")
 endif(RDK_USE_URF)
-set(swigRDKitLibs "")
-foreach(swigRDKitLib ${swigRDKitLibList})
-  set(swigRDKitLibs "${swigRDKitLibs}${swigRDKitLib}${swigRDKitLibSuffix};")
+set(swigRDKixLibs "")
+foreach(swigRDKixLib ${swigRDKixLibList})
+  set(swigRDKixLibs "${swigRDKixLibs}${swigRDKixLib}${swigRDKixLibSuffix};")
 endforeach()
 
 
 
 
-set(RDKit_Wrapper_Libs ${swigRDKitLibs})
+set(RDKix_Wrapper_Libs ${swigRDKixLibs})
 
-message("SUFFIX: ${swigRDKitLibSuffix}")
-message("JAVA_LIBS: ${RDKit_Wrapper_Libs}")
+message("SUFFIX: ${swigRDKixLibSuffix}")
+message("JAVA_LIBS: ${RDKix_Wrapper_Libs}")
 
 
 if(RDK_BUILD_SWIG_JAVA_WRAPPER)

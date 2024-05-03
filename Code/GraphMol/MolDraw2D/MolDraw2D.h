@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2014-2021 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2014-2021 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (AstraZeneca)
 // 27th May 2014
 //
-// This class makes a 2D drawing of an RDKit molecule.
+// This class makes a 2D drawing of an RDKix molecule.
 // It draws heavily on $RDBASE/GraphMol/MolDrawing/MolDrawing.h.
 // One purpose of this is to make it easier to overlay annotations on top of
 // the molecule drawing, which is difficult to do from the output of
@@ -22,21 +22,21 @@
 // etc.
 
 #include <RDGeneral/export.h>
-#ifndef RDKITMOLDRAW2D_H
-#define RDKITMOLDRAW2D_H
+#ifndef RDKIXMOLDRAW2D_H
+#define RDKIXMOLDRAW2D_H
 
 #include <vector>
 
 #include <Geometry/point.h>
 #include <Geometry/Transform2D.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
 // ****************************************************************************
 using RDGeom::Point2D;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolDraw2D_detail {
 class DrawMol;
@@ -44,7 +44,7 @@ class DrawText;
 }  // namespace MolDraw2D_detail
 
 //! MolDraw2D is the base class for doing 2D renderings of molecules
-class RDKIT_MOLDRAW2D_EXPORT MolDraw2D {
+class RDKIX_MOLDRAW2D_EXPORT MolDraw2D {
  public:
   //! constructor for a particular size
   /*!
@@ -470,7 +470,7 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2D {
   // take the given components from the reaction (bits will be either
   // reagents, products or agents) and create the corresponding DrawMols.
   void makeReactionComponents(
-      std::vector<RDKit::ROMOL_SPTR> const &bits,
+      std::vector<RDKix::ROMOL_SPTR> const &bits,
       const std::vector<int> *confIds, int heightToUse,
       std::map<int, DrawColour> &atomColours,
       std::vector<std::shared_ptr<MolDraw2D_detail::DrawMol>> &dms,
@@ -568,6 +568,6 @@ inline void setMonochromeMode(MolDraw2D &drawer, const DrawColour &fgColour,
   setMonochromeMode(drawer.drawOptions(), fgColour, bgColour);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKITMOLDRAW2D_H
+#endif  // RDKIXMOLDRAW2D_H

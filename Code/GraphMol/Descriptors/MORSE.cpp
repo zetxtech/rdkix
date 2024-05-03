@@ -31,7 +31,7 @@
 //
 // Created by Guillaume GODIN 2016
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "MORSE.h"
 #include "MolData3Ddescriptors.h"
@@ -41,7 +41,7 @@
 // data checked using book Todeschini R., Consonni V. - Molecular Descriptors
 // for Chemoinformatics 2009 atomic properties page 21/22
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace {
 
@@ -217,4 +217,4 @@ void MORSE(const ROMol &mol, std::vector<double> &res, int confId,
 }
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

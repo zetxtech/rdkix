@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Original author: David Cosgrove (CozChemIx).
@@ -14,7 +14,7 @@
 #include <GraphMol/MolDraw2D/DrawTextNotFT.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 // ****************************************************************************
 DrawTextNotFT::DrawTextNotFT(double max_fnt_sz, double min_fnt_sz)
@@ -85,4 +85,4 @@ void DrawTextNotFT::alignString(
 }
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2012 Greg Landrum and  Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/Invariant.h>
 #include <GraphMol/GraphMol.h>
@@ -29,7 +29,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <boost/flyweight/no_tracking.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 extern const std::string defaultParamData;
 
@@ -153,7 +153,7 @@ CrippenParamCollection::CrippenParamCollection(const std::string &paramData) {
   }
   std::istringstream inStream(params);
 
-  std::string inLine = RDKit::getLine(inStream);
+  std::string inLine = RDKix::getLine(inStream);
   unsigned int idx = 0;
   while (!inStream.eof()) {
     if (inLine[0] != '#') {
@@ -185,7 +185,7 @@ CrippenParamCollection::CrippenParamCollection(const std::string &paramData) {
           boost::shared_ptr<const ROMol>(SmartsToMol(paramObj.smarts));
       d_params.push_back(paramObj);
     }
-    inLine = RDKit::getLine(inStream);
+    inLine = RDKix::getLine(inStream);
   }
 }
 
@@ -320,4 +320,4 @@ const std::string defaultParamData =
     "Me2	[#72,#73,#74,#75,#76,#77,#78,#79,#80]	-0.0025		\n";
 
 }  // end of namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 // Copyright 2003-2006 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_BADFILEEXCEPTION_H
@@ -16,10 +16,10 @@
 #include <vector>
 #include <stdexcept>
 
-namespace RDKit {
+namespace RDKix {
 
 //! used by various file parsing classes to indicate a bad file
-class RDKIT_RDGENERAL_EXPORT BadFileException : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT BadFileException : public std::runtime_error {
  public:
   //! construct with an error message
   explicit BadFileException(const char *msg)
@@ -34,6 +34,6 @@ class RDKIT_RDGENERAL_EXPORT BadFileException : public std::runtime_error {
  private:
   std::string _msg;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

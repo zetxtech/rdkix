@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2023 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2023 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // This is based on a suggestion and code from Christian Feldmann.
 // It was discussion #4607.  His Python implementation (which I haven't
@@ -20,7 +20,7 @@
 #include <GraphMol/MolDraw2D/MolDraw2DDetails.h>
 #include <GraphMol/MolDraw2D/DrawMolMCHLasso.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // ****************************************************************************
@@ -130,7 +130,7 @@ void DrawMolMCHLasso::extractAtomColourLists(
 }
 
 // ****************************************************************************
-void DrawMolMCHLasso::drawLasso(size_t lassoNum, const RDKit::DrawColour &col,
+void DrawMolMCHLasso::drawLasso(size_t lassoNum, const RDKix::DrawColour &col,
                                 const std::vector<int> &colAtoms) {
   // Extract the arcs and lines for the given atoms in the given colour.
   // lassoNum is the number of the lasso being done, and hence dictates
@@ -174,7 +174,7 @@ double getLassoWidth(const DrawMolMCH *dm, int atNum, int lassoNum) {
 
 // ****************************************************************************
 void DrawMolMCHLasso::extractAtomArcs(
-    size_t lassoNum, const RDKit::DrawColour &col,
+    size_t lassoNum, const RDKix::DrawColour &col,
     const std::vector<int> &colAtoms,
     std::vector<std::unique_ptr<DrawShapeArc>> &arcs) const {
   // an empirically derived lineWidth.
@@ -196,7 +196,7 @@ void DrawMolMCHLasso::extractAtomArcs(
 
 // ****************************************************************************
 void DrawMolMCHLasso::extractBondLines(
-    size_t lassoNum, const RDKit::DrawColour &col,
+    size_t lassoNum, const RDKix::DrawColour &col,
     const std::vector<int> &colAtoms,
     std::vector<std::unique_ptr<DrawShapeSimpleLine>> &lines) const {
   int lineWidth = 3;
@@ -623,4 +623,4 @@ void DrawMolMCHLasso::fixOrphanLines(
               lines.end());
 }
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

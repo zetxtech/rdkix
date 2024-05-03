@@ -2,10 +2,10 @@
 //  Copyright (C) 2015-2018 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MMFFCONVENIENCE_H
@@ -16,7 +16,7 @@
 #include "AtomTyper.h"
 #include "Builder.h"
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace MMFF {
 //! Convenience function for optimizing a molecule using MMFF
@@ -63,7 +63,7 @@ inline std::pair<int, double> MMFFOptimizeMolecule(
   \param mol        the molecule to use
   \param res        vector of (needsMore,energy) pairs
   \param numThreads the number of simultaneous threads to use (only has an
-                    effect if the RDKit is compiled with thread support).
+                    effect if the RDKix is compiled with thread support).
                     If set to zero, the max supported by the system will be
   used.
   \param maxIters   the maximum number of force-field iterations
@@ -101,5 +101,5 @@ inline void MMFFOptimizeMoleculeConfs(ROMol &mol,
   }
 }
 }  // namespace MMFF
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 #endif

@@ -4,10 +4,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_MMFFBONDSTRETCH_H__
@@ -20,7 +20,7 @@ class MMFFBond;
 class MMFFBondStretchEmpiricalRule;
 
 //! The bond-stretch term for MMFF
-class RDKIT_FORCEFIELD_EXPORT BondStretchContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT BondStretchContrib : public ForceFieldContrib {
  public:
   BondStretchContrib() {}
   //! Constructor
@@ -52,13 +52,13 @@ class RDKIT_FORCEFIELD_EXPORT BondStretchContrib : public ForceFieldContrib {
 
 namespace Utils {
 //! returns the MMFF rest length for a bond
-RDKIT_FORCEFIELD_EXPORT double calcBondRestLength(
+RDKIX_FORCEFIELD_EXPORT double calcBondRestLength(
     const MMFFBond *mmffBondParams);
 //! returns the MMFF force constant for a bond
-RDKIT_FORCEFIELD_EXPORT double calcBondForceConstant(
+RDKIX_FORCEFIELD_EXPORT double calcBondForceConstant(
     const MMFFBond *mmffBondParams);
 //! calculates and returns the bond stretching MMFF energy
-RDKIT_FORCEFIELD_EXPORT double calcBondStretchEnergy(const double r0,
+RDKIX_FORCEFIELD_EXPORT double calcBondStretchEnergy(const double r0,
                                                      const double kb,
                                                      const double distance);
 }  // namespace Utils

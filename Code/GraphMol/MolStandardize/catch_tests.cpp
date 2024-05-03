@@ -2,14 +2,14 @@
 //  Copyright (C) 2019-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -23,7 +23,7 @@
 #include <iostream>
 #include <fstream>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("SKIP_IF_ALL_MATCH") {
   auto m = "[Na+].[Cl-]"_smiles;
@@ -869,7 +869,7 @@ TEST_CASE("Github #5008: bad tautomers for phosphorous compounds") {
   }
 }
 
-TEST_CASE("Github #5169: Standardization via RDKit breaks molecules",
+TEST_CASE("Github #5169: Standardization via RDKix breaks molecules",
           "[uncharger]") {
   SECTION("basics") {
     SmilesParserParams ps;

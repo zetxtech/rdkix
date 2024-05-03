@@ -34,18 +34,18 @@
 // Created by Guillaume GODIN, 2016
 
 #include <RDGeneral/export.h>
-#ifndef AUTOCORR3DRDKIT_H_SEPT2016
-#define AUTOCORR3DRDKIT_H_SEPT2016
+#ifndef AUTOCORR3DRDKIX_H_SEPT2016
+#define AUTOCORR3DRDKIX_H_SEPT2016
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string AUTOCORR3DVersion = "1.0.0";
-RDKIT_DESCRIPTORS_EXPORT void AUTOCORR3D(
+RDKIX_DESCRIPTORS_EXPORT void AUTOCORR3D(
     const ROMol &, std::vector<double> &res, int confId = -1,
     const std::string &customAtomPropName = "");
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

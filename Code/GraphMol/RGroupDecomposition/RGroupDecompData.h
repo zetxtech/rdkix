@@ -1,12 +1,12 @@
 //
 //  Copyright (C) 2017-2022 Novartis Institutes for BioMedical Research and
-//  other RDKit contributors
+//  other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RGROUP_DECOMP_DATA
 #define RGROUP_DECOMP_DATA
@@ -17,7 +17,7 @@
 #include <vector>
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 
 extern const std::string _rgroupInputDummy;
 
@@ -111,6 +111,6 @@ struct RGroupDecompData {
 private:
   void addInputCore(const ROMol &inputCore);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #if defined(__CYGWIN__) && !defined(_GNU_SOURCE)
 // -std=c++11 doesn't declare strtok_r
@@ -23,7 +23,7 @@
 #endif
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 static void verboseAtom(const ROMol &mol, int atom_idx,
@@ -43,19 +43,19 @@ static void verboseAtom(const ROMol &mol, int atom_idx,
                        << nstr << "\n";
 }
 
-RDKit::Bond::BondType convertBondType(AABondType bt) {
-  static const RDKit::Bond::BondType rdbt[] = {
-      RDKit::Bond::UNSPECIFIED,  // BT_NONE = 0,
-      RDKit::Bond::SINGLE,      RDKit::Bond::DOUBLE,
-      RDKit::Bond::TRIPLE,      RDKit::Bond::AROMATIC,
-      RDKit::Bond::UNSPECIFIED,  // ??? SINGLE_DOUBLE = 5,
-      RDKit::Bond::ONEANDAHALF,  // SINGLE_AROMATIC = 6,
-      RDKit::Bond::TWOANDAHALF,  // DOUBLE_AROMATIC = 7,
+RDKix::Bond::BondType convertBondType(AABondType bt) {
+  static const RDKix::Bond::BondType rdbt[] = {
+      RDKix::Bond::UNSPECIFIED,  // BT_NONE = 0,
+      RDKix::Bond::SINGLE,      RDKix::Bond::DOUBLE,
+      RDKix::Bond::TRIPLE,      RDKix::Bond::AROMATIC,
+      RDKix::Bond::UNSPECIFIED,  // ??? SINGLE_DOUBLE = 5,
+      RDKix::Bond::ONEANDAHALF,  // SINGLE_AROMATIC = 6,
+      RDKix::Bond::TWOANDAHALF,  // DOUBLE_AROMATIC = 7,
   };
-  return (bt <= DOUBLE_AROMATIC) ? rdbt[bt] : RDKit::Bond::OTHER;  // ??
+  return (bt <= DOUBLE_AROMATIC) ? rdbt[bt] : RDKix::Bond::OTHER;  // ??
 }
 
-AABondType convertBondType(RDKit::Bond::BondType rdbt) {
+AABondType convertBondType(RDKix::Bond::BondType rdbt) {
   static const AABondType bt[] = {
       BT_NONE,         SINGLE, DOUBLE, TRIPLE,
       BT_NONE,          // QUADRUPLE,
@@ -68,7 +68,7 @@ AABondType convertBondType(RDKit::Bond::BondType rdbt) {
       BT_NONE,          // FIVEANDAHALF,
       AROMATIC,
   };
-  return (rdbt <= RDKit::Bond::AROMATIC) ? bt[rdbt] : BT_NONE;  //??
+  return (rdbt <= RDKix::Bond::AROMATIC) ? bt[rdbt] : BT_NONE;  //??
 }
 
 /*
@@ -205,8 +205,8 @@ bool TransformAugmentedAtoms(
                   ((ANY_BOND == ligand.BondType ||
                     isBondTypeMatch(*nbrBond, ligand.BondType)) ||
                    (SINGLE_DOUBLE == ligand.BondType &&
-                    (RDKit::Bond::SINGLE == nbrBond->getBondType() ||
-                     RDKit::Bond::DOUBLE == nbrBond->getBondType()))) &&
+                    (RDKix::Bond::SINGLE == nbrBond->getBondType() ||
+                     RDKix::Bond::DOUBLE == nbrBond->getBondType()))) &&
                   AtomSymbolMatch(nbrAtom->getSymbol(), ligand.AtomSymbol)) {
                 matched++;
                 match_a[l] = neighbours[j][k].AtomIdx;
@@ -269,31 +269,31 @@ bool TransformAugmentedAtoms(
 // CheckAtoms():
 //-----------------------------------------------------------------------------
 
-bool isBondTypeMatch(const RDKit::Bond &b, AABondType lbt) {
-  RDKit::Bond::BondType bt = b.getBondType();
+bool isBondTypeMatch(const RDKix::Bond &b, AABondType lbt) {
+  RDKix::Bond::BondType bt = b.getBondType();
   bool aromatic = b.getIsAromatic();
 
   if (ANY_BOND == lbt)
     return true;
   else if (lbt == AROMATIC)
-    return aromatic || bt == RDKit::Bond::AROMATIC ||
-           bt == RDKit::Bond::ONEANDAHALF || bt == RDKit::Bond::TWOANDAHALF ||
-           bt == RDKit::Bond::THREEANDAHALF;
+    return aromatic || bt == RDKix::Bond::AROMATIC ||
+           bt == RDKix::Bond::ONEANDAHALF || bt == RDKix::Bond::TWOANDAHALF ||
+           bt == RDKix::Bond::THREEANDAHALF;
   else if (lbt == SINGLE_AROMATIC)
-    return (bt == RDKit::Bond::ONEANDAHALF ||
-            (aromatic && bt == RDKit::Bond::SINGLE));
+    return (bt == RDKix::Bond::ONEANDAHALF ||
+            (aromatic && bt == RDKix::Bond::SINGLE));
   else if (lbt == DOUBLE_AROMATIC)
-    return (bt == RDKit::Bond::TWOANDAHALF ||
-            (aromatic && bt == RDKit::Bond::DOUBLE));
+    return (bt == RDKix::Bond::TWOANDAHALF ||
+            (aromatic && bt == RDKix::Bond::DOUBLE));
   else if (lbt == SINGLE)
-    return (bt == RDKit::Bond::SINGLE || bt == RDKit::Bond::ONEANDAHALF ||
-            bt == RDKit::Bond::AROMATIC || aromatic);
+    return (bt == RDKix::Bond::SINGLE || bt == RDKix::Bond::ONEANDAHALF ||
+            bt == RDKix::Bond::AROMATIC || aromatic);
   else if (lbt == DOUBLE)
-    return (bt == RDKit::Bond::DOUBLE || bt == RDKit::Bond::TWOANDAHALF ||
-            bt == RDKit::Bond::AROMATIC || aromatic);
+    return (bt == RDKix::Bond::DOUBLE || bt == RDKix::Bond::TWOANDAHALF ||
+            bt == RDKix::Bond::AROMATIC || aromatic);
   else if (lbt == TRIPLE)
-    return (bt == RDKit::Bond::TRIPLE || bt == RDKit::Bond::THREEANDAHALF ||
-            bt == RDKit::Bond::AROMATIC);
+    return (bt == RDKix::Bond::TRIPLE || bt == RDKix::Bond::THREEANDAHALF ||
+            bt == RDKix::Bond::AROMATIC);
   else
     return false;
 }
@@ -408,7 +408,7 @@ ANY_CHARGE)
             && (atom.getNumRadicalElectrons() == au_ligand.Radical ||
 au_ligand.Radical == ANY_RADICAL)
             && (convertBondType(bond.getBondType()) == au_ligand.BondType
-                || (bond.getBondType() == RDKit::Bond::AROMATIC &&
+                || (bond.getBondType() == RDKix::Bond::AROMATIC &&
 au_ligand.BondType != TRIPLE))
             && (au_ligand.SubstitutionCount == 0 ||
                 nbp[nbph.Atoms[i]].Atoms.size() == au_ligand.SubstitutionCount)
@@ -485,7 +485,7 @@ static void RingState(const ROMol &mol, std::vector<unsigned> &atom_status,
   for (unsigned int &i : bond_status) i = 0;
   if (mol.getNumBonds() == 0) return;
   // for each bond compute amount of rings that contains the bond
-  const RDKit::RingInfo &ringInfo = *mol.getRingInfo();
+  const RDKix::RingInfo &ringInfo = *mol.getRingInfo();
   const VECT_INT_VECT &bondRings = ringInfo.bondRings();
   for (const auto &ring : bondRings) {
     for (unsigned i = 0; i < ring.size(); i++) {
@@ -598,4 +598,4 @@ bool CheckAtoms(const ROMol &mol, const std::vector<AugmentedAtom> &good_atoms,
 }
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

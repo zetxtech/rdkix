@@ -1,5 +1,5 @@
-include_directories( ${RDKit_ExternalDir}/AvalonTools )
-rdkit_python_extension(pyAvalonTools
+include_directories( ${RDKix_ExternalDir}/AvalonTools )
+rdkix_python_extension(pyAvalonTools
                        pyAvalonTools.cpp
                        DEST Avalon
                        LINK_LIBRARIES

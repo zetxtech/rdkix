@@ -2,7 +2,7 @@ import re
 
 splitExpr = re.compile('[\t ]')
 
-from rdkit import Chem
+from rdkix import Chem
 
 
 def runit(fName):

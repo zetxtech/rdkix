@@ -22,7 +22,7 @@ http://sourceforge.net/projects/avalontoolkit/files/AvalonToolkit_1.2/AvalonTool
 
 Note that the version number is important.
 
-Extract the tar file in $RDBASE/External/AvalonTools; the source required by the RDKit is in
+Extract the tar file in $RDBASE/External/AvalonTools; the source required by the RDKix is in
 the SourceDistribution directory.
 
 cd to $RDBASE/External/AvalonTools and apply AvalonToolkit_1.2_patch.txt:

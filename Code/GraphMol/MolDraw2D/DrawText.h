@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2020-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Original author: David Cosgrove (CozChemIx).
@@ -13,8 +13,8 @@
 // This is an abstract base class for drawing text into a MolDraw2D
 // object.
 
-#ifndef RDKIT_DRAWTEXT_H
-#define RDKIT_DRAWTEXT_H
+#ifndef RDKIX_DRAWTEXT_H
+#define RDKIX_DRAWTEXT_H
 
 #include <string>
 #include <vector>
@@ -26,7 +26,7 @@
 
 using RDGeom::Point2D;
 
-namespace RDKit {
+namespace RDKix {
 class MolDraw2D;
 namespace MolDraw2D_detail {
 
@@ -43,7 +43,7 @@ std::ostream &operator<<(std::ostream &oss, const TextDrawType &tdt);
 // ****************************************************************************
 // This is an implementation class, not intended to be used by the great
 // unwashed. If you want to draw a string used MolDraw2D::drawString().
-class RDKIT_MOLDRAW2D_EXPORT DrawText {
+class RDKIX_MOLDRAW2D_EXPORT DrawText {
  public:
   virtual ~DrawText() = 0;
 
@@ -189,7 +189,7 @@ class RDKIT_MOLDRAW2D_EXPORT DrawText {
 //! mode based on contents of instring from i onwards. Increments i
 //! appropriately
 //! \returns true or false depending on whether it did something or not
-RDKIT_MOLDRAW2D_EXPORT bool setStringDrawMode(const std::string &instring,
+RDKIX_MOLDRAW2D_EXPORT bool setStringDrawMode(const std::string &instring,
                                               TextDrawType &draw_mode,
                                               size_t &i);
 
@@ -200,6 +200,6 @@ std::vector<std::string> atomLabelToPieces(const std::string &label,
                                            OrientType orient);
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWTEXT_H
+#endif  // RDKIX_DRAWTEXT_H

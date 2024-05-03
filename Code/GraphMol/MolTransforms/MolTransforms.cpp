@@ -2,13 +2,13 @@
 //   Copyright (C) 2003-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolTransforms.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <Numerics/EigenSolvers/PowerEigenSolver.h>
 #include <Numerics/SymmMatrix.h>
@@ -23,7 +23,7 @@ constexpr double EIGEN_TOLERANCE = 5.0e-2;
 #endif
 namespace MolTransforms {
 
-using namespace RDKit;
+using namespace RDKix;
 void transformAtom(Atom *atom, RDGeom::Transform3D &tform) {
   PRECONDITION(atom, "no atom");
   ROMol &mol = atom->getOwningMol();
@@ -175,7 +175,7 @@ bool getEigenValEigenVectHelper(Eigen::Matrix3d &eigVecs,
   return true;
 }
 
-bool getEigenValEigenVectFromCovMat(const RDKit::Conformer &conf,
+bool getEigenValEigenVectFromCovMat(const RDKix::Conformer &conf,
                                     Eigen::Matrix3d &eigVecs,
                                     Eigen::Vector3d &eigVals,
                                     const RDGeom::Point3D &origin,
@@ -196,7 +196,7 @@ bool getEigenValEigenVectFromCovMat(const RDKit::Conformer &conf,
 }
 }  // namespace
 
-bool computePrincipalAxesAndMoments(const RDKit::Conformer &conf,
+bool computePrincipalAxesAndMoments(const RDKix::Conformer &conf,
                                     Eigen::Matrix3d &axes,
                                     Eigen::Vector3d &moments, bool ignoreHs,
                                     bool force,
@@ -232,7 +232,7 @@ bool computePrincipalAxesAndMoments(const RDKit::Conformer &conf,
 }
 
 bool computePrincipalAxesAndMomentsFromGyrationMatrix(
-    const RDKit::Conformer &conf, Eigen::Matrix3d &axes,
+    const RDKix::Conformer &conf, Eigen::Matrix3d &axes,
     Eigen::Vector3d &moments, bool ignoreHs, bool force,
     const std::vector<double> *weights) {
   const char *axesPropName =
@@ -395,7 +395,7 @@ void canonicalizeConformer(Conformer &conf, const RDGeom::Point3D *center,
   delete trans;
 }
 
-void canonicalizeMol(RDKit::ROMol &mol, bool normalizeCovar, bool ignoreHs) {
+void canonicalizeMol(RDKix::ROMol &mol, bool normalizeCovar, bool ignoreHs) {
   ROMol::ConformerIterator ci;
   for (ci = mol.beginConformers(); ci != mol.endConformers(); ci++) {
     canonicalizeConformer(*(*ci), nullptr, normalizeCovar, ignoreHs);

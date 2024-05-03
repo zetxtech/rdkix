@@ -2,22 +2,22 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 #include "RDGeneral/test.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Abbreviations/Abbreviations.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/SequenceParsers.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("parsing") {
   SECTION("abbreviations") {

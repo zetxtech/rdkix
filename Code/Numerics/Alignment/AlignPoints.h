@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_ALIGN_POINTS_H__
@@ -38,7 +38,7 @@ namespace Alignments {
   This function returns the sum of squared distance (SSR) not the RMSD
   RMSD = sqrt(SSR/numPoints)
 */
-double RDKIT_ALIGNMENT_EXPORT
+double RDKIX_ALIGNMENT_EXPORT
 AlignPoints(const RDGeom::Point3DConstPtrVect &refPoints,
             const RDGeom::Point3DConstPtrVect &probePoints,
             RDGeom::Transform3D &trans, const DoubleVector *weights = nullptr,

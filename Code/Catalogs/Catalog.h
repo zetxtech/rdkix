@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -180,17 +180,17 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
     PRECONDITION(this->getCatalogParams(), "NULL parameter object");
 
     // the i/o header:
-    RDKit::streamWrite(ss, endianId);
-    RDKit::streamWrite(ss, versionMajor);
-    RDKit::streamWrite(ss, versionMinor);
-    RDKit::streamWrite(ss, versionPatch);
+    RDKix::streamWrite(ss, endianId);
+    RDKix::streamWrite(ss, versionMajor);
+    RDKix::streamWrite(ss, versionMinor);
+    RDKix::streamWrite(ss, versionPatch);
 
     // information about the catalog itself:
     int tmpUInt;
     tmpUInt = this->getFPLength();
-    RDKit::streamWrite(ss, tmpUInt);
+    RDKix::streamWrite(ss, tmpUInt);
     tmpUInt = this->getNumEntries();
-    RDKit::streamWrite(ss, tmpUInt);
+    RDKix::streamWrite(ss, tmpUInt);
 
     // std::cout << ">>>>-------------------------------" << std::endl;
     // std::cout << "\tlength: " << getFPLength() << " " << getNumEntries() <<
@@ -210,12 +210,12 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
 
     // finally the adjacency list:
     for (unsigned int i = 0; i < getNumEntries(); i++) {
-      RDKit::INT_VECT children = this->getDownEntryList(i);
+      RDKix::INT_VECT children = this->getDownEntryList(i);
       tmpUInt = static_cast<unsigned int>(children.size());
-      RDKit::streamWrite(ss, tmpUInt);
-      for (RDKit::INT_VECT::const_iterator ivci = children.begin();
+      RDKix::streamWrite(ss, tmpUInt);
+      for (RDKix::INT_VECT::const_iterator ivci = children.begin();
            ivci != children.end(); ivci++) {
-        RDKit::streamWrite(ss, *ivci);
+        RDKix::streamWrite(ss, *ivci);
       }
     }
   }
@@ -234,17 +234,17 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
   void initFromStream(std::istream &ss) {
     int tmpInt;
     // FIX: at the moment we ignore the header info:
-    RDKit::streamRead(ss, tmpInt);
-    RDKit::streamRead(ss, tmpInt);
-    RDKit::streamRead(ss, tmpInt);
-    RDKit::streamRead(ss, tmpInt);
+    RDKix::streamRead(ss, tmpInt);
+    RDKix::streamRead(ss, tmpInt);
+    RDKix::streamRead(ss, tmpInt);
+    RDKix::streamRead(ss, tmpInt);
 
     unsigned int tmpUInt;
-    RDKit::streamRead(ss, tmpUInt);  // fp length
+    RDKix::streamRead(ss, tmpUInt);  // fp length
     this->setFPLength(tmpUInt);
 
     unsigned int numEntries;
-    RDKit::streamRead(ss, numEntries);
+    RDKix::streamRead(ss, numEntries);
     // std::cout << "<<<-------------------------------" << std::endl;
     // std::cout << "\tlength: " << getFPLength() << " " << numEntries <<
     // std::endl;
@@ -270,9 +270,9 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
     // and, finally, the adjacency list:
     for (unsigned int i = 0; i < numEntries; i++) {
       unsigned int nNeighbors;
-      RDKit::streamRead(ss, nNeighbors);
+      RDKix::streamRead(ss, nNeighbors);
       for (unsigned int j = 0; j < nNeighbors; j++) {
-        RDKit::streamRead(ss, tmpInt);
+        RDKix::streamRead(ss, tmpInt);
         this->addEdge(i, tmpInt);
       }
     }
@@ -318,7 +318,7 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
     // theory, will create a new object when operator[] is called
     // for a new item
     if (d_orderMap.find(etype) == d_orderMap.end()) {
-      RDKit::INT_VECT nets;
+      RDKix::INT_VECT nets;
       d_orderMap[etype] = nets;
     }
     d_orderMap[etype].push_back(eid);
@@ -398,8 +398,8 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
 
   //------------------------------------
   //! returns a list of the indices of entries below the one passed in
-  RDKit::INT_VECT getDownEntryList(unsigned int idx) const {
-    RDKit::INT_VECT res;
+  RDKix::INT_VECT getDownEntryList(unsigned int idx) const {
+    RDKix::INT_VECT res;
     DOWN_ENT_ITER nbrIdx, endIdx;
     boost::tie(nbrIdx, endIdx) = boost::adjacent_vertices(idx, d_graph);
     while (nbrIdx != endIdx) {
@@ -412,7 +412,7 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
 
   //------------------------------------
   //! returns a list of the indices that have a particular order
-  const RDKit::INT_VECT &getEntriesOfOrder(orderType ord) {
+  const RDKix::INT_VECT &getEntriesOfOrder(orderType ord) {
     return d_orderMap[ord];
   }
 
@@ -421,8 +421,8 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
   /*!
     \overload
   */
-  const RDKit::INT_VECT &getEntriesOfOrder(orderType ord) const {
-    typename std::map<orderType, RDKit::INT_VECT>::const_iterator elem;
+  const RDKix::INT_VECT &getEntriesOfOrder(orderType ord) const {
+    typename std::map<orderType, RDKix::INT_VECT>::const_iterator elem;
     elem = d_orderMap.find(ord);
     CHECK_INVARIANT(
         elem != d_orderMap.end(),
@@ -439,7 +439,7 @@ class HierarchCatalog : public Catalog<entryType, paramType> {
   // simply be the number of bond in it. The list this oder maps to is all the
   // vertex ids of these fragment in the catalog that have this many bonds in
   // them
-  std::map<orderType, RDKit::INT_VECT> d_orderMap;
+  std::map<orderType, RDKix::INT_VECT> d_orderMap;
 
   //------------------------------------
   //! clear any memory that we've used

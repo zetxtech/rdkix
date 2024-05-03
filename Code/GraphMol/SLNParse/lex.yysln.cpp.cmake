@@ -1,6 +1,6 @@
-#line 2 "/Users/landrgr1/RDKit_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
+#line 2 "/Users/landrgr1/RDKix_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
 
-#line 4 "/Users/landrgr1/RDKit_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
+#line 4 "/Users/landrgr1/RDKix_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -732,15 +732,15 @@ extern "C" int fileno(FILE*);
 #endif
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
 
 #include <string>
 #include <cstring>
 #include "sln.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 void setup_sln_string(const std::string &text,yyscan_t yyscanner){
   YY_BUFFER_STATE buff=yysln__scan_string(text.c_str(),yyscanner);
@@ -759,7 +759,7 @@ void sln_lexer_error(const char *msg) {
 
 
 
-#line 758 "/Users/landrgr1/RDKit_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
+#line 758 "/Users/landrgr1/RDKix_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
 
 #define INITIAL 0
 #define IN_SLN_PARAM_STATE 1
@@ -1006,7 +1006,7 @@ YY_DECL
 #line 78 "sln.ll"
 
 
-#line 1005 "/Users/landrgr1/RDKit_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
+#line 1005 "/Users/landrgr1/RDKix_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
 
     yylval = yylval_param;
 
@@ -1739,7 +1739,7 @@ YY_RULE_SETUP
 #line 414 "sln.ll"
 ECHO;
 	YY_BREAK
-#line 1738 "/Users/landrgr1/RDKit_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
+#line 1738 "/Users/landrgr1/RDKix_git/Code/GraphMol/SLNParse/lex.yysln.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

@@ -1,12 +1,12 @@
 //
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RGroupCore.h"
 #include "GraphMol/SmilesParse/SmilesWrite.h"
@@ -14,7 +14,7 @@
 #include "GraphMol/Substruct/SubstructUtils.h"
 #include "GraphMol/TautomerQuery/TautomerQuery.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 // From answer 12 in
 // https://stackoverflow.com/questions/5279051/how-can-i-create-cartesian-product-of-vector-of-vectors
@@ -180,7 +180,7 @@ RWMOL_SPTR RCore::extractCoreFromMolMatch(
             }
           }
 
-          // Chirality parity stuff see RDKit::replaceCore in
+          // Chirality parity stuff see RDKix::replaceCore in
           // Code/GraphMol/ChemTransforms/ChemTransforms.cpp
           if (isChiral) {
             bool switchIt = false;
@@ -847,4 +847,4 @@ std::shared_ptr<TautomerQuery> RCore::getMatchingTautomerQuery() {
   return matchingTautomerQuery;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

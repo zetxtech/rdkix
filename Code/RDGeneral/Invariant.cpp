@@ -3,10 +3,10 @@
 // LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "Invariant.h"
@@ -58,8 +58,8 @@ std::string Invariant::toUserString() const {
                           "\n\tViolation occurred on line " + line +
                           " in file " + filename +
                           "\n\tFailed Expression: " + this->getExpression() +
-                          "\n\t" + "RDKIT: " + RDKit::rdkitVersion + "\n\t" +
-                          "BOOST: " + RDKit::boostVersion + "\n";
+                          "\n\t" + "RDKIX: " + RDKix::rdkixVersion + "\n\t" +
+                          "BOOST: " + RDKix::boostVersion + "\n";
 
 #ifdef SHOW_BACKTRACES_WITH_INVARIANT_ERRORS
   void *arr[10];

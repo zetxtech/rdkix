@@ -34,8 +34,8 @@ import re
 import sys
 from optparse import OptionParser
 
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkix import Chem
+from rdkix.Chem import AllChem
 
 
 def smiles_to_smarts(smi):
@@ -105,8 +105,8 @@ if __name__ == '__main__':
     else:
       rhs = smiles_to_smarts(rhs)
 
-    rdkit_transform = "%s>>%s" % (lhs, rhs)
-    rxn = AllChem.ReactionFromSmarts(rdkit_transform)
+    rdkix_transform = "%s>>%s" % (lhs, rhs)
+    rxn = AllChem.ReactionFromSmarts(rdkix_transform)
     #rxn = AllChem.ReactionFromSmarts(transform)
 
     for x in smiles:

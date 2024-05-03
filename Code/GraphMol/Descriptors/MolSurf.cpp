@@ -2,13 +2,13 @@
 //  Copyright (C) 2007-2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Descriptors/MolDescriptors.h>
 #include <GraphMol/PartialCharges/GasteigerCharges.h>
 #include <vector>
@@ -19,7 +19,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 double getLabuteAtomContribs(const ROMol &mol, std::vector<double> &Vi,
@@ -476,4 +476,4 @@ std::vector<double> calcCustomProp_VSA(const ROMol &mol,
   return res;
 }
 }  // end of namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

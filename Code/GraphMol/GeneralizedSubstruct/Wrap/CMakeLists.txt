@@ -1,4 +1,4 @@
-rdkit_python_extension(rdGeneralizedSubstruct
+rdkix_python_extension(rdGeneralizedSubstruct
                        rdGeneralizedSubstruct.cpp
                        DEST Chem
                        LINK_LIBRARIES GeneralizedSubstruct 

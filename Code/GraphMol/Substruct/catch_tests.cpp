@@ -2,10 +2,10 @@
 //  Copyright (C) 2019-2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Tests of substructure searching
 //
@@ -15,12 +15,12 @@
 #include <tuple>
 #include <utility>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-using namespace RDKit;
+using namespace RDKix;
 typedef std::tuple<std::string, std::string, size_t> matchCase;
 
 class _IsSubstructOf : public Catch::Matchers::MatcherBase<const ROMol &> {
@@ -56,8 +56,8 @@ static _IsSubstructOf IsSubstructOf(const ROMol &m) {
 namespace Catch {
 // ""_smiles returns an RWMol.
 template <>
-struct StringMaker<RDKit::RWMol> {
-  static std::string convert(RDKit::RWMol const &m) { return MolToCXSmiles(m); }
+struct StringMaker<RDKix::RWMol> {
+  static std::string convert(RDKix::RWMol const &m) { return MolToCXSmiles(m); }
 };
 }  // namespace Catch
 

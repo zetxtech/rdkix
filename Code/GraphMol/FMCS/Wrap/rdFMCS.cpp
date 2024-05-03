@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <GraphMol/ROMol.h>
@@ -18,7 +18,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 struct PyMCSWrapper : public boost::python::wrapper<PyMCSWrapper> {
  public:
@@ -127,17 +127,17 @@ struct PyMCSAtomCompare : public PyMCSWrapper {
   inline bool checkAtomRingMatch(const MCSAtomCompareParameters &p,
                                  const ROMol &mol1, unsigned int atom1,
                                  const ROMol &mol2, unsigned int atom2) const {
-    return RDKit::checkAtomRingMatch(p, mol1, atom1, mol2, atom2);
+    return RDKix::checkAtomRingMatch(p, mol1, atom1, mol2, atom2);
   }
   inline bool checkAtomCharge(const MCSAtomCompareParameters &p,
                               const ROMol &mol1, unsigned int atom1,
                               const ROMol &mol2, unsigned int atom2) const {
-    return RDKit::checkAtomCharge(p, mol1, atom1, mol2, atom2);
+    return RDKix::checkAtomCharge(p, mol1, atom1, mol2, atom2);
   }
   inline bool checkAtomChirality(const MCSAtomCompareParameters &p,
                                  const ROMol &mol1, unsigned int atom1,
                                  const ROMol &mol2, unsigned int atom2) const {
-    return RDKit::checkAtomChirality(p, mol1, atom1, mol2, atom2);
+    return RDKix::checkAtomChirality(p, mol1, atom1, mol2, atom2);
   }
   inline const char *subclassName() const { return "MCSAtomCompare"; }
   virtual bool operator()(const MCSAtomCompareParameters &, const ROMol &,
@@ -172,12 +172,12 @@ struct PyMCSBondCompare : public PyMCSWrapper {
   inline bool checkBondStereo(const MCSBondCompareParameters &p,
                               const ROMol &mol1, unsigned int bond1,
                               const ROMol &mol2, unsigned int bond2) const {
-    return RDKit::checkBondStereo(p, mol1, bond1, mol2, bond2);
+    return RDKix::checkBondStereo(p, mol1, bond1, mol2, bond2);
   }
   inline bool checkBondRingMatch(const MCSBondCompareParameters &p,
                                  const ROMol &mol1, unsigned int bond1,
                                  const ROMol &mol2, unsigned int bond2) {
-    return RDKit::checkBondRingMatch(p, mol1, bond1, mol2, bond2);
+    return RDKix::checkBondRingMatch(p, mol1, bond1, mol2, bond2);
   }
   inline const char *subclassName() const { return "MCSBondCompare"; }
   virtual bool operator()(const MCSBondCompareParameters &, const ROMol &,
@@ -354,7 +354,7 @@ class PyMCSParameters : public boost::noncopyable {
     }
   }
   python::object getMCSAtomTyper() const {
-    static const std::map<RDKit::MCSAtomCompareFunction, RDKit::AtomComparator>
+    static const std::map<RDKix::MCSAtomCompareFunction, RDKix::AtomComparator>
         atomTyperToComp = {
             {MCSAtomCompareAny, AtomCompareAny},
             {MCSAtomCompareElements, AtomCompareElements},
@@ -387,7 +387,7 @@ class PyMCSParameters : public boost::noncopyable {
     }
   }
   python::object getMCSBondTyper() const {
-    static const std::map<RDKit::MCSBondCompareFunction, RDKit::BondComparator>
+    static const std::map<RDKix::MCSBondCompareFunction, RDKix::BondComparator>
         bondTyperToComp = {{MCSBondCompareAny, BondCompareAny},
                            {MCSBondCompareOrder, BondCompareOrder},
                            {MCSBondCompareOrderExact, BondCompareOrderExact}};
@@ -635,10 +635,10 @@ MCSResult *FindMCSWrapper2(python::object mols, PyMCSParameters &pyMcsParams) {
   }
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix
 namespace {
 python::object degenerateSmartsQueryMolDictHelper(
-    const RDKit::MCSResult &self) {
+    const RDKix::MCSResult &self) {
   python::dict res;
   for (const auto &pair : self.DegenerateSmartsQueryMolDict) {
     res[pair.first] = pair.second;
@@ -647,17 +647,17 @@ python::object degenerateSmartsQueryMolDictHelper(
 }
 struct mcsresult_wrapper {
   static void wrap() {
-    python::class_<RDKit::MCSResult>("MCSResult", "used to return MCS results",
+    python::class_<RDKix::MCSResult>("MCSResult", "used to return MCS results",
                                      python::no_init)
-        .def_readonly("numAtoms", &RDKit::MCSResult::NumAtoms,
+        .def_readonly("numAtoms", &RDKix::MCSResult::NumAtoms,
                       "number of atoms in MCS")
-        .def_readonly("numBonds", &RDKit::MCSResult::NumBonds,
+        .def_readonly("numBonds", &RDKix::MCSResult::NumBonds,
                       "number of bonds in MCS")
-        .def_readonly("queryMol", &RDKit::MCSResult::QueryMol,
+        .def_readonly("queryMol", &RDKix::MCSResult::QueryMol,
                       "query molecule for the MCS")
-        .def_readonly("smartsString", &RDKit::MCSResult::SmartsString,
+        .def_readonly("smartsString", &RDKix::MCSResult::SmartsString,
                       "SMARTS string for the MCS")
-        .def_readonly("canceled", &RDKit::MCSResult::Canceled,
+        .def_readonly("canceled", &RDKix::MCSResult::Canceled,
                       "if True, the MCS calculation did not finish")
         .add_property(
             "degenerateSmartsQueryMolDict", degenerateSmartsQueryMolDictHelper,
@@ -672,211 +672,211 @@ BOOST_PYTHON_MODULE(rdFMCS) {
       "Module containing a C++ implementation of the FMCS algorithm";
   mcsresult_wrapper::wrap();
 
-  python::enum_<RDKit::AtomComparator>("AtomCompare")
-      .value("CompareAny", RDKit::AtomCompareAny)
-      .value("CompareElements", RDKit::AtomCompareElements)
-      .value("CompareIsotopes", RDKit::AtomCompareIsotopes)
-      .value("CompareAnyHeavyAtom", RDKit::AtomCompareAnyHeavyAtom);
-  python::enum_<RDKit::BondComparator>("BondCompare")
-      .value("CompareAny", RDKit::BondCompareAny)
-      .value("CompareOrder", RDKit::BondCompareOrder)
-      .value("CompareOrderExact", RDKit::BondCompareOrderExact);
-  python::enum_<RDKit::RingComparator>("RingCompare")
-      .value("IgnoreRingFusion", RDKit::IgnoreRingFusion)
-      .value("PermissiveRingFusion", RDKit::PermissiveRingFusion)
-      .value("StrictRingFusion", RDKit::StrictRingFusion);
+  python::enum_<RDKix::AtomComparator>("AtomCompare")
+      .value("CompareAny", RDKix::AtomCompareAny)
+      .value("CompareElements", RDKix::AtomCompareElements)
+      .value("CompareIsotopes", RDKix::AtomCompareIsotopes)
+      .value("CompareAnyHeavyAtom", RDKix::AtomCompareAnyHeavyAtom);
+  python::enum_<RDKix::BondComparator>("BondCompare")
+      .value("CompareAny", RDKix::BondCompareAny)
+      .value("CompareOrder", RDKix::BondCompareOrder)
+      .value("CompareOrderExact", RDKix::BondCompareOrderExact);
+  python::enum_<RDKix::RingComparator>("RingCompare")
+      .value("IgnoreRingFusion", RDKix::IgnoreRingFusion)
+      .value("PermissiveRingFusion", RDKix::PermissiveRingFusion)
+      .value("StrictRingFusion", RDKix::StrictRingFusion);
 
   std::string docString = "Find the MCS for a set of molecules";
   python::def(
-      "FindMCS", RDKit::FindMCSWrapper,
+      "FindMCS", RDKix::FindMCSWrapper,
       (python::arg("mols"), python::arg("maximizeBonds") = true,
        python::arg("threshold") = 1.0, python::arg("timeout") = 3600,
        python::arg("verbose") = false, python::arg("matchValences") = false,
        python::arg("ringMatchesRingOnly") = false,
        python::arg("completeRingsOnly") = false,
        python::arg("matchChiralTag") = false,
-       python::arg("atomCompare") = RDKit::AtomCompareElements,
-       python::arg("bondCompare") = RDKit::BondCompareOrder,
-       python::arg("ringCompare") = RDKit::IgnoreRingFusion,
+       python::arg("atomCompare") = RDKix::AtomCompareElements,
+       python::arg("bondCompare") = RDKix::BondCompareOrder,
+       python::arg("ringCompare") = RDKix::IgnoreRingFusion,
        python::arg("seedSmarts") = ""),
       python::return_value_policy<python::manage_new_object>(),
       docString.c_str());
 
-  python::class_<RDKit::PyMCSParameters, boost::noncopyable>(
+  python::class_<RDKix::PyMCSParameters, boost::noncopyable>(
       "MCSParameters", "Parameters controlling how the MCS is constructed")
-      .add_property("MaximizeBonds", &RDKit::PyMCSParameters::getMaximizeBonds,
-                    &RDKit::PyMCSParameters::setMaximizeBonds,
+      .add_property("MaximizeBonds", &RDKix::PyMCSParameters::getMaximizeBonds,
+                    &RDKix::PyMCSParameters::setMaximizeBonds,
                     "toggles maximizing the number of bonds (instead of the "
                     "number of atoms)")
-      .add_property("Threshold", &RDKit::PyMCSParameters::getThreshold,
-                    &RDKit::PyMCSParameters::setThreshold,
+      .add_property("Threshold", &RDKix::PyMCSParameters::getThreshold,
+                    &RDKix::PyMCSParameters::setThreshold,
                     "fraction of the dataset that must contain the MCS")
-      .add_property("Timeout", &RDKit::PyMCSParameters::getTimeout,
-                    &RDKit::PyMCSParameters::setTimeout,
+      .add_property("Timeout", &RDKix::PyMCSParameters::getTimeout,
+                    &RDKix::PyMCSParameters::setTimeout,
                     "timeout (in seconds) for the calculation")
-      .add_property("Verbose", &RDKit::PyMCSParameters::getVerbose,
-                    &RDKit::PyMCSParameters::setVerbose, "toggles verbose mode")
+      .add_property("Verbose", &RDKix::PyMCSParameters::getVerbose,
+                    &RDKix::PyMCSParameters::setVerbose, "toggles verbose mode")
       .add_property("AtomCompareParameters",
                     python::make_function(
-                        &RDKit::PyMCSParameters::getAtomCompareParameters,
+                        &RDKix::PyMCSParameters::getAtomCompareParameters,
                         python::return_internal_reference<>()),
-                    &RDKit::PyMCSParameters::setAtomCompareParameters,
+                    &RDKix::PyMCSParameters::setAtomCompareParameters,
                     "parameters for comparing atoms")
       .add_property("BondCompareParameters",
                     python::make_function(
-                        &RDKit::PyMCSParameters::getBondCompareParameters,
+                        &RDKix::PyMCSParameters::getBondCompareParameters,
                         python::return_internal_reference<>()),
-                    &RDKit::PyMCSParameters::setBondCompareParameters,
+                    &RDKix::PyMCSParameters::setBondCompareParameters,
                     "parameters for comparing bonds")
-      .add_property("AtomTyper", &RDKit::PyMCSParameters::getMCSAtomTyper,
-                    &RDKit::PyMCSParameters::setMCSAtomTyper,
+      .add_property("AtomTyper", &RDKix::PyMCSParameters::getMCSAtomTyper,
+                    &RDKix::PyMCSParameters::setMCSAtomTyper,
                     "atom typer to be used. Must be one of the "
                     "members of the rdFMCS.AtomCompare class or "
                     "an instance of a user-defined subclass of "
                     "rdFMCS.MCSAtomCompare")
-      .add_property("BondTyper", &RDKit::PyMCSParameters::getMCSBondTyper,
-                    &RDKit::PyMCSParameters::setMCSBondTyper,
+      .add_property("BondTyper", &RDKix::PyMCSParameters::getMCSBondTyper,
+                    &RDKix::PyMCSParameters::setMCSBondTyper,
                     "bond typer to be used. Must be one of the "
                     "members of the rdFMCS.BondCompare class or "
                     "an instance of a user-defined subclass of "
                     "rdFMCS.MCSBondCompare")
       .add_property("ProgressCallback",
-                    &RDKit::PyMCSParameters::getMCSProgressCallback,
-                    &RDKit::PyMCSParameters::setMCSProgressCallback,
+                    &RDKix::PyMCSParameters::getMCSProgressCallback,
+                    &RDKix::PyMCSParameters::setMCSProgressCallback,
                     "progress callback class. Must be a "
                     "user-defined subclass of rdFMCS.Progress")
       .add_property("FinalMatchChecker",
-                    &RDKit::PyMCSParameters::getFinalMatchCheck,
-                    &RDKit::PyMCSParameters::setFinalMatchCheck,
+                    &RDKix::PyMCSParameters::getFinalMatchCheck,
+                    &RDKix::PyMCSParameters::setFinalMatchCheck,
                     "seed final match checker callback class. Must be a "
                     "user-defined subclass of rdFMCS.MCSFinalMatchCheck")
       .add_property("ShouldAcceptMCS",
-                    &RDKit::PyMCSParameters::getShouldAcceptMCS,
-                    &RDKit::PyMCSParameters::setShouldAcceptMCS,
+                    &RDKix::PyMCSParameters::getShouldAcceptMCS,
+                    &RDKix::PyMCSParameters::setShouldAcceptMCS,
                     "MCS acceptance callback class. Must be a "
                     "user-defined subclass of rdFMCS.MCSAcceptance")
-      .add_property("InitialSeed", &RDKit::PyMCSParameters::getInitialSeed,
-                    &RDKit::PyMCSParameters::setInitialSeed,
+      .add_property("InitialSeed", &RDKix::PyMCSParameters::getInitialSeed,
+                    &RDKix::PyMCSParameters::setInitialSeed,
                     "SMILES string to be used as the seed of the MCS")
-      .add_property("StoreAll", &RDKit::PyMCSParameters::getStoreAll,
-                    &RDKit::PyMCSParameters::setStoreAll,
+      .add_property("StoreAll", &RDKix::PyMCSParameters::getStoreAll,
+                    &RDKix::PyMCSParameters::setStoreAll,
                     "toggles storage of degenerate MCSs");
 
-  python::class_<RDKit::MCSAtomCompareParameters, boost::noncopyable>(
+  python::class_<RDKix::MCSAtomCompareParameters, boost::noncopyable>(
       "MCSAtomCompareParameters",
       "Parameters controlling how atom-atom matching is done")
       .def_readwrite("MatchValences",
-                     &RDKit::MCSAtomCompareParameters::MatchValences,
+                     &RDKix::MCSAtomCompareParameters::MatchValences,
                      "include atom valences in the match")
       .def_readwrite("MatchChiralTag",
-                     &RDKit::MCSAtomCompareParameters::MatchChiralTag,
+                     &RDKix::MCSAtomCompareParameters::MatchChiralTag,
                      "include atom chirality in the match")
       .def_readwrite("MaxDistance",
-                     &RDKit::MCSAtomCompareParameters::MaxDistance,
+                     &RDKix::MCSAtomCompareParameters::MaxDistance,
                      "Require atoms to be within this many angstroms in 3D")
       .def_readwrite("MatchFormalCharge",
-                     &RDKit::MCSAtomCompareParameters::MatchFormalCharge,
+                     &RDKix::MCSAtomCompareParameters::MatchFormalCharge,
                      "include formal charge in the match")
       .def_readwrite("RingMatchesRingOnly",
-                     &RDKit::MCSAtomCompareParameters::RingMatchesRingOnly,
+                     &RDKix::MCSAtomCompareParameters::RingMatchesRingOnly,
                      "ring atoms are only allowed to match other ring atoms")
       .def_readwrite("CompleteRingsOnly",
-                     &RDKit::MCSAtomCompareParameters::CompleteRingsOnly,
+                     &RDKix::MCSAtomCompareParameters::CompleteRingsOnly,
                      "results cannot include lone ring atoms")
       .def_readwrite("MatchIsotope",
-                     &RDKit::MCSAtomCompareParameters::MatchIsotope,
+                     &RDKix::MCSAtomCompareParameters::MatchIsotope,
                      "use isotope atom queries in MCSResults");
 
-  python::class_<RDKit::MCSBondCompareParameters, boost::noncopyable>(
+  python::class_<RDKix::MCSBondCompareParameters, boost::noncopyable>(
       "MCSBondCompareParameters",
       "Parameters controlling how bond-bond matching is done")
       .def_readwrite("RingMatchesRingOnly",
-                     &RDKit::MCSBondCompareParameters::RingMatchesRingOnly,
+                     &RDKix::MCSBondCompareParameters::RingMatchesRingOnly,
                      "ring bonds are only allowed to match other ring bonds")
       .def_readwrite("CompleteRingsOnly",
-                     &RDKit::MCSBondCompareParameters::CompleteRingsOnly,
+                     &RDKix::MCSBondCompareParameters::CompleteRingsOnly,
                      "results cannot include partial rings")
       .def_readwrite(
-          "MatchFusedRings", &RDKit::MCSBondCompareParameters::MatchFusedRings,
+          "MatchFusedRings", &RDKix::MCSBondCompareParameters::MatchFusedRings,
           "enforce check on ring fusion, i.e. alpha-methylnaphthalene "
           "won't match beta-methylnaphtalene, but decalin "
           "will match cyclodecane unless MatchFusedRingsStrict is True")
       .def_readwrite(
           "MatchFusedRingsStrict",
-          &RDKit::MCSBondCompareParameters::MatchFusedRingsStrict,
+          &RDKix::MCSBondCompareParameters::MatchFusedRingsStrict,
           "only enforced if MatchFusedRings is True; the ring fusion "
           "must be the same in both query and target, i.e. decalin "
           "won't match cyclodecane")
       .def_readwrite("MatchStereo",
-                     &RDKit::MCSBondCompareParameters::MatchStereo,
+                     &RDKix::MCSBondCompareParameters::MatchStereo,
                      "include bond stereo in the comparison");
 
-  python::class_<RDKit::PyMCSProgress, boost::noncopyable>(
+  python::class_<RDKix::PyMCSProgress, boost::noncopyable>(
       "MCSProgress",
       "Base class. Subclass and override "
       "MCSProgress." CALLBACK_FUNC_NAME
       "() "
       "to define a custom callback function")
       .def(
-          CALLBACK_FUNC_NAME, &RDKit::PyMCSProgress::operator(),
+          CALLBACK_FUNC_NAME, &RDKix::PyMCSProgress::operator(),
           (python::arg("self"), python::arg("stat"), python::arg("parameters")),
           "override to implement a custom progress callback");
 
-  python::class_<RDKit::PyMCSProgressData, boost::noncopyable>(
+  python::class_<RDKix::PyMCSProgressData, boost::noncopyable>(
       "MCSProgressData", "Information about the MCS progress")
-      .add_property("numAtoms", &RDKit::PyMCSProgressData::getNumAtoms,
+      .add_property("numAtoms", &RDKix::PyMCSProgressData::getNumAtoms,
                     "number of atoms in MCS")
-      .add_property("numBonds", &RDKit::PyMCSProgressData::getNumBonds,
+      .add_property("numBonds", &RDKix::PyMCSProgressData::getNumBonds,
                     "number of bonds in MCS")
       .add_property("seedProcessed",
-                    &RDKit::PyMCSProgressData::getSeedProcessed,
+                    &RDKix::PyMCSProgressData::getSeedProcessed,
                     "number of processed seeds");
 
-  python::class_<RDKit::PyMCSAtomCompare, boost::noncopyable>(
+  python::class_<RDKix::PyMCSAtomCompare, boost::noncopyable>(
       "MCSAtomCompare",
       "Base class. Subclass and override "
       "MCSAtomCompare." COMPARE_FUNC_NAME
       "() to define custom "
       "atom compare functions, then set MCSParameters.AtomTyper "
       "to an instance of the subclass")
-      .def("CheckAtomRingMatch", &RDKit::PyMCSAtomCompare::checkAtomRingMatch,
+      .def("CheckAtomRingMatch", &RDKix::PyMCSAtomCompare::checkAtomRingMatch,
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("atom1"), python::arg("mol2"), python::arg("atom2")),
            "Return True if both atoms are, or are not, in a ring")
-      .def("CheckAtomCharge", &RDKit::PyMCSAtomCompare::checkAtomCharge,
+      .def("CheckAtomCharge", &RDKix::PyMCSAtomCompare::checkAtomCharge,
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("atom1"), python::arg("mol2"), python::arg("atom2")),
            "Return True if both atoms have the same formal charge")
-      .def("CheckAtomChirality", &RDKit::PyMCSAtomCompare::checkAtomChirality,
+      .def("CheckAtomChirality", &RDKix::PyMCSAtomCompare::checkAtomChirality,
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("atom1"), python::arg("mol2"), python::arg("atom2")),
            "Return True if both atoms have, or have not, a chiral tag")
-      .def(COMPARE_FUNC_NAME, &RDKit::PyMCSAtomCompare::operator(),
+      .def(COMPARE_FUNC_NAME, &RDKix::PyMCSAtomCompare::operator(),
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("atom1"), python::arg("mol2"), python::arg("atom2")),
            "override to implement custom atom comparison");
 
-  python::class_<RDKit::PyMCSBondCompare, boost::noncopyable>(
+  python::class_<RDKix::PyMCSBondCompare, boost::noncopyable>(
       "MCSBondCompare",
       "Base class. Subclass and override "
       "MCSBondCompare." COMPARE_FUNC_NAME
       "() to define custom "
       "bond compare functions, then set MCSParameters.BondTyper "
       "to an instance of the subclass")
-      .def("CheckBondStereo", &RDKit::PyMCSBondCompare::checkBondStereo,
+      .def("CheckBondStereo", &RDKix::PyMCSBondCompare::checkBondStereo,
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("bond1"), python::arg("mol2"), python::arg("bond2")),
            "Return True if both bonds have, or have not, a stereo descriptor")
-      .def("CheckBondRingMatch", &RDKit::PyMCSBondCompare::checkBondRingMatch,
+      .def("CheckBondRingMatch", &RDKix::PyMCSBondCompare::checkBondRingMatch,
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("bond1"), python::arg("mol2"), python::arg("bond2")),
            "Return True if both bonds are, or are not, part of a ring")
-      .def(COMPARE_FUNC_NAME, &RDKit::PyMCSBondCompare::operator(),
+      .def(COMPARE_FUNC_NAME, &RDKix::PyMCSBondCompare::operator(),
            (python::arg("self"), python::arg("parameters"), python::arg("mol1"),
             python::arg("bond1"), python::arg("mol2"), python::arg("bond2")),
            "override to implement custom bond comparison");
 
-  python::class_<RDKit::PyMCSFinalMatchCheck, boost::noncopyable>(
+  python::class_<RDKix::PyMCSFinalMatchCheck, boost::noncopyable>(
       "MCSFinalMatchCheck",
       "Base class. Subclass and override "
       "MCSFinalMatchCheck." CALLBACK_FUNC_NAME
@@ -884,11 +884,11 @@ BOOST_PYTHON_MODULE(rdFMCS) {
       "to define a custom boolean callback function. "
       "Returning True will cause the growing seed to be accepted, "
       "False to be rejected")
-      .def(CALLBACK_FUNC_NAME, &RDKit::PyMCSFinalMatchCheck::operator(),
+      .def(CALLBACK_FUNC_NAME, &RDKix::PyMCSFinalMatchCheck::operator(),
            (python::arg("self")),
            "override to implement a custom seed final match checker callback");
 
-  python::class_<RDKit::PyMCSAcceptance, boost::noncopyable>(
+  python::class_<RDKix::PyMCSAcceptance, boost::noncopyable>(
       "MCSAcceptance",
       "Base class. Subclass and override "
       "MCSAcceptance." CALLBACK_FUNC_NAME
@@ -896,11 +896,11 @@ BOOST_PYTHON_MODULE(rdFMCS) {
       "to define a custom boolean callback function. "
       "Returning True will cause the MCS candidate to be accepted, "
       "False to be rejected")
-      .def(CALLBACK_FUNC_NAME, &RDKit::PyMCSAcceptance::operator(),
+      .def(CALLBACK_FUNC_NAME, &RDKix::PyMCSAcceptance::operator(),
            (python::arg("self")),
            "override to implement a custom MCS acceptance callback");
 
-  python::def("FindMCS", RDKit::FindMCSWrapper2,
+  python::def("FindMCS", RDKix::FindMCSWrapper2,
               (python::arg("mols"), python::arg("parameters")),
               python::return_value_policy<python::manage_new_object>(),
               docString.c_str());

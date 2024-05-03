@@ -2,10 +2,10 @@
 //  Copyright (C) 2005-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
@@ -13,13 +13,13 @@
 
 // ours
 #include <GraphMol/FileParsers/MolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "MolSupplier.h"
 #include "ContextManagers.h"
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 std::string tdtMolSupplierClassDoc =
     "A class which supplies molecules from a TDT file.\n\
@@ -81,6 +81,6 @@ struct tdtmolsup_wrap {
              (python::arg("self"), python::arg("index")));
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_tdtsupplier() { RDKit::tdtmolsup_wrap::wrap(); }
+void wrap_tdtsupplier() { RDKix::tdtmolsup_wrap::wrap(); }

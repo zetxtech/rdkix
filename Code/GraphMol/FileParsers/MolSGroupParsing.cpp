@@ -2,17 +2,17 @@
 //  Copyright (C) 2002-2018 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "FileParsers.h"
 #include "FileParserUtils.h"
 #include "MolSGroupParsing.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace SGroupParsing {
 
 /* ------------------ V2000 Utils  ------------------ */
@@ -1347,4 +1347,4 @@ std::string ParseV3000SGroupsBlock(std::istream *inStream, unsigned int line,
 }
 
 }  // namespace SGroupParsing
-}  // namespace RDKit
+}  // namespace RDKix

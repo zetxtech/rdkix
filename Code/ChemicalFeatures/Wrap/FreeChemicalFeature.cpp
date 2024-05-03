@@ -3,15 +3,15 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/Invariant.h>
 #include <RDBoost/PySequenceHolder.h>
@@ -20,7 +20,7 @@
 namespace ChemicalFeatures {
 
 // support pickling:
-struct chemfeat_pickle_suite : rdkit_pickle_suite {
+struct chemfeat_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const FreeChemicalFeature &self) {
     std::string res = self.toString();
     python::object retval = python::object(

@@ -32,14 +32,14 @@
 //
 
 #include <Geometry/point.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <RDGeneral/BadFileException.h>
 #include "ConformerParser.h"
 
 #include <fstream>
 
-namespace RDKit {
+namespace RDKix {
 namespace ConformerParser {
 
 INT_VECT addConformersFromList(ROMol &mol,
@@ -58,7 +58,7 @@ INT_VECT addConformersFromList(ROMol &mol,
     if (coords[i].size() != numCoordPerConf) {
       throw ValueErrorException("Wrong number of coordinates");
     }
-    RDKit::Conformer *conf = new RDKit::Conformer(numAtomsPerConf);
+    RDKix::Conformer *conf = new RDKix::Conformer(numAtomsPerConf);
     // loop over atoms
     for (unsigned int atom = 0; atom < numAtomsPerConf; ++atom) {
       // RDGeom::Point3D p(coords[i][3*atom], coords[i][3*atom+1],
@@ -114,4 +114,4 @@ void readAmberTrajectory(const std::string &fName,
 }
 
 }  // end namespace ConformerParser
-}  // end namespace RDKit
+}  // end namespace RDKix

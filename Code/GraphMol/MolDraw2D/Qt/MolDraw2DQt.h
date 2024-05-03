@@ -1,13 +1,13 @@
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (AstraZeneca)
 //
-// This is a concrete class derived from MolDraw2D that uses RDKit to draw a
+// This is a concrete class derived from MolDraw2D that uses RDKix to draw a
 // molecule into a QPainter.
 
 #include <RDGeneral/export.h>
@@ -21,11 +21,11 @@ class QString;
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
-RDKIT_MOLDRAW2DQT_EXPORT extern const char *rdkitQtVersion;
+RDKIX_MOLDRAW2DQT_EXPORT extern const char *rdkixQtVersion;
 
-class RDKIT_MOLDRAW2DQT_EXPORT MolDraw2DQt : public MolDraw2D {
+class RDKIX_MOLDRAW2DQT_EXPORT MolDraw2DQt : public MolDraw2D {
  public:
   MolDraw2DQt(int width, int height, QPainter *qp, int panelWidth = -1,
               int panelHeight = -1, bool noFreetype = false);
@@ -48,5 +48,5 @@ class RDKIT_MOLDRAW2DQT_EXPORT MolDraw2DQt : public MolDraw2D {
   void initDrawing() override;
   void initTextDrawer(bool noFreetype) override;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DQT_H

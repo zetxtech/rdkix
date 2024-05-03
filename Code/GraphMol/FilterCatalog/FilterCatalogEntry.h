@@ -35,7 +35,7 @@
 #include <utility>
 
 #include <RDGeneral/types.h>  // For Dict
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <Catalogs/CatalogEntry.h>
 
@@ -50,10 +50,10 @@
 
 #include "FilterMatchers.h"
 
-namespace RDKit {
+namespace RDKix {
 typedef std::map<std::string, std::string> STRING_PROPS;
 
-class RDKIT_FILTERCATALOG_EXPORT FilterCatalogEntry
+class RDKIX_FILTERCATALOG_EXPORT FilterCatalogEntry
     : public RDCatalog::CatalogEntry {
  private:
   boost::shared_ptr<FilterMatcherBase> d_matcher;
@@ -267,10 +267,10 @@ class RDKIT_FILTERCATALOG_EXPORT FilterCatalogEntry
   BOOST_SERIALIZATION_SPLIT_MEMBER();
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::FilterCatalogEntry, 1);
+BOOST_CLASS_VERSION(RDKix::FilterCatalogEntry, 1);
 #endif
 
 #endif  //__RD_FILTER_CATALOG_H__

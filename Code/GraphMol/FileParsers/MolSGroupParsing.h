@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2018 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 
@@ -14,7 +14,7 @@
 #include <RDGeneral/FileParseException.h>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace SGroupParsing {
 typedef std::map<int, SubstanceGroup> IDX_TO_SGROUP_MAP;
@@ -129,12 +129,12 @@ void ParseSGroupV2000SBTLine(IDX_TO_SGROUP_MAP &sGroupMap, RWMol *mol,
 /* ------------------ V3000 Utils  ------------------ */
 
 template <class T>
-RDKIT_FILEPARSERS_EXPORT std::vector<T> ParseV3000Array(
+RDKIX_FILEPARSERS_EXPORT std::vector<T> ParseV3000Array(
     std::stringstream &stream, int maxV = -1, bool strictParsing = false);
-#if defined(_MSC_VER) && defined(RDKIT_DYN_LINK)
-template RDKIT_FILEPARSERS_EXPORT std::vector<int> ParseV3000Array(
+#if defined(_MSC_VER) && defined(RDKIX_DYN_LINK)
+template RDKIX_FILEPARSERS_EXPORT std::vector<int> ParseV3000Array(
     std::stringstream &, int, bool);
-template RDKIT_FILEPARSERS_EXPORT std::vector<unsigned int> ParseV3000Array(
+template RDKIX_FILEPARSERS_EXPORT std::vector<unsigned int> ParseV3000Array(
     std::stringstream &, int, bool);
 #endif
 template <class T>
@@ -159,4 +159,4 @@ std::string ParseV3000SGroupsBlock(std::istream *inStream, unsigned int line,
                                    bool strictParsing);
 
 }  // namespace SGroupParsing
-}  // namespace RDKit
+}  // namespace RDKix

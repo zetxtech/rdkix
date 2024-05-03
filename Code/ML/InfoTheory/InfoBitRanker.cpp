@@ -2,10 +2,10 @@
 //
 //  Copyright (C) 2003-2008 Greg Landrum and  Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "InfoBitRanker.h"
@@ -31,12 +31,12 @@ struct gtDIPair {
 
 typedef std::priority_queue<PAIR_D_I, VECT_PDI, gtDIPair> PR_QUEUE;
 
-void InfoBitRanker::setBiasList(RDKit::INT_VECT &classList) {
+void InfoBitRanker::setBiasList(RDKix::INT_VECT &classList) {
   URANGE_CHECK(classList.size(), d_classes);
   d_biasList = classList;
   // make sure we don't have any duplicates
   std::sort(d_biasList.begin(), d_biasList.end());
-  RDKit::INT_VECT_CI bi = std::unique(d_biasList.begin(), d_biasList.end());
+  RDKix::INT_VECT_CI bi = std::unique(d_biasList.begin(), d_biasList.end());
   CHECK_INVARIANT(bi == d_biasList.end(),
                   "There are duplicates in the class bias list");
 
@@ -46,21 +46,21 @@ void InfoBitRanker::setBiasList(RDKit::INT_VECT &classList) {
   }
 }
 
-void InfoBitRanker::setMaskBits(RDKit::INT_VECT &maskBits) {
+void InfoBitRanker::setMaskBits(RDKix::INT_VECT &maskBits) {
   delete dp_maskBits;
   dp_maskBits = new ExplicitBitVect(d_dims);
-  for (RDKit::INT_VECT_CI bi = maskBits.begin(); bi != maskBits.end(); ++bi) {
+  for (RDKix::INT_VECT_CI bi = maskBits.begin(); bi != maskBits.end(); ++bi) {
     dp_maskBits->setBit(*bi);
   }
 }
 
-bool InfoBitRanker::BiasCheckBit(RDKit::USHORT *resMat) const {
+bool InfoBitRanker::BiasCheckBit(RDKix::USHORT *resMat) const {
   PRECONDITION(resMat, "bad results pointer");
   if ((d_biasList.size() == 0) || (d_biasList.size() == d_classes)) {
     // we will accept the bit
     return true;
   }
-  RDKit::DOUBLE_VECT fracs;
+  RDKix::DOUBLE_VECT fracs;
   fracs.resize(d_classes);
 
   // compute the fractions of items in each class that hit the bit
@@ -92,7 +92,7 @@ bool InfoBitRanker::BiasCheckBit(RDKit::USHORT *resMat) const {
   return bitOk;
 }
 
-double InfoBitRanker::BiasChiSquareGain(RDKit::USHORT *resMat) const {
+double InfoBitRanker::BiasChiSquareGain(RDKix::USHORT *resMat) const {
   PRECONDITION(resMat, "bad result pointer");
   bool bitOk = this->BiasCheckBit(resMat);
   double info = 0.0;
@@ -102,7 +102,7 @@ double InfoBitRanker::BiasChiSquareGain(RDKit::USHORT *resMat) const {
   return info;
 }
 
-double InfoBitRanker::BiasInfoEntropyGain(RDKit::USHORT *resMat) const {
+double InfoBitRanker::BiasInfoEntropyGain(RDKix::USHORT *resMat) const {
   PRECONDITION(resMat, "bad result pointer");
   bool bitOk = this->BiasCheckBit(resMat);
   double info = 0.0;
@@ -156,7 +156,7 @@ double *InfoBitRanker::getTopN(unsigned int num) {
     CHECK_INVARIANT(num <= dp_maskBits->getNumOnBits(),
                     "Can't rank more bits than the ensemble size");
   }
-  auto *resMat = new RDKit::USHORT[2 * d_classes];
+  auto *resMat = new RDKix::USHORT[2 * d_classes];
 
   PR_QUEUE topN;
 
@@ -228,7 +228,7 @@ double *InfoBitRanker::getTopN(unsigned int num) {
 
   int offset, bid;
 
-  RDKit::INT_VECT maskBits;
+  RDKix::INT_VECT maskBits;
   if (dp_maskBits && topN.size() < num) {
     dp_maskBits->getOnBits(maskBits);
   }
@@ -279,7 +279,7 @@ void InfoBitRanker::writeTopBitsToFile(const std::string &fileName) const {
   if ((!tmpStream) || (tmpStream.bad())) {
     std::ostringstream errout;
     errout << "Bad output file " << fileName;
-    throw RDKit::FileParseException(errout.str());
+    throw RDKix::FileParseException(errout.str());
   }
 
   auto &outStream = static_cast<std::ostream &>(tmpStream);

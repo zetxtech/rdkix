@@ -1,11 +1,11 @@
 
-rdkit_library(MolTransforms MolTransforms.cpp
+rdkix_library(MolTransforms MolTransforms.cpp
               LINK_LIBRARIES GraphMol EigenSolvers RDGeneral )
-target_compile_definitions(MolTransforms PRIVATE RDKIT_MOLTRANSFORMS_BUILD)
+target_compile_definitions(MolTransforms PRIVATE RDKIX_MOLTRANSFORMS_BUILD)
 
-rdkit_headers(MolTransforms.h DEST GraphMol/MolTransforms)
+rdkix_headers(MolTransforms.h DEST GraphMol/MolTransforms)
 
-rdkit_test(testMolTransforms test1.cpp
+rdkix_test(testMolTransforms test1.cpp
            LINK_LIBRARIES MolTransforms
            FileParsers SmilesParse )
 

@@ -16,12 +16,12 @@
     }
   </style>
 </head>
-<script src="./RDKit_minimal.js"></script>
+<script src="./RDKix_minimal.js"></script>
 <script>
-  onRuntimeInitialized: initRDKitModule().then(function(instance) {
-    RDKitModule = instance;
-    console.log('version: ' + RDKitModule.version());
-    var m1 = RDKitModule.get_mol("c1ccccc1O");
+  onRuntimeInitialized: initRDKixModule().then(function(instance) {
+    RDKixModule = instance;
+    console.log('version: ' + RDKixModule.version());
+    var m1 = RDKixModule.get_mol("c1ccccc1O");
     console.log('smiles: ' + m1.get_smiles());
     m1.delete();
     callback("CC(=O)Oc1ccccc1C(=O)O");
@@ -46,7 +46,7 @@
     if (svg == "") return;
     var ob = document.getElementById("drawing");
     ob.outerHTML = "<div id='drawing'>" + svg + "</div>";
-    var canvas = document.getElementById("rdkit-canvas");
+    var canvas = document.getElementById("rdkix-canvas");
     mol.draw_to_canvas_with_highlights(canvas, tdetails);
 
   }
@@ -58,11 +58,11 @@
     if (svg == "") return;
     var ob = document.getElementById("drawing");
     ob.outerHTML = "<div id='drawing'>" + svg + "</div>";
-    var canvas = document.getElementById("rdkit-canvas");
+    var canvas = document.getElementById("rdkix-canvas");
     mol.draw_to_canvas(canvas, -1, -1);
   }
   function callback(text, update_descrs) {
-    var mol = RDKitModule.get_mol(text);
+    var mol = RDKixModule.get_mol(text);
     if (mol.is_valid()) {
       draw(mol);
       var ob = document.getElementById("can_smiles");
@@ -80,8 +80,8 @@
     mol.delete();
   }
   function sma_callback(text) {
-    var qmol = RDKitModule.get_qmol(text);
-    var mol = RDKitModule.get_mol(document.getElementById("smiles_input").value);
+    var qmol = RDKixModule.get_qmol(text);
+    var mol = RDKixModule.get_mol(document.getElementById("smiles_input").value);
     if (mol.is_valid() && qmol.is_valid()) {
       var mdetails = mol.get_substruct_match(qmol);
       var match = JSON.parse(mdetails);
@@ -94,8 +94,8 @@
     if(text==""){
       text = document.getElementById("template_input").value;
     }
-    var qmol = RDKitModule.get_mol(text);
-    var mol = RDKitModule.get_mol(document.getElementById("smiles_input").value);
+    var qmol = RDKixModule.get_mol(text);
+    var mol = RDKixModule.get_mol(document.getElementById("smiles_input").value);
     if (mol.is_valid() && qmol.is_valid()) {
       var mdetails = mol.get_substruct_match(qmol);
       var match = JSON.parse(mdetails);
@@ -108,7 +108,7 @@
   }
   function rxn_callback(text, details) {
     details = details || {};
-    var rxn = RDKitModule.get_rxn(text, JSON.stringify(details));
+    var rxn = RDKixModule.get_rxn(text, JSON.stringify(details));
     var svg = "";
     try {
       svg = rxn.get_svg(798, 198);
@@ -118,7 +118,7 @@
     }
     var ob = document.getElementById("drawing_reaction");
     ob.innerHTML = svg;
-    var canvas = document.getElementById("rdkit-rxn-canvas");
+    var canvas = document.getElementById("rdkix-rxn-canvas");
     rxn.draw_to_canvas(canvas, -1, -1);
   }
   function option_changed(cb) {
@@ -132,7 +132,7 @@
   }
   function abbreviation_option_changed(cb) {
     var smi = document.getElementById('smiles_input').value;
-    var mol = RDKitModule.get_mol(smi);
+    var mol = RDKixModule.get_mol(smi);
     if(document.getElementById('useAbbreviations').checked){
       var useLinkers = document.getElementById('useLinkers').checked;
       var maxCoverage = +(document.getElementById('maxCoverage').value);
@@ -144,7 +144,7 @@
 
 <body>
   <div class="container-fluid col-md-8">
-    <h1>RDKit-JS demo</h1>
+    <h1>RDKix-JS demo</h1>
     <div id="molecule">
       <div id="drawing"></div>
       <div id="can_smiles"></div>
@@ -159,7 +159,7 @@
     <div id="descrs"></div>
     <div id="canvas-div">
       <h1>HTML5 canvas</h1>
-      <canvas id="rdkit-canvas" width="400" height="300" style="border:1px solid #000000;">
+      <canvas id="rdkix-canvas" width="400" height="300" style="border:1px solid #000000;">
       </canvas>
       <br />
       <input type="checkbox" id="addAtomIndices" name="atomIndices" onclick="option_changed(this);">
@@ -204,7 +204,7 @@
     <div id="drawing_reaction" style="width:800px; height:200px; border:1px solid #000000;"></div>
     <br>
     <h3>Canvas render</h3>
-    <canvas id="rdkit-rxn-canvas" width="800" height="200" style="border:1px solid #000000;">
+    <canvas id="rdkix-rxn-canvas" width="800" height="200" style="border:1px solid #000000;">
     </canvas>
   </div>
 </body>

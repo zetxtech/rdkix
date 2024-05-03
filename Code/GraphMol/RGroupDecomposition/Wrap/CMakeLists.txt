@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_RGROUPDECOMPOSITION_BUILD)
-rdkit_python_extension(rdRGroupDecomposition
+remove_definitions(-DRDKIX_RGROUPDECOMPOSITION_BUILD)
+rdkix_python_extension(rdRGroupDecomposition
                        rdRGroupComposition.cpp
                        DEST Chem 
                        LINK_LIBRARIES

@@ -2,10 +2,10 @@
 //  Copyright (C) 2007-2011 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file MolSurf.h
@@ -19,7 +19,7 @@
 
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string labuteASAVersion = "1.0.2";
@@ -40,7 +40,7 @@ const std::string labuteASAVersion = "1.0.2";
   \return the sum of the atomic contributions
 
 */
-RDKIT_DESCRIPTORS_EXPORT double getLabuteAtomContribs(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT double getLabuteAtomContribs(const ROMol &mol,
                                                       std::vector<double> &Vi,
                                                       double &hContrib,
                                                       bool includeHs = true,
@@ -58,7 +58,7 @@ RDKIT_DESCRIPTORS_EXPORT double getLabuteAtomContribs(const ROMol &mol,
   \param force      (optional) calculate the value even if it's cached.
 
 */
-RDKIT_DESCRIPTORS_EXPORT double calcLabuteASA(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT double calcLabuteASA(const ROMol &mol,
                                               bool includeHs = true,
                                               bool force = false);
 
@@ -81,7 +81,7 @@ const std::string tpsaVersion = "2.0.0";
   \return the sum of the atomic contributions
 
 */
-RDKIT_DESCRIPTORS_EXPORT double getTPSAAtomContribs(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT double getTPSAAtomContribs(const ROMol &mol,
                                                     std::vector<double> &Vi,
                                                     bool force = false,
                                                     bool includeSandP = false);
@@ -101,20 +101,20 @@ RDKIT_DESCRIPTORS_EXPORT double getTPSAAtomContribs(const ROMol &mol,
   \param includeSandP (optional) include contributions from S and P atoms
 
 */
-RDKIT_DESCRIPTORS_EXPORT double calcTPSA(const ROMol &mol, bool force = false,
+RDKIX_DESCRIPTORS_EXPORT double calcTPSA(const ROMol &mol, bool force = false,
                                          bool includeSandP = false);
 
-RDKIT_DESCRIPTORS_EXPORT std::vector<double> calcSlogP_VSA(
+RDKIX_DESCRIPTORS_EXPORT std::vector<double> calcSlogP_VSA(
     const ROMol &mol, std::vector<double> *bins = nullptr, bool force = false);
-RDKIT_DESCRIPTORS_EXPORT std::vector<double> calcSMR_VSA(
+RDKIX_DESCRIPTORS_EXPORT std::vector<double> calcSMR_VSA(
     const ROMol &mol, std::vector<double> *bins = nullptr, bool force = false);
-RDKIT_DESCRIPTORS_EXPORT std::vector<double> calcPEOE_VSA(
+RDKIX_DESCRIPTORS_EXPORT std::vector<double> calcPEOE_VSA(
     const ROMol &mol, std::vector<double> *bins = nullptr, bool force = false);
-RDKIT_DESCRIPTORS_EXPORT std::vector<double> calcCustomProp_VSA(
+RDKIX_DESCRIPTORS_EXPORT std::vector<double> calcCustomProp_VSA(
     const ROMol &mol, const std::string &customPropName,
     const std::vector<double> &bins, bool force = false);
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

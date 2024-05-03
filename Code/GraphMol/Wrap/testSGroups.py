@@ -2,18 +2,18 @@
 #  Copyright (C) 2019  Greg Landrum
 #         All Rights Reserved
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 
 import os
 import sys
 import unittest
 
-from rdkit import Chem, Geometry
-from rdkit.Chem import RDConfig
+from rdkix import Chem, Geometry
+from rdkix.Chem import RDConfig
 
 
 class TestCase(unittest.TestCase):

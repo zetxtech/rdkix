@@ -26,8 +26,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
   std::string serializedMolString = fdp.ConsumeRemainingBytesAsString();
 
   try {
-    RDKit::ROMol result;
-    RDKit::MolPickler::molFromPickle(serializedMolString, result);
+    RDKix::ROMol result;
+    RDKix::MolPickler::molFromPickle(serializedMolString, result);
   } catch (...) {
   }
 

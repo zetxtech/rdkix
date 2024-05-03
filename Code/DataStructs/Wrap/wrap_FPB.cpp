@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/Wrap.h>
 #include <DataStructs/FPBReader.h>
@@ -14,7 +14,7 @@
 #include "wrap_helpers.h"
 
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 python::tuple taniNbrHelper(const FPBReader *self, const std::string &bytes,

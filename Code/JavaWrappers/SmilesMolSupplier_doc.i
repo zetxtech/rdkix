@@ -31,11 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::SmilesMolSupplier "
+%typemap(javaimports) RDKix::SmilesMolSupplier "
 /** 
 lazy file parser for Smiles tables */"
 
-%javamethodmodifiers RDKit::SmilesMolSupplier::SmilesMolSupplier 	( 	const std::string &  	fileName, 		const std::string &  	delimiter = ' \t', 		int  	smilesColumn = 0, 		int  	nameColumn = 1, 		bool  	titleLine = true, 		bool  	sanitize = true	  	) 			"
+%javamethodmodifiers RDKix::SmilesMolSupplier::SmilesMolSupplier 	( 	const std::string &  	fileName, 		const std::string &  	delimiter = ' \t', 		int  	smilesColumn = 0, 		int  	nameColumn = 1, 		bool  	titleLine = true, 		bool  	sanitize = true	  	) 			"
 /**
 <p>
 <p>
@@ -50,7 +50,7 @@ sanitize 	- if true sanitize the molecule before returning it
 */
 public";
 
-%javamethodmodifiers RDKit::SmilesMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
+%javamethodmodifiers RDKix::SmilesMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
 /**
 <p>
 <p>

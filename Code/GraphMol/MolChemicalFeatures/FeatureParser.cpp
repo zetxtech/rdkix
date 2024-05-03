@@ -3,15 +3,15 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "FeatureParser.h"
 #include "MolChemicalFeatureDef.h"
 #include <RDGeneral/StreamOps.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
 #include <boost/shared_ptr.hpp>
@@ -25,7 +25,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <sstream>
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 namespace Local {
 typedef boost::tokenizer<boost::escaped_list_separator<char>> CommaTokenizer;
 
@@ -322,4 +322,4 @@ int parseFeatureFile(const std::string &fileName,
   }
   return parseFeatureData(inStream, res);
 }
-}  // namespace RDKit
+}  // namespace RDKix

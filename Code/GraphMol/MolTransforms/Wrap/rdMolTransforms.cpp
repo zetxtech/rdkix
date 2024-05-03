@@ -3,10 +3,10 @@
 //  Copyright (C) 2005-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdmoltransforms_array_API
 #include <RDBoost/python.h>
@@ -21,7 +21,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 PyObject *computeCanonTrans(const Conformer &conf,
                             const RDGeom::Point3D *center = nullptr,
                             bool normalizeCovar = false, bool ignoreHs = true) {
@@ -120,14 +120,14 @@ void transConformer(Conformer &conf, python::object trans) {
          dSize * sizeof(double));
   MolTransforms::transformConformer(conf, transform);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdMolTransforms) {
   python::scope().attr("__doc__") =
       "Module containing functions to perform 3D operations like rotate and "
       "translate conformations";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   std::string docString =
       "Compute the centroid of the conformation - hydrogens are ignored and no attention\n\
@@ -148,7 +148,7 @@ BOOST_PYTHON_MODULE(rdMolTransforms) {
     - center : optional center point to compute the principal axes around (defaults to the centroid)\n\
     - normalizeCovar : optionally normalize the covariance matrix by the number of atoms\n";
   python::def(
-      "ComputeCanonicalTransform", RDKit::computeCanonTrans,
+      "ComputeCanonicalTransform", RDKix::computeCanonTrans,
       (python::arg("conf"),
        python::arg("center") = static_cast<RDGeom::Point3D *>(nullptr),
        python::arg("normalizeCovar") = false, python::arg("ignoreHs") = true),
@@ -167,7 +167,7 @@ BOOST_PYTHON_MODULE(rdMolTransforms) {
     - ignoreHs : if True, ignore hydrogen atoms\n\
     - weights : if present, used to weight the atomic coordinates\n\n\
   Returns a (principal axes, principal moments) tuple\n";
-  python::def("ComputePrincipalAxesAndMoments", RDKit::computePrincAxesMoments,
+  python::def("ComputePrincipalAxesAndMoments", RDKix::computePrincAxesMoments,
               (python::arg("conf"), python::arg("ignoreHs") = true,
                python::arg("weights") = python::object()),
               docString.c_str());
@@ -185,13 +185,13 @@ BOOST_PYTHON_MODULE(rdMolTransforms) {
     - weights : if present, used to weight the atomic coordinates\n\n\
   Returns a (principal axes, principal moments) tuple\n";
   python::def("ComputePrincipalAxesAndMomentsFromGyrationMatrix",
-              RDKit::computePrincAxesMomentsFromGyrationMatrix,
+              RDKix::computePrincAxesMomentsFromGyrationMatrix,
               (python::arg("conf"), python::arg("ignoreHs") = true,
                python::arg("weights") = python::object()),
               docString.c_str());
 #endif
 
-  python::def("TransformConformer", RDKit::transConformer,
+  python::def("TransformConformer", RDKix::transConformer,
               "Transform the coordinates of a conformer");
 
   docString =

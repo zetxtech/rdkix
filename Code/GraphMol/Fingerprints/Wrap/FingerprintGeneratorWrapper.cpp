@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDBoost/Wrap.h>
@@ -15,11 +15,11 @@
 #include <RDBoost/boost_numpy.h>
 #include <numpy/npy_common.h>
 #include <RDBoost/import_array.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/Wrap/AtomPairWrapper.cpp>
 #include <GraphMol/Fingerprints/Wrap/MorganWrapper.cpp>
-#include <GraphMol/Fingerprints/Wrap/RDKitFPWrapper.cpp>
+#include <GraphMol/Fingerprints/Wrap/RDKixFPWrapper.cpp>
 #include <GraphMol/Fingerprints/Wrap/TopologicalTorsionWrapper.cpp>
 #include <cstdint>
 
@@ -32,7 +32,7 @@
 namespace python = boost::python;
 namespace np = boost::python::numpy;
 
-namespace RDKit {
+namespace RDKix {
 namespace FingerprintWrapper {
 
 void convertPyArguments(python::object py_fromAtoms,
@@ -657,7 +657,7 @@ void setCountBoundsHelper(FingerprintArguments &opts, python::object bounds) {
 }  // namespace
 
 BOOST_PYTHON_MODULE(rdFingerprintGenerator) {
-  rdkit_import_array();
+  rdkix_import_array();
   python::class_<AtomInvariantsGenerator, boost::noncopyable>(
       "AtomInvariantsGenerator", python::no_init);
 
@@ -710,7 +710,7 @@ BOOST_PYTHON_MODULE(rdFingerprintGenerator) {
   wrapGenerator<std::uint64_t>("FingeprintGenerator64");
 
   python::enum_<FPType>("FPType")
-      .value("RDKitFP", FPType::RDKitFP)
+      .value("RDKixFP", FPType::RDKixFP)
       .value("MorganFP", FPType::MorganFP)
       .value("AtomPairFP", FPType::AtomPairFP)
       .value("TopologicalTorsionFP", FPType::TopologicalTorsionFP)
@@ -739,9 +739,9 @@ BOOST_PYTHON_MODULE(rdFingerprintGenerator) {
 
   AtomPairWrapper::exportAtompair();
   MorganWrapper::exportMorgan();
-  RDKitFPWrapper::exportRDKit();
+  RDKixFPWrapper::exportRDKix();
   TopologicalTorsionWrapper::exportTopologicalTorsion();
 }
 
 }  // namespace FingerprintWrapper
-}  // namespace RDKit
+}  // namespace RDKix

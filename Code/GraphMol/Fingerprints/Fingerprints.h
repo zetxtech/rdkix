@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FINGERPRINTS_H
@@ -16,7 +16,7 @@
 #include <DataStructs/SparseIntVect.h>
 
 class ExplicitBitVect;
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class MolBundle;
 
@@ -51,7 +51,7 @@ class MolBundle;
     - the caller is responsible for <tt>delete</tt>ing the result
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *RDKFingerprintMol(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *RDKFingerprintMol(
     const ROMol &mol, unsigned int minPath = 1, unsigned int maxPath = 7,
     unsigned int fpSize = 2048, unsigned int nBitsPerHash = 2,
     bool useHs = true, double tgtDensity = 0.0, unsigned int minSize = 128,
@@ -103,7 +103,7 @@ const std::string RDKFingerprintMolVersion = "2.0.0";
      - 0x10: ring sizes
      - 0x20: aromaticity
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *LayeredFingerprintMol(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *LayeredFingerprintMol(
     const ROMol &mol, unsigned int layerFlags = 0xFFFFFFFF,
     unsigned int minPath = 1, unsigned int maxPath = 7,
     unsigned int fpSize = 2048, std::vector<unsigned int> *atomCounts = nullptr,
@@ -142,17 +142,17 @@ const unsigned int substructLayers = 0x07;
     - the caller is responsible for <tt>delete</tt>ing the result
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *PatternFingerprintMol(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *PatternFingerprintMol(
     const ROMol &mol, unsigned int fpSize = 2048,
     std::vector<unsigned int> *atomCounts = nullptr,
     ExplicitBitVect *setOnlyBits = nullptr, bool tautomericFingerprint = false);
 const std::string PatternFingerprintMolVersion = "1.0.0";
 //! \overload
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *PatternFingerprintMol(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *PatternFingerprintMol(
     const MolBundle &bundle, unsigned int fpSize = 2048,
     ExplicitBitVect *setOnlyBits = nullptr, bool tautomericFingerprint = false);
 
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<boost::uint64_t>
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<boost::uint64_t>
     *getUnfoldedRDKFingerprintMol(
         const ROMol &mol, unsigned int minPath = 1, unsigned int maxPath = 7,
         bool useHs = true, bool branchedPaths = true, bool useBondOrder = true,
@@ -162,6 +162,6 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<boost::uint64_t>
         std::map<boost::uint64_t, std::vector<std::vector<int>>> *bitInfo =
             nullptr);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

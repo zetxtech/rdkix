@@ -1,16 +1,16 @@
 //
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx) on 08/05/2020.
 //
 
-#ifndef RDKIT_DRAWTEXTFTQT_H
-#define RDKIT_DRAWTEXTFTQT_H
+#ifndef RDKIX_DRAWTEXTFTQT_H
+#define RDKIX_DRAWTEXTFTQT_H
 
 #include <RDGeneral/export.h>
 #include <GraphMol/MolDraw2D/DrawTextFT.h>
@@ -19,12 +19,12 @@
 class QPainter;
 class QPainterPath;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolDraw2D_detail {
 // ****************************************************************************
 
-class RDKIT_MOLDRAW2DQT_EXPORT DrawTextFTQt : public DrawTextFT {
+class RDKIX_MOLDRAW2DQT_EXPORT DrawTextFTQt : public DrawTextFT {
  public:
   DrawTextFTQt(double max_fnt_sz, double min_fnt_sz,
                const std::string &font_file, QPainter *qp);
@@ -53,5 +53,5 @@ class RDKIT_MOLDRAW2DQT_EXPORT DrawTextFTQt : public DrawTextFT {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
-#endif  // RDKIT_DRAWTEXTFTQT_H
+}  // namespace RDKix
+#endif  // RDKIX_DRAWTEXTFTQT_H

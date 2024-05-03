@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_CANON_H
@@ -16,7 +16,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Atom;
 class Bond;
@@ -49,7 +49,7 @@ typedef union {
 } MolStackUnion;
 
 //! these are the actual elements in the molecular stack
-class RDKIT_GRAPHMOL_EXPORT MolStackElem {
+class RDKIX_GRAPHMOL_EXPORT MolStackElem {
  public:
   //! construct an Atom node
   explicit MolStackElem(Atom *at) {
@@ -111,7 +111,7 @@ typedef std::tuple<int, int, Bond *> PossibleType;
       and the like are changed to fit the canonical traversal order
 
  */
-RDKIT_GRAPHMOL_EXPORT void canonicalizeFragment(
+RDKIX_GRAPHMOL_EXPORT void canonicalizeFragment(
     ROMol &mol, int atomIdx, std::vector<AtomColors> &colors,
     const std::vector<unsigned int> &ranks, MolStack &molStack,
     const boost::dynamic_bitset<> *bondsInPlay = nullptr,
@@ -121,8 +121,8 @@ RDKIT_GRAPHMOL_EXPORT void canonicalizeFragment(
 
 //! Check if a chiral atom needs to have its tag flipped after reading or before
 //! writing SMILES
-RDKIT_GRAPHMOL_EXPORT bool chiralAtomNeedsTagInversion(const RDKit::ROMol &mol,
-                                                       const RDKit::Atom *atom,
+RDKIX_GRAPHMOL_EXPORT bool chiralAtomNeedsTagInversion(const RDKix::ROMol &mol,
+                                                       const RDKix::Atom *atom,
                                                        bool isAtomFirst,
                                                        size_t numClosures);
 
@@ -134,9 +134,9 @@ RDKIT_GRAPHMOL_EXPORT bool chiralAtomNeedsTagInversion(const RDKit::ROMol &mol,
   chiral tags.
 
 */
-RDKIT_GRAPHMOL_EXPORT void canonicalizeEnhancedStereo(
+RDKIX_GRAPHMOL_EXPORT void canonicalizeEnhancedStereo(
     ROMol &mol, const std::vector<unsigned int> *atomRanks = nullptr);
 
 }  // end of namespace Canon
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 #endif
