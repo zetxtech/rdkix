@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_BOUNDS_MATRIX_H__
@@ -24,7 +24,7 @@ namespace DistGeom {
   with lower distance bounds on the lower traingle and upper bounds in the upper
   triangle
 */
-class RDKIT_DISTGEOMETRY_EXPORT BoundsMatrix
+class RDKIX_DISTGEOMETRY_EXPORT BoundsMatrix
     : public RDNumeric::SquareMatrix<double> {
  public:
   typedef boost::shared_array<double> DATA_SPTR;

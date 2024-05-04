@@ -30,7 +30,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::FilterCatalog "
+%typemap(javaimports) RDKix::FilterCatalog "
 /** FilterCatalog Class used to filter out undesirable molecules
 <br>
 Basic usage:

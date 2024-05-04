@@ -2,10 +2,10 @@
 //  Copyright (C) 2018-2022 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MOLINTERCHANGE_H_JAN2018
@@ -29,14 +29,14 @@ https://github.com/mcs07/CommonChem
 
 #include <boost/shared_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 class RWMol;
 
 namespace MolInterchange {
 
 // \brief parameters controlling parsing of MolJSON
-struct RDKIT_MOLINTERCHANGE_EXPORT JSONParseParameters {
+struct RDKIX_MOLINTERCHANGE_EXPORT JSONParseParameters {
   bool setAromaticBonds =
       true; /*!< toggles setting the BondType of aromatic bonds to Aromatic */
   bool strictValenceCheck =
@@ -56,7 +56,7 @@ static JSONParseParameters defaultJSONParseParameters;
  *   \param inStream - stream containing the data
  *   \param params   - parsing options
  */
-RDKIT_MOLINTERCHANGE_EXPORT std::vector<boost::shared_ptr<ROMol>>
+RDKIX_MOLINTERCHANGE_EXPORT std::vector<boost::shared_ptr<ROMol>>
 JSONDataStreamToMols(std::istream *inStream, const JSONParseParameters &params =
                                                  defaultJSONParseParameters);
 
@@ -65,14 +65,14 @@ JSONDataStreamToMols(std::istream *inStream, const JSONParseParameters &params =
  *   \param jsonBlock - string containing the mol block
  *   \param params   - parsing options
  */
-RDKIT_MOLINTERCHANGE_EXPORT std::vector<boost::shared_ptr<ROMol>>
+RDKIX_MOLINTERCHANGE_EXPORT std::vector<boost::shared_ptr<ROMol>>
 JSONDataToMols(const std::string &jsonBlock,
                const JSONParseParameters &params = defaultJSONParseParameters);
 
 // \brief parameters controlling generating of MolJSON
-struct RDKIT_MOLINTERCHANGE_EXPORT JSONWriteParameters {
-  bool useRDKitExtensions =
-      true; /*!< toggles using RDKit extensions to commmonchem */
+struct RDKIX_MOLINTERCHANGE_EXPORT JSONWriteParameters {
+  bool useRDKixExtensions =
+      true; /*!< toggles using RDKix extensions to commmonchem */
 };
 static JSONWriteParameters defaultJSONWriteParameters;
 
@@ -81,7 +81,7 @@ static JSONWriteParameters defaultJSONWriteParameters;
  *   \param mols  - the molecules to work with
  */
 template <typename T>
-RDKIT_MOLINTERCHANGE_EXPORT std::string MolsToJSONData(
+RDKIX_MOLINTERCHANGE_EXPORT std::string MolsToJSONData(
     const std::vector<T> &mols,
     const JSONWriteParameters &params = defaultJSONWriteParameters);
 
@@ -97,6 +97,6 @@ std::string MolToJSONData(const T &mol, const JSONWriteParameters &params =
 };
 
 }  // end of namespace MolInterchange
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

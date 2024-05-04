@@ -3,10 +3,10 @@
 //  Copyright (C) 2023 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolWriters.h"
 
@@ -24,14 +24,14 @@
 #include <GraphMol/Depictor/RDDepictor.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MonomerInfo.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/RDLog.h>
 
 using namespace schrodinger;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 const std::string MAE_ATOM_RGB_COLOR = "s_m_color_rgb";
@@ -564,4 +564,4 @@ std::string MaeWriter::getText(const ROMol& mol,
   return sstr.str();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <cstdlib>
@@ -14,7 +14,7 @@
 
 #include <boost/noncopyable.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/MolOps.h>
@@ -25,7 +25,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 class TestFixtureTemplate : public boost::noncopyable {
  public:
@@ -66,18 +66,18 @@ class TestFixtureTemplate : public boost::noncopyable {
 class UseLegacyStereoPerceptionFixture : private TestFixtureTemplate {
  public:
   UseLegacyStereoPerceptionFixture()
-      : TestFixtureTemplate(RDKit::Chirality::useLegacyStereoEnvVar,
-                            &RDKit::Chirality::getUseLegacyStereoPerception,
-                            &RDKit::Chirality::setUseLegacyStereoPerception) {}
+      : TestFixtureTemplate(RDKix::Chirality::useLegacyStereoEnvVar,
+                            &RDKix::Chirality::getUseLegacyStereoPerception,
+                            &RDKix::Chirality::setUseLegacyStereoPerception) {}
 };
 
 class AllowNontetrahedralChiralityFixture : private TestFixtureTemplate {
  public:
   AllowNontetrahedralChiralityFixture()
       : TestFixtureTemplate(
-            RDKit::Chirality::nonTetrahedralStereoEnvVar,
-            &RDKit::Chirality::getAllowNontetrahedralChirality,
-            &RDKit::Chirality::setAllowNontetrahedralChirality) {}
+            RDKix::Chirality::nonTetrahedralStereoEnvVar,
+            &RDKix::Chirality::getAllowNontetrahedralChirality,
+            &RDKix::Chirality::setAllowNontetrahedralChirality) {}
 };
 
 TEST_CASE("bond StereoInfo", "[unittest]") {
@@ -2029,7 +2029,7 @@ TEST_CASE(
     "chirality") {
   RDLog::LogStateSetter setter;  // disable irritating warning messages
   auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2165,7 +2165,7 @@ TEST_CASE(
     "bonds") {
   RDLog::LogStateSetter setter;  // disable irritating warning messages
   auto molblock = R"CTAB(
-     RDKit          3D
+     RDKix          3D
      
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2619,7 +2619,7 @@ TEST_CASE("nontetrahedral StereoInfo", "[nontetrahedral]") {
 TEST_CASE("github #5328: assignChiralTypesFrom3D() ignores wiggly bonds") {
   SECTION("basics") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2751,7 +2751,7 @@ M  END
 
 TEST_CASE("wedgeMolBonds to aromatic rings") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2811,7 +2811,7 @@ M  END
 
 TEST_CASE("github 5307: AssignAtomChiralTagsFromStructure ignores Hydrogens") {
   std::string mb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
      
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3082,9 +3082,9 @@ TEST_CASE("more findPotential and ring stereo") {
 }
 
 TEST_CASE(
-    "github 2984: RDKit misplaces stereochemistry/chirality information for "
+    "github 2984: RDKix misplaces stereochemistry/chirality information for "
     "small ring") {
-  using namespace RDKit::Chirality;
+  using namespace RDKix::Chirality;
 
   UseLegacyStereoPerceptionFixture reset_stereo_perception;
 
@@ -3321,14 +3321,14 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
     }
     {
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
     }
   }
@@ -3343,7 +3343,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       // the crossed bond dir has been translated to unknown stereo:
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereo() == Bond::BondStereo::STEREOANY);
@@ -3352,7 +3352,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       // the crossed bond dir has been translated to unknown stereo:
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereo() == Bond::BondStereo::STEREOANY);
@@ -3370,7 +3370,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(false);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereoAtoms().empty());
     }
@@ -3378,7 +3378,7 @@ TEST_CASE(
       UseLegacyStereoPerceptionFixture reset_stereo_perception;
       Chirality::setUseLegacyStereoPerception(true);
       auto cp(*m);
-      RDKit::MolOps::assignStereochemistry(cp, clean, force, flag);
+      RDKix::MolOps::assignStereochemistry(cp, clean, force, flag);
       CHECK(cp.getBondWithIdx(1)->getBondDir() == Bond::BondDir::NONE);
       CHECK(cp.getBondWithIdx(1)->getStereoAtoms().empty());
     }
@@ -3490,7 +3490,7 @@ M  END
 }
 
 TEST_CASE(
-    "RDKit Issue #6217: Atoms may get flagged with non-tetrahedral stereo even when it is not allowed",
+    "RDKix Issue #6217: Atoms may get flagged with non-tetrahedral stereo even when it is not allowed",
     "[bug][stereo][non-tetrahedral]") {
   UseLegacyStereoPerceptionFixture reset_stereo_perception;
   Chirality::setUseLegacyStereoPerception(false);
@@ -3515,7 +3515,7 @@ TEST_CASE(
 }
 
 TEST_CASE(
-    "RDKit Issue #6239: Tri-coordinate atom with implicit + neighbor H atom is found potentially chiral",
+    "RDKix Issue #6239: Tri-coordinate atom with implicit + neighbor H atom is found potentially chiral",
     "[bug][stereo]") {
   // Parametrize test to run under legacy and new stereo perception
   const auto legacy_stereo = GENERATE(true, false);

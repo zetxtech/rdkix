@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,12 +14,12 @@
 #include <numpy/arrayobject.h>
 #include <boost/python/list.hpp>
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <CoordGen/CoordGen.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void SetCoordMap(CoordGen::CoordGenParams *self, python::dict &coordMap) {
@@ -84,7 +84,7 @@ struct coordgen_wrapper {
             &CoordGen::CoordGenParams::sketcherCoarsePrecision,
             "\"coarse\" (fastest) precision setting, produces good-quality "
             "coordinates"
-            " most of the time, this is the default setting for the RDKit")
+            " most of the time, this is the default setting for the RDKix")
         .def_readwrite("minimizerPrecision",
                        &CoordGen::CoordGenParams::minimizerPrecision,
                        "controls sketcher precision")
@@ -105,9 +105,9 @@ struct coordgen_wrapper {
   }
 };
 
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 BOOST_PYTHON_MODULE(rdCoordGen) {
   python::scope().attr("__doc__") =
       "Module containing interface to the CoordGen library.";
-  RDKit::coordgen_wrapper::wrap();
+  RDKix::coordgen_wrapper::wrap();
 }

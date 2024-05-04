@@ -31,7 +31,7 @@ yyerror( const char * msg )
   std::cerr << msg << "\n";
 }
 
-using namespace RDKit;
+using namespace RDKix;
 
 extern vector<Mol *> molList_g;
 static Mol * curMol_gps = 0;
@@ -44,8 +44,8 @@ int label_gs = -1;
  
 %union {
   int                      moli;
-  RDKit::Atom * atom;
-  RDKit::Bond * bond;
+  RDKix::Atom * atom;
+  RDKix::Bond * bond;
   int                      ival;
 }
 

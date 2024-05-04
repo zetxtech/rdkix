@@ -1,12 +1,12 @@
 import sys
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import AllChem, Draw, rdDepictor
-from rdkit.Chem.Draw import rdMolDraw2DQt
+from rdkix import Chem, RDConfig
+from rdkix.Chem import AllChem, Draw, rdDepictor
+from rdkix.Chem.Draw import rdMolDraw2DQt
 
 try:
-  if rdMolDraw2DQt.rdkitQtVersion.startswith('6'):
+  if rdMolDraw2DQt.rdkixQtVersion.startswith('6'):
     from PyQt6.QtGui import *
     Format_RGB32 = QImage.Format.Format_RGB32
   else:
@@ -18,7 +18,7 @@ except ImportError:
 else:
   try:
     # Prefer the PyQt-bundled sip
-    if rdMolDraw2DQt.rdkitQtVersion.startswith('6'):
+    if rdMolDraw2DQt.rdkixQtVersion.startswith('6'):
       from PyQt6 import sip
     else:
       from PyQt5 import sip

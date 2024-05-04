@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include "PowerEigenSolver.h"
@@ -44,16 +44,16 @@ void testPowerSolver() {
   DoubleVector ev1(N), ev2(N);
   eigVecs.getRow(0, ev1);
   eigVecs.getRow(1, ev2);
-  TEST_ASSERT(RDKit::feq(ev1.dotProduct(ev2), 0.0, 0.001));
+  TEST_ASSERT(RDKix::feq(ev1.dotProduct(ev2), 0.0, 0.001));
 
-  TEST_ASSERT(RDKit::feq(eigVals[0], 6.981, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[1], -3.982, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[2], -1.395, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[3], -1.016, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[4], -0.586, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(0, 0), 0.523, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(2, 1), 0.201, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(4, 0), -.230, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[0], 6.981, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[1], -3.982, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[2], -1.395, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[3], -1.016, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[4], -0.586, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(0, 0), 0.523, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(2, 1), 0.201, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(4, 0), -.230, 0.001));
 }
 
 void test2PowerSolver() {
@@ -77,16 +77,16 @@ void test2PowerSolver() {
   DoubleVector ev1(N), ev2(N);
   bool converge = powerEigenSolver(N, mat, eigVals, eigVecs, 100);
   CHECK_INVARIANT(converge, "");
-  CHECK_INVARIANT(RDKit::feq(eigVals.getVal(0), 4.0, 0.001), "");
+  CHECK_INVARIANT(RDKix::feq(eigVals.getVal(0), 4.0, 0.001), "");
 
-  TEST_ASSERT(RDKit::feq(eigVals[0], 4.000, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[1], -1.0, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[2], -1.0, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[3], -1.0, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVals[4], -1.0, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(0, 0), 0.447, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(2, 1), 0.028, 0.001));
-  TEST_ASSERT(RDKit::feq(eigVecs.getVal(4, 0), 0.193, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[0], 4.000, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[1], -1.0, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[2], -1.0, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[3], -1.0, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVals[4], -1.0, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(0, 0), 0.447, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(2, 1), 0.028, 0.001));
+  TEST_ASSERT(RDKix::feq(eigVecs.getVal(4, 0), 0.193, 0.001));
 }
 
 int main() {

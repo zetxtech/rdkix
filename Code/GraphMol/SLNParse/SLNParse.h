@@ -39,23 +39,23 @@
 #include <exception>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
 namespace SLNParse {
-RDKIT_SLNPARSE_EXPORT void finalizeQueryMol(ROMol *mol, bool mergeHs);
+RDKIX_SLNPARSE_EXPORT void finalizeQueryMol(ROMol *mol, bool mergeHs);
 void CleanupAfterParse(RWMol *mol);
 }  // namespace SLNParse
 
-RDKIT_SLNPARSE_EXPORT RWMol *SLNToMol(const std::string &smi,
+RDKIX_SLNPARSE_EXPORT RWMol *SLNToMol(const std::string &smi,
                                       bool sanitize = true, int debugParse = 0);
 
-RDKIT_SLNPARSE_EXPORT RWMol *SLNQueryToMol(const std::string &smi,
+RDKIX_SLNPARSE_EXPORT RWMol *SLNQueryToMol(const std::string &smi,
                                            bool mergeHs = true,
                                            int debugParse = 0);
 
-class RDKIT_SLNPARSE_EXPORT SLNParseException : public std::exception {
+class RDKIX_SLNPARSE_EXPORT SLNParseException : public std::exception {
  public:
   SLNParseException(const char *msg) : _msg(msg) {}
   SLNParseException(std::string msg) : _msg(std::move(msg)) {}
@@ -66,5 +66,5 @@ class RDKIT_SLNPARSE_EXPORT SLNParseException : public std::exception {
   std::string _msg;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

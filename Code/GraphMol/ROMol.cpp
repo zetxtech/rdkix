@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <iostream>
@@ -29,7 +29,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 class QueryAtom;
 class QueryBond;
 
@@ -158,7 +158,7 @@ void ROMol::initFromOther(const ROMol &other, bool quickCopy, int confId) {
   } else {
     d_props.reset();
     STR_VECT computed;
-    d_props.setVal(RDKit::detail::computedPropName, computed);
+    d_props.setVal(RDKix::detail::computedPropName, computed);
   }
 
   // std::cerr<<"---------    done init from other: "<<this<<"
@@ -169,14 +169,14 @@ void ROMol::initMol() {
   d_props.reset();
   dp_ringInfo = new RingInfo();
   // ok every molecule contains a property entry called
-  // RDKit::detail::computedPropName
+  // RDKix::detail::computedPropName
   // which provides
   //  list of property keys that correspond to value that have been computed
   // this can used to blow out all computed properties while leaving the rest
   // along
   // initialize this list to an empty vector of strings
   STR_VECT computed;
-  d_props.setVal(RDKit::detail::computedPropName, computed);
+  d_props.setVal(RDKix::detail::computedPropName, computed);
 }
 
 unsigned int ROMol::getAtomDegree(const Atom *at) const {
@@ -713,10 +713,10 @@ void ROMol::load(Archive &ar, const unsigned int) {
   numBonds = rdcast<unsigned int>(boost::num_edges(d_graph));
 }
 
-template RDKIT_GRAPHMOL_EXPORT void ROMol::save<boost::archive::text_oarchive>(
+template RDKIX_GRAPHMOL_EXPORT void ROMol::save<boost::archive::text_oarchive>(
     boost::archive::text_oarchive &, const unsigned int) const;
-template RDKIT_GRAPHMOL_EXPORT void ROMol::load<boost::archive::text_iarchive>(
+template RDKIX_GRAPHMOL_EXPORT void ROMol::load<boost::archive::text_iarchive>(
     boost::archive::text_iarchive &, const unsigned int);
 #endif
 
-}  // namespace RDKit
+}  // namespace RDKix

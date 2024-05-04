@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_CATALOGPARAMS_H__
@@ -15,7 +15,7 @@
 
 namespace RDCatalog {
 //! abstract base class for the container used to create a catalog
-class RDKIT_CATALOGS_EXPORT CatalogParams {
+class RDKIX_CATALOGS_EXPORT CatalogParams {
  public:
   virtual ~CatalogParams() = 0;
 

@@ -31,81 +31,81 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::ExplicitBitVect "
+%typemap(javaimports) RDKix::ExplicitBitVect "
 /** 
 a class for bit vectors that are densely occupied
 <p>
-RDKit::ExplicitBitVect objects store all of their bits using a boost::dynamic_bitset
+RDKix::ExplicitBitVect objects store all of their bits using a boost::dynamic_bitset
 <p>
 These are very fast, but can require large amounts of memory for large, sparsely occupied vectors.  */"
 
-%javamethodmodifiers RDKit::ExplicitBitVect (unsigned int size)"
+%javamethodmodifiers RDKix::ExplicitBitVect (unsigned int size)"
 /**
  	initialize with a particular size;
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect (const RDKit::ExplicitBitVect &other)"
+%javamethodmodifiers RDKix::ExplicitBitVect (const RDKix::ExplicitBitVect &other)"
 /**
 
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect (const std::string &)"
+%javamethodmodifiers RDKix::ExplicitBitVect (const std::string &)"
 /**
  	construct from a string pickle
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect (const char *, const unsigned int)"
+%javamethodmodifiers RDKix::ExplicitBitVect (const char *, const unsigned int)"
 /**
  	construct from a text pickle
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::setBit (const unsigned int which)"
+%javamethodmodifiers RDKix::ExplicitBitVect::setBit (const unsigned int which)"
 /**
  	sets a particular bit and returns its original value
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::unsetBit (const unsigned int which)"
+%javamethodmodifiers RDKix::ExplicitBitVect::unsetBit (const unsigned int which)"
 /**
  	unsets a particular bit and returns its original value
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::getBit (const unsigned int which) const"
+%javamethodmodifiers RDKix::ExplicitBitVect::getBit (const unsigned int which) const"
 /**
  	returns the value of a particular bit
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::getNumBits () const"
+%javamethodmodifiers RDKix::ExplicitBitVect::getNumBits () const"
 /**
  	returns the number of bits (the length of the BitVect)
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::getNumOnBits () const"
+%javamethodmodifiers RDKix::ExplicitBitVect::getNumOnBits () const"
 /**
  	returns the number of on bits
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::getNumOffBits () const"
+%javamethodmodifiers RDKix::ExplicitBitVect::getNumOffBits () const"
 /**
  	returns the number of off bits
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::getOnBits (IntVect &v) const"
+%javamethodmodifiers RDKix::ExplicitBitVect::getOnBits (IntVect &v) const"
 /**
  	replaces the contents of v with indices of our on bits
 */
 public";
 
-%javamethodmodifiers RDKit::ExplicitBitVect::clearBits ()"
+%javamethodmodifiers RDKix::ExplicitBitVect::clearBits ()"
 /**
  	clears (sets to off) all of our bits
 <p>

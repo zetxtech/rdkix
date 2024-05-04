@@ -31,12 +31,12 @@
 #include <RDGeneral/test.h>
 #include "RDFreeSASA.h"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 struct ExpectedClasses {
   unsigned int idx;

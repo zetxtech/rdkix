@@ -36,8 +36,8 @@ import sys
 import time
 import unittest
 
-from rdkit import Chem, Geometry, RDConfig, rdBase
-from rdkit.Chem import AllChem, rdChemReactions
+from rdkix import Chem, Geometry, RDConfig, rdBase
+from rdkix.Chem import AllChem, rdChemReactions
 
 test_data = [
   ("good", '''$RXN
@@ -233,7 +233,7 @@ bug.rxn
   1  1
 $MOL
 
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
     1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -251,7 +251,7 @@ $MOL
 M  END
 $MOL
 
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
     1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

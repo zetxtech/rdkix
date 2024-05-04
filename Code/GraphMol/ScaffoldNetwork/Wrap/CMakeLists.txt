@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_SCAFFOLDNETWORK_BUILD)
-rdkit_python_extension(rdScaffoldNetwork
+remove_definitions(-DRDKIX_SCAFFOLDNETWORK_BUILD)
+rdkix_python_extension(rdScaffoldNetwork
                        rdScaffoldNetwork.cpp
                        DEST Chem/Scaffolds 
                        LINK_LIBRARIES ScaffoldNetwork 

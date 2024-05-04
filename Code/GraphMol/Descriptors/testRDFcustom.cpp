@@ -2,13 +2,13 @@
 //  Copyright (C) 2012-2016 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <RDGeneral/RDLog.h>
@@ -34,7 +34,7 @@ void testRDFcustom() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/RDFcustom.out";
 
@@ -56,17 +56,17 @@ void testRDFcustom() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> drdf;
     std::vector<double> charges(m->getNumAtoms(), 0);
-    RDKit::computeGasteigerCharges(*m, charges, 12, true);
+    RDKix::computeGasteigerCharges(*m, charges, 12, true);
 
     const std::string atomprop = "_GasteigerCharge";
-    RDKit::Descriptors::RDF(*m, drdf, -1, atomprop);
+    RDKix::Descriptors::RDF(*m, drdf, -1, atomprop);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -100,7 +100,7 @@ void testMORSEcustom() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/MORSEcustom.out";
 
@@ -122,17 +122,17 @@ void testMORSEcustom() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dmorse;
     std::vector<double> charges(m->getNumAtoms(), 0);
-    RDKit::computeGasteigerCharges(*m, charges, 12, true);
+    RDKix::computeGasteigerCharges(*m, charges, 12, true);
 
     const std::string atomprop = "_GasteigerCharge";
-    RDKit::Descriptors::MORSE(*m, dmorse, -1, atomprop);
+    RDKix::Descriptors::MORSE(*m, dmorse, -1, atomprop);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -167,7 +167,7 @@ void testAUTOCORR3Dcustom() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/auto3Dcustom.out";
 
@@ -189,17 +189,17 @@ void testAUTOCORR3Dcustom() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dauto3d;
     std::vector<double> charges(m->getNumAtoms(), 0);
-    RDKit::computeGasteigerCharges(*m, charges, 12, true);
+    RDKix::computeGasteigerCharges(*m, charges, 12, true);
 
     const std::string atomprop = "_GasteigerCharge";
-    RDKit::Descriptors::AUTOCORR3D(*m, dauto3d, -1, atomprop);
+    RDKix::Descriptors::AUTOCORR3D(*m, dauto3d, -1, atomprop);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -234,7 +234,7 @@ void testWHIMcustom() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/WHIMcustom.out";
 
@@ -256,17 +256,17 @@ void testWHIMcustom() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dwhim;
     std::vector<double> charges(m->getNumAtoms(), 0);
-    RDKit::computeGasteigerCharges(*m, charges, 12, true);
+    RDKix::computeGasteigerCharges(*m, charges, 12, true);
 
     const std::string atomprop = "_GasteigerCharge";
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01, atomprop);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01, atomprop);
     /*
         for (unsigned int aix = 0; aix < m->getNumAtoms(); aix++) {
           std::cerr <<
@@ -307,7 +307,7 @@ void testWHIMcustom1() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/WHIM1custom.out";
 
@@ -329,7 +329,7 @@ void testWHIMcustom1() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
@@ -341,7 +341,7 @@ void testWHIMcustom1() {
     }
 
     const std::string atomprop = "_MyCharge";
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01, atomprop);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01, atomprop);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -376,7 +376,7 @@ void testGETAWAYcustom() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/GETAWAYcustom.out";
 
@@ -398,14 +398,14 @@ void testGETAWAYcustom() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dgetaway;
     std::vector<double> charges(m->getNumAtoms(), 0);
-    RDKit::computeGasteigerCharges(*m, charges, 12, true);
+    RDKix::computeGasteigerCharges(*m, charges, 12, true);
 
     const std::string atomprop = "_GasteigerCharge";
 
@@ -414,7 +414,7 @@ void testGETAWAYcustom() {
      *        but setting it to 4 digits (= 0.0001) breaks this
      *        test due to the references.
      */
-    RDKit::Descriptors::GETAWAY(*m, dgetaway, -1, 0U, atomprop);
+    RDKix::Descriptors::GETAWAY(*m, dgetaway, -1, 0U, atomprop);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];

@@ -2,10 +2,10 @@
 //
 //  Copyright (C) 2003-2008  Greg Landrum and Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 
@@ -24,7 +24,7 @@ namespace python = boost::python;
 namespace RDPickers {
 
 // REVIEW: the poolSize can be pulled from the numeric array
-RDKit::INT_VECT HierarchicalPicks(HierarchicalClusterPicker *picker,
+RDKix::INT_VECT HierarchicalPicks(HierarchicalClusterPicker *picker,
                                   python::object &distMat, int poolSize,
                                   int pickSize) {
   if (pickSize >= poolSize) {
@@ -41,13 +41,13 @@ RDKit::INT_VECT HierarchicalPicks(HierarchicalClusterPicker *picker,
   copy =
       (PyArrayObject *)PyArray_CopyFromObject(distMat.ptr(), NPY_DOUBLE, 1, 1);
   auto *dMat = (double *)PyArray_DATA(copy);
-  RDKit::INT_VECT res = picker->pick(dMat, poolSize, pickSize);
+  RDKix::INT_VECT res = picker->pick(dMat, poolSize, pickSize);
   Py_DECREF(copy);
   return res;
 }
 
 // REVIEW: the poolSize can be pulled from the numeric array
-RDKit::VECT_INT_VECT HierarchicalClusters(HierarchicalClusterPicker *picker,
+RDKix::VECT_INT_VECT HierarchicalClusters(HierarchicalClusterPicker *picker,
                                           python::object &distMat, int poolSize,
                                           int pickSize) {
   if (!PyArray_Check(distMat.ptr())) {
@@ -63,7 +63,7 @@ RDKit::VECT_INT_VECT HierarchicalClusters(HierarchicalClusterPicker *picker,
       (PyArrayObject *)PyArray_CopyFromObject(distMat.ptr(), NPY_DOUBLE, 1, 1);
   auto *dMat = (double *)PyArray_DATA(copy);
 
-  RDKit::VECT_INT_VECT res = picker->cluster(dMat, poolSize, pickSize);
+  RDKix::VECT_INT_VECT res = picker->cluster(dMat, poolSize, pickSize);
   Py_DECREF(copy);
   return res;
 }

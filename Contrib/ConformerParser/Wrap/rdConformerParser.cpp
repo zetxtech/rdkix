@@ -39,7 +39,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 INT_VECT AddConformersFromAmberTrajectory(ROMol &mol, std::string fName,
                                           int numConfs, bool clearConfs) {
@@ -55,7 +55,7 @@ INT_VECT AddConformersFromAmberTrajectory(ROMol &mol, std::string fName,
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdConformerParser) {
   python::scope().attr("__doc__") =
@@ -79,7 +79,7 @@ BOOST_PYTHON_MODULE(rdConformerParser) {
     IDs of the new conformations added to the molecule \n\
 \n";
   python::def("AddConformersFromAmberTrajectory",
-              RDKit::AddConformersFromAmberTrajectory,
+              RDKix::AddConformersFromAmberTrajectory,
               (python::arg("mol"), python::arg("traj"),
                python::arg("numConfs") = -1, python::arg("clearConfs") = true),
               docString.c_str());

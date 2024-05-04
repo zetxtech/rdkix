@@ -2,10 +2,10 @@
 // Copyright (C)  2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #include <cmath>
@@ -16,8 +16,8 @@
 #include <algorithm>
 
 namespace BFGSOpt {
-RDKIT_OPTIMIZER_EXPORT extern int HEAD_ONLY_LIBRARY;
-RDKIT_OPTIMIZER_EXPORT extern int REALLY_A_HEADER_ONLY_LIBRARY;
+RDKIX_OPTIMIZER_EXPORT extern int HEAD_ONLY_LIBRARY;
+RDKIX_OPTIMIZER_EXPORT extern int REALLY_A_HEADER_ONLY_LIBRARY;
 const double FUNCTOL =
     1e-4;  //!< Default tolerance for function convergence in the minimizer
 const double MOVETOL =
@@ -193,7 +193,7 @@ template <typename EnergyFunctor, typename GradientFunctor>
 int minimize(unsigned int dim, double *pos, double gradTol,
              unsigned int &numIters, double &funcVal, EnergyFunctor func,
              GradientFunctor gradFunc, unsigned int snapshotFreq,
-             RDKit::SnapshotVect *snapshotVect, double funcTol = TOLX,
+             RDKix::SnapshotVect *snapshotVect, double funcTol = TOLX,
              unsigned int maxIts = MAXITS) {
   RDUNUSED_PARAM(funcTol);
   PRECONDITION(pos, "bad input array");
@@ -257,7 +257,7 @@ int minimize(unsigned int dim, double *pos, double gradTol,
     // "<<TOLX<<std::endl;
     if (test < TOLX) {
       if (snapshotVect && snapshotFreq) {
-        RDKit::Snapshot s(boost::shared_array<double>(newPos), fp);
+        RDKix::Snapshot s(boost::shared_array<double>(newPos), fp);
         snapshotVect->push_back(s);
         newPos = nullptr;
       }
@@ -281,7 +281,7 @@ int minimize(unsigned int dim, double *pos, double gradTol,
     // "<<gradTol<<std::endl;
     if (test < gradTol) {
       if (snapshotVect && snapshotFreq) {
-        RDKit::Snapshot s(boost::shared_array<double>(newPos), fp);
+        RDKix::Snapshot s(boost::shared_array<double>(newPos), fp);
         snapshotVect->push_back(s);
         newPos = nullptr;
       }
@@ -360,7 +360,7 @@ int minimize(unsigned int dim, double *pos, double gradTol,
 #endif
     }
     if (snapshotVect && snapshotFreq && !(iter % snapshotFreq)) {
-      RDKit::Snapshot s(boost::shared_array<double>(newPos), fp);
+      RDKix::Snapshot s(boost::shared_array<double>(newPos), fp);
       snapshotVect->push_back(s);
       newPos = new double[dim];
     }

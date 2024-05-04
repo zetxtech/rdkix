@@ -36,11 +36,11 @@
 #include <GraphMol/ChemTransforms/MolFragmenter.h>
 #include <GraphMol/Bond.h>
 // Fixes annoying compilation namespace issue
-typedef RDKit::MatchVectType MatchVectType;
+typedef RDKix::MatchVectType MatchVectType;
 
-// Partial binding to one overload of RDKit::fragmentOnBonds
-RDKit::ROMol *fragmentMolOnBonds(
-    const RDKit::ROMol &mol, const std::vector<int> &bondIndices,
+// Partial binding to one overload of RDKix::fragmentOnBonds
+RDKix::ROMol *fragmentMolOnBonds(
+    const RDKix::ROMol &mol, const std::vector<int> &bondIndices,
     bool addDummies = true, 
     const std::vector<std::pair<unsigned int, unsigned int>> *dummyLabels = nullptr,
     std::vector<int> *nCutsPerAtom = nullptr) {
@@ -52,26 +52,26 @@ RDKit::ROMol *fragmentMolOnBonds(
         }
         auto cutsPerAtomPtr = nCutsPerAtom ? &uNCutsPerAtom : nullptr;
         // Can't handle the 5th argument of vector<BondType> as swig will not wrap vector of enum
-        return RDKit::MolFragmenter::fragmentOnBonds(mol, uBondIndices, addDummies, dummyLabels, nullptr, cutsPerAtomPtr);
+        return RDKix::MolFragmenter::fragmentOnBonds(mol, uBondIndices, addDummies, dummyLabels, nullptr, cutsPerAtomPtr);
  }
 
 // Fix std::unique_ptr issue
-RDKit::ROMol * new_molzip(
-	       const RDKit::ROMol &a, const RDKit::ROMol &b,
-	       const RDKit::MolzipParams &params=RDKit::MolzipParams()) {
-  return RDKit::molzip(a, b, params).release();;
+RDKix::ROMol * new_molzip(
+	       const RDKix::ROMol &a, const RDKix::ROMol &b,
+	       const RDKix::MolzipParams &params=RDKix::MolzipParams()) {
+  return RDKix::molzip(a, b, params).release();;
 }
 
-RDKit::ROMol * new_molzip(
-	       const RDKit::ROMol &a,
-	       const RDKit::MolzipParams &params=RDKit::MolzipParams()) {
-  return RDKit::molzip(a, params).release();
+RDKix::ROMol * new_molzip(
+	       const RDKix::ROMol &a,
+	       const RDKix::MolzipParams &params=RDKix::MolzipParams()) {
+  return RDKix::molzip(a, params).release();
 }
 
-RDKit::ROMol * new_molzip(
-               std::vector<RDKit::ROMOL_SPTR> &mols,
-               const RDKit::MolzipParams &params=RDKit::MolzipParams()) {
-  return RDKit::molzip(mols, params).release();
+RDKix::ROMol * new_molzip(
+               std::vector<RDKix::ROMOL_SPTR> &mols,
+               const RDKix::MolzipParams &params=RDKix::MolzipParams()) {
+  return RDKix::molzip(mols, params).release();
 }
 %}
 
@@ -82,7 +82,7 @@ RDKit::ROMol * new_molzip(
 %newobject replaceSidechains;
 %newobject replaceCores;
 %newobject MurckoDecompose;
-%template(StringMolMap) std::map<std::string,boost::shared_ptr<RDKit::ROMol> >;
+%template(StringMolMap) std::map<std::string,boost::shared_ptr<RDKix::ROMol> >;
 %include <GraphMol/Bond.h>
 %include <GraphMol/ChemTransforms/ChemTransforms.h>
 
@@ -93,24 +93,24 @@ RDKit::ROMol * new_molzip(
 %rename("fragmentOnBonds") fragmentMolOnBonds;
 %rename("molzip") new_molzip;
 
-RDKit::ROMol *fragmentMolOnBonds(
-    const RDKit::ROMol &mol, const std::vector<int> &bondIndices,
+RDKix::ROMol *fragmentMolOnBonds(
+    const RDKix::ROMol &mol, const std::vector<int> &bondIndices,
     bool addDummies = true, 
     const std::vector<std::pair<unsigned int, unsigned int>> *dummyLabels = nullptr,
     std::vector<int> *nCutsPerAtom = nullptr);
 
-RDKit::ROMol * new_molzip(
-			  const RDKit::ROMol &a, const RDKit::ROMol &b,
-			  const RDKit::MolzipParams &params=RDKit::MolzipParams());
+RDKix::ROMol * new_molzip(
+			  const RDKix::ROMol &a, const RDKix::ROMol &b,
+			  const RDKix::MolzipParams &params=RDKix::MolzipParams());
 
-RDKit::ROMol * new_molzip(
-			  const RDKit::ROMol &a,
-			  const RDKit::MolzipParams &params=RDKit::MolzipParams());
+RDKix::ROMol * new_molzip(
+			  const RDKix::ROMol &a,
+			  const RDKix::MolzipParams &params=RDKix::MolzipParams());
 
 
-RDKit::ROMol * new_molzip(
-                          std::vector<RDKit::ROMOL_SPTR> &mols,
-                          const RDKit::MolzipParams &params=RDKit::MolzipParams());
+RDKix::ROMol * new_molzip(
+                          std::vector<RDKix::ROMOL_SPTR> &mols,
+                          const RDKix::MolzipParams &params=RDKix::MolzipParams());
 
 %ignore fragmentOnSomeBonds;
 %ignore constructFragmenterAtomTypes;
@@ -119,5 +119,5 @@ RDKit::ROMol * new_molzip(
 %ignore constructBRICSBondTypes;
 
 %newobject fragmentOnBRICSBonds;
-%template(UIntMolMap) std::map<unsigned int,boost::shared_ptr<RDKit::ROMol> >;
+%template(UIntMolMap) std::map<unsigned int,boost::shared_ptr<RDKix::ROMol> >;
 %include <GraphMol/ChemTransforms/MolFragmenter.h>

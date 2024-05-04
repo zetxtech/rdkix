@@ -39,17 +39,17 @@ endif(BISON_EXECUTABLE)
 
 
 
-rdkit_library(SLNParse
+rdkix_library(SLNParse
               SLNParse.cpp SLNAttribs.cpp
               ${BISON_OUTPUT_FILES} ${FLEX_OUTPUT_FILES}
               LINK_LIBRARIES GraphMol RDGeneral )
-target_compile_definitions(SLNParse PRIVATE RDKIT_SLNPARSE_BUILD)
+target_compile_definitions(SLNParse PRIVATE RDKIX_SLNPARSE_BUILD)
 
-rdkit_headers(SLNAttribs.h
+rdkix_headers(SLNAttribs.h
               SLNParse.h
               SLNParseOps.h DEST GraphMol/SLNParse)
 
-rdkit_test(testSLNParse test.cpp
+rdkix_test(testSLNParse test.cpp
            LINK_LIBRARIES SLNParse SmilesParse SubstructMatch )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

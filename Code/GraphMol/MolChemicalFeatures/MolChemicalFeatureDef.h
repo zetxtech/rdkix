@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2010 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __CHEMICALFEATUREDEF_H_02122004_1750__
@@ -18,11 +18,11 @@
 #include <RDGeneral/Exceptions.h>
 
 #include <boost/shared_ptr.hpp>
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class MolChemicalFeatureDef;
 
-class RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureDef {
+class RDKIX_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureDef {
  public:
   typedef std::list<boost::shared_ptr<MolChemicalFeatureDef>> CollectionType;
 
@@ -64,5 +64,5 @@ class RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureDef {
   boost::shared_ptr<ROMol> dp_pattern;
   std::vector<double> d_weights;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

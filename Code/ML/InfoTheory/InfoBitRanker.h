@@ -2,10 +2,10 @@
 //
 //  Copyright (C) 2003-2007 Greg Landrum and Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -81,10 +81,10 @@
  * 1 0.000 1 1
  */
 namespace RDInfoTheory {
-typedef std::vector<RDKit::USHORT> USHORT_VECT;
+typedef std::vector<RDKix::USHORT> USHORT_VECT;
 typedef std::vector<USHORT_VECT> VECT_USHORT_VECT;
 
-class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
+class RDKIX_INFOTHEORY_EXPORT InfoBitRanker {
  public:
   /*! \brief the type of measure for information
    *
@@ -182,7 +182,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
    * ARGUMENTS:
    *   classList - list of class ids that we want a bias towards
    */
-  void setBiasList(RDKit::INT_VECT &classList);
+  void setBiasList(RDKix::INT_VECT &classList);
 
   /*! \brief Set the bits to be used as a mask
    *
@@ -192,7 +192,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
    * ARGUMENTS:
    *   maskBits - the bits to be considered
    */
-  void setMaskBits(RDKit::INT_VECT &maskBits);
+  void setMaskBits(RDKix::INT_VECT &maskBits);
 
   /*! \brief Write the top N bits to a stream
    *
@@ -223,7 +223,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
    *              with the bit set and the second row to entires of each class
    *with the bit turned off
    */
-  bool BiasCheckBit(RDKit::USHORT *resMat) const;
+  bool BiasCheckBit(RDKix::USHORT *resMat) const;
 
   /*! \brief Compute the biased info entropy gain based on the bias list
    *
@@ -240,7 +240,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
    *              with the bit set and the second row to entires of each class
    *with the bit turned off
    */
-  double BiasInfoEntropyGain(RDKit::USHORT *resMat) const;
+  double BiasInfoEntropyGain(RDKix::USHORT *resMat) const;
 
   /*! \brief Compute the biased chi qsure value based on the bias list
    *
@@ -257,7 +257,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
    *              with the bit set and the second row to entires of each class
    *with the bit turned off
    */
-  double BiasChiSquareGain(RDKit::USHORT *resMat) const;
+  double BiasChiSquareGain(RDKix::USHORT *resMat) const;
 
   unsigned int d_dims;     // the number of bits in the fingerprints
   unsigned int d_classes;  // the number of classes (active, inactive,
@@ -272,7 +272,7 @@ class RDKIT_INFOTHEORY_EXPORT InfoBitRanker {
   unsigned int d_top;  // the number of bits that have been ranked
   unsigned int d_nInst;  // total number of instances or fingerprints used
                          // accumulate votes
-  RDKit::INT_VECT
+  RDKix::INT_VECT
       d_biasList;  // if we want a bias towards certain classes in ranking bits
   ExplicitBitVect *dp_maskBits;  // allows only certain bits to be considered
 };

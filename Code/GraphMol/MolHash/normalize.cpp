@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2019-2022 NextMove Software and other RDKit contributors
+//  Copyright (C) 2019-2022 NextMove Software and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include "nmmolhash.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace MolHash {
 void Strip(RWMol *mol, unsigned int striptype) {
   // The order of these operations is significant to some degree
@@ -21,7 +21,7 @@ void Strip(RWMol *mol, unsigned int striptype) {
 
   if (striptype & static_cast<unsigned>(StripType::AtomStereo)) {
     for (auto aptr : mol->atoms()) {
-      aptr->setChiralTag(RDKit::Atom::CHI_UNSPECIFIED);
+      aptr->setChiralTag(RDKix::Atom::CHI_UNSPECIFIED);
     }
     if (!mol->getStereoGroups().empty()) {
       std::vector<StereoGroup> no_sgs;
@@ -30,8 +30,8 @@ void Strip(RWMol *mol, unsigned int striptype) {
   }
   if (striptype & static_cast<unsigned>(StripType::BondStereo)) {
     for (auto bptr : mol->bonds()) {
-      if (bptr->getStereo() > RDKit::Bond::STEREOANY) {
-        bptr->setStereo(RDKit::Bond::STEREOANY);
+      if (bptr->getStereo() > RDKix::Bond::STEREOANY) {
+        bptr->setStereo(RDKix::Bond::STEREOANY);
       }
     }
   }
@@ -51,11 +51,11 @@ void Strip(RWMol *mol, unsigned int striptype) {
 }
 
 void SplitMolecule(RWMol *mol, std::vector<RWMol *> &molv) {
-  auto mfrags = RDKit::MolOps::getMolFrags(*mol);
+  auto mfrags = RDKix::MolOps::getMolFrags(*mol);
   for (const auto &frag : mfrags) {
     const auto *wrappedmol = frag.get();  // reach inside the shared pointer...
     molv.push_back(new RWMol(*wrappedmol));  // ...and make a copy
   }
 }
 }  // namespace MolHash
-}  // namespace RDKit
+}  // namespace RDKix

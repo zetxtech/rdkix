@@ -2,14 +2,14 @@
 //  Copyright (C) 2015 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // derived from Dave Cosgrove's MolDraw2D
 //
-// This is a concrete class derived from MolDraw2D that uses RDKit to draw a
+// This is a concrete class derived from MolDraw2D that uses RDKix to draw a
 // molecule into a cairo drawing context
 
 #include <RDGeneral/export.h>
@@ -22,9 +22,9 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_MOLDRAW2D_EXPORT MolDraw2DCairo : public MolDraw2D {
+class RDKIX_MOLDRAW2D_EXPORT MolDraw2DCairo : public MolDraw2D {
  public:
   // does not take ownership of the drawing context
   MolDraw2DCairo(int width, int height, cairo_t *cr, int panelWidth = -1,
@@ -94,5 +94,5 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2DCairo : public MolDraw2D {
   void updateMetadata(const ROMol &mol) const;
   void updateMetadata(const ChemicalReaction &rxn) const;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DCAIRO_H

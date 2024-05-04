@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_RDGEOMETRYLIB_BUILD)
-rdkit_python_extension(rdGeometry
+remove_definitions(-DRDKIX_RDGEOMETRYLIB_BUILD)
+rdkix_python_extension(rdGeometry
                        Point.cpp UniformGrid3D.cpp rdGeometry.cpp
                        DEST Geometry
                        LINK_LIBRARIES RDGeometryLib)

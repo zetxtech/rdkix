@@ -2,10 +2,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_SHAPE_UTILS_H_20050128_
@@ -18,7 +18,7 @@ class Point3D;
 class Transform3D;
 }  // namespace RDGeom
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Conformer;
 
@@ -27,7 +27,7 @@ namespace MolShapes {
 //! Compute the size of the box that can fit the conformation, and offset of the
 /// box
 //! from the origin
-RDKIT_SHAPEHELPERS_EXPORT void computeConfDimsAndOffset(
+RDKIX_SHAPEHELPERS_EXPORT void computeConfDimsAndOffset(
     const Conformer &conf, RDGeom::Point3D &dims, RDGeom::Point3D &offSet,
     const RDGeom::Transform3D *trans = nullptr, double padding = 2.5);
 
@@ -40,13 +40,13 @@ RDKIT_SHAPEHELPERS_EXPORT void computeConfDimsAndOffset(
   coordinates
   \param padding         Padding added on the sides around the conformer
 */
-RDKIT_SHAPEHELPERS_EXPORT void computeConfBox(
+RDKIX_SHAPEHELPERS_EXPORT void computeConfBox(
     const Conformer &conf, RDGeom::Point3D &leftBottom,
     RDGeom::Point3D &rightTop, const RDGeom::Transform3D *trans = nullptr,
     double padding = 2.5);
 
 //! Compute the union of two boxes
-RDKIT_SHAPEHELPERS_EXPORT void computeUnionBox(
+RDKIX_SHAPEHELPERS_EXPORT void computeUnionBox(
     const RDGeom::Point3D &leftBottom1, const RDGeom::Point3D &rightTop1,
     const RDGeom::Point3D &leftBottom2, const RDGeom::Point3D &rightTop2,
     RDGeom::Point3D &uLeftBottom, RDGeom::Point3D &uRightTop);
@@ -58,7 +58,7 @@ RDKIT_SHAPEHELPERS_EXPORT void computeUnionBox(
   \param center   Optionally specify the center
   \param ignoreHs if true, ignore the hydrogen atoms in computing the centroid
 */
-RDKIT_SHAPEHELPERS_EXPORT std::vector<double> getConfDimensions(
+RDKIX_SHAPEHELPERS_EXPORT std::vector<double> getConfDimensions(
     const Conformer &conf, double padding = 2.5,
     const RDGeom::Point3D *center = nullptr, bool ignoreHs = true);
 
@@ -92,7 +92,7 @@ RDKIT_SHAPEHELPERS_EXPORT std::vector<double> getConfDimensions(
   process
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double tverskyIndex(
+RDKIX_SHAPEHELPERS_EXPORT double tverskyIndex(
     const ROMol &mol1, const ROMol &mol2, double alpha, double beta,
     int confId1 = -1, int confId2 = -1, double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
@@ -126,7 +126,7 @@ RDKIT_SHAPEHELPERS_EXPORT double tverskyIndex(
   process
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double tverskyIndex(
+RDKIX_SHAPEHELPERS_EXPORT double tverskyIndex(
     const Conformer &conf1, const Conformer &conf2, double alpha, double beta,
     double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
@@ -162,7 +162,7 @@ RDKIT_SHAPEHELPERS_EXPORT double tverskyIndex(
   process
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double tanimotoDistance(
+RDKIX_SHAPEHELPERS_EXPORT double tanimotoDistance(
     const ROMol &mol1, const ROMol &mol2, int confId1 = -1, int confId2 = -1,
     double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
@@ -193,7 +193,7 @@ RDKIT_SHAPEHELPERS_EXPORT double tanimotoDistance(
   process
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double tanimotoDistance(
+RDKIX_SHAPEHELPERS_EXPORT double tanimotoDistance(
     const Conformer &conf1, const Conformer &conf2, double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
         DiscreteValueVect::TWOBITVALUE,
@@ -232,7 +232,7 @@ RDKIT_SHAPEHELPERS_EXPORT double tanimotoDistance(
   one.
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double protrudeDistance(
+RDKIX_SHAPEHELPERS_EXPORT double protrudeDistance(
     const ROMol &mol1, const ROMol &mol2, int confId1 = -1, int confId2 = -1,
     double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
@@ -267,13 +267,13 @@ RDKIT_SHAPEHELPERS_EXPORT double protrudeDistance(
   one.
  */
 
-RDKIT_SHAPEHELPERS_EXPORT double protrudeDistance(
+RDKIX_SHAPEHELPERS_EXPORT double protrudeDistance(
     const Conformer &conf1, const Conformer &conf2, double gridSpacing = 0.5,
     DiscreteValueVect::DiscreteValueType bitsPerPoint =
         DiscreteValueVect::TWOBITVALUE,
     double vdwScale = 0.8, double stepSize = 0.25, int maxLayers = -1,
     bool ignoreHs = true, bool allowReordering = true);
 }  // namespace MolShapes
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

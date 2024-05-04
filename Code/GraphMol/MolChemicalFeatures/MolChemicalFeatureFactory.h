@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __CHEMICALFEATUREFACTORY_H_02122004_1545__
@@ -15,14 +15,14 @@
 #include <iostream>
 #include <boost/shared_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class MolChemicalFeature;
 typedef boost::shared_ptr<MolChemicalFeature> FeatSPtr;
 typedef std::list<FeatSPtr> FeatSPtrList;
 typedef FeatSPtrList::iterator FeatSPtrList_I;
 
 //! The class for finding chemical features in molecules
-class RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory {
+class RDKIX_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory {
  public:
   //! returns the number of feature definitions
   int getNumFeatureDefs() const { return d_featDefs.size(); }
@@ -67,12 +67,12 @@ class RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory {
 };
 
 //! constructs a MolChemicalFeatureFactory from the data in a stream
-RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory *buildFeatureFactory(
+RDKIX_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory *buildFeatureFactory(
     std::istream &inStream);
 //! constructs a MolChemicalFeatureFactory from the data in a string
-RDKIT_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory *buildFeatureFactory(
+RDKIX_MOLCHEMICALFEATURES_EXPORT MolChemicalFeatureFactory *buildFeatureFactory(
     const std::string &featureData);
 
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

@@ -2,10 +2,10 @@
 //   Copyright (C) 2003-2007 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _GRIDUTILS_H_20050126
@@ -26,7 +26,7 @@ class Point3D;
 */
 
 template <class GRIDTYPE>
-RDKIT_RDGEOMETRYLIB_EXPORT double tverskyIndex(const GRIDTYPE &grid1,
+RDKIX_RDGEOMETRYLIB_EXPORT double tverskyIndex(const GRIDTYPE &grid1,
                                                const GRIDTYPE &grid2,
                                                double alpha, double beta);
 
@@ -38,7 +38,7 @@ RDKIT_RDGEOMETRYLIB_EXPORT double tverskyIndex(const GRIDTYPE &grid1,
 */
 
 template <class GRIDTYPE>
-RDKIT_RDGEOMETRYLIB_EXPORT double tanimotoDistance(const GRIDTYPE &grid1,
+RDKIX_RDGEOMETRYLIB_EXPORT double tanimotoDistance(const GRIDTYPE &grid1,
                                                    const GRIDTYPE &grid2);
 //! calculate the protrude distance between the shapes encoded on two grids
 /*!
@@ -47,17 +47,17 @@ RDKIT_RDGEOMETRYLIB_EXPORT double tanimotoDistance(const GRIDTYPE &grid1,
 
 */
 template <class GRIDTYPE>
-RDKIT_RDGEOMETRYLIB_EXPORT double protrudeDistance(const GRIDTYPE &grid1,
+RDKIX_RDGEOMETRYLIB_EXPORT double protrudeDistance(const GRIDTYPE &grid1,
                                                    const GRIDTYPE &grid2);
 
 //! calculate the grid centroid within a window of a point
-RDKIT_RDGEOMETRYLIB_EXPORT Point3D
+RDKIX_RDGEOMETRYLIB_EXPORT Point3D
 computeGridCentroid(const UniformGrid3D &grid, const Point3D &pt,
                     double windowRadius, double &weightSum);
 
 //! find terminal points of a shape encoded on a grid
 //!  this is part of the subshape implementation
-RDKIT_RDGEOMETRYLIB_EXPORT std::vector<Point3D> findGridTerminalPoints(
+RDKIX_RDGEOMETRYLIB_EXPORT std::vector<Point3D> findGridTerminalPoints(
     const UniformGrid3D &grid, double windowRadius, double inclusionFraction);
 }  // namespace RDGeom
 

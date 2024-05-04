@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/Invariant.h>
 
@@ -13,7 +13,7 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <RDGeneral/RDLog.h>
 #include <cstdlib>
-namespace RDKit {
+namespace RDKix {
 #ifdef WIN32_DLLBUILD
 //*************************************************************************************
 //
@@ -139,4 +139,4 @@ int Add2DCoordsToMolDLL(ROMol &mol, std::string tempFilename) {
 }
 
 #endif
-}  // namespace RDKit
+}  // namespace RDKix

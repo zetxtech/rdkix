@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file ROMol.h
 
@@ -45,7 +45,7 @@
 #include "StereoGroup.h"
 #include "RingInfo.h"
 
-namespace RDKit {
+namespace RDKix {
 class SubstanceGroup;
 class Atom;
 class Bond;
@@ -73,9 +73,9 @@ class QueryAtomIterator_;
 template <class T1, class T2>
 class MatchingAtomIterator_;
 
-RDKIT_GRAPHMOL_EXPORT extern const int ci_RIGHTMOST_ATOM;
-RDKIT_GRAPHMOL_EXPORT extern const int ci_LEADING_BOND;
-RDKIT_GRAPHMOL_EXPORT extern const int ci_ATOM_HOLDER;
+RDKIX_GRAPHMOL_EXPORT extern const int ci_RIGHTMOST_ATOM;
+RDKIX_GRAPHMOL_EXPORT extern const int ci_LEADING_BOND;
+RDKIX_GRAPHMOL_EXPORT extern const int ci_ATOM_HOLDER;
 
 //! ROMol is a molecule class that is intended to have a fixed topology
 /*!
@@ -196,7 +196,7 @@ struct CXXBondIterator {
   CXXBondIter end() { return {graph, vend}; }
 };
 
-class RDKIT_GRAPHMOL_EXPORT ROMol : public RDProps {
+class RDKIX_GRAPHMOL_EXPORT ROMol : public RDProps {
  public:
   friend class MolPickler;
   friend class RWMol;
@@ -813,9 +813,9 @@ class RDKIT_GRAPHMOL_EXPORT ROMol : public RDProps {
   std::unique_ptr<boost::dynamic_bitset<>> dp_delAtoms = nullptr;
   std::unique_ptr<boost::dynamic_bitset<>> dp_delBonds = nullptr;
 
-  friend RDKIT_GRAPHMOL_EXPORT std::vector<SubstanceGroup> &getSubstanceGroups(
+  friend RDKIX_GRAPHMOL_EXPORT std::vector<SubstanceGroup> &getSubstanceGroups(
       ROMol &);
-  friend RDKIT_GRAPHMOL_EXPORT const std::vector<SubstanceGroup>
+  friend RDKIX_GRAPHMOL_EXPORT const std::vector<SubstanceGroup>
       &getSubstanceGroups(const ROMol &);
   void clearSubstanceGroups() { d_sgroups.clear(); }
 
@@ -871,5 +871,5 @@ typedef std::vector<ROMOL_SPTR> MOL_SPTR_VECT;
 typedef MOL_PTR_VECT::const_iterator MOL_PTR_VECT_CI;
 typedef MOL_PTR_VECT::iterator MOL_PTR_VECT_I;
 
-};  // namespace RDKit
+};  // namespace RDKix
 #endif

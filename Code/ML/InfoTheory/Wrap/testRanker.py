@@ -5,8 +5,8 @@ import unittest
 
 import numpy
 
-from rdkit import DataStructs, RDConfig, RDRandom
-from rdkit.ML.InfoTheory import rdInfoTheory as rdit
+from rdkix import DataStructs, RDConfig, RDRandom
+from rdkix.ML.InfoTheory import rdInfoTheory as rdit
 
 
 def feq(a, b, tol=1e-4):

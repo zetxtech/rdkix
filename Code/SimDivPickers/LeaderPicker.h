@@ -3,10 +3,10 @@
 //  Copyright (C) 2017-2019 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RD_LEADERPICKER_H
 #define RD_LEADERPICKER_H
@@ -63,23 +63,23 @@ class LeaderPicker : public DistPicker {
    *<0 the generator will be seeded with a random number.
    */
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize) const;
 
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize, double threshold) const;
 
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize,
-                           const RDKit::INT_VECT &firstPicks,
+                           const RDKix::INT_VECT &firstPicks,
                            double threshold) const;
 
   template <typename T>
-  RDKit::INT_VECT lazyPick(T &func, unsigned int poolSize,
+  RDKix::INT_VECT lazyPick(T &func, unsigned int poolSize,
                            unsigned int pickSize,
-                           const RDKit::INT_VECT &firstPicks, double threshold,
+                           const RDKix::INT_VECT &firstPicks, double threshold,
                            int nthreads) const;
 
   /*! \brief Contains the implementation for the Leader diversity picker
@@ -95,8 +95,8 @@ class LeaderPicker : public DistPicker {
    *
    *   \param firstPicks - indices of the items used to seed the pick set.
    */
-  RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
-                       unsigned int pickSize, const RDKit::INT_VECT &firstPicks,
+  RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
+                       unsigned int pickSize, const RDKix::INT_VECT &firstPicks,
                        double threshold, int nthreads) const {
     CHECK_INVARIANT(distMat, "Invalid Distance Matrix");
     if (!poolSize) {
@@ -111,9 +111,9 @@ class LeaderPicker : public DistPicker {
   }
 
   /*! \overload */
-  RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
+  RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
                        unsigned int pickSize) const override {
-    RDKit::INT_VECT iv;
+    RDKix::INT_VECT iv;
     return pick(distMat, poolSize, pickSize, iv, default_threshold,
                 default_nthreads);
   }
@@ -393,9 +393,9 @@ struct LeaderPickerState {
 // we implement this here in order to allow arbitrary functors without link
 // errors
 template <typename T>
-RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize,
-                                       const RDKit::INT_VECT &firstPicks,
+                                       const RDKix::INT_VECT &firstPicks,
                                        double threshold, int nthreads) const {
   if (!poolSize) {
     throw ValueErrorException("empty pool to pick from");
@@ -408,9 +408,9 @@ RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
   if (!pickSize) {
     pickSize = poolSize;
   }
-  RDKit::INT_VECT picks;
+  RDKix::INT_VECT picks;
 
-  nthreads = RDKit::getNumThreadsToUse(nthreads);
+  nthreads = RDKix::getNumThreadsToUse(nthreads);
 
   LeaderPickerState<T> stat(poolSize, nthreads);
   stat.threshold = threshold;
@@ -420,7 +420,7 @@ RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
   unsigned int pick = 0;
 
   if (!firstPicks.empty()) {
-    for (RDKit::INT_VECT::const_iterator pIdx = firstPicks.begin();
+    for (RDKix::INT_VECT::const_iterator pIdx = firstPicks.begin();
          pIdx != firstPicks.end(); ++pIdx) {
       pick = static_cast<unsigned int>(*pIdx);
       if (pick >= poolSize) {
@@ -441,25 +441,25 @@ RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
 }
 
 template <typename T>
-RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize) const {
-  RDKit::INT_VECT firstPicks;
+  RDKix::INT_VECT firstPicks;
   return LeaderPicker::lazyPick(func, poolSize, pickSize, firstPicks,
                                 default_threshold, default_nthreads);
 }
 
 template <typename T>
-RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize,
                                        double threshold) const {
-  RDKit::INT_VECT firstPicks;
+  RDKix::INT_VECT firstPicks;
   return LeaderPicker::lazyPick(func, poolSize, pickSize, firstPicks, threshold,
                                 default_nthreads);
 }
 template <typename T>
-RDKit::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
+RDKix::INT_VECT LeaderPicker::lazyPick(T &func, unsigned int poolSize,
                                        unsigned int pickSize,
-                                       const RDKit::INT_VECT &firstPicks,
+                                       const RDKix::INT_VECT &firstPicks,
                                        double threshold) const {
   return LeaderPicker::lazyPick(func, poolSize, pickSize, firstPicks, threshold,
                                 default_nthreads);

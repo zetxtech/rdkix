@@ -1,11 +1,11 @@
 import time
 
-from rdkit import Chem, rdBase
-from rdkit.Chem import AllChem
-from rdkit.Chem import rdMolDescriptors as rdMD
-from rdkit.Chem.EState import AtomTypes, EStateIndices
+from rdkix import Chem, rdBase
+from rdkix.Chem import AllChem
+from rdkix.Chem import rdMolDescriptors as rdMD
+from rdkix.Chem.EState import AtomTypes, EStateIndices
 
-print rdBase.rdkitVersion
+print rdBase.rdkixVersion
 print rdBase.boostVersion
 
 
@@ -45,7 +45,7 @@ def get3D(m, is3d):
 def generateALL():
   m = Chem.MolFromSmiles('Cc1ccccc1')
   thefile = open('testAC.txt', 'w')
-  filename = "/Users/mbp/Github/rdkit_mine/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf"
+  filename = "/Users/mbp/Github/rdkix_mine/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf"
   suppl = Chem.SDMolSupplier(filename, removeHs=False)
   mols = [x for x in suppl]
   start = time.time()

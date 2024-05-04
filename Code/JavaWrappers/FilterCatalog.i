@@ -33,7 +33,7 @@
 %include "std_string.i"
 %include "std_vector.i"
 %include <boost_shared_ptr.i>
-%shared_ptr(RDKit::FilterCatalogEntry)
+%shared_ptr(RDKix::FilterCatalogEntry)
 
 %{
 #include <../RDGeneral/Dict.h>
@@ -44,17 +44,17 @@
 #include <GraphMol/FilterCatalog/FilterCatalog.h>
 
 // bug fix for swig, it removes these from their namespaces
-typedef RDCatalog::Catalog<RDKit::FilterCatalogEntry, RDKit::FilterCatalogParams>::paramType_t paramType_t;
+typedef RDCatalog::Catalog<RDKix::FilterCatalogEntry, RDKix::FilterCatalogParams>::paramType_t paramType_t;
 
 typedef std::vector<std::string> STR_VECT;
 %}
 
-%template(FilterCatalogEntry_Vect) std::vector< boost::shared_ptr<RDKit::FilterCatalogEntry> >;
-%template(FilterCatalogEntry_VectVect) std::vector<std::vector< boost::shared_ptr<const RDKit::FilterCatalogEntry> > >;
+%template(FilterCatalogEntry_Vect) std::vector< boost::shared_ptr<RDKix::FilterCatalogEntry> >;
+%template(FilterCatalogEntry_VectVect) std::vector<std::vector< boost::shared_ptr<const RDKix::FilterCatalogEntry> > >;
 
-%template(FilterCatalogEntryVect) std::vector< const RDKit::FilterCatalogEntry* >;
+%template(FilterCatalogEntryVect) std::vector< const RDKix::FilterCatalogEntry* >;
 %template(UChar_Vect) std::vector<unsigned char>;
-%template(FilterMatch_Vect) std::vector<RDKit::FilterMatch>;
+%template(FilterMatch_Vect) std::vector<RDKix::FilterMatch>;
 %include "enums.swg"
 
 %include <../RDGeneral/Dict.h>
@@ -63,7 +63,7 @@ typedef std::vector<std::string> STR_VECT;
 %include <GraphMol/Substruct/SubstructMatch.h>
 
 
-%typemap(javacode) RDKit::FilterCatalog %{
+%typemap(javacode) RDKix::FilterCatalog %{
   public static FilterCatalog Deserialize(byte[] b) {
     UChar_Vect vec = null;
     try {
@@ -81,68 +81,68 @@ typedef std::vector<std::string> STR_VECT;
   }
 %}
 
-%extend RDKit::FilterMatch {
+%extend RDKix::FilterMatch {
   MatchVectType getAtomMatches() {
     return ($self)->atomPairs;
   }
  }
 
-%newobject RDKit::FilterCatalogEntry::getProp;
-%extend RDKit::FilterCatalogEntry {
+%newobject RDKix::FilterCatalogEntry::getProp;
+%extend RDKix::FilterCatalogEntry {
   std::string getProp(const std::string key){
     std::string res;
     ($self)->getProp(key, res);
     return res;
   }
 
-  std::vector<RDKit::FilterMatch> getFilterMatches(const ROMol &mol) {
-    std::vector<RDKit::FilterMatch> matches;
+  std::vector<RDKix::FilterMatch> getFilterMatches(const ROMol &mol) {
+    std::vector<RDKix::FilterMatch> matches;
     ($self)->getFilterMatches(mol, matches);
     return matches;
   }
  }
 
-%extend RDKit::FilterCatalog {
+%extend RDKix::FilterCatalog {
   FilterCatalog(const std::vector<unsigned char> & data ) {
     std::string str(data.begin(), data.end());
-    return new RDKit::FilterCatalog(str);
+    return new RDKix::FilterCatalog(str);
   }
 
   bool canSerialize() const {
-    return RDKit::FilterCatalogCanSerialize();
+    return RDKix::FilterCatalogCanSerialize();
   }
 
   // boost does a bad job of wrapping shared_ptr<const T> so we will do the
   //  unthinkable and cast away const.
   //  Also we can't use FilterCatalog::SENTRY because swig thinks it is a new
   //   type.  Bad swig!
-  boost::shared_ptr<RDKit::FilterCatalogEntry> getFirstMatch(const ROMol &mol) {
-    RDKit::FilterCatalog::CONST_SENTRY res = self->getFirstMatch(mol);
-    return boost::const_pointer_cast<RDKit::FilterCatalogEntry>(res);
+  boost::shared_ptr<RDKix::FilterCatalogEntry> getFirstMatch(const ROMol &mol) {
+    RDKix::FilterCatalog::CONST_SENTRY res = self->getFirstMatch(mol);
+    return boost::const_pointer_cast<RDKix::FilterCatalogEntry>(res);
   }
 
-  std::vector<boost::shared_ptr<RDKit::FilterCatalogEntry> > getMatches(const ROMol &mol) {
-    std::vector<RDKit::FilterCatalog::CONST_SENTRY> matches = self->getMatches(mol);
-    std::vector<RDKit::FilterCatalog::SENTRY> res;
+  std::vector<boost::shared_ptr<RDKix::FilterCatalogEntry> > getMatches(const ROMol &mol) {
+    std::vector<RDKix::FilterCatalog::CONST_SENTRY> matches = self->getMatches(mol);
+    std::vector<RDKix::FilterCatalog::SENTRY> res;
     res.reserve(matches.size());
     for (size_t i=0; i< matches.size(); ++i) {
-      res.push_back( boost::const_pointer_cast<RDKit::FilterCatalogEntry>(matches[i]) );
+      res.push_back( boost::const_pointer_cast<RDKix::FilterCatalogEntry>(matches[i]) );
     }
     return res;
  }
 
   // re-wrap swig is making duplicate entries for some strange reason
-  unsigned int addEntry(boost::shared_ptr<RDKit::FilterCatalogEntry> entry) {
+  unsigned int addEntry(boost::shared_ptr<RDKix::FilterCatalogEntry> entry) {
     return self->addEntry(entry);
   }
 
-  bool removeEntry(boost::shared_ptr<RDKit::FilterCatalogEntry> entry) {
+  bool removeEntry(boost::shared_ptr<RDKix::FilterCatalogEntry> entry) {
     return self->removeEntry(entry);
   }
 
   // swig const-ptr shenanigans again
-  boost::shared_ptr<RDKit::FilterCatalogEntry> getEntry(unsigned int idx) const {
-    return boost::const_pointer_cast<RDKit::FilterCatalogEntry>(
+  boost::shared_ptr<RDKix::FilterCatalogEntry> getEntry(unsigned int idx) const {
+    return boost::const_pointer_cast<RDKix::FilterCatalogEntry>(
       self->getEntry(idx));
   }
 
@@ -151,37 +151,37 @@ typedef std::vector<std::string> STR_VECT;
   }
 }
 
-%ignore RDKit::FilterCatalog(const std::string &);
-%ignore RDKit::FilterCatalog::getFirstMatch;
-%ignore RDKit::FilterCatalog::getMatches;
-%ignore RDKit::FilterCatalog::addEntry;
-%ignore RDKit::FilterCatalog::removeEntry;
-%ignore RDKit::FilterCatalog::setCatalogParams;
-%ignore RDKit::FilterCatalog::getIdxForEntry;
-%ignore RDKit::FilterCatalog::getEntryWithIdx;
+%ignore RDKix::FilterCatalog(const std::string &);
+%ignore RDKix::FilterCatalog::getFirstMatch;
+%ignore RDKix::FilterCatalog::getMatches;
+%ignore RDKix::FilterCatalog::addEntry;
+%ignore RDKix::FilterCatalog::removeEntry;
+%ignore RDKix::FilterCatalog::setCatalogParams;
+%ignore RDKix::FilterCatalog::getIdxForEntry;
+%ignore RDKix::FilterCatalog::getEntryWithIdx;
 
-%ignore RDKit::FilterMatch::operator==;
-%ignore std::vector<RDKit::FilterMatch>::operator==;
+%ignore RDKix::FilterMatch::operator==;
+%ignore std::vector<RDKix::FilterMatch>::operator==;
 
-//%ignore RDKit::FilterCatalogEntry::getPropList;
-%ignore RDKit::Dict::getPropList;
+//%ignore RDKix::FilterCatalogEntry::getPropList;
+%ignore RDKix::Dict::getPropList;
 
 
 #ifdef SWIGJAVA
-%typemap(jni) std::string RDKit::FilterCatalog::Serialize "jbyteArray"
-%typemap(jtype) std::string RDKit::FilterCatalog::Serialize "byte[]"
-%typemap(jstype) std::string RDKit::FilterCatalog::Serialize "byte[]"
-%typemap(javaout) std::string RDKit::FilterCatalog::Serialize {
+%typemap(jni) std::string RDKix::FilterCatalog::Serialize "jbyteArray"
+%typemap(jtype) std::string RDKix::FilterCatalog::Serialize "byte[]"
+%typemap(jstype) std::string RDKix::FilterCatalog::Serialize "byte[]"
+%typemap(javaout) std::string RDKix::FilterCatalog::Serialize {
   return $jnicall;
 }
-%typemap(out) std::string RDKit::FilterCatalog::Serialize {
+%typemap(out) std::string RDKix::FilterCatalog::Serialize {
   $result = JCALL1(NewByteArray, jenv, $1.size());
   JCALL4(SetByteArrayRegion, jenv, $result, 0, $1.size(), (const jbyte*)$1.c_str());
 }
 #endif
 
 #ifdef SWIGCSHARP
-%typemap(csbase) RDKit::FilterCatalogParams::FilterCatalogs "uint"
+%typemap(csbase) RDKix::FilterCatalogParams::FilterCatalogs "uint"
 #endif
   
 %include <GraphMol/FilterCatalog/FilterMatcherBase.h>

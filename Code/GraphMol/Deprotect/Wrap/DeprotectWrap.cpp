@@ -1,19 +1,19 @@
 //
-//  Copyright (C) 2020-2021 Brian P Kelley and other RDKit contributors
+//  Copyright (C) 2020-2021 Brian P Kelley and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <RDBoost/Wrap.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Deprotect/Deprotect.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 
 boost::shared_ptr<ROMol> DeprotectWrap(const ROMol &mol,
                                        const python::object &iterable) {
@@ -41,7 +41,7 @@ bool DeprotectInPlaceWrap(ROMol &mol, const python::object &iterable) {
 std::vector<Deprotect::DeprotectData> GetDeprotectionsWrap() {
   return Deprotect::getDeprotections();
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 struct deprotect_wrap {
   static void wrap() {
@@ -70,35 +70,35 @@ struct deprotect_wrap {
         "\n"
         "\n";
 
-    RegisterVectorConverter<RDKit::Deprotect::DeprotectData>(
+    RegisterVectorConverter<RDKix::Deprotect::DeprotectData>(
         "DeprotectDataVect");
 
-    python::class_<RDKit::Deprotect::DeprotectData>(
+    python::class_<RDKix::Deprotect::DeprotectData>(
         "DeprotectData", deprotect_doc_string,
         python::init<std::string, std::string, std::string, std::string>(
             constructor_doc,
             python::args("deprotection_class", "reaction_smarts",
                          "abbreviation", "full_name")))
         .def_readonly("deprotection_class",
-                      &RDKit::Deprotect::DeprotectData::deprotection_class)
-        .def_readonly("full_name", &RDKit::Deprotect::DeprotectData::full_name)
+                      &RDKix::Deprotect::DeprotectData::deprotection_class)
+        .def_readonly("full_name", &RDKix::Deprotect::DeprotectData::full_name)
         .def_readonly("abbreviation",
-                      &RDKit::Deprotect::DeprotectData::abbreviation)
+                      &RDKix::Deprotect::DeprotectData::abbreviation)
         .def_readonly("reaction_smarts",
-                      &RDKit::Deprotect::DeprotectData::reaction_smarts)
-        .def_readonly("example", &RDKit::Deprotect::DeprotectData::example)
-        .def("isValid", &RDKit::Deprotect::DeprotectData::isValid,
+                      &RDKix::Deprotect::DeprotectData::reaction_smarts)
+        .def_readonly("example", &RDKix::Deprotect::DeprotectData::example)
+        .def("isValid", &RDKix::Deprotect::DeprotectData::isValid,
              "Returns True if the DeprotectData has a valid reaction");
 
-    python::def("GetDeprotections", &RDKit::GetDeprotectionsWrap,
+    python::def("GetDeprotections", &RDKix::GetDeprotectionsWrap,
                 "Return the default list of deprotections");
 
     python::def(
-        "Deprotect", &RDKit::DeprotectWrap,
+        "Deprotect", &RDKix::DeprotectWrap,
         (python::arg("mol"), python::arg("deprotections") = python::object()),
         "Return the deprotected version of the molecule.");
     python::def(
-        "DeprotectInPlace", &RDKit::DeprotectInPlaceWrap,
+        "DeprotectInPlace", &RDKix::DeprotectInPlaceWrap,
         (python::arg("mol"), python::arg("deprotections") = python::object()),
         "Deprotects the molecule in place.");
   }

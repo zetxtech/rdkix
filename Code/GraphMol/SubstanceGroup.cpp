@@ -3,17 +3,17 @@
 //  Copyright (C) 2018-2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SubstanceGroup.h"
 #include "ROMol.h"
 #include "RWMol.h"
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -442,10 +442,10 @@ void removeSubstanceGroupsReferencingBond(RWMol &mol, unsigned int idx) {
   removeSubstanceGroupsReferencing<includesBond, removedBond>(mol, idx);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 std::ostream &operator<<(std::ostream &target,
-                         const RDKit::SubstanceGroup &sgroup) {
+                         const RDKix::SubstanceGroup &sgroup) {
   target << sgroup.getIndexInMol() << ' '
          << sgroup.getProp<std::string>("TYPE");
 

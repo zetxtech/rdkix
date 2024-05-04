@@ -2,10 +2,10 @@
 //  Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDBoost/python.h>
@@ -15,7 +15,7 @@
 #include <GraphMol/ScaffoldNetwork/ScaffoldNetwork.h>
 
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 ScaffoldNetwork::ScaffoldNetwork *createNetworkHelper(
@@ -48,9 +48,9 @@ ScaffoldNetwork::ScaffoldNetworkParams *getBRICSParams() {
 }  // namespace
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-struct scaffoldnetwork_pickle_suite : rdkit_pickle_suite {
+struct scaffoldnetwork_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(
-      const RDKit::ScaffoldNetwork::ScaffoldNetwork &self) {
+      const RDKix::ScaffoldNetwork::ScaffoldNetwork &self) {
     std::stringstream oss;
     boost::archive::text_oarchive oa(oss);
     oa << self;
@@ -60,9 +60,9 @@ struct scaffoldnetwork_pickle_suite : rdkit_pickle_suite {
   };
 };
 #else
-struct scaffoldnetwork_pickle_suite : rdkit_pickle_suite {
+struct scaffoldnetwork_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(
-      const RDKit::ScaffoldNetwork::ScaffoldNetwork &self) {
+      const RDKix::ScaffoldNetwork::ScaffoldNetwork &self) {
     throw_runtime_error("Pickling of ScaffoldNetwork instances is not enabled");
   };
 };

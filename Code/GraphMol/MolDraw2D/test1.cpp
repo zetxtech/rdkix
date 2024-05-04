@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2015-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2015-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -13,7 +13,7 @@
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/hash/hash.hpp>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
@@ -35,7 +35,7 @@
 #include <fstream>
 #include <sstream>
 
-#ifdef RDKIT_USE_BOOST_REGEX
+#ifdef RDKIX_USE_BOOST_REGEX
 #include <boost/regex.hpp>
 using boost::regex;
 using boost::regex_search;
@@ -355,7 +355,7 @@ static const std::map<std::string, std::hash_result_t> PNG_HASHES = {
     {"testGithub3305_7.png", 972161580U},
 };
 
-using namespace RDKit;
+using namespace RDKix;
 
 // if the generated SVG hashes to the value we're expecting, delete
 // the file.  That way, only the files that need inspection will be
@@ -1065,7 +1065,7 @@ void testMultiThreaded() {
   std::cout << " ----------------- Test multi-threaded drawing" << std::endl;
   std::string fName = getenv("RDBASE");
   fName += "/Data/NCI/first_200.props.sdf";
-  RDKit::SDMolSupplier suppl(fName);
+  RDKix::SDMolSupplier suppl(fName);
   std::cerr << "reading molecules" << std::endl;
   std::vector<ROMol *> mols;
   while (!suppl.atEnd() && mols.size() < 100) {
@@ -2751,7 +2751,7 @@ void testGithub1271() {
   {
     std::string mb =
         "ethane\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   2  1  0  0  0  0  0  0  0  0999 V2000\n\
    -0.7500    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -2777,7 +2777,7 @@ M  END";
   {
     std::string mb =
         "ethane\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   2  1  0  0  0  0  0  0  0  0999 V2000\n\
    -0.0000    0.5000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -2803,7 +2803,7 @@ M  END";
   {
     std::string mb =
         "water\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   1  0  0  0  0  0  0  0  0  0999 V2000\n\
    -0.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -2827,7 +2827,7 @@ M  END";
   {
     std::string mb =
         "water\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   1  0  0  0  0  0  0  0  0  0999 V2000\n\
    -0.0000    0.5000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n\

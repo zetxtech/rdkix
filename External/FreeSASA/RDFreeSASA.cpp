@@ -29,9 +29,9 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/MonomerInfo.h>
 #include <RDGeneral/types.h>
 #include "RDFreeSASA.h"
@@ -41,7 +41,7 @@ extern "C" {
 #include "freesasa.h"
 }
 
-namespace RDKit {
+namespace RDKix {
 namespace common_properties {
 namespace Atom {
 const std::string SASA = "SASA";
@@ -55,10 +55,10 @@ const std::string SASA =
     "SASA";  // Total Solvent Accessible Surface area for molecule;
 }
 }  // namespace common_properties
-}  // namespace RDKit
+}  // namespace RDKix
 
 namespace FreeSASA {
-using namespace RDKit;
+using namespace RDKix;
 
 SASAOpts::SASAOpts()
     : algorithm(SASAOpts::LeeRichards),
@@ -178,8 +178,8 @@ double internalCalcSASA(const ROMol &mol, const std::vector<double> &radii,
 }
 }  // namespace
 
-double calcSASA(const RDKit::ROMol &mol, const std::vector<double> &radii,
-                int confIdx, const RDKit::QueryAtom *query,
+double calcSASA(const RDKix::ROMol &mol, const std::vector<double> &radii,
+                int confIdx, const RDKix::QueryAtom *query,
                 const SASAOpts &opts) {
   double result = internalCalcSASA(mol, radii, confIdx, opts);
   if (query) {
@@ -193,13 +193,13 @@ double calcSASA(const RDKit::ROMol &mol, const std::vector<double> &radii,
   return result;
 }
 
-const RDKit::QueryAtom *makeFreeSasaAPolarAtomQuery() {
+const RDKix::QueryAtom *makeFreeSasaAPolarAtomQuery() {
   auto *qa = new QueryAtom;
   qa->setQuery(makePropQuery<Atom, std::string>("SASAClassName", "Apolar"));
   return qa;
 }
 
-const RDKit::QueryAtom *makeFreeSasaPolarAtomQuery() {
+const RDKix::QueryAtom *makeFreeSasaPolarAtomQuery() {
   auto *qa = new QueryAtom;
   qa->setQuery(makePropQuery<Atom, std::string>("SASAClassName", "Polar"));
   return qa;

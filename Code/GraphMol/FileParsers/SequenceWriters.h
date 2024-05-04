@@ -2,17 +2,17 @@
 //  Copyright (C) 2015 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_SEQUENCEWRITE_H_
 #define _RD_SEQUENCEWRITE_H_
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 // \brief construct a sequence string from a molecule (currently only supports
@@ -23,7 +23,7 @@ class ROMol;
  *   \note \c mol should contain monomer information in \c AtomMonomerInfo
  *structures
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToSequence(const ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT std::string MolToSequence(const ROMol &mol);
 // \brief construct a FASTA string from a molecule (currently only supports
 // peptides)
 /*!
@@ -32,7 +32,7 @@ RDKIT_FILEPARSERS_EXPORT std::string MolToSequence(const ROMol &mol);
  *   \note \c mol should contain monomer information in \c AtomMonomerInfo
  *structures
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToFASTA(const ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT std::string MolToFASTA(const ROMol &mol);
 // \brief construct a HELM string from a molecule (currently only supports
 // peptides)
 /*!
@@ -41,7 +41,7 @@ RDKIT_FILEPARSERS_EXPORT std::string MolToFASTA(const ROMol &mol);
  *   \note \c mol should contain monomer information in \c AtomMonomerInfo
  *structures
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToHELM(const ROMol &mol);
-}  // namespace RDKit
+RDKIX_FILEPARSERS_EXPORT std::string MolToHELM(const ROMol &mol);
+}  // namespace RDKix
 
 #endif

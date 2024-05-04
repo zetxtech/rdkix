@@ -3,10 +3,10 @@
 //                     Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
@@ -22,7 +22,7 @@
 #include <vector>
 #include <ctime>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 
 struct Foo {
@@ -41,18 +41,18 @@ void testGithub940() {
   {  // tests computed props
     STR_VECT computed;
     auto *d = new Dict();
-    d->setVal(RDKit::detail::computedPropName, computed);
+    d->setVal(RDKix::detail::computedPropName, computed);
     computed.push_back("foo");
-    d->setVal(RDKit::detail::computedPropName, computed);
+    d->setVal(RDKix::detail::computedPropName, computed);
     delete d;
   }
   {  // tests computed props
     STR_VECT computed;
     auto *d = new Dict();
-    d->setVal(RDKit::detail::computedPropName, computed);
+    d->setVal(RDKix::detail::computedPropName, computed);
     computed.push_back("foo");
-    d->setVal(RDKit::detail::computedPropName, computed);
-    d->clearVal(RDKit::detail::computedPropName);
+    d->setVal(RDKix::detail::computedPropName, computed);
+    d->clearVal(RDKix::detail::computedPropName);
     delete d;
   }
   BOOST_LOG(rdErrorLog) << "\tdone" << std::endl;
@@ -110,13 +110,13 @@ void testRDAny() {
   {  // tests computed props
     STR_VECT computed;
     Dict d;
-    d.setVal(RDKit::detail::computedPropName, computed);
+    d.setVal(RDKix::detail::computedPropName, computed);
     computed.push_back("foo");
-    d.setVal(RDKit::detail::computedPropName, computed);
-    STR_VECT computed2 = d.getVal<STR_VECT>(RDKit::detail::computedPropName);
+    d.setVal(RDKix::detail::computedPropName, computed);
+    STR_VECT computed2 = d.getVal<STR_VECT>(RDKix::detail::computedPropName);
     TEST_ASSERT(computed2[0] == "foo");
     Dict d2(d);
-    computed2 = d2.getVal<STR_VECT>(RDKit::detail::computedPropName);
+    computed2 = d2.getVal<STR_VECT>(RDKix::detail::computedPropName);
     TEST_ASSERT(computed2[0] == "foo");
   }
 

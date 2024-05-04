@@ -2,10 +2,10 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_GENERICGROUPS_H
@@ -16,7 +16,7 @@
 #include <map>
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Atom;
 class Bond;
@@ -43,7 +43,7 @@ namespace Matchers {
     - no ring bonds
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool AlkylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool AlkylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 //! Matches alkenyl side chains
 /*!
@@ -54,7 +54,7 @@ RDKIT_GENERICGROUPS_EXPORT bool AlkylAtomMatcher(
     - no ring bonds
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool AlkenylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool AlkenylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 //! Matches alkynyl side chains
 /*!
@@ -65,7 +65,7 @@ RDKIT_GENERICGROUPS_EXPORT bool AlkenylAtomMatcher(
     - no ring bonds
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool AlkynylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool AlkynylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches carbocyclic side chains
@@ -80,7 +80,7 @@ RDKIT_GENERICGROUPS_EXPORT bool AlkynylAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CarbocyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CarbocyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 //! Matches cycloalkyl side chains
 /*!
@@ -99,7 +99,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CarbocyclicAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CarbocycloalkylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CarbocycloalkylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 //! Matches cycloalkenyl side chains
 /*!
@@ -116,7 +116,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CarbocycloalkylAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CarbocycloalkenylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CarbocycloalkenylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches heterocyclic side chains
@@ -129,7 +129,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CarbocycloalkenylAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool HeterocyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool HeterocyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches aryl side chains
@@ -144,7 +144,7 @@ RDKIT_GENERICGROUPS_EXPORT bool HeterocyclicAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CarboarylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CarboarylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches heteroaryl side chains
@@ -157,7 +157,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CarboarylAtomMatcher(
 
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool HeteroarylAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool HeteroarylAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches cyclic side chains
@@ -169,7 +169,7 @@ RDKIT_GENERICGROUPS_EXPORT bool HeteroarylAtomMatcher(
     - atom is in at least one ring
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches acyclic side chains
@@ -181,7 +181,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CyclicAtomMatcher(
     - no atom in the sidechain is in a ring
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool AcyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool AcyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches all-carbon acyclic side chains
@@ -195,7 +195,7 @@ RDKIT_GENERICGROUPS_EXPORT bool AcyclicAtomMatcher(
     - no atom in the sidechain is in a ring
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool CarboacyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool CarboacyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches acyclic side chains with at least one heteroatom
@@ -209,7 +209,7 @@ RDKIT_GENERICGROUPS_EXPORT bool CarboacyclicAtomMatcher(
     - no atom in the sidechain is in a ring
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool HeteroacyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool HeteroacyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 //! Matches acyclic alkoxy side chains
 /*!
@@ -223,7 +223,7 @@ RDKIT_GENERICGROUPS_EXPORT bool HeteroacyclicAtomMatcher(
     - no atom in the sidechain is in a ring
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool AlkoxyacyclicAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool AlkoxyacyclicAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 
 //! Matches rings without carbon
@@ -236,7 +236,7 @@ RDKIT_GENERICGROUPS_EXPORT bool AlkoxyacyclicAtomMatcher(
     - none of the atoms in the fused ring system are carbon
 
 */
-RDKIT_GENERICGROUPS_EXPORT bool NoCarbonRingAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool NoCarbonRingAtomMatcher(
     const ROMol &mol, const Atom &atom, boost::dynamic_bitset<> ignore);
 }  // namespace Matchers
 const static std::map<
@@ -276,7 +276,7 @@ const static std::map<
 };
 //! returns false if any of the molecule's generic atoms are not satisfied in
 /// the current match
-RDKIT_GENERICGROUPS_EXPORT bool genericAtomMatcher(
+RDKIX_GENERICGROUPS_EXPORT bool genericAtomMatcher(
     const ROMol &mol, const ROMol &query,
     const std::vector<unsigned int> &match);
 //! sets the apropriate generic query tags based on atom labels and/or SGroups
@@ -291,11 +291,11 @@ query tags in both, the one from the SGroup will be used.
 - Generic query tags not found in GenericGroups::genericMatchers will be ignored
 
 */
-RDKIT_GENERICGROUPS_EXPORT void setGenericQueriesFromProperties(
+RDKIX_GENERICGROUPS_EXPORT void setGenericQueriesFromProperties(
     ROMol &mol, bool useAtomLabels = true, bool useSGroups = true);
-RDKIT_GENERICGROUPS_EXPORT void convertGenericQueriesToSubstanceGroups(
+RDKIX_GENERICGROUPS_EXPORT void convertGenericQueriesToSubstanceGroups(
     ROMol &mol);
 }  // namespace GenericGroups
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

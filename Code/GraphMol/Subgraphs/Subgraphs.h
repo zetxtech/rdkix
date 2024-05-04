@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file Subgraphs.h
@@ -34,7 +34,7 @@
 #include <map>
 #include <unordered_map>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 // NOTE: before replacing the defn of PATH_TYPE: be aware that
 // we do occasionally use reverse iterators on these things, so
@@ -66,7 +66,7 @@ typedef INT_PATH_LIST_MAP::iterator INT_PATH_LIST_MAP_I;
  *   The result is a map from subgraph size -> list of paths
  *               (i.e. list of list of bond indices)
  */
-RDKIT_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllSubgraphsOfLengthsMtoN(
+RDKIX_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllSubgraphsOfLengthsMtoN(
     const ROMol &mol, unsigned int lowerLen, unsigned int upperLen,
     bool useHs = false, int rootedAtAtom = -1);
 
@@ -83,7 +83,7 @@ RDKIT_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllSubgraphsOfLengthsMtoN(
  *
  *   The result is a list of paths (i.e. list of list of bond indices)
  */
-RDKIT_SUBGRAPHS_EXPORT PATH_LIST
+RDKIX_SUBGRAPHS_EXPORT PATH_LIST
 findAllSubgraphsOfLengthN(const ROMol &mol, unsigned int targetLen,
                           bool useHs = false, int rootedAtAtom = -1);
 
@@ -101,7 +101,7 @@ findAllSubgraphsOfLengthN(const ROMol &mol, unsigned int targetLen,
  *
  *   The result is a list of paths (i.e. list of list of bond indices)
  */
-RDKIT_SUBGRAPHS_EXPORT PATH_LIST findUniqueSubgraphsOfLengthN(
+RDKIX_SUBGRAPHS_EXPORT PATH_LIST findUniqueSubgraphsOfLengthN(
     const ROMol &mol, unsigned int targetLen, bool useHs = false,
     bool useBO = true, int rootedAtAtom = -1);
 //! \brief find all paths of a particular size
@@ -121,10 +121,10 @@ RDKIT_SUBGRAPHS_EXPORT PATH_LIST findUniqueSubgraphsOfLengthN(
  *
  *   The result is a list of paths (i.e. list of list of bond indices)
  */
-RDKIT_SUBGRAPHS_EXPORT PATH_LIST findAllPathsOfLengthN(
+RDKIX_SUBGRAPHS_EXPORT PATH_LIST findAllPathsOfLengthN(
     const ROMol &mol, unsigned int targetLen, bool useBonds = true,
     bool useHs = false, int rootedAtAtom = -1, bool onlyShortestPaths = false);
-RDKIT_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllPathsOfLengthsMtoN(
+RDKIX_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllPathsOfLengthsMtoN(
     const ROMol &mol, unsigned int lowerLen, unsigned int upperLen,
     bool useBonds = true, bool useHs = false, int rootedAtAtom = -1,
     bool onlyShortestPaths = false);
@@ -146,11 +146,11 @@ RDKIT_SUBGRAPHS_EXPORT INT_PATH_LIST_MAP findAllPathsOfLengthsMtoN(
  * atom). The result is a pair of the atom ID and the distance. The result is a
  * path (a vector of bond indices)
  */
-RDKIT_SUBGRAPHS_EXPORT PATH_TYPE findAtomEnvironmentOfRadiusN(
+RDKIX_SUBGRAPHS_EXPORT PATH_TYPE findAtomEnvironmentOfRadiusN(
     const ROMol &mol, unsigned int radius, unsigned int rootedAtAtom,
     bool useHs = false, bool enforceSize = true,
     std::unordered_map<unsigned int, unsigned int> *atomMap = nullptr);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

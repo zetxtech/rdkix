@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2006 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file BondIterators.h
 
@@ -20,11 +20,11 @@
 
 #include "ROMol.h"
 
-namespace RDKit {
+namespace RDKix {
 
 //! \brief iterator for a molecule's bonds, currently BiDirectional,
 //! but it theoretically ought to be RandomAccess.
-class RDKIT_GRAPHMOL_EXPORT BondIterator_ {
+class RDKIX_GRAPHMOL_EXPORT BondIterator_ {
   // FIX: I'm not pleased with the lack of internal testing code
   //  (PREs and the like) in here
  public:
@@ -49,7 +49,7 @@ class RDKIT_GRAPHMOL_EXPORT BondIterator_ {
 };
 //! \brief const iterator for a molecule's bonds, currently BiDirectional,
 //! but it theoretically ought to be RandomAccess.
-class RDKIT_GRAPHMOL_EXPORT ConstBondIterator_ {
+class RDKIX_GRAPHMOL_EXPORT ConstBondIterator_ {
  public:
   ConstBondIterator_() {}
   ConstBondIterator_(ROMol const *mol);
@@ -70,6 +70,6 @@ class RDKIT_GRAPHMOL_EXPORT ConstBondIterator_ {
   ROMol::EDGE_ITER _beg, _end, _pos;
   ROMol const *_mol{nullptr};
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

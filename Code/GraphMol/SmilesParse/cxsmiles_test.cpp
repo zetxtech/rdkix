@@ -2,20 +2,20 @@
 //  Copyright (C) 2016-2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "catch.hpp"
 #include <RDGeneral/test.h>
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "SmilesParse.h"
 #include "SmilesWrite.h"
 #include "SmartsWrite.h"
 #include <RDGeneral/RDLog.h>
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("base functionality") {
   {  // it works when nothing is provided
@@ -568,7 +568,7 @@ TEST_CASE("LINKNODES") {
     bool ok = false;
     try {
       auto m = "OC1CCC(F)C1 |LN:1:1.3|"_smiles;
-    } catch (const RDKit::SmilesParseException &) {
+    } catch (const RDKix::SmilesParseException &) {
       ok = true;
     }
     CHECK(ok);

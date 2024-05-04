@@ -31,11 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::SmilesWriter "
+%typemap(javaimports) RDKix::SmilesWriter "
 /** 
 The SmilesWriter is for writing molecules and properties to delimited text files. */"
 
-%javamethodmodifiers RDKit::SmilesWriter::SmilesWriter 	( 	std::string  	fileName, 		std::string  	delimiter = ' ', 		std::string  	nameHeader = 'Name', 		bool  	includeHeader = true, 		bool  	isomericSmiles = false, 		bool  	kekuleSmiles = false	  	) 			"
+%javamethodmodifiers RDKix::SmilesWriter::SmilesWriter 	( 	std::string  	fileName, 		std::string  	delimiter = ' ', 		std::string  	nameHeader = 'Name', 		bool  	includeHeader = true, 		bool  	isomericSmiles = false, 		bool  	kekuleSmiles = false	  	) 			"
 /**
 <p>
 <p>
@@ -50,7 +50,7 @@ kekuleSmiles 	: toggles the generation of kekule SMILES
 */
 public";
 
-%javamethodmodifiers RDKit::SmilesWriter::SmilesWriter 	( 	std::ostream *  	outStream, 		std::string  	delimiter = ' ', 		std::string  	nameHeader = 'Name', 		bool  	includeHeader = true, 		bool  	takeOwnership = false, 		bool  	isomericSmiles = false, 		bool  	kekuleSmiles = false	  	) 			"
+%javamethodmodifiers RDKix::SmilesWriter::SmilesWriter 	( 	std::ostream *  	outStream, 		std::string  	delimiter = ' ', 		std::string  	nameHeader = 'Name', 		bool  	includeHeader = true, 		bool  	takeOwnership = false, 		bool  	isomericSmiles = false, 		bool  	kekuleSmiles = false	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.

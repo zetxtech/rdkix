@@ -29,31 +29,31 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-#ifndef RDKIT_FREESASA_H
-#define RDKIT_FREESASA_H
+#ifndef RDKIX_FREESASA_H
+#define RDKIX_FREESASA_H
 
 #include <RDGeneral/export.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace common_properties {
 namespace Atom {
-RDKIT_FREESASALIB_EXPORT extern const std::string
+RDKIX_FREESASALIB_EXPORT extern const std::string
     SASA;  // Solvent Accessible Surface Area for atom- double
-RDKIT_FREESASALIB_EXPORT extern const std::string
+RDKIX_FREESASALIB_EXPORT extern const std::string
     SASAClass;  // Class type, 0,1,2... etc
-RDKIT_FREESASALIB_EXPORT extern const std::string
+RDKIX_FREESASALIB_EXPORT extern const std::string
     SASAClassName;  // Class name, Polar, APolar etc...
 }  // namespace Atom
 namespace Molecule {
-RDKIT_FREESASALIB_EXPORT extern const std::string
+RDKIX_FREESASALIB_EXPORT extern const std::string
     SASA;  // Total Solvent Accessible Surface area for molecule;
 }
 }  // namespace common_properties
-}  // namespace RDKit
+}  // namespace RDKix
 
 namespace FreeSASA {
-struct RDKIT_FREESASALIB_EXPORT SASAOpts {
+struct RDKIX_FREESASALIB_EXPORT SASAOpts {
   enum Algorithm { LeeRichards = 0, ShrakeRupley = 1 };
   enum Classifier { Protor = 0, NACCESS = 1, OONS = 2 };
   enum Classes { Unclassified = 0, APolar = 1, Polar = 2 };
@@ -80,8 +80,8 @@ struct RDKIT_FREESASALIB_EXPORT SASAOpts {
   atom with index idx
     \return false if no atoms could be classified
 */
-RDKIT_FREESASALIB_EXPORT bool classifyAtoms(
-    RDKit::ROMol &mol, std::vector<double> &radii,
+RDKIX_FREESASALIB_EXPORT bool classifyAtoms(
+    RDKix::ROMol &mol, std::vector<double> &radii,
     const FreeSASA::SASAOpts &opts = SASAOpts());
 
 //! calculate the Solvent Accessible Surface Area using the FreeSASA library.
@@ -105,10 +105,10 @@ RDKIT_FREESASALIB_EXPORT bool classifyAtoms(
   \param opts     SASAOpts class specifying options.
   \return the requested solvent accessible surface area
 */
-RDKIT_FREESASALIB_EXPORT double calcSASA(const RDKit::ROMol &mol,
+RDKIX_FREESASALIB_EXPORT double calcSASA(const RDKix::ROMol &mol,
                                          const std::vector<double> &radii,
                                          int confIdx = -1,
-                                         const RDKit::QueryAtom *query = NULL,
+                                         const RDKix::QueryAtom *query = NULL,
                                          const SASAOpts &opts = SASAOpts());
 
 //! Make a query atom returning the FreeSASA supplied apolar atom classification
@@ -118,14 +118,14 @@ RDKIT_FREESASALIB_EXPORT double calcSASA(const RDKit::ROMol &mol,
 
     \return QueryAtom pointer
 */
-RDKIT_FREESASALIB_EXPORT const RDKit::QueryAtom *makeFreeSasaAPolarAtomQuery();
+RDKIX_FREESASALIB_EXPORT const RDKix::QueryAtom *makeFreeSasaAPolarAtomQuery();
 //! Make a query atom returning the FreeSASA supplied polar atom classification
 /*!
     These are atoms that have the "SASAClassName" property set to "Polar"
     after calling classifyAtoms.
     \return QueryAtom pointer
 */
-RDKIT_FREESASALIB_EXPORT const RDKit::QueryAtom *makeFreeSasaPolarAtomQuery();
+RDKIX_FREESASALIB_EXPORT const RDKix::QueryAtom *makeFreeSasaPolarAtomQuery();
 }  // namespace FreeSASA
 
 #endif

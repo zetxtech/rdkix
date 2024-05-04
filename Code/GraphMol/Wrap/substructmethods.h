@@ -2,19 +2,19 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_SUBSTRUCT_METHODS_H
-#define RDKIT_SUBSTRUCT_METHODS_H
+#ifndef RDKIX_SUBSTRUCT_METHODS_H
+#define RDKIX_SUBSTRUCT_METHODS_H
 #include <boost/python.hpp>
 #include <RDBoost/Wrap.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-namespace RDKit {
+namespace RDKix {
 
 inline PyObject *convertMatches(const MatchVectType &matches) {
   PyObject *res = PyTuple_New(matches.size());
@@ -116,5 +116,5 @@ PyObject *helpGetSubstructMatches(T1 &mol, T2 &query,
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

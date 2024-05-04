@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from rdkit import DataStructs, RDConfig
+from rdkix import DataStructs, RDConfig
 
 
 def feq(a, b, tol=1e-4):
@@ -132,7 +132,7 @@ class TestCase(unittest.TestCase):
     self.assertEqual(nbrs[5][1], 0)
     self.assertEqual(nbrs[5][2], 1)
 
-    # test multi-threaded (won't do anything if the RDKit isn't compiled with threads support)
+    # test multi-threaded (won't do anything if the RDKix isn't compiled with threads support)
     nbrs = mfpbr.GetTanimotoNeighbors(bytes, threshold=0.6, numThreads=4)
     self.assertEqual(len(nbrs), 6)
     self.assertAlmostEqual(nbrs[0][0], 0.66412, 4)

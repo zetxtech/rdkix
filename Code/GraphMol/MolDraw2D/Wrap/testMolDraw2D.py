@@ -5,9 +5,9 @@ from os import environ
 
 import numpy as np
 
-from rdkit import Chem, Geometry, RDConfig
-from rdkit.Chem import AllChem, Draw, rdDepictor
-from rdkit.Chem.Draw import rdMolDraw2D
+from rdkix import Chem, Geometry, RDConfig
+from rdkix.Chem import AllChem, Draw, rdDepictor
+from rdkix.Chem.Draw import rdMolDraw2D
 
 
 class TestCase(unittest.TestCase):

@@ -32,6 +32,6 @@
 #include <GraphMol/ChemReactions/ReactionFingerprints.h>
 %}
 
-%newobject RDKit::StructuralFingerprintChemReaction;
-%newobject RDKit::DifferenceFingerprintChemReaction;
+%newobject RDKix::StructuralFingerprintChemReaction;
+%newobject RDKix::DifferenceFingerprintChemReaction;
 %include <GraphMol/ChemReactions/ReactionFingerprints.h>

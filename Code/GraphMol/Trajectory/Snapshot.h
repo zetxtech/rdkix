@@ -2,10 +2,10 @@
 // Copyright (C) 2003-2016 Sereina Riniker, Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -15,15 +15,15 @@
 #include <Geometry/point.h>
 #include <boost/shared_array.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class Snapshot;
 class Trajectory;
 typedef std::vector<Snapshot> SnapshotVect;
-}  // namespace RDKit
+}  // namespace RDKix
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_TRAJECTORY_EXPORT Snapshot {
+class RDKIX_TRAJECTORY_EXPORT Snapshot {
   friend class Trajectory;
 
  public:
@@ -65,5 +65,5 @@ class RDKIT_TRAJECTORY_EXPORT Snapshot {
   boost::shared_array<double> d_pos;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

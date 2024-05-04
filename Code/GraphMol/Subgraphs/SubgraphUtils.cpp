@@ -3,15 +3,15 @@
 //  Copyright (C) 2003-2013 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SubgraphUtils.h"
 #include "Subgraphs.h"
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/QueryBond.h>
 #include <iostream>
@@ -19,7 +19,7 @@
 #include <map>
 #include <RDGeneral/hash/hash.hpp>
 
-namespace RDKit {
+namespace RDKix {
 namespace Subgraphs {
 ROMol *pathToSubmol(const ROMol &mol, const PATH_TYPE &path, bool useQuery) {
   INT_MAP_INT aIdxMap;
@@ -239,4 +239,4 @@ PATH_LIST uniquifyPaths(const ROMol &mol, const PATH_LIST &allPaths,
   return res;
 }
 }  // end of namespace Subgraphs
-}  // end of namespace RDKit
+}  // end of namespace RDKix

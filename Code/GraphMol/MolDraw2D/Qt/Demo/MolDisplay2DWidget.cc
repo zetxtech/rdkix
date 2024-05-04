@@ -16,7 +16,7 @@
 #include <QPaintEvent>
 #include <QString>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Depictor/RDDepictor.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 
@@ -28,7 +28,7 @@
 using namespace boost;
 using namespace std;
 
-namespace RDKit {
+namespace RDKix {
 
 // ****************************************************************************
 MolDisplay2DWidget::MolDisplay2DWidget(QWidget *parent, Qt::WindowFlags f)
@@ -40,11 +40,11 @@ void MolDisplay2DWidget::set_display_mol(ROMOL_SPTR new_mol) {
     disp_mol_.reset();
   } else {
     disp_mol_ = RWMOL_SPTR(new RWMol(*new_mol));
-    RDKit::MolOps::Kekulize(*disp_mol_);
+    RDKix::MolOps::Kekulize(*disp_mol_);
     RDDepict::compute2DCoords(*disp_mol_);
     if (!disp_mol_->hasProp("_drawingBondsWedged")) {
-      RDKit::Conformer conf = disp_mol_->getConformer();
-      RDKit::WedgeMolBonds(*disp_mol_, &conf);
+      RDKix::Conformer conf = disp_mol_->getConformer();
+      RDKix::WedgeMolBonds(*disp_mol_, &conf);
     }
   }
   update();
@@ -137,7 +137,7 @@ void MolDisplay2DWidget::draw_molecule(QPainter &qp) {
     h = int(float(rect().height()) * 0.95);
   }
 
-  mol_drawer_.reset(new RDKit::MolDraw2DQt(rect().width(), h, qp));
+  mol_drawer_.reset(new RDKix::MolDraw2DQt(rect().width(), h, qp));
 
   vector<int> sa = selected_atoms();
   mol_drawer_->drawMolecule(*disp_mol_, &sa);
@@ -209,4 +209,4 @@ int MolDisplay2DWidget::find_nearest_atom(int x_screen_pos,
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

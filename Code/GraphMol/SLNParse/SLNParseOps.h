@@ -38,13 +38,13 @@
 #include <vector>
 #include <GraphMol/SLNParse/SLNParse.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/lexical_cast.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace SLNParse {
 namespace {
 //!  set a bookmark in the molecule if the atom has an associated ID:
@@ -324,5 +324,5 @@ std::string convertToString(T val) {
 }
 
 }  // end of namespace SLNParse
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 #endif

@@ -9,8 +9,8 @@ import subprocess
 import sys
 import unittest
 
-from rdkit import RDConfig
-from rdkit.Dbase.DbConnection import DbConnect
+from rdkix import RDConfig
+from rdkix.Dbase.DbConnection import DbConnect
 
 
 class TestCase(unittest.TestCase):
@@ -40,7 +40,7 @@ class TestCase(unittest.TestCase):
     self.assertTrue(d[0][0] == 10)
 
     conn = DbConnect('testData/bzr/Fingerprints.sqlt')
-    d = conn.GetData('rdkitfps', fields='count(*)')
+    d = conn.GetData('rdkixfps', fields='count(*)')
     self.assertTrue(d[0][0] == 10)
 
     p = subprocess.Popen((sys.executable, 'CreateDb.py', '--dbDir=testData/bzr', '--molFormat=sdf',
@@ -67,7 +67,7 @@ class TestCase(unittest.TestCase):
     self.assertTrue(d[0][0] == 163)
 
     conn = DbConnect('testData/bzr/Fingerprints.sqlt')
-    d = conn.GetData('rdkitfps', fields='count(*)')
+    d = conn.GetData('rdkixfps', fields='count(*)')
     self.assertTrue(d[0][0] == 163)
 
   def test2_1SearchFPs(self):
@@ -549,7 +549,7 @@ class TestCase(unittest.TestCase):
     self.assertEqual(d[0][0], 10)
 
     conn = DbConnect('testData/bzr/Fingerprints.sqlt')
-    d = conn.GetData('rdkitfps', fields='count(*)')
+    d = conn.GetData('rdkixfps', fields='count(*)')
     self.assertEqual(d[0][0], 10)
     d = None
     conn.KillCursor()
@@ -578,7 +578,7 @@ class TestCase(unittest.TestCase):
     self.assertEqual(d[0][0], 20)
 
     conn = DbConnect('testData/bzr/Fingerprints.sqlt')
-    d = conn.GetData('rdkitfps', fields='count(*)')
+    d = conn.GetData('rdkixfps', fields='count(*)')
     self.assertEqual(d[0][0], 20)
 
 

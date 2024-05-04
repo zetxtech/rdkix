@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <list>
 #include <algorithm>
@@ -22,7 +22,7 @@
 #include "MaximumCommonSubgraph.h"
 #include <GraphMol/QueryOps.h>
 
-namespace RDKit {
+namespace RDKix {
 
 void MCSParameters::setMCSAtomTyperFromEnum(AtomComparator atomComp) {
   switch (atomComp) {
@@ -93,7 +93,7 @@ void parseMCSParametersJSON(const char* json, MCSParameters* params) {
     boost::property_tree::ptree pt;
     boost::property_tree::read_json(ss, pt);
 
-    RDKit::MCSParameters& p = *params;
+    RDKix::MCSParameters& p = *params;
     p.MaximizeBonds = pt.get<bool>("MaximizeBonds", p.MaximizeBonds);
     p.Threshold = pt.get<double>("Threshold", p.Threshold);
     p.Timeout = pt.get<unsigned>("Timeout", p.Timeout);
@@ -141,7 +141,7 @@ MCSResult findMCS(const std::vector<ROMOL_SPTR>& mols,
   if (nullptr == params) {
     params = &p;
   }
-  RDKit::FMCS::MaximumCommonSubgraph fmcs(params);
+  RDKix::FMCS::MaximumCommonSubgraph fmcs(params);
   return fmcs.find(mols);
 }
 
@@ -463,7 +463,7 @@ inline bool ringFusionCheck(const std::uint32_t c1[], const std::uint32_t c2[],
   const VECT_INT_VECT& br2 = ri2->bondRings();
   std::vector<size_t> nonFusedBonds(br2.size(), 0);
   std::vector<size_t> numMcsBondRings(br2.size(), 0);
-  RDKit::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
+  RDKix::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
   size_t i = 0;
   // numMcsBondRings stores the number of bonds which
   // are part of the MCS for each ring
@@ -739,8 +739,8 @@ bool FinalChiralityCheckFunction(const std::uint32_t c1[],
   for (unsigned int j = 0; j < qna; ++j) {
     qMap[query[c1[j]]] = j;
   }
-  RDKit::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
-  RDKit::FMCS::Graph::EDGE_ITER bIter = bpIter.first;
+  RDKix::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
+  RDKix::FMCS::Graph::EDGE_ITER bIter = bpIter.first;
   for (unsigned int i = 0; i < qnb; i++, ++bIter) {
     const Bond* qBnd = mol1.getBondWithIdx(query[*bIter]);
     if (qBnd->getBondType() != Bond::DOUBLE ||
@@ -866,8 +866,8 @@ bool FinalChiralityCheckFunction_1(const short unsigned c1[],
   for (unsigned int j = 0; j < qna; ++j) {
     qMap[query[c1[j]]] = j;
   }
-  RDKit::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
-  RDKit::FMCS::Graph::EDGE_ITER bIter = bpIter.first;
+  RDKix::FMCS::Graph::BOND_ITER_PAIR bpIter = boost::edges(query);
+  RDKix::FMCS::Graph::EDGE_ITER bIter = bpIter.first;
   for (unsigned int i = 0; i < qnb; i++, ++bIter) {
     const Bond* qBnd = mol1.getBondWithIdx(query[*bIter]);
     if (qBnd->getBondType() != Bond::DOUBLE ||
@@ -932,4 +932,4 @@ bool FinalChiralityCheckFunction_1(const short unsigned c1[],
   return true;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

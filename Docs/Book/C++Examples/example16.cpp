@@ -9,8 +9,8 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 
 int main(int argc, char **argv) {
-  std::shared_ptr<RDKit::RWMol> patt1(
-      RDKit::SmartsToMol("[cH0:1][c:2]([cH0])!@[CX3!r:3]=[NX2!r:4]"));
+  std::shared_ptr<RDKix::RWMol> patt1(
+      RDKix::SmartsToMol("[cH0:1][c:2]([cH0])!@[CX3!r:3]=[NX2!r:4]"));
   std::map<int, unsigned int> ind_map;
   for (auto atom : patt1->atoms()) {
     int map_num = atom->getAtomMapNum();
@@ -27,9 +27,9 @@ int main(int argc, char **argv) {
   }
   std::cout << std::endl;
 
-  std::shared_ptr<RDKit::ROMol> mol1(RDKit::SmilesToMol("Cc1cccc(C)c1C(C)=NC"));
-  std::vector<RDKit::MatchVectType> hits_vect;
-  if (RDKit::SubstructMatch(*mol1, *patt1, hits_vect)) {
+  std::shared_ptr<RDKix::ROMol> mol1(RDKix::SmilesToMol("Cc1cccc(C)c1C(C)=NC"));
+  std::vector<RDKix::MatchVectType> hits_vect;
+  if (RDKix::SubstructMatch(*mol1, *patt1, hits_vect)) {
     for (size_t i = 0; i < hits_vect.size(); ++i) {
       std::cout << "Match " << i + 1 << " : ";
       for (size_t j = 0; j < map_list.size(); ++j) {

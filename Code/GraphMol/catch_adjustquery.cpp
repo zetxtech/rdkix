@@ -1,26 +1,26 @@
 //
-//  Copyright (C) 2020-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "catch.hpp"
 
 #include <utility>
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 using matchCase = std::tuple<std::string, std::string, bool, bool>;
 
@@ -396,7 +396,7 @@ TEST_CASE("MDL five-rings") {
     // A atom, this one changes
     extuple{"adjustqueryprops_MDLfivering_3.mol","[!#1]1:[#6]:[#6]:[#6]:[#6]:1","[!#1]1-,:[#6]=,:[#6]-,:[#6]=,:[#6]-,:1"},
     // NOTE that this is not technically correct according to the documentation, but if we make the bridging bond
-    // aromatic then it won't match azulene in a normal RDKit molecule, which is certainly not the intent of this.
+    // aromatic then it won't match azulene in a normal RDKix molecule, which is certainly not the intent of this.
     extuple{"adjustqueryprops_MDLfivering_4.mol","[#6]12:[#6]:[#6]:[#6]:[#6]-1:[#6]:[#6]:[#6]:[#6]:[#6]:2",""},
     };
     // clang-format on

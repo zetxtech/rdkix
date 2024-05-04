@@ -3,10 +3,10 @@
 //  Copyright (C) 2007-2008 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "FileParsers.h"
@@ -16,7 +16,7 @@
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/BadFileException.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace TPLWriter {
 void writeAtom(const ROMol &mol, unsigned int atomId,
                ROMol::ConstConformerIterator confIt, std::ostringstream &dest,
@@ -111,7 +111,7 @@ std::string MolToTPLText(const ROMol &mol, const std::string &partialChargeProp,
   std::ostringstream res;
   std::string tempStr;
   res << "BioCAD format, all rights reserved" << std::endl;
-  res << "Output from RDKit" << std::endl;
+  res << "Output from RDKix" << std::endl;
   if (!mol.hasProp(common_properties::_Name)) {
     BOOST_LOG(rdWarningLog)
         << "Molecule has no name; arbitrary name assigned.\n";
@@ -177,4 +177,4 @@ void MolToTPLFile(const ROMol &mol, const std::string &fName,
   *outStream << outString;
   delete outStream;
 }
-}  // namespace RDKit
+}  // namespace RDKix

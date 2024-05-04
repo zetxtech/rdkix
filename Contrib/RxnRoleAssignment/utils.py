@@ -33,8 +33,8 @@
 import copy
 from collections import defaultdict
 
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkix import Chem
+from rdkix.Chem import AllChem
 
 
 def transferAgentsToReactants(rxn):

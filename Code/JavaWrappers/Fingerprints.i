@@ -42,14 +42,14 @@
 %template(UIntPair) std::pair<std::uint32_t,std::uint32_t>;
 %template(UIntPairVect) std::vector<std::pair<std::uint32_t,std::uint32_t> >;
 %template(BitInfoMap) std::map<unsigned int,std::vector<std::pair<unsigned int,unsigned int> > >;
-%newobject RDKit::RDKFingerprintMol;
-%newobject RDKit::LayeredFingerprintMol;
-%newobject RDKit::PatternFingerprintMol;
+%newobject RDKix::RDKFingerprintMol;
+%newobject RDKix::LayeredFingerprintMol;
+%newobject RDKix::PatternFingerprintMol;
 %include <GraphMol/Fingerprints/Fingerprints.h>
 
-%newobject RDKit::MACCSFingerprints::getFingerprintAsBitVect;
-%rename(MACCSFingerprintMol) RDKit::MACCSFingerprints::getFingerprintAsBitVect;
+%newobject RDKix::MACCSFingerprints::getFingerprintAsBitVect;
+%rename(MACCSFingerprintMol) RDKix::MACCSFingerprints::getFingerprintAsBitVect;
 %include <GraphMol/Fingerprints/MACCS.h>
 
-%ignore RDKit::RDKitFPUtils::enumerateAllPaths;
+%ignore RDKix::RDKixFPUtils::enumerateAllPaths;
 %include <GraphMol/Fingerprints/FingerprintUtil.h>

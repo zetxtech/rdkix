@@ -1,24 +1,24 @@
 //
-//  Copyright (C) 2020-2021 Brian P Kelley, Joann Prescott-Roy and other RDKit
+//  Copyright (C) 2020-2021 Brian P Kelley, Joann Prescott-Roy and other RDKix
 //  contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/Deprotect/Deprotect.h>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
-using namespace RDKit::Deprotect;
+using namespace RDKix;
+using namespace RDKix::Deprotect;
 TEST_CASE("Deprotection basics", "[deprotect]") {
   const auto dps = getDeprotections();
   DeprotectData cp = dps[0];

@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_BUILD_THREADSAFE_SSS
 
@@ -17,7 +17,7 @@
 // ours
 #include <GraphMol/FileParsers/MultithreadedSDMolSupplier.h>
 #include <GraphMol/Wrap/ContextManagers.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/FileParseException.h>
 
 #include "MolSupplier.h"
@@ -26,7 +26,7 @@
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 
-namespace RDKit {
+namespace RDKix {
 
 std::string multiSDMolSupplierClassDoc =
     "A class which concurrently supplies molecules from a text file.\n\
@@ -145,7 +145,7 @@ struct multiSDMolSup_wrap {
              "processed when reading molecules");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_multiSDSupplier() { RDKit::multiSDMolSup_wrap::wrap(); }
+void wrap_multiSDSupplier() { RDKix::multiSDMolSup_wrap::wrap(); }
 #endif

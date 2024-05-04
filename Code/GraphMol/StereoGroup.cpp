@@ -3,7 +3,7 @@
 #include "StereoGroup.h"
 #include "Atom.h"
 
-namespace RDKit {
+namespace RDKix {
 
 StereoGroup::StereoGroup(StereoGroupType grouptype, std::vector<Atom *> &&atoms)
     : d_grouptype(grouptype), d_atoms(atoms) {}
@@ -39,17 +39,17 @@ void removeGroupsWithAtoms(const std::vector<Atom *> &atoms,
                groups.end());
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-std::ostream &operator<<(std::ostream &target, const RDKit::StereoGroup &stg) {
+std::ostream &operator<<(std::ostream &target, const RDKix::StereoGroup &stg) {
   switch (stg.getGroupType()) {
-    case RDKit::StereoGroupType::STEREO_ABSOLUTE:
+    case RDKix::StereoGroupType::STEREO_ABSOLUTE:
       target << "ABS";
       break;
-    case RDKit::StereoGroupType::STEREO_OR:
+    case RDKix::StereoGroupType::STEREO_OR:
       target << "OR";
       break;
-    case RDKit::StereoGroupType::STEREO_AND:
+    case RDKix::StereoGroupType::STEREO_AND:
       target << "AND";
       break;
   }

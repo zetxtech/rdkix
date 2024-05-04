@@ -34,35 +34,35 @@
 #include <GraphMol/MolOps.h>
 %}
 
-%template(MolSanitizeException_Vect) std::vector<boost::shared_ptr<RDKit::MolSanitizeException>>;
+%template(MolSanitizeException_Vect) std::vector<boost::shared_ptr<RDKix::MolSanitizeException>>;
 
-%newobject RDKit::MolOps::renumberAtoms;
-%newobject RDKit::MolOps::removeHs;
-%newobject RDKit::MolOps::addHs;
-%newobject RDKit::MolOps::removeAllHs;
-%newobject RDKit::MolOps::mergeQueryHs;
-%newobject RDKit::MolOps::adjustQueryProperties;
+%newobject RDKix::MolOps::renumberAtoms;
+%newobject RDKix::MolOps::removeHs;
+%newobject RDKix::MolOps::addHs;
+%newobject RDKix::MolOps::removeAllHs;
+%newobject RDKix::MolOps::mergeQueryHs;
+%newobject RDKix::MolOps::adjustQueryProperties;
 
-%ignore RDKit::MolOps::detectChemistryProblems;
+%ignore RDKix::MolOps::detectChemistryProblems;
 %include <GraphMol/MolOps.h>
-%ignore RDKit::MolOps::sanitizeMol(RWMol &,unsigned int &,unsigned int &);
+%ignore RDKix::MolOps::sanitizeMol(RWMol &,unsigned int &,unsigned int &);
 
 %inline %{
-  int sanitizeMol(RDKit::RWMol &mol,int sanitizeOps){
+  int sanitizeMol(RDKix::RWMol &mol,int sanitizeOps){
     unsigned int opThatFailed;
     try{
-      RDKit::MolOps::sanitizeMol(mol,opThatFailed,
+      RDKix::MolOps::sanitizeMol(mol,opThatFailed,
                                  static_cast<unsigned int>(sanitizeOps));
     } catch(...) {
 
     }
     return static_cast<int>(opThatFailed);
   };
-  std::vector<boost::shared_ptr<RDKit::MolSanitizeException>> detectChemistryProblems(RDKit::ROMol &mol,int sanitizeOps=RDKit::MolOps::SANITIZE_ALL){
-    std::vector<boost::shared_ptr<RDKit::MolSanitizeException>> res;
-    auto probs = RDKit::MolOps::detectChemistryProblems(mol,sanitizeOps);
+  std::vector<boost::shared_ptr<RDKix::MolSanitizeException>> detectChemistryProblems(RDKix::ROMol &mol,int sanitizeOps=RDKix::MolOps::SANITIZE_ALL){
+    std::vector<boost::shared_ptr<RDKix::MolSanitizeException>> res;
+    auto probs = RDKix::MolOps::detectChemistryProblems(mol,sanitizeOps);
     for(const auto &exc_ptr : probs) {
-      res.push_back(boost::shared_ptr<RDKit::MolSanitizeException>(exc_ptr->copy()));
+      res.push_back(boost::shared_ptr<RDKix::MolSanitizeException>(exc_ptr->copy()));
     }
     return res;
   };

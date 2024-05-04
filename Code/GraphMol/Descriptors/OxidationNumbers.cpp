@@ -3,10 +3,10 @@
 //  All rights reserved.
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Calculate the oxidation numbers (states) of the atoms in a molecule.
@@ -15,10 +15,10 @@
 // and therefore also subject to the MIT licence as detailed at
 // https://github.com/syngenta/linchemin/blob/f44fda38e856eaa876483c94284ee6788d2c27f4/LICENSE
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Descriptors/OxidationNumbers.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 namespace {
@@ -90,7 +90,7 @@ int calcOxidationNumberByEN(const Atom *atom) {
 
 void calcOxidationNumbers(const ROMol &mol) {
   RWMol molCp(mol);
-  RDKit::MolOps::Kekulize(molCp);
+  RDKix::MolOps::Kekulize(molCp);
   for (const auto &atom : mol.atoms()) {
     auto cpAtom = molCp.getAtomWithIdx(atom->getIdx());
     int oxNum = calcOxidationNumberByEN(cpAtom);
@@ -99,4 +99,4 @@ void calcOxidationNumbers(const ROMol &mol) {
 }
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix

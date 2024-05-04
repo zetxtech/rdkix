@@ -37,8 +37,8 @@ endif()
 add_subdirectory(yaehmop/tightbind EXCLUDE_FROM_ALL True)
 
 # set install dir for the yaehmop library:
-INSTALL(TARGETS yaehmop_eht EXPORT rdkit-targets
-        DESTINATION ${RDKit_LibDir}/${RDKLIB_DEST}
+INSTALL(TARGETS yaehmop_eht EXPORT rdkix-targets
+        DESTINATION ${RDKix_LibDir}/${RDKLIB_DEST}
         COMPONENT runtime )
 
 
@@ -46,13 +46,13 @@ INSTALL(TARGETS yaehmop_eht EXPORT rdkit-targets
 
 set(EHT_PARAM_FILE ${CMAKE_CURRENT_SOURCE_DIR}/yaehmop/tightbind/eht_parms.dat )
 install(FILES ${EHT_PARAM_FILE}
-        DESTINATION ${RDKit_ShareDir}/Data
+        DESTINATION ${RDKix_ShareDir}/Data
         COMPONENT data)
 
-rdkit_library(EHTLib EHTTools.cpp SHARED LINK_LIBRARIES yaehmop_eht GraphMol )
-target_compile_definitions(EHTLib PRIVATE RDKIT_EHTLIB_BUILD)
-rdkit_headers(EHTTools.h DEST GraphMol)
-rdkit_catch_test(testEHTLib1 test1.cpp
+rdkix_library(EHTLib EHTTools.cpp SHARED LINK_LIBRARIES yaehmop_eht GraphMol )
+target_compile_definitions(EHTLib PRIVATE RDKIX_EHTLIB_BUILD)
+rdkix_headers(EHTTools.h DEST GraphMol)
+rdkix_catch_test(testEHTLib1 test1.cpp
            LINK_LIBRARIES EHTLib FileParsers SmilesParse )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

@@ -2,14 +2,14 @@
 //  Copyright (C) 2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "catch.hpp"
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
 #include <GraphMol/Subgraphs/SubgraphUtils.h>
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <algorithm>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("shortestPathsOnly") {
   SECTION("basics, findAllPathsOfLengthN") {

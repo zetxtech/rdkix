@@ -2,16 +2,16 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <iostream>
 #include <string>
 #include <map>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/MolOps.h>
 #include <GraphMol/Resonance.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testBaseFunctionality() {
   BOOST_LOG(rdInfoLog) << "-----------------------\n"

@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
 #include <RDGeneral/hash/hash.hpp>
@@ -22,7 +22,7 @@
 
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MorganFingerprint {
 
 using namespace MorganFingerprints;
@@ -407,7 +407,7 @@ FingerprintGenerator<OutputType> *getMorganGenerator(
       bondInvariantsGenerator, ownsAtomInvGenerator, ownsBondInvGenerator);
 }
 
-template RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint32_t> *
+template RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint32_t> *
 getMorganGenerator(unsigned int radius, bool countSimulation,
                    bool includeChirality, bool useBondTypes,
                    bool onlyNonzeroInvariants,
@@ -417,7 +417,7 @@ getMorganGenerator(unsigned int radius, bool countSimulation,
                    std::uint32_t fpSize, std::vector<std::uint32_t> countBounds,
                    bool ownsAtomInvGen, bool ownsBondInvGen);
 
-template RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
+template RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
 getMorganGenerator(unsigned int radius, bool countSimulation,
                    bool includeChirality, bool useBondTypes,
                    bool onlyNonzeroInvariants,
@@ -428,4 +428,4 @@ getMorganGenerator(unsigned int radius, bool countSimulation,
                    bool ownsAtomInvGen, bool ownsBondInvGen);
 
 }  // namespace MorganFingerprint
-}  // namespace RDKit
+}  // namespace RDKix

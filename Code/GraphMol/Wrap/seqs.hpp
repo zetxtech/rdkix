@@ -6,13 +6,13 @@
 #ifndef _SEQS_HPP_
 #define _SEQS_HPP_
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <iostream>
 #include <utility>
 #include <RDBoost/python.h>
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 class AtomCountFunctor {
  private:
@@ -129,5 +129,5 @@ typedef ReadOnlySeq<ROMol::BondIterator, Bond *, BondCountFunctor> BondIterSeq;
 typedef ReadOnlySeq<ROMol::ConformerIterator, CONFORMER_SPTR &,
                     ConformerCountFunctor>
     ConformerIterSeq;
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

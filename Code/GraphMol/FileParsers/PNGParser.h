@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_PNGPARSER_H
@@ -13,7 +13,7 @@
 
 #include <RDGeneral/types.h>
 #include <RDGeneral/BadFileException.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
@@ -23,20 +23,20 @@
 #include <fstream>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 
 //! Tags used for PNG metadata
 namespace PNGData {
-RDKIT_FILEPARSERS_EXPORT extern const std::string smilesTag;
-RDKIT_FILEPARSERS_EXPORT extern const std::string molTag;
-RDKIT_FILEPARSERS_EXPORT extern const std::string pklTag;
+RDKIX_FILEPARSERS_EXPORT extern const std::string smilesTag;
+RDKIX_FILEPARSERS_EXPORT extern const std::string molTag;
+RDKIX_FILEPARSERS_EXPORT extern const std::string pklTag;
 }  // namespace PNGData
 
 //! \name metadata to/from PNG
 //! @{
 
 //! \brief returns the metadata (tEXt and zTXt chunks) from PNG data
-RDKIT_FILEPARSERS_EXPORT std::vector<std::pair<std::string, std::string>>
+RDKIX_FILEPARSERS_EXPORT std::vector<std::pair<std::string, std::string>>
 PNGStreamToMetadata(std::istream &inStream);
 
 //! \brief returns the metadata (tEXt and zTXt chunks) from PNG data
@@ -60,11 +60,11 @@ inline std::vector<std::pair<std::string, std::string>> PNGStringToMetadata(
 //! The modified PNG data is returned.
 /*!
 
-The compressed flag is ignored if the RDKit is not built with
+The compressed flag is ignored if the RDKix is not built with
 boost::iostreams support
 
 */
-RDKIT_FILEPARSERS_EXPORT std::string addMetadataToPNGStream(
+RDKIX_FILEPARSERS_EXPORT std::string addMetadataToPNGStream(
     std::istream &iStream,
     const std::vector<std::pair<std::string, std::string>> &metadata,
     bool compressed = true);
@@ -97,14 +97,14 @@ inline std::string addMetadataToPNGFile(
 /*!
 
 Looks through the metadata in the PNG to find the first tag that matches one of
-the tags in \c RDKit::PNGData. A molecule is constructed from this chunk.
+the tags in \c RDKix::PNGData. A molecule is constructed from this chunk.
 
 Throws a \c FileParseException if no suitable tag is found.
 
 The caller is responsible for the returned pointer.
 
  */
-RDKIT_FILEPARSERS_EXPORT ROMol *PNGStreamToMol(
+RDKIX_FILEPARSERS_EXPORT ROMol *PNGStreamToMol(
     std::istream &inStream,
     const SmilesParserParams &params = SmilesParserParams());
 //! \brief constructs an ROMol from the metadata in a PNG file.
@@ -131,11 +131,11 @@ inline ROMol *PNGStringToMol(
 /*!
 
 Looks through the metadata in the PNG to find tags that start with tagToUse
-(must be one of the tags in \c RDKit::PNGData). The molecules constructed from
+(must be one of the tags in \c RDKix::PNGData). The molecules constructed from
 these data are returned.
 
  */
-RDKIT_FILEPARSERS_EXPORT std::vector<std::unique_ptr<ROMol>> PNGStreamToMols(
+RDKIX_FILEPARSERS_EXPORT std::vector<std::unique_ptr<ROMol>> PNGStreamToMols(
     std::istream &inStream, const std::string &tagToUse = PNGData::pklTag,
     const SmilesParserParams &params = SmilesParserParams());
 //! \brief constructs a vector of ROMol from the metadata in a PNG file.
@@ -169,7 +169,7 @@ inline std::vector<std::unique_ptr<ROMol>> PNGStringToMols(
   \param includeMol     include a mol block for the molecule
 
 */
-RDKIT_FILEPARSERS_EXPORT std::string addMolToPNGStream(
+RDKIX_FILEPARSERS_EXPORT std::string addMolToPNGStream(
     const ROMol &mol, std::istream &iStream, bool includePkl = true,
     bool includeSmiles = true, bool includeMol = false);
 
@@ -198,6 +198,6 @@ inline std::string addMolToPNGFile(const ROMol &mol, const std::string &fname,
 }
 //! @}
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

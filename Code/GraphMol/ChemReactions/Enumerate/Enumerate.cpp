@@ -55,15 +55,15 @@
 #include <boost/serialization/export.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-BOOST_CLASS_EXPORT(RDKit::EnumerationStrategyBase);
-BOOST_CLASS_EXPORT(RDKit::CartesianProductStrategy);
-BOOST_CLASS_EXPORT(RDKit::RandomSampleStrategy);
-BOOST_CLASS_EXPORT(RDKit::RandomSampleAllBBsStrategy);
-BOOST_CLASS_EXPORT(RDKit::EvenSamplePairsStrategy);
-BOOST_CLASS_EXPORT(RDKit::EnumerateLibrary);
+BOOST_CLASS_EXPORT(RDKix::EnumerationStrategyBase);
+BOOST_CLASS_EXPORT(RDKix::CartesianProductStrategy);
+BOOST_CLASS_EXPORT(RDKix::RandomSampleStrategy);
+BOOST_CLASS_EXPORT(RDKix::RandomSampleAllBBsStrategy);
+BOOST_CLASS_EXPORT(RDKix::EvenSamplePairsStrategy);
+BOOST_CLASS_EXPORT(RDKix::EnumerateLibrary);
 #endif
 
-namespace RDKit {
+namespace RDKix {
 using namespace EnumerationTypes;
 
 const RGROUPS &EnumerateLibraryBase::getPosition() const {
@@ -276,4 +276,4 @@ bool EnumerateLibraryCanSerialize() {
   return false;
 #endif
 }
-}  // namespace RDKit
+}  // namespace RDKix

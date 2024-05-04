@@ -2,10 +2,10 @@
 // Copyright 2003-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FILEPARSEEXCEPTION_H
@@ -14,9 +14,9 @@
 #include <string>
 #include <stdexcept>
 
-namespace RDKit {
+namespace RDKix {
 //! used by various file parsing classes to indicate a parse error
-class RDKIT_RDGENERAL_EXPORT FileParseException : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT FileParseException : public std::runtime_error {
  public:
   //! construct with an error message
   explicit FileParseException(const char *msg)
@@ -31,6 +31,6 @@ class RDKIT_RDGENERAL_EXPORT FileParseException : public std::runtime_error {
  private:
   std::string _msg;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

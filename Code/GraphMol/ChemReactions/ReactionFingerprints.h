@@ -36,7 +36,7 @@
 #include <DataStructs/SparseIntVect.h>
 #include <DataStructs/ExplicitBitVect.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class ChemicalReaction;
 
@@ -44,7 +44,7 @@ enum FingerprintType {
   AtomPairFP = 1,
   TopologicalTorsion,
   MorganFP,
-  RDKitFP,
+  RDKixFP,
   PatternFP
 };
 
@@ -72,7 +72,7 @@ enum FingerprintType {
                                TopologicalTorsion and MorganFP were supported in
    the difference fingerprint.
  */
-struct RDKIT_CHEMREACTIONS_EXPORT ReactionFingerprintParams {
+struct RDKIX_CHEMREACTIONS_EXPORT ReactionFingerprintParams {
   ReactionFingerprintParams() {}
 
   ReactionFingerprintParams(bool includeAgents, double bitRatioAgents,
@@ -93,9 +93,9 @@ struct RDKIT_CHEMREACTIONS_EXPORT ReactionFingerprintParams {
   FingerprintType fpType{AtomPairFP};
 };
 
-RDKIT_CHEMREACTIONS_EXPORT extern const ReactionFingerprintParams
+RDKIX_CHEMREACTIONS_EXPORT extern const ReactionFingerprintParams
     DefaultStructuralFPParams;
-RDKIT_CHEMREACTIONS_EXPORT extern const ReactionFingerprintParams
+RDKIX_CHEMREACTIONS_EXPORT extern const ReactionFingerprintParams
     DefaultDifferenceFPParams;
 
 //! Generates a structural fingerprint for a reaction
@@ -116,7 +116,7 @@ RDKIT_CHEMREACTIONS_EXPORT extern const ReactionFingerprintParams
   <b>Notes:</b>
     - the caller is responsible for <tt>delete</tt>ing the result
 */
-RDKIT_CHEMREACTIONS_EXPORT ExplicitBitVect *StructuralFingerprintChemReaction(
+RDKIX_CHEMREACTIONS_EXPORT ExplicitBitVect *StructuralFingerprintChemReaction(
     const ChemicalReaction &rxn,
     const ReactionFingerprintParams &params = DefaultStructuralFPParams);
 
@@ -138,10 +138,10 @@ RDKIT_CHEMREACTIONS_EXPORT ExplicitBitVect *StructuralFingerprintChemReaction(
   <b>Notes:</b>
     - the caller is responsible for <tt>delete</tt>ing the result
 */
-RDKIT_CHEMREACTIONS_EXPORT SparseIntVect<std::uint32_t>
+RDKIX_CHEMREACTIONS_EXPORT SparseIntVect<std::uint32_t>
     *DifferenceFingerprintChemReaction(
         const ChemicalReaction &rxn,
         const ReactionFingerprintParams &params = DefaultDifferenceFPParams);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

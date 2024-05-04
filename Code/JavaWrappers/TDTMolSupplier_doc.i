@@ -31,11 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::TDTMolSupplier "
+%typemap(javaimports) RDKix::TDTMolSupplier "
 /** 
 lazy file parser for TDT files */"
 
-%javamethodmodifiers RDKit::TDTMolSupplier::TDTMolSupplier 	( 	const std::string &  	fileName, 		const std::string &  	nameRecord = "", 		int  	confId2D = -1, 		int  	confId3D = 0, 		bool  	sanitize = true	  	) 			"
+%javamethodmodifiers RDKix::TDTMolSupplier::TDTMolSupplier 	( 	const std::string &  	fileName, 		const std::string &  	nameRecord = "", 		int  	confId2D = -1, 		int  	confId3D = 0, 		bool  	sanitize = true	  	) 			"
 /**
 <p>
 <p>
@@ -49,7 +49,7 @@ sanitize 	- if true sanitize the molecule before returning it
 */
 public";
 
-%javamethodmodifiers RDKit::TDTMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
+%javamethodmodifiers RDKix::TDTMolSupplier::getItemText 	( 	unsigned int  	idx 	 )  	"
 /**
 <p>
 <p>

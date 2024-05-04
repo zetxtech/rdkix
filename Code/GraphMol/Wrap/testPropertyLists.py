@@ -5,14 +5,14 @@
 import unittest
 from io import BytesIO
 
-from rdkit import Chem, RDConfig, rdBase
+from rdkix import Chem, RDConfig, rdBase
 
 
 class TestCase(unittest.TestCase):
 
   def setUp(self):
     self.sdf = b"""
-     RDKit  2D
+     RDKix  2D
 
   3  3  0  0  0  0  0  0  0  0999 V2000
     0.8660    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -104,7 +104,7 @@ $$$$"""
 
   def testGithubPR4160(self):
     # this shouldn't fail with a bad any cast anymore
-    from rdkit import Chem
+    from rdkix import Chem
     m = Chem.MolFromSmiles("CC")
     for a in m.GetAtoms():
       a.SetIntProp("foo", 1)

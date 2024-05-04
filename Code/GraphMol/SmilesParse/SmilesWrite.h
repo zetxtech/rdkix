@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SMILESWRITE_H_012020
@@ -17,12 +17,12 @@
 #include <cstdint>
 #include <limits>
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 class Bond;
 class ROMol;
 
-struct RDKIT_SMILESPARSE_EXPORT SmilesWriteParams {
+struct RDKIX_SMILESPARSE_EXPORT SmilesWriteParams {
   bool doIsomericSmiles =
       true;              /**< include stereochemistry and isotope information */
   bool doKekule = false; /**< kekulize the molecule before generating the SMILES
@@ -56,11 +56,11 @@ enum CXSmilesFields : uint32_t {
 };
 
 //! \brief returns the cxsmiles data for a molecule
-RDKIT_SMILESPARSE_EXPORT std::string getCXExtensions(
+RDKIX_SMILESPARSE_EXPORT std::string getCXExtensions(
     const ROMol &mol, std::uint32_t flags = CXSmilesFields::CX_ALL);
 
 //! \brief returns true if the atom number is in the SMILES organic subset
-RDKIT_SMILESPARSE_EXPORT bool inOrganicSubset(int atomicNumber);
+RDKIX_SMILESPARSE_EXPORT bool inOrganicSubset(int atomicNumber);
 
 //! \brief returns the SMILES for an atom
 /*!
@@ -72,7 +72,7 @@ RDKIT_SMILESPARSE_EXPORT bool inOrganicSubset(int atomicNumber);
   atom.
   \param isomericSmiles : if true, isomeric SMILES will be generated
 */
-RDKIT_SMILESPARSE_EXPORT std::string GetAtomSmiles(const Atom *atom,
+RDKIX_SMILESPARSE_EXPORT std::string GetAtomSmiles(const Atom *atom,
                                                    bool doKekule = false,
                                                    const Bond *bondIn = nullptr,
                                                    bool allHsExplicit = false,
@@ -87,13 +87,13 @@ RDKIT_SMILESPARSE_EXPORT std::string GetAtomSmiles(const Atom *atom,
     bond orders for aromatic bonds)
   \param allBondsExplicit : if true, symbols will be included for all bonds.
 */
-RDKIT_SMILESPARSE_EXPORT std::string GetBondSmiles(
+RDKIX_SMILESPARSE_EXPORT std::string GetBondSmiles(
     const Bond *bond, int atomToLeftIdx = -1, bool doKekule = false,
     bool allBondsExplicit = false);
 }  // namespace SmilesWrite
 
 //! \brief returns canonical SMILES for a molecule
-RDKIT_SMILESPARSE_EXPORT std::string MolToSmiles(
+RDKIX_SMILESPARSE_EXPORT std::string MolToSmiles(
     const ROMol &mol, const SmilesWriteParams &params);
 
 //! \brief returns canonical SMILES for a molecule
@@ -143,13 +143,13 @@ inline std::string MolToSmiles(const ROMol &mol, bool doIsomericSmiles = true,
   \param allHsExplicit : if true, hydrogen counts will be provided for every
   atom.
  */
-RDKIT_SMILESPARSE_EXPORT std::vector<std::string> MolToRandomSmilesVect(
+RDKIX_SMILESPARSE_EXPORT std::vector<std::string> MolToRandomSmilesVect(
     const ROMol &mol, unsigned int numSmiles, unsigned int randomSeed = 0,
     bool doIsomericSmiles = true, bool doKekule = false,
     bool allBondsExplicit = false, bool allHsExplicit = false);
 
 //! \brief returns canonical SMILES for part of a molecule
-RDKIT_SMILESPARSE_EXPORT std::string MolFragmentToSmiles(
+RDKIX_SMILESPARSE_EXPORT std::string MolFragmentToSmiles(
     const ROMol &mol, const SmilesWriteParams &params,
     const std::vector<int> &atomsToUse,
     const std::vector<int> *bondsToUse = nullptr,
@@ -201,7 +201,7 @@ inline std::string MolFragmentToSmiles(
 }
 
 //! \brief returns canonical CXSMILES for a molecule
-RDKIT_SMILESPARSE_EXPORT std::string MolToCXSmiles(
+RDKIX_SMILESPARSE_EXPORT std::string MolToCXSmiles(
     const ROMol &mol, const SmilesWriteParams &ps,
     std::uint32_t flags = SmilesWrite::CXSmilesFields::CX_ALL);
 
@@ -237,7 +237,7 @@ inline std::string MolToCXSmiles(const ROMol &mol, bool doIsomericSmiles = true,
 };
 
 //! \brief returns canonical CXSMILES for part of a molecule
-RDKIT_SMILESPARSE_EXPORT std::string MolFragmentToCXSmiles(
+RDKIX_SMILESPARSE_EXPORT std::string MolFragmentToCXSmiles(
     const ROMol &mol, const SmilesWriteParams &params,
     const std::vector<int> &atomsToUse,
     const std::vector<int> *bondsToUse = nullptr,
@@ -286,5 +286,5 @@ inline std::string MolFragmentToCXSmiles(
                                bondSymbols);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

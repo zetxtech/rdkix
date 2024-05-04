@@ -1,5 +1,5 @@
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -40,7 +40,7 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 bool SubstructLibraryCanSerialize() {
 #ifdef RDK_USE_BOOST_SERIALIZATION
@@ -472,4 +472,4 @@ void SubstructLibrary::initFromString(const std::string &text) {
   initFromStream(ss);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

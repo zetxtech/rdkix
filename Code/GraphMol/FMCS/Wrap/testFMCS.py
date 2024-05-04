@@ -2,8 +2,8 @@ import sys
 import unittest
 from io import StringIO
 
-from rdkit import Chem
-from rdkit.Chem import rdFMCS
+from rdkix import Chem
+from rdkix.Chem import rdFMCS
 
 
 class BondMatchOrderMatrix:
@@ -724,7 +724,7 @@ class Common:
 
   def test19MCS3d(self, **kwargs):
     block1 = """
-     RDKit          3D
+     RDKix          3D
 
  17 17  0  0  0  0  0  0  0  0999 V2000
     0.1592    0.8577    0.8639 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -766,7 +766,7 @@ M  END
 
 """
     block2 = """
-     RDKit          3D
+     RDKix          3D
 
  17 17  0  0  0  0  0  0  0  0999 V2000
     0.1592    0.8577    0.8639 C   0  0  0  0  0  0  0  0  0  0  0  0

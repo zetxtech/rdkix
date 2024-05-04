@@ -11,9 +11,9 @@ import unittest
 
 import numpy as np
 
-from rdkit import Chem, Geometry, RDConfig
-from rdkit.Chem import rdDepictor, rdMolAlign
-from rdkit.Chem.ChemUtils import AlignDepict
+from rdkix import Chem, Geometry, RDConfig
+from rdkix.Chem import rdDepictor, rdMolAlign
+from rdkix.Chem.ChemUtils import AlignDepict
 
 
 def feq(v1, v2, tol2=1e-4):
@@ -252,7 +252,7 @@ class TestCase(unittest.TestCase):
 
   def testGenerate2DDepictionRefPatternAtomMap(self):
     indazoleMolblock = """
-     RDKit          2D
+     RDKix          2D
 
   9 10  0  0  0  0  0  0  0  0999 V2000
    -6.0878    2.4335    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -336,7 +336,7 @@ M  END"""
 
   def testGenerate2DDepictionAllowRGroups(self):
     templateMolblock = """
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -386,7 +386,7 @@ M  END"""
 
     # test that using a refPattern with R groups and a reference without works
     pyridineRef = Chem.MolFromMolBlock("""
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

@@ -1,7 +1,7 @@
 /*
 *
 *  Copyright (c) 2010-2023, Novartis Institutes for BioMedical Research Inc.
-*   and other RDKit contributors
+*   and other RDKix contributors
 *  All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without

@@ -1,19 +1,19 @@
 //
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RGroupCore.h"
 #include "GraphMol/SmilesParse/SmilesWrite.h"
 #include "GraphMol/ChemTransforms/ChemTransforms.h"
 #include "GraphMol/Substruct/SubstructUtils.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 // From answer 12 in
 // https://stackoverflow.com/questions/5279051/how-can-i-create-cartesian-product-of-vector-of-vectors
@@ -167,7 +167,7 @@ std::pair<RWMOL_SPTR, bool> RCore::extractCoreFromMolMatch(
           }
           newBonds.push_back(connectingBond);
 
-          // Chirality parity stuff see RDKit::replaceCore in
+          // Chirality parity stuff see RDKix::replaceCore in
           // Code/GraphMol/ChemTransforms/ChemTransforms.cpp
           if (isChiral) {
             bool switchIt = false;
@@ -816,4 +816,4 @@ int RCore::matchingIndexToCoreIndex(int matchingIndex) const {
                   "Matched atom missing core index");
   return atom->getProp<int>(RLABEL_CORE_INDEX);
 }
-}  // namespace RDKit
+}  // namespace RDKix

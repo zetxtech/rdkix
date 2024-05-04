@@ -39,7 +39,7 @@
 #include <vector>
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 class Bond;
 
@@ -51,7 +51,7 @@ typedef enum {
   AttribNot
 } AttribCombineOp;
 
-class RDKIT_SLNPARSE_EXPORT AttribType {
+class RDKIX_SLNPARSE_EXPORT AttribType {
  public:
   AttribType() : first(""), second(""), op("") {}
   std::string first;
@@ -89,5 +89,5 @@ void parseMolAttribs(ROMol *mol, AttribListType attribs);
 
 void adjustAtomChiralities(RWMol *mol);
 }  // namespace SLNParse
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

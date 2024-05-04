@@ -36,7 +36,7 @@
 #include <RDBoost/Wrap.h>
 #include <RDGeneral/Dict.h>
 
-namespace RDKit {
+namespace RDKix {
 
 template <class T>
 inline const char *GetTypeName() {
@@ -156,6 +156,6 @@ template <class RDOb>
 void MolClearComputedProps(const RDOb &mol) {
   mol.clearComputedProps();
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

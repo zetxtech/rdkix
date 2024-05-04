@@ -34,7 +34,7 @@
 #define __RD_FILTER_MATCHER_BASE_H__
 #include <utility>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
@@ -46,12 +46,12 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif  // RDK_USE_BOOST_SERIALIZATION
 
-namespace RDKit {
+namespace RDKix {
 
 class FilterMatcherBase;  // Forward declaration
 
 //! Holds the atomPairs matched by the underlying matcher
-struct RDKIT_FILTERCATALOG_EXPORT FilterMatch {
+struct RDKIX_FILTERCATALOG_EXPORT FilterMatch {
   boost::shared_ptr<FilterMatcherBase> filterMatch;
   MatchVectType atomPairs;
 
@@ -74,8 +74,8 @@ struct RDKIT_FILTERCATALOG_EXPORT FilterMatch {
   }
 };
 
-RDKIT_FILTERCATALOG_EXPORT extern const char *DEFAULT_FILTERMATCHERBASE_NAME;
-class RDKIT_FILTERCATALOG_EXPORT FilterMatcherBase
+RDKIX_FILTERCATALOG_EXPORT extern const char *DEFAULT_FILTERMATCHERBASE_NAME;
+class RDKIX_FILTERCATALOG_EXPORT FilterMatcherBase
     : public boost::enable_shared_from_this<FilterMatcherBase> {
   //------------------------------------
   //! Virtual API for filter matching
@@ -148,5 +148,5 @@ class RDKIT_FILTERCATALOG_EXPORT FilterMatcherBase
 #ifdef RDK_USE_BOOST_SERIALIZATION
 BOOST_SERIALIZATION_ASSUME_ABSTRACT(FilterMatcherBase)
 #endif
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

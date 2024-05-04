@@ -41,8 +41,8 @@
 #include <vector>
 #include <boost/algorithm/string.hpp>
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SLNParse/SLNParseOps.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
 #include <GraphMol/SLNParse/SLNParse.h>
@@ -53,11 +53,11 @@
 
 int yysln_lex(YYSTYPE *,void *);
 
-namespace SLNParse = RDKit::SLNParse;
+namespace SLNParse = RDKix::SLNParse;
 
 void
 yysln_error( const char *input,
-             std::vector<RDKit::RWMol *> *ms,bool doQ,
+             std::vector<RDKix::RWMol *> *ms,bool doQ,
 	     void *scanner,const char * msg )
 {
   RDUNUSED_PARAM(ms);
@@ -88,19 +88,19 @@ yyprint (FILE *file, int type, YYSTYPE value)
 %define api.pure
 %lex-param   {yyscan_t *scanner}
 %parse-param {const char *input}
-%parse-param {std::vector<RDKit::RWMol *> *molList}
+%parse-param {std::vector<RDKix::RWMol *> *molList}
 %parse-param {bool doQueries}
 %parse-param {void *scanner}
 
 %union {
   int                      mol_T;
-  RDKit::Atom *            atom_T;
-  RDKit::Bond *            bond_T;
+  RDKix::Atom *            atom_T;
+  RDKix::Bond *            bond_T;
   int                      ival_T;
   std::string*             text_T;
   char                     char_T;
-  RDKit::SLNParse::AttribType       *attrib_T;
-  RDKit::SLNParse::AttribListType   *attriblist_T;
+  RDKix::SLNParse::AttribType       *attrib_T;
+  RDKix::SLNParse::AttribListType   *attriblist_T;
 }
 
 
@@ -148,7 +148,7 @@ cmpd: mol
 | cmpd OPEN_ANGLE_TOKEN ctabattriblist CLOSE_ANGLE_TOKEN {
   // allowing mol<attrs><attrs> seems to be a NIBR thing, I don't
   // think it's standard SLN
-  RDKit::ROMol *mol=(*molList)[$1];
+  RDKix::ROMol *mol=(*molList)[$1];
   SLNParse::parseMolAttribs(mol,*$3);
   delete $3;
   $$=$1;
@@ -175,11 +175,11 @@ mol: primmol
 ;
 
 primmol: H_TOKEN {
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
 
   $$=SLNParse::startMol(*molList,newAtom,doQueries);
@@ -223,11 +223,11 @@ primmol: H_TOKEN {
   $$=$1;
 }
 | primmol bond H_TOKEN {
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
 
   SLNParse::addAtomToMol(*molList,$$,newAtom,$2,doQueries);
@@ -235,11 +235,11 @@ primmol: H_TOKEN {
 }
 | primmol AT_TOKEN number H_TOKEN {
   SLNParse::closeRingBond(*molList,$$,$3);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -248,11 +248,11 @@ primmol: H_TOKEN {
 | primmol bond AT_TOKEN number H_TOKEN {
   // closeRingBond() takes ownership of the bond
   SLNParse::closeRingBond(*molList,$$,$4,$2);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -260,11 +260,11 @@ primmol: H_TOKEN {
 }
 | primmol OPEN_PAREN_TOKEN primmol CLOSE_PAREN_TOKEN H_TOKEN {
   SLNParse::addBranchToMol(*molList,$$,$3);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -274,11 +274,11 @@ primmol: H_TOKEN {
   // addBranchToMol() takes ownership of the bond and deletes the
   // branch, so no leaks here'
   SLNParse::addBranchToMol(*molList,$$,$4,$3);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -286,11 +286,11 @@ primmol: H_TOKEN {
 }
 | primmol OPEN_PAREN_TOKEN AT_TOKEN number CLOSE_PAREN_TOKEN H_TOKEN {
   SLNParse::closeRingBond(*molList,$$,$4);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -298,11 +298,11 @@ primmol: H_TOKEN {
 }
 | primmol OPEN_PAREN_TOKEN bond AT_TOKEN number CLOSE_PAREN_TOKEN H_TOKEN {
   SLNParse::closeRingBond(*molList,$$,$5,$3);
-  RDKit::Atom *newAtom;
+  RDKix::Atom *newAtom;
   if(!doQueries){
-    newAtom = new RDKit::Atom(1);
+    newAtom = new RDKix::Atom(1);
   } else {
-    newAtom = new RDKit::QueryAtom(1);
+    newAtom = new RDKix::QueryAtom(1);
   }
   SLNParse::addAtomToMol(*molList,$$,newAtom,doQueries);
 
@@ -324,35 +324,35 @@ atom: hatom
 
 hatom: H_ASTERIX_TOKEN {
   if(!doQueries){
-    $$ = new RDKit::Atom(1);
+    $$ = new RDKix::Atom(1);
   } else {
-    $$ = new RDKit::QueryAtom(1);
+    $$ = new RDKix::QueryAtom(1);
   }
-  $$->setProp(RDKit::common_properties::_starred,1,true);
+  $$->setProp(RDKix::common_properties::_starred,1,true);
 }
 | H_BRACKET_TOKEN  number CLOSE_BRACKET_TOKEN {
   if(!doQueries){
-    $$ = new RDKit::Atom(1);
+    $$ = new RDKix::Atom(1);
   } else {
-    $$ = new RDKit::QueryAtom(1);
+    $$ = new RDKix::QueryAtom(1);
   }
-  $$->setProp(RDKit::common_properties::_AtomID,static_cast<unsigned int>($2));
+  $$->setProp(RDKix::common_properties::_AtomID,static_cast<unsigned int>($2));
 }
 | H_BRACKET_TOKEN number COLON_TOKEN attriblist CLOSE_BRACKET_TOKEN {
   if(!doQueries){
-    $$ = new RDKit::Atom(1);
+    $$ = new RDKix::Atom(1);
   } else {
-    $$ = new RDKit::QueryAtom(1);
+    $$ = new RDKix::QueryAtom(1);
   }
-  $$->setProp(RDKit::common_properties::_AtomID,static_cast<unsigned int>($2));
+  $$->setProp(RDKix::common_properties::_AtomID,static_cast<unsigned int>($2));
   SLNParse::parseAtomAttribs($$,*$4,doQueries);
   delete $4;
 }
 | H_BRACKET_TOKEN attriblist CLOSE_BRACKET_TOKEN {
   if(!doQueries){
-    $$ = new RDKit::Atom(1);
+    $$ = new RDKix::Atom(1);
   } else {
-    $$ = new RDKit::QueryAtom(1);
+    $$ = new RDKix::QueryAtom(1);
   }
   SLNParse::parseAtomAttribs($$,*$2,doQueries);
   delete $2;
@@ -361,14 +361,14 @@ hatom: H_ASTERIX_TOKEN {
 
 primatom: ATOM_TOKEN
 | primatom ASTERIX_TOKEN{
-  $$->setProp(RDKit::common_properties::_starred,1,true);
+  $$->setProp(RDKix::common_properties::_starred,1,true);
 }
 | primatom OPEN_BRACKET_TOKEN number CLOSE_BRACKET_TOKEN {
-  $1->setProp(RDKit::common_properties::_AtomID,static_cast<unsigned int>($3));
+  $1->setProp(RDKix::common_properties::_AtomID,static_cast<unsigned int>($3));
   $$=$1;
 }
 | primatom OPEN_BRACKET_TOKEN number COLON_TOKEN attriblist CLOSE_BRACKET_TOKEN {
-  $1->setProp(RDKit::common_properties::_AtomID,static_cast<unsigned int>($3));
+  $1->setProp(RDKix::common_properties::_AtomID,static_cast<unsigned int>($3));
   SLNParse::parseAtomAttribs($1,*$5,doQueries);
   delete $5;
   $$=$1;
@@ -390,13 +390,13 @@ bond: primbond
 
 /* tildes can't be mixed with regular bonds in expressions: */
 | TILDE_TOKEN {
-  RDKit::Bond *bond=new RDKit::QueryBond();
-  bond->setQuery(RDKit::makeBondNullQuery());
+  RDKix::Bond *bond=new RDKix::QueryBond();
+  bond->setQuery(RDKix::makeBondNullQuery());
   $$ = bond;
 }
 | TILDE_TOKEN OPEN_BRACKET_TOKEN attriblist CLOSE_BRACKET_TOKEN {
-  RDKit::Bond *bond=new RDKit::QueryBond();
-  bond->setQuery(RDKit::makeBondNullQuery());
+  RDKix::Bond *bond=new RDKix::QueryBond();
+  bond->setQuery(RDKix::makeBondNullQuery());
   SLNParse::parseBondAttribs(bond,*$3,doQueries);
   delete $3;
   $$ = bond;
@@ -409,8 +409,8 @@ primbond: onebond
         yysln_error(input,molList,doQueries,0,"sequential bonds not allowed in non-queries");
     YYABORT;
 	} else {
-	  RDKit::QueryBond *b1=static_cast<RDKit::QueryBond *>($1);
-	  RDKit::QueryBond *b2=static_cast<RDKit::QueryBond *>($2);
+	  RDKix::QueryBond *b1=static_cast<RDKix::QueryBond *>($1);
+	  RDKix::QueryBond *b2=static_cast<RDKix::QueryBond *>($2);
 	  b1->expandQuery(b2->getQuery()->copy(),Queries::COMPOSITE_OR,true);
 		delete b2;
 	}
@@ -418,39 +418,39 @@ primbond: onebond
 ;
 
 onebond: MINUS_TOKEN {
-  RDKit::Bond *bond;
+  RDKix::Bond *bond;
   if(doQueries){
-    bond= new RDKit::QueryBond(RDKit::Bond::SINGLE);
+    bond= new RDKix::QueryBond(RDKix::Bond::SINGLE);
   } else {
-    bond= new RDKit::Bond(RDKit::Bond::SINGLE);
+    bond= new RDKix::Bond(RDKix::Bond::SINGLE);
   }
   $$ = bond;
 }
 | EQUALS_TOKEN {
-  RDKit::Bond *bond;
+  RDKix::Bond *bond;
   if(doQueries){
-    bond= new RDKit::QueryBond(RDKit::Bond::DOUBLE);
+    bond= new RDKix::QueryBond(RDKix::Bond::DOUBLE);
   } else {
-    bond= new RDKit::Bond(RDKit::Bond::DOUBLE);
+    bond= new RDKix::Bond(RDKix::Bond::DOUBLE);
   }
   $$ = bond;
 }
 | HASH_TOKEN {
-  RDKit::Bond *bond;
+  RDKix::Bond *bond;
   if(doQueries){
-    bond= new RDKit::QueryBond(RDKit::Bond::TRIPLE);
+    bond= new RDKix::QueryBond(RDKix::Bond::TRIPLE);
   } else {
-    bond= new RDKit::Bond(RDKit::Bond::TRIPLE);
+    bond= new RDKix::Bond(RDKix::Bond::TRIPLE);
   }
   $$ = bond;
 
 }
 | COLON_TOKEN {
-  RDKit::Bond *bond;
+  RDKix::Bond *bond;
   if(doQueries){
-    bond= new RDKit::QueryBond(RDKit::Bond::AROMATIC);
+    bond= new RDKix::QueryBond(RDKix::Bond::AROMATIC);
   } else {
-    bond= new RDKit::Bond(RDKit::Bond::AROMATIC);
+    bond= new RDKix::Bond(RDKix::Bond::AROMATIC);
   }
   $$ = bond;
 }
@@ -547,12 +547,12 @@ attrib: TEXT_BLOCK {
 
 recursivequery: RECURSE_TOKEN cmpd {
    int sz = molList->size();
-   RDKit::ROMol *mol=(*molList)[$2];
+   RDKix::ROMol *mol=(*molList)[$2];
    molList->resize( sz-1 );
    SLNParse::finalizeQueryMol(mol,true);
-   RDKit::RecursiveStructureQuery *rsq=new RDKit::RecursiveStructureQuery(mol);
-   RDKit::ATOM_OR_QUERY *orq=new RDKit::ATOM_OR_QUERY();
-   orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+   RDKix::RecursiveStructureQuery *rsq=new RDKix::RecursiveStructureQuery(mol);
+   RDKix::ATOM_OR_QUERY *orq=new RDKix::ATOM_OR_QUERY();
+   orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
    $$ = new SLNParse::AttribType();
    $$->first="is";
    $$->op = "=";
@@ -561,12 +561,12 @@ recursivequery: RECURSE_TOKEN cmpd {
 }
 | NEG_RECURSE_TOKEN cmpd {
    int sz = molList->size();
-   RDKit::ROMol *mol=(*molList)[$2];
+   RDKix::ROMol *mol=(*molList)[$2];
    molList->resize( sz-1 );
    SLNParse::finalizeQueryMol(mol,true);
-   RDKit::RecursiveStructureQuery *rsq=new RDKit::RecursiveStructureQuery(mol);
-   RDKit::ATOM_OR_QUERY *orq=new RDKit::ATOM_OR_QUERY();
-   orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+   RDKix::RecursiveStructureQuery *rsq=new RDKix::RecursiveStructureQuery(mol);
+   RDKix::ATOM_OR_QUERY *orq=new RDKix::ATOM_OR_QUERY();
+   orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
    orq->setNegation(true);
 
    $$ = new SLNParse::AttribType();
@@ -577,13 +577,13 @@ recursivequery: RECURSE_TOKEN cmpd {
 }
 | recursivequery COMMA_TOKEN cmpd {
    int sz = molList->size();
-   RDKit::ROMol *mol=(*molList)[$3];
+   RDKix::ROMol *mol=(*molList)[$3];
    molList->resize( sz-1 );
    SLNParse::finalizeQueryMol(mol,true);
-   RDKit::RecursiveStructureQuery *rsq=new RDKit::RecursiveStructureQuery(mol);
+   RDKix::RecursiveStructureQuery *rsq=new RDKix::RecursiveStructureQuery(mol);
 
-   RDKit::ATOM_OR_QUERY *orq=static_cast<RDKit::ATOM_OR_QUERY *>($1->structQuery);
-   orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+   RDKix::ATOM_OR_QUERY *orq=static_cast<RDKix::ATOM_OR_QUERY *>($1->structQuery);
+   orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
    $$=$1;
 }
 ;

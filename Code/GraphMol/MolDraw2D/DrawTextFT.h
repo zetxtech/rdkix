@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2020-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2020-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Original author: David Cosgrove (CozChemIx).
@@ -13,8 +13,8 @@
 // This is an abstract base class derived from DrawText that does drawing
 // using FreeType.
 
-#ifndef RDKIT_DRAWTEXTFT_H
-#define RDKIT_DRAWTEXTFT_H
+#ifndef RDKIX_DRAWTEXTFT_H
+#define RDKIX_DRAWTEXTFT_H
 
 #include <string>
 
@@ -26,14 +26,14 @@
 #include <RDGeneral/export.h>
 #include <GraphMol/MolDraw2D/DrawText.h>
 
-namespace RDKit {
+namespace RDKix {
 
 struct StringRect;
 
 namespace MolDraw2D_detail {
 
 // ****************************************************************************
-class RDKIT_MOLDRAW2D_EXPORT DrawTextFT : public DrawText {
+class RDKIX_MOLDRAW2D_EXPORT DrawTextFT : public DrawText {
  public:
   virtual ~DrawTextFT() override;
   virtual int MoveToFunctionImpl(const FT_Vector *to) = 0;
@@ -94,6 +94,6 @@ int cubicToFunction(const FT_Vector *controlOne, const FT_Vector *controlTwo,
                     const FT_Vector *to, void *user);
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWTEXTFT_H
+#endif  // RDKIX_DRAWTEXTFT_H

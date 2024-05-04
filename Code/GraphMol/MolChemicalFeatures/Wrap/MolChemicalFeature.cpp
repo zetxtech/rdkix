@@ -3,23 +3,23 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 
 #include <RDGeneral/types.h>
 #include <RDBoost/pyint_api.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeatureFactory.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 PyObject *getFeatAtomIds(const MolChemicalFeature &feat) {
   const MolChemicalFeature::AtomPtrContainer &atoms = feat.getAtoms();
   PyObject *res = PyTuple_New(atoms.size());
@@ -78,5 +78,5 @@ struct feat_wrapper {
              "Gets the conformer to use.");
   };
 };
-}  // namespace RDKit
-void wrap_MolChemicalFeat() { RDKit::feat_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_MolChemicalFeat() { RDKix::feat_wrapper::wrap(); }

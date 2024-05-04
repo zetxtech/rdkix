@@ -9,5 +9,5 @@ ChemMedChem, 2018, DOI: 10.1002/cmdc.201700798
 In the supporting information of this publication Jupyter notebooks can be found 
 in which these descriptors were used to build predictive models.
 
-The approach requires RDKit (www.rdkit.org) to be installed and properly configured.
+The approach requires RDKix (www.rdkit.org) to be installed and properly configured.
 

@@ -2,9 +2,9 @@
 
 from json import dumps
 
-from rdkit import Chem, rdBase
-from rdkit.Chem import AllChem, Draw, rdDepictor
-from rdkit.Chem.Draw import rdMolDraw2D
+from rdkix import Chem, rdBase
+from rdkix.Chem import AllChem, Draw, rdDepictor
+from rdkix.Chem.Draw import rdMolDraw2D
 
 COLS = [(1.0, 0.0, 0.0), (0.0, 1.0, 0.0), (0.0, 0.0, 1.0), (1.0, 0.55, 1.0)]
 

@@ -42,7 +42,7 @@
 #include <mutex>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 struct FuncData_t {
@@ -259,4 +259,4 @@ const std::map<std::string, ROMOL_SPTR> &GetFlattenedFunctionalGroupHierarchy(
   }
   return flatten_get();
 }
-}  // namespace RDKit
+}  // namespace RDKix

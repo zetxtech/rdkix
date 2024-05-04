@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::BondIterator_ "
+%typemap(javaimports) RDKix::BondIterator_ "
 /** 
 iterator for a molecule's bonds, currently BiDirectional, but it theoretically ought to be RandomAccess.
  */"

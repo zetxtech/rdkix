@@ -2,14 +2,14 @@
 //  Copyright (C) 2012-2016 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -20,7 +20,7 @@
 #include <sstream>
 
 #include <GraphMol/Descriptors/AUTOCORR2D.h>
-using namespace RDKit;
+using namespace RDKix;
 
 void testautocorrelation() {
   BOOST_LOG(rdErrorLog)
@@ -32,7 +32,7 @@ void testautocorrelation() {
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
   // std::string sdfName ="PBF_egfr.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/auto2D.out";
@@ -54,14 +54,14 @@ void testautocorrelation() {
   }
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> res2d;
 
-    RDKit::Descriptors::AUTOCORR2D(*m, res2d);
+    RDKix::Descriptors::AUTOCORR2D(*m, res2d);
 
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
@@ -95,7 +95,7 @@ void testGithub3806() {
   {
     auto m = "CC"_smiles;
     std::vector<double> vs;
-    RDKit::Descriptors::AUTOCORR2D(*m, vs);
+    RDKix::Descriptors::AUTOCORR2D(*m, vs);
     TEST_ASSERT(vs.size() == 192);
     for (unsigned i = 0; i < vs.size(); ++i) {
       TEST_ASSERT(!std::isnan(vs[i]));

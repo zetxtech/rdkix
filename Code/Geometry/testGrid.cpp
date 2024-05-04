@@ -3,10 +3,10 @@
 //   Copyright (C) 2005-2013 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include "UniformGrid3D.h"
@@ -22,12 +22,12 @@
 #include <cstdlib>
 
 using namespace RDGeom;
-using namespace RDKit;
+using namespace RDKix;
 
 void testUniformGrid1() {
   UniformGrid3D grd(6.0, 5.0, 4.0);
   CHECK_INVARIANT(grd.getSize() == 960, "");
-  CHECK_INVARIANT(RDKit::feq(grd.getSpacing(), .5), "");
+  CHECK_INVARIANT(RDKix::feq(grd.getSpacing(), .5), "");
   CHECK_INVARIANT(grd.getNumX() == 12, "");
   CHECK_INVARIANT(grd.getNumY() == 10, "");
   CHECK_INVARIANT(grd.getNumZ() == 8, "");
@@ -38,7 +38,7 @@ void testUniformGrid1() {
 
   UniformGrid3D grd2(grd);
   CHECK_INVARIANT(grd2.getSize() == 960, "");
-  CHECK_INVARIANT(RDKit::feq(grd2.getSpacing(), .5), "");
+  CHECK_INVARIANT(RDKix::feq(grd2.getSpacing(), .5), "");
   CHECK_INVARIANT(grd2.getNumX() == 12, "");
   CHECK_INVARIANT(grd2.getNumY() == 10, "");
   CHECK_INVARIANT(grd2.getNumZ() == 8, "");
@@ -59,93 +59,93 @@ void testUniformGrid2() {
   grd.setSphereOccupancy(Point3D(2.0, 2.0, 0.0), 1.5, 0.25);
   writeGridToFile(grd, "junk.grd");
   double dist = tanimotoDistance(grd, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   dist = tverskyIndex(grd, grd, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd, 1.0, 0.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd, 0.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd, 0.25, 0.75);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd, 0.75, 0.25);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
 
   UniformGrid3D grd2(10.0, 10.0, 10.0);
   grd2.setSphereOccupancy(Point3D(-2.0, -2.0, 0.0), 1.5, 0.25);
   grd2.setSphereOccupancy(Point3D(-2.0, 2.0, 0.0), 1.5, 0.25);
   grd2.setSphereOccupancy(Point3D(2.0, -2.0, 0.0), 1.5, 0.25);
   dist = tanimotoDistance(grd, grd2);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.25), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.25), "");
   dist = tverskyIndex(grd, grd2, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.75), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.75), "");
   dist = tverskyIndex(grd, grd2, 1.0, 0.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.75), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.75), "");
   dist = tverskyIndex(grd, grd2, 0.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd2, 0.25, 0.75);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.923), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.923), "");
   dist = tverskyIndex(grd, grd2, 0.75, 0.25);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.8), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.8), "");
   dist = protrudeDistance(grd, grd2);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.25), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.25), "");
   dist = protrudeDistance(grd2, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
 
   UniformGrid3D grd3(10.0, 10.0, 10.0);
   grd3.setSphereOccupancy(Point3D(-2.0, -2.0, 0.0), 1.5, 0.25);
   grd3.setSphereOccupancy(Point3D(-2.0, 2.0, 0.0), 1.5, 0.25);
   dist = tanimotoDistance(grd, grd3);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
   dist = tverskyIndex(grd, grd3, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
   dist = tverskyIndex(grd, grd3, 1.0, 0.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
   dist = tverskyIndex(grd, grd3, 0.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd3, 0.25, 0.75);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.8), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.8), "");
   dist = tverskyIndex(grd, grd3, 0.75, 0.25);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5714), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5714), "");
   dist = protrudeDistance(grd, grd3);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
   dist = protrudeDistance(grd3, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
 
   UniformGrid3D grd4(10.0, 10.0, 10.0);
   grd4.setSphereOccupancy(Point3D(2.0, 2.0, 0.0), 1.5, 0.25);
   grd4.setSphereOccupancy(Point3D(2.0, -2.0, 0.0), 1.5, 0.25);
   dist = tanimotoDistance(grd3, grd4);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd3, grd4, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   dist = tverskyIndex(grd3, grd4, 1.0, 0.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   dist = tverskyIndex(grd3, grd4, 0.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   dist = tverskyIndex(grd3, grd4, 0.25, 0.75);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   dist = tverskyIndex(grd3, grd4, 0.75, 0.25);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
 
   UniformGrid3D grd5(10.0, 10.0, 10.0);
   grd5.setSphereOccupancy(Point3D(-2.0, -2.0, 0.0), 1.5, 0.25);
   dist = tanimotoDistance(grd, grd5);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.75), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.75), "");
   dist = tverskyIndex(grd, grd5, 1.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.25), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.25), "");
   dist = tverskyIndex(grd, grd5, 1.0, 0.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.25), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.25), "");
   dist = tverskyIndex(grd, grd5, 0.0, 1.0);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tverskyIndex(grd, grd5, 0.25, 0.75);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5714), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5714), "");
   dist = tverskyIndex(grd, grd5, 0.75, 0.25);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.3077), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.3077), "");
   dist = protrudeDistance(grd, grd5);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.75), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.75), "");
   dist = protrudeDistance(grd5, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.00), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.00), "");
 }
 
 void testUniformGridPickling() {
@@ -158,7 +158,7 @@ void testUniformGridPickling() {
     grd.setSphereOccupancy(Point3D(2.0, 2.0, 0.0), 1.5, 0.25);
     UniformGrid3D grd2(grd.toString());
     double dist = tanimotoDistance(grd, grd2);
-    CHECK_INVARIANT(RDKit::feq(dist, 0.0), "");
+    CHECK_INVARIANT(RDKix::feq(dist, 0.0), "");
   }
 
   {
@@ -195,7 +195,7 @@ void testUniformGridPickling() {
     TEST_ASSERT(grd.getNumZ() == grd2.getNumZ());
     TEST_ASSERT(grd.compareParams(grd2));
     double dist = tanimotoDistance(grd, grd2);
-    TEST_ASSERT(RDKit::feq(dist, 0.0));
+    TEST_ASSERT(RDKix::feq(dist, 0.0));
   }
 }
 
@@ -209,15 +209,15 @@ void testUniformGridOps() {
   grd2.setSphereOccupancy(Point3D(2.0, 2.0, 0.0), 1.0, 0.25);
 
   double dist = tanimotoDistance(grd, grd2);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
 
   UniformGrid3D grd3(grd);
   grd3 |= grd2;
 
   dist = tanimotoDistance(grd3, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
   dist = tanimotoDistance(grd3, grd2);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
 
   UniformGrid3D grd4(10.0, 10.0, 10.0);
   grd4.setSphereOccupancy(Point3D(-2.0, -2.0, 0.0), 1.0, 0.25);
@@ -228,9 +228,9 @@ void testUniformGridOps() {
   grd5 &= grd2;
 
   dist = tanimotoDistance(grd5, grd);
-  CHECK_INVARIANT(RDKit::feq(dist, 1.0), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 1.0), "");
   dist = tanimotoDistance(grd5, grd2);
-  CHECK_INVARIANT(RDKit::feq(dist, 0.5), "");
+  CHECK_INVARIANT(RDKix::feq(dist, 0.5), "");
 }
 
 void testUniformGridIndexing() {
