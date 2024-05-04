@@ -3,10 +3,10 @@
 //  Copyright (C) 2019 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdpicker_array_API
 #include <RDBoost/Wrap.h>
@@ -22,7 +22,7 @@ BOOST_PYTHON_MODULE(rdSimDivPickers) {
   python::scope().attr("__doc__") =
       "Module containing the diversity and similarity pickers";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   wrap_maxminpick();
   wrap_leaderpick();

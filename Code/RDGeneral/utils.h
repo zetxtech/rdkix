@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2020 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <RDGeneral/export.h>
@@ -18,20 +18,20 @@
 #include <boost/random.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 const int NUM_PRIMES_AVAIL =
     1000;  //!< the number of primes available and stored
-RDKIT_RDGENERAL_EXPORT extern int firstThousandPrimes[NUM_PRIMES_AVAIL];
+RDKIX_RDGENERAL_EXPORT extern int firstThousandPrimes[NUM_PRIMES_AVAIL];
 
 const int FILE_MAXLINE =
     256;  //!< an assumed maximum length for lines read from files
 
 //! \brief compute the product of the set of primes corresponding to the
 //!        values in an INT_VECT
-RDKIT_RDGENERAL_EXPORT double computeIntVectPrimesProduct(const INT_VECT &ring);
+RDKIX_RDGENERAL_EXPORT double computeIntVectPrimesProduct(const INT_VECT &ring);
 
 //! floating point comparison with a tolerance
-RDKIT_RDGENERAL_EXPORT bool feq(double v1, double v2, double tol = 1e-4);
+RDKIX_RDGENERAL_EXPORT bool feq(double v1, double v2, double tol = 1e-4);
 
 typedef boost::minstd_rand rng_type;
 typedef boost::uniform_int<> uniform_int;
@@ -41,14 +41,14 @@ typedef boost::variate_generator<rng_type &, uniform_double> double_source_type;
 
 //! Optionally seed and return a reference to the global (Boost) random
 /// generator
-RDKIT_RDGENERAL_EXPORT rng_type &getRandomGenerator(int seed = -1);
+RDKIX_RDGENERAL_EXPORT rng_type &getRandomGenerator(int seed = -1);
 
 //! Return a random double value between 0.0 and 1.0
 //! Optionally seed the random number generator
-RDKIT_RDGENERAL_EXPORT double getRandomVal(int seed = -1);
+RDKIX_RDGENERAL_EXPORT double getRandomVal(int seed = -1);
 
 //! return a reference to the global (Boost) random source
-RDKIT_RDGENERAL_EXPORT double_source_type &getDoubleRandomSource();
+RDKIX_RDGENERAL_EXPORT double_source_type &getDoubleRandomSource();
 
 template <class T>
 unsigned int countSwapsToInterconvert(const T &ref, T probe) {
@@ -79,8 +79,8 @@ unsigned int countSwapsToInterconvert(const T &ref, T probe) {
   return nSwaps;
 }
 
-RDKIT_RDGENERAL_EXPORT std::string augmentTagName(const std::string &tag);
-}  // namespace RDKit
+RDKIX_RDGENERAL_EXPORT std::string augmentTagName(const std::string &tag);
+}  // namespace RDKix
 
 // contribution from dkoes
 template <unsigned n>

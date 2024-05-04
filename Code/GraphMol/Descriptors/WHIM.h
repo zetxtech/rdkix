@@ -34,18 +34,18 @@
 // Created by Guillaume GODIN
 
 #include <RDGeneral/export.h>
-#ifndef WHIMRDKIT_H_SEPT2016
-#define WHIMRDKIT_H_SEPT2016
+#ifndef WHIMRDKIX_H_SEPT2016
+#define WHIMRDKIX_H_SEPT2016
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string WHIMVersion = "1.0.0";
-RDKIT_DESCRIPTORS_EXPORT void WHIM(const ROMol &, std::vector<double> &res,
+RDKIX_DESCRIPTORS_EXPORT void WHIM(const ROMol &, std::vector<double> &res,
                                    int confId = -1, double th = 0.001,
                                    const std::string &customAtomPropName = "");
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

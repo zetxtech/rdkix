@@ -33,9 +33,9 @@
 #ifndef ENUMERATETYPES_H
 #define ENUMERATETYPES_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace EnumerationTypes {
 //! BBS - Helper typedef for holding building blocks for reactions
 //!   holds vectors of reagents for each reactant in a Reaction
@@ -55,5 +55,5 @@ typedef std::vector<MOL_SPTR_VECT> BBS;
 //!    rxn.runReactants( building_blocks );
 typedef std::vector<boost::uint64_t> RGROUPS;
 }  // namespace EnumerationTypes
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

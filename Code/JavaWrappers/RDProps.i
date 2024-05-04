@@ -39,4 +39,4 @@
 %include <RDGeneral/RDProps.h>
 
 /* For the time being, assume all properties will be strings */
-%template(setProp)  RDKit::RDProps::setProp<std::string>;
+%template(setProp)  RDKix::RDProps::setProp<std::string>;

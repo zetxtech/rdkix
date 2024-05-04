@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 //! \file Rings.h
@@ -19,7 +19,7 @@
 #include <map>
 #include <boost/dynamic_bitset_fwd.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 };
 
@@ -43,7 +43,7 @@ typedef std::map<int, std::vector<int>> INT_INT_VECT_MAP;
    \param depth used to track recursion depth
 
 */
-RDKIT_GRAPHMOL_EXPORT void pickFusedRings(int curr,
+RDKIX_GRAPHMOL_EXPORT void pickFusedRings(int curr,
                                           const INT_INT_VECT_MAP &neighMap,
                                           INT_VECT &res,
                                           boost::dynamic_bitset<> &done,
@@ -65,7 +65,7 @@ RDKIT_GRAPHMOL_EXPORT void pickFusedRings(int curr,
                         this will not be considered to be neighbors
 
 */
-RDKIT_GRAPHMOL_EXPORT void makeRingNeighborMap(const VECT_INT_VECT &brings,
+RDKIX_GRAPHMOL_EXPORT void makeRingNeighborMap(const VECT_INT_VECT &brings,
                                                INT_INT_VECT_MAP &neighMap,
                                                unsigned int maxSize = 0,
                                                unsigned int maxOverlapSize = 0);
@@ -82,9 +82,9 @@ RDKIT_GRAPHMOL_EXPORT void makeRingNeighborMap(const VECT_INT_VECT &brings,
    - each list of atom ids in "res" form a legitimate ring
    - each of these list of ordered such that a ring can be traversed
 */
-RDKIT_GRAPHMOL_EXPORT void convertToBonds(const VECT_INT_VECT &res,
+RDKIX_GRAPHMOL_EXPORT void convertToBonds(const VECT_INT_VECT &res,
                                           VECT_INT_VECT &brings,
-                                          const RDKit::ROMol &mol);
+                                          const RDKix::ROMol &mol);
 };  // namespace RingUtils
 
 #endif

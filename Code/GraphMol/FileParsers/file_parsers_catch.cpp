@@ -1,10 +1,10 @@
 //
-//  Copyright (C) 2020-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2021 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -17,7 +17,7 @@
 #include "RDGeneral/test.h"
 #include "catch.hpp"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
@@ -34,14 +34,14 @@
 #include <RDGeneral/FileParseException.h>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Basic SVG Parsing", "[SVG][reader]") {
   SECTION("basics") {
     std::string svg = R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
          xml:space='preserve'
 width='200px' height='200px' >
@@ -66,24 +66,24 @@ width='200px' height='200px' >
 <text x='149.782' y='131.743' style='font-size:15px;font-style:normal;font-weight:normal;fill-opacity:1;stroke:none;font-family:sans-serif;text-anchor:start;fill:#FF0000' ><tspan>OH</tspan></text>
 <text x='89.9952' y='194' style='font-size:12px;font-style:normal;font-weight:normal;fill-opacity:1;stroke:none;font-family:sans-serif;text-anchor:start;fill:#000000' ><tspan>m1</tspan></text>
 <metadata>
-<rdkit:mol xmlns:rdkit = "http://www.rdkit.org/xml" version="0.9">
-<rdkit:atom idx="1" atom-smiles="[CH3]" drawing-x="9.09091" drawing-y="89.4974" x="-2.78651" y="0.295614" z="0" />
-<rdkit:atom idx="2" atom-smiles="[NH]" drawing-x="52.6897" drawing-y="75.8699" x="-1.35482" y="0.743114" z="0" />
-<rdkit:atom idx="3" atom-smiles="[C@H]" drawing-x="86.2908" drawing-y="106.814" x="-0.251428" y="-0.273019" z="0" />
-<rdkit:atom idx="4" atom-smiles="[Cl]" drawing-x="76.2932" drawing-y="151.385" x="-0.579728" y="-1.73665" z="0" />
-<rdkit:atom idx="5" atom-smiles="[C]" drawing-x="129.89" drawing-y="93.1862" x="1.18027" y="0.174481" z="0" />
-<rdkit:atom idx="6" atom-smiles="[O]" drawing-x="139.887" drawing-y="48.6148" x="1.50857" y="1.63811" z="0" />
-<rdkit:atom idx="7" atom-smiles="[OH]" drawing-x="163.491" drawing-y="124.13" x="2.28366" y="-0.841652" z="0" />
-<rdkit:bond idx="1" begin-atom-idx="1" end-atom-idx="2" bond-smiles="-" />
-<rdkit:bond idx="2" begin-atom-idx="2" end-atom-idx="3" bond-smiles="-" />
-<rdkit:bond idx="3" begin-atom-idx="3" end-atom-idx="4" bond-smiles="-" />
-<rdkit:bond idx="4" begin-atom-idx="3" end-atom-idx="5" bond-smiles="-" />
-<rdkit:bond idx="5" begin-atom-idx="5" end-atom-idx="6" bond-smiles="=" />
-<rdkit:bond idx="6" begin-atom-idx="5" end-atom-idx="7" bond-smiles="-" />
-</rdkit:mol></metadata>
+<rdkix:mol xmlns:rdkix = "http://www.rdkit.org/xml" version="0.9">
+<rdkix:atom idx="1" atom-smiles="[CH3]" drawing-x="9.09091" drawing-y="89.4974" x="-2.78651" y="0.295614" z="0" />
+<rdkix:atom idx="2" atom-smiles="[NH]" drawing-x="52.6897" drawing-y="75.8699" x="-1.35482" y="0.743114" z="0" />
+<rdkix:atom idx="3" atom-smiles="[C@H]" drawing-x="86.2908" drawing-y="106.814" x="-0.251428" y="-0.273019" z="0" />
+<rdkix:atom idx="4" atom-smiles="[Cl]" drawing-x="76.2932" drawing-y="151.385" x="-0.579728" y="-1.73665" z="0" />
+<rdkix:atom idx="5" atom-smiles="[C]" drawing-x="129.89" drawing-y="93.1862" x="1.18027" y="0.174481" z="0" />
+<rdkix:atom idx="6" atom-smiles="[O]" drawing-x="139.887" drawing-y="48.6148" x="1.50857" y="1.63811" z="0" />
+<rdkix:atom idx="7" atom-smiles="[OH]" drawing-x="163.491" drawing-y="124.13" x="2.28366" y="-0.841652" z="0" />
+<rdkix:bond idx="1" begin-atom-idx="1" end-atom-idx="2" bond-smiles="-" />
+<rdkix:bond idx="2" begin-atom-idx="2" end-atom-idx="3" bond-smiles="-" />
+<rdkix:bond idx="3" begin-atom-idx="3" end-atom-idx="4" bond-smiles="-" />
+<rdkix:bond idx="4" begin-atom-idx="3" end-atom-idx="5" bond-smiles="-" />
+<rdkix:bond idx="5" begin-atom-idx="5" end-atom-idx="6" bond-smiles="=" />
+<rdkix:bond idx="6" begin-atom-idx="5" end-atom-idx="7" bond-smiles="-" />
+</rdkix:mol></metadata>
 </svg>)SVG";
 
-    std::unique_ptr<RWMol> mol(RDKitSVGToMol(svg));
+    std::unique_ptr<RWMol> mol(RDKixSVGToMol(svg));
     REQUIRE(mol);
     CHECK(mol->getNumAtoms() == 7);
     CHECK(mol->getNumConformers() == 1);
@@ -477,7 +477,7 @@ M  SAP   1  1   8
 M  END
 )CTAB";
     std::string expectedMolblock1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  1  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -576,7 +576,7 @@ M  SBL   1  2   7   8
 M  END
 )CTAB";
     std::string expectedMolblock1NoSGroups = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  0  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -658,7 +658,7 @@ M  SAP   2  1  12
 M  END
 )CTAB";
     std::string expectedMolblock2 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 13  0  2  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -787,7 +787,7 @@ M  SAP   2  1  12
 M  END
 )CTAB";
     std::string expectedMolblock2NoSGroup1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 13  0  1  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -946,7 +946,7 @@ TEST_CASE(
     "false",
     "[feature][sgroups]") {
   std::string molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2777,7 +2777,7 @@ TEST_CASE("multiple molecules in the PNG, second example", "[writer][PNG]") {
 TEST_CASE("github #3413: V3K mol blocks with no atoms fail to parse", "[bug]") {
   SECTION("basics") {
     auto m = R"CTAB(6065
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3566,7 +3566,7 @@ M  END
 
 TEST_CASE("double bond stereo should not be set when the coords are all zero") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4349,7 +4349,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("as reported3") {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4526,7 +4526,7 @@ TEST_CASE(
     "aromaticity perception") {
   SECTION("as reported") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4559,7 +4559,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("more detailed") {
     std::string molb = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4617,8 +4617,8 @@ TEST_CASE(
     REQUIRE(mol);
     auto groups = mol->getStereoGroups();
     REQUIRE(groups.size() == 2);
-    CHECK(groups[0].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
-    CHECK(groups[1].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
+    CHECK(groups[0].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
+    CHECK(groups[1].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
   }
 
   SECTION("as reported, less whitespace") {
@@ -4630,8 +4630,8 @@ TEST_CASE(
     REQUIRE(mol);
     auto groups = mol->getStereoGroups();
     REQUIRE(groups.size() == 2);
-    CHECK(groups[0].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
-    CHECK(groups[1].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
+    CHECK(groups[0].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
+    CHECK(groups[1].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
   }
 }
 
@@ -4733,7 +4733,7 @@ TEST_CASE(
     "to 3D molecules") {
   SECTION("basics") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4760,7 +4760,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("wiggly bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4786,11 +4786,11 @@ M  END)CTAB"_ctab;
           Atom::ChiralType::CHI_UNSPECIFIED);
   }
   SECTION("3D as 2D") {
-    // here we lie to the RDKit and tell it that a 3D conformer is 2D,
+    // here we lie to the RDKix and tell it that a 3D conformer is 2D,
     //  the code detects that and still sets the conformer to be 3D and
     //  assigns stereo:
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4816,10 +4816,10 @@ M  END)CTAB"_ctab;
           Atom::ChiralType::CHI_TETRAHEDRAL_CW);
   }
   SECTION("2D as 3D") {
-    // here we lie to the RDKit and tell it that a 2D conformer is 3D,
+    // here we lie to the RDKix and tell it that a 2D conformer is 3D,
     //  there's no chiral volume, so we don't end up with a chiral center
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4847,7 +4847,7 @@ M  END
   }
   SECTION("double bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4874,7 +4874,7 @@ M  END
   }
   SECTION("double bond, crossed") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4901,7 +4901,7 @@ M  END
   }
   SECTION("double bond, wiggly bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5087,7 +5087,7 @@ TEST_CASE(
     "GitHub Issue #5423: Parsing a Mol block/file does not clear the "
     "\"molTotValence\" property from atoms") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5234,7 +5234,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("R# also gets the tag (V2000, #5810)") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   3  2  0  0  0  0  0  0  0  0999 V2000
    -2.9167    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

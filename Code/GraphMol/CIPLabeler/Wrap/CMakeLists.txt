@@ -1,6 +1,6 @@
-remove_definitions(-DRDKIT_CIPLABELER_BUILD)
+remove_definitions(-DRDKIX_CIPLABELER_BUILD)
 
-rdkit_python_extension(rdCIPLabeler rdCIPLabeler.cpp
+rdkix_python_extension(rdCIPLabeler rdCIPLabeler.cpp
                        DEST Chem
                        LINK_LIBRARIES GraphMol CIPLabeler RDBoost)
 

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
@@ -13,14 +13,14 @@
 // notes, for example) onto the molecule.
 // It is not part of the public API.
 
-#ifndef RDKIT_DRAWANNOTATION_H
-#define RDKIT_DRAWANNOTATION_H
+#ifndef RDKIX_DRAWANNOTATION_H
+#define RDKIX_DRAWANNOTATION_H
 
 #include <Geometry/point.h>
 #include <GraphMol/MolDraw2D/DrawText.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class MolDraw2D;
 
@@ -62,5 +62,5 @@ class DrawAnnotation {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
-#endif  // RDKIT_DRAWANNOTATION_H
+}  // namespace RDKix
+#endif  // RDKIX_DRAWANNOTATION_H

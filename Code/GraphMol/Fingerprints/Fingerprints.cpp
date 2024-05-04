@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <DataStructs/ExplicitBitVect.h>
 #include <DataStructs/BitOps.h>
@@ -28,7 +28,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
-#include <GraphMol/Fingerprints/RDKitFPGenerator.h>
+#include <GraphMol/Fingerprints/RDKixFPGenerator.h>
 
 //#define VERBOSE_FINGERPRINTING 1
 //#define REPORT_FP_STATS 1
@@ -36,7 +36,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace Fingerprints {
 namespace detail {}  // namespace detail
 }  // namespace Fingerprints
@@ -193,7 +193,7 @@ ExplicitBitVect *RDKFingerprintMol(
                "bad atomBits size");
 
   std::unique_ptr<FingerprintGenerator<std::uint32_t>> fpgen(
-      RDKit::RDKitFP::getRDKitFPGenerator<std::uint32_t>(
+      RDKix::RDKixFP::getRDKixFPGenerator<std::uint32_t>(
           minPath, maxPath, useHs, branchedPaths, useBondOrder));
   fpgen->getOptions()->d_fpSize = fpSize;
   fpgen->getOptions()->d_numBitsPerFeature = nBitsPerHash;
@@ -536,7 +536,7 @@ SparseIntVect<boost::uint64_t> *getUnfoldedRDKFingerprintMol(
                "bad atomBits size");
 
   std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpgen(
-      RDKit::RDKitFP::getRDKitFPGenerator<std::uint64_t>(
+      RDKix::RDKixFP::getRDKixFPGenerator<std::uint64_t>(
           minPath, maxPath, useHs, branchedPaths, useBondOrder));
   fpgen->getOptions()->d_numBitsPerFeature = 1;
   FingerprintFuncArguments args;
@@ -565,4 +565,4 @@ SparseIntVect<boost::uint64_t> *getUnfoldedRDKFingerprintMol(
 
   return fp.release();
 }
-}  // namespace RDKit
+}  // namespace RDKix

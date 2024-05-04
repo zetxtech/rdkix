@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_TAUTOMER_CATALOG_ENTRY_H
@@ -16,12 +16,12 @@
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include "TautomerCatalogParams.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerCatalogEntry
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerCatalogEntry
     : public RDCatalog::CatalogEntry {
  public:
   TautomerCatalogEntry() {
@@ -54,6 +54,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerCatalogEntry
 };  // class TautomerCatalogEntry
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

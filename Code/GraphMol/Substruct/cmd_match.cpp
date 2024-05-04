@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2005 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // std bits
@@ -24,7 +24,7 @@
 #include <vf_sub_state.h>
 #include <match.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 int main(int argc, char *argv[]) {
   RDLog::InitLogs();

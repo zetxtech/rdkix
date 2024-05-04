@@ -7,15 +7,15 @@ This module contains a command line interface for standardization.
 :copyright: Copyright 2016 by Matt Swain.
 :license: MIT, see LICENSE file for more details.
 
-*Adapted for purposes of integration of MolVS into RDKit
+*Adapted for purposes of integration of MolVS into RDKix
 """
 
 import argparse
 import logging
 import sys
 
-from rdkit import Chem
-from rdkit.Chem.MolStandardize import Standardizer, Validator
+from rdkix import Chem
+from rdkix.Chem.MolStandardize import Standardizer, Validator
 
 log = logging.getLogger(__name__)
 

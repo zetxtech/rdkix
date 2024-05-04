@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2010 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <fstream>
@@ -25,7 +25,7 @@
 #include "MolWriters.h"
 #include "FileParsers.h"
 
-namespace RDKit {
+namespace RDKix {
 SDWriter::SDWriter(const std::string &fileName) {
   if (fileName != "-") {
     auto *tmpStream = new std::ofstream(fileName.c_str());
@@ -138,12 +138,12 @@ void _MolToSDStream(std::ostream *dp_ostream, const ROMol &mol, int confId,
     // out to the file
     STR_VECT properties = mol.getPropList();
     STR_VECT compLst;
-    mol.getPropIfPresent(RDKit::detail::computedPropName, compLst);
+    mol.getPropIfPresent(RDKix::detail::computedPropName, compLst);
 
     STR_VECT_CI pi;
     for (pi = properties.begin(); pi != properties.end(); pi++) {
       // ignore any of the following properties
-      if (((*pi) == RDKit::detail::computedPropName) ||
+      if (((*pi) == RDKix::detail::computedPropName) ||
           ((*pi) == common_properties::_Name) || ((*pi) == "_MolFileInfo") ||
           ((*pi) == "_MolFileComments") ||
           ((*pi) == common_properties::_MolFileChiralFlag)) {
@@ -180,4 +180,4 @@ void SDWriter::writeProperty(const ROMol &mol, const std::string &name) {
 
   _writePropToStream(dp_ostream, mol, name, d_molid);
 }
-}  // namespace RDKit
+}  // namespace RDKix

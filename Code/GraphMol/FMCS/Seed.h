@@ -2,26 +2,26 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include <map>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "DebugTrace.h"  // algorithm optimisation definitions
 #include "Graph.h"
 #include "DuplicatedSeedCache.h"
 #include "SubstructMatchCustom.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 class MaximumCommonSubgraph;
 struct TargetMatch;
 
-struct RDKIT_FMCS_EXPORT
+struct RDKIX_FMCS_EXPORT
     MolFragment {  // Reference to a fragment of source molecule
   std::vector<const Atom*> Atoms;
   std::vector<const Bond*> Bonds;
@@ -32,7 +32,7 @@ struct RDKIT_FMCS_EXPORT
                                                 // map
 };
 
-struct RDKIT_FMCS_EXPORT NewBond {
+struct RDKIX_FMCS_EXPORT NewBond {
   unsigned SourceAtomIdx{0};  // index in the seed. Atom is already in the seed
   unsigned BondIdx{0};  // index in qmol of new bond scheduled to be added into
                         // seed. This is outgoing bond from SourceAtomIdx
@@ -56,7 +56,7 @@ struct RDKIT_FMCS_EXPORT NewBond {
         EndAtomIdx(to_atom) {}
 };
 
-class RDKIT_FMCS_EXPORT Seed {
+class RDKIX_FMCS_EXPORT Seed {
  private:
   mutable std::vector<NewBond> NewBonds;  // for multistage growing. all
                                           // directly connected outgoing bonds
@@ -134,4 +134,4 @@ class RDKIT_FMCS_EXPORT Seed {
   void fillNewBonds(const ROMol& qmol);
 };
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

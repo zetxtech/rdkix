@@ -2,10 +2,10 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file MQN.h
@@ -19,7 +19,7 @@
 
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string MQNVersion = "1.0.0";
@@ -38,10 +38,10 @@ const std::string MQNVersion = "1.0.0";
   \return a vector with the MQNs
 
 */
-RDKIT_DESCRIPTORS_EXPORT std::vector<unsigned int> calcMQNs(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT std::vector<unsigned int> calcMQNs(const ROMol &mol,
                                                             bool force = false);
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

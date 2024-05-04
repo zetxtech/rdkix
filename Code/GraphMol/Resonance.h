@@ -2,10 +2,10 @@
 //  Copyright (C) 2015 Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RESONANCE_H__
@@ -16,7 +16,7 @@
 #include <map>
 #include <unordered_map>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Atom;
 class Bond;
@@ -40,7 +40,7 @@ typedef std::unordered_map<std::size_t, ConjElectrons *> CEMap;
  * To have your callback called, pass an instance of your
  * derived class to ResonanceMolSupplier::setProgressCallback().
  */
-class RDKIT_GRAPHMOL_EXPORT ResonanceMolSupplierCallback {
+class RDKIX_GRAPHMOL_EXPORT ResonanceMolSupplierCallback {
   friend class ResonanceMolSupplier;
 
  public:
@@ -83,7 +83,7 @@ class RDKIT_GRAPHMOL_EXPORT ResonanceMolSupplierCallback {
   std::vector<ResonanceProgress> d_progress;
 };
 
-class RDKIT_GRAPHMOL_EXPORT ResonanceMolSupplier {
+class RDKIX_GRAPHMOL_EXPORT ResonanceMolSupplier {
  public:
   typedef enum {
     /*! include resonance structures whose octets are less complete
@@ -232,5 +232,5 @@ class RDKIT_GRAPHMOL_EXPORT ResonanceMolSupplier {
   ROMol *assignBondsFormalCharges(std::vector<unsigned int> &c) const;
   static bool cePermCompare(const CEPerm *a, const CEPerm *b);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

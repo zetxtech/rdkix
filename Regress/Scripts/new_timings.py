@@ -4,10 +4,10 @@ import random
 import sys
 import time
 
-import rdkit
-from rdkit import Chem
-from rdkit.Chem import AllChem
-from rdkit.RDLogger import logger
+import rdkix
+from rdkix import Chem
+from rdkix.Chem import AllChem
+from rdkix.RDLogger import logger
 
 dname = os.path.dirname(__file__)
 
@@ -162,7 +162,7 @@ if tests[9]:
   ts.append(t2 - t1)
 
 if tests[10]:
-  from rdkit.Chem import BRICS
+  from rdkix.Chem import BRICS
   logger.info('BRICS decomposition')
   t1 = time.time()
   for mol in mols:
@@ -198,4 +198,4 @@ if tests[13]:
   logger.info('Results16: %.2f seconds' % (t2 - t1))
   ts.append(t2 - t1)
 
-print(f"| {rdkit.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")
+print(f"| {rdkix.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")

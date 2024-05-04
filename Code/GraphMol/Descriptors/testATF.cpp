@@ -2,14 +2,14 @@
 //  Copyright (C) 2012-2020 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/MolWriters.h>
@@ -24,7 +24,7 @@
 
 #include <GraphMol/Descriptors/AtomFeat.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   auto m = "CO"_smiles;
@@ -34,7 +34,7 @@ void test1() {
   std::vector<double> res;
 
   int atomid = 0;
-  RDKit::Descriptors::AtomFeatVect(*m, res, atomid);
+  RDKix::Descriptors::AtomFeatVect(*m, res, atomid);
 
   std::vector<double> exp{0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
                           0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.,
@@ -72,7 +72,7 @@ void test2() {
       1, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 1, 0, 0.2};
 
   for (unsigned int j = 0; j < m->getNumAtoms(); j++) {
-    RDKit::Descriptors::AtomFeatVect(*m, res, j);
+    RDKix::Descriptors::AtomFeatVect(*m, res, j);
 
     // 49 features
     TEST_ASSERT(res.size() == 49);
@@ -117,7 +117,7 @@ void test3() {
   std::vector<double> res;
 
   for (unsigned int j = 0; j < m->getNumAtoms(); j++) {
-    RDKit::Descriptors::AtomFeatVect(*m, res, j);
+    RDKix::Descriptors::AtomFeatVect(*m, res, j);
 
     // 49 features
     TEST_ASSERT(res.size() == 49);
@@ -164,7 +164,7 @@ void test4() {
                              0, 0, 0, 0, 0, 1, 0, 0, 0, 0.166667, 0, 0, 0};
 
   for (unsigned int j = 0; j < m->getNumAtoms(); j++) {
-    RDKit::Descriptors::AtomFeatVect(*m, res, j, true);
+    RDKix::Descriptors::AtomFeatVect(*m, res, j, true);
 
     // 52 features
     TEST_ASSERT(res.size() == 52);
@@ -211,7 +211,7 @@ void test5() {
                              0, 0, 0, 0, 0, 1, 0, 0, 0, 0.166667, 0, 0, 0};
 
   for (unsigned int j = 0; j < m->getNumAtoms(); j++) {
-    RDKit::Descriptors::AtomFeatVect(*m, res, j, true);
+    RDKix::Descriptors::AtomFeatVect(*m, res, j, true);
 
     // 52 features
     TEST_ASSERT(res.size() == 52);

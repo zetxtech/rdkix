@@ -32,19 +32,19 @@
 // Created by  MORSE by Guillaume Godin
 
 #include <RDGeneral/export.h>
-#ifndef MORSERDKIT_H_SEPT2016
-#define MORSERDKIT_H_SEPT2016
+#ifndef MORSERDKIX_H_SEPT2016
+#define MORSERDKIX_H_SEPT2016
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string MORSEVersion = "1.0.0";
-RDKIT_DESCRIPTORS_EXPORT void MORSE(const ROMol &, std::vector<double> &res,
+RDKIX_DESCRIPTORS_EXPORT void MORSE(const ROMol &, std::vector<double> &res,
                                     int confId = -1,
                                     const std::string &customAtomPropName = "");
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

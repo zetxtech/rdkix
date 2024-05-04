@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -19,7 +19,7 @@
 #include <GraphMol/Descriptors/MQN.h>
 #include <GraphMol/Descriptors/AUTOCORR2D.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 /*!
@@ -31,8 +31,8 @@ namespace Descriptors {
 
   \return the AMW
 */
-RDKIT_DESCRIPTORS_EXPORT extern const std::string amwVersion;
-RDKIT_DESCRIPTORS_EXPORT double calcAMW(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT extern const std::string amwVersion;
+RDKIX_DESCRIPTORS_EXPORT double calcAMW(const ROMol &mol,
                                         bool onlyHeavy = false);
 /*!
   Calculates a molecule's number of heavy (non-hydrogen) atoms
@@ -41,8 +41,8 @@ RDKIT_DESCRIPTORS_EXPORT double calcAMW(const ROMol &mol,
 
   \return the number of heavy atoms
 */
-RDKIT_DESCRIPTORS_EXPORT extern const std::string NumHeavyAtomsVersion;
-RDKIT_DESCRIPTORS_EXPORT unsigned int calcNumHeavyAtoms(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT extern const std::string NumHeavyAtomsVersion;
+RDKIX_DESCRIPTORS_EXPORT unsigned int calcNumHeavyAtoms(const ROMol &mol);
 /*!
   Calculates a molecule's number of atoms
 
@@ -50,8 +50,8 @@ RDKIT_DESCRIPTORS_EXPORT unsigned int calcNumHeavyAtoms(const ROMol &mol);
 
   \return the number of atoms
 */
-RDKIT_DESCRIPTORS_EXPORT extern const std::string NumAtomsVersion;
-RDKIT_DESCRIPTORS_EXPORT unsigned int calcNumAtoms(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT extern const std::string NumAtomsVersion;
+RDKIX_DESCRIPTORS_EXPORT unsigned int calcNumAtoms(const ROMol &mol);
 /*!
   Calculates a molecule's exact molecular weight
 
@@ -61,8 +61,8 @@ RDKIT_DESCRIPTORS_EXPORT unsigned int calcNumAtoms(const ROMol &mol);
 
   \return the exact MW
 */
-RDKIT_DESCRIPTORS_EXPORT extern const std::string exactmwVersion;
-RDKIT_DESCRIPTORS_EXPORT double calcExactMW(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT extern const std::string exactmwVersion;
+RDKIX_DESCRIPTORS_EXPORT double calcExactMW(const ROMol &mol,
                                             bool onlyHeavy = false);
 /*!
   Calculates a molecule's formula
@@ -76,11 +76,11 @@ RDKIT_DESCRIPTORS_EXPORT double calcExactMW(const ROMol &mol,
 
   \return the formula as a string
 */
-RDKIT_DESCRIPTORS_EXPORT std::string calcMolFormula(
+RDKIX_DESCRIPTORS_EXPORT std::string calcMolFormula(
     const ROMol &mol, bool separateIsotopes = false,
     bool abbreviateHIsotopes = true);
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

@@ -1,9 +1,9 @@
 #  Original Author: iwatobipen
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 """
 This script performs fast clustering of SMILES
 
@@ -19,8 +19,8 @@ import os
 import pickle
 import subprocess
 
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkix import Chem
+from rdkix.Chem import AllChem
 
 
 def getArgParser():

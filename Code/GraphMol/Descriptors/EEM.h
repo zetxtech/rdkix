@@ -26,11 +26,11 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#ifndef EEMRDKIT_H_SEPT2017
-#define EEMRDKIT_H_SEPT2017
+#ifndef EEMRDKIX_H_SEPT2017
+#define EEMRDKIX_H_SEPT2017
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 
@@ -51,9 +51,9 @@ class EEM_arrays {
 }  // namespace
 
 const std::string EEMVersion = "1.0.0";
-void RDKIT_DESCRIPTORS_EXPORT EEM(ROMol &mol, std::vector<double> &res,
+void RDKIX_DESCRIPTORS_EXPORT EEM(ROMol &mol, std::vector<double> &res,
                                   int confId);
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

@@ -42,7 +42,7 @@
 #include <Geometry/point.h>
 #include <Numerics/Vector.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Conformer;
 namespace Descriptors {
@@ -51,7 +51,7 @@ namespace Descriptors {
 
   Reference: P. J. Ballester, W. G. Richards, JCC (2007), 28, 1711 - 1723.
 
-  Derived from RDKit Python implementation of Jan Domanski
+  Derived from RDKix Python implementation of Jan Domanski
   who derived his code from Adrian Schreyer's code:
   http://hg.adrianschreyer.eu/usrcat/src/70e075d93cd2?at=default
 
@@ -60,7 +60,7 @@ namespace Descriptors {
   \param confId       the conformer Id
 
 */
-RDKIT_DESCRIPTORS_EXPORT void USR(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT void USR(const ROMol &mol,
                                   std::vector<double> &descriptor,
                                   int confId = -1);
 
@@ -78,7 +78,7 @@ RDKIT_DESCRIPTORS_EXPORT void USR(const ROMol &mol,
   \param confId       the conformer Id
 
 */
-RDKIT_DESCRIPTORS_EXPORT void USRCAT(
+RDKIX_DESCRIPTORS_EXPORT void USRCAT(
     const ROMol &mol, std::vector<double> &descriptor,
     std::vector<std::vector<unsigned int>> &atomIds, int confId = -1);
 /*!
@@ -89,7 +89,7 @@ RDKIT_DESCRIPTORS_EXPORT void USRCAT(
   \param points      storage for the four points
 
 */
-RDKIT_DESCRIPTORS_EXPORT void calcUSRDistributions(
+RDKIX_DESCRIPTORS_EXPORT void calcUSRDistributions(
     const RDGeom::Point3DConstPtrVect &coords,
     std::vector<std::vector<double>> &dist,
     std::vector<RDGeom::Point3D> &points);
@@ -102,7 +102,7 @@ RDKIT_DESCRIPTORS_EXPORT void calcUSRDistributions(
   \param dist   storage for the distance distributions
 
 */
-RDKIT_DESCRIPTORS_EXPORT void calcUSRDistributionsFromPoints(
+RDKIX_DESCRIPTORS_EXPORT void calcUSRDistributionsFromPoints(
     const RDGeom::Point3DConstPtrVect &coords,
     const std::vector<RDGeom::Point3D> &points,
     std::vector<std::vector<double>> &dist);
@@ -114,7 +114,7 @@ RDKIT_DESCRIPTORS_EXPORT void calcUSRDistributionsFromPoints(
   \param descriptor  storage for the computed USR descriptor
 
 */
-RDKIT_DESCRIPTORS_EXPORT void calcUSRFromDistributions(
+RDKIX_DESCRIPTORS_EXPORT void calcUSRFromDistributions(
     const std::vector<std::vector<double>> &dist,
     std::vector<double> &descriptor);
 
@@ -127,11 +127,11 @@ RDKIT_DESCRIPTORS_EXPORT void calcUSRFromDistributions(
 
   \return the score
 */
-RDKIT_DESCRIPTORS_EXPORT double calcUSRScore(
+RDKIX_DESCRIPTORS_EXPORT double calcUSRScore(
     const std::vector<double> &d1, const std::vector<double> &d2,
     const std::vector<double> &weights);
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 #endif

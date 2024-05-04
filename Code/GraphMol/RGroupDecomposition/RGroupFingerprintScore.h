@@ -2,19 +2,19 @@
 //  Copyright (C) 2020 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#ifndef RDKIT_RGROUPFINGERPRINTSCORE_H
-#define RDKIT_RGROUPFINGERPRINTSCORE_H
+#ifndef RDKIX_RGROUPFINGERPRINTSCORE_H
+#define RDKIX_RGROUPFINGERPRINTSCORE_H
 
 #include "RGroupMatch.h"
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 
 // class to hold the bitcounts for an attachment point/rgroup label
 struct VarianceDataForLabel {
@@ -69,12 +69,12 @@ struct FingerprintVarianceScoreData {
 
 // The arithmetic mean of the mean fingerprint bit variances for the
 // fingerprints at each rgroup position.
-RDKIT_RGROUPDECOMPOSITION_EXPORT double fingerprintVarianceScore(
+RDKIX_RGROUPDECOMPOSITION_EXPORT double fingerprintVarianceScore(
     const std::vector<size_t> &permutation,
     const std::vector<std::vector<RGroupMatch>> &matches,
     const std::set<int> &labels,
     FingerprintVarianceScoreData *fingerprintVarianceScoreData = nullptr);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_RGROUPFINGERPRINTSCORE_H
+#endif  // RDKIX_RGROUPFINGERPRINTSCORE_H

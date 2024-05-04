@@ -2,19 +2,19 @@
 //  Copyright (C) 2018 Boran Adas, Google Summer of Code
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
 #include <RDGeneral/hash/hash.hpp>
 #include <boost/dynamic_bitset.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <boost/dynamic_bitset.hpp>
@@ -37,7 +37,7 @@
 #include <climits>
 #include <RDGeneral/types.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace AtomPairs {
 unsigned int numPiElectrons(const Atom *atom) {
   PRECONDITION(atom, "no atom");
@@ -203,11 +203,11 @@ $([N;H0&+0]([C;!$(C(=O))])([C;!$(C(=O))])[C;!$(C(=O))])]",  // Basic
     "[$([C,S](=[O,S,P])-[O;H1,-1])]"                        // Acidic
 };
 
-const RDKit::ROMol *ss_matcher::getMatcher() const { return m_matcher.get(); }
+const RDKix::ROMol *ss_matcher::getMatcher() const { return m_matcher.get(); }
 
 ss_matcher::ss_matcher(){};
 ss_matcher::ss_matcher(const std::string &pattern) {
-  RDKit::RWMol *p = RDKit::SmartsToMol(pattern);
+  RDKix::RWMol *p = RDKix::SmartsToMol(pattern);
   TEST_ASSERT(p);
   m_matcher.reset(p);
 };
@@ -281,9 +281,9 @@ void getConnectivityInvariants(const ROMol &mol, std::vector<uint32_t> &invars,
 
 }  // namespace MorganFingerprints
 
-namespace RDKitFPUtils {
+namespace RDKixFPUtils {
 
-void buildDefaultRDKitFingerprintAtomInvariants(
+void buildDefaultRDKixFingerprintAtomInvariants(
     const ROMol &mol, std::vector<std::uint32_t> &lAtomInvariants) {
   lAtomInvariants.clear();
   lAtomInvariants.reserve(mol.getNumAtoms());
@@ -448,6 +448,6 @@ std::vector<unsigned int> generateBondHashes(
   return bondHashes;
 }
 
-}  // namespace RDKitFPUtils
+}  // namespace RDKixFPUtils
 
-}  // namespace RDKit
+}  // namespace RDKix

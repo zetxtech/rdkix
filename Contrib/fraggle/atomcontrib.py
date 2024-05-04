@@ -34,8 +34,8 @@ import sys
 from collections import defaultdict
 from optparse import OptionParser
 
-from rdkit import Chem, DataStructs
-from rdkit.Chem.Fraggle import FraggleSim
+from rdkix import Chem, DataStructs
+from rdkix.Chem.Fraggle import FraggleSim
 
 #input format
 #query_substructs,query_smiles,SMILES,ID,Tversky_sim
@@ -116,9 +116,9 @@ if __name__ == '__main__':
       continue
 
     #print '>>>',id_
-    rdkit_sim, fraggle_sim = FraggleSim.compute_fraggle_similarity_for_subs(
+    rdkix_sim, fraggle_sim = FraggleSim.compute_fraggle_similarity_for_subs(
       iMol, query_mols[qID], qSmi, qSubs, options.pfp)
-    day_sim[qID][id_] = rdkit_sim
+    day_sim[qID][id_] = rdkix_sim
     frag_sim[qID][id_] = max(frag_sim[qID][id_], fraggle_sim)
 
     #check if you have the fp for the modified query

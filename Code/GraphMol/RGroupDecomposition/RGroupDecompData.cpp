@@ -1,12 +1,12 @@
 //
 //  Copyright (c) 2017-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RGroupDecompData.h"
@@ -17,7 +17,7 @@
 
 // #define VERBOSE 1
 
-namespace RDKit {
+namespace RDKix {
 
 RGroupDecompData::RGroupDecompData(const RWMol &inputCore,
                                    RGroupDecompositionParameters inputParams)
@@ -717,4 +717,4 @@ RGroupDecompositionProcessResult RGroupDecompData::process(bool pruneMatches,
   return RGroupDecompositionProcessResult(true, rGroupScorer.getBestScore());
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

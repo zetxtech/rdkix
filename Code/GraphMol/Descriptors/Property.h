@@ -30,10 +30,10 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_PROPERTIES_H
-#define RDKIT_PROPERTIES_H
+#ifndef RDKIX_PROPERTIES_H
+#define RDKIX_PROPERTIES_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <utility>
 #include <RDGeneral/BoostStartInclude.h>
@@ -42,9 +42,9 @@
 #include <Query/Query.h>
 #include <RDGeneral/Exceptions.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
-struct RDKIT_DESCRIPTORS_EXPORT PropertyFunctor {
+struct RDKIX_DESCRIPTORS_EXPORT PropertyFunctor {
   // Registry of property functions
   //  See REGISTER_DESCRIPTOR
   std::string propName;
@@ -59,7 +59,7 @@ struct RDKIT_DESCRIPTORS_EXPORT PropertyFunctor {
   virtual ~PropertyFunctor() {}
 
   //! Compute the value of the property
-  virtual double operator()(const RDKit::ROMol &) const = 0;
+  virtual double operator()(const RDKix::ROMol &) const = 0;
 
   //! Return the name of the property
   const std::string getName() const { return propName; }
@@ -68,7 +68,7 @@ struct RDKIT_DESCRIPTORS_EXPORT PropertyFunctor {
 };
 
 //! Holds a collection of properties for computation purposes
-class RDKIT_DESCRIPTORS_EXPORT Properties {
+class RDKIX_DESCRIPTORS_EXPORT Properties {
  protected:
   std::vector<boost::shared_ptr<PropertyFunctor>> m_properties;
 
@@ -77,9 +77,9 @@ class RDKIT_DESCRIPTORS_EXPORT Properties {
   Properties(const std::vector<std::string> &propNames);
 
   std::vector<std::string> getPropertyNames() const;
-  std::vector<double> computeProperties(const RDKit::ROMol &mol,
+  std::vector<double> computeProperties(const RDKix::ROMol &mol,
                                         bool annotate = false) const;
-  void annotateProperties(RDKit::ROMol &mol) const;
+  void annotateProperties(RDKix::ROMol &mol) const;
 
   //! Register a property function - takes ownership
   static int registerProperty(PropertyFunctor *ptr);
@@ -115,9 +115,9 @@ T *makePropertyQuery(const std::string &name, double what) {
   return t;
 }
 
-RDKIT_DESCRIPTORS_EXPORT PROP_RANGE_QUERY *makePropertyRangeQuery(
+RDKIX_DESCRIPTORS_EXPORT PROP_RANGE_QUERY *makePropertyRangeQuery(
     const std::string &name, double min, double max);
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

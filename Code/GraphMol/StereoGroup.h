@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2018-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file StereoGroup.h
 
@@ -21,7 +21,7 @@
 #include <iostream>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 
 // OR means that it is known to be one or the other, but not both
@@ -39,7 +39,7 @@ enum class StereoGroupType {
   of diastereomers.
 
  */
-class RDKIT_GRAPHMOL_EXPORT StereoGroup {
+class RDKIX_GRAPHMOL_EXPORT StereoGroup {
  private:
   StereoGroupType d_grouptype{StereoGroupType::STEREO_ABSOLUTE};
   std::vector<Atom*> d_atoms;
@@ -65,15 +65,15 @@ class RDKIT_GRAPHMOL_EXPORT StereoGroup {
     return (d_grouptype != other.d_grouptype) || (d_atoms != other.d_atoms);
   }
 };
-RDKIT_GRAPHMOL_EXPORT void removeGroupsWithAtom(
+RDKIX_GRAPHMOL_EXPORT void removeGroupsWithAtom(
     const Atom* atom, std::vector<StereoGroup>& groups);
-RDKIT_GRAPHMOL_EXPORT void removeGroupsWithAtoms(
+RDKIX_GRAPHMOL_EXPORT void removeGroupsWithAtoms(
     const std::vector<Atom*>& atoms, std::vector<StereoGroup>& groups);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 //! allows StereoGroup objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream& operator<<(std::ostream& target,
-                                               const RDKit::StereoGroup& stg);
+RDKIX_GRAPHMOL_EXPORT std::ostream& operator<<(std::ostream& target,
+                                               const RDKix::StereoGroup& stg);
 
 #endif

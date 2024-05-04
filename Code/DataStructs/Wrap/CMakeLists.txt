@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_DATASTRUCTS_BUILD)
-rdkit_python_extension(cDataStructs
+remove_definitions(-DRDKIX_DATASTRUCTS_BUILD)
+rdkix_python_extension(cDataStructs
                        DataStructs.cpp DiscreteValueVect.cpp SparseIntVect.cpp
                        wrap_SparseBV.cpp wrap_ExplicitBV.cpp wrap_BitOps.cpp
                        wrap_FPB.cpp

@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2007-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2007-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Fingerprints/AtomPairs.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
 #include <DataStructs/SparseIntVect.h>
@@ -19,7 +19,7 @@
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace AtomPairs {
 
 template <typename T1, typename T2>
@@ -146,7 +146,7 @@ SparseIntVect<std::int32_t> *getHashedAtomPairFingerprint(
   }
 
   std::unique_ptr<FingerprintGenerator<std::uint32_t>> fpgen{
-      RDKit::AtomPair::getAtomPairGenerator<std::uint32_t>(
+      RDKix::AtomPair::getAtomPairGenerator<std::uint32_t>(
           minLength, maxLength, includeChirality, use2D, nullptr, true, nBits)};
   FingerprintFuncArguments args;
   args.fromAtoms = fromAtoms;
@@ -324,7 +324,7 @@ void TorsionFpCalc(T *res, const ROMol &mol, unsigned int nBits,
   }
 
   std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpgen{
-      RDKit::TopologicalTorsion::getTopologicalTorsionGenerator<std::uint64_t>(
+      RDKix::TopologicalTorsion::getTopologicalTorsionGenerator<std::uint64_t>(
           includeChirality, targetSize, nullptr, true, nBits)};
   FingerprintFuncArguments args;
   args.fromAtoms = fromAtoms;
@@ -385,4 +385,4 @@ ExplicitBitVect *getHashedTopologicalTorsionFingerprintAsBitVect(
   return res;
 }
 }  // end of namespace AtomPairs
-}  // end of namespace RDKit
+}  // end of namespace RDKix

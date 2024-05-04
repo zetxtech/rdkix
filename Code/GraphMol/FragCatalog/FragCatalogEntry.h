@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_FRAGCATALOGENTRY_H_
@@ -14,7 +14,7 @@
 #include "FragCatParams.h"
 #include <RDGeneral/utils.h>
 #include <Catalogs/CatalogEntry.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Subgraphs/Subgraphs.h>
 #include <GraphMol/Subgraphs/SubgraphUtils.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -22,9 +22,9 @@
 #include <map>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_FRAGCATALOG_EXPORT FragCatalogEntry
+class RDKIX_FRAGCATALOG_EXPORT FragCatalogEntry
     : public RDCatalog::CatalogEntry {
  public:
   FragCatalogEntry() : d_descrip("") {
@@ -131,6 +131,6 @@ class RDKIT_FRAGCATALOG_EXPORT FragCatalogEntry
   // group ID
   INT_INT_VECT_MAP d_aToFmap;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

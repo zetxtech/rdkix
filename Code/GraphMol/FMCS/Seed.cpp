@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MaximumCommonSubgraph.h"
 #include "Composition2N.h"
@@ -16,7 +16,7 @@
 
 #include <set>
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 
 unsigned Seed::addAtom(const Atom* atom) {
@@ -374,4 +374,4 @@ void Seed::computeRemainingSize(const ROMol& qmol) {
   }
 }
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

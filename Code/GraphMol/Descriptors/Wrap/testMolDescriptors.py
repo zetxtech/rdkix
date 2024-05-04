@@ -5,10 +5,10 @@ import unittest
 from os import environ
 from pathlib import Path
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Chem import AllChem, Descriptors
-from rdkit.Chem import rdMolDescriptors as rdMD
-from rdkit.Geometry import rdGeometry as rdG
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Chem import AllChem, Descriptors
+from rdkix.Chem import rdMolDescriptors as rdMD
+from rdkix.Geometry import rdGeometry as rdG
 
 haveBCUT = hasattr(rdMD, 'BCUT2D')
 

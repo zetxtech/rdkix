@@ -3,8 +3,8 @@ import os
 import pickle
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import rdPartialCharges
+from rdkix import Chem, RDConfig
+from rdkix.Chem import rdPartialCharges
 
 
 def feq(v1, v2, tol2=1e-4):

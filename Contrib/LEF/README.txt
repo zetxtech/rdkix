@@ -6,7 +6,7 @@ a library of chemical fragments with different Local Environment of Fluorine" J.
 2) A. Vulpetti, G. Landrum, S. Ruedisser, P. Erbel and C. Dalvit, "19F NMR Chemical Shift Prediction with 
 Fluorine Fingerprint Descriptor" J. of Fluorine Chemistry (2010). https://doi.org/10.1016/j.jfluchem.2009.12.024
 
-The scripts require that the RDKit (www.rdkit.org) be installed and properly configured.
+The scripts require that the RDKix (www.rdkit.org) be installed and properly configured.
 
 The scripts assume that input db.sdf files only contain molecules having either CF or CF3 moieties. 
 

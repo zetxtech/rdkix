@@ -7,6 +7,6 @@ Schneider, N.; Stiefl, N.; Landrum G.A.
 What's what: The (Nearly) Definitive Guide to Reaction Role Assignment. 
 Journal of Chemical Information and Modeling, 2016, DOI: 10.1021/acs.jcim.6b00564.
 
-The approach requires RDKit (www.rdkit.org) to be installed and properly configured.
+The approach requires RDKix (www.rdkit.org) to be installed and properly configured.
 
  

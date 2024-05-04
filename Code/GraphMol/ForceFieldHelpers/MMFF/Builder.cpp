@@ -3,17 +3,17 @@
 //  Copyright (C) 2004-2010 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <iostream>
 #include <cmath>
 #include <cctype>
 
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <ForceField/MMFF/Params.h>
@@ -21,7 +21,7 @@
 #include "AtomTyper.h"
 #include "Builder.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace MMFF {
 using namespace ForceFields::MMFF;
 
@@ -1016,4 +1016,4 @@ ForceFields::ForceField *constructForceField(
   return res;
 }
 }  // namespace MMFF
-}  // namespace RDKit
+}  // namespace RDKix

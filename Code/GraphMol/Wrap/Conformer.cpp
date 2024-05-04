@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2019 Greg Ladrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -14,7 +14,7 @@
 #include "rdchem.h"
 #include "props.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <Geometry/point.h>
 #include <GraphMol/Conformer.h>
@@ -24,7 +24,7 @@
 #include <numpy/arrayobject.h>
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 RDGeom::Point3D GetAtomPos(const Conformer *conf, unsigned int aid) {
   RDGeom::Point3D res = conf->getAtomPos(aid);
   return res;
@@ -230,6 +230,6 @@ struct conformer_wrapper {
              "  RETURNS: a dictionary\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_conformer() { RDKit::conformer_wrapper::wrap(); }
+void wrap_conformer() { RDKix::conformer_wrapper::wrap(); }

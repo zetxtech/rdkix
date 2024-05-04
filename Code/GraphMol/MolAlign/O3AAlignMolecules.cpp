@@ -2,10 +2,10 @@
 // Copyright (C) 2013-2018 Paolo Tosco, Greg Landrum
 //
 // @@ All Rights Reserved @@
-// This file is part of the RDKit.
+// This file is part of the RDKix.
 // The contents are covered by the terms of the BSD license
 // which is included in the file license.txt, found at the root
-// of the RDKit source tree.
+// of the RDKix source tree.
 //
 #include "O3AAlignMolecules.h"
 #include <RDGeneral/utils.h>
@@ -28,7 +28,7 @@
 
 double square(double x) { return x * x; }
 
-namespace RDKit {
+namespace RDKix {
 namespace MolAlign {
 static std::uint8_t mmffSimMatrix[99][99] = {
     {1,  3,  4, 3, 0, 4, 6,  7,  5,  6,  7,  4,  5,  7,  3,  5,  6,  7,  3, 2,
@@ -1134,7 +1134,7 @@ double o3aCrippenWeightFunc(const unsigned int prbIdx,
 }
 
 void SDM::prepareMatchWeightsVect(
-    RDKit::MatchVectType &matchVect, RDNumeric::DoubleVector &weights,
+    RDKix::MatchVectType &matchVect, RDNumeric::DoubleVector &weights,
     double (*weightFunc)(const unsigned int, const unsigned int, void *),
     void *data) {
   PRECONDITION(matchVect.size() == weights.size(),
@@ -1276,7 +1276,7 @@ O3A::O3A(int (*costFunc)(const unsigned int, const unsigned int, double,
     startSDM.fillFromLAP(*lap);
   }
   for (pairs[0] = 0, score[0] = 0.0, i = 3; i < startSDM.size(); ++i) {
-    RDKit::MatchVectType startMatchVect(i);
+    RDKix::MatchVectType startMatchVect(i);
     RDNumeric::DoubleVector startWeights(i);
     startSDM.prepareMatchWeightsVect(startMatchVect, startWeights, weightFunc,
                                      data);
@@ -1298,7 +1298,7 @@ O3A::O3A(int (*costFunc)(const unsigned int, const unsigned int, double,
         if (pairs[3] < 3) {
           break;
         }
-        RDKit::MatchVectType progressMatchVect(pairs[3]);
+        RDKix::MatchVectType progressMatchVect(pairs[3]);
         RDNumeric::DoubleVector progressWeights(pairs[3]);
         progressSDM.prepareMatchWeightsVect(progressMatchVect, progressWeights,
                                             weightFunc, data);
@@ -1354,7 +1354,7 @@ O3A::O3A(int (*costFunc)(const unsigned int, const unsigned int, double,
     *(bestSDM[0]) = startSDM;
     score[0] = bestSDM[0]->scoreAlignment(scoringFunc, data);
   }
-  RDKit::MatchVectType *o3aMatchVect = new RDKit::MatchVectType(pairs[0]);
+  RDKix::MatchVectType *o3aMatchVect = new RDKix::MatchVectType(pairs[0]);
   auto *o3aWeights = new RDNumeric::DoubleVector(pairs[0]);
   d_o3aMatchVect = o3aMatchVect;
   d_o3aWeights = o3aWeights;
@@ -1505,7 +1505,7 @@ O3A::O3A(ROMol &prbMol, const ROMol &refMol, void *prbProp, void *refProp,
     }
   }
   auto pairs = rdcast<unsigned int>(bestO3A->matches()->size());
-  RDKit::MatchVectType *bestO3AMatchVect = new RDKit::MatchVectType(pairs);
+  RDKix::MatchVectType *bestO3AMatchVect = new RDKix::MatchVectType(pairs);
   auto *bestO3AWeights = new RDNumeric::DoubleVector(pairs);
   d_o3aMatchVect = bestO3AMatchVect;
   d_o3aWeights = bestO3AWeights;
@@ -1534,7 +1534,7 @@ O3A::O3A(ROMol &prbMol, const ROMol &refMol, void *prbProp, void *refProp,
 double _rmsdMatchVect(ROMol *d_prbMol, const ROMol *d_refMol,
                       const RDGeom::POINT3D_VECT &prbPos,
                       const RDGeom::POINT3D_VECT &refPos,
-                      const RDKit::MatchVectType *matchVect) {
+                      const RDKix::MatchVectType *matchVect) {
   double rmsd = 0.0;
   if (matchVect) {
     for (const auto &i : (*matchVect)) {
@@ -1579,7 +1579,7 @@ double _rmsdMatchVect(ROMol *d_prbMol, const ROMol *d_refMol,
 
 double O3A::align() {
   double rmsd = 0.0;
-  const RDKit::MatchVectType *matchVectPtr = nullptr;
+  const RDKix::MatchVectType *matchVectPtr = nullptr;
 
   if (d_o3aMatchVect && (d_o3aMatchVect->size() >= 3)) {
     alignMol(*d_prbMol, *d_refMol, d_prbCid, d_refCid, d_o3aMatchVect,
@@ -1717,4 +1717,4 @@ void getO3AForProbeConfs(ROMol &prbMol, const ROMol &refMol, void *prbProp,
 }
 
 }  // end of namespace MolAlign
-}  // end of namespace RDKit
+}  // end of namespace RDKix

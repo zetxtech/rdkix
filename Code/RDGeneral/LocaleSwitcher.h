@@ -32,7 +32,7 @@
 #ifndef _RD_LOCALESWITCHER_H
 #define _RD_LOCALESWITCHER_H
 
-namespace RDKit {
+namespace RDKix {
 namespace Utils {
 // allows an RAII-like approach to ensuring the locale is temporarily "C"
 // instead of whatever we started in.
@@ -41,7 +41,7 @@ namespace detail {
 class LocaleSwitcherImpl;  // concrete OS dependent implementation
 }
 
-class RDKIT_RDGENERAL_EXPORT LocaleSwitcher {
+class RDKIX_RDGENERAL_EXPORT LocaleSwitcher {
   detail::LocaleSwitcherImpl *impl;
 
  public:
@@ -49,6 +49,6 @@ class RDKIT_RDGENERAL_EXPORT LocaleSwitcher {
   ~LocaleSwitcher();
 };
 }  // namespace Utils
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

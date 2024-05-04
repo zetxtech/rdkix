@@ -2,12 +2,12 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/new_canon.h>
 #include <RDGeneral/types.h>
 #include <algorithm>
@@ -19,7 +19,7 @@
 #include "Chirality.h"
 #include <GraphMol/QueryOps.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Chirality {
 #ifndef _MSC_VER
 const unsigned StereoInfo::NOATOM = std::numeric_limits<unsigned>::max();
@@ -97,7 +97,7 @@ bool isAtomPotentialTetrahedralCenter(const Atom *atom) {
           // three-coordinate N additional requirements:
           //   in a ring of size 3  (from InChI)
           // OR
-          /// is a bridgehead atom (RDKit extension)
+          /// is a bridgehead atom (RDKix extension)
           if (mol.getRingInfo()->isAtomInRingOfSize(atom->getIdx(), 3) ||
               queryIsAtomBridgehead(atom)) {
             legalCenter = true;
@@ -1083,4 +1083,4 @@ std::vector<StereoInfo> findPotentialStereo(const ROMol &mol) {
 }
 
 }  // namespace Chirality
-}  // namespace RDKit
+}  // namespace RDKix

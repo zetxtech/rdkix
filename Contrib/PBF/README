@@ -10,7 +10,7 @@ http://pubs.acs.org/doi/abs/10.1021/ci300293f
  Nicholas C. Firth, Nathan Brown, and Julian Blagg, Journal of
  Chemical Information and Modeling 2012 52 (10), 2516-252
 
-- PBFRDKit.cpp includes an implementation of the PBF method.
+- PBFRDKix.cpp includes an implementation of the PBF method.
 - demo.cpp includes an example of using the method and also tests,
   using data from the testData directory, that results are correct.
 - testData/egfr.sdf is sample data taken from DUD

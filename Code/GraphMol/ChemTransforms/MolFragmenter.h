@@ -2,10 +2,10 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_MOLFRAGMENTER_H__
@@ -14,9 +14,9 @@
 #include <istream>
 #include <GraphMol/ROMol.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolFragmenter {
-struct RDKIT_CHEMTRANSFORMS_EXPORT FragmenterBondType {
+struct RDKIX_CHEMTRANSFORMS_EXPORT FragmenterBondType {
   unsigned int atom1Label, atom2Label;
   unsigned int atom1Type, atom2Type;
   Bond::BondType bondType;
@@ -47,7 +47,7 @@ struct RDKIT_CHEMTRANSFORMS_EXPORT FragmenterBondType {
   The client is responsible for deleting this molecule.
 
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBonds(
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBonds(
     const ROMol &mol, const std::vector<unsigned int> &bondIndices,
     bool addDummies = true,
     const std::vector<std::pair<unsigned int, unsigned int>> *dummyLabels =
@@ -55,11 +55,11 @@ RDKIT_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBonds(
     const std::vector<Bond::BondType> *bondTypes = nullptr,
     std::vector<unsigned int> *nCutsPerAtom = nullptr);
 //! \overload
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBonds(
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBonds(
     const ROMol &mol, const std::vector<FragmenterBondType> &bondPatterns,
     const std::map<unsigned int, ROMOL_SPTR> *atomEnvirons = nullptr,
     std::vector<unsigned int> *nCutsPerAtom = nullptr);
-RDKIT_CHEMTRANSFORMS_EXPORT void fragmentOnSomeBonds(
+RDKIX_CHEMTRANSFORMS_EXPORT void fragmentOnSomeBonds(
     const ROMol &mol, const std::vector<unsigned int> &bondIndices,
     std::vector<ROMOL_SPTR> &resMols, unsigned int maxToCut = 1,
     bool addDummies = true,
@@ -74,30 +74,30 @@ RDKIT_CHEMTRANSFORMS_EXPORT void fragmentOnSomeBonds(
   The client is responsible for deleting this molecule.
 
 */
-RDKIT_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBRICSBonds(const ROMol &mol);
+RDKIX_CHEMTRANSFORMS_EXPORT ROMol *fragmentOnBRICSBonds(const ROMol &mol);
 
-RDKIT_CHEMTRANSFORMS_EXPORT void constructFragmenterAtomTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructFragmenterAtomTypes(
     std::istream *inStream, std::map<unsigned int, std::string> &defs,
     const std::string &comment = "//", bool validate = true,
     std::map<unsigned int, ROMOL_SPTR> *environs = nullptr);
-RDKIT_CHEMTRANSFORMS_EXPORT void constructFragmenterAtomTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructFragmenterAtomTypes(
     const std::string &str, std::map<unsigned int, std::string> &defs,
     const std::string &comment = "//", bool validate = true,
     std::map<unsigned int, ROMOL_SPTR> *environs = nullptr);
-RDKIT_CHEMTRANSFORMS_EXPORT void constructBRICSAtomTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructBRICSAtomTypes(
     std::map<unsigned int, std::string> &defs,
     std::map<unsigned int, ROMOL_SPTR> *environs = nullptr);
-RDKIT_CHEMTRANSFORMS_EXPORT void constructFragmenterBondTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructFragmenterBondTypes(
     std::istream *inStream,
     const std::map<unsigned int, std::string> &atomTypes,
     std::vector<FragmenterBondType> &defs, const std::string &comment = "//",
     bool validate = true, bool labelByConnector = true);
-RDKIT_CHEMTRANSFORMS_EXPORT void constructFragmenterBondTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructFragmenterBondTypes(
     const std::string &str,
     const std::map<unsigned int, std::string> &atomTypes,
     std::vector<FragmenterBondType> &defs, const std::string &comment = "//",
     bool validate = true, bool labelByConnector = true);
-RDKIT_CHEMTRANSFORMS_EXPORT void constructBRICSBondTypes(
+RDKIX_CHEMTRANSFORMS_EXPORT void constructBRICSBondTypes(
     std::vector<FragmenterBondType> &defs);
 }  // namespace MolFragmenter
 
@@ -111,7 +111,7 @@ enum class MolzipLabel {
   AtomProperty
 };
 
-struct RDKIT_CHEMTRANSFORMS_EXPORT MolzipParams {
+struct RDKIX_CHEMTRANSFORMS_EXPORT MolzipParams {
   MolzipLabel label = MolzipLabel::AtomMapNumber;
   std::vector<std::string> atomSymbols;
   std::string atomProperty;
@@ -119,11 +119,11 @@ struct RDKIT_CHEMTRANSFORMS_EXPORT MolzipParams {
   bool generateCoordinates = false;
 };
 
-RDKIT_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
+RDKIX_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
     const ROMol &a, const ROMol &b,
     const MolzipParams &params = MolzipParams());
 
-RDKIT_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
+RDKIX_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
     const ROMol &a, const MolzipParams &params = MolzipParams());
 
 //! \brief Creates a molecule from an R group decomposition
@@ -139,8 +139,8 @@ RDKIT_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
  *
  * @return the zipped molecule
  */
-RDKIT_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
+RDKIX_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
     std::vector<ROMOL_SPTR> &decomposition,
     const MolzipParams &params = MolzipParams());
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

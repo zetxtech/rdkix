@@ -9,9 +9,9 @@ import unittest
 import numpy
 from scipy.optimize import linear_sum_assignment
 
-from rdkit import Chem, DataStructs
-from rdkit.Chem import AllChem, rdmolops
-from rdkit.Chem.Fingerprints import FingerprintMols
+from rdkix import Chem, DataStructs
+from rdkix.Chem import AllChem, rdmolops
+from rdkix.Chem.Fingerprints import FingerprintMols
 
 _BK_ = {
   Chem.rdchem.BondType.SINGLE: 1,
@@ -30,7 +30,7 @@ _nBT_ = 5
 
 
 def FindAllPathsOfLengthMToN_Gobbi(mol, minlength, maxlength, rootedAtAtom=-1, uniquepaths=True):
-  '''this function returns the same set of bond paths as the Gobbi paper.  These differ a little from the rdkit FindAllPathsOfLengthMToN function'''
+  '''this function returns the same set of bond paths as the Gobbi paper.  These differ a little from the rdkix FindAllPathsOfLengthMToN function'''
   paths = []
   for atom in mol.GetAtoms():
     if rootedAtAtom == -1 or atom.GetIdx() == rootedAtAtom:
@@ -223,7 +223,7 @@ def getsimmatrix(m1, m1pathintegers, m2, m2pathintegers):
 
 
 def AtomAtomPathSimilarity(m1, m2, m1pathintegers=None, m2pathintegers=None):
-  '''compute the Atom Atom Path Similarity for a pair of RDKit molecules.  See Gobbi et al, J. ChemInf (2015) 7:11
+  '''compute the Atom Atom Path Similarity for a pair of RDKix molecules.  See Gobbi et al, J. ChemInf (2015) 7:11
       the most expensive part of the calculation is computing the path integers - we can precompute these and pass them in as an argument'''
   if m1pathintegers is None:
     m1pathintegers = getpathintegers(m1)

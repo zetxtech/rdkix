@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_CORRMATGENERATOR_H_
@@ -55,7 +55,7 @@ class BitCorrMatGenerator {
    *list top ranked ensemble
    *  of bits
    */
-  void setBitIdList(const RDKit::INT_VECT &bitIdList) {
+  void setBitIdList(const RDKix::INT_VECT &bitIdList) {
     d_descs = bitIdList;
     int i, nd = d_descs.size();
     int nelem = nd * (nd - 1) / 2;
@@ -73,7 +73,7 @@ class BitCorrMatGenerator {
 
   //! \brief Get the list of bits ID that are used to generate the correlation
   /// matrix
-  RDKit::INT_VECT getCorrBitList() const { return d_descs; }
+  RDKix::INT_VECT getCorrBitList() const { return d_descs; }
 
   //! \brief Gets a pointer to the correlation matrix
   double *getCorrMat() { return dp_corrMat; }
@@ -106,7 +106,7 @@ class BitCorrMatGenerator {
   }
 
  private:
-  RDKit::INT_VECT d_descs;
+  RDKix::INT_VECT d_descs;
   double *dp_corrMat;
   int d_nExamples;
 };

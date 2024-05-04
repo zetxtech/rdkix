@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2002-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/BadFileException.h>
@@ -22,7 +22,7 @@
 #include <sstream>
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 
 SDMolSupplier::SDMolSupplier(const std::string &fileName, bool sanitize,
                              bool removeHs, bool strictParsing) {
@@ -283,4 +283,4 @@ void SDMolSupplier::setStreamIndices(const std::vector<std::streampos> &locs) {
   this->reset();
   d_len = rdcast<int>(d_molpos.size());
 }
-}  // namespace RDKit
+}  // namespace RDKix

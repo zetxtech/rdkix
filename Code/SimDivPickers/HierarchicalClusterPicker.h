@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _HIERARCHCLUSTERPICKER_H
@@ -22,7 +22,7 @@ namespace RDPickers {
  *  for diversity picking. The clustering itself is done using the Murtagh
  *  code in $RDBASE/Code/ML/Cluster/Mutagh/
  */
-class RDKIT_SIMDIVPICKERS_EXPORT HierarchicalClusterPicker : public DistPicker {
+class RDKIX_SIMDIVPICKERS_EXPORT HierarchicalClusterPicker : public DistPicker {
  public:
   /*! \brief The type of hierarchical clustering algorithm to use
    */
@@ -75,7 +75,7 @@ class RDKIT_SIMDIVPICKERS_EXPORT HierarchicalClusterPicker : public DistPicker {
    *              poolSize*(poolSize-1) \n
    *    \param pickSize - the number items to pick from pool (<= poolSize)
    */
-  RDKit::INT_VECT pick(const double *distMat, unsigned int poolSize,
+  RDKix::INT_VECT pick(const double *distMat, unsigned int poolSize,
                        unsigned int pickSize) const override;
 
   /*! \brief This is the function that does the clustering of the items - used
@@ -96,7 +96,7 @@ class RDKIT_SIMDIVPICKERS_EXPORT HierarchicalClusterPicker : public DistPicker {
    *   \param pickSize - the number clusters to divide the pool into (<=
    *poolSize)
    */
-  RDKit::VECT_INT_VECT cluster(const double *distMat, unsigned int poolSize,
+  RDKix::VECT_INT_VECT cluster(const double *distMat, unsigned int poolSize,
                                unsigned int pickSize) const;
 
  private:

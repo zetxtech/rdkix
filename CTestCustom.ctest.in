@@ -7,5 +7,5 @@ SET(CTEST_CUSTOM_MEMCHECK_IGNORE
   ${CTEST_CUSTOM_MEMCHECK_IGNORE}
 
   # python tests are not memchecked: these are slow, and difficult to interpret
-  ${RDKIT_PYTEST_CACHE}
+  ${RDKIX_PYTEST_CACHE}
 )

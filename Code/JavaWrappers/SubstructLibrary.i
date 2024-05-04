@@ -37,21 +37,21 @@
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 #include <GraphMol/TautomerQuery/TautomerQuery.h>
 %}
-%shared_ptr(RDKit::TautomerQuery)
-%shared_ptr(RDKit::MolHolderBase)
-%shared_ptr(RDKit::MolHolder)
-%shared_ptr(RDKit::CachedMolHolder)
-%shared_ptr(RDKit::CachedSmilesMolHolder)
-%shared_ptr(RDKit::CachedTrustedSmilesMolHolder)
-%shared_ptr(RDKit::FPHolderBase)
-%shared_ptr(RDKit::PatternHolder)
-%shared_ptr(RDKit::TautomerPatternHolder)
-%shared_ptr(RDKit::KeyHolderBase)
-%shared_ptr(RDKit::KeyFromPropHolder)
+%shared_ptr(RDKix::TautomerQuery)
+%shared_ptr(RDKix::MolHolderBase)
+%shared_ptr(RDKix::MolHolder)
+%shared_ptr(RDKix::CachedMolHolder)
+%shared_ptr(RDKix::CachedSmilesMolHolder)
+%shared_ptr(RDKix::CachedTrustedSmilesMolHolder)
+%shared_ptr(RDKix::FPHolderBase)
+%shared_ptr(RDKix::PatternHolder)
+%shared_ptr(RDKix::TautomerPatternHolder)
+%shared_ptr(RDKix::KeyHolderBase)
+%shared_ptr(RDKix::KeyFromPropHolder)
 
 %template(UChar_Vect) std::vector<unsigned char>;
 
-%typemap(javacode) RDKit::SubstructLibrary %{
+%typemap(javacode) RDKix::SubstructLibrary %{
   public static SubstructLibrary Deserialize(byte[] b) {
     UChar_Vect vec = null;
     try {
@@ -69,14 +69,14 @@
   }
 %}
 
-%extend RDKit::SubstructLibrary {
+%extend RDKix::SubstructLibrary {
   SubstructLibrary(const std::vector<unsigned char> & data ) {
     std::string str(data.begin(), data.end());
-    return new RDKit::SubstructLibrary(str);
+    return new RDKix::SubstructLibrary(str);
   }
 
   bool canSerialize() const {
-    return RDKit::SubstructLibraryCanSerialize();
+    return RDKix::SubstructLibraryCanSerialize();
   }
 }
 
@@ -84,13 +84,13 @@
 
 
 #ifdef SWIGJAVA
-%typemap(jni) std::string RDKit::SubstructLibrary::Serialize "jbyteArray"
-%typemap(jtype) std::string RDKit::SubstructLibrary::Serialize "byte[]"
-%typemap(jstype) std::string RDKit::SubstructLibrary::Serialize "byte[]"
-%typemap(javaout) std::string RDKit::SubstructLibrary::Serialize {
+%typemap(jni) std::string RDKix::SubstructLibrary::Serialize "jbyteArray"
+%typemap(jtype) std::string RDKix::SubstructLibrary::Serialize "byte[]"
+%typemap(jstype) std::string RDKix::SubstructLibrary::Serialize "byte[]"
+%typemap(javaout) std::string RDKix::SubstructLibrary::Serialize {
   return $jnicall;
 }
-%typemap(out) std::string RDKit::SubstructLibrary::Serialize {
+%typemap(out) std::string RDKix::SubstructLibrary::Serialize {
   $result = JCALL1(NewByteArray, jenv, $1.size());
   JCALL4(SetByteArrayRegion, jenv, $result, 0, $1.size(), (const jbyte*)$1.c_str());
 }
@@ -99,7 +99,7 @@
 %include <GraphMol/TautomerQuery/TautomerQuery.h>
 %include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 
-%extend RDKit::SubstructLibrary {
+%extend RDKix::SubstructLibrary {
  %template(getMatches) getMatches<ROMol>;
  %template(getMatches) getMatches<TautomerQuery>;
  %template(countMatches) countMatches<ROMol>;

@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolStandardize.h"
 #include "Normalize.h"
@@ -13,7 +13,7 @@
 #include "Charge.h"
 #include "Metal.h"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -22,7 +22,7 @@
 
 #include <iostream>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testCleanup() {
   BOOST_LOG(rdDebugLog) << "-----------------------\n test cleanup"
@@ -1382,7 +1382,7 @@ void testMetalDisconnectorLigandExpo() {
   };
 
   std::string normalizationSmarts = R"DATA(//	Name	SMIRKS
-// Opposite of #2.1 in InChI technical manual? Covered by RDKit Sanitization.
+// Opposite of #2.1 in InChI technical manual? Covered by RDKix Sanitization.
 Nitro to N+(O-)=O	[N,P,As,Sb;X3:1](=[O,S,Se,Te:2])=[O,S,Se,Te:3]>>[*+1:1]([*-1:2])=[*:3]
 Sulfone to S(=O)(=O)	[S+2:1]([O-:2])([O-:3])>>[S+0:1](=[O-0:2])(=[O-0:3])
 Pyridine oxide to n+O-	[n:1]=[O:2]>>[n+:1][O-:2]
@@ -1413,7 +1413,7 @@ Normalize 1,5 conjugated cation	[n;+0!H0:1]:[a:2]:[a:3]:[c:4]=[N!$(*[O-]),O;+1H0
 // Normalization('Normalize 1,5 conjugated cation', '[N,O;+0!H0:1]-[c:2]:[a:3]:[a:4]:[n!$(*[O-]),o;+1H0:5]>>[*+1:1]=[c:2]:[*:3]:[*:4]:[*+0:5]'),
 // Normalization('Normalize 1,5 conjugated cation', '[n;+0!H0:1]1:[a:2]:[a:3]:[a:4]:[n!$(*[O-]);+1H0:5]1>>[n+1:1]1:[*:2]:[*:3]:[*:4]:[n+0:5]1'),
 // Normalization('Normalize 1,5 conjugated cation', '[n;+0!H0:1]:[a:2]:[a:3]:[a:4]:[n!$(*[O-]);+1H0:5]>>[n+1:1]:[*:2]:[*:3]:[*:4]:[n+0:5]'),
-// Equivalent to #1.6 in InChI technical manual. RDKit Sanitization handles this for perchlorate.
+// Equivalent to #1.6 in InChI technical manual. RDKix Sanitization handles this for perchlorate.
 Charge normalization	[F,Cl,Br,I,At;-1:1]=[O:2]>>[*-0:1][O-:2]
 Charge recombination	[N,P,As,Sb;-1:1]=[C+;v3:2]>>[*+0:1]#[C+0:2]
 Tetravalent [N] to [N+]	[N+0;v4:1]>>[N+1:1]

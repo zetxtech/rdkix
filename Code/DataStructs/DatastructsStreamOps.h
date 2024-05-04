@@ -28,14 +28,14 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-#ifndef RDKIT_DATASTRUCTS_STREAMOPS
-#define RDKIT_DATASTRUCTS_STREAMOPS
+#ifndef RDKIX_DATASTRUCTS_STREAMOPS
+#define RDKIX_DATASTRUCTS_STREAMOPS
 #include <RDGeneral/StreamOps.h>
 #include <DataStructs/ExplicitBitVect.h>
 #include <typeinfo>
 #include <boost/any.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class DataStructsExplicitBitVecPropHandler : public CustomPropHandler {
  public:
   const char *getPropName() const override { return "ExplicitBVProp"; }
@@ -68,5 +68,5 @@ class DataStructsExplicitBitVecPropHandler : public CustomPropHandler {
   }
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

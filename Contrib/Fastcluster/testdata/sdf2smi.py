@@ -1,7 +1,7 @@
 import argparse
 
-from rdkit import Chem
-from rdkit.Chem.rdmolfiles import SmilesWriter
+from rdkix import Chem
+from rdkix.Chem.rdmolfiles import SmilesWriter
 
 parser = argparse.ArgumentParser()
 parser.add_argument('inputfile', help="sdf filename for convert to smiles")

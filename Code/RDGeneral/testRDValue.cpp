@@ -13,7 +13,7 @@
 #include <cmath>
 #include <boost/any.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 template <class T>
 void testLimits() {

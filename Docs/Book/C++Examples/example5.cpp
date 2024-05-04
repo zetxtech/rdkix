@@ -22,17 +22,17 @@ int main(int argc, char **argv) {
 
   std::string sdf_file = file_root + "/data/5ht3ligs.sdf";
   bool takeOwnership = true;
-  RDKit::SDMolSupplier mol_supplier(sdf_file, takeOwnership);
-  std::vector<std::shared_ptr<RDKit::ROMol>> mols;
+  RDKix::SDMolSupplier mol_supplier(sdf_file, takeOwnership);
+  std::vector<std::shared_ptr<RDKix::ROMol>> mols;
   while (!mol_supplier.atEnd()) {
-    std::shared_ptr<RDKit::ROMol> mol(mol_supplier.next());
+    std::shared_ptr<RDKix::ROMol> mol(mol_supplier.next());
     if (mol) {
       mols.push_back(mol);
     }
   }
 
   std::string pdb_file = file_root + "/data/5ht3ligs.pdb";
-  RDKit::PDBWriter pdb_writer(pdb_file);
+  RDKix::PDBWriter pdb_writer(pdb_file);
   for (std::size_t i = 0, is = mols.size(); i < is; ++i) {
     pdb_writer.write(*mols[i]);
   }
@@ -41,8 +41,8 @@ int main(int argc, char **argv) {
   // takeOwnership must be false for this, as we don't want the SDWriter trying
   // to delete the std::ostringstream.
   takeOwnership = false;
-  boost::shared_ptr<RDKit::SDWriter> sdf_writer(
-      new RDKit::SDWriter(&oss, takeOwnership));
+  boost::shared_ptr<RDKix::SDWriter> sdf_writer(
+      new RDKix::SDWriter(&oss, takeOwnership));
   for (auto mol : mols) {
     sdf_writer->write(*mol);
   }

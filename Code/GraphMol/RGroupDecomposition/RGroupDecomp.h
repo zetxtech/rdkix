@@ -1,25 +1,25 @@
 //
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RGROUPDECOMP_H
-#define RDKIT_RGROUPDECOMP_H
+#ifndef RDKIX_RGROUPDECOMP_H
+#define RDKIX_RGROUPDECOMP_H
 
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "RGroupDecompParams.h"
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <chrono>
 
-namespace RDKit {
+namespace RDKix {
 
-struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionProcessResult {
+struct RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionProcessResult {
   const bool success;
   const double score;
   RGroupDecompositionProcessResult(const bool success, const double score)
@@ -51,7 +51,7 @@ class UsedLabelMap {
 };
 
 struct RGroupDecompData;
-class RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecomposition {
+class RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupDecomposition {
  private:
   RGroupDecompData *data;                            // implementation details
   RGroupDecomposition(const RGroupDecomposition &);  // no copy construct
@@ -91,13 +91,13 @@ class RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecomposition {
   RGroupColumns getRGroupsAsColumns() const;
 };
 
-RDKIT_RGROUPDECOMPOSITION_EXPORT unsigned int RGroupDecompose(
+RDKIX_RGROUPDECOMPOSITION_EXPORT unsigned int RGroupDecompose(
     const std::vector<ROMOL_SPTR> &cores, const std::vector<ROMOL_SPTR> &mols,
     RGroupRows &rows, std::vector<unsigned int> *unmatched = nullptr,
     const RGroupDecompositionParameters &options =
         RGroupDecompositionParameters());
 
-RDKIT_RGROUPDECOMPOSITION_EXPORT unsigned int RGroupDecompose(
+RDKIX_RGROUPDECOMPOSITION_EXPORT unsigned int RGroupDecompose(
     const std::vector<ROMOL_SPTR> &cores, const std::vector<ROMOL_SPTR> &mols,
     RGroupColumns &columns, std::vector<unsigned int> *unmatched = nullptr,
     const RGroupDecompositionParameters &options =
@@ -119,6 +119,6 @@ inline bool checkForTimeout(const std::chrono::steady_clock::time_point &t0,
   return false;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

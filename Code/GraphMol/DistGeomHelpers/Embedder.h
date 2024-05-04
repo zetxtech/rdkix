@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -19,7 +19,7 @@
 #include <boost/shared_ptr.hpp>
 #include <DistGeom/BoundsMatrix.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace DGeomHelpers {
 
 enum EmbedFailureCauses {
@@ -39,7 +39,7 @@ enum EmbedFailureCauses {
 /*!
   numConfs       Number of conformations to be generated
   numThreads     Sets the number of threads to use (more than one thread
-                 will only be used if the RDKit was build with multithread
+                 will only be used if the RDKix was build with multithread
                  support) If set to zero, the max supported by the system will
                  be used.
   maxIterations  Max. number of times the embedding will be tried if
@@ -113,7 +113,7 @@ enum EmbedFailureCauses {
   failures         if trackFailures is true, this is used to track the number
                    of times each embedding check fails
 */
-struct RDKIT_DISTGEOMHELPERS_EXPORT EmbedParameters {
+struct RDKIX_DISTGEOMHELPERS_EXPORT EmbedParameters {
   unsigned int maxIterations{0};
   int numThreads{1};
   int randomSeed{-1};
@@ -191,11 +191,11 @@ struct RDKIT_DISTGEOMHELPERS_EXPORT EmbedParameters {
 };
 
 //! update parameters from a JSON string
-RDKIT_DISTGEOMHELPERS_EXPORT void updateEmbedParametersFromJSON(
+RDKIX_DISTGEOMHELPERS_EXPORT void updateEmbedParametersFromJSON(
     EmbedParameters &params, const std::string &json);
 
 //! Embed multiple conformations for a molecule
-RDKIT_DISTGEOMHELPERS_EXPORT void EmbedMultipleConfs(ROMol &mol, INT_VECT &res,
+RDKIX_DISTGEOMHELPERS_EXPORT void EmbedMultipleConfs(ROMol &mol, INT_VECT &res,
                                                      unsigned int numConfs,
                                                      EmbedParameters &params);
 inline INT_VECT EmbedMultipleConfs(ROMol &mol, unsigned int numConfs,
@@ -323,7 +323,7 @@ inline int EmbedMolecule(
   \param res            Used to return the resulting conformer ids
   \param numConfs       Number of conformations to be generated
   \param numThreads     Sets the number of threads to use (more than one thread
-                        will only be used if the RDKit was build with
+                        will only be used if the RDKix was build with
   multithread
                         support). If set to zero, the max supported by the
   system
@@ -435,20 +435,20 @@ inline INT_VECT EmbedMultipleConfs(
 };
 
 //! Parameters corresponding to Sereina Riniker's KDG approach
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters KDG;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters KDG;
 //! Parameters corresponding to Sereina Riniker's ETDG approach
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETDG;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETDG;
 //! Parameters corresponding to Sereina Riniker's ETKDG approach
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDG;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDG;
 //! Parameters corresponding to Sereina Riniker's ETKDG approach - version 2
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDGv2;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDGv2;
 //! Parameters corresponding improved ETKDG by Wang, Witek, Landrum and Riniker
 //! (10.1021/acs.jcim.0c00025) - the macrocycle part
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDGv3;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters ETKDGv3;
 //! Parameters corresponding improved ETKDG by Wang, Witek, Landrum and Riniker
 //! (10.1021/acs.jcim.0c00025) - the small ring part
-RDKIT_DISTGEOMHELPERS_EXPORT extern const EmbedParameters srETKDGv3;
+RDKIX_DISTGEOMHELPERS_EXPORT extern const EmbedParameters srETKDGv3;
 }  // namespace DGeomHelpers
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

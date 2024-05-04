@@ -1,9 +1,9 @@
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (AstraZeneca)
 // 19th June 2014
@@ -21,9 +21,9 @@
 #include "DrawTextQt.h"
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
-const char *rdkitQtVersion = RDK_QT_VERSION;
+const char *rdkixQtVersion = RDK_QT_VERSION;
 
 // ****************************************************************************
 MolDraw2DQt::MolDraw2DQt(int width, int height, QPainter *qp, int panelWidth,
@@ -192,4 +192,4 @@ void MolDraw2DQt::clearDrawing() {
   d_qp->setBackground(QBrush(this_col));
   d_qp->fillRect(offset().x, offset().y, width(), height(), this_col);
 }
-}  // namespace RDKit
+}  // namespace RDKix

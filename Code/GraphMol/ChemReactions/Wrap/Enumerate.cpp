@@ -40,19 +40,19 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 template <class T>
-std::vector<RDKit::MOL_SPTR_VECT> ConvertToVect(T bbs) {
-  std::vector<RDKit::MOL_SPTR_VECT> vect;
+std::vector<RDKix::MOL_SPTR_VECT> ConvertToVect(T bbs) {
+  std::vector<RDKix::MOL_SPTR_VECT> vect;
   size_t num_bbs = python::extract<unsigned int>(bbs.attr("__len__")());
   vect.resize(num_bbs);
   for (size_t i = 0; i < num_bbs; ++i) {
     unsigned int len1 = python::extract<unsigned int>(bbs[i].attr("__len__")());
-    RDKit::MOL_SPTR_VECT &reacts = vect[i];
+    RDKix::MOL_SPTR_VECT &reacts = vect[i];
     reacts.reserve(len1);
     for (unsigned int j = 0; j < len1; ++j) {
-      RDKit::ROMOL_SPTR mol = python::extract<RDKit::ROMOL_SPTR>(bbs[i][j]);
+      RDKix::ROMOL_SPTR mol = python::extract<RDKix::ROMOL_SPTR>(bbs[i][j]);
       if (mol) {
         reacts.push_back(mol);
       } else {
@@ -63,21 +63,21 @@ std::vector<RDKit::MOL_SPTR_VECT> ConvertToVect(T bbs) {
   return vect;
 }
 
-bool EnumerateLibraryBase__nonzero__(RDKit::EnumerateLibraryBase *base) {
+bool EnumerateLibraryBase__nonzero__(RDKix::EnumerateLibraryBase *base) {
   return static_cast<bool>(*base);
 }
-bool EnumerationStrategyBase__nonzero__(RDKit::EnumerationStrategyBase *base) {
+bool EnumerationStrategyBase__nonzero__(RDKix::EnumerationStrategyBase *base) {
   return static_cast<bool>(*base);
 }
 
 inline python::object pass_through(python::object const &o) { return o; }
 
-PyObject *EnumerateLibraryBase__next__(RDKit::EnumerateLibraryBase *base) {
+PyObject *EnumerateLibraryBase__next__(RDKix::EnumerateLibraryBase *base) {
   if (!static_cast<bool>(*base)) {
     PyErr_SetString(PyExc_StopIteration, "Enumerations exhausted");
     boost::python::throw_error_already_set();
   }
-  std::vector<RDKit::MOL_SPTR_VECT> mols;
+  std::vector<RDKix::MOL_SPTR_VECT> mols;
   {
     NOGIL gil;
     mols = base->next();
@@ -102,27 +102,27 @@ python::object EnumerateLibraryBase_Serialize(const EnumerateLibraryBase &en) {
   return retval;
 }
 
-class EnumerateLibraryWrap : public RDKit::EnumerateLibrary {
+class EnumerateLibraryWrap : public RDKix::EnumerateLibrary {
  public:
   ~EnumerateLibraryWrap() override {}
-  EnumerateLibraryWrap() : RDKit::EnumerateLibrary() {}
-  EnumerateLibraryWrap(const RDKit::ChemicalReaction &rxn, python::list ob,
+  EnumerateLibraryWrap() : RDKix::EnumerateLibrary() {}
+  EnumerateLibraryWrap(const RDKix::ChemicalReaction &rxn, python::list ob,
                        const EnumerationParams &params = EnumerationParams())
-      : RDKit::EnumerateLibrary(rxn, ConvertToVect(ob), params) {}
+      : RDKix::EnumerateLibrary(rxn, ConvertToVect(ob), params) {}
 
-  EnumerateLibraryWrap(const RDKit::ChemicalReaction &rxn, python::tuple ob,
+  EnumerateLibraryWrap(const RDKix::ChemicalReaction &rxn, python::tuple ob,
                        const EnumerationParams &params = EnumerationParams())
-      : RDKit::EnumerateLibrary(rxn, ConvertToVect(ob), params) {}
+      : RDKix::EnumerateLibrary(rxn, ConvertToVect(ob), params) {}
 
-  EnumerateLibraryWrap(const RDKit::ChemicalReaction &rxn, python::list ob,
+  EnumerateLibraryWrap(const RDKix::ChemicalReaction &rxn, python::list ob,
                        const EnumerationStrategyBase &enumerator,
                        const EnumerationParams &params = EnumerationParams())
-      : RDKit::EnumerateLibrary(rxn, ConvertToVect(ob), enumerator, params) {}
+      : RDKix::EnumerateLibrary(rxn, ConvertToVect(ob), enumerator, params) {}
 
-  EnumerateLibraryWrap(const RDKit::ChemicalReaction &rxn, python::tuple ob,
+  EnumerateLibraryWrap(const RDKix::ChemicalReaction &rxn, python::tuple ob,
                        const EnumerationStrategyBase &enumerator,
                        const EnumerationParams &params = EnumerationParams())
-      : RDKit::EnumerateLibrary(rxn, ConvertToVect(ob), enumerator, params) {}
+      : RDKix::EnumerateLibrary(rxn, ConvertToVect(ob), enumerator, params) {}
 };
 
 namespace {
@@ -146,8 +146,8 @@ struct enumeration_wrapper {
     RegisterVectorConverter<boost::uint64_t>("VectSizeT");
     RegisterVectorConverter<MOL_SPTR_VECT>("VectMolVect");
 
-    python::class_<RDKit::EnumerateLibraryBase, RDKit::EnumerateLibraryBase *,
-                   RDKit::EnumerateLibraryBase &, boost::noncopyable>(
+    python::class_<RDKix::EnumerateLibraryBase, RDKix::EnumerateLibraryBase *,
+                   RDKix::EnumerateLibraryBase &, boost::noncopyable>(
         "EnumerateLibraryBase", python::no_init)
         .def("__nonzero__", &EnumerateLibraryBase__nonzero__)
         .def("__bool__", &EnumerateLibraryBase__nonzero__)
@@ -156,7 +156,7 @@ struct enumeration_wrapper {
              "Return the next molecule from the enumeration.")
         .def("__next__", &EnumerateLibraryBase__next__,
              "Return the next molecule from the enumeration.")
-        .def("nextSmiles", &RDKit::EnumerateLibraryBase::nextSmiles,
+        .def("nextSmiles", &RDKix::EnumerateLibraryBase::nextSmiles,
              "Return the next smiles string from the enumeration.")
         .def("Serialize", &EnumerateLibraryBase_Serialize,
              "Serialize the library to a binary string.\n"
@@ -164,30 +164,30 @@ struct enumeration_wrapper {
              "Care should\n"
              "be taken when serializing.  See GetState/SetState for position "
              "manipulation.")
-        .def("InitFromString", &RDKit::EnumerateLibraryBase::initFromString,
+        .def("InitFromString", &RDKix::EnumerateLibraryBase::initFromString,
              python::arg("data"),
              "Inititialize the library from a binary string")
         .def(
-            "GetPosition", &RDKit::EnumerateLibraryBase::getPosition,
+            "GetPosition", &RDKix::EnumerateLibraryBase::getPosition,
             "Returns the current enumeration position into the reagent vectors",
             python::return_internal_reference<
                 1, python::with_custodian_and_ward_postcall<0, 1>>())
         .def(
-            "GetState", &RDKit::EnumerateLibraryBase::getState,
+            "GetState", &RDKix::EnumerateLibraryBase::getState,
             "Returns the current enumeration state (position) of the library.\n"
             "This position can be used to restart the library from a known "
             "position")
-        .def("SetState", &RDKit::EnumerateLibraryBase::setState,
+        .def("SetState", &RDKix::EnumerateLibraryBase::setState,
              python::arg("state"),
              "Sets the enumeration state (position) of the library.")
-        .def("ResetState", &RDKit::EnumerateLibraryBase::resetState,
+        .def("ResetState", &RDKix::EnumerateLibraryBase::resetState,
              "Returns the current enumeration state (position) of the library "
              "to the start.")
-        .def("GetReaction", &RDKit::EnumerateLibraryBase::getReaction,
+        .def("GetReaction", &RDKix::EnumerateLibraryBase::getReaction,
              "Returns the chemical reaction for this library",
              python::return_internal_reference<
                  1, python::with_custodian_and_ward_postcall<0, 1>>())
-        .def("GetEnumerator", &RDKit::EnumerateLibraryBase::getEnumerator,
+        .def("GetEnumerator", &RDKix::EnumerateLibraryBase::getEnumerator,
              "Returns the enumation strategy for the current library",
              python::return_internal_reference<
                  1, python::with_custodian_and_ward_postcall<0, 1>>());
@@ -205,13 +205,13 @@ Options:\n\
      does not pass sanitization, then none of the products will.\n\
 ";
 
-    python::class_<RDKit::EnumerationParams, RDKit::EnumerationParams *,
-                   RDKit::EnumerationParams &>(
+    python::class_<RDKix::EnumerationParams, RDKix::EnumerationParams *,
+                   RDKix::EnumerationParams &>(
         "EnumerationParams", docString.c_str(), python::init<>())
         .def_readwrite("reagentMaxMatchCount",
-                       &RDKit::EnumerationParams::reagentMaxMatchCount)
+                       &RDKix::EnumerationParams::reagentMaxMatchCount)
         .def_readwrite("sanePartialProducts",
-                       &RDKit::EnumerationParams::sanePartialProducts);
+                       &RDKix::EnumerationParams::sanePartialProducts);
 
     docString =
         "EnumerateLibrary\n\
@@ -281,34 +281,34 @@ for result in itertools.islice(libary2, 1000):\n\
     # do something with the next 1000 samples\n\
 ";
     python::class_<EnumerateLibraryWrap, boost::noncopyable,
-                   python::bases<RDKit::EnumerateLibraryBase>>(
+                   python::bases<RDKix::EnumerateLibraryBase>>(
         "EnumerateLibrary", docString.c_str(), python::init<>())
-        .def(python::init<const RDKit::ChemicalReaction &, python::list,
-                          python::optional<const RDKit::EnumerationParams &>>(
+        .def(python::init<const RDKix::ChemicalReaction &, python::list,
+                          python::optional<const RDKix::EnumerationParams &>>(
             python::args("rxn", "reagents", "params")))
-        .def(python::init<const RDKit::ChemicalReaction &, python::tuple,
-                          python::optional<const RDKit::EnumerationParams &>>(
+        .def(python::init<const RDKix::ChemicalReaction &, python::tuple,
+                          python::optional<const RDKix::EnumerationParams &>>(
             python::args("rxn", "reagents", "params")))
 
-        .def(python::init<const RDKit::ChemicalReaction &, python::list,
-                          const RDKit::EnumerationStrategyBase &,
-                          python::optional<const RDKit::EnumerationParams &>>(
+        .def(python::init<const RDKix::ChemicalReaction &, python::list,
+                          const RDKix::EnumerationStrategyBase &,
+                          python::optional<const RDKix::EnumerationParams &>>(
             python::args("rxn", "reagents", "enumerator", "params")))
-        .def(python::init<const RDKit::ChemicalReaction &, python::tuple,
-                          const RDKit::EnumerationStrategyBase &,
-                          python::optional<const RDKit::EnumerationParams &>>(
+        .def(python::init<const RDKix::ChemicalReaction &, python::tuple,
+                          const RDKix::EnumerationStrategyBase &,
+                          python::optional<const RDKix::EnumerationParams &>>(
             python::args("rxn", "reagents", "enumerator", "params")))
 
-        .def("GetReagents", &RDKit::EnumerateLibrary::getReagents,
+        .def("GetReagents", &RDKix::EnumerateLibrary::getReagents,
              "Return the reagents used in this library.",
              python::return_internal_reference<
                  1, python::with_custodian_and_ward_postcall<0, 1>>());
 
     // iterator_wrappers<EnumerateLibrary>().wrap("EnumerateLibraryIterator");
 
-    python::class_<RDKit::EnumerationStrategyBase,
-                   RDKit::EnumerationStrategyBase *,
-                   RDKit::EnumerationStrategyBase &, boost::noncopyable>(
+    python::class_<RDKix::EnumerationStrategyBase,
+                   RDKix::EnumerationStrategyBase *,
+                   RDKix::EnumerationStrategyBase &, boost::noncopyable>(
         "EnumerationStrategyBase", python::no_init)
         .def("__nonzero__", &EnumerationStrategyBase__nonzero__)
         .def("__bool__", &EnumerationStrategyBase__nonzero__)
@@ -347,22 +347,22 @@ for result in itertools.islice(libary2, 1000):\n\
         "\n"
         "(0,0,0), (1,0,0), (2,0,0) ...\n";
 
-    python::class_<RDKit::CartesianProductStrategy,
-                   RDKit::CartesianProductStrategy *,
-                   RDKit::CartesianProductStrategy &,
+    python::class_<RDKix::CartesianProductStrategy,
+                   RDKix::CartesianProductStrategy *,
+                   RDKix::CartesianProductStrategy &,
                    python::bases<EnumerationStrategyBase>>(
         "CartesianProductStrategy", docString.c_str(), python::init<>())
-        .def("__copy__", &RDKit::CartesianProductStrategy::copy,
+        .def("__copy__", &RDKix::CartesianProductStrategy::copy,
              python::return_value_policy<python::manage_new_object>());
 
     docString =
         "RandomSampleStrategy simply randomly samples from the reagent sets.\n"
         "Note that this strategy never halts and can produce duplicates.";
-    python::class_<RDKit::RandomSampleStrategy, RDKit::RandomSampleStrategy *,
-                   RDKit::RandomSampleStrategy &,
+    python::class_<RDKix::RandomSampleStrategy, RDKix::RandomSampleStrategy *,
+                   RDKix::RandomSampleStrategy &,
                    python::bases<EnumerationStrategyBase>>(
         "RandomSampleStrategy", docString.c_str(), python::init<>())
-        .def("__copy__", &RDKit::RandomSampleStrategy::copy,
+        .def("__copy__", &RDKix::RandomSampleStrategy::copy,
              python::return_value_policy<python::manage_new_object>());
 
     docString =
@@ -370,12 +370,12 @@ for result in itertools.islice(libary2, 1000):\n\
         "with the constraint that all building blocks are samples as early as "
         "possible.\n"
         "Note that this strategy never halts and can produce duplicates.";
-    python::class_<RDKit::RandomSampleAllBBsStrategy,
-                   RDKit::RandomSampleAllBBsStrategy *,
-                   RDKit::RandomSampleAllBBsStrategy &,
+    python::class_<RDKix::RandomSampleAllBBsStrategy,
+                   RDKix::RandomSampleAllBBsStrategy *,
+                   RDKix::RandomSampleAllBBsStrategy &,
                    python::bases<EnumerationStrategyBase>>(
         "RandomSampleAllBBsStrategy", docString.c_str(), python::init<>())
-        .def("__copy__", &RDKit::RandomSampleAllBBsStrategy::copy,
+        .def("__copy__", &RDKix::RandomSampleAllBBsStrategy::copy,
              python::return_value_policy<python::manage_new_object>());
 
     docString =
@@ -387,14 +387,14 @@ for result in itertools.islice(libary2, 1000):\n\
         "number of samples gets larger.\n"
         "See EnumerationStrategyBase for more details.\n";
 
-    python::class_<RDKit::EvenSamplePairsStrategy,
-                   RDKit::EvenSamplePairsStrategy *,
-                   RDKit::EvenSamplePairsStrategy &,
+    python::class_<RDKix::EvenSamplePairsStrategy,
+                   RDKix::EvenSamplePairsStrategy *,
+                   RDKix::EvenSamplePairsStrategy &,
                    python::bases<EnumerationStrategyBase>>(
         "EvenSamplePairsStrategy", docString.c_str(), python::init<>())
-        .def("__copy__", &RDKit::EvenSamplePairsStrategy::copy,
+        .def("__copy__", &RDKix::EvenSamplePairsStrategy::copy,
              python::return_value_policy<python::manage_new_object>())
-        .def("Stats", &RDKit::EvenSamplePairsStrategy::stats,
+        .def("Stats", &RDKix::EvenSamplePairsStrategy::stats,
              "Return the statistics log of the pairs used in the current "
              "enumeration.");
 
@@ -404,6 +404,6 @@ for result in itertools.islice(libary2, 1000):\n\
   }
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_enumeration() { RDKit::enumeration_wrapper::wrap(); }
+void wrap_enumeration() { RDKix::enumeration_wrapper::wrap(); }

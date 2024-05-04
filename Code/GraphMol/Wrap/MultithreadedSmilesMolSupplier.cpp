@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_BUILD_THREADSAFE_SSS
 
@@ -16,7 +16,7 @@
 
 // ours
 #include <GraphMol/FileParsers/MultithreadedSmilesMolSupplier.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/FileParseException.h>
 #include <GraphMol/Wrap/ContextManagers.h>
 
@@ -25,7 +25,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 std::string multiSmilesMolSupplierClassDoc =
     "A class which concurrently supplies molecules from a text file.\n\
   Please note that this class is still a bit experimental and the API may\n\
@@ -120,7 +120,7 @@ struct multiSmiMolSup_wrap {
              "Returns the text for the last extracted item.\n");
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_multiSmiSupplier() { RDKit::multiSmiMolSup_wrap::wrap(); }
+void wrap_multiSmiSupplier() { RDKix::multiSmiMolSup_wrap::wrap(); }
 #endif

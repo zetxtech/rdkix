@@ -2,10 +2,10 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
 #include <cstring>
@@ -13,7 +13,7 @@
 
 #include <RDGeneral/versions.h>
 #include <atomic>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -55,7 +55,7 @@
 
 namespace rj = rapidjson;
 
-using namespace RDKit;
+using namespace RDKix;
 
 #if (defined(__GNUC__) || defined(__GNUG__))
 #pragma GCC diagnostic push
@@ -368,7 +368,7 @@ extern "C" char **get_mol_frags(const char *pkl, size_t pkl_sz,
   return molPklArray;
 }
 
-extern "C" char *version() { return str_to_c(rdkitVersion); }
+extern "C" char *version() { return str_to_c(rdkixVersion); }
 #ifdef RDK_BUILD_THREADSAFE_SSS
 std::atomic_int logging_needs_init{1};
 #else
@@ -494,24 +494,24 @@ extern "C" char *get_morgan_fp_as_bytes(const char *mol_pkl, size_t mol_pkl_sz,
   return str_to_c(res, nbytes);
 }
 
-extern "C" char *get_rdkit_fp(const char *mol_pkl, size_t mol_pkl_sz,
+extern "C" char *get_rdkix_fp(const char *mol_pkl, size_t mol_pkl_sz,
                               const char *details_json) {
   if (!mol_pkl || !mol_pkl_sz) {
     return nullptr;
   }
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(mol_from_pkl(mol_pkl, mol_pkl_sz),
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(mol_from_pkl(mol_pkl, mol_pkl_sz),
                                             details_json);
   auto res = BitVectToText(*fp);
   return str_to_c(res);
 }
 
-extern "C" char *get_rdkit_fp_as_bytes(const char *mol_pkl, size_t mol_pkl_sz,
+extern "C" char *get_rdkix_fp_as_bytes(const char *mol_pkl, size_t mol_pkl_sz,
                                        size_t *nbytes,
                                        const char *details_json) {
   if (!mol_pkl || !mol_pkl_sz) {
     return nullptr;
   }
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(mol_from_pkl(mol_pkl, mol_pkl_sz),
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(mol_from_pkl(mol_pkl, mol_pkl_sz),
                                             details_json);
   auto res = BitVectToBinaryText(*fp);
   return str_to_c(res, nbytes);

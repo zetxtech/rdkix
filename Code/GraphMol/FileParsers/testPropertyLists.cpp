@@ -1,22 +1,22 @@
 //
 //  Copyright (C) 2019 Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RDGeneral/test.h"
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/FileParserUtils.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Property list conversion", "[atom_list_properties]") {
   SECTION("basics: iprops") {
@@ -135,7 +135,7 @@ TEST_CASE("processMolPropertyLists", "[atom_list_properties]") {
 
 TEST_CASE("basic SDF handling", "[SDF][atom_list_properties]") {
   std::string sdf = R"SDF(
-     RDKit  2D
+     RDKix  2D
 
   3  3  0  0  0  0  0  0  0  0999 V2000
     0.8660    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -166,18 +166,18 @@ one n/a three
 $$$$
 )SDF";
   SECTION("no processing") {
-    RDKit::SDMolSupplier suppl;
+    RDKix::SDMolSupplier suppl;
     suppl.setData(sdf);
     suppl.setProcessPropertyLists(false);
-    std::unique_ptr<RDKit::ROMol> m(suppl[0]);
+    std::unique_ptr<RDKix::ROMol> m(suppl[0]);
     REQUIRE(m);
     CHECK(m->hasProp("atom.prop.AtomLabel"));
     CHECK(!m->getAtomWithIdx(0)->hasProp("AtomLabel"));
   }
   SECTION("with processing") {
-    RDKit::SDMolSupplier suppl;
+    RDKix::SDMolSupplier suppl;
     suppl.setData(sdf);
-    std::unique_ptr<RDKit::ROMol> m(suppl[0]);
+    std::unique_ptr<RDKix::ROMol> m(suppl[0]);
     REQUIRE(m);
     CHECK(m->hasProp("atom.prop.AtomLabel"));
     CHECK(m->getAtomWithIdx(0)->hasProp("AtomLabel"));

@@ -41,7 +41,7 @@
 
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class Conformer;
 namespace ConformerParser {
@@ -55,7 +55,7 @@ namespace ConformerParser {
 
   Returns: integer vector with confIds
 */
-RDKIT_CONFORMERPARSER_EXPORT INT_VECT addConformersFromList(
+RDKIX_CONFORMERPARSER_EXPORT INT_VECT addConformersFromList(
     ROMol &mol, const std::vector<std::vector<double>> &coords,
     int numConf = -1);
 
@@ -66,11 +66,11 @@ RDKIT_CONFORMERPARSER_EXPORT INT_VECT addConformersFromList(
   \param coords       list with coordinates
 
 */
-RDKIT_CONFORMERPARSER_EXPORT void readAmberTrajectory(
+RDKIX_CONFORMERPARSER_EXPORT void readAmberTrajectory(
     const std::string &fName, std::vector<std::vector<double>> &coords,
     unsigned int numAtoms);
 
 }  // end namespace ConformerParser
-}  // end namespace RDKit
+}  // end namespace RDKix
 
 #endif

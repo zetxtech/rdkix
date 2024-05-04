@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2008 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <RDGeneral/export.h>
@@ -21,7 +21,7 @@
 #include <boost/cstdint.hpp>
 #include <boost/predef.h>
 
-namespace RDKit {
+namespace RDKix {
 // this code block for handling endian problems is adapted from :
 // http://stackoverflow.com/questions/105252/how-do-i-convert-between-big-endian-and-little-endian-values-in-c
 enum EEndian {
@@ -632,6 +632,6 @@ inline unsigned int streamReadProps(std::istream &ss, RDProps &props,
   return count;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -35,8 +35,8 @@
    especially those whose name start with YY_ or yy_.  They are
    private implementation details that can be changed or removed.  */
 
-#ifndef YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
-#define YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
+#ifndef YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
+#define YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 #define YYDEBUG 0
@@ -105,20 +105,20 @@ union YYSTYPE {
 #line 79 "smarts.yy"
 
   int moli;
-  RDKit::QueryAtom *atom;
-  RDKit::QueryBond *bond;
-  RDKit::Atom::ChiralType chiraltype;
+  RDKix::QueryAtom *atom;
+  RDKix::QueryBond *bond;
+  RDKix::Atom::ChiralType chiraltype;
   int ival;
 
-#line 115 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
+#line 115 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
 };
 typedef union YYSTYPE YYSTYPE;
 #define YYSTYPE_IS_TRIVIAL 1
 #define YYSTYPE_IS_DECLARED 1
 #endif
 
-int yysmarts_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
-                   RDKit::Atom *&lastAtom, RDKit::Bond *&lastBond,
+int yysmarts_parse(const char *input, std::vector<RDKix::RWMol *> *molList,
+                   RDKix::Atom *&lastAtom, RDKix::Bond *&lastBond,
                    unsigned &numAtomsParsed, unsigned &numBondsParsed,
                    std::list<unsigned int> *branchPoints, void *scanner,
                    int &start_token);
@@ -129,7 +129,7 @@ int yysmarts_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
 #define YY_DECL \
   int yylex(YYSTYPE *yylval_param, yyscan_t yyscanner, int &start_token)
 
-#line 134 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
+#line 134 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/smarts.tab.hpp"
 
-#endif /* !YY_YYSMARTS_SCRATCH_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED \
+#endif /* !YY_YYSMARTS_SCRATCH_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMARTS_TAB_HPP_INCLUDED \
         */

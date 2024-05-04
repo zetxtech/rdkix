@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2016-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2016-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -17,7 +17,7 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 class MolDraw2D;
 
 namespace MolDraw2DUtils {
@@ -41,7 +41,7 @@ happens the molecule will be in an inconsistent, partially kekulized, state.
 This isn't normally a problem for molecules that have been sanitized, but can be
 problematic if the molecules have been modified post santitization.
 */
-RDKIT_MOLDRAW2D_EXPORT void prepareMolForDrawing(
+RDKIX_MOLDRAW2D_EXPORT void prepareMolForDrawing(
     RWMol &mol, bool kekulize = true, bool addChiralHs = true,
     bool wedgeBonds = true, bool forceCoords = false, bool wavyBonds = false);
 
@@ -63,7 +63,7 @@ RDKIT_MOLDRAW2D_EXPORT void prepareMolForDrawing(
   \param confId: (optional) conformer ID to be used for atomic coordinates
 
 */
-RDKIT_MOLDRAW2D_EXPORT void prepareAndDrawMolecule(
+RDKIX_MOLDRAW2D_EXPORT void prepareAndDrawMolecule(
     MolDraw2D &drawer, const ROMol &mol, const std::string &legend = "",
     const std::vector<int> *highlight_atoms = nullptr,
     const std::vector<int> *highlight_bonds = nullptr,
@@ -73,13 +73,13 @@ RDKIT_MOLDRAW2D_EXPORT void prepareAndDrawMolecule(
     bool kekulize = true, bool addChiralHs = true, bool wedgeBonds = true,
     bool forceCoords = false, bool wavyBonds = false);
 
-RDKIT_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
+RDKIX_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
                                                        const char *json);
-RDKIT_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
+RDKIX_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
                                                        const std::string &json);
-RDKIT_MOLDRAW2D_EXPORT void updateMolDrawOptionsFromJSON(MolDrawOptions &opts,
+RDKIX_MOLDRAW2D_EXPORT void updateMolDrawOptionsFromJSON(MolDrawOptions &opts,
                                                          const char *json);
-RDKIT_MOLDRAW2D_EXPORT void updateMolDrawOptionsFromJSON(
+RDKIX_MOLDRAW2D_EXPORT void updateMolDrawOptionsFromJSON(
     MolDrawOptions &opts, const std::string &json);
 
 struct ContourParams {
@@ -119,13 +119,13 @@ struct ContourParams {
   the contour, and it makes sense if it fits.
 
 */
-RDKIT_MOLDRAW2D_EXPORT void contourAndDrawGrid(
+RDKIX_MOLDRAW2D_EXPORT void contourAndDrawGrid(
     MolDraw2D &drawer, const double *grid, const std::vector<double> &xcoords,
     const std::vector<double> &ycoords, size_t nContours,
     std::vector<double> &levels, const ContourParams &ps = ContourParams(),
     const ROMol *mol = nullptr);
 //! \overload
-RDKIT_MOLDRAW2D_EXPORT inline void contourAndDrawGrid(
+RDKIX_MOLDRAW2D_EXPORT inline void contourAndDrawGrid(
     MolDraw2D &drawer, const double *grid, const std::vector<double> &xcoords,
     const std::vector<double> &ycoords, size_t nContours = 10,
     const ContourParams &ps = ContourParams(), const ROMol *mol = nullptr) {
@@ -162,13 +162,13 @@ RDKIT_MOLDRAW2D_EXPORT inline void contourAndDrawGrid(
   the contour, and it makes sense if it fits.
 
 */
-RDKIT_MOLDRAW2D_EXPORT void contourAndDrawGaussians(
+RDKIX_MOLDRAW2D_EXPORT void contourAndDrawGaussians(
     MolDraw2D &drawer, const std::vector<Point2D> &locs,
     const std::vector<double> &heights, const std::vector<double> &widths,
     size_t nContours, std::vector<double> &levels,
     const ContourParams &ps = ContourParams(), const ROMol *mol = nullptr);
 //! \overload
-RDKIT_MOLDRAW2D_EXPORT inline void contourAndDrawGaussians(
+RDKIX_MOLDRAW2D_EXPORT inline void contourAndDrawGaussians(
     MolDraw2D &drawer, const std::vector<Point2D> &locs,
     const std::vector<double> &heights, const std::vector<double> &widths,
     size_t nContours = 10, const ContourParams &ps = ContourParams(),
@@ -188,7 +188,7 @@ RDKIT_MOLDRAW2D_EXPORT inline void contourAndDrawGaussians(
   It will issue a warning if the dimensions are otherwise and the picture may
   look sub-optimal.
  */
-RDKIT_MOLDRAW2D_EXPORT void drawMolACS1996(
+RDKIX_MOLDRAW2D_EXPORT void drawMolACS1996(
     MolDraw2D &drawer, const ROMol &mol, const std::string &legend,
     const std::vector<int> *highlight_atoms,
     const std::vector<int> *highlight_bonds,
@@ -221,10 +221,10 @@ RDKIT_MOLDRAW2D_EXPORT void drawMolACS1996(
               exists, uses $RDBASE/Fonts/Data/FreeSans.ttf.  Otherwise uses
               BuiltinRobotoRegular.
  */
-RDKIT_MOLDRAW2D_EXPORT void setACS1996Options(MolDrawOptions &opts,
+RDKIX_MOLDRAW2D_EXPORT void setACS1996Options(MolDrawOptions &opts,
                                               double meanBondLen = 1.0);
-RDKIT_MOLDRAW2D_EXPORT double meanBondLength(const ROMol &mol, int confId = -1);
+RDKIX_MOLDRAW2D_EXPORT double meanBondLength(const ROMol &mol, int confId = -1);
 }  // namespace MolDraw2DUtils
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DUTILS_H

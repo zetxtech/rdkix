@@ -1,32 +1,32 @@
 //
-//  Copyright (C) 2004-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MOL_FILE_STEREOCHEM_H
 #define RD_MOL_FILE_STEREOCHEM_H
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 //! deprecated, please use MolOps::assignChiralTypesFromBondDirs instead
-RDKIT_FILEPARSERS_EXPORT void DetectAtomStereoChemistry(RWMol &mol,
+RDKIX_FILEPARSERS_EXPORT void DetectAtomStereoChemistry(RWMol &mol,
                                                         const Conformer *conf);
 //! deprecated, please use MolOps::detectBondStereoChemistry instead
-RDKIT_FILEPARSERS_EXPORT void DetectBondStereoChemistry(ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void DetectBondStereoChemistry(ROMol &mol,
                                                         const Conformer *conf);
 
 //! \deprecated use Chirality::wedgeMolBonds instead
-RDKIT_FILEPARSERS_EXPORT void WedgeMolBonds(ROMol &mol, const Conformer *conf);
+RDKIX_FILEPARSERS_EXPORT void WedgeMolBonds(ROMol &mol, const Conformer *conf);
 //! \deprecated use Chirality::wedgeBond instead
-RDKIT_FILEPARSERS_EXPORT void WedgeBond(Bond *bond, unsigned int fromAtomIdx,
+RDKIX_FILEPARSERS_EXPORT void WedgeBond(Bond *bond, unsigned int fromAtomIdx,
                                         const Conformer *conf);
-struct RDKIT_FILEPARSERS_EXPORT StereoBondThresholds {
+struct RDKIX_FILEPARSERS_EXPORT StereoBondThresholds {
   const static unsigned DBL_BOND_NO_STEREO =
       1000;  //!< neighboring double bond without stereo info
   const static unsigned DBL_BOND_SPECIFIED_STEREO =
@@ -47,39 +47,39 @@ struct RDKIT_FILEPARSERS_EXPORT StereoBondThresholds {
    that's set to STEREOANY after constructing the molecule) Otherwise, no wavy
    bond will be set
 */
-RDKIT_FILEPARSERS_EXPORT void addWavyBondsForStereoAny(
+RDKIX_FILEPARSERS_EXPORT void addWavyBondsForStereoAny(
     ROMol &mol, bool clearDoubleBondFlags = true,
     unsigned addWhenImpossible = StereoBondThresholds::DBL_BOND_NO_STEREO);
 
 //! \deprecated use Chirality::pickBondsToWedge instead
-RDKIT_FILEPARSERS_EXPORT INT_MAP_INT pickBondsToWedge(const ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT INT_MAP_INT pickBondsToWedge(const ROMol &mol);
 //! \deprecated, please use MolOps::clearSingleBondDirFlags instead
-RDKIT_FILEPARSERS_EXPORT void ClearSingleBondDirFlags(ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT void ClearSingleBondDirFlags(ROMol &mol);
 //! \deprecated use Chirality::detail::determineBondWedgeState instead
-RDKIT_FILEPARSERS_EXPORT Bond::BondDir DetermineBondWedgeState(
+RDKIX_FILEPARSERS_EXPORT Bond::BondDir DetermineBondWedgeState(
     const Bond *bond, unsigned int fromAtomIdx, const Conformer *conf);
 //! \deprecated use Chirality::detail::determineBondWedgeState instead
-RDKIT_FILEPARSERS_EXPORT Bond::BondDir DetermineBondWedgeState(
+RDKIX_FILEPARSERS_EXPORT Bond::BondDir DetermineBondWedgeState(
     const Bond *bond, const INT_MAP_INT &wedgeBonds, const Conformer *conf);
 //! Clears existing bond wedging and forces use of atom wedging from MolBlock.
 /*!
  \param mol: molecule to have its wedges altered
  */
-RDKIT_FILEPARSERS_EXPORT void reapplyMolBlockWedging(ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT void reapplyMolBlockWedging(ROMol &mol);
 //! Remove MolBlock bond wedging information from molecule.
 /*!
  \param mol: molecule to modify
  */
-RDKIT_FILEPARSERS_EXPORT void clearMolBlockWedgingInfo(ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT void clearMolBlockWedgingInfo(ROMol &mol);
 //! Invert bond wedging information read from a mol block (if present).
 /*!
  \param mol: molecule to modify
  */
-RDKIT_FILEPARSERS_EXPORT void invertMolBlockWedgingInfo(ROMol &mol);
+RDKIX_FILEPARSERS_EXPORT void invertMolBlockWedgingInfo(ROMol &mol);
 
 //! Set double bonds with unspecified stereo to STEREOANY and add wavy bonds to
 ///  potential stereocenters with unspecified chirality
-RDKIT_FILEPARSERS_EXPORT void markUnspecifiedStereoAsUnknown(ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void markUnspecifiedStereoAsUnknown(ROMol &mol,
                                                              int confId = -1);
 
 //! generate enhanced stereo groups based on the status of the chiral flag
@@ -100,9 +100,9 @@ RDKIT_FILEPARSERS_EXPORT void markUnspecifiedStereoAsUnknown(ROMol &mol,
   molecule will not be modified.
 
 */
-RDKIT_FILEPARSERS_EXPORT void translateChiralFlagToStereoGroups(
+RDKIX_FILEPARSERS_EXPORT void translateChiralFlagToStereoGroups(
     ROMol &mol,
     StereoGroupType zeroFlagGroupType = StereoGroupType::STEREO_AND);
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

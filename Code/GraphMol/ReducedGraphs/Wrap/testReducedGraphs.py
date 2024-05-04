@@ -4,8 +4,8 @@ import unittest
 
 import numpy
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import rdReducedGraphs as rdRG
+from rdkix import Chem, RDConfig
+from rdkix.Chem import rdReducedGraphs as rdRG
 
 
 class TestCase(unittest.TestCase):

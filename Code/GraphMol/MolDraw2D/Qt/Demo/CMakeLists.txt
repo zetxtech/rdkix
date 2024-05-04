@@ -12,30 +12,30 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 include_directories(
-  ${RDKIT_INCLUDE_DIR}
+  ${RDKIX_INCLUDE_DIR}
   ${CMAKE_SOURCE_DIR} )
 
-set( RDKitSV_SRCS rdkitsv_main.cc
+set( RDKixSV_SRCS rdkixsv_main.cc
   MolDisplay2DWidget.cc
-  RDKitSVMainWindow.cc
-  RDKitSVPanel.cc
-  RDKitSVSettings.cc
+  RDKixSVMainWindow.cc
+  RDKixSVPanel.cc
+  RDKixSVSettings.cc
   QTGet2Strings.cc
   QT4SelectItems.cc )
 
-set( RDKitSV_INCS MolDisplay2DWidget.H
-  RDKitSVMainWindow.H
-  RDKitSVPanel.H
-  RDKitSVSettings.H
+set( RDKixSV_INCS MolDisplay2DWidget.H
+  RDKixSVMainWindow.H
+  RDKixSVPanel.H
+  RDKixSVSettings.H
   QTGet2Strings.H
   QT4SelectItems.H )
 
 set( LIBS Boost::program_options Boost::iostreams Boost::filesystem
-  ${RDKit_THREAD_LIBS}
+  ${RDKix_THREAD_LIBS}
   FileParsers SmilesParse Depictor RDGeometryLib
   RDGeneral SubstructMatch Subgraphs GraphMol RDGeometryLib
    z QtDependencies)
 
-add_executable( rdkitsv ${RDKitSV_SRCS}
-  ${RDKitSV_MOC_SRCS} ${RDKitSV_INCS} )
-target_link_libraries( rdkitsv MolDraw2D ${LIBS}  )
+add_executable( rdkixsv ${RDKixSV_SRCS}
+  ${RDKixSV_MOC_SRCS} ${RDKixSV_INCS} )
+target_link_libraries( rdkixsv MolDraw2D ${LIBS}  )

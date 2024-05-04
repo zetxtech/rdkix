@@ -2,17 +2,17 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "GenericGroups.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace GenericGroups {
@@ -478,4 +478,4 @@ void setGenericQueriesFromProperties(ROMol &mol, bool useAtomLabels,
   }
 }
 }  // namespace GenericGroups
-}  // namespace RDKit
+}  // namespace RDKix

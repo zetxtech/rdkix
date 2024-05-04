@@ -2,14 +2,14 @@
 //  Copyright (C) 2012-2016 Greg Landrum
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -22,26 +22,26 @@
 #include <GraphMol/Descriptors/WHIM.h>
 
 void testWHIM2() {
-  std::cout << "=>start test chlorobenzene whim from rdkit\n";
+  std::cout << "=>start test chlorobenzene whim from rdkix\n";
 
   std::string pathName = getenv("RDBASE");
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/chlorobenzene.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   int nDone = 0;
   while (!reader.atEnd()) {
     ++nDone;
 
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dwhim;
 
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01);
     for (int j = 0; j < 114; j++) {
       std::cout << dwhim[j] << ",";
     }
@@ -60,20 +60,20 @@ void testWHIM3() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/chlorobenzene2.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   int nDone = 0;
   while (!reader.atEnd()) {
     ++nDone;
 
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
 
     std::vector<double> dwhim;
 
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01);
     for (int j = 0; j < 114; j++) {
       std::cout << dwhim[j] << ",";
     }
@@ -92,13 +92,13 @@ void testWHIM1() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/1mol.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
 
   int nDone = 0;
   while (!reader.atEnd()) {
     ++nDone;
 
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
@@ -106,7 +106,7 @@ void testWHIM1() {
     std::vector<double> dwhim;
     // for (int i=1;i<11;i++) {
     // std::cout << "i:" << 0.005*i << "\n";
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01);
     for (int j = 0; j < 114; j++) {
       std::cout << dwhim[j] << ",";
     }
@@ -127,7 +127,7 @@ void testWHIM() {
   std::string pathName = getenv("RDBASE");
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf";
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   std::string fName =
       pathName + "/Code/GraphMol/Descriptors/test_data/whim.new.out";
   std::ifstream instrm(fName.c_str());
@@ -152,12 +152,12 @@ void testWHIM() {
 
   int nDone = 0;
   while (!reader.atEnd()) {
-    RDKit::ROMol *m = reader.next();
+    RDKix::ROMol *m = reader.next();
     TEST_ASSERT(m);
     std::string nm;
     m->getProp("_Name", nm);
     std::vector<double> dwhim;
-    RDKit::Descriptors::WHIM(*m, dwhim, -1, 0.01);
+    RDKix::Descriptors::WHIM(*m, dwhim, -1, 0.01);
     std::vector<std::string> myrow = data[nDone];
     std::string inm = myrow[0];
     TEST_ASSERT(inm == nm);

@@ -3,7 +3,7 @@
 #include <cstdio>
 
 #include <GraphMol/GraphMol.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -13,28 +13,28 @@
 
 #define VERBOSE
 
-static void testToPDB(const RDKit::ROMol &mol) {
-  std::string pdb = RDKit::MolToPDBBlock(mol);
+static void testToPDB(const RDKix::ROMol &mol) {
+  std::string pdb = RDKix::MolToPDBBlock(mol);
   printf("  PDB:\n%s\n", pdb.c_str());
 }
 
-static void testToSmiles(const RDKit::ROMol &mol) {
-  std::string smi = RDKit::MolToSmiles(mol, true);
+static void testToSmiles(const RDKix::ROMol &mol) {
+  std::string smi = RDKix::MolToSmiles(mol, true);
   printf("  Smiles: %s\n", smi.c_str());
 }
 
-static void testToSequence(const RDKit::ROMol &mol) {
-  std::string seq = RDKit::MolToSequence(mol);
+static void testToSequence(const RDKix::ROMol &mol) {
+  std::string seq = RDKix::MolToSequence(mol);
   printf("  Sequence: %s\n", seq.c_str());
 }
 
-static void testToHELM(const RDKit::ROMol &mol) {
-  std::string helm = RDKit::MolToHELM(mol);
+static void testToHELM(const RDKix::ROMol &mol) {
+  std::string helm = RDKix::MolToHELM(mol);
   printf("  HELM: %s\n", helm.c_str());
 }
 
 static void testSeq(const char *seq) {
-  RDKit::RWMol *mol = RDKit::SequenceToMol(seq);
+  RDKix::RWMol *mol = RDKix::SequenceToMol(seq);
   testToSequence(*mol);
   testToHELM(*mol);
   testToSmiles(*mol);
@@ -43,7 +43,7 @@ static void testSeq(const char *seq) {
 }
 
 static void testHELM(const char *helm) {
-  RDKit::RWMol *mol = RDKit::HELMToMol(helm);
+  RDKix::RWMol *mol = RDKix::HELMToMol(helm);
   TEST_ASSERT(mol);
   testToSequence(*mol);
   testToHELM(*mol);
@@ -53,7 +53,7 @@ static void testHELM(const char *helm) {
 }
 
 static void testPDB(const char *pdb) {
-  RDKit::RWMol *mol = RDKit::PDBBlockToMol(pdb);
+  RDKix::RWMol *mol = RDKix::PDBBlockToMol(pdb);
   testToSequence(*mol);
   testToHELM(*mol);
   testToSmiles(*mol);

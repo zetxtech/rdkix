@@ -2,20 +2,20 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Abbreviations.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <boost/tokenizer.hpp>
 
 using tokenizer = boost::tokenizer<boost::char_separator<char>>;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Abbreviations {
 
@@ -225,4 +225,4 @@ std::vector<AbbreviationDefinition> getDefaultLinkers() {
 }  // namespace Utils
 
 }  // namespace Abbreviations
-}  // namespace RDKit
+}  // namespace RDKix

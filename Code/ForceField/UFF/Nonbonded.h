@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_NONBONDED_H__
@@ -28,7 +28,7 @@ class AtomicParams;
    length. This multiplier can be supplied to the constructor.
 
  */
-class RDKIT_FORCEFIELD_EXPORT vdWContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT vdWContrib : public ForceFieldContrib {
  public:
   vdWContrib() {}
 
@@ -67,7 +67,7 @@ namespace Utils {
   \return the position of the minimum
 
 */
-RDKIT_FORCEFIELD_EXPORT double calcNonbondedMinimum(
+RDKIX_FORCEFIELD_EXPORT double calcNonbondedMinimum(
     const AtomicParams *at1Params, const AtomicParams *at2Params);
 
 //! calculates and returns the UFF well depth for a vdW contact
@@ -79,7 +79,7 @@ RDKIT_FORCEFIELD_EXPORT double calcNonbondedMinimum(
   \return the depth of the well
 
 */
-RDKIT_FORCEFIELD_EXPORT double calcNonbondedDepth(
+RDKIX_FORCEFIELD_EXPORT double calcNonbondedDepth(
     const AtomicParams *at1Params, const AtomicParams *at2Params);
 }  // namespace Utils
 }  // namespace UFF

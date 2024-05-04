@@ -30,8 +30,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_SANITIZERXN_H
-#define RDKIT_SANITIZERXN_H
+#ifndef RDKIX_SANITIZERXN_H
+#define RDKIX_SANITIZERXN_H
 
 #include "Reaction.h"
 #include <GraphMol/MolOps.h>
@@ -39,10 +39,10 @@
 #include <exception>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 
 //! class for flagging sanitization errors
-class RDKIT_CHEMREACTIONS_EXPORT RxnSanitizeException : public std::exception {
+class RDKIX_CHEMREACTIONS_EXPORT RxnSanitizeException : public std::exception {
  public:
   RxnSanitizeException(const char *msg) : _msg(msg) {}
   RxnSanitizeException(std::string msg) : _msg(std::move(msg)) {}
@@ -55,21 +55,21 @@ class RDKIT_CHEMREACTIONS_EXPORT RxnSanitizeException : public std::exception {
 
 namespace RxnOps {
 //! Any dummy atom with a map but no RGroup label, should be an RGroup
-//!  in RDKit's view of a reaction.
+//!  in RDKix's view of a reaction.
 //!  See if these atoms can be salvaged into RGroups.
-RDKIT_CHEMREACTIONS_EXPORT void fixRGroups(ChemicalReaction &rxn);
+RDKIX_CHEMREACTIONS_EXPORT void fixRGroups(ChemicalReaction &rxn);
 
 //! If atom maps are not defined on rgroups, attempt to deduce them from the
 //! RGroup
 //!  labels, or add new ones if possible.
-RDKIT_CHEMREACTIONS_EXPORT void fixAtomMaps(ChemicalReaction &rxn);
+RDKIX_CHEMREACTIONS_EXPORT void fixAtomMaps(ChemicalReaction &rxn);
 
 //! Adjusts the reactant templates to properly match reagents
-RDKIT_CHEMREACTIONS_EXPORT void adjustTemplates(
+RDKIX_CHEMREACTIONS_EXPORT void adjustTemplates(
     ChemicalReaction &rxn, const MolOps::AdjustQueryParameters &params);
 
 //! merge query Hs if appropriate
-RDKIT_CHEMREACTIONS_EXPORT void fixHs(ChemicalReaction &rxn);
+RDKIX_CHEMREACTIONS_EXPORT void fixHs(ChemicalReaction &rxn);
 
 // Default adjustment parameters for matching reagents
 inline const MolOps::AdjustQueryParameters DefaultRxnAdjustParams() {
@@ -122,7 +122,7 @@ typedef enum {
 
 //! \brief carries out a collection of tasks for cleaning up a reaction and
 /// ensuring
-//! that it makes "chemical sense" in the context of RDKit reacitons
+//! that it makes "chemical sense" in the context of RDKix reacitons
 /*!
    This functions calls the following in sequence
      -# RxnOps::fixRGroups()
@@ -154,16 +154,16 @@ typedef enum {
       aromatic) may not have enough information.
 */
 
-RDKIT_CHEMREACTIONS_EXPORT void sanitizeRxn(
+RDKIX_CHEMREACTIONS_EXPORT void sanitizeRxn(
     ChemicalReaction &rxn, unsigned int &operationsThatFailed,
     unsigned int sanitizeOps = SANITIZE_ALL,
     const MolOps::AdjustQueryParameters &params = DefaultRxnAdjustParams());
 //! \overload
-RDKIT_CHEMREACTIONS_EXPORT void sanitizeRxn(
+RDKIX_CHEMREACTIONS_EXPORT void sanitizeRxn(
     ChemicalReaction &rxn,
     const MolOps::AdjustQueryParameters &params = DefaultRxnAdjustParams());
 
 }  // namespace RxnOps
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

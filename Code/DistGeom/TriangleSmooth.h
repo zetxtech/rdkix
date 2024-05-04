@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_TRIANGLE_SMOOTH_H__
@@ -26,10 +26,10 @@ namespace DistGeom {
   \param tol   a tolerance (percent) for errors in the smoothing process
 
 */
-RDKIT_DISTGEOMETRY_EXPORT bool triangleSmoothBounds(BoundsMatrix *boundsMat,
+RDKIX_DISTGEOMETRY_EXPORT bool triangleSmoothBounds(BoundsMatrix *boundsMat,
                                                     double tol = 0.);
 //! \overload
-RDKIT_DISTGEOMETRY_EXPORT bool triangleSmoothBounds(BoundsMatPtr boundsMat,
+RDKIX_DISTGEOMETRY_EXPORT bool triangleSmoothBounds(BoundsMatPtr boundsMat,
                                                     double tol = 0.);
 }  // namespace DistGeom
 

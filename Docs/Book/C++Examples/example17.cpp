@@ -10,7 +10,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/MolDraw2D/MolDraw2DSVG.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 std::vector<int> get_all_hit_atoms(ROMol &mol, const std::string &smt) {
   std::vector<int> hit_atoms;

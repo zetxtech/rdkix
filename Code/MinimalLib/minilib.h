@@ -1,15 +1,15 @@
 //
 //
-//  Copyright (C) 2019-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2019-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ChemReactions/ReactionParser.h>
@@ -19,7 +19,7 @@ class JSMolIterator;
 class JSMol {
  public:
   JSMol() : d_mol(nullptr) {}
-  JSMol(RDKit::RWMol *mol) : d_mol(mol) {}
+  JSMol(RDKix::RWMol *mol) : d_mol(mol) {}
   std::string get_smiles() const;
   std::string get_cxsmiles() const;
   std::string get_smarts() const;
@@ -60,11 +60,11 @@ class JSMol {
   std::string get_topological_torsion_fp_as_binary_text() const {
     return get_topological_torsion_fp_as_binary_text("{}");
   }
-  std::string get_rdkit_fp(const std::string &details) const;
-  std::string get_rdkit_fp() const { return get_rdkit_fp("{}"); }
-  std::string get_rdkit_fp_as_binary_text(const std::string &details) const;
-  std::string get_rdkit_fp_as_binary_text() const {
-    return get_rdkit_fp_as_binary_text("{}");
+  std::string get_rdkix_fp(const std::string &details) const;
+  std::string get_rdkix_fp() const { return get_rdkix_fp("{}"); }
+  std::string get_rdkix_fp_as_binary_text(const std::string &details) const;
+  std::string get_rdkix_fp_as_binary_text() const {
+    return get_rdkix_fp_as_binary_text("{}");
   }
   std::string get_atom_pair_fp(const std::string &details) const;
   std::string get_atom_pair_fp() const { return get_atom_pair_fp("{}"); }
@@ -136,18 +136,18 @@ class JSMol {
     return get_frags("{}");
   }
 
-  std::unique_ptr<RDKit::RWMol> d_mol;
+  std::unique_ptr<RDKix::RWMol> d_mol;
   static constexpr int d_defaultWidth = 250;
   static constexpr int d_defaultHeight = 200;
 };
 
 class JSMolIterator {
  public:
-  JSMolIterator(const std::vector<RDKit::ROMOL_SPTR> &mols)
+  JSMolIterator(const std::vector<RDKix::ROMOL_SPTR> &mols)
       : d_mols(mols), d_idx(0){};
   JSMol *next() {
     return (d_idx < d_mols.size()
-                ? new JSMol(new RDKit::RWMol(*d_mols.at(d_idx++)))
+                ? new JSMol(new RDKix::RWMol(*d_mols.at(d_idx++)))
                 : nullptr);
   }
   void reset() { d_idx = 0; }
@@ -155,14 +155,14 @@ class JSMolIterator {
   size_t size() { return d_mols.size(); }
 
  private:
-  std::vector<RDKit::ROMOL_SPTR> d_mols;
+  std::vector<RDKix::ROMOL_SPTR> d_mols;
   size_t d_idx;
 };
 
 class JSReaction {
  public:
   JSReaction() : d_rxn(nullptr) {}
-  JSReaction(RDKit::ChemicalReaction *rxn) : d_rxn(rxn) {}
+  JSReaction(RDKix::ChemicalReaction *rxn) : d_rxn(rxn) {}
   bool is_valid() const { return d_rxn.get() != nullptr; }
 
   std::string get_svg(int width, int height) const;
@@ -171,7 +171,7 @@ class JSReaction {
   }
   std::string get_svg_with_highlights(const std::string &details) const;
 
-  std::unique_ptr<RDKit::ChemicalReaction> d_rxn;
+  std::unique_ptr<RDKix::ChemicalReaction> d_rxn;
   static constexpr int d_defaultWidth = 800;
   static constexpr int d_defaultHeight = 200;
 };
@@ -200,9 +200,9 @@ class JSSubstructLibrary {
     return count_matches(q, d_defaultUseChirality, d_defaultNumThreads);
   }
 
-  std::unique_ptr<RDKit::SubstructLibrary> d_sslib;
-  RDKit::CachedTrustedSmilesMolHolder *d_molHolder;
-  RDKit::PatternHolder *d_fpHolder;
+  std::unique_ptr<RDKix::SubstructLibrary> d_sslib;
+  RDKix::CachedTrustedSmilesMolHolder *d_molHolder;
+  RDKix::PatternHolder *d_fpHolder;
   unsigned int d_num_bits;
   static constexpr unsigned int d_defaultNumBits = 2048;
   static constexpr bool d_defaultUseChirality = true;
@@ -210,7 +210,7 @@ class JSSubstructLibrary {
   static constexpr int d_defaultMaxResults = 1000;
 
  private:
-  inline int add_mol_helper(const RDKit::ROMol &mol);
+  inline int add_mol_helper(const RDKix::ROMol &mol);
 };
 
 std::string get_inchikey_for_inchi(const std::string &input);

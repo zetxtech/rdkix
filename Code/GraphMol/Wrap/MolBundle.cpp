@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -13,14 +13,14 @@
 #include <string>
 
 // ours
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <RDBoost/PySequenceHolder.h>
 
 #include "substructmethods.h"
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 std::string molBundleClassDoc =
     "A class for storing groups of related molecules.\n\
@@ -294,6 +294,6 @@ struct molbundle_wrap {
         "FixedMolSizeMolBundle", molBundleClassDoc.c_str(), python::init<>());
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_molbundle() { RDKit::molbundle_wrap::wrap(); }
+void wrap_molbundle() { RDKix::molbundle_wrap::wrap(); }

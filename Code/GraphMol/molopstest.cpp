@@ -1,11 +1,11 @@
 //
-//   Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//   Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <algorithm>
 #include <iostream>
@@ -17,8 +17,8 @@
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -32,7 +32,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 RWMol _t;
 typedef class ROMol Mol;
@@ -7119,7 +7119,7 @@ void testGithubIssue908() {
                        << std::endl;
   {
     std::string mb =
-        "\n     RDKit          2D\n\n  4  3  0  0  0  0  0  0  0  0999 "
+        "\n     RDKix          2D\n\n  4  3  0  0  0  0  0  0  0  0999 "
         "V2000\n "
         "  -0.0000   -1.5000    0.0000 Br  0  0  0  0  0  0  0  0  0  0  0  "
         "0\n   -0.0000   -0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  "
@@ -7338,7 +7338,7 @@ void testGithub1439() {
 void testGithub1281() {
   BOOST_LOG(rdInfoLog)
       << "-----------------------\n Testing github issue 1281: " << std::endl
-      << "RDKit gets stuck on PubChem CID 102128817" << std::endl;
+      << "RDKix gets stuck on PubChem CID 102128817" << std::endl;
   {  // basics
     std::string smiles =
         "COC1=CC=C(C=C1)C2C3=C(C=CC4=CC=CC=C43)OC5=CC6=C(C=C5)C7=NC8=C9C=CC1="
@@ -8198,7 +8198,7 @@ void testGithub3854() {
       << std::endl;
 
   std::string molb = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   7  8  0  0  1  0  0  0  0  0999 V2000
     5.0014    0.4125    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8312,7 +8312,7 @@ void testSetTerminalAtomCoords() {
                           "coordinates to a terminal atom. "
                        << std::endl;
   auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
     1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8344,7 +8344,7 @@ void testGet3DDistanceMatrix() {
   BOOST_LOG(rdInfoLog)
       << "-----------------------\n testing get3DDistanceMat(). " << std::endl;
   auto mol = R"CTAB(bogus example
-     RDKit          3D
+     RDKix          3D
 
   3  2  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.1000 C   0  0  0  0  0  0  0  0  0  0  0  0

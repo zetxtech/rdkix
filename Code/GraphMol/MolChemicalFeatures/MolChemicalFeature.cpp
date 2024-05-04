@@ -3,17 +3,17 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include "MolChemicalFeature.h"
 #include "MolChemicalFeatureDef.h"
 
-namespace RDKit {
+namespace RDKix {
 
 const std::string &MolChemicalFeature::getFamily() const {
   return dp_def->getFamily();  // return d_family;
@@ -70,4 +70,4 @@ RDGeom::Point3D MolChemicalFeature::getPos(int confId) const {
 
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

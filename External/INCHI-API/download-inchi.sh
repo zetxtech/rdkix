@@ -41,7 +41,7 @@ then
 fi
 
 DIR=`pwd`
-TEMPDIR=`mktemp -d -t rdkit-inchi-XXX`
+TEMPDIR=`mktemp -d -t rdkix-inchi-XXX`
 if [[ $DIR =~ External/INCHI-API$ ]]
 then
 	mkdir -p src
@@ -72,6 +72,6 @@ then
 	echo "================================================================"
 else
 	echo '**Error: you must invoke this script from within the directory'
-	echo '         $RDKIT_SOURCE_ROOT/External/INCHI-API'
+	echo '         $RDKIX_SOURCE_ROOT/External/INCHI-API'
 	exit 1
 fi

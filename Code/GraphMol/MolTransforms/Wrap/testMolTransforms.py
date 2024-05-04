@@ -5,9 +5,9 @@ import unittest
 
 import numpy as np
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Chem import rdMolTransforms as rdmt
-from rdkit.Geometry import rdGeometry as geom
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Chem import rdMolTransforms as rdmt
+from rdkix.Geometry import rdGeometry as geom
 
 
 def feq(v1, v2, tol=1.0e-4):
@@ -72,7 +72,7 @@ class TestCase(unittest.TestCase):
       return
     molBlock = '''\
 
-     RDKit          3D
+     RDKix          3D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
    -0.1888    1.3224   -0.2048 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -117,7 +117,7 @@ M  END
       return
     molBlock = '''\
 
-     RDKit          3D
+     RDKix          3D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
    -0.1888    1.3224   -0.2048 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -239,7 +239,7 @@ M  END
 
   def testEigen3CanonicalTransformAgainstNumpy(self):
 
-    def canonicalize_conf_rdkit(mol, conf_id=-1):
+    def canonicalize_conf_rdkix(mol, conf_id=-1):
       mol = Chem.Mol(mol)
       conf = mol.GetConformer(conf_id)
       ctd = rdmt.ComputeCentroid(conf)
@@ -275,15 +275,15 @@ M  END
     with Chem.SDMolSupplier(file) as suppl:
       for mol in suppl:
         mol_orig = Chem.Mol(mol)
-        rdkit_canon = canonicalize_conf_rdkit(mol)
+        rdkix_canon = canonicalize_conf_rdkix(mol)
         numpy_canon = canonicalize_conf_numpy(mol)
         for i in range(mol.GetNumAtoms()):
           orig_coord = mol_orig.GetConformer().GetAtomPosition(i)
-          rdkit_coord = rdkit_canon.GetConformer().GetAtomPosition(i)
+          rdkix_coord = rdkix_canon.GetConformer().GetAtomPosition(i)
           numpy_coord = numpy_canon.GetConformer().GetAtomPosition(i)
           self.assertLess(orig_coord.Distance(numpy_coord), 1.e-4)
           if built_against_eigen3:
-            self.assertLess(orig_coord.Distance(rdkit_coord), 1.e-4)
+            self.assertLess(orig_coord.Distance(rdkix_coord), 1.e-4)
 
 
 if __name__ == "__main__":

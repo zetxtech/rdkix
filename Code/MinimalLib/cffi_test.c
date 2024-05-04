@@ -2,10 +2,10 @@
   Copyright (C) 2021 Greg Landrum
 
   @@ All Rights Reserved @@
-  This file is part of the RDKit.
+  This file is part of the RDKix.
   The contents are covered by the terms of the BSD license
   which is included in the file license.txt, found at the root
-  of the RDKit source tree.
+  of the RDKix source tree.
 */
 #include <stdio.h>
 #include <string.h>
@@ -213,7 +213,7 @@ void test_io() {
   smiles = NULL;
 
   char *json = get_json(pkl, pkl_size, NULL);
-  assert(strstr(json, "rdkitjson"));
+  assert(strstr(json, "rdkixjson"));
 
   pkl2 = get_mol(json, &pkl2_size, "");
   assert(pkl2);
@@ -516,12 +516,12 @@ void test_rxn_svg() {
   pkl = get_rxn(
       "$RXN\n\
 \n\
-      RDKit\n\
+      RDKix\n\
 \n\
   1  1\n\
 $MOL\n\
 \n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   2  1  0  0  0  0  0  0  0  0999 V2000\n\
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  1  0  0\n\
@@ -532,7 +532,7 @@ V    2 [O&H1:2]\n\
 M  END\n\
 $MOL\n\
 \n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   2  1  0  0  0  0  0  0  0  0999 V2000\n\
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  1  0  0\n\
@@ -664,17 +664,17 @@ void test_fingerprints() {
   assert(nbytes == 8);
   free(fp);
 
-  assert(!get_rdkit_fp(NULL, 0, NULL));
-  fp = get_rdkit_fp(mpkl, mpkl_size, "{\"nBits\":64}");
+  assert(!get_rdkix_fp(NULL, 0, NULL));
+  fp = get_rdkix_fp(mpkl, mpkl_size, "{\"nBits\":64}");
   assert(!strcmp(
       fp, "1111011000111100011011011111011001111111110010000111000011111111"));
   free(fp);
-  fp = get_rdkit_fp(mpkl, mpkl_size, "{\"nBits\":64,\"maxPath\":4}");
+  fp = get_rdkix_fp(mpkl, mpkl_size, "{\"nBits\":64,\"maxPath\":4}");
   assert(!strcmp(
       fp, "1111011000110000010001010111000001101011100010000001000011100011"));
   free(fp);
-  assert(!get_rdkit_fp_as_bytes(NULL, 0, &nbytes, NULL));
-  fp = get_rdkit_fp_as_bytes(mpkl, mpkl_size, &nbytes, "{\"nBits\":64}");
+  assert(!get_rdkix_fp_as_bytes(NULL, 0, &nbytes, NULL));
+  fp = get_rdkix_fp_as_bytes(mpkl, mpkl_size, &nbytes, "{\"nBits\":64}");
   assert(nbytes == 8);
   free(fp);
 
@@ -957,7 +957,7 @@ M  END\n",
   // test set_2d_coords_aligned
   tpkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   6  6  0  0  0  0  0  0  0  0999 V2000\n\
   -13.7477    6.3036    0.0000 R#  0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -977,7 +977,7 @@ M  END\n",
       &tpkl_size, "");
   mpkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
  18 22  0  0  0  0  0  0  0  0999 V2000\n\
     4.3922   -1.5699    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -1411,7 +1411,7 @@ void get_wedged_mol_and_inverted_wedges(char **wedged_pkl,
                                         char **inverted_wedges) {
   *wedged_pkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
  29 34  0  0  1  0  0  0  0  0999 V2000\n\
     1.3719    5.1304    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -1528,7 +1528,7 @@ void test_wedging_all_within_scaffold() {
   size_t tpkl_size;
   char *tpkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
  13 14  0  0  1  0  0  0  0  0999 V2000\n\
    -1.6549    2.5755    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -1668,7 +1668,7 @@ void test_wedging_outside_scaffold() {
   size_t tpkl_size;
   char *tpkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
   9 10  0  0  1  0  0  0  0  0999 V2000\n\
    -0.8816    0.5663    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n\
@@ -1799,7 +1799,7 @@ void test_wedging_if_no_match() {
   size_t tpkl_size;
   char *tpkl = get_mol(
       "\n\
-     RDKit          2D\n\
+     RDKix          2D\n\
 \n\
  13 14  0  0  1  0  0  0  0  0999 V2000\n\
    -1.6549    2.5755    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n\

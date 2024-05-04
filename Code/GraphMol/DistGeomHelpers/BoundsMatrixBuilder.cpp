@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2004-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include <DistGeom/BoundsMatrix.h>
 #include "BoundsMatrixBuilder.h"
@@ -35,7 +35,7 @@ const double MAX_UPPER = 1000.0;
 static const double minMacrocycleRingSize = 9;
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 namespace DGeomHelpers {
 // forward declarations:
 typedef boost::shared_ptr<RDNumeric::IntSymmMatrix> SymmIntMatPtr;
@@ -173,9 +173,9 @@ void set15Bounds(const ROMol &mol, DistGeom::BoundsMatPtr mmat,
 void setLowerBoundVDW(const ROMol &mol, DistGeom::BoundsMatPtr mmat,
                       bool useTopolScaling = true);
 }  // namespace DGeomHelpers
-}  // namespace RDKit
+}  // namespace RDKix
 
-namespace RDKit {
+namespace RDKix {
 namespace DGeomHelpers {
 void _checkAndSetBounds(unsigned int i, unsigned int j, double lb, double ub,
                         DistGeom::BoundsMatPtr mmat) {
@@ -2127,4 +2127,4 @@ void set15Bounds(const ROMol &mol, DistGeom::BoundsMatPtr mmat,
   }
 }
 }  // namespace DGeomHelpers
-}  // namespace RDKit
+}  // namespace RDKix

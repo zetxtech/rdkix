@@ -2,10 +2,10 @@
 //  Copyright (C) 2007-2010 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/lexical_cast.hpp>
@@ -24,7 +24,7 @@
 #include <RDGeneral/BadFileException.h>
 #include <typeinfo>
 
-namespace RDKit {
+namespace RDKix {
 void ParseTPLAtomLine(std::string text, unsigned int lineNum, RWMol *mol,
                       Conformer *conf) {
   PRECONDITION(mol, "no molecule");
@@ -312,4 +312,4 @@ RWMol *TPLFileToMol(const std::string &fName, bool sanitize,
   }
 
 #endif
-}  // namespace RDKit
+}  // namespace RDKix

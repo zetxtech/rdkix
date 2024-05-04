@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Normalize.h"
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ChemReactions/ReactionParser.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -22,9 +22,9 @@
 #include <RDGeneral/BoostEndInclude.h>
 
 using namespace std;
-using namespace RDKit;
+using namespace RDKix;
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
@@ -203,4 +203,4 @@ SmilesMolPair Normalizer::applyTransform(const ROMOL_SPTR &mol,
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLCHEMICALFEATURES_BUILD)
-rdkit_python_extension(rdMolChemicalFeatures
+remove_definitions(-DRDKIX_MOLCHEMICALFEATURES_BUILD)
+rdkix_python_extension(rdMolChemicalFeatures
                        rdMolChemicalFeatures.cpp MolChemicalFeature.cpp 
                        MolChemicalFeatureFactory.cpp ChemicalFeatureUtils.cpp
 		       DEST Chem

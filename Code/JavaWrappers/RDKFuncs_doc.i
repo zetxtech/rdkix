@@ -31,11 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::MolOps "
+%typemap(javaimports) RDKix::MolOps "
 /**
 Groups a variety of molecular query and transformation operations. */"
 
-%javamethodmodifiers RDKit::MolOps::addHs 	( 	const ROMol &  	mol, 		bool  	explicitOnly = false, 		bool  	addCoords = false	  	) 			"
+%javamethodmodifiers RDKix::MolOps::addHs 	( 	const ROMol &  	mol, 		bool  	explicitOnly = false, 		bool  	addCoords = false	  	) 			"
 /**
 <p>
 returns a copy of a molecule with hydrogens added in as explicit Atoms
@@ -56,7 +56,7 @@ the new molecule
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::adjustHs 	( 	RWMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::adjustHs 	( 	RWMol &  	mol 	 )  	"
 /**
 <p>
 adjust the number of implicit and explicit Hs for special cases
@@ -75,7 +75,7 @@ Assumptions
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::assignChiralTypesFrom3D 	( 	ROMol &  	mol, 		int  	confId = -1, 		bool  	replaceExistingTags = true	  	) 			"
+%javamethodmodifiers RDKix::MolOps::assignChiralTypesFrom3D 	( 	ROMol &  	mol, 		int  	confId = -1, 		bool  	replaceExistingTags = true	  	) 			"
 /**
 <p>
 Uses a conformer to assign ChiralType to a molecule's atoms.
@@ -89,7 +89,7 @@ If the conformer provided is not a 3D conformer, nothing will be done.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::assignStereochemistry 	( 	ROMol &  	mol, 		bool  	cleanIt = false, 		bool  	force = false	  	) 			"
+%javamethodmodifiers RDKix::MolOps::assignStereochemistry 	( 	ROMol &  	mol, 		bool  	cleanIt = false, 		bool  	force = false	  	) 			"
 /**
 <p>
 Assign stereochemistry tags to atoms (i.e. R/S) and bonds (i.e. Z/E).
@@ -116,7 +116,7 @@ force   causes the calculation to be repeated even if it has
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::cleanUp 	( 	RWMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::cleanUp 	( 	RWMol &  	mol 	 )  	"
 /**
 <p>
 Designed to be called by the sanitizer to handle special cases before anything is done.
@@ -134,7 +134,7 @@ mol 	the molecule of interest
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::computeBalabanJ 	( 	const ROMol &  	mol, 		bool  	useBO = true, 		bool  	force = false, 		const std::vector< int > *  	bondPath = 0, 		bool  	cacheIt = true	  	) 			"
+%javamethodmodifiers RDKix::MolOps::computeBalabanJ 	( 	const ROMol &  	mol, 		bool  	useBO = true, 		bool  	force = false, 		const std::vector< int > *  	bondPath = 0, 		bool  	cacheIt = true	  	) 			"
 /**
 <p>
 calculates Balaban's J index for the molecule
@@ -153,14 +153,14 @@ the J index
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::computeBalabanJ 	( 	double *  	distMat, 		int  	nb, 		int  	nAts	  	) 			"
+%javamethodmodifiers RDKix::MolOps::computeBalabanJ 	( 	double *  	distMat, 		int  	nb, 		int  	nAts	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::countAtomElec 	( 	const Atom *  	at 	 )  	"
+%javamethodmodifiers RDKix::MolOps::countAtomElec 	( 	const Atom *  	at 	 )  	"
 /**
 <p>
 return the number of electrons available on an atom to donate for aromaticity
@@ -177,7 +177,7 @@ the number of electrons
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::findPotentialStereoBonds 	( 	ROMol &  	mol, 		bool  	cleanIt = false	  	) 			"
+%javamethodmodifiers RDKix::MolOps::findPotentialStereoBonds 	( 	ROMol &  	mol, 		bool  	cleanIt = false	  	) 			"
 /**
 <p>
 finds bonds that could be cis/trans in a molecule and mark them as Bond::STEREOANY
@@ -190,7 +190,7 @@ cleanIt 	toggles removal of stereo flags from double bonds that can not have ste
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::findSSSR 	( 	const ROMol &  	mol, 		VECT_INT_VECT &  	res	  	) 			"
+%javamethodmodifiers RDKix::MolOps::findSSSR 	( 	const ROMol &  	mol, 		VECT_INT_VECT &  	res	  	) 			"
 /**
 <p>
 finds a molecule's Smallest Set of Smallest Rings
@@ -227,14 +227,14 @@ These changes were motivated by several factors:
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::findSSSR 	( 	const ROMol &  	mol, 		VECT_INT_VECT *  	res = 0	  	) 			"
+%javamethodmodifiers RDKix::MolOps::findSSSR 	( 	const ROMol &  	mol, 		VECT_INT_VECT *  	res = 0	  	) 			"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getAdjacencyMatrix 	( 	const ROMol &  	mol, 		bool  	useBO = false, 		int  	emptyVal = 0, 		bool  	force = false, 		const char *  	propNamePrefix = 0	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getAdjacencyMatrix 	( 	const ROMol &  	mol, 		bool  	useBO = false, 		int  	emptyVal = 0, 		bool  	force = false, 		const char *  	propNamePrefix = 0	  	) 			"
 /**
 <p>
 returns a molecule's adjacency matrix
@@ -256,7 +256,7 @@ the adjacency matrix.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getDistanceMat 	( 	const ROMol &  	mol, 		const std::vector< int > &  	activeAtoms, 		const std::vector< const Bond * > &  	bonds, 		bool  	useBO = false, 		bool  	useAtomWts = false	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getDistanceMat 	( 	const ROMol &  	mol, 		const std::vector< int > &  	activeAtoms, 		const std::vector< const Bond * > &  	bonds, 		bool  	useBO = false, 		bool  	useAtomWts = false	  	) 			"
 /**
 <p>
 Computes the molecule's topological distance matrix.
@@ -280,7 +280,7 @@ the distance matrix.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getDistanceMat 	( 	const ROMol &  	mol, 		bool  	useBO = false, 		bool  	useAtomWts = false, 		bool  	force = false, 		const char *  	propNamePrefix = 0	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getDistanceMat 	( 	const ROMol &  	mol, 		bool  	useBO = false, 		bool  	useAtomWts = false, 		bool  	force = false, 		const char *  	propNamePrefix = 0	  	) 			"
 /**
 <p>
 Computes the molecule's topological distance matrix.
@@ -304,7 +304,7 @@ the distance matrix.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		VECT_INT_VECT &  	frags	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		VECT_INT_VECT &  	frags	  	) 			"
 /**
 <p>
 find fragments (disconnected components of the molecular graph)
@@ -320,7 +320,7 @@ the number of fragments found.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		INT_VECT &  	mapping	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		INT_VECT &  	mapping	  	) 			"
 /**
 <p>
 find fragments (disconnected components of the molecular graph)
@@ -336,7 +336,7 @@ the number of fragments found.
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		bool  	sanitizeFrags = true, 		INT_VECT *  	frags = 0	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getMolFrags 	( 	const ROMol &  	mol, 		bool  	sanitizeFrags = true, 		INT_VECT *  	frags = 0	  	) 			"
 /**
 <p>
 splits a molecule into its component fragments
@@ -353,7 +353,7 @@ a vector of the fragments as smart pointers to ROMols
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::getShortestPath 	( 	const ROMol &  	mol, 		int  	aid1, 		int  	aid2	  	) 			"
+%javamethodmodifiers RDKix::MolOps::getShortestPath 	( 	const ROMol &  	mol, 		int  	aid1, 		int  	aid2	  	) 			"
 /**
 <p>
 Find the shortest path between two atoms.
@@ -376,7 +376,7 @@ an std::list with the indices of the atoms along the shortest path
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::Kekulize 	( 	RWMol &  	mol, 		bool  	markAtomsBonds = true, 		unsigned int  	maxBackTracks = 100	  	) 			"
+%javamethodmodifiers RDKix::MolOps::Kekulize 	( 	RWMol &  	mol, 		bool  	markAtomsBonds = true, 		unsigned int  	maxBackTracks = 100	  	) 			"
 /**
 <p>
 Kekulizes the molecule.
@@ -388,12 +388,12 @@ markAtomsBonds 	if this is set to true, isAromatic boolean settings on both the 
 maxBackTracks 	the maximum number of attempts at back-tracking. The algorithm uses a back-tracking procedure to revisit a previous setting of double bond if we hit a wall in the kekulization process
 <p>
 @notes
-<li>even if markAtomsBonds is false the BondType for all aromatic bonds will be changed from RDKit::Bond::AROMATIC to RDKit::Bond::SINGLE or RDKit::Bond::DOUBLE during Kekulization.
+<li>even if markAtomsBonds is false the BondType for all aromatic bonds will be changed from RDKix::Bond::AROMATIC to RDKix::Bond::SINGLE or RDKix::Bond::DOUBLE during Kekulization.
 
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::mergeQueryHs 	( 	const ROMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::mergeQueryHs 	( 	const ROMol &  	mol 	 )  	"
 /**
 <p>
 returns a copy of a molecule with hydrogens removed and added as queries to the heavy atoms to which they are bound.
@@ -418,7 +418,7 @@ the new molecule
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::rankAtoms 	( 	const ROMol &  	mol, 		INT_VECT &  	ranks, 		bool  	breakTies = true, 		VECT_INT_VECT *  	rankHistory = 0	  	) 			"
+%javamethodmodifiers RDKix::MolOps::rankAtoms 	( 	const ROMol &  	mol, 		INT_VECT &  	ranks, 		bool  	breakTies = true, 		VECT_INT_VECT *  	rankHistory = 0	  	) 			"
 /**
 <p>
 assign a canonical ordering to a molecule's atoms
@@ -439,7 +439,7 @@ rankHistory 	used to return the rank history (see below)
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::removeHs 	( 	const ROMol &  	mol, 		bool  	implicitOnly = false, 		bool  	updateExplicitCount = false, 		bool  	sanitize = true	  	) 			"
+%javamethodmodifiers RDKix::MolOps::removeHs 	( 	const ROMol &  	mol, 		bool  	implicitOnly = false, 		bool  	updateExplicitCount = false, 		bool  	sanitize = true	  	) 			"
 /**
 <p>
 returns a copy of a molecule with hydrogens removed
@@ -462,7 +462,7 @@ the new molecule
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::removeStereochemistry 	( 	ROMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::removeStereochemistry 	( 	ROMol &  	mol 	 )  	"
 /**
 <p>
 Removes all stereochemistry information from atoms (i.e. R/S) and bonds (i.e. Z/E).
@@ -474,7 +474,7 @@ mol 	the molecule of interest
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::sanitizeMol 	( 	RWMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::sanitizeMol 	( 	RWMol &  	mol 	 )  	"
 /**
 <p>
 carries out a collection of tasks for cleaning up a molecule and ensuring that it makes 'chemical sense'
@@ -500,7 +500,7 @@ mol 	the RWMol to be cleaned
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::setAromaticity 	( 	RWMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::setAromaticity 	( 	RWMol &  	mol 	 )  	"
 /**
 <p>
 Sets up the aromaticity for a molecule.
@@ -525,7 +525,7 @@ Assumptions:
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::symmetrizeSSSR 	( 	ROMol &  	mol, 		VECT_INT_VECT &  	res	  	) 			"
+%javamethodmodifiers RDKix::MolOps::symmetrizeSSSR 	( 	ROMol &  	mol, 		VECT_INT_VECT &  	res	  	) 			"
 /**
 <p>
 symmetrize the molecule's Smallest Set of Smallest Rings
@@ -550,7 +550,7 @@ the total number of rings = (new rings + old SSSRs)
 */
 public";
 
-%javamethodmodifiers RDKit::MolOps::symmetrizeSSSR 	( 	ROMol &  	mol 	 )  	"
+%javamethodmodifiers RDKix::MolOps::symmetrizeSSSR 	( 	ROMol &  	mol 	 )  	"
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.

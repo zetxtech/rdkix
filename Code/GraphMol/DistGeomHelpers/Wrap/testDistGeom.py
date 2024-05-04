@@ -6,12 +6,12 @@ import unittest
 
 import numpy
 
-import rdkit.DistanceGeometry as DG
-from rdkit import Chem, RDConfig, rdBase
-from rdkit.Chem import AllChem, ChemicalForceFields, rdDistGeom, rdMolAlign
-from rdkit.Geometry import ComputeSignedDihedralAngle
-from rdkit.Geometry import rdGeometry as geom
-from rdkit.RDLogger import logger
+import rdkix.DistanceGeometry as DG
+from rdkix import Chem, RDConfig, rdBase
+from rdkix.Chem import AllChem, ChemicalForceFields, rdDistGeom, rdMolAlign
+from rdkix.Geometry import ComputeSignedDihedralAngle
+from rdkix.Geometry import rdGeometry as geom
+from rdkix.RDLogger import logger
 
 logger = logger()
 
@@ -378,7 +378,7 @@ class TestCase(unittest.TestCase):
     self.assertTrue(ssd < 0.1)
 
   def test8MultiThreadMultiConf(self):
-    if (rdBase.rdkitBuild.split('|')[2] != "MINGW"):
+    if (rdBase.rdkixBuild.split('|')[2] != "MINGW"):
       ENERGY_TOLERANCE = 1.0e-6
       MSD_TOLERANCE = 1.0e-6
     else:

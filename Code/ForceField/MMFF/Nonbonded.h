@@ -4,16 +4,16 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_MMFFNONBONDED_H__
 #define __RD_MMFFNONBONDED_H__
 #include <ForceField/Contrib.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ForceFieldHelpers/MMFF/AtomTyper.h>
 
 namespace ForceFields {
@@ -21,7 +21,7 @@ namespace MMFF {
 class MMFFVdWCollection;
 class MMFFVdW;
 //! the van der Waals term for MMFF
-class RDKIT_FORCEFIELD_EXPORT VdWContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT VdWContrib : public ForceFieldContrib {
  public:
   VdWContrib() {}
 
@@ -45,7 +45,7 @@ class RDKIT_FORCEFIELD_EXPORT VdWContrib : public ForceFieldContrib {
 };
 
 //! the electrostatic term for MMFF
-class RDKIT_FORCEFIELD_EXPORT EleContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT EleContrib : public ForceFieldContrib {
  public:
   EleContrib() {}
 
@@ -74,27 +74,27 @@ class RDKIT_FORCEFIELD_EXPORT EleContrib : public ForceFieldContrib {
 namespace Utils {
 //! calculates and returns the unscaled minimum distance (R*ij) for a MMFF VdW
 /// contact
-RDKIT_FORCEFIELD_EXPORT double calcUnscaledVdWMinimum(
+RDKIX_FORCEFIELD_EXPORT double calcUnscaledVdWMinimum(
     const MMFFVdWCollection *mmffVdW, const MMFFVdW *mmffVdWParamsAtom1,
     const MMFFVdW *mmffVdWParamsAtom2);
 //! calculates and returns the unscaled well depth (epsilon) for a MMFF VdW
 /// contact
-RDKIT_FORCEFIELD_EXPORT double calcUnscaledVdWWellDepth(
+RDKIX_FORCEFIELD_EXPORT double calcUnscaledVdWWellDepth(
     double R_star_ij, const MMFFVdW *mmffVdWParamsIAtom,
     const MMFFVdW *mmffVdWParamsJAtom);
 //! scales the VdW parameters
-RDKIT_FORCEFIELD_EXPORT void scaleVdWParams(double &R_star_ij,
+RDKIX_FORCEFIELD_EXPORT void scaleVdWParams(double &R_star_ij,
                                             double &wellDepth,
                                             const MMFFVdWCollection *mmffVdW,
                                             const MMFFVdW *mmffVdWParamsIAtom,
                                             const MMFFVdW *mmffVdWParamsJAtom);
 //! calculates and returns the Van der Waals MMFF energy
-RDKIT_FORCEFIELD_EXPORT double calcVdWEnergy(const double dist,
+RDKIX_FORCEFIELD_EXPORT double calcVdWEnergy(const double dist,
                                              const double R_star_ij,
                                              const double wellDepth);
 //! calculates and returns the electrostatic MMFF energy
 // FIX: idx1 and idx2 are not used
-RDKIT_FORCEFIELD_EXPORT double calcEleEnergy(unsigned int idx1,
+RDKIX_FORCEFIELD_EXPORT double calcEleEnergy(unsigned int idx1,
                                              unsigned int idx2, double dist,
                                              double chargeTerm,
                                              std::uint8_t dielModel,

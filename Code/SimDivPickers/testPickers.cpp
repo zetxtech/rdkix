@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include "MaxMinPicker.h"
@@ -24,9 +24,9 @@ void testGithub1421() {
       << "Testing github issue 1421: MaxMinPicker picking non-existent element."
       << std::endl;
   RDPickers::MaxMinPicker pkr;
-  RDKit::INT_VECT picks;
+  RDKix::INT_VECT picks;
   int poolSz = 1000;
-  picks = pkr.lazyPick(dist_on_line, poolSz, 10, RDKit::INT_VECT(), 2748);
+  picks = pkr.lazyPick(dist_on_line, poolSz, 10, RDKix::INT_VECT(), 2748);
   for (auto pick : picks) {
     TEST_ASSERT(pick < poolSz);
   }
@@ -43,11 +43,11 @@ void testGithub2245() {
   {
     RDPickers::MaxMinPicker pkr;
     int poolSz = 1000;
-    auto picks1 = pkr.lazyPick(dist_on_line, poolSz, 10, RDKit::INT_VECT(), -1);
+    auto picks1 = pkr.lazyPick(dist_on_line, poolSz, 10, RDKix::INT_VECT(), -1);
     for (maxAllowedFailures = MAX_ALLOWED_FAILURES; maxAllowedFailures;
          --maxAllowedFailures) {
       auto picks2 =
-          pkr.lazyPick(dist_on_line, poolSz, 10, RDKit::INT_VECT(), -1);
+          pkr.lazyPick(dist_on_line, poolSz, 10, RDKix::INT_VECT(), -1);
       if (picks1 != picks2) {
         break;
       }
@@ -71,9 +71,9 @@ void testGithub2245() {
     RDPickers::MaxMinPicker pkr;
     int poolSz = 1000;
     auto picks1 =
-        pkr.lazyPick(dist_on_line, poolSz, 10, RDKit::INT_VECT(), 0xf00d);
+        pkr.lazyPick(dist_on_line, poolSz, 10, RDKix::INT_VECT(), 0xf00d);
     auto picks2 =
-        pkr.lazyPick(dist_on_line, poolSz, 10, RDKit::INT_VECT(), 0xf00d);
+        pkr.lazyPick(dist_on_line, poolSz, 10, RDKix::INT_VECT(), 0xf00d);
     TEST_ASSERT(picks1 == picks2);
   }
   BOOST_LOG(rdErrorLog) << "Done" << std::endl;

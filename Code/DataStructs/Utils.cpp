@@ -3,10 +3,10 @@
 // Copyright (c) 2002-20`0  greg Landrum, Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "BitVects.h"
 #include "BitVectUtils.h"
@@ -73,9 +73,9 @@ void FromDaylightString(T &sbv, const std::string &s) {
   }
 }
 
-template RDKIT_DATASTRUCTS_EXPORT void FromDaylightString(SparseBitVect &sbv,
+template RDKIX_DATASTRUCTS_EXPORT void FromDaylightString(SparseBitVect &sbv,
                                                           const std::string &s);
-template RDKIT_DATASTRUCTS_EXPORT void FromDaylightString(ExplicitBitVect &sbv,
+template RDKIX_DATASTRUCTS_EXPORT void FromDaylightString(ExplicitBitVect &sbv,
                                                           const std::string &s);
 
 //! \brief Construct a BitVect from the ASCII representation of a
@@ -91,9 +91,9 @@ void FromBitString(T &sbv, const std::string &s) {
   }
 }
 
-template RDKIT_DATASTRUCTS_EXPORT void FromBitString(SparseBitVect &sbv,
+template RDKIX_DATASTRUCTS_EXPORT void FromBitString(SparseBitVect &sbv,
                                                      const std::string &s);
-template RDKIT_DATASTRUCTS_EXPORT void FromBitString(ExplicitBitVect &sbv,
+template RDKIX_DATASTRUCTS_EXPORT void FromBitString(ExplicitBitVect &sbv,
                                                      const std::string &s);
 
 //! converts 4 ascii bytes at a4 to 3 binary bytes

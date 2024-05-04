@@ -2,10 +2,10 @@
 //  Copyright (C) 2013-2018 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "MolFragmenter.h"
@@ -15,7 +15,7 @@
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/Exceptions.h>
 #include <GraphMol/Depictor/RDDepictor.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <boost/dynamic_bitset.hpp>
 #include <boost/tokenizer.hpp>
 #include <boost/algorithm/string/trim.hpp>
@@ -38,7 +38,7 @@
 #include <sstream>
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolFragmenter {
 std::size_t hash_value(const FragmenterBondType &fbt) {
   size_t res = boost::hash<int>()((int)fbt.bondType);
@@ -1063,7 +1063,7 @@ std::unique_ptr<ROMol> molzip(
   return newmol;
 }
 
-RDKIT_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
+RDKIX_CHEMTRANSFORMS_EXPORT std::unique_ptr<ROMol> molzip(
     const ROMol &a, const ROMol &b, const MolzipParams &params) {
   std::optional<std::map<int, int>> opt(std::nullopt);
   return molzip(a, b, params, opt);
@@ -1134,4 +1134,4 @@ std::unique_ptr<ROMol> molzip(std::vector<ROMOL_SPTR> &decomposition,
   return zippedMol;
 }
 
-}  // end of namespace RDKit
+}  // end of namespace RDKix
