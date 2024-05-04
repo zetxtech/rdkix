@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/ROMol.h>
 #include <GraphMol/Atom.h>
@@ -18,7 +18,7 @@
 #include <algorithm>
 #include <cstring>
 
-namespace RDKit {
+namespace RDKix {
 
 const int LOCAL_INF = (int)1e8;
 
@@ -433,4 +433,4 @@ double *get3DDistanceMat(const ROMol &mol, int confId, bool useAtomWts,
   return dMat;
 }
 }  // end of namespace MolOps
-}  // end of namespace RDKit
+}  // end of namespace RDKix

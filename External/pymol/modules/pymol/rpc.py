@@ -3,9 +3,9 @@
   Author: Greg Landrum (glandrum@users.sourceforge.net)
   Created:       January 2002
   $LastChangedDate$
-  License:  This file is part of the RDKit. The contents are covered by the terms of
+  License:  This file is part of the RDKix. The contents are covered by the terms of
             the BSD license which is included in the file license.txt, found at the
-            root of the RDKit source tree. 
+            root of the RDKix source tree. 
   Requires:
             - a python xmlrpclib distribution containing the SimpleXMLRPCServer
               module (1.0 or greater should be fine)

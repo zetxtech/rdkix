@@ -2,10 +2,10 @@
 //  2019, Daniel Probst, Reymond Group @ University of Bern
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/python.hpp>
@@ -14,9 +14,9 @@
 #include <vector>
 
 namespace python = boost::python;
-using RDKit::MHFPFingerprints::MHFPEncoder;
+using RDKix::MHFPFingerprints::MHFPEncoder;
 
-namespace RDKit {
+namespace RDKix {
 namespace MHFPWrapper {
 
 typedef std::vector<std::vector<uint32_t>> VectMinHashVect;
@@ -170,7 +170,7 @@ BOOST_PYTHON_MODULE(rdMHFPFingerprint) {
                 python::arg("rings") = true, python::arg("isomeric") = false,
                 python::arg("kekulize") = false, python::arg("min_radius") = 1),
                "Creates a shingling (a list of circular n-grams / "
-               "substructures) from a RDKit Mol instance."))
+               "substructures) from a RDKix Mol instance."))
       .def("EncodeSmiles", EncodeSmiles,
            EncodeSmilesOverloads(
                (python::arg("smiles"), python::arg("radius") = 3,
@@ -182,7 +182,7 @@ BOOST_PYTHON_MODULE(rdMHFPFingerprint) {
                (python::arg("mol"), python::arg("radius") = 3,
                 python::arg("rings") = true, python::arg("isomeric") = false,
                 python::arg("kekulize") = false, python::arg("min_radius") = 1),
-               "Creates a MHFP vector from an RDKit Mol instance."))
+               "Creates a MHFP vector from an RDKix Mol instance."))
       .def("EncodeSmilesBulk", EncodeSmilesBulk,
            EncodeSmilesBulkOverloads(
                (python::arg("smiles"), python::arg("radius") = 3,
@@ -194,7 +194,7 @@ BOOST_PYTHON_MODULE(rdMHFPFingerprint) {
                (python::arg("mols"), python::arg("radius") = 3,
                 python::arg("rings") = true, python::arg("isomeric") = false,
                 python::arg("kekulize") = false, python::arg("min_radius") = 1),
-               "Creates a MHFP vector from a list of RDKit Mol instances."))
+               "Creates a MHFP vector from a list of RDKix Mol instances."))
       .def("EncodeSECFPSmiles", EncodeSECFPSmiles,
            EncodeSECFPSmilesOverloads(
                (python::arg("smiles"), python::arg("radius") = 3,
@@ -208,7 +208,7 @@ BOOST_PYTHON_MODULE(rdMHFPFingerprint) {
                 python::arg("rings") = true, python::arg("isomeric") = false,
                 python::arg("kekulize") = false, python::arg("min_radius") = 1,
                 python::arg("length") = 2048),
-               "Creates a SECFP binary vector from an RDKit Mol instance."))
+               "Creates a SECFP binary vector from an RDKix Mol instance."))
       .def("EncodeSECFPSmilesBulk", EncodeSECFPSmilesBulk,
            EncodeSECFPSmilesBulkOverloads(
                (python::arg("smiles"), python::arg("radius") = 3,
@@ -222,11 +222,11 @@ BOOST_PYTHON_MODULE(rdMHFPFingerprint) {
                 python::arg("rings") = true, python::arg("isomeric") = false,
                 python::arg("kekulize") = false, python::arg("min_radius") = 1,
                 python::arg("length") = 2048),
-               "Creates a SECFP binary vector from a list of RDKit Mol "
+               "Creates a SECFP binary vector from a list of RDKix Mol "
                "instances."))
       .def("Distance", &MHFPEncoder::Distance)
       .staticmethod("Distance");
 }
 
 }  // namespace MHFPWrapper
-}  // namespace RDKit
+}  // namespace RDKix

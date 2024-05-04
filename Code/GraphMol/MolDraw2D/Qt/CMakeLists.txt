@@ -1,8 +1,8 @@
 
-rdkit_library(MolDraw2DQt MolDraw2DQt.cpp DrawTextQt.cpp
+rdkix_library(MolDraw2DQt MolDraw2DQt.cpp DrawTextQt.cpp
   LINK_LIBRARIES
   MolDraw2D)
-target_compile_definitions(MolDraw2DQt PRIVATE RDKIT_MOLDRAW2DQT_BUILD)
+target_compile_definitions(MolDraw2DQt PRIVATE RDKIX_MOLDRAW2DQT_BUILD)
 target_compile_definitions(MolDraw2DQt PUBLIC "-DRDK_BUILD_QT_SUPPORT")
 
 add_library(QtDependencies INTERFACE)
@@ -25,9 +25,9 @@ message(STATUS "Building with Qt version ${RDK_QT_VERSION_STRING}")
 target_link_libraries(MolDraw2DQt PUBLIC QtDependencies)
 target_compile_definitions(MolDraw2DQt PRIVATE "-DRDK_QT_VERSION=\"${RDK_QT_VERSION_STRING}\"")
 
-install(TARGETS QtDependencies EXPORT ${RDKit_EXPORTED_TARGETS} COMPONENT dev )
+install(TARGETS QtDependencies EXPORT ${RDKix_EXPORTED_TARGETS} COMPONENT dev )
 
-rdkit_headers(MolDraw2DQt.h DEST GraphMol/MolDraw2D/Qt)
+rdkix_headers(MolDraw2DQt.h DEST GraphMol/MolDraw2D/Qt)
 if(RDK_INSTALL_STATIC_LIBS)
   target_link_libraries(MolDraw2DQt_static PUBLIC QtDependencies)
   target_compile_definitions(MolDraw2DQt_static PRIVATE "-DRDK_QT_VERSION=\"${RDK_QT_VERSION_STRING}\"")
@@ -51,7 +51,7 @@ if(RDK_BUILD_FREETYPE_SUPPORT)
 endif(RDK_BUILD_FREETYPE_SUPPORT)
 
 if(RDK_BUILD_QT_SUPPORT)
-  rdkit_catch_test(moldraw2DTestQt catch_qt.cpp LINK_LIBRARIES MolDraw2DQt)
+  rdkix_catch_test(moldraw2DTestQt catch_qt.cpp LINK_LIBRARIES MolDraw2DQt)
 endif(RDK_BUILD_QT_SUPPORT)
 
 if(RDK_BUILD_QT_DEMO)

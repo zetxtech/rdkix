@@ -1,21 +1,21 @@
 //
-//  Copyright (C) 2015-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2015-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
-#ifndef RDKITMOLDRAW2DDETAILS_H
-#define RDKITMOLDRAW2DDETAILS_H
+#ifndef RDKIXMOLDRAW2DDETAILS_H
+#define RDKIXMOLDRAW2DDETAILS_H
 
 #include <vector>
 
 #include <Geometry/point.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolDraw2D/MolDraw2D.h>
 
 #include <tuple>
@@ -24,12 +24,12 @@
 // ****************************************************************************
 using RDGeom::Point2D;
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 struct StringRect;
 
 // data taken from the helvetica font info in
-// $RDBASE/rdkit/sping/PDF/pdfmetrics.py
+// $RDBASE/rdkix/sping/PDF/pdfmetrics.py
 const int char_widths[] = {
     0,   0,    0,   0,   0,   0,   0,    0,    0,    0,   0,    0,   0,    0,
     0,   0,    0,   0,   0,   0,   0,    0,    0,    0,   0,    0,   0,    0,
@@ -52,16 +52,16 @@ const int char_widths[] = {
     0,   0,    834};
 
 // angles in degrees.
-RDKIT_MOLDRAW2D_EXPORT void arcPoints(const Point2D &cds1, const Point2D &cds2,
+RDKIX_MOLDRAW2D_EXPORT void arcPoints(const Point2D &cds1, const Point2D &cds2,
                                       std::vector<Point2D> &res,
                                       float startAng = 0, float extent = 360);
 
 //! add R/S, relative stereo, and E/Z annotations to atoms and bonds
-RDKIT_MOLDRAW2D_EXPORT void addStereoAnnotation(
+RDKIX_MOLDRAW2D_EXPORT void addStereoAnnotation(
     const ROMol &mol, bool includeRelativeCIP = false);
 
 //! add annotations with atom indices.
-RDKIT_MOLDRAW2D_EXPORT inline void addAtomIndices(const ROMol &mol) {
+RDKIX_MOLDRAW2D_EXPORT inline void addAtomIndices(const ROMol &mol) {
   // we don't need this in the global set of tags since it will only be used
   // here
   if (mol.hasProp("_atomIndicesAdded")) {
@@ -79,7 +79,7 @@ RDKIT_MOLDRAW2D_EXPORT inline void addAtomIndices(const ROMol &mol) {
 };
 
 //! add annotations with bond indices.
-RDKIT_MOLDRAW2D_EXPORT inline void addBondIndices(const ROMol &mol) {
+RDKIX_MOLDRAW2D_EXPORT inline void addBondIndices(const ROMol &mol) {
   // we don't need this in the global set of tags since it will only be used
   // here
   if (mol.hasProp("_bondIndicesAdded")) {
@@ -96,12 +96,12 @@ RDKIT_MOLDRAW2D_EXPORT inline void addBondIndices(const ROMol &mol) {
   }
 };
 
-RDKIT_MOLDRAW2D_EXPORT std::vector<Point2D> getBracketPoints(
+RDKIX_MOLDRAW2D_EXPORT std::vector<Point2D> getBracketPoints(
     const Point2D &p1, const Point2D &p2, const Point2D &refPt,
     const std::vector<std::pair<Point2D, Point2D>> &bondSegments,
     double bracketFrac = 0.1);
 // there are a several empirically determined constants here.
-RDKIT_MOLDRAW2D_EXPORT std::vector<Point2D> handdrawnLine(
+RDKIX_MOLDRAW2D_EXPORT std::vector<Point2D> handdrawnLine(
     Point2D cds1, Point2D cds2, double scale, bool shiftBegin = false,
     bool shiftEnd = false, unsigned nSteps = 4, double deviation = 0.03,
     double endShift = 0.5);
@@ -110,24 +110,24 @@ inline std::string formatDouble(double val) {
   return boost::str(boost::format("%.1f") % val);
 }
 
-RDKIT_MOLDRAW2D_EXPORT bool doesLineIntersect(const StringRect &rect,
+RDKIX_MOLDRAW2D_EXPORT bool doesLineIntersect(const StringRect &rect,
                                               const Point2D &end1,
                                               const Point2D &end2,
                                               double padding);
 // returns true if any corner of triangle is inside the rectangle.
-RDKIT_MOLDRAW2D_EXPORT bool doesTriangleIntersect(const StringRect &rect,
+RDKIX_MOLDRAW2D_EXPORT bool doesTriangleIntersect(const StringRect &rect,
                                                   const Point2D &pt1,
                                                   const Point2D &pt2,
                                                   const Point2D &pt3,
                                                   double padding);
-RDKIT_MOLDRAW2D_EXPORT bool doesLineIntersectEllipse(
+RDKIX_MOLDRAW2D_EXPORT bool doesLineIntersectEllipse(
     const Point2D &centre, double xradius, double yradius, double padding,
     const Point2D &end1, const Point2D &end2);
 // angles expected in degrees, between 0 and 360.
-RDKIT_MOLDRAW2D_EXPORT bool doesLineIntersectArc(
+RDKIX_MOLDRAW2D_EXPORT bool doesLineIntersectArc(
     const Point2D &centre, double xradius, double yradius, double start_ang,
     double stop_ang, double padding, const Point2D &end1, const Point2D &end2);
-RDKIT_MOLDRAW2D_EXPORT bool doLinesIntersect(const Point2D &l1s,
+RDKIX_MOLDRAW2D_EXPORT bool doLinesIntersect(const Point2D &l1s,
                                              const Point2D &l1f,
                                              const Point2D &l2s,
                                              const Point2D &l2f, Point2D *ip);
@@ -139,13 +139,13 @@ RDKIT_MOLDRAW2D_EXPORT bool doLinesIntersect(const Point2D &l1s,
 // issue when, for example, two triangles share an edge and the point is on that
 // edge, when it might give the disappointing result that the point is in
 // neither triangle.
-RDKIT_MOLDRAW2D_EXPORT bool isPointInTriangle(const Point2D &pt,
+RDKIX_MOLDRAW2D_EXPORT bool isPointInTriangle(const Point2D &pt,
                                               const Point2D &t1,
                                               const Point2D &t2,
                                               const Point2D &t3);
 
 // returns a vector of p1,c1,c2,p2 tuples for bezier curves
-RDKIT_MOLDRAW2D_EXPORT
+RDKIX_MOLDRAW2D_EXPORT
 std::vector<std::tuple<Point2D, Point2D, Point2D, Point2D>> getWavyLineSegments(
     const Point2D &p1, const Point2D &p2, unsigned int nSegments,
     double vertOffset);
@@ -153,12 +153,12 @@ std::vector<std::tuple<Point2D, Point2D, Point2D, Point2D>> getWavyLineSegments(
 // calculate the points making up the arrowhead of a DrawShapeArrow, allowing
 // for the fact that in polygon mode the point can extend over the end
 // of the point, because of the mitring.
-RDKIT_MOLDRAW2D_EXPORT void calcArrowHead(Point2D &arrowEnd, Point2D &arrow1,
+RDKIX_MOLDRAW2D_EXPORT void calcArrowHead(Point2D &arrowEnd, Point2D &arrow1,
                                           Point2D &arrow2,
                                           const Point2D &arrowBegin,
                                           bool asPolygon, double frac,
                                           double angle);
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

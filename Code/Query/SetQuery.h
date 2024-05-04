@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SETQUERY_H
@@ -22,7 +22,7 @@ namespace Queries {
 //!
 template <class MatchFuncArgType, class DataFuncArgType = MatchFuncArgType,
           bool needsConversion = false>
-class RDKIT_QUERY_EXPORT SetQuery
+class RDKIX_QUERY_EXPORT SetQuery
     : public Query<MatchFuncArgType, DataFuncArgType, needsConversion> {
  public:
   typedef std::set<MatchFuncArgType> CONTAINER_TYPE;

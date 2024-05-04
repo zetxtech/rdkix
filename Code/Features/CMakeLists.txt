@@ -1,2 +1,2 @@
-rdkit_headers(Feature.h
+rdkix_headers(Feature.h
               DEST Features)

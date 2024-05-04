@@ -7,7 +7,7 @@
 #include <string>
 
 #include <GraphMol/GraphMol.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Fingerprints/Fingerprints.h>
 #include <GraphMol/Fingerprints/MorganFingerprints.h>
@@ -21,7 +21,7 @@
 #include "LeaderPicker.h"
 #endif
 
-std::vector<RDKit::ROMol *> mols;
+std::vector<RDKix::ROMol *> mols;
 std::vector<ExplicitBitVect *> fps;
 // ExplicitBitVect **fps;
 
@@ -50,11 +50,11 @@ static unsigned int LoadDatabase(FILE *fp) {
       *end = '\0';
     }
 
-    RDKit::RWMol *mol;
+    RDKix::RWMol *mol;
     try {
-      mol = RDKit::SmilesToMol(buffer);
+      mol = RDKix::SmilesToMol(buffer);
     } catch (...) {
-      mol = (RDKit::RWMol *)0;
+      mol = (RDKix::RWMol *)0;
     }
 
     if (mol) {
@@ -66,7 +66,7 @@ static unsigned int LoadDatabase(FILE *fp) {
       mols.push_back(mol);
 #endif
       ExplicitBitVect *fp;
-      fp = RDKit::MorganFingerprints::getFingerprintAsBitVect(*mol, 2, 2048);
+      fp = RDKix::MorganFingerprints::getFingerprintAsBitVect(*mol, 2, 2048);
       fps.push_back(fp);
       delete mol;
       result++;
@@ -95,7 +95,7 @@ static void GenerateFingerprints() {
 
   for (unsigned int i = 0; i < count; i++)
     fps[i] =
-        RDKit::MorganFingerprints::getFingerprintAsBitVect(*mols[i], 2, 2048);
+        RDKix::MorganFingerprints::getFingerprintAsBitVect(*mols[i], 2, 2048);
   fprintf(stderr, "%u Fingerprints\n", count);
 }
 
@@ -173,7 +173,7 @@ int main(int argc, char *argv[]) {
   fprintf(stderr, "Elapsed time: %g secs\n", elapsed);
 #endif
 
-  RDKit::INT_VECT firstPicks;
+  RDKix::INT_VECT firstPicks;
   if (picksize) {
     firstPicks.reserve(picksize);
     for (unsigned int i = 0; i < picksize; i++)
@@ -186,10 +186,10 @@ int main(int argc, char *argv[]) {
 
   gettimeofday(&beg, (struct timezone *)0);
 #if 0
-  RDKit::INT_VECT iv = mmpicker.lazyPick(MyDist,poolsize,picksize+newpicks,
+  RDKix::INT_VECT iv = mmpicker.lazyPick(MyDist,poolsize,picksize+newpicks,
                                          firstPicks,seed,threshold);
 #else
-  RDKit::INT_VECT iv = ldpicker.lazyPick(MyDist, poolsize, picksize + newpicks,
+  RDKix::INT_VECT iv = ldpicker.lazyPick(MyDist, poolsize, picksize + newpicks,
                                          firstPicks, threshold, 16);
 #endif
   gettimeofday(&end, (struct timezone *)0);

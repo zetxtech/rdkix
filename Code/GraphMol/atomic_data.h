@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file atomic_data.h
@@ -22,14 +22,14 @@
 #include <RDGeneral/types.h>
 #include <map>
 
-namespace RDKit {
-RDKIT_GRAPHMOL_EXPORT extern const std::string periodicTableAtomData;
-RDKIT_GRAPHMOL_EXPORT extern const std::string isotopesAtomData[];
-RDKIT_GRAPHMOL_EXPORT extern const std::vector<std::string> elementNames;
+namespace RDKix {
+RDKIX_GRAPHMOL_EXPORT extern const std::string periodicTableAtomData;
+RDKIX_GRAPHMOL_EXPORT extern const std::string isotopesAtomData[];
+RDKIX_GRAPHMOL_EXPORT extern const std::vector<std::string> elementNames;
 namespace constants {
-RDKIT_GRAPHMOL_EXPORT extern const double electronMass;
+RDKIX_GRAPHMOL_EXPORT extern const double electronMass;
 }
-class RDKIT_GRAPHMOL_EXPORT atomicData {
+class RDKIX_GRAPHMOL_EXPORT atomicData {
  public:
   atomicData(const std::string &dataLine);
   ~atomicData() = default;
@@ -76,5 +76,5 @@ class RDKIT_GRAPHMOL_EXPORT atomicData {
   int commonIsotope;         // most common isotope
   double commonIsotopeMass;  // most common isotope
 };
-};  // namespace RDKit
+};  // namespace RDKix
 #endif

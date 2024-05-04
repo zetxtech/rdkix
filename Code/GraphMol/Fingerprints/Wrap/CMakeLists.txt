@@ -1,9 +1,9 @@
-rdkit_python_extension(rdFingerprintGenerator
+rdkix_python_extension(rdFingerprintGenerator
                        FingerprintGeneratorWrapper.cpp
                        DEST Chem
                        LINK_LIBRARIES Fingerprints )
 
-rdkit_python_extension(rdMHFPFingerprint
+rdkix_python_extension(rdMHFPFingerprint
                        MHFPWrapper.cpp
                        DEST Chem
                        LINK_LIBRARIES Fingerprints )

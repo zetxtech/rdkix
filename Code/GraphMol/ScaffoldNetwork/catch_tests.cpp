@@ -2,24 +2,24 @@
 //  Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "catch.hpp"
 #include "GraphMol/ScaffoldNetwork/detail.h"
 #include "RDGeneral/test.h"
 #include <sstream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ScaffoldNetwork/ScaffoldNetwork.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ChemReactions/ReactionParser.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 #if 1
 TEST_CASE("flattenMol", "[unittest][scaffolds]") {

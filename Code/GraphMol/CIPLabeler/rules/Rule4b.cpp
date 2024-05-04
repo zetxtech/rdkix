@@ -3,10 +3,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -19,7 +19,7 @@
 #include "../Digraph.h"
 #include "Pairlist.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 Rule4b::Rule4b() = default;
@@ -296,4 +296,4 @@ Sort Rule4b::getRefSorter(const SequenceRule *replacement_rule) const {
 }
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

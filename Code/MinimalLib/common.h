@@ -2,16 +2,16 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #pragma once
 
 #include <string>
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -84,7 +84,7 @@
 
 namespace rj = rapidjson;
 
-namespace RDKit {
+namespace RDKix {
 namespace MinimalLib {
 
 static constexpr int d_defaultWidth = 250;
@@ -116,7 +116,7 @@ RWMol *mol_from_input(const std::string &input,
       LPT_OPT_GET(strictParsing);
       res = MolBlockToMol(input, false, removeHs, strictParsing);
     } else if (input.find("commonchem") != std::string::npos ||
-               input.find("rdkitjson") != std::string::npos) {
+               input.find("rdkixjson") != std::string::npos) {
       auto ps = MolInterchange::defaultJSONParseParameters;
       LPT_OPT_GET2(ps, setAromaticBonds);
       LPT_OPT_GET2(ps, strictValenceCheck);
@@ -187,7 +187,7 @@ RWMol *qmol_from_input(const std::string &input,
     LPT_OPT_GET(strictParsing);
     res = MolBlockToMol(input, false, removeHs, strictParsing);
   } else if (input.find("commonchem") != std::string::npos ||
-             input.find("rdkitjson") != std::string::npos) {
+             input.find("rdkixjson") != std::string::npos) {
     auto ps = MolInterchange::defaultJSONParseParameters;
     LPT_OPT_GET2(ps, setAromaticBonds);
     LPT_OPT_GET2(ps, strictValenceCheck);
@@ -729,7 +729,7 @@ std::unique_ptr<ExplicitBitVect> morgan_fp_as_bitvect(
   return std::unique_ptr<ExplicitBitVect>{fp};
 }
 
-std::unique_ptr<ExplicitBitVect> rdkit_fp_as_bitvect(const RWMol &mol,
+std::unique_ptr<ExplicitBitVect> rdkix_fp_as_bitvect(const RWMol &mol,
                                                      const char *details_json) {
   unsigned int minPath = 1;
   unsigned int maxPath = 7;
@@ -891,11 +891,11 @@ std::string generate_aligned_coords(ROMol &mol, const ROMol &templateMol,
     if (allowRGroups) {
       molHs.reset(MolOps::addHs(mol));
       prbMol = molHs.get();
-      auto queryParams = RDKit::MolOps::AdjustQueryParameters::noAdjustments();
+      auto queryParams = RDKix::MolOps::AdjustQueryParameters::noAdjustments();
       queryParams.adjustSingleBondsToDegreeOneNeighbors = true;
       queryParams.adjustSingleBondsBetweenAromaticAtoms = true;
       templateMolAdj.reset(
-          RDKit::MolOps::adjustQueryProperties(templateMol, &queryParams));
+          RDKix::MolOps::adjustQueryProperties(templateMol, &queryParams));
     }
     const ROMol &templateMolRef =
         templateMolAdj ? *templateMolAdj : templateMol;
@@ -1092,6 +1092,6 @@ std::string get_mol_frags_mappings(
 }
 
 }  // namespace MinimalLib
-}  // namespace RDKit
+}  // namespace RDKix
 #undef LPT_OPT_GET
 #undef LPT_OPT_GET2

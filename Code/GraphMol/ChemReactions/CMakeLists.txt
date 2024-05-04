@@ -1,8 +1,8 @@
 if(RDK_USE_BOOST_SERIALIZATION AND Boost_SERIALIZATION_LIBRARY)
-    set(RDKit_SERIALIZATION_LIBS ${Boost_SERIALIZATION_LIBRARY})
+    set(RDKix_SERIALIZATION_LIBS ${Boost_SERIALIZATION_LIBRARY})
 else()
       message("== Making EnumerateLibrary without boost Serialization support")
-    set(RDKit_SERIALIZATION_LIBS )
+    set(RDKix_SERIALIZATION_LIBS )
 endif()
 
 if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
@@ -11,7 +11,7 @@ if(CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 5)
   endif()
 endif()
 
-rdkit_library(ChemReactions
+rdkix_library(ChemReactions
               Reaction.cpp MDLParser.cpp DaylightParser.cpp ReactionPickler.cpp
 	            ReactionWriter.cpp ReactionDepict.cpp ReactionFingerprints.cpp ReactionUtils.cpp 
               MoleculeParser.cpp ReactionRunner.cpp PreprocessRxn.cpp SanitizeRxn.cpp
@@ -21,10 +21,10 @@ rdkit_library(ChemReactions
                     Enumerate/EvenSamplePairs.cpp
               LINK_LIBRARIES
               FilterCatalog Descriptors Fingerprints DataStructs Depictor
-              FileParsers SubstructMatch ChemTransforms GraphMol ${RDKit_SERIALIZATION_LIBS})
-target_compile_definitions(ChemReactions PRIVATE RDKIT_CHEMREACTIONS_BUILD)
+              FileParsers SubstructMatch ChemTransforms GraphMol ${RDKix_SERIALIZATION_LIBS})
+target_compile_definitions(ChemReactions PRIVATE RDKIX_CHEMREACTIONS_BUILD)
 
-rdkit_headers(Reaction.h
+rdkix_headers(Reaction.h
               ReactionParser.h
               ReactionPickler.h
               ReactionFingerprints.h
@@ -34,7 +34,7 @@ rdkit_headers(Reaction.h
               SanitizeRxn.h
               DEST GraphMol/ChemReactions)
 
-rdkit_headers(Enumerate/Enumerate.h
+rdkix_headers(Enumerate/Enumerate.h
               Enumerate/EnumerateBase.h
               Enumerate/EnumerateTypes.h
               Enumerate/EnumerationPickler.h
@@ -44,16 +44,16 @@ rdkit_headers(Enumerate/Enumerate.h
               Enumerate/RandomSampleAllBBs.h
               DEST GraphMol/ChemReactions/Enumerate)
 
-rdkit_test(testReaction testReaction.cpp LINK_LIBRARIES
+rdkix_test(testReaction testReaction.cpp LINK_LIBRARIES
  ChemReactions )
 
-rdkit_test(testReactionFingerprints testReactionFingerprints.cpp LINK_LIBRARIES
+rdkix_test(testReactionFingerprints testReactionFingerprints.cpp LINK_LIBRARIES
 ChemReactions )
 
-rdkit_test(testEnumeration Enumerate/testEnumerate.cpp LINK_LIBRARIES
+rdkix_test(testEnumeration Enumerate/testEnumerate.cpp LINK_LIBRARIES
 ChemReactions  )
 
-rdkit_catch_test(rxnTestCatch catch_tests.cpp LINK_LIBRARIES ChemReactions )
+rdkix_catch_test(rxnTestCatch catch_tests.cpp LINK_LIBRARIES ChemReactions )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)

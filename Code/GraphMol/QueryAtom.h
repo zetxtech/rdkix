@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_QUERYATOM_H
@@ -16,7 +16,7 @@
 #include <Query/QueryObjects.h>
 #include <GraphMol/QueryOps.h>
 
-namespace RDKit {
+namespace RDKix {
 
 //! Class for storing atomic queries
 /*!
@@ -25,7 +25,7 @@ namespace RDKit {
   querying capabilities.
 
  */
-class RDKIT_GRAPHMOL_EXPORT QueryAtom : public Atom {
+class RDKIX_GRAPHMOL_EXPORT QueryAtom : public Atom {
  public:
   typedef Queries::Query<int, Atom const *, true> QUERYATOM_QUERY;
 
@@ -156,6 +156,6 @@ inline std::string describeQuery(const Atom *atom) {
   return res;
 }
 
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

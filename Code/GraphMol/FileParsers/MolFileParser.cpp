@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/lexical_cast.hpp>
@@ -21,7 +21,7 @@
 #include "MolFileStereochem.h"
 
 #include <GraphMol/SmilesParse/SmilesParse.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <RDGeneral/StreamOps.h>
@@ -35,7 +35,7 @@
 #include <exception>
 #include <charconv>
 
-#ifdef RDKIT_USE_BOOST_REGEX
+#ifdef RDKIX_USE_BOOST_REGEX
 #include <boost/regex.hpp>
 using boost::regex;
 using boost::regex_match;
@@ -52,9 +52,9 @@ using std::smatch;
 #include <cstdio>
 #include <string_view>
 
-using namespace RDKit::SGroupParsing;
+using namespace RDKix::SGroupParsing;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace FileParserUtils {
 
@@ -185,7 +185,7 @@ Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom) {
   return QueryOps::replaceAtomWithQueryAtom(mol, atom);
 }
 }  // namespace FileParserUtils
-using RDKit::FileParserUtils::getV3000Line;
+using RDKix::FileParserUtils::getV3000Line;
 
 namespace {
 
@@ -212,14 +212,14 @@ std::string parseEnhancedStereo(std::istream *inStream, unsigned int &line,
   while (!startsWith(tempStr, "END", 3)) {
     // If this line in the collection is part of a stereo group
     if (regex_match(tempStr, match, stereo_label)) {
-      StereoGroupType grouptype = RDKit::StereoGroupType::STEREO_ABSOLUTE;
+      StereoGroupType grouptype = RDKix::StereoGroupType::STEREO_ABSOLUTE;
 
       if (match[1] == "ABS") {
-        grouptype = RDKit::StereoGroupType::STEREO_ABSOLUTE;
+        grouptype = RDKix::StereoGroupType::STEREO_ABSOLUTE;
       } else if (match[1] == "REL") {
-        grouptype = RDKit::StereoGroupType::STEREO_OR;
+        grouptype = RDKix::StereoGroupType::STEREO_OR;
       } else if (match[1] == "RAC") {
-        grouptype = RDKit::StereoGroupType::STEREO_AND;
+        grouptype = RDKix::StereoGroupType::STEREO_AND;
       } else {
         std::ostringstream errout;
         errout << "Unrecognized stereogroup type : '" << tempStr << "' on line"
@@ -3550,4 +3550,4 @@ RWMol *MolFileToMol(const std::string &fName, bool sanitize, bool removeHs,
   }
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

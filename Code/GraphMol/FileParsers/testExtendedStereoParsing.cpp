@@ -1,13 +1,13 @@
 //
 //  Copyright (C) 2018 T5 Informatics GmbH
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 #include "FileParsers.h"
 #include "MolFileStereochem.h"
@@ -20,7 +20,7 @@
 #include <fstream>
 #include <memory>
 
-using namespace RDKit;
+using namespace RDKix;
 
 std::unique_ptr<RWMol> readTestFile(const std::string &baseName) {
   std::string rdbase = getenv("RDBASE");
@@ -41,10 +41,10 @@ void testOr() {
   auto stereo_groups = m->getStereoGroups();
   TEST_ASSERT(stereo_groups.size() == 2);
   TEST_ASSERT(stereo_groups[0].getGroupType() ==
-              RDKit::StereoGroupType::STEREO_ABSOLUTE);
+              RDKix::StereoGroupType::STEREO_ABSOLUTE);
   TEST_ASSERT(stereo_groups[0].getAtoms().size() == 1u);
   TEST_ASSERT(stereo_groups[1].getGroupType() ==
-              RDKit::StereoGroupType::STEREO_OR);
+              RDKix::StereoGroupType::STEREO_OR);
   TEST_ASSERT(stereo_groups[1].getAtoms().size() == 2u);
 
   BOOST_LOG(rdInfoLog) << "done" << std::endl;
@@ -61,9 +61,9 @@ void testAnd() {
   auto stereo_groups = m->getStereoGroups();
   TEST_ASSERT(stereo_groups.size() == 2);
   TEST_ASSERT(stereo_groups[0].getGroupType() ==
-              RDKit::StereoGroupType::STEREO_ABSOLUTE);
+              RDKix::StereoGroupType::STEREO_ABSOLUTE);
   TEST_ASSERT(stereo_groups[1].getGroupType() ==
-              RDKit::StereoGroupType::STEREO_AND);
+              RDKix::StereoGroupType::STEREO_AND);
 
   BOOST_LOG(rdInfoLog) << "done" << std::endl;
 }
@@ -73,8 +73,8 @@ void testWrite() {
 
   auto m0 = readTestFile("two_centers_and.mol");
   TEST_ASSERT(m0.get());
-  std::string block = RDKit::MolToMolBlock(*m0);
-  auto m1 = RDKit::MolBlockToMol(block);
+  std::string block = RDKix::MolToMolBlock(*m0);
+  auto m1 = RDKix::MolBlockToMol(block);
 
   // Check that the extended stereo information has the same extended stereo
   // types and same atoms marked for extended stereo.

@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <map>
 
@@ -22,17 +22,17 @@
 #endif
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 static inline std::string getMolecularFormula(const ROMol &mol) {
-  return RDKit::Descriptors::calcMolFormula(mol);
+  return RDKix::Descriptors::calcMolFormula(mol);
 }
 
 void AddMWMF(RWMol &mol,
              bool pre) {  // set formula & mass properties "MW_PRE" "MW_POST"
   double mass = 0.0;
-  mass = RDKit::Descriptors::calcExactMW(mol);
+  mass = RDKix::Descriptors::calcExactMW(mol);
   /*
           for (unsigned i = 0; i < mol.getNumAtoms(); i++) {
                const Atom& atom = *mol.getAtomWithIdx(i);
@@ -79,11 +79,11 @@ bool StripSmallFragments(RWMol &mol, bool verbose) {
 
   // we need to save chirality for checking later
   bool checkChiral = false;
-  if (mol.hasProp(RDKit::common_properties::_MolFileChiralFlag)) {
+  if (mol.hasProp(RDKix::common_properties::_MolFileChiralFlag)) {
     unsigned int chiralflag =
-        mol.getProp<unsigned int>(RDKit::common_properties::_MolFileChiralFlag);
+        mol.getProp<unsigned int>(RDKix::common_properties::_MolFileChiralFlag);
     frags[maxFragIdx].get()->setProp<unsigned int>(
-        RDKit::common_properties::_MolFileChiralFlag, chiralflag);
+        RDKix::common_properties::_MolFileChiralFlag, chiralflag);
     checkChiral = chiralflag != 0;
   }
 
@@ -133,7 +133,7 @@ bool StripSmallFragments(RWMol &mol, bool verbose) {
     }
 
     if (!ischiral) {
-      mol.setProp<unsigned int>(RDKit::common_properties::_MolFileChiralFlag,
+      mol.setProp<unsigned int>(RDKix::common_properties::_MolFileChiralFlag,
                                 0);
     }
   }
@@ -141,4 +141,4 @@ bool StripSmallFragments(RWMol &mol, bool verbose) {
 }
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

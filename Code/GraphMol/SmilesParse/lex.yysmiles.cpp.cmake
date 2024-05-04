@@ -1,6 +1,6 @@
-#line 2 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 2 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
-#line 4 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 4 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -826,13 +826,13 @@ extern "C" int fileno(FILE*);
 #include <GraphMol/Atom.h>
 #include <GraphMol/Bond.h>
 #include <GraphMol/PeriodicTable.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smiles.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 #define YY_FATAL_ERROR(msg) smiles_lexer_error(msg)
 
@@ -884,9 +884,9 @@ size_t setup_smiles_string(const std::string &text,yyscan_t yyscanner){
   return start;
 
 }
-#line 888 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 888 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
-#line 890 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 890 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 #define INITIAL 0
 #define IN_ATOM_STATE 1
@@ -1174,7 +1174,7 @@ YY_DECL
     }
 
 
-#line 1178 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 1178 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2126,7 +2126,7 @@ case 169:
 YY_RULE_SETUP
 #line 337 "smiles.ll"
 { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDDOWNRIGHT);
 	return BOND_TOKEN;  }
 	YY_BREAK
@@ -2134,7 +2134,7 @@ case 170:
 YY_RULE_SETUP
 #line 342 "smiles.ll"
 { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDUPRIGHT);
 	return BOND_TOKEN;  }
 	YY_BREAK
@@ -2209,7 +2209,7 @@ YY_RULE_SETUP
 #line 372 "smiles.ll"
 ECHO;
 	YY_BREAK
-#line 2213 "/scratch/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 2213 "/scratch/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

@@ -32,8 +32,8 @@
 
 import unittest
 
-from rdkit import Chem
-from rdkit.Chem import rdStructChecker
+from rdkix import Chem
+from rdkix.Chem import rdStructChecker
 
 data = """310929550
   -OEChem-07211613022D

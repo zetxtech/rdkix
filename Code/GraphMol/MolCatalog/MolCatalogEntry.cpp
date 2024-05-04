@@ -3,22 +3,22 @@
 //  Copyright (C) 2006-2008 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolCatalogEntry.h"
 
 #include <RDGeneral/types.h>
 #include <RDGeneral/StreamOps.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <iostream>
 #include <sstream>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 
 MolCatalogEntry::MolCatalogEntry(const ROMol *omol) {
   PRECONDITION(omol, "bad mol");
@@ -121,4 +121,4 @@ void MolCatalogEntry::initFromString(const std::string &text) {
   // now start reading out values:
   initFromStream(ss);
 }
-}  // namespace RDKit
+}  // namespace RDKix

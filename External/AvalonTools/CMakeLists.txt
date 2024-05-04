@@ -85,8 +85,8 @@ set(avalon_clib_srcs ${AVALON_COMMON_PATH}/layout.c
 	${AVALON_COMMON_PATH}/hashcode.c
   )
 
-rdkit_library(avalon_clib ${avalon_clib_srcs})
-target_compile_definitions(avalon_clib PRIVATE RDKIT_AVALONLIB_BUILD)
+rdkix_library(avalon_clib ${avalon_clib_srcs})
+target_compile_definitions(avalon_clib PRIVATE RDKIX_AVALONLIB_BUILD)
 if((MSVC AND RDK_INSTALL_DLLS_MSVC) OR ((NOT MSVC) AND WIN32))
   set_target_properties(avalon_clib PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
@@ -94,11 +94,11 @@ endif()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${AVALON_INCLUDE_PATH})
 
-rdkit_library(AvalonLib AvalonTools.cpp SHARED 
+rdkix_library(AvalonLib AvalonTools.cpp SHARED 
      LINK_LIBRARIES avalon_clib SubstructMatch FileParsers SmilesParse GraphMol DataStructs  )
-target_compile_definitions(AvalonLib PRIVATE RDKIT_AVALONLIB_BUILD)
-rdkit_headers(AvalonTools.h DEST GraphMol)
-rdkit_test(testAvalonLib1 test1.cpp
+target_compile_definitions(AvalonLib PRIVATE RDKIX_AVALONLIB_BUILD)
+rdkix_headers(AvalonTools.h DEST GraphMol)
+rdkix_test(testAvalonLib1 test1.cpp
            LINK_LIBRARIES AvalonLib SubstructMatch )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

@@ -11,7 +11,7 @@ endif()
 
 include_directories ( "include" )
 
-set(RDKit_LIBS
+set(RDKix_LIBS
            ChemReactions_static FileParsers_static SmilesParse_static Depictor_static
            RDGeometryLib_static RDGeneral_static SubstructMatch_static Subgraphs_static
            MolDraw2D_static GraphMol_static RingDecomposerLib_static DistGeometry_static
@@ -23,7 +23,7 @@ set(RDKit_LIBS
 
 macro(fuzzer name)
   add_executable(${name} ${name}.cc)
-  target_link_libraries(${name} rdkit_base ${RDKit_LIBS} ${LIB_FUZZING_ENGINE})
+  target_link_libraries(${name} rdkix_base ${RDKix_LIBS} ${LIB_FUZZING_ENGINE})
 endmacro()
 
 fuzzer(smiles_string_to_mol_fuzzer)

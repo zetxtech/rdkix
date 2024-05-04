@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2008 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdmetric_array_API
 #include <RDBoost/python.h>
@@ -259,7 +259,7 @@ BOOST_PYTHON_MODULE(rdMetricMatrixCalc) {
       "Module containing the calculator for metric matrix calculation, \n"
       "e.g. similarity and distance matrices";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   std::string docString;
   docString =

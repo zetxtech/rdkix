@@ -1,5 +1,5 @@
-include_directories( ${RDKit_ExternalDir}/FreeSASA )
-rdkit_python_extension(rdFreeSASA 
+include_directories( ${RDKix_ExternalDir}/FreeSASA )
+rdkix_python_extension(rdFreeSASA 
                        rdFreeSASA.cpp 
                        DEST Chem
                        LINK_LIBRARIES 

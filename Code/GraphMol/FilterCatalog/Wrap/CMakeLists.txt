@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_FILTERCATALOG_BUILD)
-rdkit_python_extension(rdfiltercatalog
+remove_definitions(-DRDKIX_FILTERCATALOG_BUILD)
+rdkix_python_extension(rdfiltercatalog
                        rdfiltercatalog.cpp
                        FilterCatalog.cpp
                        DEST Chem

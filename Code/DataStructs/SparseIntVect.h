@@ -3,10 +3,10 @@
 //  Copyright (C) 2007-2008 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_SPARSE_INT_VECT_20070921__
@@ -22,7 +22,7 @@
 
 const int ci_SPARSEINTVECT_VERSION =
     0x0001;  //!< version number to use in pickles
-namespace RDKit {
+namespace RDKix {
 //! a class for efficiently storing sparse vectors of ints
 template <typename IndexType>
 class SparseIntVect {
@@ -566,6 +566,6 @@ double TanimotoSimilarity(const SparseIntVect<IndexType> &v1,
                           bool returnDistance = false, double bounds = 0.0) {
   return TverskySimilarity(v1, v2, 1.0, 1.0, returnDistance, bounds);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

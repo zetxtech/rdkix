@@ -2,10 +2,10 @@
 //  Copyright (c) 2022 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "CDXMLParser.h"
 #include <boost/property_tree/xml_parser.hpp>
@@ -22,7 +22,7 @@
 #include <RDGeneral/FileParseException.h>
 
 using boost::property_tree::ptree;
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 const std::string NEEDS_FUSE("CDXML_NEEDS_FUSE");
@@ -415,8 +415,8 @@ bool parse_fragment(RWMol &mol, ptree &frag,
       }
       bnd->setProp("CDX_BOND_ID", bond.bond_id);
       // More confusion
-      // RDKit/MolFile Wedge (up)  == CDXML WedgedHash
-      // RDKit//MolFile WedgedHash (down) == CDXML Wedge
+      // RDKix/MolFile Wedge (up)  == CDXML WedgedHash
+      // RDKix//MolFile WedgedHash (down) == CDXML Wedge
       if (bond.display == "WedgeEnd" || bond.display == "WedgeBegin") {
         bnd->setBondDir(Bond::BondDir::BEGINDASH);
       } else if (bond.display == "WedgedHashBegin" ||
@@ -709,4 +709,4 @@ std::vector<std::unique_ptr<RWMol>> CDXMLToMols(const std::string &cdxml,
   return CDXMLDataStreamToMols(iss, sanitize, removeHs);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

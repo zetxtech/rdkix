@@ -1,4 +1,4 @@
-Instructions for building the RDKit can be found in the file
+Instructions for building the RDKix can be found in the file
 Docs/Book/Install.md.
 
 The online version of the documentation is available here:
@@ -8,8 +8,8 @@ Some information about using the software from Python is in the
 "Getting Started in Python" document in Docs/Book
 
 If you have questions or suggestions, please subscribe to the
-rdkit-discuss mailing list:
-http://lists.sourceforge.net/mailman/listinfo/rdkit-discuss
+rdkix-discuss mailing list:
+http://lists.sourceforge.net/mailman/listinfo/rdkix-discuss
 
 Please see the file LICENSE for details about the "New BSD"
 license which covers this software and its associated data and

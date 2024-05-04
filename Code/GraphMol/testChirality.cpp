@@ -2,10 +2,10 @@
 //   Copyright (C) 2007-2017 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // There are chirality test cases spread all over the place. Many of the
@@ -15,7 +15,7 @@
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
 //#include <boost/log/functions.hpp>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/new_canon.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -26,7 +26,7 @@
 
 #include <iostream>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 
 void testMol1() {
@@ -2874,7 +2874,7 @@ void testAssignChiralTypesFromMolParity() {
   BOOST_LOG(rdInfoLog) << "testAssignChiralTypesFromMolParity" << std::endl;
   {
     std::string molb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   6  5  0  0  1  0  0  0  0  0999 V2000
    -2.9747    1.7234    0.0753 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2906,7 +2906,7 @@ void testClearDirsOnDoubleBondsWithoutStereo() {
                        << std::endl;
   {  // base example
     std::string molb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   9  8  0  0  0  0  0  0  0  0999 V2000
    -1.0935    0.1248    0.0275 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2942,7 +2942,7 @@ M  END)CTAB";
   }
   {  // base example with the double bond reversed
     std::string molb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   9  8  0  0  0  0  0  0  0  0999 V2000
    -1.0935    0.1248    0.0275 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2978,7 +2978,7 @@ M  END)CTAB";
   }
   {  // make sure it behaves if there really is double bond stereo
     std::string molb = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   9  8  0  0  0  0  0  0  0  0999 V2000
    -1.0935    0.1248    0.0275 C   0  0  0  0  0  0  0  0  0  0  0  0

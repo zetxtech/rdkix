@@ -3,15 +3,15 @@
 //  Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "FeatTree.h"
 
@@ -20,7 +20,7 @@
 #include <map>
 #include <set>
 
-namespace RDKit {
+namespace RDKix {
 namespace FeatTrees {
 typedef std::vector<boost::graph_traits<FeatTreeGraph>::vertex_descriptor>
     NodeVect;
@@ -376,4 +376,4 @@ void addZeroNodes(FeatTreeGraph &featGraph) {
 }
 
 }  // end of namespace FeatTrees
-}  // end of namespace RDKit
+}  // end of namespace RDKix

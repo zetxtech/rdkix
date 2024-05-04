@@ -19,16 +19,16 @@
     </style>
 </head>
 
-<script src="./RDKit_minimal.js"></script>
+<script src="./RDKix_minimal.js"></script>
 <script>
-  onRuntimeInitialized: initRDKitModule().then(function (instance) {
-      RDKitModule = instance;
-      console.log('version: ' + RDKitModule.version());
+  onRuntimeInitialized: initRDKixModule().then(function (instance) {
+      RDKixModule = instance;
+      console.log('version: ' + RDKixModule.version());
   });
 </script>
 <body>
 <div class="container-fluid col-md-12">
-<h1>Getting started with RDKit-JS</h1>
+<h1>Getting started with RDKix-JS</h1>
 
 <h2>Drawing molecules</h2>
 
@@ -37,7 +37,7 @@
             <div class="col-sm-6">
                 <textarea id="example-1" cols="40" rows="5" wrap="off">
 var smiles = "CC(=O)Oc1ccccc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var dest = document.getElementById("example-1-output");
 var svg = mol.get_svg();
 dest.outerHTML = "<div id='drawing'>" + svg + "</div>";
@@ -49,12 +49,12 @@ dest.outerHTML = "<div id='drawing'>" + svg + "</div>";
         </div>
 </p>
 
-<p>As of v2020.09 of the RDKit we can do the same thing using the HTML5 canvas:
+<p>As of v2020.09 of the RDKix we can do the same thing using the HTML5 canvas:
 <div class="row">
     <div class="col-sm-6">
         <textarea id="example-2" cols="40" rows="5" wrap="off">
 var smiles = "CC(=O)Oc1ccccc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var canvas = document.getElementById("canvas-2");
 mol.draw_to_canvas(canvas, -1, -1);
 </textarea>
@@ -72,9 +72,9 @@ mol.draw_to_canvas(canvas, -1, -1);
     <div class="col-sm-6">
         <textarea id="example-3" cols="40" rows="5" wrap="off">
 var smiles = "CC(=O)Oc1ccccc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var smarts = "Oc1[c,n]cccc1";
-var qmol = RDKitModule.get_qmol(smarts)
+var qmol = RDKixModule.get_qmol(smarts)
 var mdetails = mol.get_substruct_match(qmol)
 var canvas = document.getElementById("canvas-3");
 mol.draw_to_canvas_with_highlights(canvas, mdetails);
@@ -104,7 +104,7 @@ set the atoms/bonds which should be highlighted:
     <div class="col-sm-6">
         <textarea id="example-4" cols="40" rows="5" wrap="off">
 var smiles = "CC(=O)Oc1ccccc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var mdetails = {};
 mdetails['atoms']=[0,1,10];
 mdetails['explicitMethyl'] = true;
@@ -127,9 +127,9 @@ mol.draw_to_canvas_with_highlights(canvas, JSON.stringify(mdetails));
     <div class="col-sm-6">
         <textarea id="example-5" cols="40" rows="5" wrap="off">
 var smiles = "CC(=O)Oc1ccccc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var smarts = "O=C";
-var qmol = RDKitModule.get_qmol(smarts)
+var qmol = RDKixModule.get_qmol(smarts)
 var mdetails = JSON.parse(mol.get_substruct_match(qmol));
 mdetails['highlightColour'] = [1,0,1];
 mdetails['legend']='aspirin';
@@ -204,7 +204,7 @@ singleColourWedgeBonds
     <div class="col-sm-6">
         <textarea id="example-6" cols="40" rows="5" wrap="off">
 var smiles = "c1cnc(C)nc1C(=O)O";
-var mol = RDKitModule.get_mol(smiles);
+var mol = RDKixModule.get_mol(smiles);
 var template = `
   Mrv2014 10192005332D          
 
@@ -230,7 +230,7 @@ M  V30 END BOND
 M  V30 END CTAB
 M  END
 `;
-var qmol = RDKitModule.get_mol(template);
+var qmol = RDKixModule.get_mol(template);
 mol.generate_aligned_coords(qmol,true);
 var tdetails = mol.get_substruct_match(qmol);
 var canvas = document.getElementById("canvas-6");
@@ -256,7 +256,7 @@ mergeQueryHs
     <div class="col-sm-6">
         <textarea id="example-7" cols="40" rows="5" wrap="off">
 var smiles = "[*:1]ccc[*:2]";
-var mol = RDKitModule.get_mol(smiles, JSON.stringify({ kekulize: false }));
+var mol = RDKixModule.get_mol(smiles, JSON.stringify({ kekulize: false }));
 var canvas = document.getElementById("canvas-7");
 mol.draw_to_canvas(canvas, -1, -1);
 </textarea>
@@ -274,12 +274,12 @@ taking advantage of pre-filtering through pattern fingerprints:
 <div class="row">
     <div class="col-sm-6">
         <textarea id="example-8" cols="40" rows="5" wrap="off">
-var sslib = new RDKitModule.SubstructLibrary();
-var mol0 = RDKitModule.get_mol("Cc1cc(F)ccc1");
-var mol1 = RDKitModule.get_mol("Clc1ccccn1");
+var sslib = new RDKixModule.SubstructLibrary();
+var mol0 = RDKixModule.get_mol("Cc1cc(F)ccc1");
+var mol1 = RDKixModule.get_mol("Clc1ccccn1");
 sslib.add_trusted_smiles(mol0.get_smiles());
 sslib.add_trusted_smiles(mol1.get_smiles());
-var query = RDKitModule.get_mol(`
+var query = RDKixModule.get_mol(`
   MJ201100          2D          
 
   6  6  0  0  0  0  0  0  0  0999 V2000

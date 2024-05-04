@@ -2,17 +2,17 @@
 //  Copyright (C) 2015,2016 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_SEQUENCEPARSE_H_
 #define _RD_SEQUENCEPARSE_H_
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 
 // \brief construct a molecule from a sequence string (currently only supports
@@ -25,10 +25,10 @@ class RWMol;
  *of the corresponding amino acid
  *
  */
-RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const char *seq, bool sanitize,
+RDKIX_FILEPARSERS_EXPORT RWMol *SequenceToMol(const char *seq, bool sanitize,
                                               bool lowerD);
 //! \overload
-RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
                                               bool sanitize, bool lowerD);
 
 // \brief construct a protein, RNA or DNA molecule from a sequence string
@@ -49,11 +49,11 @@ RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
  *      9 DNA, both caps
  *
  */
-RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const char *seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *SequenceToMol(const char *seq,
                                               bool sanitize = true,
                                               int flavor = 0);
 //! \overload
-RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
                                               bool sanitize = true,
                                               int flavor = 0);
 
@@ -67,10 +67,10 @@ RDKIT_FILEPARSERS_EXPORT RWMol *SequenceToMol(const std::string &seq,
  *of the corresponding amino acid
  *
  */
-RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const char *seq, bool sanitize,
+RDKIX_FILEPARSERS_EXPORT RWMol *FASTAToMol(const char *seq, bool sanitize,
                                            bool lowerD);
 //! \overload
-RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
                                            bool sanitize, bool lowerD);
 
 // \brief construct a protein, DNA or RNA molecule from a FASTA string
@@ -91,11 +91,11 @@ RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
  *      9 DNA, both caps
  *
  */
-RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const char *seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *FASTAToMol(const char *seq,
                                            bool sanitize = true,
                                            int flavor = 0);
 //! \overload
-RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
+RDKIX_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
                                            bool sanitize = true,
                                            int flavor = 0);
 
@@ -107,11 +107,11 @@ RDKIT_FILEPARSERS_EXPORT RWMol *FASTAToMol(const std::string &seq,
  *the molecule
  *
  */
-RDKIT_FILEPARSERS_EXPORT RWMol *HELMToMol(const char *helm,
+RDKIX_FILEPARSERS_EXPORT RWMol *HELMToMol(const char *helm,
                                           bool sanitize = true);
 //! \overload
-RDKIT_FILEPARSERS_EXPORT RWMol *HELMToMol(const std::string &helm,
+RDKIX_FILEPARSERS_EXPORT RWMol *HELMToMol(const std::string &helm,
                                           bool sanitize = true);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

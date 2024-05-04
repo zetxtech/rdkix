@@ -2,10 +2,10 @@
 //  Copyright (C) 2013-2014 Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_O3AALIGNMOLECULES_H_
@@ -25,9 +25,9 @@
 #include <boost/multi_array.hpp>
 #include <boost/dynamic_bitset.hpp>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolAlign {
-struct RDKIT_MOLALIGN_EXPORT O3AFuncData {
+struct RDKIX_MOLALIGN_EXPORT O3AFuncData {
   const Conformer *prbConf;
   const Conformer *refConf;
   void *prbProp;
@@ -46,7 +46,7 @@ class O3AConstraintVect;
 //! is defined by a pair of atom indexes (one for the probe,
 //! one for the reference) and a weight. Constraints can
 //! can be added via the O3AConstraintVect class.
-class RDKIT_MOLALIGN_EXPORT O3AConstraint {
+class RDKIX_MOLALIGN_EXPORT O3AConstraint {
   friend class O3AConstraintVect;
 
  public:
@@ -66,7 +66,7 @@ class RDKIT_MOLALIGN_EXPORT O3AConstraint {
 //! method is invoked, the vector is sorted to make lookup faster.
 //! Hence, constraints are not necessarily stored in the same order
 //! they were appended.
-class RDKIT_MOLALIGN_EXPORT O3AConstraintVect {
+class RDKIX_MOLALIGN_EXPORT O3AConstraintVect {
  public:
   O3AConstraintVect() {}
   ~O3AConstraintVect() = default;
@@ -128,7 +128,7 @@ enum {
   O3_LOCAL_ONLY = (1 << 2)
 };
 
-class RDKIT_MOLALIGN_EXPORT MolHistogram {
+class RDKIX_MOLALIGN_EXPORT MolHistogram {
  public:
   MolHistogram(const ROMol &mol, const double *dmat, bool cleanupDmat = false);
   ~MolHistogram() = default;
@@ -142,7 +142,7 @@ class RDKIT_MOLALIGN_EXPORT MolHistogram {
   boost::multi_array<int, 2> d_h;
 };
 
-class RDKIT_MOLALIGN_EXPORT LAP {
+class RDKIX_MOLALIGN_EXPORT LAP {
  public:
   LAP(unsigned int dim)
       : d_rowSol(dim),
@@ -184,7 +184,7 @@ class RDKIT_MOLALIGN_EXPORT LAP {
   boost::multi_array<int, 2> d_cost;
 };
 
-class RDKIT_MOLALIGN_EXPORT SDM {
+class RDKIX_MOLALIGN_EXPORT SDM {
  public:
   // constructor
   SDM(const Conformer *prbConf = nullptr, const Conformer *refConf = nullptr,
@@ -230,7 +230,7 @@ class RDKIT_MOLALIGN_EXPORT SDM {
   double scoreAlignment(double (*scoringFunc)(const unsigned int,
                                               const unsigned int, void *),
                         void *data);
-  void prepareMatchWeightsVect(RDKit::MatchVectType &matchVect,
+  void prepareMatchWeightsVect(RDKix::MatchVectType &matchVect,
                                RDNumeric::DoubleVector &weights,
                                double (*weightFunc)(const unsigned int,
                                                     const unsigned int, void *),
@@ -271,7 +271,7 @@ class RDKIT_MOLALIGN_EXPORT SDM {
   }
 };
 
-class RDKIT_MOLALIGN_EXPORT O3A {
+class RDKIX_MOLALIGN_EXPORT O3A {
  public:
   //! pre-defined atom typing schemes
   typedef enum { MMFF94 = 0, CRIPPEN } AtomTypeScheme;
@@ -304,7 +304,7 @@ class RDKIT_MOLALIGN_EXPORT O3A {
   double align();
   double trans(RDGeom::Transform3D &trans);
   double score() { return d_o3aScore; }
-  const RDKit::MatchVectType *matches() { return d_o3aMatchVect; }
+  const RDKix::MatchVectType *matches() { return d_o3aMatchVect; }
   const RDNumeric::DoubleVector *weights() { return d_o3aWeights; }
 
  private:
@@ -314,35 +314,35 @@ class RDKIT_MOLALIGN_EXPORT O3A {
   int d_refCid;
   bool d_reflect;
   unsigned int d_maxIters;
-  const RDKit::MatchVectType *d_o3aMatchVect;
+  const RDKix::MatchVectType *d_o3aMatchVect;
   const RDNumeric::DoubleVector *d_o3aWeights;
   double d_o3aScore;
 };
 
-RDKIT_MOLALIGN_EXPORT void randomTransform(ROMol &mol, const int cid = -1,
+RDKIX_MOLALIGN_EXPORT void randomTransform(ROMol &mol, const int cid = -1,
                                            const int seed = -1);
-RDKIT_MOLALIGN_EXPORT const RDGeom::POINT3D_VECT *reflect(
+RDKIX_MOLALIGN_EXPORT const RDGeom::POINT3D_VECT *reflect(
     const Conformer &conf);
-RDKIT_MOLALIGN_EXPORT int o3aMMFFCostFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT int o3aMMFFCostFunc(const unsigned int prbIdx,
                                           const unsigned int refIdx,
                                           double hSum, void *data);
-RDKIT_MOLALIGN_EXPORT double o3aMMFFWeightFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT double o3aMMFFWeightFunc(const unsigned int prbIdx,
                                                const unsigned int refIdx,
                                                void *data);
-RDKIT_MOLALIGN_EXPORT double o3aMMFFScoringFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT double o3aMMFFScoringFunc(const unsigned int prbIdx,
                                                 const unsigned int refIdx,
                                                 void *data);
-RDKIT_MOLALIGN_EXPORT int o3aCrippenCostFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT int o3aCrippenCostFunc(const unsigned int prbIdx,
                                              const unsigned int refIdx,
                                              double hSum, void *data);
-RDKIT_MOLALIGN_EXPORT double o3aCrippenWeightFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT double o3aCrippenWeightFunc(const unsigned int prbIdx,
                                                   const unsigned int refIdx,
                                                   void *data);
-RDKIT_MOLALIGN_EXPORT double o3aCrippenScoringFunc(const unsigned int prbIdx,
+RDKIX_MOLALIGN_EXPORT double o3aCrippenScoringFunc(const unsigned int prbIdx,
                                                    const unsigned int refIdx,
                                                    void *data);
 
-RDKIT_MOLALIGN_EXPORT void getO3AForProbeConfs(
+RDKIX_MOLALIGN_EXPORT void getO3AForProbeConfs(
     ROMol &prbMol, const ROMol &refMol, void *prbProp, void *refProp,
     std::vector<boost::shared_ptr<O3A>> &res, int numThreads = 1,
     O3A::AtomTypeScheme atomTypes = O3A::MMFF94, const int refCid = -1,
@@ -350,5 +350,5 @@ RDKIT_MOLALIGN_EXPORT void getO3AForProbeConfs(
     unsigned int options = 0, const MatchVectType *constraintMap = nullptr,
     const RDNumeric::DoubleVector *constraintWeights = nullptr);
 }  // namespace MolAlign
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

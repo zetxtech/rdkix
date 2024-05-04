@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_BONDSTRETCH_H__
@@ -17,7 +17,7 @@ namespace UFF {
 class AtomicParams;
 
 //! The bond-stretch term for the Universal Force Field
-class RDKIT_FORCEFIELD_EXPORT BondStretchContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT BondStretchContrib : public ForceFieldContrib {
  public:
   BondStretchContrib() {}
   //! Constructor
@@ -60,7 +60,7 @@ namespace Utils {
   \return the rest length
 
 */
-RDKIT_FORCEFIELD_EXPORT double calcBondRestLength(
+RDKIX_FORCEFIELD_EXPORT double calcBondRestLength(
     double bondOrder, const AtomicParams *end1Params,
     const AtomicParams *end2Params);
 
@@ -74,7 +74,7 @@ RDKIT_FORCEFIELD_EXPORT double calcBondRestLength(
   \return the force constant
 
 */
-RDKIT_FORCEFIELD_EXPORT double calcBondForceConstant(
+RDKIX_FORCEFIELD_EXPORT double calcBondForceConstant(
     double restLength, const AtomicParams *end1Params,
     const AtomicParams *end2Params);
 }  // namespace Utils

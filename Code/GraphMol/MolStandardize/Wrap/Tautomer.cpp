@@ -2,22 +2,22 @@
 //  Copyright (C) 2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <boost/python/suite/indexing/map_indexing_suite.hpp>
 #include <RDBoost/Wrap.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolStandardize/MolStandardize.h>
 #include <GraphMol/MolStandardize/Tautomer.h>
 #include <sstream>
 
 namespace python = boost::python;
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 class PyTautomerEnumeratorResult {
@@ -62,7 +62,7 @@ class PyTautomerEnumeratorResult {
     return d_tr->end();
   }
   inline int size() const { return d_tr->size(); }
-  RDKit::ROMol *at(int pos) const {
+  RDKix::ROMol *at(int pos) const {
     if (pos < 0) {
       pos += size();
     }
@@ -71,7 +71,7 @@ class PyTautomerEnumeratorResult {
       python::throw_error_already_set();
       return nullptr;
     }
-    return new RDKit::ROMol(*d_tr->at(pos));
+    return new RDKix::ROMol(*d_tr->at(pos));
   }
   const MolStandardize::TautomerEnumeratorResult *get() { return d_tr.get(); }
 
@@ -442,7 +442,7 @@ struct tautomer_wrapper {
              "to be removed from sp3 atoms involved in tautomerism. "
              "This means that S-aminoacids will lose their stereochemistry "
              "after going through tautomer enumeration because of the "
-             "amido-imidol tautomerism. This defaults to True in RDKit, "
+             "amido-imidol tautomerism. This defaults to True in RDKix, "
              "and to False in the workflow described by Sitzmann et al.")
         .def("GetRemoveSp3Stereo",
              &MolStandardize::TautomerEnumerator::getRemoveSp3Stereo,
@@ -457,7 +457,7 @@ struct tautomer_wrapper {
              "This means that enols will lose their E/Z stereochemistry "
              "after going through tautomer enumeration because of the "
              "keto-enolic tautomerism. This defaults to True in the "
-             "RDKit and also in the workflow described by Sitzmann et al.")
+             "RDKix and also in the workflow described by Sitzmann et al.")
         .def("GetRemoveBondStereo",
              &MolStandardize::TautomerEnumerator::getRemoveBondStereo,
              (python::arg("self")),

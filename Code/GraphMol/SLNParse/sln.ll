@@ -50,15 +50,15 @@ extern "C" int fileno(FILE*);
 #endif
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
 
 #include <string>
 #include <cstring>
 #include "sln.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 void setup_sln_string(const std::string &text,yyscan_t yyscanner){
   YY_BUFFER_STATE buff=yysln__scan_string(text.c_str(),yyscanner);

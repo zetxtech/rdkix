@@ -2,28 +2,28 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_FRAG_CATALOG_UTILS_H_
 #define _RD_FRAG_CATALOG_UTILS_H_
 
 #include <GraphMol/Subgraphs/Subgraphs.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include "FragCatParams.h"
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 
 // get the functional groups from file or stream
 // each functional groups is read in as a molecule with queryatoms and
 // querybonds
-RDKIT_FRAGCATALOG_EXPORT MOL_SPTR_VECT readFuncGroups(std::string fileName);
-RDKIT_FRAGCATALOG_EXPORT MOL_SPTR_VECT readFuncGroups(std::istream &inStream,
+RDKIX_FRAGCATALOG_EXPORT MOL_SPTR_VECT readFuncGroups(std::string fileName);
+RDKIX_FRAGCATALOG_EXPORT MOL_SPTR_VECT readFuncGroups(std::istream &inStream,
                                                       int nToRead = -1);
 
 // REVIEW: should this return a vector of pairs or a map?
@@ -40,7 +40,7 @@ RDKIT_FRAGCATALOG_EXPORT MOL_SPTR_VECT readFuncGroups(std::istream &inStream,
 //            the connection bond is included. these need to be chopped from
 //            the molecule later
 
-RDKIT_FRAGCATALOG_EXPORT MatchVectType findFuncGroupsOnMol(
+RDKIX_FRAGCATALOG_EXPORT MatchVectType findFuncGroupsOnMol(
     const ROMol &mol, const FragCatParams *params, INT_VECT &fgBonds);
 
 // This functions is called before either adding the fragments from a molecule
@@ -54,9 +54,9 @@ RDKIT_FRAGCATALOG_EXPORT MatchVectType findFuncGroupsOnMol(
 // - return coreMol to the caller of this function and the enter the atom ids to
 // func
 //   group ids mapping into aToFmap argument
-RDKIT_FRAGCATALOG_EXPORT ROMol *prepareMol(const ROMol &mol,
+RDKIX_FRAGCATALOG_EXPORT ROMol *prepareMol(const ROMol &mol,
                                            const FragCatParams *fparams,
                                            MatchVectType &aToFmap);
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

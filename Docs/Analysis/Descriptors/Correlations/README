@@ -2,7 +2,7 @@ Greg,
 
 I've compiled my descriptor correlation results and attached them as various files here.  Here is some explantion:
 
-I used 3 datasets from ZINC (http://zinc.docking.org/), sp. The Drug-like dataset (66796 structures), Lead-like (97433 structures), Fragment-like (15937 structures), and an in-house set of compounds (~24,000 structures).  For all of the ZINC sets, I downloaed the T80 versions, which have been somewhat filtered for similar compounds in an attempt to get the pairwise Tanimoto below 0.8.  I generated all descriptors from RDKIT including all VSA descriptors that I had access to.  I still cannot get the VSA_Estate and VSA_Slogp descriptors working.
+I used 3 datasets from ZINC (http://zinc.docking.org/), sp. The Drug-like dataset (66796 structures), Lead-like (97433 structures), Fragment-like (15937 structures), and an in-house set of compounds (~24,000 structures).  For all of the ZINC sets, I downloaed the T80 versions, which have been somewhat filtered for similar compounds in an attempt to get the pairwise Tanimoto below 0.8.  I generated all descriptors from RDKIX including all VSA descriptors that I had access to.  I still cannot get the VSA_Estate and VSA_Slogp descriptors working.
 
 The procedure I used for filtering descriptors consisted of eliminating those with less than 10% variance followed by a pairwise correlation analysis.  The correlation analysis consists of giving each column a score of the number of other columns with which it is correlated above the set threshold (0.85).  The column with the most correlated columns is kept and the others are deleted.  I did this using a KNIME workflow.
 

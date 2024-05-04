@@ -109,8 +109,8 @@
 #include <vector>
 #include <boost/algorithm/string.hpp>
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SLNParse/SLNParseOps.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
 #include <GraphMol/SLNParse/SLNParse.h>
@@ -121,9 +121,9 @@
 
 int yysln_lex(YYSTYPE *, void *);
 
-namespace SLNParse = RDKit::SLNParse;
+namespace SLNParse = RDKix::SLNParse;
 
-void yysln_error(const char *input, std::vector<RDKit::RWMol *> *ms, bool doQ,
+void yysln_error(const char *input, std::vector<RDKix::RWMol *> *ms, bool doQ,
                  void *scanner, const char *msg) {
   RDUNUSED_PARAM(ms);
   RDUNUSED_PARAM(doQ);
@@ -148,7 +148,7 @@ static void yyprint(FILE *file, int type, YYSTYPE value) {
     fprintf(file, " %d", type);
 }
 
-#line 156 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:339  */
+#line 156 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:339  */
 
 #ifndef YY_NULLPTR
 #if defined __cplusplus && 201103L <= __cplusplus
@@ -168,8 +168,8 @@ static void yyprint(FILE *file, int type, YYSTYPE value) {
 
 /* In a future release of Bison, this section will be replaced
    by #include "sln.tab.hpp".  */
-#ifndef YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
-#define YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
+#ifndef YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
+#define YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 #define YYDEBUG 0
@@ -226,15 +226,15 @@ union YYSTYPE {
 #line 92 "sln.yy" /* yacc.c:355  */
 
   int mol_T;
-  RDKit::Atom *atom_T;
-  RDKit::Bond *bond_T;
+  RDKix::Atom *atom_T;
+  RDKix::Bond *bond_T;
   int ival_T;
   std::string *text_T;
   char char_T;
-  RDKit::SLNParse::AttribType *attrib_T;
-  RDKit::SLNParse::AttribListType *attriblist_T;
+  RDKix::SLNParse::AttribType *attrib_T;
+  RDKix::SLNParse::AttribListType *attriblist_T;
 
-#line 244 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:355  */
+#line 244 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -242,15 +242,15 @@ typedef union YYSTYPE YYSTYPE;
 #define YYSTYPE_IS_DECLARED 1
 #endif
 
-int yysln_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
+int yysln_parse(const char *input, std::vector<RDKix::RWMol *> *molList,
                 bool doQueries, void *scanner);
 
-#endif /* !YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIT_BUILDER_RDKIT_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED \
+#endif /* !YY_YYSLN_HOME_RODRIGUE_DOCUMENTS_CODE_RDKIX_BUILDER_RDKIX_CODE_GRAPHMOL_SLNPARSE_SLN_TAB_HPP_INCLUDED \
         */
 
 /* Copy the second part of user declarations.  */
 
-#line 260 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:358  */
+#line 260 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:358  */
 
 #ifdef short
 #undef short
@@ -765,7 +765,7 @@ static const yytype_uint8 yyr2[] = {
 static void yy_symbol_value_print(FILE *yyoutput, int yytype,
                                   YYSTYPE const *const yyvaluep,
                                   const char *input,
-                                  std::vector<RDKit::RWMol *> *molList,
+                                  std::vector<RDKix::RWMol *> *molList,
                                   bool doQueries, void *scanner) {
   FILE *yyo = yyoutput;
   YYUSE(yyo);
@@ -786,7 +786,7 @@ static void yy_symbol_value_print(FILE *yyoutput, int yytype,
 
 static void yy_symbol_print(FILE *yyoutput, int yytype,
                             YYSTYPE const *const yyvaluep, const char *input,
-                            std::vector<RDKit::RWMol *> *molList,
+                            std::vector<RDKix::RWMol *> *molList,
                             bool doQueries, void *scanner) {
   YYFPRINTF(yyoutput, "%s %s (", yytype < YYNTOKENS ? "token" : "nterm",
             yytname[yytype]);
@@ -821,7 +821,7 @@ static void yy_stack_print(yytype_int16 *yybottom, yytype_int16 *yytop) {
 
 static void yy_reduce_print(yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule,
                             const char *input,
-                            std::vector<RDKit::RWMol *> *molList,
+                            std::vector<RDKix::RWMol *> *molList,
                             bool doQueries, void *scanner) {
   unsigned long yylno = yyrline[yyrule];
   int yynrhs = yyr2[yyrule];
@@ -1071,7 +1071,7 @@ static int yysyntax_error(YYSIZE_T *yymsg_alloc, char **yymsg,
 `-----------------------------------------------*/
 
 static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
-                       const char *input, std::vector<RDKit::RWMol *> *molList,
+                       const char *input, std::vector<RDKix::RWMol *> *molList,
                        bool doQueries, void *scanner) {
   YYUSE(yyvaluep);
   YYUSE(input);
@@ -1088,7 +1088,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).text_T);
     }
-#line 1196 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1196 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 10:       /* ATOM_TOKEN  */
@@ -1096,7 +1096,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).atom_T);
     }
-#line 1202 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1202 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 11:       /* COMPARE_TOKEN  */
@@ -1104,7 +1104,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).text_T);
     }
-#line 1208 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1208 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 41:       /* atom  */
@@ -1112,7 +1112,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).atom_T);
     }
-#line 1214 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1214 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 42:       /* hatom  */
@@ -1120,7 +1120,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).atom_T);
     }
-#line 1220 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1220 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 43:       /* primatom  */
@@ -1128,7 +1128,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).atom_T);
     }
-#line 1226 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1226 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 44:       /* bond  */
@@ -1136,7 +1136,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).bond_T);
     }
-#line 1232 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1232 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 45:       /* primbond  */
@@ -1144,7 +1144,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).bond_T);
     }
-#line 1238 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1238 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 46:       /* onebond  */
@@ -1152,7 +1152,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).bond_T);
     }
-#line 1244 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1244 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 47:       /* attriblist  */
@@ -1160,7 +1160,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).attriblist_T);
     }
-#line 1250 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1250 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 48:       /* ctabattriblist  */
@@ -1168,7 +1168,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).attriblist_T);
     }
-#line 1256 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1256 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 49:       /* attrib  */
@@ -1176,7 +1176,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).attrib_T);
     }
-#line 1262 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1262 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 50:       /* recursivequery  */
@@ -1184,7 +1184,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).attrib_T);
     }
-#line 1268 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1268 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     case 51:       /* ctabattrib  */
@@ -1192,7 +1192,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
     {
       delete ((*yyvaluep).attrib_T);
     }
-#line 1274 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
+#line 1274 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1258  */
     break;
 
     default:
@@ -1205,7 +1205,7 @@ static void yydestruct(const char *yymsg, int yytype, YYSTYPE *yyvaluep,
 | yyparse.  |
 `----------*/
 
-int yyparse(const char *input, std::vector<RDKit::RWMol *> *molList,
+int yyparse(const char *input, std::vector<RDKix::RWMol *> *molList,
             bool doQueries, void *scanner) {
   /* The lookahead symbol.  */
   int yychar;
@@ -1433,12 +1433,12 @@ yyreduce:
     {
       // allowing mol<attrs><attrs> seems to be a NIBR thing, I don't
       // think it's standard SLN
-      RDKit::ROMol *mol = (*molList)[(yyvsp[-3].mol_T)];
+      RDKix::ROMol *mol = (*molList)[(yyvsp[-3].mol_T)];
       SLNParse::parseMolAttribs(mol, *(yyvsp[-1].attriblist_T));
       delete (yyvsp[-1].attriblist_T);
       (yyval.mol_T) = (yyvsp[-3].mol_T);
     }
-#line 1549 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1549 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 4:
@@ -1448,7 +1448,7 @@ yyreduce:
       yyerrok;
       YYABORT;
     }
-#line 1559 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1559 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 5:
@@ -1456,7 +1456,7 @@ yyreduce:
     {
       YYACCEPT;
     }
-#line 1567 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1567 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 6:
@@ -1466,7 +1466,7 @@ yyreduce:
       yyerrok;
       YYABORT;
     }
-#line 1577 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1577 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 8:
@@ -1475,22 +1475,22 @@ yyreduce:
       (yyval.mol_T) =
           SLNParse::addFragToMol(*molList, (yyvsp[-2].mol_T), (yyvsp[0].mol_T));
     }
-#line 1585 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1585 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 9:
 #line 174 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
 
       (yyval.mol_T) = SLNParse::startMol(*molList, newAtom, doQueries);
     }
-#line 1600 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1600 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 10:
@@ -1499,7 +1499,7 @@ yyreduce:
       (yyval.mol_T) =
           SLNParse::startMol(*molList, (yyvsp[0].atom_T), doQueries);
     }
-#line 1608 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1608 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 11:
@@ -1509,7 +1509,7 @@ yyreduce:
                              doQueries);
       (yyval.mol_T) = (yyvsp[-1].mol_T);
     }
-#line 1617 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1617 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 12:
@@ -1519,7 +1519,7 @@ yyreduce:
                              (yyvsp[-1].bond_T), doQueries);
       (yyval.mol_T) = (yyvsp[-2].mol_T);
     }
-#line 1626 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1626 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 13:
@@ -1528,7 +1528,7 @@ yyreduce:
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[0].ival_T));
       (yyval.mol_T) = (yyvsp[-2].mol_T);
     }
-#line 1635 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1635 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 14:
@@ -1539,7 +1539,7 @@ yyreduce:
                               (yyvsp[-2].bond_T));
       (yyval.mol_T) = (yyvsp[-3].mol_T);
     }
-#line 1645 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1645 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 15:
@@ -1548,7 +1548,7 @@ yyreduce:
       SLNParse::addBranchToMol(*molList, (yyval.mol_T), (yyvsp[-1].mol_T));
       (yyval.mol_T) = (yyvsp[-3].mol_T);
     }
-#line 1654 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1654 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 16:
@@ -1560,7 +1560,7 @@ yyreduce:
                                (yyvsp[-2].bond_T));
       (yyval.mol_T) = (yyvsp[-4].mol_T);
     }
-#line 1665 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1665 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 17:
@@ -1569,7 +1569,7 @@ yyreduce:
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[-1].ival_T));
       (yyval.mol_T) = (yyvsp[-4].mol_T);
     }
-#line 1674 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1674 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 18:
@@ -1579,41 +1579,41 @@ yyreduce:
                               (yyvsp[-3].bond_T));
       (yyval.mol_T) = (yyvsp[-5].mol_T);
     }
-#line 1683 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1683 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 19:
 #line 222 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
 
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom,
                              (yyvsp[-1].bond_T), doQueries);
       (yyval.mol_T) = (yyvsp[-2].mol_T);
     }
-#line 1699 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1699 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 20:
 #line 233 "sln.yy" /* yacc.c:1651  */
     {
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[-1].ival_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-3].mol_T);
     }
-#line 1716 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1716 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 21:
@@ -1622,34 +1622,34 @@ yyreduce:
       // closeRingBond() takes ownership of the bond
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[-1].ival_T),
                               (yyvsp[-3].bond_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-4].mol_T);
     }
-#line 1734 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1734 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 22:
 #line 258 "sln.yy" /* yacc.c:1651  */
     {
       SLNParse::addBranchToMol(*molList, (yyval.mol_T), (yyvsp[-2].mol_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-4].mol_T);
     }
-#line 1751 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1751 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 23:
@@ -1659,34 +1659,34 @@ yyreduce:
       // branch, so no leaks here'
       SLNParse::addBranchToMol(*molList, (yyval.mol_T), (yyvsp[-2].mol_T),
                                (yyvsp[-3].bond_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-5].mol_T);
     }
-#line 1770 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1770 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 24:
 #line 284 "sln.yy" /* yacc.c:1651  */
     {
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[-2].ival_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-5].mol_T);
     }
-#line 1787 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1787 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 25:
@@ -1694,17 +1694,17 @@ yyreduce:
     {
       SLNParse::closeRingBond(*molList, (yyval.mol_T), (yyvsp[-2].ival_T),
                               (yyvsp[-4].bond_T));
-      RDKit::Atom *newAtom;
+      RDKix::Atom *newAtom;
       if (!doQueries) {
-        newAtom = new RDKit::Atom(1);
+        newAtom = new RDKix::Atom(1);
       } else {
-        newAtom = new RDKit::QueryAtom(1);
+        newAtom = new RDKix::QueryAtom(1);
       }
       SLNParse::addAtomToMol(*molList, (yyval.mol_T), newAtom, doQueries);
 
       (yyval.mol_T) = (yyvsp[-6].mol_T);
     }
-#line 1804 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1804 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 28:
@@ -1713,7 +1713,7 @@ yyreduce:
       (yyvsp[-1].atom_T)->setNumExplicitHs(1);
       (yyval.atom_T) = (yyvsp[-1].atom_T);
     }
-#line 1813 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1813 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 29:
@@ -1722,101 +1722,101 @@ yyreduce:
       (yyvsp[-2].atom_T)->setNumExplicitHs((yyvsp[0].ival_T));
       (yyval.atom_T) = (yyvsp[-2].atom_T);
     }
-#line 1822 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1822 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 30:
 #line 322 "sln.yy" /* yacc.c:1651  */
     {
       if (!doQueries) {
-        (yyval.atom_T) = new RDKit::Atom(1);
+        (yyval.atom_T) = new RDKix::Atom(1);
       } else {
-        (yyval.atom_T) = new RDKit::QueryAtom(1);
+        (yyval.atom_T) = new RDKix::QueryAtom(1);
       }
-      (yyval.atom_T)->setProp(RDKit::common_properties::_starred, 1, true);
+      (yyval.atom_T)->setProp(RDKix::common_properties::_starred, 1, true);
     }
-#line 1835 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1835 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 31:
 #line 330 "sln.yy" /* yacc.c:1651  */
     {
       if (!doQueries) {
-        (yyval.atom_T) = new RDKit::Atom(1);
+        (yyval.atom_T) = new RDKix::Atom(1);
       } else {
-        (yyval.atom_T) = new RDKit::QueryAtom(1);
+        (yyval.atom_T) = new RDKix::QueryAtom(1);
       }
       (yyval.atom_T)
-          ->setProp(RDKit::common_properties::_AtomID,
+          ->setProp(RDKix::common_properties::_AtomID,
                     static_cast<unsigned int>((yyvsp[-1].ival_T)));
     }
-#line 1848 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1848 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 32:
 #line 338 "sln.yy" /* yacc.c:1651  */
     {
       if (!doQueries) {
-        (yyval.atom_T) = new RDKit::Atom(1);
+        (yyval.atom_T) = new RDKix::Atom(1);
       } else {
-        (yyval.atom_T) = new RDKit::QueryAtom(1);
+        (yyval.atom_T) = new RDKix::QueryAtom(1);
       }
       (yyval.atom_T)
-          ->setProp(RDKit::common_properties::_AtomID,
+          ->setProp(RDKix::common_properties::_AtomID,
                     static_cast<unsigned int>((yyvsp[-3].ival_T)));
       SLNParse::parseAtomAttribs((yyval.atom_T), *(yyvsp[-1].attriblist_T),
                                  doQueries);
       delete (yyvsp[-1].attriblist_T);
     }
-#line 1863 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1863 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 33:
 #line 348 "sln.yy" /* yacc.c:1651  */
     {
       if (!doQueries) {
-        (yyval.atom_T) = new RDKit::Atom(1);
+        (yyval.atom_T) = new RDKix::Atom(1);
       } else {
-        (yyval.atom_T) = new RDKit::QueryAtom(1);
+        (yyval.atom_T) = new RDKix::QueryAtom(1);
       }
       SLNParse::parseAtomAttribs((yyval.atom_T), *(yyvsp[-1].attriblist_T),
                                  doQueries);
       delete (yyvsp[-1].attriblist_T);
     }
-#line 1877 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1877 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 35:
 #line 360 "sln.yy" /* yacc.c:1651  */
     {
-      (yyval.atom_T)->setProp(RDKit::common_properties::_starred, 1, true);
+      (yyval.atom_T)->setProp(RDKix::common_properties::_starred, 1, true);
     }
-#line 1885 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1885 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 36:
 #line 363 "sln.yy" /* yacc.c:1651  */
     {
       (yyvsp[-3].atom_T)
-          ->setProp(RDKit::common_properties::_AtomID,
+          ->setProp(RDKix::common_properties::_AtomID,
                     static_cast<unsigned int>((yyvsp[-1].ival_T)));
       (yyval.atom_T) = (yyvsp[-3].atom_T);
     }
-#line 1894 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1894 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 37:
 #line 367 "sln.yy" /* yacc.c:1651  */
     {
       (yyvsp[-5].atom_T)
-          ->setProp(RDKit::common_properties::_AtomID,
+          ->setProp(RDKix::common_properties::_AtomID,
                     static_cast<unsigned int>((yyvsp[-3].ival_T)));
       SLNParse::parseAtomAttribs((yyvsp[-5].atom_T), *(yyvsp[-1].attriblist_T),
                                  doQueries);
       delete (yyvsp[-1].attriblist_T);
       (yyval.atom_T) = (yyvsp[-5].atom_T);
     }
-#line 1905 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1905 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 38:
@@ -1827,7 +1827,7 @@ yyreduce:
       delete (yyvsp[-1].attriblist_T);
       (yyval.atom_T) = (yyvsp[-3].atom_T);
     }
-#line 1915 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1915 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 40:
@@ -1838,29 +1838,29 @@ yyreduce:
       delete (yyvsp[-1].attriblist_T);
       (yyval.bond_T) = (yyvsp[-3].bond_T);
     }
-#line 1925 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1925 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 41:
 #line 389 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond = new RDKit::QueryBond();
-      bond->setQuery(RDKit::makeBondNullQuery());
+      RDKix::Bond *bond = new RDKix::QueryBond();
+      bond->setQuery(RDKix::makeBondNullQuery());
       (yyval.bond_T) = bond;
     }
-#line 1935 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1935 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 42:
 #line 394 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond = new RDKit::QueryBond();
-      bond->setQuery(RDKit::makeBondNullQuery());
+      RDKix::Bond *bond = new RDKix::QueryBond();
+      bond->setQuery(RDKix::makeBondNullQuery());
       SLNParse::parseBondAttribs(bond, *(yyvsp[-1].attriblist_T), doQueries);
       delete (yyvsp[-1].attriblist_T);
       (yyval.bond_T) = bond;
     }
-#line 1947 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1947 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 44:
@@ -1871,72 +1871,72 @@ yyreduce:
                     "sequential bonds not allowed in non-queries");
         YYABORT;
       } else {
-        RDKit::QueryBond *b1 =
-            static_cast<RDKit::QueryBond *>((yyvsp[-1].bond_T));
-        RDKit::QueryBond *b2 =
-            static_cast<RDKit::QueryBond *>((yyvsp[0].bond_T));
+        RDKix::QueryBond *b1 =
+            static_cast<RDKix::QueryBond *>((yyvsp[-1].bond_T));
+        RDKix::QueryBond *b2 =
+            static_cast<RDKix::QueryBond *>((yyvsp[0].bond_T));
         b1->expandQuery(b2->getQuery()->copy(), Queries::COMPOSITE_OR, true);
         delete b2;
       }
     }
-#line 1963 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1963 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 45:
 #line 417 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond;
+      RDKix::Bond *bond;
       if (doQueries) {
-        bond = new RDKit::QueryBond(RDKit::Bond::SINGLE);
+        bond = new RDKix::QueryBond(RDKix::Bond::SINGLE);
       } else {
-        bond = new RDKit::Bond(RDKit::Bond::SINGLE);
+        bond = new RDKix::Bond(RDKix::Bond::SINGLE);
       }
       (yyval.bond_T) = bond;
     }
-#line 1977 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1977 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 46:
 #line 426 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond;
+      RDKix::Bond *bond;
       if (doQueries) {
-        bond = new RDKit::QueryBond(RDKit::Bond::DOUBLE);
+        bond = new RDKix::QueryBond(RDKix::Bond::DOUBLE);
       } else {
-        bond = new RDKit::Bond(RDKit::Bond::DOUBLE);
+        bond = new RDKix::Bond(RDKix::Bond::DOUBLE);
       }
       (yyval.bond_T) = bond;
     }
-#line 1991 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 1991 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 47:
 #line 435 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond;
+      RDKix::Bond *bond;
       if (doQueries) {
-        bond = new RDKit::QueryBond(RDKit::Bond::TRIPLE);
+        bond = new RDKix::QueryBond(RDKix::Bond::TRIPLE);
       } else {
-        bond = new RDKit::Bond(RDKit::Bond::TRIPLE);
+        bond = new RDKix::Bond(RDKix::Bond::TRIPLE);
       }
       (yyval.bond_T) = bond;
 
     }
-#line 2006 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2006 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 48:
 #line 445 "sln.yy" /* yacc.c:1651  */
     {
-      RDKit::Bond *bond;
+      RDKix::Bond *bond;
       if (doQueries) {
-        bond = new RDKit::QueryBond(RDKit::Bond::AROMATIC);
+        bond = new RDKix::QueryBond(RDKix::Bond::AROMATIC);
       } else {
-        bond = new RDKit::Bond(RDKit::Bond::AROMATIC);
+        bond = new RDKix::Bond(RDKix::Bond::AROMATIC);
       }
       (yyval.bond_T) = bond;
     }
-#line 2020 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2020 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 49:
@@ -1947,7 +1947,7 @@ yyreduce:
               SLNParse::AttribAnd,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2029 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2029 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 50:
@@ -1958,7 +1958,7 @@ yyreduce:
               SLNParse::AttribOr,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2038 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2038 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 51:
@@ -1969,7 +1969,7 @@ yyreduce:
               SLNParse::AttribLowPriAnd,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2047 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2047 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 52:
@@ -1981,7 +1981,7 @@ yyreduce:
               SLNParse::AttribLowPriAnd,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2057 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2057 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 53:
@@ -1993,7 +1993,7 @@ yyreduce:
               SLNParse::AttribAnd,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2067 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2067 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 54:
@@ -2004,7 +2004,7 @@ yyreduce:
               SLNParse::AttribAnd,
               boost::shared_ptr<SLNParse::AttribType>((yyvsp[0].attrib_T))));
     }
-#line 2076 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2076 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 55:
@@ -2017,7 +2017,7 @@ yyreduce:
       (yyval.attrib_T)->second = "";
       delete (yyvsp[0].text_T);
     }
-#line 2089 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2089 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 56:
@@ -2026,7 +2026,7 @@ yyreduce:
       (yyvsp[0].attrib_T)->negated = true;
       (yyval.attrib_T) = (yyvsp[0].attrib_T);
     }
-#line 2098 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2098 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 57:
@@ -2042,7 +2042,7 @@ yyreduce:
       delete (yyvsp[-1].text_T);
       delete (yyvsp[0].text_T);
     }
-#line 2114 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2114 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 58:
@@ -2053,7 +2053,7 @@ yyreduce:
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = "+1";
     }
-#line 2125 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2125 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 59:
@@ -2064,7 +2064,7 @@ yyreduce:
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = SLNParse::convertToString((yyvsp[0].ival_T));
     }
-#line 2136 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2136 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 60:
@@ -2075,7 +2075,7 @@ yyreduce:
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = "-1";
     }
-#line 2147 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2147 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 61:
@@ -2086,7 +2086,7 @@ yyreduce:
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = SLNParse::convertToString(-(yyvsp[0].ival_T));
     }
-#line 2158 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2158 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 62:
@@ -2097,7 +2097,7 @@ yyreduce:
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = "d";
     }
-#line 2169 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2169 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 63:
@@ -2105,40 +2105,40 @@ yyreduce:
     {
       (yyval.attrib_T) = (yyvsp[0].attrib_T);
     }
-#line 2177 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2177 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 64:
 #line 545 "sln.yy" /* yacc.c:1651  */
     {
       int sz = molList->size();
-      RDKit::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
+      RDKix::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
       molList->resize(sz - 1);
       SLNParse::finalizeQueryMol(mol, true);
-      RDKit::RecursiveStructureQuery *rsq =
-          new RDKit::RecursiveStructureQuery(mol);
-      RDKit::ATOM_OR_QUERY *orq = new RDKit::ATOM_OR_QUERY();
-      orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+      RDKix::RecursiveStructureQuery *rsq =
+          new RDKix::RecursiveStructureQuery(mol);
+      RDKix::ATOM_OR_QUERY *orq = new RDKix::ATOM_OR_QUERY();
+      orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
       (yyval.attrib_T) = new SLNParse::AttribType();
       (yyval.attrib_T)->first = "is";
       (yyval.attrib_T)->op = "=";
       (yyval.attrib_T)->second = "";
       (yyval.attrib_T)->structQuery = static_cast<void *>(orq);
     }
-#line 2196 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2196 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 65:
 #line 559 "sln.yy" /* yacc.c:1651  */
     {
       int sz = molList->size();
-      RDKit::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
+      RDKix::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
       molList->resize(sz - 1);
       SLNParse::finalizeQueryMol(mol, true);
-      RDKit::RecursiveStructureQuery *rsq =
-          new RDKit::RecursiveStructureQuery(mol);
-      RDKit::ATOM_OR_QUERY *orq = new RDKit::ATOM_OR_QUERY();
-      orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+      RDKix::RecursiveStructureQuery *rsq =
+          new RDKix::RecursiveStructureQuery(mol);
+      RDKix::ATOM_OR_QUERY *orq = new RDKix::ATOM_OR_QUERY();
+      orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
       orq->setNegation(true);
 
       (yyval.attrib_T) = new SLNParse::AttribType();
@@ -2147,25 +2147,25 @@ yyreduce:
       (yyval.attrib_T)->second = "";
       (yyval.attrib_T)->structQuery = static_cast<void *>(orq);
     }
-#line 2217 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2217 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 66:
 #line 575 "sln.yy" /* yacc.c:1651  */
     {
       int sz = molList->size();
-      RDKit::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
+      RDKix::ROMol *mol = (*molList)[(yyvsp[0].mol_T)];
       molList->resize(sz - 1);
       SLNParse::finalizeQueryMol(mol, true);
-      RDKit::RecursiveStructureQuery *rsq =
-          new RDKit::RecursiveStructureQuery(mol);
+      RDKix::RecursiveStructureQuery *rsq =
+          new RDKix::RecursiveStructureQuery(mol);
 
-      RDKit::ATOM_OR_QUERY *orq = static_cast<RDKit::ATOM_OR_QUERY *>(
+      RDKix::ATOM_OR_QUERY *orq = static_cast<RDKix::ATOM_OR_QUERY *>(
           (yyvsp[-2].attrib_T)->structQuery);
-      orq->addChild(RDKit::ATOM_OR_QUERY::CHILD_TYPE(rsq));
+      orq->addChild(RDKix::ATOM_OR_QUERY::CHILD_TYPE(rsq));
       (yyval.attrib_T) = (yyvsp[-2].attrib_T);
     }
-#line 2233 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2233 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 67:
@@ -2178,7 +2178,7 @@ yyreduce:
       (yyval.attrib_T)->second = "";
       delete (yyvsp[0].text_T);
     }
-#line 2246 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2246 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 68:
@@ -2193,7 +2193,7 @@ yyreduce:
       delete (yyvsp[-2].text_T);
       delete (yyvsp[0].text_T);
     }
-#line 2261 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2261 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 69:
@@ -2208,7 +2208,7 @@ yyreduce:
       delete (yyvsp[-2].text_T);
       delete (yyvsp[0].text_T);
     }
-#line 2276 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2276 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 70:
@@ -2223,7 +2223,7 @@ yyreduce:
       delete (yyvsp[-2].text_T);
       delete (yyvsp[0].text_T);
     }
-#line 2291 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2291 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
     case 72:
@@ -2231,10 +2231,10 @@ yyreduce:
     {
       (yyval.ival_T) = (yyvsp[-1].ival_T) * 10 + (yyvsp[0].ival_T);
     }
-#line 2297 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2297 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     break;
 
-#line 2301 "/home/rodrigue/Documents/code/rdkit_builder/rdkit/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
+#line 2301 "/home/rodrigue/Documents/code/rdkix_builder/rdkix/Code/GraphMol/SLNParse/sln.tab.cpp" /* yacc.c:1651  */
     default:
       break;
   }

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDBoost/python.h>
@@ -16,9 +16,9 @@
 #include <GraphMol/FragCatalog/FragCatalogEntry.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 
-struct fragcatalog_pickle_suite : rdkit_pickle_suite {
+struct fragcatalog_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const FragCatalog &self) {
     std::string res;
     res = self.Serialize();
@@ -146,6 +146,6 @@ struct fragcat_wrapper {
   };
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_fragcat() { RDKit::fragcat_wrapper::wrap(); }
+void wrap_fragcat() { RDKix::fragcat_wrapper::wrap(); }

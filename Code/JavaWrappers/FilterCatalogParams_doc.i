@@ -30,7 +30,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::FilterCatalogParams "
+%typemap(javaimports) RDKix::FilterCatalogParams "
 /**
 <p>
 Parameter Class for initializing a FilterCatalog with the specified set of FilterCatalogs. Current

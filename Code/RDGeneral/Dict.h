@@ -1,11 +1,11 @@
 //
-// Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+// Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file Dict.h
 
@@ -25,7 +25,7 @@
 #include <boost/lexical_cast.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 typedef std::vector<std::string> STR_VECT;
 
 //! \brief The \c Dict class can be used to store objects of arbitrary
@@ -33,7 +33,7 @@ typedef std::vector<std::string> STR_VECT;
 //!
 //!  The actual storage is done using \c RDValue objects.
 //!
-class RDKIT_RDGENERAL_EXPORT Dict {
+class RDKIX_RDGENERAL_EXPORT Dict {
  public:
   struct Pair {
     std::string key;
@@ -350,5 +350,5 @@ inline std::string Dict::getVal<std::string>(const std::string &what) const {
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

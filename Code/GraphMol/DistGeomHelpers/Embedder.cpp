@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // #define DEBUG_EMBEDDING 0
 #include "Embedder.h"
@@ -82,7 +82,7 @@ std::mutex &GetFailMutex() {
 }  // namespace
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace DGeomHelpers {
 
 //! Parameters corresponding to Sereina Riniker's KDG approach
@@ -425,7 +425,7 @@ bool generateInitialCoords(RDGeom::PointPtrVect *positions,
                            const detail::EmbedArgs &eargs,
                            const EmbedParameters &embedParams,
                            RDNumeric::DoubleSymmMatrix &distMat,
-                           RDKit::double_source_type *rng) {
+                           RDKix::double_source_type *rng) {
   bool gotCoords = false;
   if (!embedParams.useRandomCoords) {
     double largestDistance =
@@ -806,18 +806,18 @@ bool embedPoints(RDGeom::PointPtrVect *positions, detail::EmbedArgs eargs,
     embedParams.basinThresh = 1e8;
   }
 
-  RDKit::double_source_type *rng = nullptr;
-  RDKit::rng_type *generator = nullptr;
-  RDKit::uniform_double *distrib = nullptr;
+  RDKix::double_source_type *rng = nullptr;
+  RDKix::rng_type *generator = nullptr;
+  RDKix::uniform_double *distrib = nullptr;
   CHECK_INVARIANT(seed >= -1,
                   "random seed must either be positive, zero, or negative one");
   if (seed > -1) {
-    generator = new RDKit::rng_type(42u);
+    generator = new RDKix::rng_type(42u);
     generator->seed(seed);
-    distrib = new RDKit::uniform_double(0.0, 1.0);
-    rng = new RDKit::double_source_type(*generator, *distrib);
+    distrib = new RDKix::uniform_double(0.0, 1.0);
+    rng = new RDKix::double_source_type(*generator, *distrib);
   } else {
-    rng = &RDKit::getDoubleRandomSource();
+    rng = &RDKix::getDoubleRandomSource();
   }
 
   bool gotCoords = false;
@@ -1486,4 +1486,4 @@ void EmbedMultipleConfs(ROMol &mol, INT_VECT &res, unsigned int numConfs,
 }
 
 }  // end of namespace DGeomHelpers
-}  // end of namespace RDKit
+}  // end of namespace RDKix

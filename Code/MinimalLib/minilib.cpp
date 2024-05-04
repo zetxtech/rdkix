@@ -1,12 +1,12 @@
 //
 //
-//  Copyright (C) 2019-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2019-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
 #include <iostream>
@@ -14,7 +14,7 @@
 #include "common.h"
 
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -42,7 +42,7 @@
 
 namespace rj = rapidjson;
 
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 std::string mappingToJsonArray(const ROMol &mol) {
@@ -263,21 +263,21 @@ std::string JSMol::get_topological_torsion_fp_as_binary_text(
   return res;
 }
 
-std::string JSMol::get_rdkit_fp(const std::string &details) const {
+std::string JSMol::get_rdkix_fp(const std::string &details) const {
   if (!d_mol) {
     return "";
   }
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(*d_mol, details.c_str());
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(*d_mol, details.c_str());
   std::string res = BitVectToText(*fp);
   return res;
 }
 
-std::string JSMol::get_rdkit_fp_as_binary_text(
+std::string JSMol::get_rdkix_fp_as_binary_text(
     const std::string &details) const {
   if (!d_mol) {
     return "";
   }
-  auto fp = MinimalLib::rdkit_fp_as_bitvect(*d_mol, details.c_str());
+  auto fp = MinimalLib::rdkix_fp_as_bitvect(*d_mol, details.c_str());
   std::string res = BitVectToBinaryText(*fp);
   return res;
 }
@@ -755,7 +755,7 @@ JSReaction *get_rxn(const std::string &input, const std::string &details_json) {
   return new JSReaction(rxn);
 }
 
-std::string version() { return std::string(rdkitVersion); }
+std::string version() { return std::string(rdkixVersion); }
 
 void prefer_coordgen(bool useCoordGen) {
 #ifdef RDK_BUILD_COORDGEN_SUPPORT

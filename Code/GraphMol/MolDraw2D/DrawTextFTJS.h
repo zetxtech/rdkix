@@ -1,24 +1,24 @@
 //
-//  Copyright (C) 2020-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: Greg Landrum
 //
 
-#ifndef RDKIT_DRAWTEXTFTJS_H
-#define RDKIT_DRAWTEXTFTJS_H
+#ifndef RDKIX_DRAWTEXTFTJS_H
+#define RDKIX_DRAWTEXTFTJS_H
 
 #include <iosfwd>
 #include <emscripten.h>
 #include <emscripten/val.h>
 #include <GraphMol/MolDraw2D/DrawTextFT.h>
 
-namespace RDKit {
+namespace RDKix {
 class MolDraw2DJS;
 namespace MolDraw2D_detail {
 // ****************************************************************************
@@ -48,6 +48,6 @@ class DrawTextFTJS : public DrawTextFT {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWTEXTFTSVG_H
+#endif  // RDKIX_DRAWTEXTFTSVG_H

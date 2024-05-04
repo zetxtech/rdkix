@@ -2,7 +2,7 @@
 import os
 import sys
 
-from rdkit import Chem
+from rdkix import Chem
 
 EXPECTED_LABELS_OVERRIDES = {
   # p/m labels are filtered out on input, so they are not
@@ -16,7 +16,7 @@ EXPECTED_LABELS_OVERRIDES = {
   'VS164': ['21R'],
   'VS231': [],
 
-  # Chiralities not flagged by RDKit
+  # Chiralities not flagged by RDKix
   'VS132': [],
 }
 
@@ -24,7 +24,7 @@ EXPECTED_LABELS_OVERRIDES = {
 def split_label_string(labels):
   """
     Splits the string of expected labels and filters out helical
-    labels, which are not supported by rdkit
+    labels, which are not supported by rdkix
     """
   return {label for label in labels.split() if label[-1] not in 'mpMP'}
 

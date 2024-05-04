@@ -39,13 +39,13 @@ import os
 import pickle
 import unittest
 
-from rdkit import RDConfig
-from rdkit.RDLogger import logger
+from rdkix import RDConfig
+from rdkix.RDLogger import logger
 
 logger = logger()
-from rdkit import Chem, DataStructs, rdBase
-from rdkit.Chem import FilterCatalog, rdfiltercatalog, rdMolDescriptors
-from rdkit.Chem.FilterCatalog import FilterCatalogParams, FilterMatchOps
+from rdkix import Chem, DataStructs, rdBase
+from rdkix.Chem import FilterCatalog, rdfiltercatalog, rdMolDescriptors
+from rdkix.Chem.FilterCatalog import FilterCatalogParams, FilterMatchOps
 
 
 def load_tests(loader, tests, ignore):
@@ -547,7 +547,7 @@ class TestCase(unittest.TestCase):
     smiles = ['mydoghasfleas']
     results = FilterCatalog.RunFilterCatalog(fc, smiles, numThreads=3)
     self.assertEquals(len(results[0]), 1)
-    self.assertEquals(results[0][0].GetDescription(), "no valid RDKit molecule")
+    self.assertEquals(results[0][0].GetDescription(), "no valid RDKix molecule")
 
   def testThreadedPythonFilter(self):
 

@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2010-2022, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -44,15 +44,15 @@
 
 namespace {
 
-void setRXNRoleOfAllMoleculeAtoms(RDKit::ROMol &mol, int role) {
-  RDKit::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
+void setRXNRoleOfAllMoleculeAtoms(RDKix::ROMol &mol, int role) {
+  RDKix::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
   while (atItP.first != atItP.second) {
-    RDKit::Atom *oAtom = mol[*(atItP.first++)];
-    oAtom->setProp(RDKit::common_properties::molRxnRole, role);
+    RDKix::Atom *oAtom = mol[*(atItP.first++)];
+    oAtom->setProp(RDKix::common_properties::molRxnRole, role);
   }
 }
 
-std::string molToString(RDKit::ROMol &mol, bool toSmiles) {
+std::string molToString(RDKix::ROMol &mol, bool toSmiles) {
   std::string res = "";
   if (toSmiles) {
     res = MolToSmiles(mol, true);
@@ -60,14 +60,14 @@ std::string molToString(RDKit::ROMol &mol, bool toSmiles) {
     res = MolToSmarts(mol, true);
   }
   std::vector<int> mapping;
-  if (RDKit::MolOps::getMolFrags(mol, mapping) > 1) {
+  if (RDKix::MolOps::getMolFrags(mol, mapping) > 1) {
     res = "(" + res + ")";
   }
   return res;
 }
 
 std::string chemicalReactionTemplatesToString(
-    const RDKit::ChemicalReaction &rxn, RDKit::ReactionMoleculeType type,
+    const RDKix::ChemicalReaction &rxn, RDKix::ReactionMoleculeType type,
     bool toSmiles, bool canonical) {
   std::string res = "";
   std::vector<std::string> vfragsmi;
@@ -88,22 +88,22 @@ std::string chemicalReactionTemplatesToString(
   return res;
 }
 
-std::string chemicalReactionToRxnToString(const RDKit::ChemicalReaction &rxn,
+std::string chemicalReactionToRxnToString(const RDKix::ChemicalReaction &rxn,
                                           bool toSmiles, bool canonical) {
   std::string res = "";
-  res += chemicalReactionTemplatesToString(rxn, RDKit::Reactant, toSmiles,
+  res += chemicalReactionTemplatesToString(rxn, RDKix::Reactant, toSmiles,
                                            canonical);
   res += ">";
   res +=
-      chemicalReactionTemplatesToString(rxn, RDKit::Agent, toSmiles, canonical);
+      chemicalReactionTemplatesToString(rxn, RDKix::Agent, toSmiles, canonical);
   res += ">";
-  res += chemicalReactionTemplatesToString(rxn, RDKit::Product, toSmiles,
+  res += chemicalReactionTemplatesToString(rxn, RDKix::Product, toSmiles,
                                            canonical);
   return res;
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 //! returns the reaction SMARTS for a reaction
 std::string ChemicalReactionToRxnSmarts(const ChemicalReaction &rxn) {
@@ -120,7 +120,7 @@ std::string ChemicalReactionToRxnSmiles(const ChemicalReaction &rxn,
 std::string ChemicalReactionToV3KRxnBlock(const ChemicalReaction &rxn,
                                           bool separateAgents) {
   std::ostringstream res;
-  res << "$RXN V3000\n\n      RDKit\n\n";
+  res << "$RXN V3000\n\n      RDKix\n\n";
 
   if (separateAgents) {
     res << "M  V30 COUNTS " << rxn.getNumReactantTemplates() << " "
@@ -184,7 +184,7 @@ std::string ChemicalReactionToRxnBlock(const ChemicalReaction &rxn,
     return ChemicalReactionToV3KRxnBlock(rxn, separateAgents);
   }
   std::ostringstream res;
-  res << "$RXN\n\n      RDKit\n\n";
+  res << "$RXN\n\n      RDKix\n\n";
   if (separateAgents) {
     res << std::setw(3) << rxn.getNumReactantTemplates() << std::setw(3)
         << rxn.getNumProductTemplates() << std::setw(3)
@@ -258,4 +258,4 @@ ROMol *ChemicalReactionToRxnMol(const ChemicalReaction &rxn) {
   }
   return (ROMol *)res;
 }
-}  // namespace RDKit
+}  // namespace RDKix

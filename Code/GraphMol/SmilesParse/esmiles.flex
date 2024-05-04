@@ -37,7 +37,7 @@ isatty( int fd )
 	return _isatty( fd );
 }
 #endif
-using namespace RDKit;
+using namespace RDKix;
 
 static PeriodicTable * gl_ptab = PeriodicTable::getTable();
 

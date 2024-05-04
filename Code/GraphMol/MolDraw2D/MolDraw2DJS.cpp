@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
@@ -25,9 +25,9 @@
 #include <sstream>
 #include <cmath>
 
-namespace RDKit {
+namespace RDKix {
 
-std::string DrawColourToSVG(const RDKit::DrawColour &col);
+std::string DrawColourToSVG(const RDKix::DrawColour &col);
 
 // ****************************************************************************
 void MolDraw2DJS::initDrawing() {}
@@ -194,5 +194,5 @@ void MolDraw2DJS::clearDrawing() {
   d_context.call<void>("fillRect", offset().x, offset().y, width(), height());
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // __EMSCRIPTEN__

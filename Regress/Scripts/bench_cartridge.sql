@@ -1,8 +1,8 @@
 SET client_min_messages = warning;
 \set ECHO none
-drop extension if exists rdkit cascade;
+drop extension if exists rdkix cascade;
 drop table if exists mols,zinc_frags,zinc_leads,pubchem_pieces;
-create extension rdkit;
+create extension rdkix;
 \timing
 \set ECHO all
 RESET client_min_messages;
@@ -22,9 +22,9 @@ create index mfp2_idx on fps using gist(mfp2);
 select id,morganbv_fp(m) mfp2 into zinc_leads_fps from zinc_leads;
 select id,morganbv_fp(m) mfp2 into zinc_frags_fps from zinc_frags;
 
-set rdkit.tanimoto_threshold=0.8;
+set rdkix.tanimoto_threshold=0.8;
 select count(*) from fps cross join zinc_leads_fps qt where fps.mfp2%qt.mfp2;
 select count(*) from fps cross join zinc_frags_fps qt where fps.mfp2%qt.mfp2;
-set rdkit.tanimoto_threshold=0.6;
+set rdkix.tanimoto_threshold=0.6;
 select count(*) from fps cross join zinc_leads_fps qt where fps.mfp2%qt.mfp2;
 select count(*) from fps cross join zinc_frags_fps qt where fps.mfp2%qt.mfp2;

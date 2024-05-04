@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <DataStructs/SparseIntVect.h>
@@ -17,10 +17,10 @@
 
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
-#include <GraphMol/Fingerprints/RDKitFPGenerator.h>
+#include <GraphMol/Fingerprints/RDKixFPGenerator.h>
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 
-namespace RDKit {
+namespace RDKix {
 
 FingerprintArguments::FingerprintArguments(
     const bool countSimulation, const std::vector<std::uint32_t> countBounds,
@@ -184,7 +184,7 @@ FingerprintGenerator<OutputType>::getFingerprintHelper(
   // The standard parameters (used to create boost::mt19937)
   // result in an RNG that's much too computationally intensive
   // to seed.
-  // These are the parameters that have been used for the RDKit fingerprint.
+  // These are the parameters that have been used for the RDKix fingerprint.
   typedef boost::random::mersenne_twister<std::uint32_t, 32, 4, 2, 31,
                                           0x9908b0df, 11, 7, 0x9d2c5680, 15,
                                           0xefc60000, 18, 3346425566U>
@@ -282,7 +282,7 @@ void duplicateAdditionalOutputBit(AdditionalOutput &oldAO,
   }
 }
 
-void setupTempAdditionalOutput(RDKit::FingerprintFuncArguments &args,
+void setupTempAdditionalOutput(RDKix::FingerprintFuncArguments &args,
                                AdditionalOutput &countSimulationOutput,
                                size_t numAtoms) {
   if (args.additionalOutput->atomToBits) {
@@ -441,37 +441,37 @@ FingerprintGenerator<OutputType>::getFingerprint(
   }
 
   return result;
-}  // namespace RDKit
+}  // namespace RDKix
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
 FingerprintGenerator<std::uint32_t>::getSparseCountFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint64_t>>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint64_t>>
 FingerprintGenerator<std::uint64_t>::getSparseCountFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseBitVect>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseBitVect>
 FingerprintGenerator<std::uint32_t>::getSparseFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseBitVect>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseBitVect>
 FingerprintGenerator<std::uint64_t>::getSparseFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
 FingerprintGenerator<std::uint32_t>::getCountFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<SparseIntVect<std::uint32_t>>
 FingerprintGenerator<std::uint64_t>::getCountFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<ExplicitBitVect>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<ExplicitBitVect>
 FingerprintGenerator<std::uint32_t>::getFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
-template RDKIT_FINGERPRINTS_EXPORT std::unique_ptr<ExplicitBitVect>
+template RDKIX_FINGERPRINTS_EXPORT std::unique_ptr<ExplicitBitVect>
 FingerprintGenerator<std::uint64_t>::getFingerprint(
     const ROMol &mol, FingerprintFuncArguments &args) const;
 
@@ -508,8 +508,8 @@ std::vector<SparseIntVect<std::uint64_t> *> *getSparseCountFPBulk(
       generator = MorganFingerprint::getMorganGenerator<std::uint64_t>(2);
       break;
     }
-    case FPType::RDKitFP: {
-      generator = RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+    case FPType::RDKixFP: {
+      generator = RDKixFP::getRDKixFPGenerator<std::uint64_t>();
       break;
     }
     case FPType::TopologicalTorsionFP: {
@@ -544,8 +544,8 @@ std::vector<SparseBitVect *> *getSparseFPBulk(
       generator = MorganFingerprint::getMorganGenerator<std::uint64_t>(2);
       break;
     }
-    case FPType::RDKitFP: {
-      generator = RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+    case FPType::RDKixFP: {
+      generator = RDKixFP::getRDKixFPGenerator<std::uint64_t>();
       break;
     }
     case FPType::TopologicalTorsionFP: {
@@ -580,8 +580,8 @@ std::vector<SparseIntVect<std::uint32_t> *> *getCountFPBulk(
       generator = MorganFingerprint::getMorganGenerator<std::uint64_t>(2);
       break;
     }
-    case FPType::RDKitFP: {
-      generator = RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+    case FPType::RDKixFP: {
+      generator = RDKixFP::getRDKixFPGenerator<std::uint64_t>();
       break;
     }
     case FPType::TopologicalTorsionFP: {
@@ -616,8 +616,8 @@ std::vector<ExplicitBitVect *> *getFPBulk(
       generator = MorganFingerprint::getMorganGenerator<std::uint64_t>(2);
       break;
     }
-    case FPType::RDKitFP: {
-      generator = RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+    case FPType::RDKixFP: {
+      generator = RDKixFP::getRDKixFPGenerator<std::uint64_t>();
       break;
     }
     case FPType::TopologicalTorsionFP: {
@@ -640,4 +640,4 @@ std::vector<ExplicitBitVect *> *getFPBulk(
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

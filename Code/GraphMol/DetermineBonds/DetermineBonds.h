@@ -1,19 +1,19 @@
 //
-//  Copyright (C) 2022 Sreya Gogineni and other RDKit contributors
+//  Copyright (C) 2022 Sreya Gogineni and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 
 #ifndef RD_DETERMINEBONDS_H
 #define RD_DETERMINEBONDS_H
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 // ! assigns atomic connectivity to a molecule using atomic coordinates,
 // disregarding pre-existing bonds
 /*!
@@ -28,7 +28,7 @@ namespace RDKit {
    \param covFactor (optional) the factor with which to multiply each covalent
    radius if the van der Waals method is used
  */
-RDKIT_DETERMINEBONDS_EXPORT void determineConnectivity(RWMol &mol,
+RDKIX_DETERMINEBONDS_EXPORT void determineConnectivity(RWMol &mol,
                                                        bool useHueckel = false,
                                                        int charge = 0,
                                                        double covFactor = 1.3);
@@ -53,7 +53,7 @@ RDKIT_DETERMINEBONDS_EXPORT void determineConnectivity(RWMol &mol,
    \param useAtomMap (optional) if this is \c
    true, an atom map will be created for the molecule
  */
-RDKIT_DETERMINEBONDS_EXPORT void determineBondOrders(
+RDKIX_DETERMINEBONDS_EXPORT void determineBondOrders(
     RWMol &mol, int charge = 0, bool allowChargedFragments = true,
     bool embedChiral = true, bool useAtomMap = false);
 
@@ -80,11 +80,11 @@ RDKIT_DETERMINEBONDS_EXPORT void determineBondOrders(
    \param useAtomMap (optional) if this is \c true, an atom map will be created
    for the molecule
  */
-RDKIT_DETERMINEBONDS_EXPORT void determineBonds(
+RDKIX_DETERMINEBONDS_EXPORT void determineBonds(
     RWMol &mol, bool useHueckel = false, int charge = 0, double covFactor = 1.3,
     bool allowChargedFragments = true, bool embedChiral = true,
     bool useAtomMap = false);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

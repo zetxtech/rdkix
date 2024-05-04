@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RDDepictor.h"
@@ -44,10 +44,10 @@ namespace DepictorLocal {
 constexpr auto ISQRT2 = 0.707107;
 constexpr auto SQRT3_2 = 0.866025;
 
-std::vector<const RDKit::Atom *> getRankedAtomNeighbors(
-    const RDKit::ROMol &mol, const RDKit::Atom *atom,
+std::vector<const RDKix::Atom *> getRankedAtomNeighbors(
+    const RDKix::ROMol &mol, const RDKix::Atom *atom,
     const std::vector<int> &atomRanks) {
-  std::vector<const RDKit::Atom *> nbrs;
+  std::vector<const RDKix::Atom *> nbrs;
   for (auto nbr : mol.atomNeighbors(atom)) {
     nbrs.push_back(nbr);
   }
@@ -58,7 +58,7 @@ std::vector<const RDKit::Atom *> getRankedAtomNeighbors(
   return nbrs;
 }
 
-void embedSquarePlanar(const RDKit::ROMol &mol, const RDKit::Atom *atom,
+void embedSquarePlanar(const RDKix::ROMol &mol, const RDKix::Atom *atom,
                        std::list<EmbeddedFrag> &efrags,
                        const std::vector<int> &atomRanks) {
   static const RDGeom::Point2D idealPoints[] = {
@@ -68,7 +68,7 @@ void embedSquarePlanar(const RDKit::ROMol &mol, const RDKit::Atom *atom,
       RDGeom::Point2D(-ISQRT2 * BOND_LEN, ISQRT2 * BOND_LEN),
   };
   PRECONDITION(atom, "bad atom");
-  if (atom->getChiralTag() != RDKit::Atom::ChiralType::CHI_SQUAREPLANAR) {
+  if (atom->getChiralTag() != RDKix::Atom::ChiralType::CHI_SQUAREPLANAR) {
     return;
   }
   auto nbrs = getRankedAtomNeighbors(mol, atom, atomRanks);
@@ -81,7 +81,7 @@ void embedSquarePlanar(const RDKit::ROMol &mol, const RDKit::Atom *atom,
       continue;
     }
     auto angle =
-        RDKit::Chirality::getIdealAngleBetweenLigands(atom, nbrs.front(), nbr);
+        RDKix::Chirality::getIdealAngleBetweenLigands(atom, nbrs.front(), nbr);
     if (fabs(angle - 180) < 0.1) {
       coordMap[nbr->getIdx()] = idealPoints[2];
     } else {
@@ -96,7 +96,7 @@ void embedSquarePlanar(const RDKit::ROMol &mol, const RDKit::Atom *atom,
   efrags.emplace_back(&mol, coordMap);
 }
 
-void embedTBP(const RDKit::ROMol &mol, const RDKit::Atom *atom,
+void embedTBP(const RDKix::ROMol &mol, const RDKix::Atom *atom,
               std::list<EmbeddedFrag> &efrags,
               const std::vector<int> &atomRanks) {
   static const RDGeom::Point2D idealPoints[] = {
@@ -109,16 +109,16 @@ void embedTBP(const RDKit::ROMol &mol, const RDKit::Atom *atom,
   };
   PRECONDITION(atom, "bad atom");
   if (atom->getChiralTag() !=
-      RDKit::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL) {
+      RDKix::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL) {
     return;
   }
   auto nbrs = getRankedAtomNeighbors(mol, atom, atomRanks);
   RDGeom::INT_POINT2D_MAP coordMap;
   coordMap[atom->getIdx()] = RDGeom::Point2D(0., 0.);
-  const RDKit::Atom *axial1 =
-      RDKit::Chirality::getTrigonalBipyramidalAxialAtom(atom);
-  const RDKit::Atom *axial2 =
-      RDKit::Chirality::getTrigonalBipyramidalAxialAtom(atom, -1);
+  const RDKix::Atom *axial1 =
+      RDKix::Chirality::getTrigonalBipyramidalAxialAtom(atom);
+  const RDKix::Atom *axial2 =
+      RDKix::Chirality::getTrigonalBipyramidalAxialAtom(atom, -1);
   if (axial1) {
     coordMap[axial1->getIdx()] = idealPoints[0];
   }
@@ -134,7 +134,7 @@ void embedTBP(const RDKit::ROMol &mol, const RDKit::Atom *atom,
   efrags.emplace_back(&mol, coordMap);
 }
 
-void embedOctahedral(const RDKit::ROMol &mol, const RDKit::Atom *atom,
+void embedOctahedral(const RDKix::ROMol &mol, const RDKix::Atom *atom,
                      std::list<EmbeddedFrag> &efrags,
                      const std::vector<int> &atomRanks) {
   static const RDGeom::Point2D idealPoints[] = {
@@ -146,25 +146,25 @@ void embedOctahedral(const RDKit::ROMol &mol, const RDKit::Atom *atom,
       RDGeom::Point2D(-SQRT3_2 * BOND_LEN, BOND_LEN / 2),   // equatorial
   };
   PRECONDITION(atom, "bad atom");
-  if (atom->getChiralTag() != RDKit::Atom::ChiralType::CHI_OCTAHEDRAL) {
+  if (atom->getChiralTag() != RDKix::Atom::ChiralType::CHI_OCTAHEDRAL) {
     return;
   }
   auto nbrs = getRankedAtomNeighbors(mol, atom, atomRanks);
   RDGeom::INT_POINT2D_MAP coordMap;
   coordMap[atom->getIdx()] = RDGeom::Point2D(0., 0.);
-  const RDKit::Atom *axial1 = nullptr;
-  const RDKit::Atom *axial2 = nullptr;
+  const RDKix::Atom *axial1 = nullptr;
+  const RDKix::Atom *axial2 = nullptr;
   for (auto i = 0u; i < nbrs.size(); ++i) {
     bool all90 = true;
     for (auto j = i + 1; j < nbrs.size(); ++j) {
-      if (fabs(RDKit::Chirality::getIdealAngleBetweenLigands(atom, nbrs[i],
+      if (fabs(RDKix::Chirality::getIdealAngleBetweenLigands(atom, nbrs[i],
                                                              nbrs[j]) -
                180) < 0.1) {
         axial1 = nbrs[i];
         axial2 = nbrs[j];
         all90 = false;
         break;
-      } else if (fabs(RDKit::Chirality::getIdealAngleBetweenLigands(
+      } else if (fabs(RDKix::Chirality::getIdealAngleBetweenLigands(
                           atom, nbrs[i], nbrs[j]) -
                       90) > 0.1) {
         all90 = false;
@@ -183,14 +183,14 @@ void embedOctahedral(const RDKit::ROMol &mol, const RDKit::Atom *atom,
   if (axial2) {
     coordMap[axial2->getIdx()] = idealPoints[1];
   }
-  const RDKit::Atom *refEqAtom1 = nullptr;
-  const RDKit::Atom *refEqAtom2 = nullptr;
+  const RDKix::Atom *refEqAtom1 = nullptr;
+  const RDKix::Atom *refEqAtom2 = nullptr;
   for (const auto nbr : nbrs) {
     if (nbr != axial1 && nbr != axial2) {
       if (!refEqAtom1) {
         refEqAtom1 = nbr;
         coordMap[nbr->getIdx()] = idealPoints[2];
-        refEqAtom2 = RDKit::Chirality::getChiralAcrossAtom(atom, nbr);
+        refEqAtom2 = RDKix::Chirality::getChiralAcrossAtom(atom, nbr);
         if (refEqAtom2) {
           coordMap[refEqAtom2->getIdx()] = idealPoints[4];
         }
@@ -200,7 +200,7 @@ void embedOctahedral(const RDKit::ROMol &mol, const RDKit::Atom *atom,
         }
         coordMap[nbr->getIdx()] = idealPoints[3];
         const auto acrossAtom2 =
-            RDKit::Chirality::getChiralAcrossAtom(atom, nbr);
+            RDKix::Chirality::getChiralAcrossAtom(atom, nbr);
         if (acrossAtom2) {
           coordMap[acrossAtom2->getIdx()] = idealPoints[5];
         }
@@ -211,12 +211,12 @@ void embedOctahedral(const RDKit::ROMol &mol, const RDKit::Atom *atom,
   efrags.emplace_back(&mol, coordMap);
 }
 
-void embedNontetrahedralStereo(const RDKit::ROMol &mol,
+void embedNontetrahedralStereo(const RDKix::ROMol &mol,
                                std::list<EmbeddedFrag> &efrags,
                                const std::vector<int> &atomRanks) {
   boost::dynamic_bitset<> consider(mol.getNumAtoms());
   for (const auto atm : mol.atoms()) {
-    if (RDKit::Chirality::hasNonTetrahedralStereo(atm)) {
+    if (RDKix::Chirality::hasNonTetrahedralStereo(atm)) {
       consider[atm->getIdx()] = 1;
     }
   }
@@ -228,13 +228,13 @@ void embedNontetrahedralStereo(const RDKit::ROMol &mol,
       continue;
     }
     switch (atm->getChiralTag()) {
-      case RDKit::Atom::ChiralType::CHI_SQUAREPLANAR:
+      case RDKix::Atom::ChiralType::CHI_SQUAREPLANAR:
         embedSquarePlanar(mol, atm, efrags, atomRanks);
         break;
-      case RDKit::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL:
+      case RDKix::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL:
         embedTBP(mol, atm, efrags, atomRanks);
         break;
-      case RDKit::Atom::ChiralType::CHI_OCTAHEDRAL:
+      case RDKix::Atom::ChiralType::CHI_OCTAHEDRAL:
         embedOctahedral(mol, atm, efrags, atomRanks);
         break;
       default:
@@ -244,12 +244,12 @@ void embedNontetrahedralStereo(const RDKit::ROMol &mol,
 }
 
 // arings: indices of atoms in rings
-void embedFusedSystems(const RDKit::ROMol &mol,
-                       const RDKit::VECT_INT_VECT &arings,
+void embedFusedSystems(const RDKix::ROMol &mol,
+                       const RDKix::VECT_INT_VECT &arings,
                        std::list<EmbeddedFrag> &efrags,
                        const RDGeom::INT_POINT2D_MAP *coordMap,
                        bool useRingTemplates) {
-  RDKit::INT_INT_VECT_MAP neighMap;
+  RDKix::INT_INT_VECT_MAP neighMap;
   RingUtils::makeRingNeighborMap(arings, neighMap);
 
   auto cnrs = arings.size();
@@ -258,9 +258,9 @@ void embedFusedSystems(const RDKit::ROMol &mol,
   auto curr = 0u;
   while (curr < cnrs) {
     // embed all ring and fused ring systems
-    RDKit::INT_VECT fused;
+    RDKix::INT_VECT fused;
     RingUtils::pickFusedRings(curr, neighMap, fused, fusDone);
-    RDKit::VECT_INT_VECT frings;
+    RDKix::VECT_INT_VECT frings;
     frings.reserve(fused.size());
     for (auto rid : fused) {
       frings.push_back(arings.at(rid));
@@ -297,14 +297,14 @@ void embedFusedSystems(const RDKit::ROMol &mol,
   }
 }
 
-void embedCisTransSystems(const RDKit::ROMol &mol,
+void embedCisTransSystems(const RDKix::ROMol &mol,
                           std::list<EmbeddedFrag> &efrags) {
   for (auto bond : mol.bonds()) {
     // check if this bond is in a cis/trans double bond
     // and it is not a ring bond
-    if ((bond->getBondType() == RDKit::Bond::DOUBLE)  // this is a double bond
+    if ((bond->getBondType() == RDKix::Bond::DOUBLE)  // this is a double bond
         && (bond->getStereo() >
-            RDKit::Bond::STEREOANY)  // and has stereo chemistry specified
+            RDKix::Bond::STEREOANY)  // and has stereo chemistry specified
         && (!bond->getOwningMol().getRingInfo()->numBondRings(
                bond->getIdx()))) {  // not in a ring
       if (bond->getStereoAtoms().size() != 2) {
@@ -320,9 +320,9 @@ void embedCisTransSystems(const RDKit::ROMol &mol,
   }
 }
 
-RDKit::INT_LIST getNonEmbeddedAtoms(const RDKit::ROMol &mol,
+RDKix::INT_LIST getNonEmbeddedAtoms(const RDKix::ROMol &mol,
                                     const std::list<EmbeddedFrag> &efrags) {
-  RDKit::INT_LIST res;
+  RDKix::INT_LIST res;
   boost::dynamic_bitset<> done(mol.getNumAtoms());
   for (const auto &efrag : efrags) {
     const auto &oatoms = efrag.GetEmbeddedAtoms();
@@ -410,7 +410,7 @@ struct ThetaBin {
 };
 }  // namespace DepictorLocal
 
-void computeInitialCoords(RDKit::ROMol &mol,
+void computeInitialCoords(RDKix::ROMol &mol,
                           const RDGeom::INT_POINT2D_MAP *coordMap,
                           std::list<EmbeddedFrag> &efrags,
                           bool useRingTemplates) {
@@ -419,14 +419,14 @@ void computeInitialCoords(RDKit::ROMol &mol,
   for (auto i = 0u; i < mol.getNumAtoms(); ++i) {
     atomRanks[i] = getAtomDepictRank(mol.getAtomWithIdx(i));
   }
-  RDKit::VECT_INT_VECT arings;
+  RDKix::VECT_INT_VECT arings;
 
   // first find all the rings
   bool includeDativeBonds = true;
-  RDKit::MolOps::symmetrizeSSSR(mol, arings, includeDativeBonds);
+  RDKix::MolOps::symmetrizeSSSR(mol, arings, includeDativeBonds);
 
   // do stereochemistry
-  RDKit::MolOps::assignStereochemistry(mol, false);
+  RDKix::MolOps::assignStereochemistry(mol, false);
 
   efrags.clear();
 
@@ -468,8 +468,8 @@ void computeInitialCoords(RDKit::ROMol &mol,
     if (mri == efrags.end()) {
       // we are out of embedded fragments, if there are any
       // non embedded atoms use them to start a fragment
-      auto mrank = static_cast<int>(RDKit::MAX_INT);
-      RDKit::INT_LIST_I mnri;
+      auto mrank = static_cast<int>(RDKix::MAX_INT);
+      RDKix::INT_LIST_I mnri;
       for (auto nri = nratms.begin(); nri != nratms.end(); ++nri) {
         auto rank = atomRanks.at(*nri);
         rank *= mol.getNumAtoms();
@@ -496,10 +496,10 @@ void computeInitialCoords(RDKit::ROMol &mol,
   // the molecule
 }
 
-unsigned int copyCoordinate(RDKit::ROMol &mol, std::list<EmbeddedFrag> &efrags,
+unsigned int copyCoordinate(RDKix::ROMol &mol, std::list<EmbeddedFrag> &efrags,
                             bool clearConfs) {
   // create a conformation to store the coordinates and add it to the molecule
-  auto *conf = new RDKit::Conformer(mol.getNumAtoms());
+  auto *conf = new RDKix::Conformer(mol.getNumAtoms());
   conf->set3D(false);
   std::list<EmbeddedFrag>::iterator eri;
   for (const auto &efrag : efrags) {
@@ -547,12 +547,12 @@ void loadDefaultRingSystemTemplates() {
   coordinate_templates.loadDefaultTemplates();
 }
 
-unsigned int compute2DCoords(RDKit::ROMol &mol,
+unsigned int compute2DCoords(RDKix::ROMol &mol,
                              const RDGeom::INT_POINT2D_MAP *coordMap,
                              bool canonOrient, bool clearConfs,
                              unsigned int nFlipsPerSample,
                              unsigned int nSamples, int sampleSeed,
-                             bool permuteDeg4Nodes, bool forceRDKit,
+                             bool permuteDeg4Nodes, bool forceRDKix,
                              bool useRingTemplates) {
   Compute2DCoordParameters params;
   params.coordMap = coordMap;
@@ -562,7 +562,7 @@ unsigned int compute2DCoords(RDKit::ROMol &mol,
   params.nSamples = nSamples;
   params.sampleSeed = sampleSeed;
   params.permuteDeg4Nodes = permuteDeg4Nodes;
-  params.forceRDKit = forceRDKit;
+  params.forceRDKix = forceRDKix;
   params.useRingTemplates = useRingTemplates;
   return compute2DCoords(mol, params);
 }
@@ -580,24 +580,24 @@ unsigned int compute2DCoords(RDKit::ROMol &mol,
 //      3) add all atoms just merged/embedded to unfinished atom list
 //
 //
-unsigned int compute2DCoords(RDKit::ROMol &mol,
+unsigned int compute2DCoords(RDKix::ROMol &mol,
                              const Compute2DCoordParameters &params) {
   if (mol.needsUpdatePropertyCache()) {
     mol.updatePropertyCache(false);
   }
 #ifdef RDK_BUILD_COORDGEN_SUPPORT
   // default to use CoordGen if we have it installed
-  if (!params.forceRDKit && preferCoordGen) {
-    RDKit::CoordGen::CoordGenParams coordgen_params;
+  if (!params.forceRDKix && preferCoordGen) {
+    RDKix::CoordGen::CoordGenParams coordgen_params;
     if (params.coordMap) {
       coordgen_params.coordMap = *params.coordMap;
     }
-    auto cid = RDKit::CoordGen::addCoords(mol, &coordgen_params);
+    auto cid = RDKix::CoordGen::addCoords(mol, &coordgen_params);
     return cid;
   };
 #endif
 
-  RDKit::ROMol cp(mol);
+  RDKix::ROMol cp(mol);
   // storage for pieces of a molecule/s that are embedded in 2D
   std::list<EmbeddedFrag> efrags;
   computeInitialCoords(cp, params.coordMap, efrags, params.useRingTemplates);
@@ -698,7 +698,7 @@ unsigned int compute2DCoords(RDKit::ROMol &mol,
   \param sampleSeed - seed for the random sampling process
 */
 unsigned int compute2DCoordsMimicDistMat(
-    RDKit::ROMol &mol, const DOUBLE_SMART_PTR *dmat, bool canonOrient,
+    RDKix::ROMol &mol, const DOUBLE_SMART_PTR *dmat, bool canonOrient,
     bool clearConfs, double weightDistMat, unsigned int nFlipsPerSample,
     unsigned int nSamples, int sampleSeed, bool permuteDeg4Nodes, bool) {
   // storage for pieces of a molecule/s that are embedded in 2D
@@ -730,15 +730,15 @@ unsigned int compute2DCoordsMimicDistMat(
 //   correspondences between reference and molecule atom indices
 //   are determined by refMatchVect
 void generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference,
-    const RDKit::MatchVectType &refMatchVect, int confId, bool forceRDKit) {
+    RDKix::ROMol &mol, const RDKix::ROMol &reference,
+    const RDKix::MatchVectType &refMatchVect, int confId, bool forceRDKix) {
   if (refMatchVect.size() > reference.getNumAtoms()) {
     throw RDDepict::DepictException(
         "When a refMatchVect is provided, it must have size "
         "<= number of atoms in the reference");
   }
   RDGeom::INT_POINT2D_MAP coordMap;
-  const RDKit::Conformer &conf = reference.getConformer(confId);
+  const RDKix::Conformer &conf = reference.getConformer(confId);
   for (const auto &mv : refMatchVect) {
     if (mv.first > static_cast<int>(reference.getNumAtoms())) {
       throw RDDepict::DepictException(
@@ -753,29 +753,29 @@ void generateDepictionMatching2DStructure(
     coordMap[mv.second] = pt2;
   }
   RDDepict::compute2DCoords(mol, &coordMap, false /* canonOrient */,
-                            true /* clearConfs */, 0, 0, 0, false, forceRDKit);
+                            true /* clearConfs */, 0, 0, 0, false, forceRDKix);
 }
 
 //! \brief Compute 2D coordinates where a piece of the molecule is
 //   constrained to have the same coordinates as a reference.
-RDKit::MatchVectType generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference, int confId,
-    const RDKit::ROMol *referencePattern, bool acceptFailure, bool forceRDKit,
+RDKix::MatchVectType generateDepictionMatching2DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference, int confId,
+    const RDKix::ROMol *referencePattern, bool acceptFailure, bool forceRDKix,
     bool allowOptionalAttachments) {
-  std::unique_ptr<RDKit::ROMol> referenceHs;
+  std::unique_ptr<RDKix::ROMol> referenceHs;
   std::vector<int> refMatch;
-  RDKit::MatchVectType matchVect;
-  std::vector<RDKit::MatchVectType> multiRefMatchVect;
-  RDKit::MatchVectType singleRefMatchVect;
+  RDKix::MatchVectType matchVect;
+  std::vector<RDKix::MatchVectType> multiRefMatchVect;
+  RDKix::MatchVectType singleRefMatchVect;
   auto &refMatchVectRef = singleRefMatchVect;
-  const RDKit::ROMol &query =
+  const RDKix::ROMol &query =
       (referencePattern ? *referencePattern : reference);
   if (allowOptionalAttachments) {
     // we do not need the allowOptionalAttachments logic if there are no
     // terminal dummy atoms
     allowOptionalAttachments = false;
     for (const auto queryAtom : query.atoms()) {
-      if (RDKit::isAtomTerminalRGroupOrQueryHydrogen(queryAtom)) {
+      if (RDKix::isAtomTerminalRGroupOrQueryHydrogen(queryAtom)) {
         allowOptionalAttachments = true;
         break;
       }
@@ -784,16 +784,16 @@ RDKit::MatchVectType generateDepictionMatching2DStructure(
   if (referencePattern) {
     if (allowOptionalAttachments &&
         referencePattern->getNumAtoms() > reference.getNumAtoms()) {
-      referenceHs.reset(RDKit::MolOps::addHs(reference));
+      referenceHs.reset(RDKix::MolOps::addHs(reference));
       CHECK_INVARIANT(referenceHs, "addHs returned a nullptr");
       multiRefMatchVect =
-          RDKit::SubstructMatch(*referenceHs, *referencePattern);
+          RDKix::SubstructMatch(*referenceHs, *referencePattern);
       if (!multiRefMatchVect.empty()) {
-        refMatchVectRef = RDKit::getMostSubstitutedCoreMatch(
+        refMatchVectRef = RDKix::getMostSubstitutedCoreMatch(
             *referenceHs, *referencePattern, multiRefMatchVect);
       }
     } else if (referencePattern->getNumAtoms() <= reference.getNumAtoms()) {
-      RDKit::SubstructMatch(reference, *referencePattern, singleRefMatchVect);
+      RDKix::SubstructMatch(reference, *referencePattern, singleRefMatchVect);
     }
     if (refMatchVectRef.empty()) {
       throw RDDepict::DepictException(
@@ -813,12 +813,12 @@ RDKit::MatchVectType generateDepictionMatching2DStructure(
     std::iota(refMatch.begin(), refMatch.end(), 0);
   }
   if (allowOptionalAttachments) {
-    std::unique_ptr<RDKit::ROMol> molHs(RDKit::MolOps::addHs(mol));
+    std::unique_ptr<RDKix::ROMol> molHs(RDKix::MolOps::addHs(mol));
     CHECK_INVARIANT(molHs, "addHs returned a nullptr");
-    auto queryParams = RDKit::MolOps::AdjustQueryParameters::noAdjustments();
+    auto queryParams = RDKix::MolOps::AdjustQueryParameters::noAdjustments();
     queryParams.adjustSingleBondsToDegreeOneNeighbors = true;
     queryParams.adjustSingleBondsBetweenAromaticAtoms = true;
-    std::unique_ptr<RDKit::ROMol> queryAdj(RDKit::MolOps::adjustQueryProperties(query, &queryParams));
+    std::unique_ptr<RDKix::ROMol> queryAdj(RDKix::MolOps::adjustQueryProperties(query, &queryParams));
     auto matches = SubstructMatch(*molHs, *queryAdj);
     if (matches.empty()) {
       allowOptionalAttachments = false;
@@ -833,7 +833,7 @@ RDKit::MatchVectType generateDepictionMatching2DStructure(
     }
   }
   if (!allowOptionalAttachments) {
-    RDKit::SubstructMatch(mol, query, matchVect);
+    RDKix::SubstructMatch(mol, query, matchVect);
   }
   if (matchVect.empty() && !acceptFailure) {
     throw RDDepict::DepictException(
@@ -843,17 +843,17 @@ RDKit::MatchVectType generateDepictionMatching2DStructure(
     pair.first = refMatch.at(pair.first);
   }
   generateDepictionMatching2DStructure(mol, reference, matchVect, confId,
-                                       forceRDKit);
+                                       forceRDKix);
   return matchVect;
 }
 
 //! \brief Generate a 2D depiction for a molecule where all or part of
 //   it mimics the coordinates of a 3D reference structure.
-void generateDepictionMatching3DStructure(RDKit::ROMol &mol,
-                                          const RDKit::ROMol &reference,
+void generateDepictionMatching3DStructure(RDKix::ROMol &mol,
+                                          const RDKix::ROMol &reference,
                                           int confId,
-                                          RDKit::ROMol *referencePattern,
-                                          bool acceptFailure, bool forceRDKit) {
+                                          RDKix::ROMol *referencePattern,
+                                          bool acceptFailure, bool forceRDKix) {
   auto num_ats = mol.getNumAtoms();
   if (!referencePattern && reference.getNumAtoms() < num_ats) {
     if (acceptFailure) {
@@ -867,9 +867,9 @@ void generateDepictionMatching3DStructure(RDKit::ROMol &mol,
 
   std::vector<int> mol_to_ref(num_ats, -1);
   if (referencePattern && referencePattern->getNumAtoms()) {
-    RDKit::MatchVectType molMatchVect, refMatchVect;
-    RDKit::SubstructMatch(mol, *referencePattern, molMatchVect);
-    RDKit::SubstructMatch(reference, *referencePattern, refMatchVect);
+    RDKix::MatchVectType molMatchVect, refMatchVect;
+    RDKix::SubstructMatch(mol, *referencePattern, molMatchVect);
+    RDKix::SubstructMatch(reference, *referencePattern, refMatchVect);
     if (molMatchVect.empty() || refMatchVect.empty()) {
       if (acceptFailure) {
         RDDepict::compute2DCoords(mol);
@@ -889,7 +889,7 @@ void generateDepictionMatching3DStructure(RDKit::ROMol &mol,
     }
   }
 
-  const RDKit::Conformer &conf = reference.getConformer(confId);
+  const RDKix::Conformer &conf = reference.getConformer(confId);
   // the distance matrix is a triangular representation
   RDDepict::DOUBLE_SMART_PTR dmat(new double[num_ats * (num_ats - 1) / 2]);
   // negative distances are ignored, so initialise to -1.0 so subset by
@@ -910,10 +910,10 @@ void generateDepictionMatching3DStructure(RDKit::ROMol &mol,
   }
 
   RDDepict::compute2DCoordsMimicDistMat(mol, &dmat, false, true, 0.5, 3, 100,
-                                        25, true, forceRDKit);
+                                        25, true, forceRDKix);
 }
 
-void straightenDepiction(RDKit::ROMol &mol, int confId, bool minimizeRotation) {
+void straightenDepiction(RDKix::ROMol &mol, int confId, bool minimizeRotation) {
   if (!mol.getNumBonds()) {
     return;
   }
@@ -995,7 +995,7 @@ void straightenDepiction(RDKit::ROMol &mol, int confId, bool minimizeRotation) {
   }
 }
 
-double normalizeDepiction(RDKit::ROMol &mol, int confId, int canonicalize,
+double normalizeDepiction(RDKix::ROMol &mol, int confId, int canonicalize,
                           double scaleFactor) {
   constexpr double SCALE_FACTOR_THRESHOLD = 1.e-5;
   if (!mol.getNumBonds()) {
@@ -1003,7 +1003,7 @@ double normalizeDepiction(RDKit::ROMol &mol, int confId, int canonicalize,
   }
   auto &conf = mol.getConformer(confId);
   if (scaleFactor < 0.0) {
-    constexpr double RDKIT_BOND_LEN = 1.5;
+    constexpr double RDKIX_BOND_LEN = 1.5;
     int mostCommonBondLengthInt = -1;
     unsigned int maxCount = 0;
     std::unordered_map<int, unsigned int> binnedBondLengths;
@@ -1026,7 +1026,7 @@ double normalizeDepiction(RDKit::ROMol &mol, int confId, int canonicalize,
     if (mostCommonBondLengthInt > 0) {
       double mostCommonBondLength =
           static_cast<double>(mostCommonBondLengthInt) * 0.1;
-      scaleFactor = RDKIT_BOND_LEN / mostCommonBondLength;
+      scaleFactor = RDKIX_BOND_LEN / mostCommonBondLength;
     }
   }
   std::unique_ptr<RDGeom::Transform3D> canonTrans;

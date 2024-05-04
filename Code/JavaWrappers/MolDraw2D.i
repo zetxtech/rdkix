@@ -34,7 +34,7 @@
 %include "std_pair.i"
 %include "std_tuple.i"
 %{
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 #include <GraphMol/MolDraw2D/MolDraw2D.h>
 #include <GraphMol/MolDraw2D/MolDraw2DSVG.h>
@@ -52,29 +52,29 @@
 
 %template(Int_String_Map) std::map< int, std::string >;
 
-%template(ColourPalette) std::map< int, RDKit::DrawColour >;
-%template(Colour_Vect) std::vector< RDKit::DrawColour >;
-%template(MultipleColourPalette) std::map< int, std::vector< RDKit::DrawColour > >;
+%template(ColourPalette) std::map< int, RDKix::DrawColour >;
+%template(Colour_Vect) std::vector< RDKix::DrawColour >;
+%template(MultipleColourPalette) std::map< int, std::vector< RDKix::DrawColour > >;
 
 %template(Int_Double_Map) std::map< int, double >;
 %template(Float_Pair) std::pair<float,float>;
 %template(Float_Pair_Vect) std::vector< std::pair<float,float> >;
-%template(ROMol_Ptr_Vect) std::vector<RDKit::ROMol*>;
-%template(ColourPalette_Vect) std::vector< std::map< int, RDKit::DrawColour > >;
+%template(ROMol_Ptr_Vect) std::vector<RDKix::ROMol*>;
+%template(ColourPalette_Vect) std::vector< std::map< int, RDKix::DrawColour > >;
 %template(Int_Double_Map_Vect) std::vector< std::map< int, double > >;
 
-%ignore RDKit::MolDraw2DSVG::MolDraw2DSVG(int,int,std::ostream &);
-%ignore RDKit::MolDraw2DUtils::contourAndDrawGaussians(
+%ignore RDKix::MolDraw2DSVG::MolDraw2DSVG(int,int,std::ostream &);
+%ignore RDKix::MolDraw2DUtils::contourAndDrawGaussians(
     MolDraw2D &, const std::vector<Point2D> &,
     const std::vector<double> &, const std::vector<double> &,
     size_t, std::vector<double> &,
     const ContourParams &);
-%ignore RDKit::MolDraw2DUtils::contourAndDrawGaussians(
+%ignore RDKix::MolDraw2DUtils::contourAndDrawGaussians(
     MolDraw2D &, const std::vector<Point2D> &,
     const std::vector<double> &, const std::vector<double> &,
     size_t, ContourParams &);
-%ignore RDKit::MolDraw2DUtils::contourAndDrawGaussians;
-%ignore RDKit::MolDraw2DUtils::contourAndDrawGrid;
+%ignore RDKix::MolDraw2DUtils::contourAndDrawGaussians;
+%ignore RDKix::MolDraw2DUtils::contourAndDrawGrid;
 
 
 %include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
@@ -83,13 +83,13 @@
 #ifdef RDK_BUILD_CAIRO_SUPPORT
     
 #ifdef SWIGJAVA
-%typemap(jni) std::string RDKit::MolDraw2DCairo::toByteArray "jbyteArray"
-%typemap(jtype) std::string RDKit::MolDraw2DCairo::toByteArray "byte[]"
-%typemap(jstype) std::string RDKit::MolDraw2DCairo::toByteArray "byte[]"
-%typemap(javaout) std::string RDKit::MolDraw2DCairo::toByteArray {
+%typemap(jni) std::string RDKix::MolDraw2DCairo::toByteArray "jbyteArray"
+%typemap(jtype) std::string RDKix::MolDraw2DCairo::toByteArray "byte[]"
+%typemap(jstype) std::string RDKix::MolDraw2DCairo::toByteArray "byte[]"
+%typemap(javaout) std::string RDKix::MolDraw2DCairo::toByteArray {
   return $jnicall;
 }
-%typemap(out) std::string RDKit::MolDraw2DCairo::toByteArray {
+%typemap(out) std::string RDKix::MolDraw2DCairo::toByteArray {
   $result = JCALL1(NewByteArray, jenv, $1.size());
   JCALL4(SetByteArrayRegion, jenv, $result, 0, $1.size(), (const jbyte*)$1.c_str());
 }
@@ -102,7 +102,7 @@
 %include <GraphMol/MolDraw2D/MolDraw2DCairo.h>
     
 #ifdef SWIGJAVA
-%extend RDKit::MolDraw2DCairo {
+%extend RDKix::MolDraw2DCairo {
   const std::string toByteArray() {
      return ($self)->getDrawingText();
   }
@@ -110,7 +110,7 @@
 #endif
 
 #ifdef SWIGCSHARP
-%extend RDKit::MolDraw2DCairo {
+%extend RDKix::MolDraw2DCairo {
     const std::vector<unsigned char> getImage() {
         const auto text = ($self)->getDrawingText();
         const std::vector<unsigned char> image(text.begin(), text.end());
@@ -125,10 +125,10 @@
 
 %inline %{
     void ContourAndDrawGaussians(
-    RDKit::MolDraw2D &drawer, const std::vector<RDGeom::Point2D *> &p_locs,
+    RDKix::MolDraw2D &drawer, const std::vector<RDGeom::Point2D *> &p_locs,
     const std::vector<double> &heights, const std::vector<double> &widths,
     size_t nContours, std::vector<double> &levels,
-    const RDKit::MolDraw2DUtils::ContourParams &ps = RDKit::MolDraw2DUtils::ContourParams()){
+    const RDKix::MolDraw2DUtils::ContourParams &ps = RDKix::MolDraw2DUtils::ContourParams()){
         std::vector<Point2D> locs;
         locs.reserve(p_locs.size());
         for(const auto *p : p_locs){
@@ -137,10 +137,10 @@
         contourAndDrawGaussians(drawer,locs,heights,widths,nContours,levels,ps);
     };
     void ContourAndDrawGaussians(
-    RDKit::MolDraw2D &drawer, const std::vector<RDGeom::Point2D *> &p_locs,
+    RDKix::MolDraw2D &drawer, const std::vector<RDGeom::Point2D *> &p_locs,
     const std::vector<double> &heights, const std::vector<double> &widths,
     size_t nContours = 10, 
-    const RDKit::MolDraw2DUtils::ContourParams &ps = RDKit::MolDraw2DUtils::ContourParams()){
+    const RDKix::MolDraw2DUtils::ContourParams &ps = RDKix::MolDraw2DUtils::ContourParams()){
         std::vector<Point2D> locs;
         locs.reserve(p_locs.size());
         for(const auto *p : p_locs){
@@ -149,17 +149,17 @@
         contourAndDrawGaussians(drawer,locs,heights,widths,nContours,ps);
     };
     void ContourAndDrawGrid(
-    RDKit::MolDraw2D &drawer, const std::vector<double> &p_grid,
+    RDKix::MolDraw2D &drawer, const std::vector<double> &p_grid,
     const std::vector<double> &xcoords, const std::vector<double> &ycoords,
     size_t nContours, std::vector<double> &levels,
-    const RDKit::MolDraw2DUtils::ContourParams &ps = RDKit::MolDraw2DUtils::ContourParams()){
+    const RDKix::MolDraw2DUtils::ContourParams &ps = RDKix::MolDraw2DUtils::ContourParams()){
         contourAndDrawGrid(drawer,p_grid.data(),xcoords,ycoords,nContours,levels,ps);
     };
     void ContourAndDrawGrid(
-    RDKit::MolDraw2D &drawer, const std::vector<double> &p_grid,
+    RDKix::MolDraw2D &drawer, const std::vector<double> &p_grid,
     const std::vector<double> &xcoords, const std::vector<double> &ycoords,
     size_t nContours=10,
-    const RDKit::MolDraw2DUtils::ContourParams &ps = RDKit::MolDraw2DUtils::ContourParams()){
+    const RDKix::MolDraw2DUtils::ContourParams &ps = RDKix::MolDraw2DUtils::ContourParams()){
         contourAndDrawGrid(drawer,p_grid.data(),xcoords,ycoords,nContours,ps);
     };
 %}

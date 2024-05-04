@@ -11,8 +11,8 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import (ChemicalForceFields, rdDistGeom, rdMolAlign,
+from rdkix import Chem, RDConfig
+from rdkix.Chem import (ChemicalForceFields, rdDistGeom, rdMolAlign,
                         rdMolDescriptors, rdMolTransforms)
 
 
@@ -370,7 +370,7 @@ class TestCase(unittest.TestCase):
       """
 
     def _multiConfFromSmiles(smiles, nConfs=10, maxIters=500):
-      """Adds hydrogens to molecule and optimises a chosen number of conformers.  Returns the optimised RDKit mol."""
+      """Adds hydrogens to molecule and optimises a chosen number of conformers.  Returns the optimised RDKix mol."""
       idea = Chem.MolFromSmiles(smiles)
       idea = Chem.AddHs(idea)
       confs = rdDistGeom.EmbedMultipleConfs(idea, nConfs)
@@ -380,7 +380,7 @@ class TestCase(unittest.TestCase):
       return idea
 
     def _confsToAlignedMolsList(multiConfMol):
-      """Input is a multiconformer RDKit mol.  Output is an aligned set of conformers as a list of RDKit mols."""
+      """Input is a multiconformer RDKix mol.  Output is an aligned set of conformers as a list of RDKix mols."""
       rdMolAlign.AlignMolConformers(multiConfMol)
       ms = []
       cids = [x.GetId() for x in multiConfMol.GetConformers()]

@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2007 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file Crippen.h
@@ -21,7 +21,7 @@
 #include <vector>
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string crippenVersion = "1.2.0";
@@ -47,7 +47,7 @@ const std::string crippenVersion = "1.2.0";
                           number of atoms
 
 */
-RDKIT_DESCRIPTORS_EXPORT void getCrippenAtomContribs(
+RDKIX_DESCRIPTORS_EXPORT void getCrippenAtomContribs(
     const ROMol &mol, std::vector<double> &logpContribs,
     std::vector<double> &mrContribs, bool force = false,
     std::vector<unsigned int> *atomTypes = nullptr,
@@ -69,13 +69,13 @@ RDKIT_DESCRIPTORS_EXPORT void getCrippenAtomContribs(
                     pulled from the cache
 
 */
-RDKIT_DESCRIPTORS_EXPORT void calcCrippenDescriptors(const ROMol &mol,
+RDKIX_DESCRIPTORS_EXPORT void calcCrippenDescriptors(const ROMol &mol,
                                                      double &logp, double &mr,
                                                      bool includeHs = true,
                                                      bool force = false);
 
 //! a class used to store Crippen parameters
-class RDKIT_DESCRIPTORS_EXPORT CrippenParams {
+class RDKIX_DESCRIPTORS_EXPORT CrippenParams {
  public:
   boost::shared_ptr<const ROMol> dp_pattern;
   unsigned int idx;
@@ -92,7 +92,7 @@ const std::string CrippenClogPVersion = crippenVersion;
   See calcCrippenDescriptors
     \param mol        the molecule of interest
  */
-RDKIT_DESCRIPTORS_EXPORT double calcClogP(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcClogP(const ROMol &mol);
 
 const std::string CrippenMRVersion = crippenVersion;
 //! calculate the default Wildman-Crippen MR Estimate for a molecule
@@ -100,7 +100,7 @@ const std::string CrippenMRVersion = crippenVersion;
   See calcCrippenDescriptors
     \param mol        the molecule of interest
  */
-RDKIT_DESCRIPTORS_EXPORT double calcMR(const ROMol &mol);
+RDKIX_DESCRIPTORS_EXPORT double calcMR(const ROMol &mol);
 
 //! singleton class for retrieving Crippen parameters
 /*!
@@ -118,7 +118,7 @@ RDKIT_DESCRIPTORS_EXPORT double calcMR(const ROMol &mol);
   format (see Crippen.cpp for an example).
 
 */
-class RDKIT_DESCRIPTORS_EXPORT CrippenParamCollection {
+class RDKIX_DESCRIPTORS_EXPORT CrippenParamCollection {
  public:
   typedef std::vector<CrippenParams> ParamsVect;
   static const CrippenParamCollection *getParams(
@@ -132,6 +132,6 @@ class RDKIT_DESCRIPTORS_EXPORT CrippenParamCollection {
   ParamsVect d_params;  //!< the parameters
 };
 }  // end of namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

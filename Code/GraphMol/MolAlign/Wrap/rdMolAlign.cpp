@@ -5,10 +5,10 @@
 //  Copyright (C) 2013 Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdmolalign_array_API
 #include <RDBoost/python.h>
@@ -27,7 +27,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 void alignMolConfs(ROMol &mol, python::object atomIds, python::object confIds,
                    python::object weights, bool reflect, unsigned int maxIters,
                    python::object RMSlist) {
@@ -222,12 +222,12 @@ class PyO3A {
   PyObject *trans() {
     RDGeom::Transform3D trans;
     double rmsd = o3a.get()->trans(trans);
-    return RDKit::generateRmsdTransMatchPyTuple(rmsd, trans);
+    return RDKix::generateRmsdTransMatchPyTuple(rmsd, trans);
   };
   double score() { return o3a.get()->score(); };
   boost::python::list matches() {
     boost::python::list matchList;
-    const RDKit::MatchVectType *o3aMatchVect = o3a->matches();
+    const RDKix::MatchVectType *o3aMatchVect = o3a->matches();
 
     for (const auto &i : *o3aMatchVect) {
       boost::python::list match;
@@ -548,10 +548,10 @@ python::tuple getCrippenO3AForConfs(
   return python::tuple(pyres);
 }
 }  // end of namespace MolAlign
-}  // end of namespace RDKit
+}  // end of namespace RDKix
 
 BOOST_PYTHON_MODULE(rdMolAlign) {
-  rdkit_import_array();
+  rdkix_import_array();
   python::scope().attr("__doc__") =
       "Module containing functions to align a molecule to a second molecule";
 
@@ -581,7 +581,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       a tuple of (RMSD value, transform matrix) \n\
     \n";
   python::def(
-      "GetAlignmentTransform", RDKit::getMolAlignTransform,
+      "GetAlignmentTransform", RDKix::getMolAlignTransform,
       (python::arg("prbMol"), python::arg("refMol"), python::arg("prbCid") = -1,
        python::arg("refCid") = -1, python::arg("atomMap") = python::list(),
        python::arg("weights") = python::list(), python::arg("reflect") = false,
@@ -623,7 +623,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
     \n";
 
   python::def(
-      "GetBestAlignmentTransform", RDKit::getBestMolAlignTransform,
+      "GetBestAlignmentTransform", RDKix::getBestMolAlignTransform,
       (python::arg("prbMol"), python::arg("refMol"), python::arg("prbCid") = -1,
        python::arg("refCid") = -1, python::arg("map") = python::list(),
        python::arg("maxMatches") = 1000000,
@@ -659,7 +659,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       RMSD value\n\
     \n";
   python::def(
-      "AlignMol", RDKit::AlignMolecule,
+      "AlignMol", RDKix::AlignMolecule,
       (python::arg("prbMol"), python::arg("refMol"), python::arg("prbCid") = -1,
        python::arg("refCid") = -1, python::arg("atomMap") = python::list(),
        python::arg("weights") = python::list(), python::arg("reflect") = false,
@@ -675,7 +675,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
        This function will attempt to align all permutations of matching atom\n\
        orders in both molecules, for some molecules it will lead to\n\
        'combinatorial explosion' especially if hydrogens are present.\n\
-       Use 'rdkit.Chem.AllChem.AlignMol' to align molecules without changing\n\
+       Use 'rdkix.Chem.AllChem.AlignMol' to align molecules without changing\n\
        the atom order.\n\
       \n\
        ARGUMENTS\n\
@@ -698,7 +698,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       The best RMSD found\n\
     \n";
   python::def(
-      "GetBestRMS", RDKit::GetBestRMS,
+      "GetBestRMS", RDKix::GetBestRMS,
       (python::arg("prbMol"), python::arg("refMol"), python::arg("prbId") = -1,
        python::arg("refId") = -1, python::arg("map") = python::object(),
        python::arg("maxMatches") = 1000000,
@@ -738,7 +738,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       The best RMSD found\n\
     \n";
   python::def(
-      "CalcRMS", RDKit::CalcRMS,
+      "CalcRMS", RDKix::CalcRMS,
       (python::arg("prbMol"), python::arg("refMol"), python::arg("prbId") = -1,
        python::arg("refId") = -1, python::arg("map") = python::object(),
        python::arg("maxMatches") = 1000000,
@@ -763,7 +763,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
        \n\
     \n";
   python::def(
-      "AlignMolConformers", RDKit::alignMolConfs,
+      "AlignMolConformers", RDKix::alignMolConfs,
       (python::arg("mol"), python::arg("atomIds") = python::list(),
        python::arg("confIds") = python::list(),
        python::arg("weights") = python::list(), python::arg("reflect") = false,
@@ -782,23 +782,23 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
        \n\
     \n";
   python::def(
-      "RandomTransform", RDKit::MolAlign::randomTransform,
+      "RandomTransform", RDKix::MolAlign::randomTransform,
       (python::arg("mol"), python::arg("cid") = -1, python::arg("seed") = -1),
       docString.c_str());
 
-  python::class_<RDKit::MolAlign::PyO3A,
-                 boost::shared_ptr<RDKit::MolAlign::PyO3A>>(
+  python::class_<RDKix::MolAlign::PyO3A,
+                 boost::shared_ptr<RDKix::MolAlign::PyO3A>>(
       "O3A", "Open3DALIGN object", python::no_init)
-      .def("Align", &RDKit::MolAlign::PyO3A::align, (python::arg("self")),
+      .def("Align", &RDKix::MolAlign::PyO3A::align, (python::arg("self")),
            "aligns probe molecule onto reference molecule")
-      .def("Trans", &RDKit::MolAlign::PyO3A::trans, (python::arg("self")),
+      .def("Trans", &RDKix::MolAlign::PyO3A::trans, (python::arg("self")),
            "returns the transformation which aligns probe molecule onto "
            "reference molecule")
-      .def("Score", &RDKit::MolAlign::PyO3A::score, (python::arg("self")),
+      .def("Score", &RDKix::MolAlign::PyO3A::score, (python::arg("self")),
            "returns the O3AScore of the alignment")
-      .def("Matches", &RDKit::MolAlign::PyO3A::matches, (python::arg("self")),
+      .def("Matches", &RDKix::MolAlign::PyO3A::matches, (python::arg("self")),
            "returns the AtomMap as found by Open3DALIGN")
-      .def("Weights", &RDKit::MolAlign::PyO3A::weights, (python::arg("self")),
+      .def("Weights", &RDKix::MolAlign::PyO3A::weights, (python::arg("self")),
            "returns the weight vector as found by Open3DALIGN");
 
   docString =
@@ -833,7 +833,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       RETURNS\n\
       The O3A object\n\
     \n";
-  python::def("GetO3A", RDKit::MolAlign::getMMFFO3A,
+  python::def("GetO3A", RDKix::MolAlign::getMMFFO3A,
               (python::arg("prbMol"), python::arg("refMol"),
                python::arg("prbPyMMFFMolProperties") = python::object(),
                python::arg("refPyMMFFMolProperties") = python::object(),
@@ -878,7 +878,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       RETURNS\n\
       The O3A object\n\
     \n";
-  python::def("GetCrippenO3A", RDKit::MolAlign::getCrippenO3A,
+  python::def("GetCrippenO3A", RDKix::MolAlign::getCrippenO3A,
               (python::arg("prbMol"), python::arg("refMol"),
                python::arg("prbCrippenContribs") = python::list(),
                python::arg("refCrippenContribs") = python::list(),
@@ -899,7 +899,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       - prbMol                   molecule that is to be aligned\n\
       - refMol                   molecule used as the reference for the alignment\n\
       - numThreads :             the number of threads to use, only has an effect if\n\
-                                 the RDKit was built with thread support (defaults to 1)\n\
+                                 the RDKix was built with thread support (defaults to 1)\n\
                                  If set to zero, the max supported by the system will be used.\n\
       - prbPyMMFFMolProperties   PyMMFFMolProperties object for the probe molecule as returned\n\
                                  by SetupMMFFForceField()\n\
@@ -923,7 +923,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       RETURNS\n\
       A vector of O3A objects\n\
     \n";
-  python::def("GetO3AForProbeConfs", RDKit::MolAlign::getMMFFO3AForConfs,
+  python::def("GetO3AForProbeConfs", RDKix::MolAlign::getMMFFO3AForConfs,
               (python::arg("prbMol"), python::arg("refMol"),
                python::arg("numThreads") = 1,
                python::arg("prbPyMMFFMolProperties") = python::object(),
@@ -943,7 +943,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       - prbMol                   molecule that is to be aligned\n\
       - refMol                   molecule used as the reference for the alignment\n\
       - numThreads :             the number of threads to use, only has an effect if\n\
-                                 the RDKit was built with thread support (defaults to 1)\n\
+                                 the RDKix was built with thread support (defaults to 1)\n\
       - prbCrippenContribs       Crippen atom contributions for the probe molecule\n\
                                  as a list of (logp, mr) tuples, as returned\n\
                                  by _CalcCrippenContribs()\n\
@@ -969,7 +969,7 @@ BOOST_PYTHON_MODULE(rdMolAlign) {
       A vector of O3A objects\n\
     \n";
   python::def("GetCrippenO3AForProbeConfs",
-              RDKit::MolAlign::getCrippenO3AForConfs,
+              RDKix::MolAlign::getCrippenO3AForConfs,
               (python::arg("prbMol"), python::arg("refMol"),
                python::arg("numThreads") = 1,
                python::arg("prbCrippenContribs") = python::list(),

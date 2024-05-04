@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #include <list>
@@ -13,9 +13,9 @@
 #include <cmath>
 #include "SubstructMatchCustom.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
-class RDKIT_FMCS_EXPORT RingMatchTableSet {
+class RDKIX_FMCS_EXPORT RingMatchTableSet {
   class RingMatchTable {
     FMCS::MatchTable MatchMatrix;
     std::map<const INT_VECT*, unsigned> RingIndex;
@@ -258,4 +258,4 @@ class RDKIT_FMCS_EXPORT RingMatchTableSet {
   }
 };
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

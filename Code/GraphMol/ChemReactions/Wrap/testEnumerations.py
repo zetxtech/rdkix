@@ -39,8 +39,8 @@ import unittest
 
 import numpy as np
 
-from rdkit import Chem, Geometry, RDConfig, rdBase
-from rdkit.Chem import AllChem, rdChemReactions
+from rdkix import Chem, Geometry, RDConfig, rdBase
+from rdkix.Chem import AllChem, rdChemReactions
 
 
 def log(s):

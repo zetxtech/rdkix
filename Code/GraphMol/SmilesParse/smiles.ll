@@ -27,13 +27,13 @@ extern "C" int fileno(FILE*);
 #include <GraphMol/Atom.h>
 #include <GraphMol/Bond.h>
 #include <GraphMol/PeriodicTable.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smiles.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 #define YY_FATAL_ERROR(msg) smiles_lexer_error(msg)
 
@@ -334,12 +334,12 @@ s		    {	yylval->atom = new Atom( 16 );
 	  return BOND_TOKEN;  }
 
 [\\]{1,2}    { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDDOWNRIGHT);
 	return BOND_TOKEN;  }
 
 [\/]    { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDUPRIGHT);
 	return BOND_TOKEN;  }
 

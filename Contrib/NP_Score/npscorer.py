@@ -20,8 +20,8 @@ import pickle
 import sys
 from collections import namedtuple
 
-from rdkit import Chem
-from rdkit.Chem import rdMolDescriptors
+from rdkix import Chem
+from rdkix.Chem import rdMolDescriptors
 
 
 def readNPModel(filename=os.path.join(os.path.dirname(__file__), 'publicnp.model.gz')):

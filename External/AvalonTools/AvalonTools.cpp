@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2008-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2008-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 // Created by Greg Landrum, July 2008
@@ -15,7 +15,7 @@
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/LocaleSwitcher.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -43,7 +43,7 @@ extern void ClearParameters();
 // FILE *log_file=NULL;
 
 namespace AvalonTools {
-using namespace RDKit;
+using namespace RDKix;
 namespace {
 int *getCountFp(struct reaccs_molecule_t *molPtr, unsigned int bitFlags,
                 bool isQuery, unsigned int nBytes) {
@@ -242,7 +242,7 @@ unsigned int set2DCoords(ROMol &mol, bool clearConfs) {
   struct reaccs_molecule_t *mp2 = reaccsGetCoords(mp);
   TEST_ASSERT(mp2->n_atoms >= mol.getNumAtoms());
 
-  auto *conf = new RDKit::Conformer(mol.getNumAtoms());
+  auto *conf = new RDKix::Conformer(mol.getNumAtoms());
   conf->set3D(false);
 
   std::vector<int> matchedIndices(mol.getNumAtoms());
@@ -453,13 +453,13 @@ std::string getCheckMolLog() {
   return res;
 }
 
-RDKit::ROMOL_SPTR checkMol(int &errs, RDKit::ROMol &inMol) {
+RDKix::ROMOL_SPTR checkMol(int &errs, RDKix::ROMol &inMol) {
   // clean msg list from previous call (if no previous call, freemsglist does
   // nothing)
   FreeMsgList();
 
   struct reaccs_molecule_t *mp;
-  RDKit::ROMol *rMol = nullptr;
+  RDKix::ROMol *rMol = nullptr;
   mp = molToReaccs(inMol);
   errs = _checkMolWrapper(&mp);
   if (mp) {
@@ -471,22 +471,22 @@ RDKit::ROMOL_SPTR checkMol(int &errs, RDKit::ROMol &inMol) {
       MyFree(molStr);
     }
   }
-  return RDKit::ROMOL_SPTR(rMol);
+  return RDKix::ROMOL_SPTR(rMol);
 }
 
-RDKit::ROMOL_SPTR checkMol(int &errs, const std::string &data,
+RDKix::ROMOL_SPTR checkMol(int &errs, const std::string &data,
                            const bool isSmiles) {
   struct reaccs_molecule_t *mp;
   errs = checkMolString(data, isSmiles, &mp);
   if (mp) {
     Utils::LocaleSwitcher ls;
     char *molStr = MolToMolStr(mp);
-    RDKit::ROMol *rMol = MolBlockToMol(molStr);
+    RDKix::ROMol *rMol = MolBlockToMol(molStr);
     FreeMolecule(mp);
     MyFree(molStr);
-    return RDKit::ROMOL_SPTR(rMol);
+    return RDKix::ROMOL_SPTR(rMol);
   } else {
-    return RDKit::ROMOL_SPTR();
+    return RDKix::ROMOL_SPTR();
   }
 }
 

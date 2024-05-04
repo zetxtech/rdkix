@@ -2,10 +2,10 @@
 //   Copyright (C) 2005-2013 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _UNIFORMGRID3D_H_20050124_1703
@@ -17,7 +17,7 @@
 #include <iostream>
 
 namespace RDGeom {
-class RDKIT_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
+class RDKIX_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
  public:
   //! \brief ctor
   /*
@@ -36,8 +36,8 @@ class RDKIT_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
 
   */
   UniformGrid3D(double dimX, double dimY, double dimZ, double spacing = 0.5,
-                RDKit::DiscreteValueVect::DiscreteValueType valType =
-                    RDKit::DiscreteValueVect::TWOBITVALUE,
+                RDKix::DiscreteValueVect::DiscreteValueType valType =
+                    RDKix::DiscreteValueVect::TWOBITVALUE,
                 const RDGeom::Point3D *offset = nullptr) {
     if (offset == nullptr) {
       initGrid(dimX, dimY, dimZ, spacing, valType,
@@ -130,7 +130,7 @@ class RDKIT_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
   double getSpacing() const { return d_spacing; }
 
   //! \brief return a \b const pointer to our occupancy vector
-  const RDKit::DiscreteValueVect *getOccupancyVect() const override {
+  const RDKix::DiscreteValueVect *getOccupancyVect() const override {
     return dp_storage;
   }
 
@@ -185,15 +185,15 @@ class RDKIT_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
                       ownership of the pointer.
   */
   void initGrid(double dimX, double dimY, double dimZ, double spacing,
-                RDKit::DiscreteValueVect::DiscreteValueType valType,
+                RDKix::DiscreteValueVect::DiscreteValueType valType,
                 const RDGeom::Point3D &offSet,
-                RDKit::DiscreteValueVect *data = nullptr);
+                RDKix::DiscreteValueVect *data = nullptr);
   unsigned int d_numX;  //!< number of grid points along x axis
   unsigned int d_numY;  //!< number of grid points along y axis
   unsigned int d_numZ;  //!< number of grid points along z axis
   double d_spacing;     //!< grid spacing
   Point3D d_offSet;     //!< the grid offset (from the origin)
-  RDKit::DiscreteValueVect
+  RDKix::DiscreteValueVect
       *dp_storage;  //!< storage for values at each grid point
 
   //! \brief construct from a pickle
@@ -204,14 +204,14 @@ class RDKIT_RDGEOMETRYLIB_EXPORT UniformGrid3D : public Grid3D {
 /*
   The grid is written in GRD format
 */
-RDKIT_RDGEOMETRYLIB_EXPORT void writeGridToStream(const UniformGrid3D &grid,
+RDKIX_RDGEOMETRYLIB_EXPORT void writeGridToStream(const UniformGrid3D &grid,
                                                   std::ostream &outStrm);
 
 //! \brief writes the contents of the grid to a named file
 /*
   The grid is written in GRD format
 */
-RDKIT_RDGEOMETRYLIB_EXPORT void writeGridToFile(const UniformGrid3D &grid,
+RDKIX_RDGEOMETRYLIB_EXPORT void writeGridToFile(const UniformGrid3D &grid,
                                                 const std::string &filename);
 }  // namespace RDGeom
 

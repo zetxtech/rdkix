@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/python.hpp>
@@ -13,10 +13,10 @@
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 #include <RDBoost/Wrap.h>
 
-using namespace RDKit;
+using namespace RDKix;
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 namespace TopologicalTorsionWrapper {
 template <typename OutputType>
 FingerprintGenerator<OutputType> *getTopologicalTorsionFPGenerator(
@@ -92,4 +92,4 @@ void exportTopologicalTorsion() {
 }
 }  // namespace TopologicalTorsionWrapper
 
-}  // namespace RDKit
+}  // namespace RDKix

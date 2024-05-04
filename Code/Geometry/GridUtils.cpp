@@ -3,10 +3,10 @@
 //   Copyright (C) 2005-2007 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "GridUtils.h"
 #include "Grid3D.h"
@@ -16,7 +16,7 @@
 #include <DataStructs/DiscreteValueVect.h>
 #include <cmath>
 
-using namespace RDKit;
+using namespace RDKix;
 namespace RDGeom {
 
 template <class GRIDTYPE>
@@ -39,7 +39,7 @@ double tverskyIndex(const GRIDTYPE &grid1, const GRIDTYPE &grid2, double alpha,
   return tversky_res;
 }
 
-template RDKIT_RDGEOMETRYLIB_EXPORT double tverskyIndex(
+template RDKIX_RDGEOMETRYLIB_EXPORT double tverskyIndex(
     const UniformGrid3D &grid1, const UniformGrid3D &grid2, double alpha,
     double beta);
 
@@ -58,7 +58,7 @@ double tanimotoDistance(const GRIDTYPE &grid1, const GRIDTYPE &grid2) {
   return res;
 }
 
-template RDKIT_RDGEOMETRYLIB_EXPORT double tanimotoDistance(
+template RDKIX_RDGEOMETRYLIB_EXPORT double tanimotoDistance(
     const UniformGrid3D &grid1, const UniformGrid3D &grid2);
 
 template <class GRIDTYPE>
@@ -76,7 +76,7 @@ double protrudeDistance(const GRIDTYPE &grid1, const GRIDTYPE &grid2) {
   return res;
 }
 
-template RDKIT_RDGEOMETRYLIB_EXPORT double protrudeDistance(
+template RDKIX_RDGEOMETRYLIB_EXPORT double protrudeDistance(
     const UniformGrid3D &grid1, const UniformGrid3D &grid2);
 
 std::map<int, std::vector<int>> gridIdxCache;

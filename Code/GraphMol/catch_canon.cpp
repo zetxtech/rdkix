@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/new_canon.h>
@@ -23,7 +23,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("chirality and canonicalization") {
   SECTION("basics") {

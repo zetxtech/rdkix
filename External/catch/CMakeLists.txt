@@ -11,7 +11,7 @@ elseif(EXISTS "${CATCH_DIR}/single_include/catch2/catch.hpp")
   set(CATCH_INCLUDE_DIR "${CATCH_DIR}/single_include/catch2" PARENT_SCOPE)
 else()
   message("-- Catch not found in ${CATCH_DIR}")
-  include(RDKitUtils)
+  include(RDKixUtils)
   set(RELEASE_NO "2.13.8")
   downloadAndCheckMD5("https://github.com/catchorg/Catch2/archive/v${RELEASE_NO}.tar.gz"
         "${CMAKE_CURRENT_SOURCE_DIR}/v${RELEASE_NO}.tar.gz"

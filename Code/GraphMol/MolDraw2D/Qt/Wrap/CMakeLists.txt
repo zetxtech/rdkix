@@ -1,6 +1,6 @@
-remove_definitions(-DRDKIT_MOLDRAW2DQT_BUILD)
+remove_definitions(-DRDKIX_MOLDRAW2DQT_BUILD)
 
-rdkit_python_extension(rdMolDraw2DQt
+rdkix_python_extension(rdMolDraw2DQt
                        rdMolDraw2DQt.cpp
                        DEST Chem/Draw
                        LINK_LIBRARIES MolDraw2DQt)

@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef GENERAL_FILE_READER_H
 #define GENERAL_FILE_READER_H
@@ -22,7 +22,7 @@
 #include "MultithreadedSDMolSupplier.h"
 #include "MultithreadedSmilesMolSupplier.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace GeneralMolSupplier {
 struct SupplierOptions {
   bool takeOwnership = true;
@@ -166,5 +166,5 @@ std::unique_ptr<MolSupplier> getSupplier(const std::string& path,
 }
 
 }  // namespace GeneralMolSupplier
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

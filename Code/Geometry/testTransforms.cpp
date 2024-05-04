@@ -3,10 +3,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -339,7 +339,7 @@ void testFromQuaternion() {
   unsigned int i, j;
   for (i = 0; i < 4; i++) {
     for (j = 0; j < 4; j++) {
-      CHECK_INVARIANT(RDKit::feq(trans.getVal(i, j), ntrans.getVal(i, j)), "");
+      CHECK_INVARIANT(RDKix::feq(trans.getVal(i, j), ntrans.getVal(i, j)), "");
     }
   }
 }

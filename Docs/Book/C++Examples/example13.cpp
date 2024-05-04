@@ -11,7 +11,7 @@
 #include <GraphMol/MolDraw2D/MolDraw2DCairo.h>
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 
 int main(int argc, char **argv) {
   std::string file_root = getenv("RDBASE");

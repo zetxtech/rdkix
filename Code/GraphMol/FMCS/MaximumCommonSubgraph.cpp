@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <list>
 #include <algorithm>
@@ -22,7 +22,7 @@
 #include <boost/graph/adjacency_list.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 
 struct LabelDefinition {
@@ -302,7 +302,7 @@ struct QueryRings {
   inline unsigned getNumberRings(const Atom* atom) const {
     return AtomRings[atom->getIdx()];
   }
-};  // namespace RDKit
+};  // namespace RDKix
 
 struct WeightedBond {
   const Bond* BondPtr{nullptr};
@@ -1478,4 +1478,4 @@ bool MaximumCommonSubgraph::matchIncrementalFast(Seed& seed, unsigned itarget) {
   return matched;
 }
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

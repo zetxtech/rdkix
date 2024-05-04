@@ -7,7 +7,7 @@ import os
 import sys
 import unittest
 
-from rdkit import RDConfig
+from rdkix import RDConfig
 
 
 class TestCase(unittest.TestCase):

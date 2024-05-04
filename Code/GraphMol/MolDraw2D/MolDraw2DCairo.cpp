@@ -2,10 +2,10 @@
 //  Copyright (C) 2015-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // derived from Dave Cosgrove's MolDraw2D
 //
@@ -27,7 +27,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <boost/format.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 void MolDraw2DCairo::initDrawing() {
   if (dp_cr) {
@@ -235,7 +235,7 @@ std::string MolDraw2DCairo::addMetadataToPNG(const std::string &png) const {
     return png;
   }
 
-  return RDKit::addMetadataToPNGString(png, d_metadata);
+  return RDKix::addMetadataToPNGString(png, d_metadata);
 }
 
 // ****************************************************************************
@@ -285,4 +285,4 @@ void MolDraw2DCairo::updateMetadata(const ChemicalReaction &rxn) {
   addReactionMetadata(rxn, d_metadata);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

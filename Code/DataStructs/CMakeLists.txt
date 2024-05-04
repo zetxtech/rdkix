@@ -3,14 +3,14 @@ if(RDK_OPTIMIZE_POPCNT)
 endif()
 
 
-rdkit_library(DataStructs
+rdkix_library(DataStructs
               BitVect.cpp SparseBitVect.cpp ExplicitBitVect.cpp Utils.cpp
               base64.cpp BitOps.cpp DiscreteDistMat.cpp
               DiscreteValueVect.cpp FPBReader.cpp MultiFPBReader.cpp
               LINK_LIBRARIES RDGeneral)
-target_compile_definitions(DataStructs PRIVATE RDKIT_DATASTRUCTS_BUILD)
+target_compile_definitions(DataStructs PRIVATE RDKIX_DATASTRUCTS_BUILD)
 
-rdkit_headers(base64.h
+rdkix_headers(base64.h
               BitOps.h
               BitVect.h
               BitVects.h
@@ -26,13 +26,13 @@ rdkit_headers(base64.h
               MultiFPBReader.h
               DEST DataStructs)
 
-rdkit_test(testDataStructs testDatastructs.cpp
+rdkix_test(testDataStructs testDatastructs.cpp
            LINK_LIBRARIES DataStructs )
 
-rdkit_test(testFPB testFPB.cpp
+rdkix_test(testFPB testFPB.cpp
            LINK_LIBRARIES DataStructs )
 
-rdkit_test(testMultiFPB testMultiFPB.cpp
+rdkix_test(testMultiFPB testMultiFPB.cpp
            LINK_LIBRARIES DataStructs )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

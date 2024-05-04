@@ -1,5 +1,5 @@
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -35,7 +35,7 @@
 #include <utility>
 
 #include <RDGeneral/export.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -51,9 +51,9 @@
 #include <string>
 #include <boost/lexical_cast.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
-RDKIT_SUBSTRUCTLIBRARY_EXPORT bool SubstructLibraryCanSerialize();
+RDKIX_SUBSTRUCTLIBRARY_EXPORT bool SubstructLibraryCanSerialize();
 
 //! Base class API for holding molecules to substructure search.
 /*!
@@ -61,7 +61,7 @@ RDKIT_SUBSTRUCTLIBRARY_EXPORT bool SubstructLibraryCanSerialize();
   indexing molecules for substructure searching.  It simply
   provides an API for adding and getting molecules from a set.
  */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT MolHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT MolHolderBase {
  public:
   virtual ~MolHolderBase() {}
 
@@ -81,7 +81,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT MolHolderBase {
     This is currently one of the faster implementations.
     However it is very memory intensive.
 */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT MolHolder : public MolHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT MolHolder : public MolHolderBase {
   std::vector<boost::shared_ptr<ROMol>> mols;
 
  public:
@@ -113,9 +113,9 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT MolHolder : public MolHolderBase {
   non cached implementation.  However, due to the reduced speed
   it should be used in conjunction with a pattern fingerprinter.
 
-  See RDKit::FPHolder
+  See RDKix::FPHolder
 */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedMolHolder : public MolHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT CachedMolHolder : public MolHolderBase {
   std::vector<std::string> mols;
 
  public:
@@ -158,9 +158,9 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedMolHolder : public MolHolderBase {
     reduced speed it should be used in conjunction with a pattern
     fingerprinter.
 
-    See RDKit::FPHolder
+    See RDKix::FPHolder
 */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedSmilesMolHolder
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT CachedSmilesMolHolder
     : public MolHolderBase {
   std::vector<std::string> mols;
 
@@ -200,18 +200,18 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedSmilesMolHolder
 //! Concrete class that holds trusted smiles strings in memory
 /*!
     A trusted smiles is essentially a smiles string that
-    RDKit has generated.  This indicates that fewer
+    RDKix has generated.  This indicates that fewer
     sanitization steps are required.  See
-    http://rdkit.blogspot.com/2016/09/avoiding-unnecessary-work-and.html
+    http://rdkix.blogspot.com/2016/09/avoiding-unnecessary-work-and.html
 
     This implementation uses quite a bit less memory than the
     cached binary or uncached implementation.  However, due to the
     reduced speed it should be used in conjunction with a pattern
     fingerprinter.
 
-    See RDKit::FPHolder
+    See RDKix::FPHolder
 */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedTrustedSmilesMolHolder
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT CachedTrustedSmilesMolHolder
     : public MolHolderBase {
   std::vector<std::string> mols;
 
@@ -252,7 +252,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT CachedTrustedSmilesMolHolder
 };
 
 //! Base FPI for the fingerprinter used to rule out impossible matches
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT FPHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT FPHolderBase {
   std::vector<ExplicitBitVect *> fps;
 
  public:
@@ -313,7 +313,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT FPHolderBase {
 
 //! Uses the pattern fingerprinter with a user-defined number of bits (default:
 //! 2048) to rule out matches
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT PatternHolder : public FPHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT PatternHolder : public FPHolderBase {
   unsigned int numBits;
 
  public:
@@ -331,7 +331,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT PatternHolder : public FPHolderBase {
   };
 };
 
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT TautomerPatternHolder
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT TautomerPatternHolder
     : public PatternHolder {
  public:
   TautomerPatternHolder() : PatternHolder() {}
@@ -345,7 +345,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT TautomerPatternHolder
   }
 };
 
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT KeyHolderBase {
  public:
   virtual ~KeyHolderBase() {}
 
@@ -367,7 +367,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyHolderBase {
   virtual unsigned int size() const = 0;
 };
 
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyFromPropHolder : public KeyHolderBase {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT KeyFromPropHolder : public KeyHolderBase {
   std::string propname;
   std::vector<std::string> keys;
   const std::string empty_string = {};
@@ -453,12 +453,12 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyFromPropHolder : public KeyHolderBase {
      Cached molecule holders create molecules on demand.  There are currently
      three styles of cached molecules.
 
-       CachedMolHolder: stores molecules in the rdkit binary format.
+       CachedMolHolder: stores molecules in the rdkix binary format.
        CachedSmilesMolHolder: stores molecules in smiles format.
        CachedTrustedSmilesMolHolder: stores molecules in smiles format.
 
      The CachedTrustedSmilesMolHolder is made to add molecules from
-     a trusted source.  This makes the basic assumption that RDKit was
+     a trusted source.  This makes the basic assumption that RDKix was
      used to sanitize and canonicalize the smiles string.  In practice
      this is considerably faster than using arbitrary smiles strings since
      certain assumptions can be made.  Molecules generated from trusted
@@ -496,7 +496,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyFromPropHolder : public KeyHolderBase {
      \endcode
 
      Finally, using the KeyFromPropHolder will store user ids or keys.
-     By default, it uses RDKit's default _Name prop, but can be changed
+     By default, it uses RDKix's default _Name prop, but can be changed
      to any property.
 
      \code
@@ -513,7 +513,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT KeyFromPropHolder : public KeyHolderBase {
      \endcode
 
 */
-class RDKIT_SUBSTRUCTLIBRARY_EXPORT SubstructLibrary {
+class RDKIX_SUBSTRUCTLIBRARY_EXPORT SubstructLibrary {
   boost::shared_ptr<MolHolderBase> molholder;
   boost::shared_ptr<FPHolderBase> fpholder;
   boost::shared_ptr<KeyHolderBase> keyholder;
@@ -945,7 +945,7 @@ class RDKIT_SUBSTRUCTLIBRARY_EXPORT SubstructLibrary {
   //! initializes from a string pickle
   void initFromString(const std::string &text);
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #include "SubstructLibrarySerialization.h"
 #endif

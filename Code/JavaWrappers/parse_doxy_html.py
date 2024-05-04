@@ -28,7 +28,7 @@ def get_detail(fname):
   return [bs, det]
 
 _example = \
-"""int RDKit::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const
+"""int RDKix::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const
 
 returns the perturbation order for a list of integers
 
@@ -90,7 +90,7 @@ For tetrahedral coordination, the chiralTag tells you what direction you have to
 
 NOTE: if an atom has an implicit H, the bond to that H is considered to be at the *end* of the list of other bonds.
 Member Enumeration Documentation
-enum RDKit::Atom::ChiralType
+enum RDKix::Atom::ChiralType
 
 store type of chirality
 
@@ -108,7 +108,7 @@ Enumerator:
 
     some unrecognized type of chirality
 
-enum RDKit::Atom::HybridizationType
+enum RDKix::Atom::HybridizationType
 
 store hybridization
 
@@ -121,7 +121,7 @@ Enumerator:
     unrecognized hybridization
 
 Member Function Documentation
-int RDKit::Atom::calcExplicitValence 	( 	bool  	strict = true 	 )  	
+int RDKix::Atom::calcExplicitValence 	( 	bool  	strict = true 	 )  	
 
 calculates and returns our explicit valence
 
@@ -129,7 +129,7 @@ Notes:
 
     * requires an owning molecule
 
-int RDKit::Atom::calcImplicitValence 	( 	bool  	strict = true 	 )  	
+int RDKix::Atom::calcImplicitValence 	( 	bool  	strict = true 	 )  	
 
 calculates and returns our implicit valence
 
@@ -137,10 +137,10 @@ Notes:
 
     * requires an owning molecule
 
-void RDKit::Atom::clearProp 	( 	const std::string  	key 	 )  	const [inline]
+void RDKix::Atom::clearProp 	( 	const std::string  	key 	 )  	const [inline]
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
-void RDKit::Atom::clearProp 	( 	const char *  	key 	 )  	const [inline]
+void RDKix::Atom::clearProp 	( 	const char *  	key 	 )  	const [inline]
 
 clears the value of a property
 
@@ -149,14 +149,14 @@ Notes:
     * if no property with name key exists, a KeyErrorException will be thrown.
     * if the property is marked as computed, it will also be removed from our list of computedProperties
 
-Atom * RDKit::Atom::copy 	( 		 )  	const [virtual]
+Atom * RDKix::Atom::copy 	( 		 )  	const [virtual]
 
 makes a copy of this Atom and returns a pointer to it.
 
 Note: the caller is responsible for deleteing the result
 
-Reimplemented in RDKit::QueryAtom.
-unsigned int RDKit::Atom::getDegree 	( 		 )  	const
+Reimplemented in RDKix::QueryAtom.
+unsigned int RDKix::Atom::getDegree 	( 		 )  	const
 
 returns the explicit degree of the Atom (number of bonded neighbors in the graph)
 
@@ -164,7 +164,7 @@ Notes:
 
     * requires an owning molecule
 
-int RDKit::Atom::getImplicitValence 	( 		 )  	const
+int RDKix::Atom::getImplicitValence 	( 		 )  	const
 
 returns the implicit valence for this Atom
 
@@ -172,7 +172,7 @@ Notes:
 
     * requires an owning molecule
 
-unsigned int RDKit::Atom::getNumImplicitHs 	( 		 )  	const
+unsigned int RDKix::Atom::getNumImplicitHs 	( 		 )  	const
 
 returns the number of implicit Hs this Atom is bound to
 
@@ -180,7 +180,7 @@ Notes:
 
     * requires an owning molecule
 
-unsigned int RDKit::Atom::getNumRadicalElectrons 	( 		 )  	const [inline]
+unsigned int RDKix::Atom::getNumRadicalElectrons 	( 		 )  	const [inline]
 
 returns the number of radical electrons for this Atom
 
@@ -188,7 +188,7 @@ Notes:
 
     * requires an owning molecule
 
-int RDKit::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const
+int RDKix::Atom::getPerturbationOrder 	( 	INT_LIST  	probe 	 )  	const
 
 returns the perturbation order for a list of integers
 
@@ -212,13 +212,13 @@ Notes:
     * requires an owning molecule
 
 template<typename T >
-void RDKit::Atom::getProp 	( 	const std::string  	key,
+void RDKix::Atom::getProp 	( 	const std::string  	key,
         T &  	res
     ) 			const [inline]
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 template<typename T >
-void RDKit::Atom::getProp 	( 	const char *  	key,
+void RDKix::Atom::getProp 	( 	const char *  	key,
         T &  	res
     ) 			const [inline]
 
@@ -233,7 +233,7 @@ Notes:
     * if no property with name key exists, a KeyErrorException will be thrown.
     * the boost::lexical_cast machinery is used to attempt type conversions. If this fails, a boost::bad_lexical_cast exception will be thrown.
 
-unsigned int RDKit::Atom::getTotalDegree 	( 		 )  	const
+unsigned int RDKix::Atom::getTotalDegree 	( 		 )  	const
 
 returns the total degree of the Atom (number of bonded neighbors + number of Hs)
 
@@ -241,7 +241,7 @@ Notes:
 
     * requires an owning molecule
 
-unsigned int RDKit::Atom::getTotalNumHs 	( 	bool  	includeNeighbors = false 	 )  	const
+unsigned int RDKix::Atom::getTotalNumHs 	( 	bool  	includeNeighbors = false 	 )  	const
 
 returns the total number of Hs (implicit and explicit) that this Atom is bound to
 
@@ -249,15 +249,15 @@ Notes:
 
     * requires an owning molecule
 
-bool RDKit::Atom::hasProp 	( 	const std::string  	key 	 )  	const [inline]
+bool RDKix::Atom::hasProp 	( 	const std::string  	key 	 )  	const [inline]
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
-bool RDKit::Atom::Match 	( 	const ATOM_SPTR  	what 	 )  	const [virtual]
+bool RDKix::Atom::Match 	( 	const ATOM_SPTR  	what 	 )  	const [virtual]
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 
-Reimplemented in RDKit::QueryAtom.
-bool RDKit::Atom::Match 	( 	Atom const *  	what 	 )  	const [virtual]
+Reimplemented in RDKix::QueryAtom.
+bool RDKix::Atom::Match 	( 	Atom const *  	what 	 )  	const [virtual]
 
 returns whether or not we match the argument
 
@@ -265,8 +265,8 @@ Notes:
 
     * for Atom objects, "match" means that atomic numbers are the same.
 
-Reimplemented in RDKit::QueryAtom.
-void RDKit::Atom::setIdx 	( 	unsigned int  	index 	 )  	[inline]
+Reimplemented in RDKix::QueryAtom.
+void RDKix::Atom::setIdx 	( 	unsigned int  	index 	 )  	[inline]
 
 sets our index within the ROMol
 
@@ -276,14 +276,14 @@ Notes:
     * the index should be < this->getOwningMol()->getNumAtoms()
 
 template<typename T >
-void RDKit::Atom::setProp 	( 	const std::string  	key,
+void RDKix::Atom::setProp 	( 	const std::string  	key,
         T  	val,
         bool  	computed = false
     ) 			const [inline]
 
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 template<typename T >
-void RDKit::Atom::setProp 	( 	const char *  	key,
+void RDKix::Atom::setProp 	( 	const char *  	key,
         T  	val,
         bool  	computed = false
     ) 			const [inline]
@@ -295,7 +295,7 @@ Parameters:
         val 	the value to be stored
         computed 	(optional) allows the property to be flagged computed.
 
-void RDKit::Atom::updatePropertyCache 	( 	bool  	strict = true 	 )  	
+void RDKix::Atom::updatePropertyCache 	( 	bool  	strict = true 	 )  	
 
 calculates any of our lazy properties
 

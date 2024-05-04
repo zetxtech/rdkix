@@ -3,16 +3,16 @@
 //
 // Copyright 2020 Schrodinger, Inc
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 #include "TautomerQuery.h"
 #include <functional>
 #include <set>
 #include <utility>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolStandardize/Tautomer.h>
 #include <GraphMol/Bond.h>
 #include <GraphMol/QueryOps.h>
@@ -36,7 +36,7 @@
 
 namespace {
 
-using namespace RDKit;
+using namespace RDKix;
 
 // Adapted from Code/GraphMol/Substruct/SubstructUtils.cpp#removeDuplicates
 void removeTautomerDuplicates(std::vector<MatchVectType> &matches,
@@ -77,7 +77,7 @@ void removeTautomerDuplicates(std::vector<MatchVectType> &matches,
 
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 bool TautomerQueryCanSerialize() {
 #ifdef RDK_USE_BOOST_SERIALIZATION
@@ -254,7 +254,7 @@ std::vector<MatchVectType> TautomerQuery::substructOf(
   templateParams.extraFinalCheck = checker;
 
   auto matches =
-      RDKit::SubstructMatch(mol, *d_templateMolecule, templateParams);
+      RDKix::SubstructMatch(mol, *d_templateMolecule, templateParams);
 
 #ifdef VERBOSE
   std::cout << "Found " << matches.size() << " matches " << std::endl;
@@ -324,4 +324,4 @@ void TautomerQuery::initFromString(const std::string &text) {
   initFromStream(ss);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

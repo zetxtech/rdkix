@@ -3,18 +3,18 @@
 //  Copyright (C) 2003-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "FragCatParams.h"
 #include "FragCatalogUtils.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <sstream>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 using std::int32_t;
 using std::uint32_t;
 
@@ -102,4 +102,4 @@ void FragCatParams::initFromStream(std::istream &ss) {
 
   d_funcGroups = readFuncGroups(ss, nGroups);
 }
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 //  Copyright (C) 2017-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file MolBundle.h
 
@@ -28,7 +28,7 @@
 // our stuff
 #include <RDGeneral/Exceptions.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 //! MolBundle contains a collection of related ROMols
@@ -117,5 +117,5 @@ class FixedMolSizeMolBundle : public MolBundle {
   }
 };
 
-};  // namespace RDKit
+};  // namespace RDKix
 #endif

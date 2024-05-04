@@ -1,23 +1,23 @@
 //
-//  Copyright (C) 2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "catch.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include "RDDepictor.h"
 #include "DepictUtils.h"
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE(
     "github #4504: overlapping coordinates with 1,1-disubstituted "
@@ -215,13 +215,13 @@ TEST_CASE("use ring system templates") {
   auto diff =
       mol->getConformer().getAtomPos(10) - mol->getConformer().getAtomPos(11);
   // when templates are not used, bond from 10-11 is very short
-  TEST_ASSERT(RDKit::feq(diff.length(), 0.116, .1));
+  TEST_ASSERT(RDKix::feq(diff.length(), 0.116, .1));
 
   params.useRingTemplates = true;
   RDDepict::compute2DCoords(*mol, params);
   diff =
       mol->getConformer().getAtomPos(10) - mol->getConformer().getAtomPos(11);
-  TEST_ASSERT(RDKit::feq(diff.length(), 1.0, .1))
+  TEST_ASSERT(RDKix::feq(diff.length(), 1.0, .1))
 }
 
 TEST_CASE("dative bonds and rings") {

@@ -3,10 +3,10 @@
 //  Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdshapehelpers_array_API
 #include <RDBoost/python.h>
@@ -24,7 +24,7 @@
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 void _copyTransform(const PyArrayObject *transMat, RDGeom::Transform3D &trans) {
   unsigned int nrows = PyArray_DIM(transMat, 0);
   unsigned int ncols = PyArray_DIM(transMat, 1);
@@ -154,16 +154,16 @@ double protrudeMolShapes(const ROMol &mol1, const ROMol &mol2, int confId1 = -1,
                                      bitsPerPoint, vdwScale, stepSize,
                                      maxLayers, ignoreHs, allowReordering);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 BOOST_PYTHON_MODULE(rdShapeHelpers) {
   python::scope().attr("__doc__") =
       "Module containing functions to encode and compare the shapes of "
       "molecules";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
-  // RegisterListConverter<RDKit::Atom*>();
+  // RegisterListConverter<RDKix::Atom*>();
 
   std::string docString =
       "Encode the shape of a molecule (one of its conformer) onto a grid\n\n\
@@ -181,7 +181,7 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
                   used per grid point - e.g. two bits per grid point will allow 3 layers\n\
     - ignoreHs : when set, the contribution of Hs to the shape will be ignored\n";
   python::def(
-      "EncodeShape", RDKit::EncodeMolShape,
+      "EncodeShape", RDKix::EncodeMolShape,
       (python::arg("mol"), python::arg("grid"), python::arg("confId") = -1,
        python::arg("trans") = python::object(), python::arg("vdwScale") = 0.8,
        python::arg("stepSize") = 0.25, python::arg("maxLayers") = -1,
@@ -210,11 +210,11 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
     - ignoreHs : when set, the contribution of Hs to the shape will be ignored\n";
 
   python::def(
-      "ShapeTverskyIndex", RDKit::tverskyMolShapes,
+      "ShapeTverskyIndex", RDKix::tverskyMolShapes,
       (python::arg("mol1"), python::arg("mol2"), python::arg("alpha"),
        python::arg("beta"), python::arg("confId1") = -1,
        python::arg("confId2") = -1, python::arg("gridSpacing") = 0.5,
-       python::arg("bitsPerPoint") = RDKit::DiscreteValueVect::TWOBITVALUE,
+       python::arg("bitsPerPoint") = RDKix::DiscreteValueVect::TWOBITVALUE,
        python::arg("vdwScale") = 0.8, python::arg("stepSize") = 0.25,
        python::arg("maxLayers") = -1, python::arg("ignoreHs") = true),
       docString.c_str());
@@ -239,10 +239,10 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
     - ignoreHs : when set, the contribution of Hs to the shape will be ignored\n";
 
   python::def(
-      "ShapeTanimotoDist", RDKit::tanimotoMolShapes,
+      "ShapeTanimotoDist", RDKix::tanimotoMolShapes,
       (python::arg("mol1"), python::arg("mol2"), python::arg("confId1") = -1,
        python::arg("confId2") = -1, python::arg("gridSpacing") = 0.5,
-       python::arg("bitsPerPoint") = RDKit::DiscreteValueVect::TWOBITVALUE,
+       python::arg("bitsPerPoint") = RDKix::DiscreteValueVect::TWOBITVALUE,
        python::arg("vdwScale") = 0.8, python::arg("stepSize") = 0.25,
        python::arg("maxLayers") = -1, python::arg("ignoreHs") = true),
       docString.c_str());
@@ -268,10 +268,10 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
     - allowReordering : when set, the order will be automatically updated so that the value calculated\n\
                         is the protrusion of the smaller shape from the larger one.\n";
   python::def(
-      "ShapeProtrudeDist", RDKit::protrudeMolShapes,
+      "ShapeProtrudeDist", RDKix::protrudeMolShapes,
       (python::arg("mol1"), python::arg("mol2"), python::arg("confId1") = -1,
        python::arg("confId2") = -1, python::arg("gridSpacing") = 0.5,
-       python::arg("bitsPerPoint") = RDKit::DiscreteValueVect::TWOBITVALUE,
+       python::arg("bitsPerPoint") = RDKix::DiscreteValueVect::TWOBITVALUE,
        python::arg("vdwScale") = 0.8, python::arg("stepSize") = 0.25,
        python::arg("maxLayers") = -1, python::arg("ignoreHs") = true,
        python::arg("allowReordering") = true),
@@ -280,7 +280,7 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
   docString =
       "Compute the size of the box that can fit the conformations, and offset \n\
    of the box from the origin\n";
-  python::def("ComputeConfDimsAndOffset", RDKit::getConformerDimsAndOffset,
+  python::def("ComputeConfDimsAndOffset", RDKix::getConformerDimsAndOffset,
               (python::arg("conf"), python::arg("trans") = python::object(),
                python::arg("padding") = 2.0),
               docString.c_str());
@@ -288,7 +288,7 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
   docString =
       "Compute the lower and upper corners of a cuboid that will fit the "
       "conformer";
-  python::def("ComputeConfBox", RDKit::getConfBox,
+  python::def("ComputeConfBox", RDKix::getConfBox,
               (python::arg("conf"), python::arg("trans") = python::object(),
                python::arg("padding") = 2.0),
               docString.c_str());
@@ -296,5 +296,5 @@ BOOST_PYTHON_MODULE(rdShapeHelpers) {
   docString =
       "Compute the union of two boxes, so that all the points in both boxes are \n\
     contained in the new box";
-  python::def("ComputeUnionBox", RDKit::getUnionOfTwoBox, docString.c_str());
+  python::def("ComputeUnionBox", RDKix::getUnionOfTwoBox, docString.c_str());
 }

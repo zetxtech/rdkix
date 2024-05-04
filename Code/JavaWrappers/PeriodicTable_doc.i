@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::PeriodicTable "
+%typemap(javaimports) RDKix::PeriodicTable "
 /** 
 singleton class for retrieving information about atoms
 <p>
@@ -43,105 +43,105 @@ Use the singleton like this:
     
  */"
 
-%javamethodmodifiers RDKit::PeriodicTable::getAtomicWeight 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getAtomicWeight 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getAtomicWeight 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getAtomicWeight 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getDefaultValence 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getDefaultValence 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getDefaultValence 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getDefaultValence 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getNouterElecs 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getNouterElecs 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getNouterElecs 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getNouterElecs 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRb0 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRb0 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRb0 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRb0 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRcovalent 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRcovalent 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRcovalent 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRcovalent 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRvdw 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRvdw 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getRvdw 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getRvdw 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getValenceList 	( 	char *  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getValenceList 	( 	char *  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getValenceList 	( 	const std::string &  	elementSymbol 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getValenceList 	( 	const std::string &  	elementSymbol 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::getValenceList 	( 	UINT  	atomicNumber 	 )  	const "
+%javamethodmodifiers RDKix::PeriodicTable::getValenceList 	( 	UINT  	atomicNumber 	 )  	const "
 /**
 <p>
 <p>
@@ -151,7 +151,7 @@ a vector of all stable valences. For atoms where we really don't have any idea w
 */
 public";
 
-%javamethodmodifiers RDKit::PeriodicTable::moreElectroNegative 	( 	UINT  	anum1, 		UINT  	anum2	  	) 			const "
+%javamethodmodifiers RDKix::PeriodicTable::moreElectroNegative 	( 	UINT  	anum1, 		UINT  	anum2	  	) 			const "
 /**
 <p>
 convenience function to determine which atom is more electronegative

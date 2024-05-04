@@ -2,10 +2,10 @@
 //  Copyright (C) 2005-2019 Greg Landrumm and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_WRAP_MOLSUPPLIER_H
@@ -13,10 +13,10 @@
 //! Template functions for wrapping suppliers as python iterators.
 
 #include <RDBoost/python.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/FileParseException.h>
 
-namespace RDKit {
+namespace RDKix {
 // Note that this returns a pointer to the supplier itself, so be careful
 // that it doesn't get deleted by python!
 template <typename T>
@@ -64,7 +64,7 @@ ROMol *MolSupplNext(T *suppl) {
   }
 
   return res;
-}  // namespace RDKit
+}  // namespace RDKix
 
 template <typename T>
 ROMol *MolSupplGetItem(T *suppl, int idx) {
@@ -93,5 +93,5 @@ ROMol *MolSupplGetItem(T *suppl, int idx) {
   }
   return res;
 }
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

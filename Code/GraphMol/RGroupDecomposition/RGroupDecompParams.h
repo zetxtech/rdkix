@@ -1,21 +1,21 @@
 //
 //  Copyright (c) 2017-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#ifndef RDKIT_RGROUPDECOMPPARAMS_H
-#define RDKIT_RGROUPDECOMPPARAMS_H
+#ifndef RDKIX_RGROUPDECOMPPARAMS_H
+#define RDKIX_RGROUPDECOMPPARAMS_H
 
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-namespace RDKit {
+namespace RDKix {
 
 typedef enum {
   IsotopeLabels = 0x01,
@@ -53,7 +53,7 @@ typedef enum {
   FingerprintVariance = 0x4,
 } RGroupScore;
 
-struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
+struct RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
   unsigned int labels = AutoDetect;
   unsigned int matchingStrategy = GreedyChunks;
   unsigned int scoreMethod = Match;
@@ -115,6 +115,6 @@ struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
   void checkNonTerminal(const Atom &atom) const;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_RGROUPDECOMPPARAMS_H
+#endif  // RDKIX_RGROUPDECOMPPARAMS_H

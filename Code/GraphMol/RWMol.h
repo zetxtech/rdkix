@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file RWMol.h
 
@@ -22,14 +22,14 @@
 #include "ROMol.h"
 #include "RingInfo.h"
 
-namespace RDKit {
+namespace RDKix {
 
 //! RWMol is a molecule class that is intended to be edited
 /*!
     See documentation for ROMol for general remarks
 
  */
-class RDKIT_GRAPHMOL_EXPORT RWMol : public ROMol {
+class RDKIX_GRAPHMOL_EXPORT RWMol : public ROMol {
  public:
   RWMol() : ROMol() {}
   //! copy constructor with a twist
@@ -216,6 +216,6 @@ class RDKIT_GRAPHMOL_EXPORT RWMol : public ROMol {
 typedef boost::shared_ptr<RWMol> RWMOL_SPTR;
 typedef std::vector<RWMOL_SPTR> RWMOL_SPTR_VECT;
 
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

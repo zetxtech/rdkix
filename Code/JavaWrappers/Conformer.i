@@ -39,10 +39,10 @@
 
 // no point in wrapping something that can't be accessed
 // getAtomPos() and setAtomPos() are convenient accessors
-%ignore RDKit::Conformer::getPositions();
-%ignore RDKit::Conformer::getPositions() const;
+%ignore RDKix::Conformer::getPositions();
+%ignore RDKix::Conformer::getPositions() const;
 
-%typemap(javacode) RDKit::Conformer %{
+%typemap(javacode) RDKix::Conformer %{
   public void setSwigCMemOwn(boolean cMemoryOwn) {
     swigCMemOwn = cMemoryOwn;
   }
@@ -51,7 +51,7 @@
 
 %include <GraphMol/Conformer.h>
 
-%extend RDKit::Conformer {
+%extend RDKix::Conformer {
    /* From MolTransforms.h */
 
   RDGeom::Point3D computeCentroid(bool ignoreHs=true) {

@@ -35,7 +35,7 @@ import sys
 
 from indexing import cansmirk
 
-from rdkit import Chem
+from rdkix import Chem
 
 if __name__ == '__main__':
 

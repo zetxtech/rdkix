@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_FRAG_CAT_PARAMS_H_
@@ -16,12 +16,12 @@
 #include <vector>
 #include <boost/shared_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 typedef std::vector<boost::shared_ptr<ROMol>> MOL_SPTR_VECT;
 
 //! container for user parameters used to create a fragment catalog
-class RDKIT_FRAGCATALOG_EXPORT FragCatParams : public RDCatalog::CatalogParams {
+class RDKIX_FRAGCATALOG_EXPORT FragCatParams : public RDCatalog::CatalogParams {
   // FIX: this container is still missing all the CASE-type functional groups
   // stuff
  public:
@@ -89,6 +89,6 @@ class RDKIT_FRAGCATALOG_EXPORT FragCatParams : public RDCatalog::CatalogParams {
 
   MOL_SPTR_VECT d_funcGroups;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

@@ -3,10 +3,10 @@
 //  Copyright (C) 2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define PY_ARRAY_UNIQUE_SYMBOL rdreducedgraphs_array_API
@@ -25,16 +25,16 @@
 namespace python = boost::python;
 
 namespace {
-RDKit::ROMol *GenerateMolExtendedReducedGraphHelper(const RDKit::ROMol &mol,
+RDKix::ROMol *GenerateMolExtendedReducedGraphHelper(const RDKix::ROMol &mol,
                                                     python::object atomTypes) {
   if (atomTypes) {
     throw_value_error("specification of atom types not yet supported");
   }
-  RDKit::ROMol *res =
-      RDKit::ReducedGraphs::generateMolExtendedReducedGraph(mol);
+  RDKix::ROMol *res =
+      RDKix::ReducedGraphs::generateMolExtendedReducedGraph(mol);
   return res;
 }
-PyObject *GenerateErGFingerprintForReducedGraphHelper(const RDKit::ROMol &mol,
+PyObject *GenerateErGFingerprintForReducedGraphHelper(const RDKix::ROMol &mol,
                                                       python::object atomTypes,
                                                       double fuzzIncrement,
                                                       int minPath,
@@ -43,7 +43,7 @@ PyObject *GenerateErGFingerprintForReducedGraphHelper(const RDKit::ROMol &mol,
     throw_value_error("specification of atom types not yet supported");
   }
   RDNumeric::DoubleVector *dv =
-      RDKit::ReducedGraphs::generateErGFingerprintForReducedGraph(
+      RDKix::ReducedGraphs::generateErGFingerprintForReducedGraph(
           mol, nullptr, fuzzIncrement, minPath, maxPath);
   npy_intp dim = dv->size();
   auto *res = (PyArrayObject *)PyArray_SimpleNew(1, &dim, NPY_DOUBLE);
@@ -52,14 +52,14 @@ PyObject *GenerateErGFingerprintForReducedGraphHelper(const RDKit::ROMol &mol,
   delete dv;
   return PyArray_Return(res);
 }
-PyObject *GetErGFingerprintHelper(const RDKit::ROMol &mol,
+PyObject *GetErGFingerprintHelper(const RDKix::ROMol &mol,
                                   python::object atomTypes,
                                   double fuzzIncrement, int minPath,
                                   int maxPath) {
   if (atomTypes) {
     throw_value_error("specification of atom types not yet supported");
   }
-  RDNumeric::DoubleVector *dv = RDKit::ReducedGraphs::getErGFingerprint(
+  RDNumeric::DoubleVector *dv = RDKix::ReducedGraphs::getErGFingerprint(
       mol, nullptr, fuzzIncrement, minPath, maxPath);
   npy_intp dim = dv->size();
   auto *res = (PyArrayObject *)PyArray_SimpleNew(1, &dim, NPY_DOUBLE);
@@ -74,7 +74,7 @@ BOOST_PYTHON_MODULE(rdReducedGraphs) {
   python::scope().attr("__doc__") =
       "Module containing functions to generate and work with reduced graphs";
 
-  rdkit_import_array();
+  rdkix_import_array();
 
   std::string docString = "";
 

@@ -3,10 +3,10 @@
 //  Adapted from pseudo-code from Roger Sayle
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -22,7 +22,7 @@
 #pragma warning(push, 1)
 #pragma warning(disable : 4800)
 #endif
-namespace RDKit {
+namespace RDKix {
 template <typename CompareFunc>
 bool hanoi(int *base, int nel, int *temp, int *count, int *changed,
            CompareFunc compar) {
@@ -158,7 +158,7 @@ void hanoisort(int *base, int nel, int *count, int *changed,
   }
   free(temp);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 #if defined(_MSC_VER)
 #pragma warning(pop)

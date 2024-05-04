@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2018 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_UFFBUILDER_H
@@ -27,7 +27,7 @@ class AtomicParams;
 }
 }  // namespace ForceFields
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace UFF {
 typedef std::vector<const ForceFields::UFF::AtomicParams *> AtomicParamVect;
@@ -49,7 +49,7 @@ typedef std::vector<const ForceFields::UFF::AtomicParams *> AtomicParamVect;
 
   \return the new force field. The client is responsible for free'ing this.
 */
-RDKIT_FORCEFIELDHELPERS_EXPORT ForceFields::ForceField *constructForceField(
+RDKIX_FORCEFIELDHELPERS_EXPORT ForceFields::ForceField *constructForceField(
     ROMol &mol, double vdwThresh = 100.0, int confId = -1,
     bool ignoreInterfragInteractions = true);
 
@@ -72,12 +72,12 @@ RDKIT_FORCEFIELDHELPERS_EXPORT ForceFields::ForceField *constructForceField(
 
   \return the new force field. The client is responsible for free'ing this.
 */
-RDKIT_FORCEFIELDHELPERS_EXPORT ForceFields::ForceField *constructForceField(
+RDKIX_FORCEFIELDHELPERS_EXPORT ForceFields::ForceField *constructForceField(
     ROMol &mol, const AtomicParamVect &params, double vdwThresh = 100.0,
     int confId = -1, bool ignoreInterfragInteractions = true);
 
 namespace Tools {
-class RDKIT_FORCEFIELDHELPERS_EXPORT DefaultTorsionBondSmarts
+class RDKIX_FORCEFIELDHELPERS_EXPORT DefaultTorsionBondSmarts
     : private boost::noncopyable {
  public:
   static const std::string &string() { return ds_string; }
@@ -95,35 +95,35 @@ class RDKIT_FORCEFIELDHELPERS_EXPORT DefaultTorsionBondSmarts
 
 enum { RELATION_1_2 = 0, RELATION_1_3 = 1, RELATION_1_4 = 2, RELATION_1_X = 3 };
 // these functions are primarily exposed so they can be tested.
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int twoBitCellPos(unsigned int nAtoms,
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int twoBitCellPos(unsigned int nAtoms,
                                                           int i, int j);
-RDKIT_FORCEFIELDHELPERS_EXPORT void setTwoBitCell(
+RDKIX_FORCEFIELDHELPERS_EXPORT void setTwoBitCell(
     boost::shared_array<std::uint8_t> &res, unsigned int pos,
     std::uint8_t value);
-RDKIT_FORCEFIELDHELPERS_EXPORT std::uint8_t getTwoBitCell(
+RDKIX_FORCEFIELDHELPERS_EXPORT std::uint8_t getTwoBitCell(
     boost::shared_array<std::uint8_t> &res, unsigned int pos);
-RDKIT_FORCEFIELDHELPERS_EXPORT boost::shared_array<std::uint8_t>
+RDKIX_FORCEFIELDHELPERS_EXPORT boost::shared_array<std::uint8_t>
 buildNeighborMatrix(const ROMol &mol);
-RDKIT_FORCEFIELDHELPERS_EXPORT void addBonds(const ROMol &mol,
+RDKIX_FORCEFIELDHELPERS_EXPORT void addBonds(const ROMol &mol,
                                              const AtomicParamVect &params,
                                              ForceFields::ForceField *field);
-RDKIT_FORCEFIELDHELPERS_EXPORT void addAngles(const ROMol &mol,
+RDKIX_FORCEFIELDHELPERS_EXPORT void addAngles(const ROMol &mol,
                                               const AtomicParamVect &params,
                                               ForceFields::ForceField *field);
-RDKIT_FORCEFIELDHELPERS_EXPORT void addNonbonded(
+RDKIX_FORCEFIELDHELPERS_EXPORT void addNonbonded(
     const ROMol &mol, int confId, const AtomicParamVect &params,
     ForceFields::ForceField *field,
     boost::shared_array<std::uint8_t> neighborMatrix, double vdwThresh = 100.0,
     bool ignoreInterfragInteractions = true);
-RDKIT_FORCEFIELDHELPERS_EXPORT void addTorsions(
+RDKIX_FORCEFIELDHELPERS_EXPORT void addTorsions(
     const ROMol &mol, const AtomicParamVect &params,
     ForceFields::ForceField *field,
     const std::string &torsionBondSmarts = DefaultTorsionBondSmarts::string());
-RDKIT_FORCEFIELDHELPERS_EXPORT void addInversions(
+RDKIX_FORCEFIELDHELPERS_EXPORT void addInversions(
     const ROMol &mol, const AtomicParamVect &params,
     ForceFields::ForceField *field);
 }  // namespace Tools
 }  // namespace UFF
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

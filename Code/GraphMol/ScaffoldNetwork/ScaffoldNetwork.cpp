@@ -2,10 +2,10 @@
 //  Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "ScaffoldNetwork.h"
 #include "detail.h"
@@ -13,7 +13,7 @@
 #include <boost/shared_ptr.hpp>
 #include <RDGeneral/types.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -23,7 +23,7 @@
 #include <GraphMol/ChemTransforms/ChemTransforms.h>
 #include <RDGeneral/Exceptions.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace ScaffoldNetwork {
 
 ScaffoldNetworkParams::ScaffoldNetworkParams(
@@ -377,15 +377,15 @@ void updateScaffoldNetwork(const T &mols, ScaffoldNetwork &network,
   }
 }
 
-template RDKIT_SCAFFOLDNETWORK_EXPORT void updateScaffoldNetwork(
+template RDKIX_SCAFFOLDNETWORK_EXPORT void updateScaffoldNetwork(
     const std::vector<ROMOL_SPTR> &ms, ScaffoldNetwork &network,
     const ScaffoldNetworkParams &params);
-template RDKIT_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork createScaffoldNetwork(
+template RDKIX_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork createScaffoldNetwork(
     const std::vector<ROMOL_SPTR> &ms, const ScaffoldNetworkParams &params);
-template RDKIT_SCAFFOLDNETWORK_EXPORT void updateScaffoldNetwork(
+template RDKIX_SCAFFOLDNETWORK_EXPORT void updateScaffoldNetwork(
     const std::vector<std::shared_ptr<ROMol>> &ms, ScaffoldNetwork &network,
     const ScaffoldNetworkParams &params);
-template RDKIT_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork
+template RDKIX_SCAFFOLDNETWORK_EXPORT ScaffoldNetwork
 createScaffoldNetwork(const std::vector<std::shared_ptr<ROMol>> &ms,
                       const ScaffoldNetworkParams &params);
 
@@ -491,4 +491,4 @@ ScaffoldNetworkParams getBRICSNetworkParams() {
 // const ScaffoldNetworkParams BRICSNetworkParams;
 
 }  // namespace ScaffoldNetwork
-}  // namespace RDKit
+}  // namespace RDKix

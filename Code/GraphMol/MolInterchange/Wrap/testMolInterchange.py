@@ -1,7 +1,7 @@
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import rdMolInterchange
+from rdkix import Chem, RDConfig
+from rdkix.Chem import rdMolInterchange
 
 
 class TestCase(unittest.TestCase):
@@ -46,7 +46,7 @@ class TestCase(unittest.TestCase):
     self.assertIn('[1,5]', json)
 
     ps = rdMolInterchange.JSONWriteParameters()
-    ps.useRDKitExtensions = False
+    ps.useRDKixExtensions = False
     json = rdMolInterchange.MolToJSON(ms[1], ps)
     self.assertNotIn('stereoGroups', json)
     json = rdMolInterchange.MolsToJSON(ms, ps)

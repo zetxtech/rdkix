@@ -1,5 +1,5 @@
 AGLYSL01
-     RDKit          3D
+     RDKix          3D
 AGLYSL01
  10  9  0  0  0  0  0  0  0  0999 V2000
    -1.6234    1.6965    8.8431 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24,7 +24,7 @@ AGLYSL01
 M  END
 $$$$
 AMHTAR01
-     RDKit          3D
+     RDKix          3D
 AMHTAR01
  15 14  0  0  0  0  0  0  0  0999 V2000
     6.0329    4.1505    3.0521 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -60,7 +60,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 AMPTRB10
-     RDKit          3D
+     RDKix          3D
 AMPTRB10
  25 26  0  0  0  0  0  0  0  0999 V2000
    -8.1919   -2.5996   15.5208 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -118,7 +118,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 ARGIND11
-     RDKit          3D
+     RDKix          3D
 ARGIND11
  26 25  0  0  0  0  0  0  0  0999 V2000
    -9.4236   -3.9134   16.1526 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -177,7 +177,7 @@ M  CHG  1  26  -1
 M  END
 $$$$
 BAOXLM01
-     RDKit          3D
+     RDKix          3D
 BAOXLM01
   6  5  0  0  0  0  0  0  0  0999 V2000
    -8.4475   -5.5931   13.3076 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -196,7 +196,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 BBSPRT10
-     RDKit          3D
+     RDKix          3D
 BBSPRT10
  24 25  0  0  0  0  0  0  0  0999 V2000
   -11.7206   -8.1007   15.0551 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -251,7 +251,7 @@ BBSPRT10
 M  END
 $$$$
 BEVJER10
-     RDKit          3D
+     RDKix          3D
 BEVJER10
  24 24  0  0  0  0  0  0  0  0999 V2000
    -8.5626   -3.4018   13.6992 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -305,7 +305,7 @@ BEVJER10
 M  END
 $$$$
 BEWCUB
-     RDKit          3D
+     RDKix          3D
 BEWCUB
  59 61  0  0  0  0  0  0  0  0999 V2000
    -9.4600   -4.5425   14.5213 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -434,7 +434,7 @@ M  CHG  1  35  -1
 M  END
 $$$$
 BEWKUJ04
-     RDKit          3D
+     RDKix          3D
 BEWKUJ04
  28 29  0  0  0  0  0  0  0  0999 V2000
   -10.6591   -4.9168   12.3108 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -499,7 +499,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 BIHKEI01
-     RDKit          3D
+     RDKix          3D
 BIHKEI01
  21 22  0  0  0  0  0  0  0  0999 V2000
   -10.7716   -2.9955   14.2543 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -550,7 +550,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 BIPDEJ02
-     RDKit          3D
+     RDKix          3D
 BIPDEJ02
  23 24  0  0  0  0  0  0  0  0999 V2000
    -8.3726   -4.8729   14.3028 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -603,7 +603,7 @@ BIPDEJ02
 M  END
 $$$$
 BIPJUF10
-     RDKit          3D
+     RDKix          3D
 BIPJUF10
  19 19  0  0  0  0  0  0  0  0999 V2000
    -8.5426   -3.1043   14.1621 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -651,7 +651,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 BIPYCL01
-     RDKit          3D
+     RDKix          3D
 BIPYCL01
  22 23  0  0  0  0  0  0  0  0999 V2000
    -8.9478   -4.8693   16.0403 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -704,7 +704,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 BITNAT10
-     RDKit          3D
+     RDKix          3D
 BITNAT10
  27 29  0  0  0  0  0  0  0  0999 V2000
   -10.5687   -5.5963   12.7150 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -766,7 +766,7 @@ BITNAT10
 M  END
 $$$$
 BIYBIU10
-     RDKit          3D
+     RDKix          3D
 BIYBIU10
  23 25  0  0  0  0  0  0  0  0999 V2000
    -9.7950   -3.3132   13.7261 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -820,7 +820,7 @@ BIYBIU10
 M  END
 $$$$
 BODKOU
-     RDKit          3D
+     RDKix          3D
 BODKOU
  37 37  0  0  0  0  0  0  0  0999 V2000
    -8.5960   -3.4175    9.7954 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -900,7 +900,7 @@ BODKOU
 M  END
 $$$$
 BSALAP01
-     RDKit          3D
+     RDKix          3D
 BSALAP01
  25 26  0  0  0  0  0  0  0  0999 V2000
    -4.6488   -2.1650   16.9381 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -957,7 +957,7 @@ BSALAP01
 M  END
 $$$$
 BUPSLB10
-     RDKit          3D
+     RDKix          3D
 BUPSLB10
  38 37  0  0  0  0  0  0  0  0999 V2000
    -8.7898   -3.1065   14.4282 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1038,7 +1038,7 @@ BUPSLB10
 M  END
 $$$$
 BUPSLD10
-     RDKit          3D
+     RDKix          3D
 BUPSLD10
  39 38  0  0  0  0  0  0  0  0999 V2000
   -10.5312   -4.1464   15.3751 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1121,7 +1121,7 @@ BUPSLD10
 M  END
 $$$$
 BUYTIY10
-     RDKit          3D
+     RDKix          3D
 BUYTIY10
  31 33  0  0  0  0  0  0  0  0999 V2000
    -8.2133   -3.9879   17.7745 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1191,7 +1191,7 @@ BUYTIY10
 M  END
 $$$$
 BUYTOE10
-     RDKit          3D
+     RDKix          3D
 BUYTOE10
  31 33  0  0  0  0  0  0  0  0999 V2000
    -9.5207   -4.0012   13.4853 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1261,7 +1261,7 @@ BUYTOE10
 M  END
 $$$$
 BUYXEY10
-     RDKit          3D
+     RDKix          3D
 BUYXEY10
  38 37  0  0  0  0  0  0  0  0999 V2000
    -9.6187   -5.3039   18.9959 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1342,7 +1342,7 @@ BUYXEY10
 M  END
 $$$$
 BYITOT02
-     RDKit          3D
+     RDKix          3D
 BYITOT02
  28 29  0  0  0  0  0  0  0  0999 V2000
   -10.7918   -6.4924   15.6850 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1405,7 +1405,7 @@ BYITOT02
 M  END
 $$$$
 CABWEH10
-     RDKit          3D
+     RDKix          3D
 CABWEH10
  23 24  0  0  0  0  0  0  0  0999 V2000
    -7.0844   -3.3914   16.7311 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1458,7 +1458,7 @@ CABWEH10
 M  END
 $$$$
 CAFORM07
-     RDKit          3D
+     RDKix          3D
 CAFORM07
   4  3  0  0  0  0  0  0  0  0999 V2000
    -8.7373   -4.0353   14.5626 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1472,7 +1472,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 CAGREH10
-     RDKit          3D
+     RDKix          3D
 CAGREH10
  21 22  0  0  0  0  0  0  0  0999 V2000
   -10.7453   -6.2525   15.2519 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1521,7 +1521,7 @@ CAGREH10
 M  END
 $$$$
 CALXES20
-     RDKit          3D
+     RDKix          3D
 CALXES20
  27 26  0  0  0  0  0  0  0  0999 V2000
   -11.0292   -5.8950   13.7243 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -1582,7 +1582,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 CAMALD03
-     RDKit          3D
+     RDKix          3D
 CAMALD03
   9  8  0  0  0  0  0  0  0  0999 V2000
    -7.5941   -3.5863   14.4239 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1607,7 +1607,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 CEFMEN
-     RDKit          3D
+     RDKix          3D
 CEFMEN
  50 53  0  0  0  0  0  0  0  0999 V2000
     2.7747    9.1942    7.3740 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1716,7 +1716,7 @@ CEFMEN
 M  END
 $$$$
 CETROI01
-     RDKit          3D
+     RDKix          3D
 CETROI01
  32 33  0  0  0  0  0  0  0  0999 V2000
   -10.1245   -2.8069   15.6056 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1787,7 +1787,7 @@ CETROI01
 M  END
 $$$$
 CEWCUC10
-     RDKit          3D
+     RDKix          3D
 CEWCUC10
  35 37  0  0  0  0  0  0  0  0999 V2000
    -8.3178   -2.6921   13.5710 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1865,7 +1865,7 @@ CEWCUC10
 M  END
 $$$$
 CEWVIJ10
-     RDKit          3D
+     RDKix          3D
 CEWVIJ10
  30 31  0  0  0  0  0  0  0  0999 V2000
   -10.1068   -2.8222   15.4864 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1932,7 +1932,7 @@ CEWVIJ10
 M  END
 $$$$
 CEWYIM30
-     RDKit          3D
+     RDKix          3D
 CEWYIM30
  22 24  0  0  0  0  0  0  0  0999 V2000
    -7.5087   -7.0390   14.0442 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1984,7 +1984,7 @@ CEWYIM30
 M  END
 $$$$
 CIHWUL10
-     RDKit          3D
+     RDKix          3D
 CIHWUL10
  17 19  0  0  0  0  0  0  0  0999 V2000
    -9.9153   -6.3245   16.0386 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2026,7 +2026,7 @@ CIHWUL10
 M  END
 $$$$
 CIJXOI10
-     RDKit          3D
+     RDKix          3D
 CIJXOI10
  25 26  0  0  0  0  0  0  0  0999 V2000
    -9.8417   -5.6394   14.0667 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2084,7 +2084,7 @@ M  CHG  1  10   1
 M  END
 $$$$
 CIKSEU10
-     RDKit          3D
+     RDKix          3D
 CIKSEU10
  20 22  0  0  0  0  0  0  0  0999 V2000
    -7.3291   -5.7922   12.9144 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2132,7 +2132,7 @@ CIKSEU10
 M  END
 $$$$
 CILBII
-     RDKit          3D
+     RDKix          3D
 CILBII
  35 35  0  0  0  0  0  0  0  0999 V2000
   -10.4876   -4.9553   13.7777 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2216,7 +2216,7 @@ M  CHG  1  25   1
 M  END
 $$$$
 CILDOQ
-     RDKit          3D
+     RDKix          3D
 CILDOQ
  23 22  0  0  0  0  0  0  0  0999 V2000
    -2.2277    7.2179    5.4061 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2267,7 +2267,7 @@ CILDOQ
 M  END
 $$$$
 CILWUP11
-     RDKit          3D
+     RDKix          3D
 CILWUP11
   9  9  0  0  0  0  0  0  0  0999 V2000
    -8.7203   -4.0667   12.6176 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2291,7 +2291,7 @@ CILWUP11
 M  END
 $$$$
 CIMRUL10
-     RDKit          3D
+     RDKix          3D
 CIMRUL10
  29 30  0  0  0  0  0  0  0  0999 V2000
   -13.4439   -3.2781   15.6139 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -2356,7 +2356,7 @@ CIMRUL10
 M  END
 $$$$
 CINVIE
-     RDKit          3D
+     RDKix          3D
 CINVIE
  32 33  0  0  0  0  0  0  0  0999 V2000
   -10.2280   -6.5915   15.6371 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2433,7 +2433,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 CIPVOM
-     RDKit          3D
+     RDKix          3D
 CIPVOM
  26 27  0  0  0  0  0  0  0  0999 V2000
    -9.0801   -5.1422   14.1026 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2492,7 +2492,7 @@ CIPVOM
 M  END
 $$$$
 CIPYAB10
-     RDKit          3D
+     RDKix          3D
 CIPYAB10
  18 18  0  0  0  0  0  0  0  0999 V2000
    -9.2079   -4.7721   14.2088 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2534,7 +2534,7 @@ CIPYAB10
 M  END
 $$$$
 CISMOG
-     RDKit          3D
+     RDKix          3D
 CISMOG
  14 16  0  0  0  0  0  0  0  0999 V2000
   -11.8195   -5.9166   13.6410 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2570,7 +2570,7 @@ CISMOG
 M  END
 $$$$
 CISPOJ
-     RDKit          3D
+     RDKix          3D
 CISPOJ
  24 26  0  0  0  0  0  0  0  0999 V2000
    -8.7944   -3.2646   14.0049 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2630,7 +2630,7 @@ M  CHG  1  19  -1
 M  END
 $$$$
 CITDIS
-     RDKit          3D
+     RDKix          3D
 CITDIS
  18 18  0  0  0  0  0  0  0  0999 V2000
    -9.0591   -4.5119   14.3631 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2672,7 +2672,7 @@ CITDIS
 M  END
 $$$$
 CITNOI10
-     RDKit          3D
+     RDKix          3D
 CITNOI10
  28 28  0  0  0  0  0  0  0  0999 V2000
    -8.2664   -2.2342   13.2171 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2734,7 +2734,7 @@ CITNOI10
 M  END
 $$$$
 CITPEA10
-     RDKit          3D
+     RDKix          3D
 CITPEA10
  31 31  0  0  0  0  0  0  0  0999 V2000
   -10.2448   -4.4527   12.0903 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2802,7 +2802,7 @@ CITPEA10
 M  END
 $$$$
 CITSED10
-     RDKit          3D
+     RDKix          3D
 CITSED10
   9  8  0  0  0  0  0  0  0  0999 V2000
    -8.5812   -5.3902   15.2107 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2826,7 +2826,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 CIVCEP02
-     RDKit          3D
+     RDKix          3D
 CIVCEP02
  36 39  0  0  0  0  0  0  0  0999 V2000
    -9.7018   -3.4307   11.7838 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2907,7 +2907,7 @@ CIVCEP02
 M  END
 $$$$
 CIVLAU02
-     RDKit          3D
+     RDKix          3D
 CIVLAU02
  31 33  0  0  0  0  0  0  0  0999 V2000
    -9.0598   -3.5751   15.3909 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2977,7 +2977,7 @@ CIVLAU02
 M  END
 $$$$
 CIXWAH
-     RDKit          3D
+     RDKix          3D
 CIXWAH
  21 22  0  0  0  0  0  0  0  0999 V2000
    -7.8107   -3.7845   12.5500 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3026,7 +3026,7 @@ CIXWAH
 M  END
 $$$$
 CIYNUT
-     RDKit          3D
+     RDKix          3D
 CIYNUT
  14 16  0  0  0  0  0  0  0  0999 V2000
    -9.9480   -6.4271   11.8278 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3062,7 +3062,7 @@ CIYNUT
 M  END
 $$$$
 CIZFIA
-     RDKit          3D
+     RDKix          3D
 CIZFIA
  27 28  0  0  0  0  0  0  0  0999 V2000
    -8.4153   -1.7576   15.1058 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -3124,7 +3124,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 CIZJAW
-     RDKit          3D
+     RDKix          3D
 CIZJAW
  48 48  0  0  0  0  0  0  0  0999 V2000
    -7.7960   -3.9260   15.2621 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -3226,7 +3226,7 @@ CIZJAW
 M  END
 $$$$
 CIZWUD
-     RDKit          3D
+     RDKix          3D
 CIZWUD
  15 15  0  0  0  0  0  0  0  0999 V2000
    -8.9260   -4.4260   14.4977 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3264,7 +3264,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 CIZYEP
-     RDKit          3D
+     RDKix          3D
 CIZYEP
  29 29  0  0  0  0  0  0  0  0999 V2000
    -7.3946   -1.6394   13.0681 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3328,7 +3328,7 @@ CIZYEP
 M  END
 $$$$
 CIZZUG
-     RDKit          3D
+     RDKix          3D
 CIZZUG
  20 21  0  0  0  0  0  0  0  0999 V2000
   -10.0608   -4.0330   14.8926 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3377,7 +3377,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 COBKIN01
-     RDKit          3D
+     RDKix          3D
 COBKIN01
  25 25  0  0  0  0  0  0  0  0999 V2000
   -10.2733   -4.6182   13.8940 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3433,7 +3433,7 @@ COBKIN01
 M  END
 $$$$
 COCXUN
-     RDKit          3D
+     RDKix          3D
 COCXUN
  22 23  0  0  0  0  0  0  0  0999 V2000
    -9.8396   -3.3864   13.4172 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3484,7 +3484,7 @@ COCXUN
 M  END
 $$$$
 COGDEH
-     RDKit          3D
+     RDKix          3D
 COGDEH
  23 26  0  0  0  0  0  0  0  0999 V2000
    -9.8470   -5.9114   17.7786 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3539,7 +3539,7 @@ COGDEH
 M  END
 $$$$
 COGYAY
-     RDKit          3D
+     RDKix          3D
 COGYAY
  18 19  0  0  0  0  0  0  0  0999 V2000
    -7.5022   -1.0292   11.6230 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -3582,7 +3582,7 @@ COGYAY
 M  END
 $$$$
 COHKOZ
-     RDKit          3D
+     RDKix          3D
 COHKOZ
  15 15  0  0  0  0  0  0  0  0999 V2000
    -9.2992   -2.2928   14.0617 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3618,7 +3618,7 @@ COHKOZ
 M  END
 $$$$
 COJFIQ
-     RDKit          3D
+     RDKix          3D
 COJFIQ
  23 24  0  0  0  0  0  0  0  0999 V2000
    -8.8081   -5.5748   13.6429 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -3673,7 +3673,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 COKDEL
-     RDKit          3D
+     RDKix          3D
 COKDEL
  25 24  0  0  0  0  0  0  0  0999 V2000
    -9.4142   -2.5749   12.8727 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -3729,7 +3729,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 COKROJ
-     RDKit          3D
+     RDKix          3D
 COKROJ
  27 28  0  0  0  0  0  0  0  0999 V2000
   -11.7755   -6.9576   14.0971 H   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3791,7 +3791,7 @@ M  CHG  1  17  -1
 M  END
 $$$$
 COLZUY
-     RDKit          3D
+     RDKix          3D
 COLZUY
  44 46  0  0  0  0  0  0  0  0999 V2000
   -10.1443   -5.9215   13.9723 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3887,7 +3887,7 @@ COLZUY
 M  END
 $$$$
 COMDIR
-     RDKit          3D
+     RDKix          3D
 COMDIR
  23 25  0  0  0  0  0  0  0  0999 V2000
    -6.0409   -6.1219   12.2892 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -3941,7 +3941,7 @@ COMDIR
 M  END
 $$$$
 COMKAQ
-     RDKit          3D
+     RDKix          3D
 COMKAQ
  17 18  0  0  0  0  0  0  0  0999 V2000
   -10.3319   -4.6906   13.6369 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -3982,7 +3982,7 @@ COMKAQ
 M  END
 $$$$
 COMWOQ
-     RDKit          3D
+     RDKix          3D
 COMWOQ
  18 19  0  0  0  0  0  0  0  0999 V2000
   -10.0346   -5.7925   13.8515 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4025,7 +4025,7 @@ COMWOQ
 M  END
 $$$$
 COMWUW
-     RDKit          3D
+     RDKix          3D
 COMWUW
  27 28  0  0  0  0  0  0  0  0999 V2000
    -7.8331   -2.3825   13.3404 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4086,7 +4086,7 @@ COMWUW
 M  END
 $$$$
 CONBAI
-     RDKit          3D
+     RDKix          3D
 CONBAI
  36 38  0  0  0  0  0  0  0  0999 V2000
    -9.1263   -5.5427   13.4816 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4166,7 +4166,7 @@ CONBAI
 M  END
 $$$$
 CONFAM
-     RDKit          3D
+     RDKix          3D
 CONFAM
  10  9  0  0  0  0  0  0  0  0999 V2000
    -7.6283   -2.7626   15.5257 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4191,7 +4191,7 @@ CONFAM
 M  END
 $$$$
 CONLIA
-     RDKit          3D
+     RDKix          3D
 CONLIA
  27 27  0  0  0  0  0  0  0  0999 V2000
    -9.6643   -3.7868   15.2998 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -4253,7 +4253,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 CORDOC
-     RDKit          3D
+     RDKix          3D
 CORDOC
  23 23  0  0  0  0  0  0  0  0999 V2000
    -9.5146   -2.8636   12.6363 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4305,7 +4305,7 @@ CORDOC
 M  END
 $$$$
 CORWUB10
-     RDKit          3D
+     RDKix          3D
 CORWUB10
   8  7  0  0  0  0  0  0  0  0999 V2000
    -9.0005   -2.6310   13.2990 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4327,7 +4327,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 COSFAR
-     RDKit          3D
+     RDKix          3D
 COSFAR
  18 19  0  0  0  0  0  0  0  0999 V2000
    -7.6779   -6.1310   12.8376 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4370,7 +4370,7 @@ COSFAR
 M  END
 $$$$
 COSSEI
-     RDKit          3D
+     RDKix          3D
 COSSEI
  16 15  0  0  0  0  0  0  0  0999 V2000
   -11.3118   -6.0396   15.8364 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4409,7 +4409,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 COSWIQ
-     RDKit          3D
+     RDKix          3D
 COSWIQ
  24 24  0  0  0  0  0  0  0  0999 V2000
    -8.6891   -4.1628   14.9279 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4463,7 +4463,7 @@ COSWIQ
 M  END
 $$$$
 COTMON
-     RDKit          3D
+     RDKix          3D
 COTMON
  20 20  0  0  0  0  0  0  0  0999 V2000
    -7.2413   -4.9357   17.6085 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4509,7 +4509,7 @@ COTMON
 M  END
 $$$$
 COTPEG
-     RDKit          3D
+     RDKix          3D
 COTPEG
  15 14  0  0  0  0  0  0  0  0999 V2000
    -0.1160    0.6908    9.6405 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4545,7 +4545,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 COTRIM
-     RDKit          3D
+     RDKix          3D
 COTRIM
  25 26  0  0  0  0  0  0  0  0999 V2000
    -8.0525   -4.7451    8.6962 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -4606,7 +4606,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 COVHUQ
-     RDKit          3D
+     RDKix          3D
 COVHUQ
  17 16  0  0  0  0  0  0  0  0999 V2000
    -9.9633   -2.6554   19.0299 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4645,7 +4645,7 @@ COVHUQ
 M  END
 $$$$
 COVMAB
-     RDKit          3D
+     RDKix          3D
 COVMAB
  32 31  0  0  0  0  0  0  0  0999 V2000
    -8.1665   -3.0748   13.2311 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4714,7 +4714,7 @@ COVMAB
 M  END
 $$$$
 COVXIU
-     RDKit          3D
+     RDKix          3D
 COVXIU
  33 34  0  0  0  0  0  0  0  0999 V2000
   -10.8158   -4.0415   17.6460 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4787,7 +4787,7 @@ COVXIU
 M  END
 $$$$
 COWTIR
-     RDKit          3D
+     RDKix          3D
 COWTIR
  32 32  0  0  0  0  0  0  0  0999 V2000
    -6.8484   -5.8109   14.4133 P   0  3  0  0  0  0  0  0  0  0  0  0
@@ -4861,7 +4861,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 COXBAS
-     RDKit          3D
+     RDKix          3D
 COXBAS
  23 23  0  0  0  0  0  0  0  0999 V2000
    -9.0816   -4.9316   14.0833 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4913,7 +4913,7 @@ COXBAS
 M  END
 $$$$
 COXZEU
-     RDKit          3D
+     RDKix          3D
 COXZEU
  15 14  0  0  0  0  0  0  0  0999 V2000
    -8.6966   -6.0052   13.0219 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4948,7 +4948,7 @@ COXZEU
 M  END
 $$$$
 COYMOS
-     RDKit          3D
+     RDKix          3D
 COYMOS
  26 27  0  0  0  0  0  0  0  0999 V2000
    -8.2993   -7.2391   15.0374 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5007,7 +5007,7 @@ COYMOS
 M  END
 $$$$
 COYNAF
-     RDKit          3D
+     RDKix          3D
 COYNAF
  18 19  0  0  0  0  0  0  0  0999 V2000
    -7.2187   -1.6103   15.1818 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5050,7 +5050,7 @@ COYNAF
 M  END
 $$$$
 COYVIV
-     RDKit          3D
+     RDKix          3D
 COYVIV
  27 28  0  0  0  0  0  0  0  0999 V2000
   -10.0967   -4.9462   16.7055 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5111,7 +5111,7 @@ COYVIV
 M  END
 $$$$
 CUBTUO
-     RDKit          3D
+     RDKix          3D
 CUBTUO
  29 30  0  0  0  0  0  0  0  0999 V2000
   -10.6191   -2.8339   13.7075 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -5177,7 +5177,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 CUCDAF
-     RDKit          3D
+     RDKix          3D
 CUCDAF
  27 29  0  0  0  0  0  0  0  0999 V2000
    -8.7839   -3.1845   11.6432 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5239,7 +5239,7 @@ CUCDAF
 M  END
 $$$$
 CUCHOX
-     RDKit          3D
+     RDKix          3D
 CUCHOX
  29 30  0  0  0  0  0  0  0  0999 V2000
    -7.2906   -6.5785   14.6543 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5304,7 +5304,7 @@ CUCHOX
 M  END
 $$$$
 CUCHUD
-     RDKit          3D
+     RDKix          3D
 CUCHUD
  25 26  0  0  0  0  0  0  0  0999 V2000
    -8.5310   -4.6799   13.8457 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5363,7 +5363,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 CUDJAM
-     RDKit          3D
+     RDKix          3D
 CUDJAM
  23 23  0  0  0  0  0  0  0  0999 V2000
    -6.6070   -3.0047   11.7942 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5415,7 +5415,7 @@ CUDJAM
 M  END
 $$$$
 CUDNEU
-     RDKit          3D
+     RDKix          3D
 CUDNEU
  35 35  0  0  0  0  0  0  0  0999 V2000
    -8.4067   -6.2596   13.6657 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -5491,7 +5491,7 @@ CUDNEU
 M  END
 $$$$
 CUDPAS
-     RDKit          3D
+     RDKix          3D
 CUDPAS
  17 17  0  0  0  0  0  0  0  0999 V2000
    -8.6500   -7.0282   14.6685 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5534,7 +5534,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 CUDPOG
-     RDKit          3D
+     RDKix          3D
 CUDPOG
  25 26  0  0  0  0  0  0  0  0999 V2000
   -11.5579   -5.0093   15.1031 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5591,7 +5591,7 @@ CUDPOG
 M  END
 $$$$
 CUDREY
-     RDKit          3D
+     RDKix          3D
 CUDREY
  11 11  0  0  0  0  0  0  0  0999 V2000
    -9.4713   -5.3089   13.5870 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5620,7 +5620,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 CUFFAK
-     RDKit          3D
+     RDKix          3D
 CUFFAK
  37 41  0  0  0  0  0  0  0  0999 V2000
   -12.1032   -1.4750   18.5715 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5704,7 +5704,7 @@ CUFFAK
 M  END
 $$$$
 CUGBEL
-     RDKit          3D
+     RDKix          3D
 CUGBEL
  30 31  0  0  0  0  0  0  0  0999 V2000
    -9.5820   -4.4342   15.5876 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5771,7 +5771,7 @@ CUGBEL
 M  END
 $$$$
 CUGGOA
-     RDKit          3D
+     RDKix          3D
 CUGGOA
  23 22  0  0  0  0  0  0  0  0999 V2000
     1.7634    0.1396    9.2881 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -5824,7 +5824,7 @@ M  CHG  1  10   1
 M  END
 $$$$
 CUGLOF
-     RDKit          3D
+     RDKix          3D
 CUGLOF
  28 32  0  0  0  0  0  0  0  0999 V2000
    -9.8273   -3.6231   13.4854 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5896,7 +5896,7 @@ M  CHG  1  18  -1
 M  END
 $$$$
 CUJYUB10
-     RDKit          3D
+     RDKix          3D
 CUJYUB10
  23 23  0  0  0  0  0  0  0  0999 V2000
    -9.9639   -6.3149   14.4015 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -5949,7 +5949,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 CULGEV10
-     RDKit          3D
+     RDKix          3D
 CULGEV10
  22 23  0  0  0  0  0  0  0  0999 V2000
    -8.3294   -3.2410   17.1700 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6000,7 +6000,7 @@ CULGEV10
 M  END
 $$$$
 CULHIA10
-     RDKit          3D
+     RDKix          3D
 CULHIA10
  39 40  0  0  0  0  0  0  0  0999 V2000
   -11.4630   -3.6374   15.6609 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6087,7 +6087,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 CULVEK
-     RDKit          3D
+     RDKix          3D
 CULVEK
  29 29  0  0  0  0  0  0  0  0999 V2000
    -9.2832   -6.1497   16.1521 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6151,7 +6151,7 @@ CULVEK
 M  END
 $$$$
 CUNVAI
-     RDKit          3D
+     RDKix          3D
 CUNVAI
  29 29  0  0  0  0  0  0  0  0999 V2000
   -10.2201   -1.5821   12.9513 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6219,7 +6219,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 CUNVEM
-     RDKit          3D
+     RDKix          3D
 CUNVEM
  29 29  0  0  0  0  0  0  0  0999 V2000
    -8.2441   -1.3553   13.8609 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -6283,7 +6283,7 @@ CUNVEM
 M  END
 $$$$
 CURZIY
-     RDKit          3D
+     RDKix          3D
 CURZIY
  24 26  0  0  0  0  0  0  0  0999 V2000
    -9.9541   -3.3456   14.8147 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6339,7 +6339,7 @@ CURZIY
 M  END
 $$$$
 CUVFOO
-     RDKit          3D
+     RDKix          3D
 CUVFOO
  24 23  0  0  0  0  0  0  0  0999 V2000
     1.8355   -0.9925    0.3674 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6394,7 +6394,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 CUVGAB
-     RDKit          3D
+     RDKix          3D
 CUVGAB
  24 24  0  0  0  0  0  0  0  0999 V2000
     0.2711    1.3119    5.5260 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6448,7 +6448,7 @@ CUVGAB
 M  END
 $$$$
 CUVJOS
-     RDKit          3D
+     RDKix          3D
 CUVJOS
  10  9  0  0  0  0  0  0  0  0999 V2000
    -7.9250   -4.7746   13.8897 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6474,7 +6474,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 CUYRAP
-     RDKit          3D
+     RDKix          3D
 CUYRAP
  28 29  0  0  0  0  0  0  0  0999 V2000
   -10.8829   -4.2706   13.7293 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6537,7 +6537,7 @@ CUYRAP
 M  END
 $$$$
 CYANAM01
-     RDKit          3D
+     RDKix          3D
 CYANAM01
   5  4  0  0  0  0  0  0  0  0999 V2000
    -8.6629   -3.9830   13.6271 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6552,7 +6552,7 @@ CYANAM01
 M  END
 $$$$
 CYGUAN01
-     RDKit          3D
+     RDKix          3D
 CYGUAN01
  32 33  0  0  0  0  0  0  0  0999 V2000
   -12.0017   -3.0646   10.1904 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -6624,7 +6624,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DABHAP
-     RDKit          3D
+     RDKix          3D
 DABHAP
  34 35  0  0  0  0  0  0  0  0999 V2000
    -8.0187   -7.6751   13.3460 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6699,7 +6699,7 @@ DABHAP
 M  END
 $$$$
 DABLIB
-     RDKit          3D
+     RDKix          3D
 DABLIB
  20 22  0  0  0  0  0  0  0  0999 V2000
    -9.6439   -3.8111   15.5442 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6747,7 +6747,7 @@ DABLIB
 M  END
 $$$$
 DACSAB
-     RDKit          3D
+     RDKix          3D
 DACSAB
  31 32  0  0  0  0  0  0  0  0999 V2000
     4.0408   -2.1803    6.8379 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6816,7 +6816,7 @@ DACSAB
 M  END
 $$$$
 DACYIP
-     RDKit          3D
+     RDKix          3D
 DACYIP
  35 35  0  0  0  0  0  0  0  0999 V2000
   -10.8981   -2.1527   14.3550 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6892,7 +6892,7 @@ DACYIP
 M  END
 $$$$
 DADDAN
-     RDKit          3D
+     RDKix          3D
 DADDAN
  32 34  0  0  0  0  0  0  0  0999 V2000
    -6.8341   -3.2079   13.5407 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6964,7 +6964,7 @@ DADDAN
 M  END
 $$$$
 DADLAV
-     RDKit          3D
+     RDKix          3D
 DADLAV
  19 19  0  0  0  0  0  0  0  0999 V2000
   -11.2662   -4.8811   16.2773 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7008,7 +7008,7 @@ DADLAV
 M  END
 $$$$
 DADLEZ
-     RDKit          3D
+     RDKix          3D
 DADLEZ
  19 19  0  0  0  0  0  0  0  0999 V2000
    -8.8268   -2.8771   13.2158 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7052,7 +7052,7 @@ DADLEZ
 M  END
 $$$$
 DAFKIE
-     RDKit          3D
+     RDKix          3D
 DAFKIE
  22 22  0  0  0  0  0  0  0  0999 V2000
    -9.3452   -4.0013   14.3136 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7102,7 +7102,7 @@ DAFKIE
 M  END
 $$$$
 DAFPUV
-     RDKit          3D
+     RDKix          3D
 DAFPUV
  11 11  0  0  0  0  0  0  0  0999 V2000
    -8.0624   -5.7775   12.4290 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7132,7 +7132,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 DAGTUA
-     RDKit          3D
+     RDKix          3D
 DAGTUA
  26 25  0  0  0  0  0  0  0  0999 V2000
   -10.5926   -4.3934   15.8428 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7189,7 +7189,7 @@ DAGTUA
 M  END
 $$$$
 DAHBAP
-     RDKit          3D
+     RDKix          3D
 DAHBAP
  23 23  0  0  0  0  0  0  0  0999 V2000
    -8.5862   -5.5171   15.9336 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7241,7 +7241,7 @@ DAHBAP
 M  END
 $$$$
 DAHNAB
-     RDKit          3D
+     RDKix          3D
 DAHNAB
  26 25  0  0  0  0  0  0  0  0999 V2000
    -8.2809   -2.4716   15.7576 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -7298,7 +7298,7 @@ DAHNAB
 M  END
 $$$$
 DAJXER
-     RDKit          3D
+     RDKix          3D
 DAJXER
  31 34  0  0  0  0  0  0  0  0999 V2000
    -9.2518   -4.1911   15.5587 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7369,7 +7369,7 @@ DAJXER
 M  END
 $$$$
 DAKBAS
-     RDKit          3D
+     RDKix          3D
 DAKBAS
  34 35  0  0  0  0  0  0  0  0999 V2000
   -10.1960   -5.8941   17.9483 S   0  5  0  0  0  0  0  0  0  0  0  0
@@ -7447,7 +7447,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 DAKCEX
-     RDKit          3D
+     RDKix          3D
 DAKCEX
  20 22  0  0  0  0  0  0  0  0999 V2000
    -9.3722   -7.3276   15.4389 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7497,7 +7497,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 DAKDOI
-     RDKit          3D
+     RDKix          3D
 DAKDOI
  36 39  0  0  0  0  0  0  0  0999 V2000
     1.5755   -3.3626    7.8833 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7578,7 +7578,7 @@ DAKDOI
 M  END
 $$$$
 DANCUQ
-     RDKit          3D
+     RDKix          3D
 DANCUQ
  17 18  0  0  0  0  0  0  0  0999 V2000
    -8.8840   -4.2348   14.3549 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -7619,7 +7619,7 @@ DANCUQ
 M  END
 $$$$
 DAPSUO03
-     RDKit          3D
+     RDKix          3D
 DAPSUO03
  29 30  0  0  0  0  0  0  0  0999 V2000
    -6.4937   -5.8959   13.5977 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7684,7 +7684,7 @@ DAPSUO03
 M  END
 $$$$
 DARDEF
-     RDKit          3D
+     RDKix          3D
 DARDEF
  30 32  0  0  0  0  0  0  0  0999 V2000
    -8.1098   -4.6583   11.2672 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7752,7 +7752,7 @@ DARDEF
 M  END
 $$$$
 DARPOB10
-     RDKit          3D
+     RDKix          3D
 DARPOB10
  39 38  0  0  0  0  0  0  0  0999 V2000
    -9.4504   -5.4197   14.6546 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7835,7 +7835,7 @@ DARPOB10
 M  END
 $$$$
 DARXID
-     RDKit          3D
+     RDKix          3D
 DARXID
  26 27  0  0  0  0  0  0  0  0999 V2000
   -12.2640   -3.0381   13.2444 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7894,7 +7894,7 @@ DARXID
 M  END
 $$$$
 DARZEB
-     RDKit          3D
+     RDKix          3D
 DARZEB
  24 25  0  0  0  0  0  0  0  0999 V2000
    -6.5841   -4.9346   14.7919 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7949,7 +7949,7 @@ DARZEB
 M  END
 $$$$
 DAVWEC
-     RDKit          3D
+     RDKix          3D
 DAVWEC
  30 30  0  0  0  0  0  0  0  0999 V2000
    -5.9736   -5.3954   15.6975 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -8021,7 +8021,7 @@ M  CHG  1  20  -1
 M  END
 $$$$
 DAVXED
-     RDKit          3D
+     RDKix          3D
 DAVXED
  35 35  0  0  0  0  0  0  0  0999 V2000
   -10.4142   -3.7016   13.9288 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8105,7 +8105,7 @@ M  CHG  1  22  -1
 M  END
 $$$$
 DAWXII
-     RDKit          3D
+     RDKix          3D
 DAWXII
  21 21  0  0  0  0  0  0  0  0999 V2000
    -8.0537   -4.5754   14.1171 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8155,7 +8155,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 DAWYUV
-     RDKit          3D
+     RDKix          3D
 DAWYUV
  17 18  0  0  0  0  0  0  0  0999 V2000
    -8.2706   -1.2595   14.6474 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -8196,7 +8196,7 @@ DAWYUV
 M  END
 $$$$
 DAYWEF
-     RDKit          3D
+     RDKix          3D
 DAYWEF
  27 28  0  0  0  0  0  0  0  0999 V2000
    -7.1548   -4.0623   14.3121 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8257,7 +8257,7 @@ DAYWEF
 M  END
 $$$$
 DAZVEF
-     RDKit          3D
+     RDKix          3D
 DAZVEF
  27 30  0  0  0  0  0  0  0  0999 V2000
    -8.0086   -4.6838   13.7441 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8320,7 +8320,7 @@ DAZVEF
 M  END
 $$$$
 DEBMOM01
-     RDKit          3D
+     RDKix          3D
 DEBMOM01
  11 10  0  0  0  0  0  0  0  0999 V2000
    14.4789    1.2575    0.3363 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8348,7 +8348,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 DECJAW
-     RDKit          3D
+     RDKix          3D
 DECJAW
  21 22  0  0  0  0  0  0  0  0999 V2000
     0.3520    3.2066    5.1458 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8399,7 +8399,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 DECKUR
-     RDKit          3D
+     RDKix          3D
 DECKUR
  30 31  0  0  0  0  0  0  0  0999 V2000
    -8.9060   -3.0637   14.8608 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8466,7 +8466,7 @@ DECKUR
 M  END
 $$$$
 DECRIM
-     RDKit          3D
+     RDKix          3D
 DECRIM
  26 27  0  0  0  0  0  0  0  0999 V2000
    -8.0627   -3.7054   14.6274 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8526,7 +8526,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DEDCIY
-     RDKit          3D
+     RDKix          3D
 DEDCIY
  20 21  0  0  0  0  0  0  0  0999 V2000
   -12.5242   -5.2171   15.1876 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -8573,7 +8573,7 @@ DEDCIY
 M  END
 $$$$
 DEDSIO
-     RDKit          3D
+     RDKix          3D
 DEDSIO
  30 30  0  0  0  0  0  0  0  0999 V2000
    -5.9277   -3.7485   17.5165 I   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8639,7 +8639,7 @@ DEDSIO
 M  END
 $$$$
 DEFGIE
-     RDKit          3D
+     RDKix          3D
 DEFGIE
  24 24  0  0  0  0  0  0  0  0999 V2000
    -7.6503   -1.9638   17.5989 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -8695,7 +8695,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 DEFLEF
-     RDKit          3D
+     RDKix          3D
 DEFLEF
  30 31  0  0  0  0  0  0  0  0999 V2000
    -9.1314   -3.5948   15.6257 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8766,7 +8766,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 DEFPUZ
-     RDKit          3D
+     RDKix          3D
 DEFPUZ
  18 18  0  0  0  0  0  0  0  0999 V2000
    -8.5280   -2.2949   13.2039 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8809,7 +8809,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 DEFTUD
-     RDKit          3D
+     RDKix          3D
 DEFTUD
  27 28  0  0  0  0  0  0  0  0999 V2000
    -9.1304   -4.4663   14.8318 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8870,7 +8870,7 @@ DEFTUD
 M  END
 $$$$
 DEFVAL
-     RDKit          3D
+     RDKix          3D
 DEFVAL
  31 32  0  0  0  0  0  0  0  0999 V2000
    -8.4342   -2.8238   13.3977 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8940,7 +8940,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DEFYUI
-     RDKit          3D
+     RDKix          3D
 DEFYUI
  18 18  0  0  0  0  0  0  0  0999 V2000
     4.5351    0.7753    0.6190 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -8982,7 +8982,7 @@ DEFYUI
 M  END
 $$$$
 DEGLUW
-     RDKit          3D
+     RDKix          3D
 DEGLUW
  14 13  0  0  0  0  0  0  0  0999 V2000
    -7.0655   -3.0586   13.4596 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -9016,7 +9016,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 DEGRIQ
-     RDKit          3D
+     RDKix          3D
 DEGRIQ
  37 40  0  0  0  0  0  0  0  0999 V2000
    -7.9857   -5.7114   17.0579 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9099,7 +9099,7 @@ DEGRIQ
 M  END
 $$$$
 DEKRUG
-     RDKit          3D
+     RDKix          3D
 DEKRUG
  18 19  0  0  0  0  0  0  0  0999 V2000
    -7.8865   -4.6665   14.3584 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9143,7 +9143,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 DEMBIG
-     RDKit          3D
+     RDKix          3D
 DEMBIG
  23 24  0  0  0  0  0  0  0  0999 V2000
    -7.7445   -3.7916   15.2852 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9196,7 +9196,7 @@ DEMBIG
 M  END
 $$$$
 DEPKEO
-     RDKit          3D
+     RDKix          3D
 DEPKEO
  19 21  0  0  0  0  0  0  0  0999 V2000
    -7.7634   -5.3978   15.5857 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9242,7 +9242,7 @@ DEPKEO
 M  END
 $$$$
 DERZUV
-     RDKit          3D
+     RDKix          3D
 DERZUV
  31 31  0  0  0  0  0  0  0  0999 V2000
    -8.1769   -4.8550   15.2337 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -9312,7 +9312,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 DESWUT
-     RDKit          3D
+     RDKix          3D
 DESWUT
  19 19  0  0  0  0  0  0  0  0999 V2000
    -9.1152   -6.2943   17.3051 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9356,7 +9356,7 @@ DESWUT
 M  END
 $$$$
 DESYOP
-     RDKit          3D
+     RDKix          3D
 DESYOP
   9  8  0  0  0  0  0  0  0  0999 V2000
    -7.1934   -3.8409   12.5785 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9379,7 +9379,7 @@ DESYOP
 M  END
 $$$$
 DEWHOC
-     RDKit          3D
+     RDKix          3D
 DEWHOC
  29 31  0  0  0  0  0  0  0  0999 V2000
    -8.3676   -5.5806   14.0718 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9445,7 +9445,7 @@ DEWHOC
 M  END
 $$$$
 DEWJEU
-     RDKit          3D
+     RDKix          3D
 DEWJEU
  36 36  0  0  0  0  0  0  0  0999 V2000
    -8.0972   -2.0262   16.5258 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -9523,7 +9523,7 @@ DEWJEU
 M  END
 $$$$
 DEXCIS
-     RDKit          3D
+     RDKix          3D
 DEXCIS
  27 28  0  0  0  0  0  0  0  0999 V2000
    -7.8012   -7.5904   15.3143 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9584,7 +9584,7 @@ DEXCIS
 M  END
 $$$$
 DEXGIW
-     RDKit          3D
+     RDKix          3D
 DEXGIW
  24 25  0  0  0  0  0  0  0  0999 V2000
    -8.2196   -6.1743   15.7916 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9639,7 +9639,7 @@ DEXGIW
 M  END
 $$$$
 DEZDUH
-     RDKit          3D
+     RDKix          3D
 DEZDUH
  20 22  0  0  0  0  0  0  0  0999 V2000
    -8.7944   -2.3940   15.6023 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9687,7 +9687,7 @@ DEZDUH
 M  END
 $$$$
 DEZNIF
-     RDKit          3D
+     RDKix          3D
 DEZNIF
  28 29  0  0  0  0  0  0  0  0999 V2000
    -9.0618   -6.0341   11.9445 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9750,7 +9750,7 @@ DEZNIF
 M  END
 $$$$
 DEZXEL
-     RDKit          3D
+     RDKix          3D
 DEZXEL
  18 19  0  0  0  0  0  0  0  0999 V2000
    -7.7888   -3.5650   14.1345 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9793,7 +9793,7 @@ DEZXEL
 M  END
 $$$$
 DHOADS01
-     RDKit          3D
+     RDKix          3D
 DHOADS01
  28 30  0  0  0  0  0  0  0  0999 V2000
    -5.9595   -4.4054   16.8948 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9857,7 +9857,7 @@ DHOADS01
 M  END
 $$$$
 DICKIJ
-     RDKit          3D
+     RDKix          3D
 DICKIJ
  32 35  0  0  0  0  0  0  0  0999 V2000
   -12.5709   -5.6752   14.0464 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9931,7 +9931,7 @@ M  CHG  1  17   1
 M  END
 $$$$
 DICPUA
-     RDKit          3D
+     RDKix          3D
 DICPUA
  18 19  0  0  0  0  0  0  0  0999 V2000
    -9.5308   -4.5876   15.5604 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -9976,7 +9976,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 DICRAI
-     RDKit          3D
+     RDKix          3D
 DICRAI
  18 19  0  0  0  0  0  0  0  0999 V2000
    -9.8263   -4.8273   13.7969 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10021,7 +10021,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 DICYIX
-     RDKit          3D
+     RDKix          3D
 DICYIX
  22 21  0  0  0  0  0  0  0  0999 V2000
    -8.8615   -4.9244   14.3529 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -10070,7 +10070,7 @@ DICYIX
 M  END
 $$$$
 DICYOD
-     RDKit          3D
+     RDKix          3D
 DICYOD
  26 25  0  0  0  0  0  0  0  0999 V2000
    -5.3010   -4.4329   12.0812 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -10127,7 +10127,7 @@ DICYOD
 M  END
 $$$$
 DIDYOE
-     RDKit          3D
+     RDKix          3D
 DIDYOE
  24 24  0  0  0  0  0  0  0  0999 V2000
    -6.8945   -4.0996   12.9229 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10181,7 +10181,7 @@ DIDYOE
 M  END
 $$$$
 DIFSIU
-     RDKit          3D
+     RDKix          3D
 DIFSIU
  28 29  0  0  0  0  0  0  0  0999 V2000
    -9.2039   -6.0338   16.1421 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -10249,7 +10249,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 DIGCOL
-     RDKit          3D
+     RDKix          3D
 DIGCOL
  10  9  0  0  0  0  0  0  0  0999 V2000
    -9.0964   -6.9765   16.0985 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10276,7 +10276,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 DIGCUR
-     RDKit          3D
+     RDKix          3D
 DIGCUR
  22 21  0  0  0  0  0  0  0  0999 V2000
   -10.1154   -4.1451   18.0250 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10325,7 +10325,7 @@ DIGCUR
 M  END
 $$$$
 DIGLEK
-     RDKit          3D
+     RDKix          3D
 DIGLEK
  40 42  0  0  0  0  0  0  0  0999 V2000
   -12.2753   -0.2064   12.1836 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10415,7 +10415,7 @@ M  CHG  1   9   1
 M  END
 $$$$
 DIHTET
-     RDKit          3D
+     RDKix          3D
 DIHTET
  21 22  0  0  0  0  0  0  0  0999 V2000
    -8.5879   -1.4392   16.4621 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10464,7 +10464,7 @@ DIHTET
 M  END
 $$$$
 DIKGAF
-     RDKit          3D
+     RDKix          3D
 DIKGAF
  25 25  0  0  0  0  0  0  0  0999 V2000
   -12.0879   -5.6056   14.4091 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -10520,7 +10520,7 @@ DIKGAF
 M  END
 $$$$
 DIKGEJ
-     RDKit          3D
+     RDKix          3D
 DIKGEJ
  25 25  0  0  0  0  0  0  0  0999 V2000
    -7.7141   -3.9600   12.6677 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10576,7 +10576,7 @@ DIKGEJ
 M  END
 $$$$
 DIKWID
-     RDKit          3D
+     RDKix          3D
 DIKWID
  38 41  0  0  0  0  0  0  0  0999 V2000
    -7.7533   -3.5910   13.7696 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10661,7 +10661,7 @@ DIKWID
 M  END
 $$$$
 DIKYUR
-     RDKit          3D
+     RDKix          3D
 DIKYUR
  18 19  0  0  0  0  0  0  0  0999 V2000
    -5.6686   -3.4147   15.4547 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -10704,7 +10704,7 @@ DIKYUR
 M  END
 $$$$
 DILCOQ
-     RDKit          3D
+     RDKix          3D
 DILCOQ
  32 32  0  0  0  0  0  0  0  0999 V2000
    -9.4947   -5.6977   16.1749 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10774,7 +10774,7 @@ DILCOQ
 M  END
 $$$$
 DIMYIH10
-     RDKit          3D
+     RDKix          3D
 DIMYIH10
  26 27  0  0  0  0  0  0  0  0999 V2000
    -8.0440   -4.8226   14.1285 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10837,7 +10837,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 DIPDAH10
-     RDKit          3D
+     RDKix          3D
 DIPDAH10
  29 31  0  0  0  0  0  0  0  0999 V2000
   -12.6776   -4.7446   13.8029 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10903,7 +10903,7 @@ DIPDAH10
 M  END
 $$$$
 DIPDIP10
-     RDKit          3D
+     RDKix          3D
 DIPDIP10
  21 21  0  0  0  0  0  0  0  0999 V2000
    -8.5118   -4.7595   15.3603 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10953,7 +10953,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 DIRMIA
-     RDKit          3D
+     RDKix          3D
 DIRMIA
  11 10  0  0  0  0  0  0  0  0999 V2000
    -8.4740   -3.8401   13.6658 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -10980,7 +10980,7 @@ DIRMIA
 M  END
 $$$$
 DISHES
-     RDKit          3D
+     RDKix          3D
 DISHES
  27 28  0  0  0  0  0  0  0  0999 V2000
    -6.7903   -7.8053   13.2029 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11041,7 +11041,7 @@ DISHES
 M  END
 $$$$
 DISJOE
-     RDKit          3D
+     RDKix          3D
 DISJOE
  15 14  0  0  0  0  0  0  0  0999 V2000
   -10.8507   -4.5508   12.7497 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -11079,7 +11079,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 DITRAZ
-     RDKit          3D
+     RDKix          3D
 DITRAZ
  14 13  0  0  0  0  0  0  0  0999 V2000
    -9.3178   -3.2786   13.0049 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11113,7 +11113,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 DITYAG10
-     RDKit          3D
+     RDKix          3D
 DITYAG10
  27 28  0  0  0  0  0  0  0  0999 V2000
   -14.3932   -3.9139   14.6087 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -11174,7 +11174,7 @@ DITYAG10
 M  END
 $$$$
 DIVJUN
-     RDKit          3D
+     RDKix          3D
 DIVJUN
  20 20  0  0  0  0  0  0  0  0999 V2000
    -7.9141   -4.4740   14.9704 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11221,7 +11221,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 DIVTUX
-     RDKit          3D
+     RDKix          3D
 DIVTUX
  25 27  0  0  0  0  0  0  0  0999 V2000
   -10.9975   -3.8121   15.6587 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11279,7 +11279,7 @@ DIVTUX
 M  END
 $$$$
 DIVVEJ
-     RDKit          3D
+     RDKix          3D
 DIVVEJ
  14 13  0  0  0  0  0  0  0  0999 V2000
    -9.3136   -4.7915   12.2891 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11313,7 +11313,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 DIVWEK
-     RDKit          3D
+     RDKix          3D
 DIVWEK
  34 36  0  0  0  0  0  0  0  0999 V2000
     0.2095    9.9708   -1.8032 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11389,7 +11389,7 @@ DIVWEK
 M  END
 $$$$
 DIWCOB
-     RDKit          3D
+     RDKix          3D
 DIWCOB
  16 15  0  0  0  0  0  0  0  0999 V2000
    -9.2263   -4.6997   14.9082 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11427,7 +11427,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DIXJEZ
-     RDKit          3D
+     RDKix          3D
 DIXJEZ
  22 23  0  0  0  0  0  0  0  0999 V2000
    -8.4696   -2.7097   13.1281 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11479,7 +11479,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 DIYDIY
-     RDKit          3D
+     RDKix          3D
 DIYDIY
  21 21  0  0  0  0  0  0  0  0999 V2000
     1.9199    3.5166   -0.3953 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11527,7 +11527,7 @@ DIYDIY
 M  END
 $$$$
 DIYPOQ
-     RDKit          3D
+     RDKix          3D
 DIYPOQ
  34 35  0  0  0  0  0  0  0  0999 V2000
    -7.8446   -7.1635   15.1968 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11604,7 +11604,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 DIYPUW
-     RDKit          3D
+     RDKix          3D
 DIYPUW
  16 17  0  0  0  0  0  0  0  0999 V2000
    -8.8839   -2.7465   14.3552 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11643,7 +11643,7 @@ DIYPUW
 M  END
 $$$$
 DIZPUX
-     RDKit          3D
+     RDKix          3D
 DIZPUX
  28 29  0  0  0  0  0  0  0  0999 V2000
    -6.9947   -5.1897   11.8484 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11707,7 +11707,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DMEOXA01
-     RDKit          3D
+     RDKix          3D
 DMEOXA01
  14 13  0  0  0  0  0  0  0  0999 V2000
    -8.5013   -3.6302   14.6547 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11740,7 +11740,7 @@ DMEOXA01
 M  END
 $$$$
 DOCCIH
-     RDKit          3D
+     RDKix          3D
 DOCCIH
  16 16  0  0  0  0  0  0  0  0999 V2000
    -6.9692   -7.2779   16.0763 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11780,7 +11780,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 DOCFIK
-     RDKit          3D
+     RDKix          3D
 DOCFIK
  21 22  0  0  0  0  0  0  0  0999 V2000
    -9.3311   -5.0839   13.0024 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11829,7 +11829,7 @@ DOCFIK
 M  END
 $$$$
 DOCWUN
-     RDKit          3D
+     RDKix          3D
 DOCWUN
  26 26  0  0  0  0  0  0  0  0999 V2000
    -9.3800   -2.9899   15.5356 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11887,7 +11887,7 @@ DOCWUN
 M  END
 $$$$
 DODNOZ
-     RDKit          3D
+     RDKix          3D
 DODNOZ
  31 30  0  0  0  0  0  0  0  0999 V2000
    -8.7859   -4.1945   14.8973 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -11954,7 +11954,7 @@ DODNOZ
 M  END
 $$$$
 DODNUF
-     RDKit          3D
+     RDKix          3D
 DODNUF
  22 21  0  0  0  0  0  0  0  0999 V2000
    -8.3253   -3.7397   15.1080 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12003,7 +12003,7 @@ DODNUF
 M  END
 $$$$
 DOJPAT
-     RDKit          3D
+     RDKix          3D
 DOJPAT
  21 23  0  0  0  0  0  0  0  0999 V2000
   -10.9056   -4.4764   14.3929 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12053,7 +12053,7 @@ DOJPAT
 M  END
 $$$$
 DONFOB
-     RDKit          3D
+     RDKix          3D
 DONFOB
  28 27  0  0  0  0  0  0  0  0999 V2000
    -6.0824   -2.2909   13.8721 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12117,7 +12117,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 DOSNOO
-     RDKit          3D
+     RDKix          3D
 DOSNOO
  15 15  0  0  0  0  0  0  0  0999 V2000
    -8.5380   -3.5722   14.6926 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12153,7 +12153,7 @@ DOSNOO
 M  END
 $$$$
 DOTNIJ
-     RDKit          3D
+     RDKix          3D
 DOTNIJ
  18 18  0  0  0  0  0  0  0  0999 V2000
    -9.4404   -6.9646   12.4226 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12195,7 +12195,7 @@ DOTNIJ
 M  END
 $$$$
 DOTVEN
-     RDKit          3D
+     RDKix          3D
 DOTVEN
  15 15  0  0  0  0  0  0  0  0999 V2000
    -9.5760   -5.8117   14.3715 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12231,7 +12231,7 @@ DOTVEN
 M  END
 $$$$
 DOTWOY
-     RDKit          3D
+     RDKix          3D
 DOTWOY
  29 30  0  0  0  0  0  0  0  0999 V2000
     1.4544    1.5583    9.1804 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -12296,7 +12296,7 @@ DOTWOY
 M  END
 $$$$
 DOWDEY
-     RDKit          3D
+     RDKix          3D
 DOWDEY
  17 17  0  0  0  0  0  0  0  0999 V2000
   -10.2513   -3.9545   12.4681 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12336,7 +12336,7 @@ DOWDEY
 M  END
 $$$$
 DOXXAP
-     RDKit          3D
+     RDKix          3D
 DOXXAP
  17 16  0  0  0  0  0  0  0  0999 V2000
    -8.3630   -1.6799   13.8143 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12379,7 +12379,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 DOXZOF
-     RDKit          3D
+     RDKix          3D
 DOXZOF
  17 18  0  0  0  0  0  0  0  0999 V2000
   -11.3080   -2.5705   12.8477 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12420,7 +12420,7 @@ DOXZOF
 M  END
 $$$$
 DOZFON
-     RDKit          3D
+     RDKix          3D
 DOZFON
  20 19  0  0  0  0  0  0  0  0999 V2000
     1.7772   -3.1159    3.3637 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12468,7 +12468,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 DOZNIP
-     RDKit          3D
+     RDKix          3D
 DOZNIP
  15 15  0  0  0  0  0  0  0  0999 V2000
    -9.2537   -3.7309   18.2863 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -12509,7 +12509,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 DUBNET
-     RDKit          3D
+     RDKix          3D
 DUBNET
  22 24  0  0  0  0  0  0  0  0999 V2000
    -8.0655   -5.0607   12.1318 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12561,7 +12561,7 @@ DUBNET
 M  END
 $$$$
 DUDMUK
-     RDKit          3D
+     RDKix          3D
 DUDMUK
  20 20  0  0  0  0  0  0  0  0999 V2000
    -1.7951    0.5043    9.4126 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12607,7 +12607,7 @@ DUDMUK
 M  END
 $$$$
 DUGMUN
-     RDKit          3D
+     RDKix          3D
 DUGMUN
  17 17  0  0  0  0  0  0  0  0999 V2000
     1.9699    1.9209    9.7283 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12647,7 +12647,7 @@ DUGMUN
 M  END
 $$$$
 DUGWIL01
-     RDKit          3D
+     RDKix          3D
 DUGWIL01
  19 18  0  0  0  0  0  0  0  0999 V2000
    -0.8688    0.1869    9.8981 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12690,7 +12690,7 @@ DUGWIL01
 M  END
 $$$$
 DUJHEV
-     RDKit          3D
+     RDKix          3D
 DUJHEV
  18 18  0  0  0  0  0  0  0  0999 V2000
    -2.0806    3.5126    8.7379 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12732,7 +12732,7 @@ DUJHEV
 M  END
 $$$$
 DUJMEA
-     RDKit          3D
+     RDKix          3D
 DUJMEA
  35 37  0  0  0  0  0  0  0  0999 V2000
    -1.8143    0.4830    7.9455 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12810,7 +12810,7 @@ DUJMEA
 M  END
 $$$$
 DUKVAG
-     RDKit          3D
+     RDKix          3D
 DUKVAG
  12 12  0  0  0  0  0  0  0  0999 V2000
    -0.9421    1.4984    9.4371 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12841,7 +12841,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 DUKWUB
-     RDKit          3D
+     RDKix          3D
 DUKWUB
  28 28  0  0  0  0  0  0  0  0999 V2000
     2.1781    0.5209    5.9445 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -12903,7 +12903,7 @@ DUKWUB
 M  END
 $$$$
 DULTIN
-     RDKit          3D
+     RDKix          3D
 DULTIN
  24 26  0  0  0  0  0  0  0  0999 V2000
    -2.7445    0.7339    5.6239 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -12959,7 +12959,7 @@ DULTIN
 M  END
 $$$$
 DUMHIC
-     RDKit          3D
+     RDKix          3D
 DUMHIC
  26 27  0  0  0  0  0  0  0  0999 V2000
     8.6734    9.3292    1.1883 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13018,7 +13018,7 @@ DUMHIC
 M  END
 $$$$
 DUMPAC
-     RDKit          3D
+     RDKix          3D
 DUMPAC
  30 30  0  0  0  0  0  0  0  0999 V2000
     3.8901    1.2914    3.4350 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13088,7 +13088,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 DUPHEB
-     RDKit          3D
+     RDKix          3D
 DUPHEB
  24 24  0  0  0  0  0  0  0  0999 V2000
     4.2061    3.1854    4.6184 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13144,7 +13144,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 DUPTAJ
-     RDKit          3D
+     RDKix          3D
 DUPTAJ
  23 24  0  0  0  0  0  0  0  0999 V2000
     1.4285    1.4570    3.6344 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13197,7 +13197,7 @@ DUPTAJ
 M  END
 $$$$
 DURDID
-     RDKit          3D
+     RDKix          3D
 DURDID
  20 20  0  0  0  0  0  0  0  0999 V2000
     4.9443   -1.6286    8.4086 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13247,7 +13247,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 DUTHIJ
-     RDKit          3D
+     RDKix          3D
 DUTHIJ
  32 34  0  0  0  0  0  0  0  0999 V2000
     6.5864    0.0659   12.8160 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13320,7 +13320,7 @@ M  CHG  1  17   1
 M  END
 $$$$
 DUVHUX10
-     RDKit          3D
+     RDKix          3D
 DUVHUX10
  23 24  0  0  0  0  0  0  0  0999 V2000
     1.2400    0.9608    1.9737 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13373,7 +13373,7 @@ DUVHUX10
 M  END
 $$$$
 DUVXIB
-     RDKit          3D
+     RDKix          3D
 DUVXIB
  17 18  0  0  0  0  0  0  0  0999 V2000
     2.8266    1.4406    7.8138 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13414,7 +13414,7 @@ DUVXIB
 M  END
 $$$$
 DUWGAD
-     RDKit          3D
+     RDKix          3D
 DUWGAD
  22 22  0  0  0  0  0  0  0  0999 V2000
     5.9782    5.2218    1.6921 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13465,7 +13465,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 DUWKUB
-     RDKit          3D
+     RDKix          3D
 DUWKUB
  21 21  0  0  0  0  0  0  0  0999 V2000
     9.5649   -2.8192    1.3687 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -13513,7 +13513,7 @@ DUWKUB
 M  END
 $$$$
 DUWRIW
-     RDKit          3D
+     RDKix          3D
 DUWRIW
  22 22  0  0  0  0  0  0  0  0999 V2000
     0.0245    3.8068   10.6757 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13565,7 +13565,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 DUXTIZ
-     RDKit          3D
+     RDKix          3D
 DUXTIZ
  12 11  0  0  0  0  0  0  0  0999 V2000
     2.2081    1.6900    4.5020 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13594,7 +13594,7 @@ DUXTIZ
 M  END
 $$$$
 DUXWUO
-     RDKit          3D
+     RDKix          3D
 DUXWUO
  29 30  0  0  0  0  0  0  0  0999 V2000
     5.6196    2.4016   20.2015 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13660,7 +13660,7 @@ M  CHG  1  15   2
 M  END
 $$$$
 DUXXAV
-     RDKit          3D
+     RDKix          3D
 DUXXAV
  30 31  0  0  0  0  0  0  0  0999 V2000
     9.5446   15.7067    4.1449 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -13729,7 +13729,7 @@ M  CHG  1  15   2
 M  END
 $$$$
 DUYNOA
-     RDKit          3D
+     RDKix          3D
 DUYNOA
  38 40  0  0  0  0  0  0  0  0999 V2000
     1.8410   10.6773    2.1527 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13813,7 +13813,7 @@ DUYNOA
 M  END
 $$$$
 DUYPES
-     RDKit          3D
+     RDKix          3D
 DUYPES
  47 48  0  0  0  0  0  0  0  0999 V2000
     9.9586   -2.3766   -0.3618 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13915,7 +13915,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 DUYRAQ
-     RDKit          3D
+     RDKix          3D
 DUYRAQ
  35 35  0  0  0  0  0  0  0  0999 V2000
     0.4814   -0.1201   11.2351 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -13991,7 +13991,7 @@ DUYRAQ
 M  END
 $$$$
 FACMIF
-     RDKit          3D
+     RDKix          3D
 FACMIF
  27 29  0  0  0  0  0  0  0  0999 V2000
     6.6635    2.2234    1.7274 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14053,7 +14053,7 @@ FACMIF
 M  END
 $$$$
 FACREG
-     RDKit          3D
+     RDKix          3D
 FACREG
  21 21  0  0  0  0  0  0  0  0999 V2000
     2.8669    4.8748    6.7445 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14103,7 +14103,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 FACYAJ
-     RDKit          3D
+     RDKix          3D
 FACYAJ
  19 21  0  0  0  0  0  0  0  0999 V2000
     6.0344    1.9552    7.8684 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14149,7 +14149,7 @@ FACYAJ
 M  END
 $$$$
 FADMIG
-     RDKit          3D
+     RDKix          3D
 FADMIG
  16 17  0  0  0  0  0  0  0  0999 V2000
    -1.9713    2.3642   -0.2775 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14188,7 +14188,7 @@ FADMIG
 M  END
 $$$$
 FADVEL
-     RDKit          3D
+     RDKix          3D
 FADVEL
  23 22  0  0  0  0  0  0  0  0999 V2000
     8.3416    2.0330    2.3158 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14239,7 +14239,7 @@ FADVEL
 M  END
 $$$$
 FADVUB
-     RDKit          3D
+     RDKix          3D
 FADVUB
  23 22  0  0  0  0  0  0  0  0999 V2000
     3.6430    9.3364   15.9668 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14292,7 +14292,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 FAGBUK
-     RDKit          3D
+     RDKix          3D
 FAGBUK
  41 40  0  0  0  0  0  0  0  0999 V2000
     5.0264    6.1955    7.5994 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14382,7 +14382,7 @@ M  CHG  1  24   1
 M  END
 $$$$
 FAGCOF
-     RDKit          3D
+     RDKix          3D
 FAGCOF
  26 27  0  0  0  0  0  0  0  0999 V2000
     3.1858    4.8637    1.6881 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14441,7 +14441,7 @@ FAGCOF
 M  END
 $$$$
 FAGLII
-     RDKit          3D
+     RDKix          3D
 FAGLII
  14 15  0  0  0  0  0  0  0  0999 V2000
     2.4279    1.7605   -0.1582 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -14476,7 +14476,7 @@ FAGLII
 M  END
 $$$$
 FAGVEO
-     RDKit          3D
+     RDKix          3D
 FAGVEO
   8  8  0  0  0  0  0  0  0  0999 V2000
     6.0933    6.5433    3.3227 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14498,7 +14498,7 @@ FAGVEO
 M  END
 $$$$
 FAGZOC
-     RDKit          3D
+     RDKix          3D
 FAGZOC
  12 12  0  0  0  0  0  0  0  0999 V2000
    -0.3796    1.3471    5.6882 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -14530,7 +14530,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 FAHPUZ
-     RDKit          3D
+     RDKix          3D
 FAHPUZ
  29 32  0  0  0  0  0  0  0  0999 V2000
     4.2578    2.4075   12.7284 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14597,7 +14597,7 @@ FAHPUZ
 M  END
 $$$$
 FAHSUC
-     RDKit          3D
+     RDKix          3D
 FAHSUC
  26 27  0  0  0  0  0  0  0  0999 V2000
     1.6580    4.1935    0.0029 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14657,7 +14657,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FAHYUI
-     RDKit          3D
+     RDKix          3D
 FAHYUI
  23 23  0  0  0  0  0  0  0  0999 V2000
     2.6985    3.3140    6.0300 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14711,7 +14711,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FAHZET
-     RDKit          3D
+     RDKix          3D
 FAHZET
  25 26  0  0  0  0  0  0  0  0999 V2000
     3.7770    1.4174   10.0427 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14768,7 +14768,7 @@ FAHZET
 M  END
 $$$$
 FAJWIW
-     RDKit          3D
+     RDKix          3D
 FAJWIW
  18 18  0  0  0  0  0  0  0  0999 V2000
     2.8249    5.8257    5.0553 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14810,7 +14810,7 @@ FAJWIW
 M  END
 $$$$
 FAMHAC
-     RDKit          3D
+     RDKix          3D
 FAMHAC
  28 29  0  0  0  0  0  0  0  0999 V2000
    -2.7475   -1.5510   10.6881 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14873,7 +14873,7 @@ FAMHAC
 M  END
 $$$$
 FAMYUN
-     RDKit          3D
+     RDKix          3D
 FAMYUN
  12 12  0  0  0  0  0  0  0  0999 V2000
    -0.0296    2.1529    5.7552 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -14903,7 +14903,7 @@ FAMYUN
 M  END
 $$$$
 FAPLUD
-     RDKit          3D
+     RDKix          3D
 FAPLUD
  13 13  0  0  0  0  0  0  0  0999 V2000
     3.2436    1.0519    2.1639 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14936,7 +14936,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 FARMAM
-     RDKit          3D
+     RDKix          3D
 FARMAM
  24 27  0  0  0  0  0  0  0  0999 V2000
     7.8578    6.7425    2.1770 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -14993,7 +14993,7 @@ FARMAM
 M  END
 $$$$
 FARSOG
-     RDKit          3D
+     RDKix          3D
 FARSOG
  22 24  0  0  0  0  0  0  0  0999 V2000
     3.0494    6.2166    2.6180 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15045,7 +15045,7 @@ FARSOG
 M  END
 $$$$
 FARWEA
-     RDKit          3D
+     RDKix          3D
 FARWEA
  12 11  0  0  0  0  0  0  0  0999 V2000
     0.6568    0.7261   12.3616 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15075,7 +15075,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FASGUB
-     RDKit          3D
+     RDKix          3D
 FASGUB
  15 14  0  0  0  0  0  0  0  0999 V2000
     1.5463    0.3289    0.5404 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15110,7 +15110,7 @@ FASGUB
 M  END
 $$$$
 FASJIS
-     RDKit          3D
+     RDKix          3D
 FASJIS
  39 40  0  0  0  0  0  0  0  0999 V2000
     0.6425    2.5491    8.9461 P   0  3  0  0  0  0  0  0  0  0  0  0
@@ -15199,7 +15199,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 FATLIV
-     RDKit          3D
+     RDKix          3D
 FATLIV
  35 37  0  0  0  0  0  0  0  0999 V2000
    -1.8004   -1.7399    9.7905 P   0  3  0  0  0  0  0  0  0  0  0  0
@@ -15279,7 +15279,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FAXFUF10
-     RDKit          3D
+     RDKix          3D
 FAXFUF10
  15 16  0  0  0  0  0  0  0  0999 V2000
     6.7532    1.6440    2.9665 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15317,7 +15317,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FAXVAB
-     RDKit          3D
+     RDKix          3D
 FAXVAB
  22 23  0  0  0  0  0  0  0  0999 V2000
     2.9770    6.5910   -2.4777 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15368,7 +15368,7 @@ FAXVAB
 M  END
 $$$$
 FAXVEF
-     RDKit          3D
+     RDKix          3D
 FAXVEF
  24 24  0  0  0  0  0  0  0  0999 V2000
     4.8391    5.3110    8.1200 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -15423,7 +15423,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 FAXVIJ
-     RDKit          3D
+     RDKix          3D
 FAXVIJ
  26 28  0  0  0  0  0  0  0  0999 V2000
     2.8032    3.2932    4.3071 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15485,7 +15485,7 @@ M  CHG  1  17  -1
 M  END
 $$$$
 FAZBAJ
-     RDKit          3D
+     RDKix          3D
 FAZBAJ
  12 11  0  0  0  0  0  0  0  0999 V2000
     0.8179   10.7797    1.4769 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15515,7 +15515,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FAZKUM
-     RDKit          3D
+     RDKix          3D
 FAZKUM
  12 11  0  0  0  0  0  0  0  0999 V2000
     5.3681    0.2721    3.2548 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -15544,7 +15544,7 @@ FAZKUM
 M  END
 $$$$
 FBATNB
-     RDKit          3D
+     RDKix          3D
 FBATNB
  32 32  0  0  0  0  0  0  0  0999 V2000
     3.2215    1.3527    1.6487 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15620,7 +15620,7 @@ M  CHG  1  31  -1
 M  END
 $$$$
 FECXEQ
-     RDKit          3D
+     RDKix          3D
 FECXEQ
  24 24  0  0  0  0  0  0  0  0999 V2000
     4.8289    2.9791    4.2466 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15674,7 +15674,7 @@ FECXEQ
 M  END
 $$$$
 FEGSEP
-     RDKit          3D
+     RDKix          3D
 FEGSEP
  18 18  0  0  0  0  0  0  0  0999 V2000
    -0.6778    1.1572    7.7803 P   0  3  0  0  0  0  0  0  0  0  0  0
@@ -15718,7 +15718,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 FEHDAX
-     RDKit          3D
+     RDKix          3D
 FEHDAX
  14 14  0  0  0  0  0  0  0  0999 V2000
     0.6760    2.6762    0.8913 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15752,7 +15752,7 @@ FEHDAX
 M  END
 $$$$
 FEJJEJ
-     RDKit          3D
+     RDKix          3D
 FEJJEJ
  25 26  0  0  0  0  0  0  0  0999 V2000
     0.9647    5.8810    0.4170 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15809,7 +15809,7 @@ FEJJEJ
 M  END
 $$$$
 FEJKIO
-     RDKit          3D
+     RDKix          3D
 FEJKIO
  38 40  0  0  0  0  0  0  0  0999 V2000
     0.0324    0.7694    8.3422 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -15895,7 +15895,7 @@ M  CHG  1  22   1
 M  END
 $$$$
 FELYIE
-     RDKit          3D
+     RDKix          3D
 FELYIE
  20 20  0  0  0  0  0  0  0  0999 V2000
     2.2716    1.8212    2.5900 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15941,7 +15941,7 @@ FELYIE
 M  END
 $$$$
 FELYUQ
-     RDKit          3D
+     RDKix          3D
 FELYUQ
  25 25  0  0  0  0  0  0  0  0999 V2000
     6.7197    3.6128    2.7664 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -15997,7 +15997,7 @@ FELYUQ
 M  END
 $$$$
 FEMGEJ
-     RDKit          3D
+     RDKix          3D
 FEMGEJ
  25 26  0  0  0  0  0  0  0  0999 V2000
     5.5549    2.6346    4.2753 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16055,7 +16055,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FENCOQ
-     RDKit          3D
+     RDKix          3D
 FENCOQ
  18 18  0  0  0  0  0  0  0  0999 V2000
     1.6215    6.9878    4.2337 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16099,7 +16099,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FENHAH
-     RDKit          3D
+     RDKix          3D
 FENHAH
  17 17  0  0  0  0  0  0  0  0999 V2000
    -1.6606    0.8554    0.5766 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16139,7 +16139,7 @@ FENHAH
 M  END
 $$$$
 FENJIR
-     RDKit          3D
+     RDKix          3D
 FENJIR
  31 32  0  0  0  0  0  0  0  0999 V2000
     2.2210    3.3626    5.2058 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16208,7 +16208,7 @@ FENJIR
 M  END
 $$$$
 FENJOX
-     RDKit          3D
+     RDKix          3D
 FENJOX
  34 34  0  0  0  0  0  0  0  0999 V2000
     8.0972    3.6326    1.7792 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16282,7 +16282,7 @@ FENJOX
 M  END
 $$$$
 FENJUD
-     RDKit          3D
+     RDKix          3D
 FENJUD
  28 29  0  0  0  0  0  0  0  0999 V2000
     2.3512    4.9963    0.0384 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16345,7 +16345,7 @@ FENJUD
 M  END
 $$$$
 FENNUH
-     RDKit          3D
+     RDKix          3D
 FENNUH
  21 20  0  0  0  0  0  0  0  0999 V2000
    -0.2065    5.5628    8.1599 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16392,7 +16392,7 @@ FENNUH
 M  END
 $$$$
 FENYIG
-     RDKit          3D
+     RDKix          3D
 FENYIG
  36 37  0  0  0  0  0  0  0  0999 V2000
     3.0865    8.0307    2.9270 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16473,7 +16473,7 @@ M  CHG  1  13  -1
 M  END
 $$$$
 FEPWAY
-     RDKit          3D
+     RDKix          3D
 FEPWAY
  13 12  0  0  0  0  0  0  0  0999 V2000
     4.0919    3.1291    9.7190 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16506,7 +16506,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FEPWOM
-     RDKit          3D
+     RDKix          3D
 FEPWOM
  12 11  0  0  0  0  0  0  0  0999 V2000
     4.0029    1.5407    4.4128 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16535,7 +16535,7 @@ FEPWOM
 M  END
 $$$$
 FESCAH
-     RDKit          3D
+     RDKix          3D
 FESCAH
  10  9  0  0  0  0  0  0  0  0999 V2000
     3.8514    0.0000    1.4153 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16560,7 +16560,7 @@ FESCAH
 M  END
 $$$$
 FESMIZ
-     RDKit          3D
+     RDKix          3D
 FESMIZ
  25 25  0  0  0  0  0  0  0  0999 V2000
     1.7331    7.5804    1.2079 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -16616,7 +16616,7 @@ FESMIZ
 M  END
 $$$$
 FETRUR
-     RDKit          3D
+     RDKix          3D
 FETRUR
  23 25  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    5.9725 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -16671,7 +16671,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 FETWOQ
-     RDKit          3D
+     RDKix          3D
 FETWOQ
  30 32  0  0  0  0  0  0  0  0999 V2000
     2.7967    1.5822    3.6475 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16739,7 +16739,7 @@ FETWOQ
 M  END
 $$$$
 FEVNUP
-     RDKit          3D
+     RDKix          3D
 FEVNUP
  19 19  0  0  0  0  0  0  0  0999 V2000
     9.6296    7.8575    1.2313 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -16783,7 +16783,7 @@ FEVNUP
 M  END
 $$$$
 FEYLUQ
-     RDKit          3D
+     RDKix          3D
 FEYLUQ
  19 20  0  0  0  0  0  0  0  0999 V2000
     7.5405    1.2512    5.0629 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16832,7 +16832,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 FEZPOP
-     RDKit          3D
+     RDKix          3D
 FEZPOP
  10  9  0  0  0  0  0  0  0  0999 V2000
    -3.7763    1.0237    6.6009 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16859,7 +16859,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 FEZRUX
-     RDKit          3D
+     RDKix          3D
 FEZRUX
  29 31  0  0  0  0  0  0  0  0999 V2000
    -0.1730    2.8063    0.0385 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16925,7 +16925,7 @@ FEZRUX
 M  END
 $$$$
 FIBLIL
-     RDKit          3D
+     RDKix          3D
 FIBLIL
  29 30  0  0  0  0  0  0  0  0999 V2000
     6.9055    0.3318   15.5601 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -16992,7 +16992,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 FICDOK
-     RDKit          3D
+     RDKix          3D
 FICDOK
  18 18  0  0  0  0  0  0  0  0999 V2000
     1.9142    5.1046    1.0100 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17036,7 +17036,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 FIFGUW
-     RDKit          3D
+     RDKix          3D
 FIFGUW
  34 35  0  0  0  0  0  0  0  0999 V2000
     1.3008    1.3029   -0.6088 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -17112,7 +17112,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 FIGYID
-     RDKit          3D
+     RDKix          3D
 FIGYID
  11 11  0  0  0  0  0  0  0  0999 V2000
     2.8662    1.8430   -0.0061 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17140,7 +17140,7 @@ FIGYID
 M  END
 $$$$
 FIHXID
-     RDKit          3D
+     RDKix          3D
 FIHXID
  32 33  0  0  0  0  0  0  0  0999 V2000
     2.2282    9.8832   11.4105 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -17211,7 +17211,7 @@ FIHXID
 M  END
 $$$$
 FIKJAK
-     RDKit          3D
+     RDKix          3D
 FIKJAK
  23 23  0  0  0  0  0  0  0  0999 V2000
     9.6482   -0.1211   -4.2979 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17263,7 +17263,7 @@ FIKJAK
 M  END
 $$$$
 FIKZOO10
-     RDKit          3D
+     RDKix          3D
 FIKZOO10
  19 20  0  0  0  0  0  0  0  0999 V2000
     0.9435    3.4600   -0.4874 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17308,7 +17308,7 @@ FIKZOO10
 M  END
 $$$$
 FILGEM
-     RDKit          3D
+     RDKix          3D
 FILGEM
  25 26  0  0  0  0  0  0  0  0999 V2000
    -0.2136    1.2432   13.2799 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17365,7 +17365,7 @@ FILGEM
 M  END
 $$$$
 FILNOD
-     RDKit          3D
+     RDKix          3D
 FILNOD
  24 25  0  0  0  0  0  0  0  0999 V2000
     8.4312    6.6818    1.4450 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -17421,7 +17421,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 FINBIN
-     RDKit          3D
+     RDKix          3D
 FINBIN
  23 24  0  0  0  0  0  0  0  0999 V2000
    -3.1500   12.5977    4.0427 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -17474,7 +17474,7 @@ FINBIN
 M  END
 $$$$
 FINPEX
-     RDKit          3D
+     RDKix          3D
 FINPEX
  22 22  0  0  0  0  0  0  0  0999 V2000
    -1.7189    3.6282    8.8078 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17525,7 +17525,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FITGIY
-     RDKit          3D
+     RDKix          3D
 FITGIY
  28 28  0  0  0  0  0  0  0  0999 V2000
    -0.2205   -0.3064    2.2550 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17587,7 +17587,7 @@ FITGIY
 M  END
 $$$$
 FITSEG
-     RDKit          3D
+     RDKix          3D
 FITSEG
  12 12  0  0  0  0  0  0  0  0999 V2000
     5.8489    2.2335    3.9648 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17617,7 +17617,7 @@ FITSEG
 M  END
 $$$$
 FITTIL
-     RDKit          3D
+     RDKix          3D
 FITTIL
  19 20  0  0  0  0  0  0  0  0999 V2000
     3.4312    2.0183    0.0829 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17663,7 +17663,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FIVNUT
-     RDKit          3D
+     RDKix          3D
 FIVNUT
  32 32  0  0  0  0  0  0  0  0999 V2000
     1.9348    3.6119    3.0533 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17733,7 +17733,7 @@ FIVNUT
 M  END
 $$$$
 FIVRAD
-     RDKit          3D
+     RDKix          3D
 FIVRAD
  32 33  0  0  0  0  0  0  0  0999 V2000
    -0.9773   11.4960    4.0923 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17804,7 +17804,7 @@ FIVRAD
 M  END
 $$$$
 FIXPIL
-     RDKit          3D
+     RDKix          3D
 FIXPIL
  26 27  0  0  0  0  0  0  0  0999 V2000
     5.0484    1.2049    0.5083 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17865,7 +17865,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 FIYBIY
-     RDKit          3D
+     RDKix          3D
 FIYBIY
  26 27  0  0  0  0  0  0  0  0999 V2000
     0.8736    2.9588    0.7491 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -17924,7 +17924,7 @@ FIYBIY
 M  END
 $$$$
 FIZGEA
-     RDKit          3D
+     RDKix          3D
 FIZGEA
  27 28  0  0  0  0  0  0  0  0999 V2000
     6.6764    3.1648    2.9826 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -17986,7 +17986,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 FIZGOK
-     RDKit          3D
+     RDKix          3D
 FIZGOK
  21 21  0  0  0  0  0  0  0  0999 V2000
     1.7957    1.3128    7.9486 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18034,7 +18034,7 @@ FIZGOK
 M  END
 $$$$
 FIZJED
-     RDKit          3D
+     RDKix          3D
 FIZJED
  16 16  0  0  0  0  0  0  0  0999 V2000
    -0.3770   -1.2805    0.2870 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18072,7 +18072,7 @@ FIZJED
 M  END
 $$$$
 FOBJUB01
-     RDKit          3D
+     RDKix          3D
 FOBJUB01
  14 14  0  0  0  0  0  0  0  0999 V2000
     3.9696    6.2231    4.4243 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18108,7 +18108,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FODTUN
-     RDKit          3D
+     RDKix          3D
 FODTUN
  27 28  0  0  0  0  0  0  0  0999 V2000
     1.1444    4.4102    8.8417 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18169,7 +18169,7 @@ FODTUN
 M  END
 $$$$
 FOGBIM
-     RDKit          3D
+     RDKix          3D
 FOGBIM
  27 28  0  0  0  0  0  0  0  0999 V2000
     7.6466    1.6567   -1.6392 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -18231,7 +18231,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FOGVIG01
-     RDKit          3D
+     RDKix          3D
 FOGVIG01
  35 35  0  0  0  0  0  0  0  0999 V2000
     5.4088    1.4158   -1.6006 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18307,7 +18307,7 @@ FOGVIG01
 M  END
 $$$$
 FOHXEF
-     RDKit          3D
+     RDKix          3D
 FOHXEF
  26 27  0  0  0  0  0  0  0  0999 V2000
     0.1665    4.8608    4.2586 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18366,7 +18366,7 @@ FOHXEF
 M  END
 $$$$
 FOHYAC
-     RDKit          3D
+     RDKix          3D
 FOHYAC
  18 18  0  0  0  0  0  0  0  0999 V2000
     5.9746    1.5246    0.6052 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18408,7 +18408,7 @@ FOHYAC
 M  END
 $$$$
 FOJBEL
-     RDKit          3D
+     RDKix          3D
 FOJBEL
  27 27  0  0  0  0  0  0  0  0999 V2000
     0.8225    3.0387   15.7481 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -18469,7 +18469,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 FOJPAV
-     RDKit          3D
+     RDKix          3D
 FOJPAV
  26 28  0  0  0  0  0  0  0  0999 V2000
     1.7261    0.2653    5.2889 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18529,7 +18529,7 @@ FOJPAV
 M  END
 $$$$
 FONCOA
-     RDKit          3D
+     RDKix          3D
 FONCOA
  30 31  0  0  0  0  0  0  0  0999 V2000
     7.0073    1.5120    3.1780 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18596,7 +18596,7 @@ FONCOA
 M  END
 $$$$
 FORGOI
-     RDKit          3D
+     RDKix          3D
 FORGOI
  18 18  0  0  0  0  0  0  0  0999 V2000
     1.8692    1.0981    2.3029 I   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18638,7 +18638,7 @@ FORGOI
 M  END
 $$$$
 FORHEZ
-     RDKit          3D
+     RDKix          3D
 FORHEZ
  16 15  0  0  0  0  0  0  0  0999 V2000
     9.8508   -1.0915   -0.4908 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18677,7 +18677,7 @@ M  CHG  1   8  -1
 M  END
 $$$$
 FORJIF
-     RDKit          3D
+     RDKix          3D
 FORJIF
  22 26  0  0  0  0  0  0  0  0999 V2000
     1.8884   -6.7836    6.6679 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -18731,7 +18731,7 @@ FORJIF
 M  END
 $$$$
 FORJUR
-     RDKit          3D
+     RDKix          3D
 FORJUR
  30 31  0  0  0  0  0  0  0  0999 V2000
    15.5245    1.8274    1.4136 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18798,7 +18798,7 @@ FORJUR
 M  END
 $$$$
 FORTAH
-     RDKit          3D
+     RDKix          3D
 FORTAH
  23 22  0  0  0  0  0  0  0  0999 V2000
     6.7303   -0.7990    2.4773 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18850,7 +18850,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FOSDIA
-     RDKit          3D
+     RDKix          3D
 FOSDIA
  29 31  0  0  0  0  0  0  0  0999 V2000
    -4.2833    2.5542   14.2965 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -18918,7 +18918,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 FOVHUT
-     RDKit          3D
+     RDKix          3D
 FOVHUT
  18 18  0  0  0  0  0  0  0  0999 V2000
    -0.7437    7.7898   15.0649 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -18960,7 +18960,7 @@ FOVHUT
 M  END
 $$$$
 FOVJIJ
-     RDKit          3D
+     RDKix          3D
 FOVJIJ
  25 26  0  0  0  0  0  0  0  0999 V2000
     5.5393   -1.2073    2.4868 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19017,7 +19017,7 @@ FOVJIJ
 M  END
 $$$$
 FOVRAJ
-     RDKit          3D
+     RDKix          3D
 FOVRAJ
  34 36  0  0  0  0  0  0  0  0999 V2000
     2.8948    4.8199    0.0171 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -19094,7 +19094,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 FOVRUD
-     RDKit          3D
+     RDKix          3D
 FOVRUD
  34 36  0  0  0  0  0  0  0  0999 V2000
     5.1018   -4.0135   -1.8533 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19171,7 +19171,7 @@ M  CHG  1  17   1
 M  END
 $$$$
 FOWBEY
-     RDKit          3D
+     RDKix          3D
 FOWBEY
  23 25  0  0  0  0  0  0  0  0999 V2000
     4.2340    1.7216    6.6301 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -19225,7 +19225,7 @@ FOWBEY
 M  END
 $$$$
 FOWPOW
-     RDKit          3D
+     RDKix          3D
 FOWPOW
  28 30  0  0  0  0  0  0  0  0999 V2000
     9.0722    7.4705   -2.3992 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19289,7 +19289,7 @@ FOWPOW
 M  END
 $$$$
 FOWVES
-     RDKit          3D
+     RDKix          3D
 FOWVES
  16 18  0  0  0  0  0  0  0  0999 V2000
     8.4333   -1.4990    4.5780 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19329,7 +19329,7 @@ FOWVES
 M  END
 $$$$
 FOWZAS
-     RDKit          3D
+     RDKix          3D
 FOWZAS
  29 32  0  0  0  0  0  0  0  0999 V2000
     9.4339    0.9133   -3.5671 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19396,7 +19396,7 @@ FOWZAS
 M  END
 $$$$
 FOYMAH
-     RDKit          3D
+     RDKix          3D
 FOYMAH
  18 18  0  0  0  0  0  0  0  0999 V2000
    -0.7102    5.5013    4.7097 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19439,7 +19439,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 FOYNUC
-     RDKit          3D
+     RDKix          3D
 FOYNUC
  27 29  0  0  0  0  0  0  0  0999 V2000
     0.5929    2.7169    0.5926 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19503,7 +19503,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 FUCMIZ
-     RDKit          3D
+     RDKix          3D
 FUCMIZ
  13 12  0  0  0  0  0  0  0  0999 V2000
     2.8016   10.3139    2.4150 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -19534,7 +19534,7 @@ FUCMIZ
 M  END
 $$$$
 FUCMUL
-     RDKit          3D
+     RDKix          3D
 FUCMUL
  10 11  0  0  0  0  0  0  0  0999 V2000
     0.8343    1.6737    0.9612 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19561,7 +19561,7 @@ FUCMUL
 M  END
 $$$$
 FUCTIG01
-     RDKit          3D
+     RDKix          3D
 FUCTIG01
   4  3  0  0  0  0  0  0  0  0999 V2000
     6.0035    1.2655    1.3334 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19577,7 +19577,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FUCWIJ
-     RDKit          3D
+     RDKix          3D
 FUCWIJ
  35 37  0  0  0  0  0  0  0  0999 V2000
     0.2819   -0.5120    2.0686 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19655,7 +19655,7 @@ FUCWIJ
 M  END
 $$$$
 FUCWOP
-     RDKit          3D
+     RDKix          3D
 FUCWOP
  25 27  0  0  0  0  0  0  0  0999 V2000
     3.2106    3.1271    3.1369 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19714,7 +19714,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 FUDPOJ
-     RDKit          3D
+     RDKix          3D
 FUDPOJ
   8  8  0  0  0  0  0  0  0  0999 V2000
    -0.7374    0.2698    1.9728 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19736,7 +19736,7 @@ FUDPOJ
 M  END
 $$$$
 FUDXUX
-     RDKit          3D
+     RDKix          3D
 FUDXUX
  12 11  0  0  0  0  0  0  0  0999 V2000
     1.5784    1.1856    1.9529 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19766,7 +19766,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 FUFDIT
-     RDKit          3D
+     RDKix          3D
 FUFDIT
  20 20  0  0  0  0  0  0  0  0999 V2000
     6.5100    0.5188    1.4080 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19812,7 +19812,7 @@ FUFDIT
 M  END
 $$$$
 FUGWIN
-     RDKit          3D
+     RDKix          3D
 FUGWIN
  32 34  0  0  0  0  0  0  0  0999 V2000
     8.4542   16.9325   -3.4747 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19885,7 +19885,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 FUHFAP
-     RDKit          3D
+     RDKix          3D
 FUHFAP
  12 11  0  0  0  0  0  0  0  0999 V2000
     0.5343    1.3693    2.1428 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -19914,7 +19914,7 @@ FUHFAP
 M  END
 $$$$
 FUHSEG
-     RDKit          3D
+     RDKix          3D
 FUHSEG
  19 19  0  0  0  0  0  0  0  0999 V2000
     2.4803    4.6745    2.5616 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -19960,7 +19960,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FULRAF
-     RDKit          3D
+     RDKix          3D
 FULRAF
  33 34  0  0  0  0  0  0  0  0999 V2000
     5.2335    4.8538    8.8573 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20034,7 +20034,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 FUNSIQ
-     RDKit          3D
+     RDKix          3D
 FUNSIQ
  19 18  0  0  0  0  0  0  0  0999 V2000
    12.1970    1.5314    3.3090 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20080,7 +20080,7 @@ M  CHG  1   9   1
 M  END
 $$$$
 FUNXOB
-     RDKit          3D
+     RDKix          3D
 FUNXOB
  25 26  0  0  0  0  0  0  0  0999 V2000
    11.1267    0.1017    1.4270 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20137,7 +20137,7 @@ FUNXOB
 M  END
 $$$$
 FUPJUV
-     RDKit          3D
+     RDKix          3D
 FUPJUV
  30 31  0  0  0  0  0  0  0  0999 V2000
     2.1080    1.7115    6.0307 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -20206,7 +20206,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 FUPKIK
-     RDKit          3D
+     RDKix          3D
 FUPKIK
  21 22  0  0  0  0  0  0  0  0999 V2000
     3.5471    3.2248    0.0738 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20255,7 +20255,7 @@ FUPKIK
 M  END
 $$$$
 FUPKOQ
-     RDKit          3D
+     RDKix          3D
 FUPKOQ
  32 34  0  0  0  0  0  0  0  0999 V2000
     5.8431    3.1512    3.7586 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20329,7 +20329,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 FUPTOZ
-     RDKit          3D
+     RDKix          3D
 FUPTOZ
  19 19  0  0  0  0  0  0  0  0999 V2000
    -1.1640    9.8662    9.3292 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20373,7 +20373,7 @@ FUPTOZ
 M  END
 $$$$
 FUPZEV
-     RDKit          3D
+     RDKix          3D
 FUPZEV
  33 34  0  0  0  0  0  0  0  0999 V2000
    -1.2941    2.2349   -0.4846 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20446,7 +20446,7 @@ FUPZEV
 M  END
 $$$$
 FUSPEO
-     RDKit          3D
+     RDKix          3D
 FUSPEO
   8  7  0  0  0  0  0  0  0  0999 V2000
     1.8447    3.2458    8.1201 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20468,7 +20468,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 FUTCEC
-     RDKit          3D
+     RDKix          3D
 FUTCEC
  25 26  0  0  0  0  0  0  0  0999 V2000
     7.3551    1.4123    6.6875 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20525,7 +20525,7 @@ FUTCEC
 M  END
 $$$$
 FUTZEZ
-     RDKit          3D
+     RDKix          3D
 FUTZEZ
   9  8  0  0  0  0  0  0  0  0999 V2000
     5.3336    1.8903    1.2551 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -20548,7 +20548,7 @@ FUTZEZ
 M  END
 $$$$
 FUVDOP
-     RDKit          3D
+     RDKix          3D
 FUVDOP
  36 39  0  0  0  0  0  0  0  0999 V2000
     3.5469    3.4606    9.7631 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20629,7 +20629,7 @@ FUVDOP
 M  END
 $$$$
 FUVMUE
-     RDKit          3D
+     RDKix          3D
 FUVMUE
  33 32  0  0  0  0  0  0  0  0999 V2000
    -3.7521    3.1834   11.6610 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20702,7 +20702,7 @@ M  CHG  1  10   1
 M  END
 $$$$
 FUVNEP
-     RDKit          3D
+     RDKix          3D
 FUVNEP
  40 41  0  0  0  0  0  0  0  0999 V2000
     3.2371    6.5274   10.9245 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20789,7 +20789,7 @@ FUVNEP
 M  END
 $$$$
 FUVXOJ
-     RDKit          3D
+     RDKix          3D
 FUVXOJ
  21 21  0  0  0  0  0  0  0  0999 V2000
     1.4253    4.5071    3.1942 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20838,7 +20838,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 FUWMOZ
-     RDKit          3D
+     RDKix          3D
 FUWMOZ
  26 27  0  0  0  0  0  0  0  0999 V2000
     5.3754    3.1226   -2.7612 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -20897,7 +20897,7 @@ FUWMOZ
 M  END
 $$$$
 FUWTUM
-     RDKit          3D
+     RDKix          3D
 FUWTUM
  20 22  0  0  0  0  0  0  0  0999 V2000
    -2.4978   -1.9535   10.7595 S   0  5  0  0  0  0  0  0  0  0  0  0
@@ -20947,7 +20947,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 FUXXAX
-     RDKit          3D
+     RDKix          3D
 FUXXAX
  27 26  0  0  0  0  0  0  0  0999 V2000
    -1.7094   -2.2964    8.3982 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21010,7 +21010,7 @@ M  CHG  1  12   1
 M  END
 $$$$
 FUXZED
-     RDKit          3D
+     RDKix          3D
 FUXZED
  23 22  0  0  0  0  0  0  0  0999 V2000
     5.0303    7.6640    1.4069 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21061,7 +21061,7 @@ FUXZED
 M  END
 $$$$
 GADHEY
-     RDKit          3D
+     RDKix          3D
 GADHEY
  35 36  0  0  0  0  0  0  0  0999 V2000
     1.9431    4.4733    4.9507 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21139,7 +21139,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 GAFNUW
-     RDKit          3D
+     RDKix          3D
 GAFNUW
  31 33  0  0  0  0  0  0  0  0999 V2000
     5.2450    1.7175    0.2339 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21213,7 +21213,7 @@ M  CHG  1  19  -1
 M  END
 $$$$
 GAHPIO
-     RDKit          3D
+     RDKix          3D
 GAHPIO
  22 21  0  0  0  0  0  0  0  0999 V2000
    -3.6927    2.2346    6.4690 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21262,7 +21262,7 @@ GAHPIO
 M  END
 $$$$
 GAJTEQ
-     RDKit          3D
+     RDKix          3D
 GAJTEQ
  15 15  0  0  0  0  0  0  0  0999 V2000
     2.2301    2.5956    1.2309 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21300,7 +21300,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 GAKGOO
-     RDKit          3D
+     RDKix          3D
 GAKGOO
  28 30  0  0  0  0  0  0  0  0999 V2000
     1.6337    2.1553    5.4825 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21364,7 +21364,7 @@ GAKGOO
 M  END
 $$$$
 GAKNEL
-     RDKit          3D
+     RDKix          3D
 GAKNEL
  15 16  0  0  0  0  0  0  0  0999 V2000
     2.1110    0.3329    6.5730 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -21403,7 +21403,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 GAKNIP
-     RDKit          3D
+     RDKix          3D
 GAKNIP
  20 20  0  0  0  0  0  0  0  0999 V2000
     4.6852    0.3735    7.5190 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -21451,7 +21451,7 @@ M  CHG  1   2   2
 M  END
 $$$$
 GAKPEN
-     RDKit          3D
+     RDKix          3D
 GAKPEN
  20 21  0  0  0  0  0  0  0  0999 V2000
     7.7610    6.5939   -3.1493 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21498,7 +21498,7 @@ GAKPEN
 M  END
 $$$$
 GAKTAN
-     RDKit          3D
+     RDKix          3D
 GAKTAN
  15 17  0  0  0  0  0  0  0  0999 V2000
     5.4101    2.4722    3.9520 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21536,7 +21536,7 @@ GAKTAN
 M  END
 $$$$
 GANHUY
-     RDKit          3D
+     RDKix          3D
 GANHUY
   9  9  0  0  0  0  0  0  0  0999 V2000
     1.7927    1.4765    8.0963 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21560,7 +21560,7 @@ GANHUY
 M  END
 $$$$
 GAPMEP
-     RDKit          3D
+     RDKix          3D
 GAPMEP
  17 18  0  0  0  0  0  0  0  0999 V2000
     0.4812    1.4219    7.7517 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -21601,7 +21601,7 @@ GAPMEP
 M  END
 $$$$
 GAVKOD
-     RDKit          3D
+     RDKix          3D
 GAVKOD
  13 13  0  0  0  0  0  0  0  0999 V2000
     5.1065    3.1347    0.4158 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21635,7 +21635,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 GAVMEV
-     RDKit          3D
+     RDKix          3D
 GAVMEV
  22 23  0  0  0  0  0  0  0  0999 V2000
     2.7087   -1.4086    1.0220 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21686,7 +21686,7 @@ GAVMEV
 M  END
 $$$$
 GAWWOQ
-     RDKit          3D
+     RDKix          3D
 GAWWOQ
  31 32  0  0  0  0  0  0  0  0999 V2000
     3.4941    0.9322   -0.0010 P   0  3  0  0  0  0  0  0  0  0  0  0
@@ -21757,7 +21757,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 GEHBOK
-     RDKit          3D
+     RDKix          3D
 GEHBOK
  32 33  0  0  0  0  0  0  0  0999 V2000
     2.4246    2.5895    1.2387 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21831,7 +21831,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 GEHPUE
-     RDKit          3D
+     RDKix          3D
 GEHPUE
  21 20  0  0  0  0  0  0  0  0999 V2000
     2.1431    7.1405   11.9129 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21878,7 +21878,7 @@ GEHPUE
 M  END
 $$$$
 GEHXEW
-     RDKit          3D
+     RDKix          3D
 GEHXEW
  38 40  0  0  0  0  0  0  0  0999 V2000
     3.4972    0.4406    9.0499 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -21962,7 +21962,7 @@ GEHXEW
 M  END
 $$$$
 GEJYOJ
-     RDKit          3D
+     RDKix          3D
 GEJYOJ
  16 15  0  0  0  0  0  0  0  0999 V2000
     0.1495    2.3642    2.6035 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -21999,7 +21999,7 @@ GEJYOJ
 M  END
 $$$$
 GEKXEZ
-     RDKit          3D
+     RDKix          3D
 GEKXEZ
  18 17  0  0  0  0  0  0  0  0999 V2000
    -0.3964    2.3499    1.3617 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22040,7 +22040,7 @@ GEKXEZ
 M  END
 $$$$
 GEMCEG
-     RDKit          3D
+     RDKix          3D
 GEMCEG
  17 17  0  0  0  0  0  0  0  0999 V2000
     1.3764    1.3766    5.5410 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22080,7 +22080,7 @@ GEMCEG
 M  END
 $$$$
 GEMCOQ
-     RDKit          3D
+     RDKix          3D
 GEMCOQ
  19 19  0  0  0  0  0  0  0  0999 V2000
     3.9926    5.0093    1.0665 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22124,7 +22124,7 @@ GEMCOQ
 M  END
 $$$$
 GEMDAD
-     RDKit          3D
+     RDKix          3D
 GEMDAD
  27 27  0  0  0  0  0  0  0  0999 V2000
     2.9196    2.6325    4.1977 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22184,7 +22184,7 @@ GEMDAD
 M  END
 $$$$
 GERCUB
-     RDKit          3D
+     RDKix          3D
 GERCUB
  19 20  0  0  0  0  0  0  0  0999 V2000
     0.2101    2.3125    0.4720 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22231,7 +22231,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 GESCIQ
-     RDKit          3D
+     RDKix          3D
 GESCIQ
  35 36  0  0  0  0  0  0  0  0999 V2000
    -0.2158    1.2600    2.7015 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22309,7 +22309,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 GESNIB
-     RDKit          3D
+     RDKix          3D
 GESNIB
  13 14  0  0  0  0  0  0  0  0999 V2000
     1.8342    0.0964    6.3504 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22342,7 +22342,7 @@ GESNIB
 M  END
 $$$$
 GESSUS
-     RDKit          3D
+     RDKix          3D
 GESSUS
  26 26  0  0  0  0  0  0  0  0999 V2000
     2.7074    3.5913    3.6406 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22400,7 +22400,7 @@ GESSUS
 M  END
 $$$$
 GETFIU
-     RDKit          3D
+     RDKix          3D
 GETFIU
  17 17  0  0  0  0  0  0  0  0999 V2000
    -0.0456    4.1189   12.8475 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22446,7 +22446,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 GETFOA
-     RDKit          3D
+     RDKix          3D
 GETFOA
  17 17  0  0  0  0  0  0  0  0999 V2000
     3.5243    0.8668    2.5977 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22492,7 +22492,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 GETJOE
-     RDKit          3D
+     RDKix          3D
 GETJOE
  30 32  0  0  0  0  0  0  0  0999 V2000
     4.3271    0.1831   11.7164 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22564,7 +22564,7 @@ M  CHG  1  18  -1
 M  END
 $$$$
 GEWTAD
-     RDKit          3D
+     RDKix          3D
 GEWTAD
  21 22  0  0  0  0  0  0  0  0999 V2000
     0.0050    0.8715    1.6893 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22613,7 +22613,7 @@ GEWTAD
 M  END
 $$$$
 GEXGIZ
-     RDKit          3D
+     RDKix          3D
 GEXGIZ
  22 22  0  0  0  0  0  0  0  0999 V2000
    -5.6158    0.8601    2.0445 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22664,7 +22664,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 GEYWOW
-     RDKit          3D
+     RDKix          3D
 GEYWOW
  32 33  0  0  0  0  0  0  0  0999 V2000
     2.9546    4.6445    3.9490 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -22739,7 +22739,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 GICTIV01
-     RDKit          3D
+     RDKix          3D
 GICTIV01
  20 21  0  0  0  0  0  0  0  0999 V2000
     5.6836    1.1208    7.6608 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22790,7 +22790,7 @@ M  CHG  1  19  -1
 M  END
 $$$$
 GIDJUY
-     RDKit          3D
+     RDKix          3D
 GIDJUY
  26 27  0  0  0  0  0  0  0  0999 V2000
     1.5232    2.1109   11.3103 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -22849,7 +22849,7 @@ GIDJUY
 M  END
 $$$$
 GIDMEL
-     RDKit          3D
+     RDKix          3D
 GIDMEL
  23 24  0  0  0  0  0  0  0  0999 V2000
     4.8084    2.2134   10.1827 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -22905,7 +22905,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 GIDTIW
-     RDKit          3D
+     RDKix          3D
 GIDTIW
  37 38  0  0  0  0  0  0  0  0999 V2000
     0.9475    8.5654   -0.2556 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -22986,7 +22986,7 @@ GIDTIW
 M  END
 $$$$
 GIFRAO
-     RDKit          3D
+     RDKix          3D
 GIFRAO
  32 33  0  0  0  0  0  0  0  0999 V2000
    10.4241    0.2002   -1.2780 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23058,7 +23058,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 GIGCEE
-     RDKit          3D
+     RDKix          3D
 GIGCEE
  26 29  0  0  0  0  0  0  0  0999 V2000
     7.2590    7.9378    6.7152 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23119,7 +23119,7 @@ GIGCEE
 M  END
 $$$$
 GIGMUE
-     RDKit          3D
+     RDKix          3D
 GIGMUE
  28 29  0  0  0  0  0  0  0  0999 V2000
     7.2269    4.3601    4.8825 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23182,7 +23182,7 @@ GIGMUE
 M  END
 $$$$
 GIHZEC
-     RDKit          3D
+     RDKix          3D
 GIHZEC
  22 24  0  0  0  0  0  0  0  0999 V2000
     3.7695    1.3304   10.0203 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23234,7 +23234,7 @@ GIHZEC
 M  END
 $$$$
 GIJMOB01
-     RDKit          3D
+     RDKix          3D
 GIJMOB01
  17 18  0  0  0  0  0  0  0  0999 V2000
     7.1583    0.6547    1.7257 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23276,7 +23276,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 GIKJIT
-     RDKit          3D
+     RDKix          3D
 GIKJIT
  14 15  0  0  0  0  0  0  0  0999 V2000
     2.0239    2.1875    2.0026 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23311,7 +23311,7 @@ GIKJIT
 M  END
 $$$$
 GIKNOD
-     RDKit          3D
+     RDKix          3D
 GIKNOD
  27 27  0  0  0  0  0  0  0  0999 V2000
     0.2575    0.2398    7.3294 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23373,7 +23373,7 @@ M  CHG  1   8  -1
 M  END
 $$$$
 GIKTUP
-     RDKit          3D
+     RDKix          3D
 GIKTUP
  19 20  0  0  0  0  0  0  0  0999 V2000
     3.2188    1.7878    5.9046 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23418,7 +23418,7 @@ GIKTUP
 M  END
 $$$$
 GIMJIV
-     RDKit          3D
+     RDKix          3D
 GIMJIV
  27 30  0  0  0  0  0  0  0  0999 V2000
     3.3424   10.2951    9.5582 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -23481,7 +23481,7 @@ GIMJIV
 M  END
 $$$$
 GINMUL
-     RDKit          3D
+     RDKix          3D
 GINMUL
  23 24  0  0  0  0  0  0  0  0999 V2000
     0.4438    3.5337    5.4708 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23534,7 +23534,7 @@ GINMUL
 M  END
 $$$$
 GIPHES
-     RDKit          3D
+     RDKix          3D
 GIPHES
  23 23  0  0  0  0  0  0  0  0999 V2000
     2.2676    2.3320    0.6690 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23587,7 +23587,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 GIRDOA01
-     RDKit          3D
+     RDKix          3D
 GIRDOA01
  34 36  0  0  0  0  0  0  0  0999 V2000
     3.6285    6.3379    0.9575 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23663,7 +23663,7 @@ GIRDOA01
 M  END
 $$$$
 GOHVUU
-     RDKit          3D
+     RDKix          3D
 GOHVUU
  14 15  0  0  0  0  0  0  0  0999 V2000
     2.0068    6.3954    9.3915 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23698,7 +23698,7 @@ GOHVUU
 M  END
 $$$$
 GOJCIR
-     RDKit          3D
+     RDKix          3D
 GOJCIR
  21 21  0  0  0  0  0  0  0  0999 V2000
     2.1084   23.5070   -1.1324 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23746,7 +23746,7 @@ GOJCIR
 M  END
 $$$$
 GOJKIZ
-     RDKit          3D
+     RDKix          3D
 GOJKIZ
  20 21  0  0  0  0  0  0  0  0999 V2000
     3.1260    0.6673   12.4257 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23795,7 +23795,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 GUANCH01
-     RDKit          3D
+     RDKix          3D
 GUANCH01
  17 18  0  0  0  0  0  0  0  0999 V2000
     0.7020    5.5248   17.7081 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23837,7 +23837,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 HYTPRD01
-     RDKit          3D
+     RDKix          3D
 HYTPRD01
  30 31  0  0  0  0  0  0  0  0999 V2000
     4.6171    7.2158    1.5281 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23904,7 +23904,7 @@ HYTPRD01
 M  END
 $$$$
 ISTZCN10
-     RDKit          3D
+     RDKix          3D
 ISTZCN10
  12 13  0  0  0  0  0  0  0  0999 V2000
     4.6611    4.2955   -2.0894 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23935,7 +23935,7 @@ ISTZCN10
 M  END
 $$$$
 JABGAU
-     RDKit          3D
+     RDKix          3D
 JABGAU
  28 29  0  0  0  0  0  0  0  0999 V2000
     7.4676    2.0705    1.5274 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -23998,7 +23998,7 @@ JABGAU
 M  END
 $$$$
 JADLIJ
-     RDKit          3D
+     RDKix          3D
 JADLIJ
  14 15  0  0  0  0  0  0  0  0999 V2000
     6.7195    5.7264   -0.5453 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -24033,7 +24033,7 @@ JADLIJ
 M  END
 $$$$
 JADXER
-     RDKit          3D
+     RDKix          3D
 JADXER
  39 41  0  0  0  0  0  0  0  0999 V2000
     2.4058   -0.2380    2.8100 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24121,7 +24121,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 JAHKOS
-     RDKit          3D
+     RDKix          3D
 JAHKOS
  26 27  0  0  0  0  0  0  0  0999 V2000
     9.0185    0.4479    0.7283 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24180,7 +24180,7 @@ JAHKOS
 M  END
 $$$$
 JAHTOB
-     RDKit          3D
+     RDKix          3D
 JAHTOB
  27 28  0  0  0  0  0  0  0  0999 V2000
     6.5034   15.5914   -3.0087 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24241,7 +24241,7 @@ JAHTOB
 M  END
 $$$$
 JAHYEW
-     RDKit          3D
+     RDKix          3D
 JAHYEW
  24 25  0  0  0  0  0  0  0  0999 V2000
     2.3097    7.6805    3.1825 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -24296,7 +24296,7 @@ JAHYEW
 M  END
 $$$$
 JAKGUX
-     RDKit          3D
+     RDKix          3D
 JAKGUX
  24 26  0  0  0  0  0  0  0  0999 V2000
     4.2971    1.7644    7.7176 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24352,7 +24352,7 @@ JAKGUX
 M  END
 $$$$
 JAKJOU
-     RDKit          3D
+     RDKix          3D
 JAKJOU
  21 21  0  0  0  0  0  0  0  0999 V2000
     5.4082    2.6692    6.1667 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24400,7 +24400,7 @@ JAKJOU
 M  END
 $$$$
 JALSOE
-     RDKit          3D
+     RDKix          3D
 JALSOE
  28 30  0  0  0  0  0  0  0  0999 V2000
     4.4462    3.1964   11.5966 S   0  5  0  0  0  0  0  0  0  0  0  0
@@ -24465,7 +24465,7 @@ M  CHG  1   1  -1
 M  END
 $$$$
 JAMREU
-     RDKit          3D
+     RDKix          3D
 JAMREU
  52 53  0  0  0  0  0  0  0  0999 V2000
    12.7887   13.7509    2.4169 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -24577,7 +24577,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 JANDOR
-     RDKit          3D
+     RDKix          3D
 JANDOR
  53 56  0  0  0  0  0  0  0  0999 V2000
    -1.3349   11.6677    3.5535 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24694,7 +24694,7 @@ M  CHG  1  31  -1
 M  END
 $$$$
 JANMAM
-     RDKit          3D
+     RDKix          3D
 JANMAM
  23 23  0  0  0  0  0  0  0  0999 V2000
     0.9782   18.6146    8.0182 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24747,7 +24747,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 JAPFAH
-     RDKit          3D
+     RDKix          3D
 JAPFAH
  28 30  0  0  0  0  0  0  0  0999 V2000
     0.7456    4.7092    1.8759 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24813,7 +24813,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 JATBIP
-     RDKit          3D
+     RDKix          3D
 JATBIP
  24 23  0  0  0  0  0  0  0  0999 V2000
     0.5094    0.0778    4.5172 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24866,7 +24866,7 @@ JATBIP
 M  END
 $$$$
 JATCOW
-     RDKit          3D
+     RDKix          3D
 JATCOW
  14 15  0  0  0  0  0  0  0  0999 V2000
    15.4231    5.1345    4.3797 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24901,7 +24901,7 @@ JATCOW
 M  END
 $$$$
 JATLOF
-     RDKit          3D
+     RDKix          3D
 JATLOF
  36 36  0  0  0  0  0  0  0  0999 V2000
     5.6173    1.6947    0.2386 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -24980,7 +24980,7 @@ M  CHG  1   6   1
 M  END
 $$$$
 JATMEW
-     RDKit          3D
+     RDKix          3D
 JATMEW
  38 38  0  0  0  0  0  0  0  0999 V2000
     5.6555   -3.0519    3.4049 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25062,7 +25062,7 @@ JATMEW
 M  END
 $$$$
 JAVGAO
-     RDKit          3D
+     RDKix          3D
 JAVGAO
  23 23  0  0  0  0  0  0  0  0999 V2000
     2.1791    0.6231    1.2604 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25116,7 +25116,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 JAWJIA
-     RDKit          3D
+     RDKix          3D
 JAWJIA
  37 39  0  0  0  0  0  0  0  0999 V2000
     2.1716    2.0417   10.7477 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25198,7 +25198,7 @@ JAWJIA
 M  END
 $$$$
 JAWMAV
-     RDKit          3D
+     RDKix          3D
 JAWMAV
  12 12  0  0  0  0  0  0  0  0999 V2000
     2.4997   -0.6430    2.0602 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25228,7 +25228,7 @@ JAWMAV
 M  END
 $$$$
 JAWVEI
-     RDKit          3D
+     RDKix          3D
 JAWVEI
  28 29  0  0  0  0  0  0  0  0999 V2000
     4.8885   -0.9639    5.9838 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25291,7 +25291,7 @@ JAWVEI
 M  END
 $$$$
 JAWZEM
-     RDKit          3D
+     RDKix          3D
 JAWZEM
  19 20  0  0  0  0  0  0  0  0999 V2000
    -2.8584    1.5244    7.6687 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25337,7 +25337,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 JAZGOG
-     RDKit          3D
+     RDKix          3D
 JAZGOG
  30 33  0  0  0  0  0  0  0  0999 V2000
     3.1118    1.8927   26.0938 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25406,7 +25406,7 @@ JAZGOG
 M  END
 $$$$
 JAZVIP10
-     RDKit          3D
+     RDKix          3D
 JAZVIP10
  34 35  0  0  0  0  0  0  0  0999 V2000
     6.1208    5.3377   11.3403 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25481,7 +25481,7 @@ JAZVIP10
 M  END
 $$$$
 JAZZOZ10
-     RDKit          3D
+     RDKix          3D
 JAZZOZ10
  37 39  0  0  0  0  0  0  0  0999 V2000
     2.0426   12.3370    3.0348 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25563,7 +25563,7 @@ JAZZOZ10
 M  END
 $$$$
 JEBFEB01
-     RDKit          3D
+     RDKix          3D
 JEBFEB01
  27 29  0  0  0  0  0  0  0  0999 V2000
     8.1501    1.8946    8.0437 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25625,7 +25625,7 @@ JEBFEB01
 M  END
 $$$$
 JECVES
-     RDKit          3D
+     RDKix          3D
 JECVES
  30 31  0  0  0  0  0  0  0  0999 V2000
     2.1594    2.2744    8.0811 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25694,7 +25694,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 JECVUI
-     RDKit          3D
+     RDKix          3D
 JECVUI
  24 23  0  0  0  0  0  0  0  0999 V2000
     5.4404    1.1176    9.5211 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25747,7 +25747,7 @@ JECVUI
 M  END
 $$$$
 JECYIZ
-     RDKit          3D
+     RDKix          3D
 JECYIZ
  40 41  0  0  0  0  0  0  0  0999 V2000
     2.5304    5.0624    5.4752 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25836,7 +25836,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 JEFRAN
-     RDKit          3D
+     RDKix          3D
 JEFRAN
  36 36  0  0  0  0  0  0  0  0999 V2000
     0.9681    2.4397    6.3137 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25914,7 +25914,7 @@ JEFRAN
 M  END
 $$$$
 JEHCUU01
-     RDKit          3D
+     RDKix          3D
 JEHCUU01
  22 23  0  0  0  0  0  0  0  0999 V2000
     2.3963    0.6104    8.0335 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -25965,7 +25965,7 @@ JEHCUU01
 M  END
 $$$$
 JEHXOJ
-     RDKit          3D
+     RDKix          3D
 JEHXOJ
  20 20  0  0  0  0  0  0  0  0999 V2000
     2.4046    9.0021   11.8987 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26012,7 +26012,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 JELKUG
-     RDKit          3D
+     RDKix          3D
 JELKUG
  22 22  0  0  0  0  0  0  0  0999 V2000
    -0.6270    2.6130    5.6867 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -26064,7 +26064,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 JELREX
-     RDKit          3D
+     RDKix          3D
 JELREX
  24 26  0  0  0  0  0  0  0  0999 V2000
     2.0878    1.8267   14.5933 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -26122,7 +26122,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 JELRIB
-     RDKit          3D
+     RDKix          3D
 JELRIB
  22 23  0  0  0  0  0  0  0  0999 V2000
     3.0598    6.0885   11.9040 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -26175,7 +26175,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 JEMHIS
-     RDKit          3D
+     RDKix          3D
 JEMHIS
  15 14  0  0  0  0  0  0  0  0999 V2000
    -2.0047    0.4667    5.9190 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26212,7 +26212,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 JEMWUT
-     RDKit          3D
+     RDKix          3D
 JEMWUT
  24 24  0  0  0  0  0  0  0  0999 V2000
     1.6286    0.8663   -4.4815 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26266,7 +26266,7 @@ JEMWUT
 M  END
 $$$$
 JESFES
-     RDKit          3D
+     RDKix          3D
 JESFES
  25 24  0  0  0  0  0  0  0  0999 V2000
     0.0000    2.3253    6.2968 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -26321,7 +26321,7 @@ JESFES
 M  END
 $$$$
 JETJUN
-     RDKit          3D
+     RDKix          3D
 JETJUN
  18 17  0  0  0  0  0  0  0  0999 V2000
     6.9504    4.2128    3.8606 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26363,7 +26363,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 JEVXIR
-     RDKit          3D
+     RDKix          3D
 JEVXIR
  26 26  0  0  0  0  0  0  0  0999 V2000
     1.0876    0.4374    6.0087 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26421,7 +26421,7 @@ JEVXIR
 M  END
 $$$$
 JEWFAS
-     RDKit          3D
+     RDKix          3D
 JEWFAS
  38 39  0  0  0  0  0  0  0  0999 V2000
    -2.0483    0.9538    7.2302 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26504,7 +26504,7 @@ JEWFAS
 M  END
 $$$$
 JEWPIK
-     RDKit          3D
+     RDKix          3D
 JEWPIK
  19 21  0  0  0  0  0  0  0  0999 V2000
     3.8473    8.9061    0.2478 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26550,7 +26550,7 @@ JEWPIK
 M  END
 $$$$
 JEXREJ
-     RDKit          3D
+     RDKix          3D
 JEXREJ
  34 34  0  0  0  0  0  0  0  0999 V2000
    13.7021    1.0491    2.9003 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26624,7 +26624,7 @@ JEXREJ
 M  END
 $$$$
 JEYBUK
-     RDKit          3D
+     RDKix          3D
 JEYBUK
  23 24  0  0  0  0  0  0  0  0999 V2000
     5.5522    5.1676   15.9119 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26677,7 +26677,7 @@ JEYBUK
 M  END
 $$$$
 JIDHIN
-     RDKit          3D
+     RDKix          3D
 JIDHIN
  32 33  0  0  0  0  0  0  0  0999 V2000
     8.1469    6.8120   -2.6986 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26748,7 +26748,7 @@ JIDHIN
 M  END
 $$$$
 JIFYUS
-     RDKit          3D
+     RDKix          3D
 JIFYUS
  24 25  0  0  0  0  0  0  0  0999 V2000
     7.0454    1.7840   -1.1061 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26804,7 +26804,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 JIGCIL
-     RDKit          3D
+     RDKix          3D
 JIGCIL
  15 16  0  0  0  0  0  0  0  0999 V2000
     4.9007    0.9603    0.1566 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26841,7 +26841,7 @@ JIGCIL
 M  END
 $$$$
 JIGRAS
-     RDKit          3D
+     RDKix          3D
 JIGRAS
  22 22  0  0  0  0  0  0  0  0999 V2000
     7.8109   15.6345    2.0126 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -26891,7 +26891,7 @@ JIGRAS
 M  END
 $$$$
 JIHVEB
-     RDKit          3D
+     RDKix          3D
 JIHVEB
  11 10  0  0  0  0  0  0  0  0999 V2000
    -0.6048   -0.5338   -4.7869 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -26920,7 +26920,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 JIKHUG
-     RDKit          3D
+     RDKix          3D
 JIKHUG
  28 29  0  0  0  0  0  0  0  0999 V2000
     0.7740   -1.0594    3.1673 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -26983,7 +26983,7 @@ JIKHUG
 M  END
 $$$$
 JILWUW
-     RDKit          3D
+     RDKix          3D
 JILWUW
  18 19  0  0  0  0  0  0  0  0999 V2000
     7.5009    1.5209    2.9574 N   0  5  0  0  0  0  0  0  0  0  0  0
@@ -27031,7 +27031,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 JINDAL
-     RDKit          3D
+     RDKix          3D
 JINDAL
  21 21  0  0  0  0  0  0  0  0999 V2000
     3.5944    1.9423   10.0748 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27079,7 +27079,7 @@ JINDAL
 M  END
 $$$$
 JINDOZ
-     RDKit          3D
+     RDKix          3D
 JINDOZ
  33 35  0  0  0  0  0  0  0  0999 V2000
     6.1445    0.7246    3.0597 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27155,7 +27155,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 JIRJID
-     RDKit          3D
+     RDKix          3D
 JIRJID
  13 12  0  0  0  0  0  0  0  0999 V2000
     0.8895    1.9994    1.8109 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27186,7 +27186,7 @@ JIRJID
 M  END
 $$$$
 JISZAM
-     RDKit          3D
+     RDKix          3D
 JISZAM
  33 34  0  0  0  0  0  0  0  0999 V2000
    -1.6435    1.7886   11.3778 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27260,7 +27260,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 JITMII
-     RDKit          3D
+     RDKix          3D
 JITMII
  32 33  0  0  0  0  0  0  0  0999 V2000
     0.0668   11.2037    2.3014 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27331,7 +27331,7 @@ JITMII
 M  END
 $$$$
 JIWKOP
-     RDKit          3D
+     RDKix          3D
 JIWKOP
  26 27  0  0  0  0  0  0  0  0999 V2000
     3.8641   -1.5209    6.8512 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -27394,7 +27394,7 @@ M  CHG  1  17  -1
 M  END
 $$$$
 JIXBAT
-     RDKit          3D
+     RDKix          3D
 JIXBAT
  27 27  0  0  0  0  0  0  0  0999 V2000
     0.4713    0.6008    1.0585 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27454,7 +27454,7 @@ JIXBAT
 M  END
 $$$$
 JIYJAC
-     RDKit          3D
+     RDKix          3D
 JIYJAC
  21 22  0  0  0  0  0  0  0  0999 V2000
     7.5240    0.7865    8.1681 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27503,7 +27503,7 @@ JIYJAC
 M  END
 $$$$
 JIYREO
-     RDKit          3D
+     RDKix          3D
 JIYREO
  18 18  0  0  0  0  0  0  0  0999 V2000
     2.4217    0.4265    7.0114 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27548,7 +27548,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 JIYTOA
-     RDKit          3D
+     RDKix          3D
 JIYTOA
  11 11  0  0  0  0  0  0  0  0999 V2000
     4.1603    1.9543   10.5809 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27577,7 +27577,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 JIZWUK
-     RDKit          3D
+     RDKix          3D
 JIZWUK
  37 36  0  0  0  0  0  0  0  0999 V2000
     1.8065   -0.5164    6.8299 H   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27656,7 +27656,7 @@ JIZWUK
 M  END
 $$$$
 JOFDUD
-     RDKit          3D
+     RDKix          3D
 JOFDUD
  16 15  0  0  0  0  0  0  0  0999 V2000
    -1.0979    3.1305    3.3028 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -27693,7 +27693,7 @@ JOFDUD
 M  END
 $$$$
 KAFXIY
-     RDKit          3D
+     RDKix          3D
 KAFXIY
  25 27  0  0  0  0  0  0  0  0999 V2000
     2.1265    1.2811    3.6103 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -27751,7 +27751,7 @@ KAFXIY
 M  END
 $$$$
 KAGBOJ
-     RDKit          3D
+     RDKix          3D
 KAGBOJ
  35 37  0  0  0  0  0  0  0  0999 V2000
     6.1810    0.6051    1.8291 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27829,7 +27829,7 @@ KAGBOJ
 M  END
 $$$$
 KAKGOS
-     RDKit          3D
+     RDKix          3D
 KAKGOS
  28 30  0  0  0  0  0  0  0  0999 V2000
     1.9555    5.6920    0.1288 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -27893,7 +27893,7 @@ KAKGOS
 M  END
 $$$$
 KAMCUW
-     RDKit          3D
+     RDKix          3D
 KAMCUW
  35 37  0  0  0  0  0  0  0  0999 V2000
     3.2723    3.0814   10.2464 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -27971,7 +27971,7 @@ KAMCUW
 M  END
 $$$$
 KAMJAJ
-     RDKit          3D
+     RDKix          3D
 KAMJAJ
  28 29  0  0  0  0  0  0  0  0999 V2000
     4.0276    1.5203    1.3119 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -28036,7 +28036,7 @@ M  CHG  1  17  -1
 M  END
 $$$$
 KANWEB
-     RDKit          3D
+     RDKix          3D
 KANWEB
  21 22  0  0  0  0  0  0  0  0999 V2000
     6.5006    2.5985    5.2856 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28085,7 +28085,7 @@ KANWEB
 M  END
 $$$$
 KANZOO
-     RDKit          3D
+     RDKix          3D
 KANZOO
  40 43  0  0  0  0  0  0  0  0999 V2000
     0.7223    9.5045    4.5190 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -28174,7 +28174,7 @@ KANZOO
 M  END
 $$$$
 KAPCUZ
-     RDKit          3D
+     RDKix          3D
 KAPCUZ
  18 18  0  0  0  0  0  0  0  0999 V2000
     1.8261    2.5294    9.6157 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28218,7 +28218,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 KARYAD
-     RDKit          3D
+     RDKix          3D
 KARYAD
  30 32  0  0  0  0  0  0  0  0999 V2000
     3.1395    4.5334    5.5392 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28286,7 +28286,7 @@ KARYAD
 M  END
 $$$$
 KASBAH
-     RDKit          3D
+     RDKix          3D
 KASBAH
  20 20  0  0  0  0  0  0  0  0999 V2000
    -3.6165    2.0841    5.7943 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28334,7 +28334,7 @@ M  CHG  1  12  -1
 M  END
 $$$$
 KASBOV
-     RDKit          3D
+     RDKix          3D
 KASBOV
  25 25  0  0  0  0  0  0  0  0999 V2000
    -0.2076    2.3178   -0.6358 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28390,7 +28390,7 @@ KASBOV
 M  END
 $$$$
 KATNAU
-     RDKit          3D
+     RDKix          3D
 KATNAU
  31 33  0  0  0  0  0  0  0  0999 V2000
     1.2097    2.9281    0.0253 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28460,7 +28460,7 @@ KATNAU
 M  END
 $$$$
 KAVFUI
-     RDKit          3D
+     RDKix          3D
 KAVFUI
  13 13  0  0  0  0  0  0  0  0999 V2000
    -3.4414   10.6904    3.6492 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28496,7 +28496,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 KAVTEG
-     RDKit          3D
+     RDKix          3D
 KAVTEG
  28 29  0  0  0  0  0  0  0  0999 V2000
     4.5031    6.2062   11.3556 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28559,7 +28559,7 @@ KAVTEG
 M  END
 $$$$
 KECSIU
-     RDKit          3D
+     RDKix          3D
 KECSIU
  30 30  0  0  0  0  0  0  0  0999 V2000
     1.2663    6.7777    5.1475 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28625,7 +28625,7 @@ KECSIU
 M  END
 $$$$
 KECSUG
-     RDKit          3D
+     RDKix          3D
 KECSUG
  17 17  0  0  0  0  0  0  0  0999 V2000
     3.7688    6.0085    5.7119 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28665,7 +28665,7 @@ KECSUG
 M  END
 $$$$
 KEDYAT
-     RDKit          3D
+     RDKix          3D
 KEDYAT
  24 25  0  0  0  0  0  0  0  0999 V2000
     1.8834    4.2089    5.0058 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28720,7 +28720,7 @@ KEDYAT
 M  END
 $$$$
 KEFJEK
-     RDKit          3D
+     RDKix          3D
 KEFJEK
  25 26  0  0  0  0  0  0  0  0999 V2000
     4.6547    0.4264    0.6571 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28777,7 +28777,7 @@ KEFJEK
 M  END
 $$$$
 KEJFOU
-     RDKit          3D
+     RDKix          3D
 KEJFOU
  21 21  0  0  0  0  0  0  0  0999 V2000
     1.5735    0.7163    4.5885 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28826,7 +28826,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 KEMFAJ
-     RDKit          3D
+     RDKix          3D
 KEMFAJ
  29 30  0  0  0  0  0  0  0  0999 V2000
     4.0273    5.5840    4.9495 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28892,7 +28892,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 KENHOA
-     RDKit          3D
+     RDKix          3D
 KENHOA
  22 24  0  0  0  0  0  0  0  0999 V2000
     2.0829    2.3066    0.8465 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28944,7 +28944,7 @@ KENHOA
 M  END
 $$$$
 KEPKIZ
-     RDKit          3D
+     RDKix          3D
 KEPKIZ
  15 17  0  0  0  0  0  0  0  0999 V2000
     1.7064    8.4079    2.0514 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -28984,7 +28984,7 @@ M  CHG  1  13  -1
 M  END
 $$$$
 KESNEB
-     RDKit          3D
+     RDKix          3D
 KESNEB
  32 32  0  0  0  0  0  0  0  0999 V2000
     9.6589    4.7019   16.0626 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -29060,7 +29060,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 KEWJIF
-     RDKit          3D
+     RDKix          3D
 KEWJIF
  11 11  0  0  0  0  0  0  0  0999 V2000
     7.9802    2.9133    0.2508 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29090,7 +29090,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 KHDFRM11
-     RDKit          3D
+     RDKix          3D
 KHDFRM11
   5  4  0  0  0  0  0  0  0  0999 V2000
     5.0901    0.4079    0.1391 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29105,7 +29105,7 @@ KHDFRM11
 M  END
 $$$$
 KIBDII
-     RDKit          3D
+     RDKix          3D
 KIBDII
  28 28  0  0  0  0  0  0  0  0999 V2000
     8.8205   10.5802   -2.2844 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29169,7 +29169,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 KIBFAC
-     RDKit          3D
+     RDKix          3D
 KIBFAC
  23 24  0  0  0  0  0  0  0  0999 V2000
     7.3873    0.1366    1.4653 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29224,7 +29224,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 KICCUU
-     RDKit          3D
+     RDKix          3D
 KICCUU
  12 11  0  0  0  0  0  0  0  0999 V2000
     4.8446    1.7403   -0.2876 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29253,7 +29253,7 @@ KICCUU
 M  END
 $$$$
 KICGAE
-     RDKit          3D
+     RDKix          3D
 KICGAE
  22 25  0  0  0  0  0  0  0  0999 V2000
     0.8968   -1.0362    6.0103 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29306,7 +29306,7 @@ KICGAE
 M  END
 $$$$
 KICLAJ
-     RDKit          3D
+     RDKix          3D
 KICLAJ
  24 25  0  0  0  0  0  0  0  0999 V2000
    -1.7570    0.7222   11.5972 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29361,7 +29361,7 @@ KICLAJ
 M  END
 $$$$
 KIGKIU
-     RDKit          3D
+     RDKix          3D
 KIGKIU
  15 16  0  0  0  0  0  0  0  0999 V2000
     3.5448    4.0353    1.8143 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29398,7 +29398,7 @@ KIGKIU
 M  END
 $$$$
 KIKVUV
-     RDKit          3D
+     RDKix          3D
 KIKVUV
  24 25  0  0  0  0  0  0  0  0999 V2000
     2.2020    3.6553    7.2592 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29457,7 +29457,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 KIMLEX01
-     RDKit          3D
+     RDKix          3D
 KIMLEX01
   5  4  0  0  0  0  0  0  0  0999 V2000
     1.5128    1.5204    0.6219 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29473,7 +29473,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 KINKUN
-     RDKit          3D
+     RDKix          3D
 KINKUN
  31 31  0  0  0  0  0  0  0  0999 V2000
     3.5563    3.0245    8.0957 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29541,7 +29541,7 @@ KINKUN
 M  END
 $$$$
 KINTUW
-     RDKit          3D
+     RDKix          3D
 KINTUW
  34 33  0  0  0  0  0  0  0  0999 V2000
     2.5382    2.0403    1.7063 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29620,7 +29620,7 @@ M  CHG  1  34  -1
 M  END
 $$$$
 KINWEJ
-     RDKit          3D
+     RDKix          3D
 KINWEJ
  39 43  0  0  0  0  0  0  0  0999 V2000
     4.1746    7.6207    2.9594 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29708,7 +29708,7 @@ KINWEJ
 M  END
 $$$$
 KINWIN
-     RDKit          3D
+     RDKix          3D
 KINWIN
  19 18  0  0  0  0  0  0  0  0999 V2000
    -0.7839   -1.2623    9.1457 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -29753,7 +29753,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 KIRCAP
-     RDKit          3D
+     RDKix          3D
 KIRCAP
  35 37  0  0  0  0  0  0  0  0999 V2000
     1.4495    1.7184    9.3581 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -29839,7 +29839,7 @@ M  CHG  1  16   1
 M  END
 $$$$
 KIRCOD
-     RDKit          3D
+     RDKix          3D
 KIRCOD
  21 21  0  0  0  0  0  0  0  0999 V2000
     5.0771    4.3358   13.1726 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -29887,7 +29887,7 @@ KIRCOD
 M  END
 $$$$
 KITREK
-     RDKit          3D
+     RDKix          3D
 KITREK
  30 31  0  0  0  0  0  0  0  0999 V2000
    -0.2756    0.9316    2.7573 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -29956,7 +29956,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 KIYGAA
-     RDKit          3D
+     RDKix          3D
 KIYGAA
  20 19  0  0  0  0  0  0  0  0999 V2000
     2.0529    3.8871    1.9794 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30001,7 +30001,7 @@ KIYGAA
 M  END
 $$$$
 KOBXOO
-     RDKit          3D
+     RDKix          3D
 KOBXOO
  14 14  0  0  0  0  0  0  0  0999 V2000
    -1.4692    0.4342    5.0406 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30037,7 +30037,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 KOBYOP
-     RDKit          3D
+     RDKix          3D
 KOBYOP
  14 15  0  0  0  0  0  0  0  0999 V2000
     4.7352   -0.1370    1.4817 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30072,7 +30072,7 @@ KOBYOP
 M  END
 $$$$
 KOBZEG
-     RDKit          3D
+     RDKix          3D
 KOBZEG
  39 42  0  0  0  0  0  0  0  0999 V2000
     0.7671    8.8067    7.6481 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -30159,7 +30159,7 @@ KOBZEG
 M  END
 $$$$
 KOCWUU
-     RDKit          3D
+     RDKix          3D
 KOCWUU
  20 21  0  0  0  0  0  0  0  0999 V2000
     4.1700   -1.2244    9.3138 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30206,7 +30206,7 @@ KOCWUU
 M  END
 $$$$
 KODFUE
-     RDKit          3D
+     RDKix          3D
 KODFUE
  31 31  0  0  0  0  0  0  0  0999 V2000
     4.4560    3.3287    0.9413 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30274,7 +30274,7 @@ KODFUE
 M  END
 $$$$
 KOFKIZ
-     RDKit          3D
+     RDKix          3D
 KOFKIZ
  23 23  0  0  0  0  0  0  0  0999 V2000
     8.9814    4.6849    8.3094 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30330,7 +30330,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 KOFMEX
-     RDKit          3D
+     RDKix          3D
 KOFMEX
  29 30  0  0  0  0  0  0  0  0999 V2000
    10.5546   10.4458    2.7104 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30395,7 +30395,7 @@ KOFMEX
 M  END
 $$$$
 KOFNIC
-     RDKit          3D
+     RDKix          3D
 KOFNIC
  32 34  0  0  0  0  0  0  0  0999 V2000
     4.5466    3.0665    1.8769 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30467,7 +30467,7 @@ KOFNIC
 M  END
 $$$$
 KOHVEI
-     RDKit          3D
+     RDKix          3D
 KOHVEI
  24 24  0  0  0  0  0  0  0  0999 V2000
     3.1711    1.0293    1.4702 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30521,7 +30521,7 @@ KOHVEI
 M  END
 $$$$
 KOHVIM
-     RDKit          3D
+     RDKix          3D
 KOHVIM
  17 17  0  0  0  0  0  0  0  0999 V2000
     0.2522    1.1530    5.3636 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30561,7 +30561,7 @@ KOHVIM
 M  END
 $$$$
 KOJGOF
-     RDKit          3D
+     RDKix          3D
 KOJGOF
  30 31  0  0  0  0  0  0  0  0999 V2000
     6.5611    3.7877    0.0000 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30628,7 +30628,7 @@ KOJGOF
 M  END
 $$$$
 KOJKID
-     RDKit          3D
+     RDKix          3D
 KOJKID
  26 26  0  0  0  0  0  0  0  0999 V2000
     4.7253    0.6835   -0.0145 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30686,7 +30686,7 @@ KOJKID
 M  END
 $$$$
 KOJZOY
-     RDKit          3D
+     RDKix          3D
 KOJZOY
  21 21  0  0  0  0  0  0  0  0999 V2000
     9.7802    0.5608    1.5980 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30734,7 +30734,7 @@ KOJZOY
 M  END
 $$$$
 KOKMIG
-     RDKit          3D
+     RDKix          3D
 KOKMIG
  30 30  0  0  0  0  0  0  0  0999 V2000
    -1.0486    0.0431    8.5819 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30800,7 +30800,7 @@ KOKMIG
 M  END
 $$$$
 KOLCUJ
-     RDKit          3D
+     RDKix          3D
 KOLCUJ
  29 29  0  0  0  0  0  0  0  0999 V2000
     3.3528    9.9787    3.3236 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30864,7 +30864,7 @@ KOLCUJ
 M  END
 $$$$
 MAPMIP03
-     RDKit          3D
+     RDKix          3D
 MAPMIP03
  28 27  0  0  0  0  0  0  0  0999 V2000
     5.2307    7.4359   -4.7976 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30926,7 +30926,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 MENBZS01
-     RDKit          3D
+     RDKix          3D
 MENBZS01
  19 19  0  0  0  0  0  0  0  0999 V2000
     9.2797    0.2795    8.5647 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -30972,7 +30972,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 METBZC10
-     RDKit          3D
+     RDKix          3D
 METBZC10
  23 23  0  0  0  0  0  0  0  0999 V2000
     2.8370    4.7331    3.1901 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -31025,7 +31025,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 NAESCB01
-     RDKit          3D
+     RDKix          3D
 NAESCB01
  18 17  0  0  0  0  0  0  0  0999 V2000
     2.6821   12.1613   -0.2220 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31067,7 +31067,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 NHOXAL06
-     RDKit          3D
+     RDKix          3D
 NHOXAL06
   7  6  0  0  0  0  0  0  0  0999 V2000
    -1.4454    0.4676    8.9712 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31087,7 +31087,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 PHOSLA10
-     RDKit          3D
+     RDKix          3D
 PHOSLA10
  21 22  0  0  0  0  0  0  0  0999 V2000
    -2.9484    0.8757    9.5739 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31136,7 +31136,7 @@ PHOSLA10
 M  END
 $$$$
 PHOSLB10
-     RDKit          3D
+     RDKix          3D
 PHOSLB10
  34 34  0  0  0  0  0  0  0  0999 V2000
     9.7278    4.6369   15.0017 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31210,7 +31210,7 @@ PHOSLB10
 M  END
 $$$$
 PIMTAZ01
-     RDKit          3D
+     RDKix          3D
 PIMTAZ01
  26 28  0  0  0  0  0  0  0  0999 V2000
     5.9328    2.9057    5.7589 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31270,7 +31270,7 @@ PIMTAZ01
 M  END
 $$$$
 QUICNA01
-     RDKit          3D
+     RDKix          3D
 QUICNA01
  16 16  0  0  0  0  0  0  0  0999 V2000
    -1.8005    1.5124    0.8734 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31311,7 +31311,7 @@ M  CHG  1  16  -1
 M  END
 $$$$
 SABNOY
-     RDKit          3D
+     RDKix          3D
 SABNOY
  30 30  0  0  0  0  0  0  0  0999 V2000
    15.0151    0.4670   -0.2791 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31377,7 +31377,7 @@ SABNOY
 M  END
 $$$$
 SACXAV
-     RDKit          3D
+     RDKix          3D
 SACXAV
  35 36  0  0  0  0  0  0  0  0999 V2000
    10.1523    1.9196    4.9868 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31454,7 +31454,7 @@ SACXAV
 M  END
 $$$$
 SADXAW
-     RDKit          3D
+     RDKix          3D
 SADXAW
  23 24  0  0  0  0  0  0  0  0999 V2000
    -0.8116    3.9810    3.1008 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31507,7 +31507,7 @@ SADXAW
 M  END
 $$$$
 SAFFOU
-     RDKit          3D
+     RDKix          3D
 SAFFOU
  14 15  0  0  0  0  0  0  0  0999 V2000
     1.9857    0.5170    6.2920 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31542,7 +31542,7 @@ SAFFOU
 M  END
 $$$$
 SAFFUA
-     RDKit          3D
+     RDKix          3D
 SAFFUA
  14 15  0  0  0  0  0  0  0  0999 V2000
     4.1548    4.2045    0.3619 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31577,7 +31577,7 @@ SAFFUA
 M  END
 $$$$
 SAFKAL
-     RDKit          3D
+     RDKix          3D
 SAFKAL
  10  9  0  0  0  0  0  0  0  0999 V2000
     3.2160    2.3909    2.5230 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31606,7 +31606,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 SAHSOJ
-     RDKit          3D
+     RDKix          3D
 SAHSOJ
  36 37  0  0  0  0  0  0  0  0999 V2000
     1.0709    9.3139   -0.2220 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31686,7 +31686,7 @@ M  CHG  1  17  -1
 M  END
 $$$$
 SAHSUP
-     RDKit          3D
+     RDKix          3D
 SAHSUP
  27 27  0  0  0  0  0  0  0  0999 V2000
     7.5494    7.9857    3.8546 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31748,7 +31748,7 @@ M  CHG  1  14   1
 M  END
 $$$$
 SAKGUG
-     RDKit          3D
+     RDKix          3D
 SAKGUG
  35 39  0  0  0  0  0  0  0  0999 V2000
     4.9050   12.6791   -0.7502 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -31828,7 +31828,7 @@ SAKGUG
 M  END
 $$$$
 SALVEG
-     RDKit          3D
+     RDKix          3D
 SALVEG
  29 30  0  0  0  0  0  0  0  0999 V2000
     1.5829    1.5740   -0.1310 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -31894,7 +31894,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 SAMFUH
-     RDKit          3D
+     RDKix          3D
 SAMFUH
  18 18  0  0  0  0  0  0  0  0999 V2000
    11.5071    2.9850    1.9858 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -31938,7 +31938,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 SAMXUZ
-     RDKit          3D
+     RDKix          3D
 SAMXUZ
  33 33  0  0  0  0  0  0  0  0999 V2000
     5.7317    3.4201    0.7165 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32010,7 +32010,7 @@ SAMXUZ
 M  END
 $$$$
 SANKEX10
-     RDKit          3D
+     RDKix          3D
 SANKEX10
  31 33  0  0  0  0  0  0  0  0999 V2000
     8.9813    3.9244   -1.1152 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32080,7 +32080,7 @@ SANKEX10
 M  END
 $$$$
 SAVDOI
-     RDKit          3D
+     RDKix          3D
 SAVDOI
  40 40  0  0  0  0  0  0  0  0999 V2000
     2.7071    5.4803    4.8785 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -32167,7 +32167,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 SAWKEG10
-     RDKit          3D
+     RDKix          3D
 SAWKEG10
  21 22  0  0  0  0  0  0  0  0999 V2000
     1.4137    1.5396    0.3499 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32216,7 +32216,7 @@ SAWKEG10
 M  END
 $$$$
 SEBPEU01
-     RDKit          3D
+     RDKix          3D
 SEBPEU01
  25 26  0  0  0  0  0  0  0  0999 V2000
     4.9462    0.2508    3.5846 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32274,7 +32274,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 SECDAF
-     RDKit          3D
+     RDKix          3D
 SECDAF
  35 37  0  0  0  0  0  0  0  0999 V2000
     2.0532   -1.0753    9.6642 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32353,7 +32353,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 SEFRAW
-     RDKit          3D
+     RDKix          3D
 SEFRAW
  24 26  0  0  0  0  0  0  0  0999 V2000
     1.2063    1.4611    2.5331 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32409,7 +32409,7 @@ SEFRAW
 M  END
 $$$$
 SEFYIL
-     RDKit          3D
+     RDKix          3D
 SEFYIL
  32 31  0  0  0  0  0  0  0  0999 V2000
    -1.1063    1.3545    1.3639 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32478,7 +32478,7 @@ SEFYIL
 M  END
 $$$$
 SEGFIT
-     RDKit          3D
+     RDKix          3D
 SEGFIT
  23 23  0  0  0  0  0  0  0  0999 V2000
     0.9264    2.3261    1.7449 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32531,7 +32531,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 SEGJAP
-     RDKit          3D
+     RDKix          3D
 SEGJAP
  30 32  0  0  0  0  0  0  0  0999 V2000
     7.4841    0.8635    5.3462 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -32599,7 +32599,7 @@ SEGJAP
 M  END
 $$$$
 SEGLAR
-     RDKit          3D
+     RDKix          3D
 SEGLAR
  19 19  0  0  0  0  0  0  0  0999 V2000
     1.1177    0.8001    3.7034 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32643,7 +32643,7 @@ SEGLAR
 M  END
 $$$$
 SEGNEX
-     RDKit          3D
+     RDKix          3D
 SEGNEX
  16 15  0  0  0  0  0  0  0  0999 V2000
     1.3162    2.2109    6.7174 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32681,7 +32681,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 SEGWEG
-     RDKit          3D
+     RDKix          3D
 SEGWEG
  16 17  0  0  0  0  0  0  0  0999 V2000
    -0.0457    0.0000   -0.0477 I   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32720,7 +32720,7 @@ SEGWEG
 M  END
 $$$$
 SEHBEM
-     RDKit          3D
+     RDKix          3D
 SEHBEM
  31 31  0  0  0  0  0  0  0  0999 V2000
    -0.6848    0.2399    7.3460 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32790,7 +32790,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 SEJDAM
-     RDKit          3D
+     RDKix          3D
 SEJDAM
  27 30  0  0  0  0  0  0  0  0999 V2000
     3.2943    1.4668    7.4347 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32853,7 +32853,7 @@ SEJDAM
 M  END
 $$$$
 SEKKIC
-     RDKit          3D
+     RDKix          3D
 SEKKIC
  30 30  0  0  0  0  0  0  0  0999 V2000
     5.6926    5.7915   11.6729 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32919,7 +32919,7 @@ SEKKIC
 M  END
 $$$$
 SEKPED
-     RDKit          3D
+     RDKix          3D
 SEKPED
  16 17  0  0  0  0  0  0  0  0999 V2000
     1.3186    3.4794    0.0674 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32958,7 +32958,7 @@ SEKPED
 M  END
 $$$$
 SEKPIH
-     RDKit          3D
+     RDKix          3D
 SEKPIH
  17 18  0  0  0  0  0  0  0  0999 V2000
     1.0581    0.3535    2.0970 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -32999,7 +32999,7 @@ SEKPIH
 M  END
 $$$$
 SELFIY
-     RDKit          3D
+     RDKix          3D
 SELFIY
  36 38  0  0  0  0  0  0  0  0999 V2000
     1.2629    5.2003    3.7512 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -33079,7 +33079,7 @@ SELFIY
 M  END
 $$$$
 SEMDIX
-     RDKit          3D
+     RDKix          3D
 SEMDIX
  28 27  0  0  0  0  0  0  0  0999 V2000
     0.8497    6.5570    9.1635 S   0  5  0  0  0  0  0  0  0  0  0  0
@@ -33142,7 +33142,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 SEMXOX
-     RDKit          3D
+     RDKix          3D
 SEMXOX
  27 28  0  0  0  0  0  0  0  0999 V2000
     2.5444    2.6698   10.4181 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33203,7 +33203,7 @@ SEMXOX
 M  END
 $$$$
 SETHAA
-     RDKit          3D
+     RDKix          3D
 SETHAA
  26 27  0  0  0  0  0  0  0  0999 V2000
    -3.0983    7.4942   -2.3528 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33262,7 +33262,7 @@ SETHAA
 M  END
 $$$$
 SETLIM
-     RDKit          3D
+     RDKix          3D
 SETLIM
  26 27  0  0  0  0  0  0  0  0999 V2000
     9.5554    1.9863    1.3973 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33321,7 +33321,7 @@ SETLIM
 M  END
 $$$$
 SEYVUN
-     RDKit          3D
+     RDKix          3D
 SEYVUN
  15 16  0  0  0  0  0  0  0  0999 V2000
    10.2553   -2.8173    3.1168 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33359,7 +33359,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 SEYWUO
-     RDKit          3D
+     RDKix          3D
 SEYWUO
  32 32  0  0  0  0  0  0  0  0999 V2000
     2.6312   10.5857    6.5912 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33431,7 +33431,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 SEZMEP
-     RDKit          3D
+     RDKix          3D
 SEZMEP
  19 20  0  0  0  0  0  0  0  0999 V2000
     6.8716   14.1992   -2.7019 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -33476,7 +33476,7 @@ SEZMEP
 M  END
 $$$$
 SICNUN
-     RDKit          3D
+     RDKix          3D
 SICNUN
  26 26  0  0  0  0  0  0  0  0999 V2000
    -0.1034    0.4837    7.7842 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33540,7 +33540,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 SICPEZ
-     RDKit          3D
+     RDKix          3D
 SICPEZ
  26 27  0  0  0  0  0  0  0  0999 V2000
     4.4886    2.1220    0.9463 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33599,7 +33599,7 @@ SICPEZ
 M  END
 $$$$
 SICSEC
-     RDKit          3D
+     RDKix          3D
 SICSEC
  22 24  0  0  0  0  0  0  0  0999 V2000
     0.5645   16.3955    2.4819 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33651,7 +33651,7 @@ SICSEC
 M  END
 $$$$
 SIDFIU
-     RDKit          3D
+     RDKix          3D
 SIDFIU
  20 20  0  0  0  0  0  0  0  0999 V2000
     1.6089   -0.1845    4.0887 I   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33697,7 +33697,7 @@ SIDFIU
 M  END
 $$$$
 SIDRUS
-     RDKit          3D
+     RDKix          3D
 SIDRUS
  38 38  0  0  0  0  0  0  0  0999 V2000
     1.5051    8.4925    7.7069 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33781,7 +33781,7 @@ M  CHG  1  13  -1
 M  END
 $$$$
 SINMIL
-     RDKit          3D
+     RDKix          3D
 SINMIL
  40 40  0  0  0  0  0  0  0  0999 V2000
    -0.0543    0.5004    8.3368 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33869,7 +33869,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 SIYLOB
-     RDKit          3D
+     RDKix          3D
 SIYLOB
  38 38  0  0  0  0  0  0  0  0999 V2000
     2.3159    5.5863    4.3256 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -33951,7 +33951,7 @@ SIYLOB
 M  END
 $$$$
 SIZJIU
-     RDKit          3D
+     RDKix          3D
 SIZJIU
  38 40  0  0  0  0  0  0  0  0999 V2000
     2.3059    5.0164    2.7158 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34035,7 +34035,7 @@ SIZJIU
 M  END
 $$$$
 SIZWUT
-     RDKit          3D
+     RDKix          3D
 SIZWUT
  25 26  0  0  0  0  0  0  0  0999 V2000
     4.8274    0.4612   -0.1446 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34092,7 +34092,7 @@ SIZWUT
 M  END
 $$$$
 SLFNMB04
-     RDKit          3D
+     RDKix          3D
 SLFNMB04
  28 29  0  0  0  0  0  0  0  0999 V2000
     9.6868    2.4212   -7.0696 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34155,7 +34155,7 @@ SLFNMB04
 M  END
 $$$$
 SOGVOZ
-     RDKit          3D
+     RDKix          3D
 SOGVOZ
  27 28  0  0  0  0  0  0  0  0999 V2000
     6.1946    0.6917    0.3111 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34218,7 +34218,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 SOHXOC
-     RDKit          3D
+     RDKix          3D
 SOHXOC
  32 32  0  0  0  0  0  0  0  0999 V2000
     6.0774    5.6340   -2.3123 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34290,7 +34290,7 @@ M  CHG  1  14   1
 M  END
 $$$$
 SOJNEK
-     RDKit          3D
+     RDKix          3D
 SOJNEK
  22 22  0  0  0  0  0  0  0  0999 V2000
     8.4822   -0.5375    1.5450 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34340,7 +34340,7 @@ SOJNEK
 M  END
 $$$$
 SOMKIO
-     RDKit          3D
+     RDKix          3D
 SOMKIO
  23 24  0  0  0  0  0  0  0  0999 V2000
     0.0494    8.0734    6.5518 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -34394,7 +34394,7 @@ M  CHG  1   1   2
 M  END
 $$$$
 SONZIE
-     RDKit          3D
+     RDKix          3D
 SONZIE
  36 38  0  0  0  0  0  0  0  0999 V2000
     2.8112    5.3942    3.7332 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34474,7 +34474,7 @@ SONZIE
 M  END
 $$$$
 SOPZEC
-     RDKit          3D
+     RDKix          3D
 SOPZEC
  17 17  0  0  0  0  0  0  0  0999 V2000
     1.4379    5.5868   10.4263 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34514,7 +34514,7 @@ SOPZEC
 M  END
 $$$$
 SORBIK
-     RDKit          3D
+     RDKix          3D
 SORBIK
  20 21  0  0  0  0  0  0  0  0999 V2000
    -1.8322    0.2952   -1.1619 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -34563,7 +34563,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 SURDOX02
-     RDKit          3D
+     RDKix          3D
 SURDOX02
  10  9  0  0  0  0  0  0  0  0999 V2000
     4.9022    2.5288    1.4835 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34588,7 +34588,7 @@ SURDOX02
 M  END
 $$$$
 TACGIN
-     RDKit          3D
+     RDKix          3D
 TACGIN
  23 24  0  0  0  0  0  0  0  0999 V2000
     3.2040    2.5856    1.5688 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34645,7 +34645,7 @@ M  CHG  1  15  -1
 M  END
 $$$$
 TACLEO
-     RDKit          3D
+     RDKix          3D
 TACLEO
  27 28  0  0  0  0  0  0  0  0999 V2000
    -1.1335    0.7036   10.3644 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34708,7 +34708,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 TAFKIU
-     RDKit          3D
+     RDKix          3D
 TAFKIU
  17 18  0  0  0  0  0  0  0  0999 V2000
     0.3584    4.8162   11.5824 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34749,7 +34749,7 @@ TAFKIU
 M  END
 $$$$
 TAFXIH
-     RDKit          3D
+     RDKix          3D
 TAFXIH
  26 28  0  0  0  0  0  0  0  0999 V2000
     2.8591    8.3254   -0.9620 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34809,7 +34809,7 @@ TAFXIH
 M  END
 $$$$
 TAFZIJ
-     RDKit          3D
+     RDKix          3D
 TAFZIJ
  15 15  0  0  0  0  0  0  0  0999 V2000
     5.6228   -0.0544   12.6781 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -34847,7 +34847,7 @@ M  CHG  1   5   1
 M  END
 $$$$
 TAGVIG
-     RDKit          3D
+     RDKix          3D
 TAGVIG
  14 14  0  0  0  0  0  0  0  0999 V2000
    -0.9577    0.2901    7.1962 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34882,7 +34882,7 @@ M  CHG  1  11  -1
 M  END
 $$$$
 TAHMOE
-     RDKit          3D
+     RDKix          3D
 TAHMOE
  18 17  0  0  0  0  0  0  0  0999 V2000
     2.2125    5.3795    2.7638 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34923,7 +34923,7 @@ TAHMOE
 M  END
 $$$$
 TAJPUP
-     RDKit          3D
+     RDKix          3D
 TAJPUP
  26 27  0  0  0  0  0  0  0  0999 V2000
    -0.1134   -0.2865    3.6607 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -34985,7 +34985,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 TAJSUS
-     RDKit          3D
+     RDKix          3D
 TAJSUS
  30 31  0  0  0  0  0  0  0  0999 V2000
     1.0967   -0.8361    5.0834 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35055,7 +35055,7 @@ M  CHG  1  19  -1
 M  END
 $$$$
 TAJVUV
-     RDKit          3D
+     RDKix          3D
 TAJVUV
   6  6  0  0  0  0  0  0  0  0999 V2000
     5.2402   12.9647   -2.9071 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35074,7 +35074,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 TAJWAC
-     RDKit          3D
+     RDKix          3D
 TAJWAC
  19 20  0  0  0  0  0  0  0  0999 V2000
     2.3881    4.0712   -0.2896 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35119,7 +35119,7 @@ TAJWAC
 M  END
 $$$$
 TAKHES
-     RDKit          3D
+     RDKix          3D
 TAKHES
  14 14  0  0  0  0  0  0  0  0999 V2000
     3.6742    3.9519    6.8242 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -35153,7 +35153,7 @@ TAKHES
 M  END
 $$$$
 TAMMAV
-     RDKit          3D
+     RDKix          3D
 TAMMAV
  16 17  0  0  0  0  0  0  0  0999 V2000
    -0.3745    1.9917    0.7382 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35193,7 +35193,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 TANHAR
-     RDKit          3D
+     RDKix          3D
 TANHAR
  20 21  0  0  0  0  0  0  0  0999 V2000
     9.4230    1.4699   16.2076 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35242,7 +35242,7 @@ M  CHG  1  13  -1
 M  END
 $$$$
 TAPJUP
-     RDKit          3D
+     RDKix          3D
 TAPJUP
  23 25  0  0  0  0  0  0  0  0999 V2000
    -1.5839    6.2924    1.0994 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35298,7 +35298,7 @@ M  CHG  1  12   1
 M  END
 $$$$
 TAPSAE
-     RDKit          3D
+     RDKix          3D
 TAPSAE
  19 19  0  0  0  0  0  0  0  0999 V2000
    11.8917    2.4159    3.9552 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35342,7 +35342,7 @@ TAPSAE
 M  END
 $$$$
 TCYMPH02
-     RDKit          3D
+     RDKix          3D
 TCYMPH02
  16 15  0  0  0  0  0  0  0  0999 V2000
     0.0001   -0.0001   -0.0334 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35379,7 +35379,7 @@ TCYMPH02
 M  END
 $$$$
 TMTCHD01
-     RDKit          3D
+     RDKix          3D
 TMTCHD01
  24 26  0  0  0  0  0  0  0  0999 V2000
     4.2865    0.8872    1.9739 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35435,7 +35435,7 @@ TMTCHD01
 M  END
 $$$$
 VABLIT
-     RDKit          3D
+     RDKix          3D
 VABLIT
  22 23  0  0  0  0  0  0  0  0999 V2000
     4.1157    1.5167    9.0697 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35486,7 +35486,7 @@ VABLIT
 M  END
 $$$$
 VABROF
-     RDKit          3D
+     RDKix          3D
 VABROF
  28 29  0  0  0  0  0  0  0  0999 V2000
     1.6976    3.5841    6.3311 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35549,7 +35549,7 @@ VABROF
 M  END
 $$$$
 VACRUM
-     RDKit          3D
+     RDKix          3D
 VACRUM
  27 28  0  0  0  0  0  0  0  0999 V2000
     1.0975   12.3838    2.3854 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35612,7 +35612,7 @@ M  CHG  1   7  -1
 M  END
 $$$$
 VAJFAN
-     RDKit          3D
+     RDKix          3D
 VAJFAN
  26 27  0  0  0  0  0  0  0  0999 V2000
     3.0462   -1.2230   10.4355 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35671,7 +35671,7 @@ VAJFAN
 M  END
 $$$$
 VALTEH
-     RDKit          3D
+     RDKix          3D
 VALTEH
   8  7  0  0  0  0  0  0  0  0999 V2000
    -0.4682   -3.1153    2.8072 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35693,7 +35693,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 VALWOU
-     RDKit          3D
+     RDKix          3D
 VALWOU
  31 32  0  0  0  0  0  0  0  0999 V2000
    -3.2041    0.1999    8.6171 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35764,7 +35764,7 @@ M  CHG  1  11   1
 M  END
 $$$$
 VAPZOB10
-     RDKit          3D
+     RDKix          3D
 VAPZOB10
  32 34  0  0  0  0  0  0  0  0999 V2000
     4.0579    5.7957   13.0513 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35836,7 +35836,7 @@ VAPZOB10
 M  END
 $$$$
 VASDOI
-     RDKit          3D
+     RDKix          3D
 VASDOI
  20 21  0  0  0  0  0  0  0  0999 V2000
     1.4044    2.0158   11.3041 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -35883,7 +35883,7 @@ VASDOI
 M  END
 $$$$
 VATKAC
-     RDKit          3D
+     RDKix          3D
 VATKAC
  29 31  0  0  0  0  0  0  0  0999 V2000
     2.6837    4.8763    1.4585 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -35949,7 +35949,7 @@ VATKAC
 M  END
 $$$$
 VAWDUS
-     RDKit          3D
+     RDKix          3D
 VAWDUS
  23 23  0  0  0  0  0  0  0  0999 V2000
     0.3643    4.8512    8.4631 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36005,7 +36005,7 @@ M  CHG  1   8   1
 M  END
 $$$$
 VAWMOV
-     RDKit          3D
+     RDKix          3D
 VAWMOV
  30 31  0  0  0  0  0  0  0  0999 V2000
     2.2657    7.8503    1.9758 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36072,7 +36072,7 @@ VAWMOV
 M  END
 $$$$
 VAWWAR
-     RDKit          3D
+     RDKix          3D
 VAWWAR
  33 32  0  0  0  0  0  0  0  0999 V2000
     4.1017    2.8927   11.4672 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -36147,7 +36147,7 @@ M  CHG  1   7   1
 M  END
 $$$$
 VAYKUB
-     RDKit          3D
+     RDKix          3D
 VAYKUB
  26 26  0  0  0  0  0  0  0  0999 V2000
     6.2138   10.9567    0.8083 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -36206,7 +36206,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 VAZHUZ
-     RDKit          3D
+     RDKix          3D
 VAZHUZ
  26 27  0  0  0  0  0  0  0  0999 V2000
     2.1432    5.5827    4.4315 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36265,7 +36265,7 @@ VAZHUZ
 M  END
 $$$$
 VECSAX
-     RDKit          3D
+     RDKix          3D
 VECSAX
  26 26  0  0  0  0  0  0  0  0999 V2000
     0.2011    0.1191    9.8980 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36323,7 +36323,7 @@ VECSAX
 M  END
 $$$$
 VEDTED
-     RDKit          3D
+     RDKix          3D
 VEDTED
  23 24  0  0  0  0  0  0  0  0999 V2000
     0.6994    1.2861    5.6234 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36376,7 +36376,7 @@ VEDTED
 M  END
 $$$$
 VEHCOA
-     RDKit          3D
+     RDKix          3D
 VEHCOA
  23 23  0  0  0  0  0  0  0  0999 V2000
    -0.1704    1.0340    7.2321 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36430,7 +36430,7 @@ M  CHG  1   6  -1
 M  END
 $$$$
 VEHZOX
-     RDKit          3D
+     RDKix          3D
 VEHZOX
  27 28  0  0  0  0  0  0  0  0999 V2000
     2.8671    1.8425   10.1011 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -36491,7 +36491,7 @@ VEHZOX
 M  END
 $$$$
 VEJWOW
-     RDKit          3D
+     RDKix          3D
 VEJWOW
  24 24  0  0  0  0  0  0  0  0999 V2000
     0.4593    2.7451    8.1613 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36545,7 +36545,7 @@ VEJWOW
 M  END
 $$$$
 VEKMON
-     RDKit          3D
+     RDKix          3D
 VEKMON
  25 25  0  0  0  0  0  0  0  0999 V2000
     5.0445    6.6458    8.4340 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36602,7 +36602,7 @@ M  CHG  1  10   1
 M  END
 $$$$
 VENYUI
-     RDKit          3D
+     RDKix          3D
 VENYUI
  24 27  0  0  0  0  0  0  0  0999 V2000
     4.7129    3.2790    6.9845 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36659,7 +36659,7 @@ VENYUI
 M  END
 $$$$
 VETWAS
-     RDKit          3D
+     RDKix          3D
 VETWAS
  24 25  0  0  0  0  0  0  0  0999 V2000
     2.6598    3.6820    0.0948 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36722,7 +36722,7 @@ M  CHG  1  23  -1
 M  END
 $$$$
 VEVDIJ
-     RDKit          3D
+     RDKix          3D
 VEVDIJ
  29 31  0  0  0  0  0  0  0  0999 V2000
    -0.2197    2.9275    7.0232 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -36788,7 +36788,7 @@ VEVDIJ
 M  END
 $$$$
 VEWZOM
-     RDKit          3D
+     RDKix          3D
 VEWZOM
  31 33  0  0  0  0  0  0  0  0999 V2000
     7.8913    3.8932   10.8662 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36859,7 +36859,7 @@ M  CHG  1  10   1
 M  END
 $$$$
 VEXKOY
-     RDKit          3D
+     RDKix          3D
 VEXKOY
  21 23  0  0  0  0  0  0  0  0999 V2000
    11.9739    2.4492   -1.2540 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36909,7 +36909,7 @@ VEXKOY
 M  END
 $$$$
 VEXMOA
-     RDKit          3D
+     RDKix          3D
 VEXMOA
  25 26  0  0  0  0  0  0  0  0999 V2000
     7.6664    3.1350    4.2429 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -36966,7 +36966,7 @@ VEXMOA
 M  END
 $$$$
 VEYBIK
-     RDKit          3D
+     RDKix          3D
 VEYBIK
  24 24  0  0  0  0  0  0  0  0999 V2000
    10.1554    4.0578    2.7697 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -37020,7 +37020,7 @@ VEYBIK
 M  END
 $$$$
 VEYWAX
-     RDKit          3D
+     RDKix          3D
 VEYWAX
  10  9  0  0  0  0  0  0  0  0999 V2000
     3.6818    1.1947    3.8865 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -37045,7 +37045,7 @@ VEYWAX
 M  END
 $$$$
 VEZBUX
-     RDKit          3D
+     RDKix          3D
 VEZBUX
  20 21  0  0  0  0  0  0  0  0999 V2000
     0.8143    1.1643    7.9447 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -37092,7 +37092,7 @@ VEZBUX
 M  END
 $$$$
 VICGAP
-     RDKit          3D
+     RDKix          3D
 VICGAP
  31 32  0  0  0  0  0  0  0  0999 V2000
     4.3725    3.7900    5.8399 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37161,7 +37161,7 @@ VICGAP
 M  END
 $$$$
 VICGET
-     RDKit          3D
+     RDKix          3D
 VICGET
  35 37  0  0  0  0  0  0  0  0999 V2000
     3.0787    8.7638    6.3636 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37240,7 +37240,7 @@ M  CHG  1  11   2
 M  END
 $$$$
 VICKIB
-     RDKit          3D
+     RDKix          3D
 VICKIB
  27 28  0  0  0  0  0  0  0  0999 V2000
     2.4350    2.8580    2.4039 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -37301,7 +37301,7 @@ VICKIB
 M  END
 $$$$
 VICPOM
-     RDKit          3D
+     RDKix          3D
 VICPOM
  26 28  0  0  0  0  0  0  0  0999 V2000
     0.7338    6.6848    2.1236 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37362,7 +37362,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 VIDKUO
-     RDKit          3D
+     RDKix          3D
 VIDKUO
  21 21  0  0  0  0  0  0  0  0999 V2000
    -0.5054    0.0930   10.0847 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -37411,7 +37411,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 VIFFEV
-     RDKit          3D
+     RDKix          3D
 VIFFEV
  25 28  0  0  0  0  0  0  0  0999 V2000
     4.6391    9.1295    0.9915 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37470,7 +37470,7 @@ VIFFEV
 M  END
 $$$$
 VIGPEG
-     RDKit          3D
+     RDKix          3D
 VIGPEG
  33 34  0  0  0  0  0  0  0  0999 V2000
     9.1481    0.7814    6.1946 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37543,7 +37543,7 @@ VIGPEG
 M  END
 $$$$
 VIGTUA
-     RDKit          3D
+     RDKix          3D
 VIGTUA
  22 26  0  0  0  0  0  0  0  0999 V2000
     0.2487    8.4379    0.5263 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37597,7 +37597,7 @@ VIGTUA
 M  END
 $$$$
 VIHHID
-     RDKit          3D
+     RDKix          3D
 VIHHID
  26 27  0  0  0  0  0  0  0  0999 V2000
     4.3600    1.2171    3.5783 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37656,7 +37656,7 @@ VIHHID
 M  END
 $$$$
 VIKVIU
-     RDKit          3D
+     RDKix          3D
 VIKVIU
  20 20  0  0  0  0  0  0  0  0999 V2000
     1.8627    0.4527    7.4499 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37704,7 +37704,7 @@ M  CHG  1  10  -1
 M  END
 $$$$
 VIKYAP
-     RDKit          3D
+     RDKix          3D
 VIKYAP
  26 30  0  0  0  0  0  0  0  0999 V2000
     0.7024    4.4360    3.4520 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37768,7 +37768,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 VIMHII
-     RDKit          3D
+     RDKix          3D
 VIMHII
   5  4  0  0  0  0  0  0  0  0999 V2000
    -1.3049    0.9545    8.7165 Cl  0  1  0  0  0  0  0  0  0  0  0  0
@@ -37788,7 +37788,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 VIPXAT
-     RDKit          3D
+     RDKix          3D
 VIPXAT
  24 25  0  0  0  0  0  0  0  0999 V2000
     2.1157    7.6373    2.1786 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37844,7 +37844,7 @@ M  CHG  1  13   1
 M  END
 $$$$
 VIRBON
-     RDKit          3D
+     RDKix          3D
 VIRBON
  29 30  0  0  0  0  0  0  0  0999 V2000
     7.8686    2.2224   -0.1160 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37911,7 +37911,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 VIWCOT
-     RDKit          3D
+     RDKix          3D
 VIWCOT
  20 21  0  0  0  0  0  0  0  0999 V2000
     2.0585    8.7243    1.8204 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37958,7 +37958,7 @@ VIWCOT
 M  END
 $$$$
 VIXRID
-     RDKit          3D
+     RDKix          3D
 VIXRID
  16 17  0  0  0  0  0  0  0  0999 V2000
     0.4822    2.7197    2.8962 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -37997,7 +37997,7 @@ VIXRID
 M  END
 $$$$
 VIXXOP
-     RDKit          3D
+     RDKix          3D
 VIXXOP
  12 12  0  0  0  0  0  0  0  0999 V2000
     0.3140    4.4977    2.8849 S   0  2  0  0  0  0  0  0  0  0  0  0
@@ -38029,7 +38029,7 @@ M  CHG  1   2   2
 M  END
 $$$$
 VIYPAU
-     RDKit          3D
+     RDKix          3D
 VIYPAU
  30 32  0  0  0  0  0  0  0  0999 V2000
    -0.6071   -2.2339   -1.3284 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -38097,7 +38097,7 @@ VIYPAU
 M  END
 $$$$
 VOBLAZ
-     RDKit          3D
+     RDKix          3D
 VOBLAZ
  29 31  0  0  0  0  0  0  0  0999 V2000
     4.4252    8.5273   -1.4182 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38163,7 +38163,7 @@ VOBLAZ
 M  END
 $$$$
 VOBWOY
-     RDKit          3D
+     RDKix          3D
 VOBWOY
  21 22  0  0  0  0  0  0  0  0999 V2000
     3.2035    4.9959    0.7675 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38212,7 +38212,7 @@ VOBWOY
 M  END
 $$$$
 VOFBOH
-     RDKit          3D
+     RDKix          3D
 VOFBOH
  25 26  0  0  0  0  0  0  0  0999 V2000
     5.6313    2.1569    2.2160 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -38269,7 +38269,7 @@ VOFBOH
 M  END
 $$$$
 VOFCAU
-     RDKit          3D
+     RDKix          3D
 VOFCAU
  22 23  0  0  0  0  0  0  0  0999 V2000
     4.7291    1.3233    5.1382 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -38320,7 +38320,7 @@ VOFCAU
 M  END
 $$$$
 VOJGEG
-     RDKit          3D
+     RDKix          3D
 VOJGEG
   9  8  0  0  0  0  0  0  0  0999 V2000
    -2.2179    0.6733   10.0279 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38344,7 +38344,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 VOJJIN
-     RDKit          3D
+     RDKix          3D
 VOJJIN
  20 20  0  0  0  0  0  0  0  0999 V2000
    -0.0879    2.7860    9.9440 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38392,7 +38392,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 VUWXUG
-     RDKit          3D
+     RDKix          3D
 VUWXUG
  10  9  0  0  0  0  0  0  0  0999 V2000
    -1.1326    2.7484   -0.7778 O   0  5  0  0  0  0  0  0  0  0  0  0
@@ -38419,7 +38419,7 @@ M  CHG  1   9  -1
 M  END
 $$$$
 VUXGOK
-     RDKit          3D
+     RDKix          3D
 VUXGOK
  22 23  0  0  0  0  0  0  0  0999 V2000
     3.3878    1.4496    8.9814 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38470,7 +38470,7 @@ VUXGOK
 M  END
 $$$$
 VUXPUZ
-     RDKit          3D
+     RDKix          3D
 VUXPUZ
  22 23  0  0  0  0  0  0  0  0999 V2000
     2.5552    4.3911    3.0667 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38521,7 +38521,7 @@ VUXPUZ
 M  END
 $$$$
 VUXREL
-     RDKit          3D
+     RDKix          3D
 VUXREL
  22 23  0  0  0  0  0  0  0  0999 V2000
     1.0321    6.7575   10.8502 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38572,7 +38572,7 @@ VUXREL
 M  END
 $$$$
 ZZZIZA01
-     RDKit          3D
+     RDKix          3D
 ZZZIZA01
  14 14  0  0  0  0  0  0  0  0999 V2000
     3.9227    0.0000    0.4349 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38610,7 +38610,7 @@ M  CHG  1  14  -1
 M  END
 $$$$
 ZZZMVU10
-     RDKit          3D
+     RDKix          3D
 ZZZMVU10
  30 31  0  0  0  0  0  0  0  0999 V2000
     1.9957    2.2135    9.6142 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38677,7 +38677,7 @@ ZZZMVU10
 M  END
 $$$$
 ZZZVCQ01
-     RDKit          3D
+     RDKix          3D
 ZZZVCQ01
  12 12  0  0  0  0  0  0  0  0999 V2000
     1.2558   -0.8409    7.6954 I   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38707,7 +38707,7 @@ ZZZVCQ01
 M  END
 $$$$
 AR14A
-     RDKit          3D
+     RDKix          3D
 AR14A
   8  8  0  0  0  0  0  0  0  0999 V2000
    -0.0021    0.0000   -0.0072 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38729,7 +38729,7 @@ AR14A
 M  END
 $$$$
 CA04A
-     RDKit          3D
+     RDKix          3D
 CA04A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -0.0176    0.0036    0.0008 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38748,7 +38748,7 @@ CA04A
 M  END
 $$$$
 CE05A
-     RDKit          3D
+     RDKix          3D
 CE05A
   9  8  0  0  0  0  0  0  0  0999 V2000
    -0.0206    0.0000   -0.0060 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38771,7 +38771,7 @@ CE05A
 M  END
 $$$$
 CO01A
-     RDKit          3D
+     RDKix          3D
 CO01A
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000   -0.0023 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38784,7 +38784,7 @@ CO01A
 M  END
 $$$$
 CO08A
-     RDKit          3D
+     RDKix          3D
 CO08A
  11 10  0  0  0  0  0  0  0  0999 V2000
    -0.0119    0.0038    0.0073 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38811,7 +38811,7 @@ CO08A
 M  END
 $$$$
 HL08A
-     RDKit          3D
+     RDKix          3D
 HL08A
  12 12  0  0  0  0  0  0  0  0999 V2000
    -0.0363    0.0484   -0.0021 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -38841,7 +38841,7 @@ HL08A
 M  END
 $$$$
 IM02A
-     RDKit          3D
+     RDKix          3D
 IM02A
   8  7  0  0  0  0  0  0  0  0999 V2000
     0.0036   -0.0001    0.0016 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38862,7 +38862,7 @@ IM02A
 M  END
 $$$$
 NC10A
-     RDKit          3D
+     RDKix          3D
 NC10A
   9  8  0  0  0  0  0  0  0  0999 V2000
     0.0009    0.0000    0.0015 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38886,7 +38886,7 @@ M  CHG  1   2   1
 M  END
 $$$$
 NC13A
-     RDKit          3D
+     RDKix          3D
 NC13A
   6  5  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000   -0.0014 N   0  3  0  0  0  0  0  0  0  0  0  0
@@ -38904,7 +38904,7 @@ M  CHG  1   1   1
 M  END
 $$$$
 NH10A
-     RDKit          3D
+     RDKix          3D
 NH10A
   4  3  0  0  0  0  0  0  0  0999 V2000
    -0.0014    0.0021   -0.0010 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38917,7 +38917,7 @@ NH10A
 M  END
 $$$$
 NH20A
-     RDKit          3D
+     RDKix          3D
 NH20A
  14 13  0  0  0  0  0  0  0  0999 V2000
     0.0060   -0.0315   -0.0137 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38952,7 +38952,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 NH22A
-     RDKit          3D
+     RDKix          3D
 NH22A
  11 10  0  0  0  0  0  0  0  0999 V2000
     0.0318   -0.0865   -0.0149 H   0  0  0  0  0  0  0  0  0  0  0  0
@@ -38981,7 +38981,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 NH23A
-     RDKit          3D
+     RDKix          3D
 NH23A
  11 10  0  0  0  0  0  0  0  0999 V2000
     0.0055   -0.0607   -0.0219 H   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39008,7 +39008,7 @@ NH23A
 M  END
 $$$$
 OH10A
-     RDKit          3D
+     RDKix          3D
 OH10A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -0.0005    0.0000    0.0024 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39027,7 +39027,7 @@ OH10A
 M  END
 $$$$
 SR01A
-     RDKit          3D
+     RDKix          3D
 SR01A
   3  2  0  0  0  0  0  0  0  0999 V2000
    -0.0007    0.0000   -0.0007 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39038,7 +39038,7 @@ SR01A
 M  END
 $$$$
 SR05A
-     RDKit          3D
+     RDKix          3D
 SR05A
   7  6  0  0  0  0  0  0  0  0999 V2000
     0.0189   -0.0067   -0.0009 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39057,7 +39057,7 @@ SR05A
 M  END
 $$$$
 SR07A
-     RDKit          3D
+     RDKix          3D
 SR07A
  13 13  0  0  0  0  0  0  0  0999 V2000
     0.0031   -0.0361   -0.0065 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39089,7 +39089,7 @@ SR07A
 M  END
 $$$$
 AN05A
-     RDKit          3D
+     RDKix          3D
 AN05A
   5  4  0  0  0  0  0  0  0  0999 V2000
     1.3904   -0.3499    0.0002 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39105,7 +39105,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 AN06A
-     RDKit          3D
+     RDKix          3D
 AN06A
   5  4  0  0  0  0  0  0  0  0999 V2000
     1.3097   -0.3471    0.0002 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39121,7 +39121,7 @@ M  CHG  1   2  -1
 M  END
 $$$$
 AN08A
-     RDKit          3D
+     RDKix          3D
 AN08A
   6  5  0  0  0  0  0  0  0  0999 V2000
     1.1297    1.2438    0.0000 S   0  5  0  0  0  0  0  0  0  0  0  0
@@ -39139,7 +39139,7 @@ M  CHG  1   1  -1
 M  END
 $$$$
 AN11A
-     RDKit          3D
+     RDKix          3D
 AN11A
   6  6  0  0  0  0  0  0  0  0999 V2000
    -2.3322    1.9196   -0.0002 N   0  5  0  0  0  0  0  0  0  0  0  0
@@ -39158,7 +39158,7 @@ M  CHG  1   1  -1
 M  END
 $$$$
 AN12A
-     RDKit          3D
+     RDKix          3D
 AN12A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -1.5750    0.5810    0.0001 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39178,7 +39178,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 HL11A
-     RDKit          3D
+     RDKix          3D
 HL11A
   9  9  0  0  0  0  0  0  0  0999 V2000
     0.0393    0.0087    0.6979 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39202,7 +39202,7 @@ HL11A
 M  END
 $$$$
 HL13A
-     RDKit          3D
+     RDKix          3D
 HL13A
   6  5  0  0  0  0  0  0  0  0999 V2000
    -1.6503   -1.1206    0.0002 F   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39219,7 +39219,7 @@ HL13A
 M  END
 $$$$
 NO03A
-     RDKit          3D
+     RDKix          3D
 NO03A
   6  5  0  0  0  0  0  0  0  0999 V2000
    -2.3486   -0.5026    0.1850 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39236,7 +39236,7 @@ NO03A
 M  END
 $$$$
 NX02A
-     RDKit          3D
+     RDKix          3D
 NX02A
  11 10  0  0  0  0  0  0  0  0999 V2000
    -3.2273    1.9098   -0.0002 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39265,7 +39265,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 OC02A
-     RDKit          3D
+     RDKix          3D
 OC02A
  11 10  0  0  0  0  0  0  0  0999 V2000
    -2.7182    2.4471    0.3061 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39293,7 +39293,7 @@ M  CHG  1   3   1
 M  END
 $$$$
 PO02A
-     RDKit          3D
+     RDKix          3D
 PO02A
   5  4  0  0  0  0  0  0  0  0999 V2000
    -0.0819   -0.2172   -0.0001 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39308,7 +39308,7 @@ PO02A
 M  END
 $$$$
 PO05A
-     RDKit          3D
+     RDKix          3D
 PO05A
  13 12  0  0  0  0  0  0  0  0999 V2000
     0.0120    0.0057   -0.0026 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39340,7 +39340,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 PR01A
-     RDKit          3D
+     RDKix          3D
 PR01A
   4  3  0  0  0  0  0  0  0  0999 V2000
    -0.0003   -0.0003   -0.0003 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39353,7 +39353,7 @@ PR01A
 M  END
 $$$$
 PR02A
-     RDKit          3D
+     RDKix          3D
 PR02A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -2.5373    0.3664    0.0169 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39372,7 +39372,7 @@ PR02A
 M  END
 $$$$
 PR03A
-     RDKit          3D
+     RDKix          3D
 PR03A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -2.5744    0.3212    0.0331 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39391,7 +39391,7 @@ PR03A
 M  END
 $$$$
 PR04A
-     RDKit          3D
+     RDKix          3D
 PR04A
  11 10  0  0  0  0  0  0  0  0999 V2000
    -2.6544    2.3975    0.3126 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39418,7 +39418,7 @@ PR04A
 M  END
 $$$$
 SI02A
-     RDKit          3D
+     RDKix          3D
 SI02A
   8  7  0  0  0  0  0  0  0  0999 V2000
    -0.5924    0.4082    0.0003 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -39439,7 +39439,7 @@ SI02A
 M  END
 $$$$
 SI03A
-     RDKit          3D
+     RDKix          3D
 SI03A
   9  8  0  0  0  0  0  0  0  0999 V2000
    -0.6158    0.4454    0.0281 Si  0  0  0  0  0  0  0  0  0  0  0  0
@@ -39462,7 +39462,7 @@ SI03A
 M  END
 $$$$
 SO07A
-     RDKit          3D
+     RDKix          3D
 SO07A
  22 22  0  0  0  0  0  0  0  0999 V2000
    -0.0024    0.0850    0.0247 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39512,7 +39512,7 @@ SO07A
 M  END
 $$$$
 SO12A
-     RDKit          3D
+     RDKix          3D
 SO12A
   7  6  0  0  0  0  0  0  0  0999 V2000
     0.0034    0.0000    0.0027 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39531,7 +39531,7 @@ SO12A
 M  END
 $$$$
 SO15A
-     RDKit          3D
+     RDKix          3D
 SO15A
  12 11  0  0  0  0  0  0  0  0999 V2000
    -2.7851   -0.6573    0.7335 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39561,7 +39561,7 @@ M  CHG  1   5  -1
 M  END
 $$$$
 SO16A
-     RDKit          3D
+     RDKix          3D
 SO16A
  11 10  0  0  0  0  0  0  0  0999 V2000
    -2.5543    1.1987   -0.0673 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39588,7 +39588,7 @@ SO16A
 M  END
 $$$$
 SO18A
-     RDKit          3D
+     RDKix          3D
 SO18A
   7  6  0  0  0  0  0  0  0  0999 V2000
    -2.3136    0.8190   -0.0157 H   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39608,7 +39608,7 @@ M  CHG  1   3  -1
 M  END
 $$$$
 BRMW1
-     RDKit          3D
+     RDKix          3D
 BRMW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -2.4840    1.0537    4.4872 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39621,7 +39621,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 CA2PW3
-     RDKit          3D
+     RDKix          3D
 CA2PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.9504   -0.6883    4.1275 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39644,7 +39644,7 @@ M  CHG  1  10   2
 M  END
 $$$$
 CLMW1
-     RDKit          3D
+     RDKix          3D
 CLMW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -2.4761    1.0479    4.4860 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39657,7 +39657,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 CU1PW1
-     RDKit          3D
+     RDKix          3D
 CU1PW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -1.9861   -0.7088    4.1281 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39670,7 +39670,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 CU2PW3
-     RDKit          3D
+     RDKix          3D
 CU2PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.6936   -0.5554    4.1229 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39693,7 +39693,7 @@ M  CHG  1  10   2
 M  END
 $$$$
 FE2PW3
-     RDKit          3D
+     RDKix          3D
 FE2PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.7308   -0.5750    4.1235 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39716,7 +39716,7 @@ M  CHG  1  10   2
 M  END
 $$$$
 FE3PW3
-     RDKit          3D
+     RDKix          3D
 FE3PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.6268   -0.5207    4.1217 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39739,7 +39739,7 @@ M  CHG  1  10   3
 M  END
 $$$$
 FMW1
-     RDKit          3D
+     RDKix          3D
 FMW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -2.4567    1.0512    4.4711 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39752,7 +39752,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 H3OPW1
-     RDKit          3D
+     RDKix          3D
 H3OPW1
   7  5  0  0  0  0  0  0  0  0999 V2000
    -1.8222   -0.6848    4.2326 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39771,7 +39771,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 KPW1
-     RDKit          3D
+     RDKix          3D
 KPW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -1.9896   -0.7106    4.1282 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39784,7 +39784,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 LIPW1
-     RDKit          3D
+     RDKix          3D
 LIPW1
   4  2  0  0  0  0  0  0  0  0999 V2000
    -1.9065   -0.6669    4.1267 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39797,7 +39797,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 MG2PW3
-     RDKit          3D
+     RDKix          3D
 MG2PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.5939   -0.5034    4.1212 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39820,7 +39820,7 @@ M  CHG  1  10   2
 M  END
 $$$$
 NAPW
-     RDKit          3D
+     RDKix          3D
 NAPW
   4  2  0  0  0  0  0  0  0  0999 V2000
    -1.9111   -0.6693    4.1268 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39833,7 +39833,7 @@ M  CHG  1   4   1
 M  END
 $$$$
 OHMW1
-     RDKit          3D
+     RDKix          3D
 OHMW1
   5  3  0  0  0  0  0  0  0  0999 V2000
    -1.6663    0.7572    2.5211 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39848,7 +39848,7 @@ M  CHG  1   4  -1
 M  END
 $$$$
 ZN2PW3
-     RDKit          3D
+     RDKix          3D
 ZN2PW3
  10  6  0  0  0  0  0  0  0  0999 V2000
    -1.7163   -0.5675    4.1233 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39871,7 +39871,7 @@ M  CHG  1  10   2
 M  END
 $$$$
 ERULE_01
-     RDKit          3D
+     RDKix          3D
 ERULE_01
  14 14  0  0  0  0  0  0  0  0999 V2000
    -0.7620    1.0442    0.8595 S   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39905,7 +39905,7 @@ ERULE_01
 M  END
 $$$$
 ERULE_02
-     RDKit          3D
+     RDKix          3D
 ERULE_02
  11 11  0  0  0  0  0  0  0  0999 V2000
    -0.0013   -1.2611    0.1723 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39933,7 +39933,7 @@ ERULE_02
 M  END
 $$$$
 ERULE_03
-     RDKit          3D
+     RDKix          3D
 ERULE_03
  19 18  0  0  0  0  0  0  0  0999 V2000
    -0.1064   -1.0239   -0.0614 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -39976,7 +39976,7 @@ ERULE_03
 M  END
 $$$$
 ERULE_04
-     RDKit          3D
+     RDKix          3D
 ERULE_04
  10 10  0  0  0  0  0  0  0  0999 V2000
     2.0797    0.7207    0.7247 Cl  0  0  0  0  0  0  0  0  0  0  0  0
@@ -40002,7 +40002,7 @@ ERULE_04
 M  END
 $$$$
 ERULE_05
-     RDKit          3D
+     RDKix          3D
 ERULE_05
   6  6  0  0  0  0  0  0  0  0999 V2000
     1.1394   -1.5231    0.1456 P   0  0  0  0  0  0  0  0  0  0  0  0
@@ -40020,7 +40020,7 @@ ERULE_05
 M  END
 $$$$
 ERULE_06
-     RDKit          3D
+     RDKix          3D
 ERULE_06
  10  9  0  0  0  0  0  0  0  0999 V2000
    -0.0397   -1.9490    1.8739 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -40045,7 +40045,7 @@ ERULE_06
 M  END
 $$$$
 ERULE_07
-     RDKit          3D
+     RDKix          3D
 ERULE_07
  14 15  0  0  0  0  0  0  0  0999 V2000
     1.8013   -0.9902    1.1526 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -40080,7 +40080,7 @@ ERULE_07
 M  END
 $$$$
 ERULE_08
-     RDKit          3D
+     RDKix          3D
 ERULE_08
  13 13  0  0  0  0  0  0  0  0999 V2000
    -0.1208   -0.3892    1.2878 N   0  0  0  0  0  0  0  0  0  0  0  0

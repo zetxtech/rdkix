@@ -34,18 +34,18 @@
 // Created by Guillaume Godin 2016
 
 #include <RDGeneral/export.h>
-#ifndef GETAWAYRDKIT_H_SEPT2016
-#define GETAWAYRDKIT_H_SEPT2016
+#ifndef GETAWAYRDKIX_H_SEPT2016
+#define GETAWAYRDKIX_H_SEPT2016
 
 #ifdef RDK_BUILD_DESCRIPTORS3D
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace Descriptors {
 const std::string GETAWAYVersion = "1.0.0";
-RDKIT_DESCRIPTORS_EXPORT void GETAWAY(
+RDKIX_DESCRIPTORS_EXPORT void GETAWAY(
     const ROMol &, std::vector<double> &res, int confId = -1,
     unsigned int precision = 2, const std::string &customAtomPropName = "");
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

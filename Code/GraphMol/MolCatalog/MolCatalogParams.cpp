@@ -1,12 +1,12 @@
 //
-//  Copyright (C) 2006-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2006-2021 Greg Landrum and other RDKix contributors
 //
 //
 #include "MolCatalogParams.h"
 #include <sstream>
 #include <RDGeneral/Invariant.h>
 
-namespace RDKit {
+namespace RDKix {
 
 MolCatalogParams::MolCatalogParams(const std::string &pickle) {
   d_typeStr = "MolCatalog Parameters";
@@ -32,4 +32,4 @@ void MolCatalogParams::initFromString(const std::string &text) {
 void MolCatalogParams::initFromStream(std::istream &) {
   // at the moment this is a no-op
 }
-}  // namespace RDKit
+}  // namespace RDKix

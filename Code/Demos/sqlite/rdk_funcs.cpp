@@ -3,15 +3,15 @@
 // Copyright (C) 2007,2008 Greg Landrum
 //
 // @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <sqlite3ext.h>
 SQLITE_EXTENSION_INIT1
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -38,12 +38,12 @@ std::string stringFromBlobArg(sqlite3_value *arg) {
   return res;
 }
 
-RDKit::ROMol *molFromBlobArg(sqlite3_value *arg) {
+RDKix::ROMol *molFromBlobArg(sqlite3_value *arg) {
   std::string pkl = stringFromBlobArg(arg);
-  RDKit::ROMol *m;
+  RDKix::ROMol *m;
   try {
-    m = new RDKit::ROMol(pkl);
-  } catch (RDKit::MolPicklerException &) {
+    m = new RDKix::ROMol(pkl);
+  } catch (RDKix::MolPicklerException &) {
     m = 0;
   }
   return m;
@@ -61,11 +61,11 @@ ExplicitBitVect *ebvFromBlobArg(sqlite3_value *arg) {
 }
 
 template <typename T>
-RDKit::SparseIntVect<T> *sivFromBlobArg(sqlite3_value *arg) {
+RDKix::SparseIntVect<T> *sivFromBlobArg(sqlite3_value *arg) {
   std::string pkl = stringFromBlobArg(arg);
-  RDKit::SparseIntVect<T> *siv;
+  RDKix::SparseIntVect<T> *siv;
   try {
-    siv = new RDKit::SparseIntVect<T>(pkl);
+    siv = new RDKix::SparseIntVect<T>(pkl);
   } catch (ValueErrorException &) {
     siv = 0;
   }
@@ -105,7 +105,7 @@ RDKit::SparseIntVect<T> *sivFromBlobArg(sqlite3_value *arg) {
 
 static void numAtomsFunc(sqlite3_context *context, int argc,
                          sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (m) {
     int res = m->getNumAtoms();
     delete m;
@@ -118,9 +118,9 @@ static void numAtomsFunc(sqlite3_context *context, int argc,
 
 static void molWtFunc(sqlite3_context *context, int argc,
                       sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (m) {
-    double res = RDKit::Descriptors::CalcAMW(*m);
+    double res = RDKix::Descriptors::CalcAMW(*m);
     delete m;
     sqlite3_result_double(context, res);
   } else {
@@ -131,10 +131,10 @@ static void molWtFunc(sqlite3_context *context, int argc,
 
 static void molLogPFunc(sqlite3_context *context, int argc,
                         sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (m) {
     double res, tmp;
-    RDKit::Descriptors::CalcCrippenDescriptors(*m, res, tmp);
+    RDKix::Descriptors::CalcCrippenDescriptors(*m, res, tmp);
     delete m;
     sqlite3_result_double(context, res);
   } else {
@@ -146,15 +146,15 @@ static void molLogPFunc(sqlite3_context *context, int argc,
 static void smilesToBlob(sqlite3_context *context, int argc,
                          sqlite3_value **argv) {
   std::string smiles = stringFromTextArg(argv[0]);
-  RDKit::ROMol *m = 0;
+  RDKix::ROMol *m = 0;
   try {
-    m = RDKit::SmilesToMol(smiles);
-  } catch (RDKit::MolSanitizeException &) {
+    m = RDKix::SmilesToMol(smiles);
+  } catch (RDKix::MolSanitizeException &) {
     m = 0;
   }
   if (m) {
     std::string text;
-    RDKit::MolPickler::pickleMol(*m, text);
+    RDKix::MolPickler::pickleMol(*m, text);
     delete m;
     sqlite3_result_blob(context, text.c_str(), text.length(), SQLITE_TRANSIENT);
   } else {
@@ -165,7 +165,7 @@ static void smilesToBlob(sqlite3_context *context, int argc,
 
 static void molHasSubstruct(sqlite3_context *context, int argc,
                             sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (!m) {
     std::string errorMsg =
         "BLOB (argument 1) could not be converted into a molecule";
@@ -178,12 +178,12 @@ static void molHasSubstruct(sqlite3_context *context, int argc,
   std::map<std::string, boost::any> &molMap =
       *static_cast<std::map<std::string, boost::any> *>(
           sqlite3_user_data(context));
-  RDKit::ROMol *patt = 0;
+  RDKix::ROMol *patt = 0;
   if (molMap.find(smarts) != molMap.end()) {
-    patt = boost::any_cast<RDKit::ROMOL_SPTR>(molMap[smarts]).get();
+    patt = boost::any_cast<RDKix::ROMOL_SPTR>(molMap[smarts]).get();
   } else {
-    patt = static_cast<RDKit::ROMol *>(RDKit::SmartsToMol(smarts));
-    molMap[smarts] = boost::any(RDKit::ROMOL_SPTR(patt));
+    patt = static_cast<RDKix::ROMol *>(RDKix::SmartsToMol(smarts));
+    molMap[smarts] = boost::any(RDKix::ROMOL_SPTR(patt));
   }
   if (!patt) {
     std::string errorMsg =
@@ -191,15 +191,15 @@ static void molHasSubstruct(sqlite3_context *context, int argc,
     sqlite3_result_error(context, errorMsg.c_str(), errorMsg.length());
     return;
   }
-  RDKit::MatchVectType match;
-  int res = RDKit::SubstructMatch(*m, *patt, match, true, false, true);
+  RDKix::MatchVectType match;
+  int res = RDKix::SubstructMatch(*m, *patt, match, true, false, true);
   delete m;
   sqlite3_result_int(context, res);
 }
 
 static void molSubstructCount(sqlite3_context *context, int argc,
                               sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (!m) {
     std::string errorMsg =
         "BLOB (argument 1) could not be converted into a molecule";
@@ -212,12 +212,12 @@ static void molSubstructCount(sqlite3_context *context, int argc,
   std::map<std::string, boost::any> &molMap =
       *static_cast<std::map<std::string, boost::any> *>(
           sqlite3_user_data(context));
-  RDKit::ROMol *patt = 0;
+  RDKix::ROMol *patt = 0;
   if (molMap.find(smarts) != molMap.end()) {
-    patt = boost::any_cast<RDKit::ROMOL_SPTR>(molMap[smarts]).get();
+    patt = boost::any_cast<RDKix::ROMOL_SPTR>(molMap[smarts]).get();
   } else {
-    patt = static_cast<RDKit::ROMol *>(RDKit::SmartsToMol(smarts));
-    molMap[smarts] = boost::any(RDKit::ROMOL_SPTR(patt));
+    patt = static_cast<RDKix::ROMol *>(RDKix::SmartsToMol(smarts));
+    molMap[smarts] = boost::any(RDKix::ROMOL_SPTR(patt));
   }
   if (!patt) {
     std::string errorMsg =
@@ -225,15 +225,15 @@ static void molSubstructCount(sqlite3_context *context, int argc,
     sqlite3_result_error(context, errorMsg.c_str(), errorMsg.length());
     return;
   }
-  std::vector<RDKit::MatchVectType> matches;
-  int res = RDKit::SubstructMatch(*m, *patt, matches, true, true, false);
+  std::vector<RDKix::MatchVectType> matches;
+  int res = RDKix::SubstructMatch(*m, *patt, matches, true, true, false);
   delete m;
   sqlite3_result_int(context, res);
 }
 
-static void blobToRDKitFingerprint(sqlite3_context *context, int argc,
+static void blobToRDKixFingerprint(sqlite3_context *context, int argc,
                                    sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (!m) {
     std::string errorMsg =
         "BLOB (argument 1) could not be converted into a molecule";
@@ -241,7 +241,7 @@ static void blobToRDKitFingerprint(sqlite3_context *context, int argc,
     return;
   }
   ExplicitBitVect *fp =
-      RDKit::DaylightFingerprintMol(*m, 1, 7, 2048, 4, true, 0.3, 128);
+      RDKix::DaylightFingerprintMol(*m, 1, 7, 2048, 4, true, 0.3, 128);
   std::string text = fp->toString();
   delete fp;
   delete m;
@@ -250,15 +250,15 @@ static void blobToRDKitFingerprint(sqlite3_context *context, int argc,
 
 static void blobToAtomPairFingerprint(sqlite3_context *context, int argc,
                                       sqlite3_value **argv) {
-  RDKit::ROMol *m = molFromBlobArg(argv[0]);
+  RDKix::ROMol *m = molFromBlobArg(argv[0]);
   if (!m) {
     std::string errorMsg =
         "BLOB (argument 1) could not be converted into a molecule";
     sqlite3_result_error(context, errorMsg.c_str(), errorMsg.length());
     return;
   }
-  RDKit::SparseIntVect<int> *fp =
-      RDKit::Descriptors::AtomPairs::getAtomPairFingerprint(*m);
+  RDKix::SparseIntVect<int> *fp =
+      RDKix::Descriptors::AtomPairs::getAtomPairFingerprint(*m);
   std::string text = fp->toString();
   delete fp;
   delete m;
@@ -334,20 +334,20 @@ static void sivDiceSim(
   int argc,
   sqlite3_value **argv
 ){
-  RDKit::SparseIntVect<int> *v1=sivFromBlobArg<int>(argv[0]);
+  RDKix::SparseIntVect<int> *v1=sivFromBlobArg<int>(argv[0]);
   if(!v1){
     std::string errorMsg="BLOB (argument 1) could not be converted into an int vector";
     sqlite3_result_error(context,errorMsg.c_str(),errorMsg.length());
     return;
   }
-  RDKit::SparseIntVect<int> *v2=sivFromBlobArg<int>(argv[1]);
+  RDKix::SparseIntVect<int> *v2=sivFromBlobArg<int>(argv[1]);
   if(!v2){
     delete v1;
     std::string errorMsg="BLOB (argument 2) could not be converted into a bit vector";
     sqlite3_result_error(context,errorMsg.c_str(),errorMsg.length());
     return;
   }
-  double res= RDKit::DiceSimilarity(*v1,*v2);
+  double res= RDKix::DiceSimilarity(*v1,*v2);
   delete v1;
   delete v2;
   sqlite3_result_double(context, res);
@@ -500,8 +500,8 @@ extern "C" int sqlite3_extension_init(sqlite3 *db, char **pzErrMsg,
   sqlite3_create_function(db, "rdk_molAMW", 1, SQLITE_ANY, 0, molWtFunc, 0, 0);
   sqlite3_create_function(db, "rdk_smilesToBlob", 1, SQLITE_ANY, 0,
                           smilesToBlob, 0, 0);
-  sqlite3_create_function(db, "rdk_molToRDKitFP", 1, SQLITE_ANY, 0,
-                          blobToRDKitFingerprint, 0, 0);
+  sqlite3_create_function(db, "rdk_molToRDKixFP", 1, SQLITE_ANY, 0,
+                          blobToRDKixFingerprint, 0, 0);
   sqlite3_create_function(db, "rdk_bvTanimotoSim", 2, SQLITE_ANY, 0,
                           bvTanimotoSim, 0, 0);
   sqlite3_create_function(db, "rdk_ucvTanimotoSim", 2, SQLITE_ANY, 0,

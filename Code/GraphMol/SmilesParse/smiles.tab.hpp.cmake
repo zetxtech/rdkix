@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YYSMILES_C_USERS_GLANDRUM_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED
-#define YY_YYSMILES_C_USERS_GLANDRUM_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED
+#ifndef YY_YYSMILES_C_USERS_GLANDRUM_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED
+#define YY_YYSMILES_C_USERS_GLANDRUM_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 #define YYDEBUG 0
@@ -78,12 +78,12 @@ union YYSTYPE {
 #line 82 "smiles.yy" /* yacc.c:1909  */
 
   int moli;
-  RDKit::Atom *atom;
-  RDKit::Bond *bond;
-  RDKit::Atom::ChiralType chiraltype;
+  RDKix::Atom *atom;
+  RDKix::Bond *bond;
+  RDKix::Atom::ChiralType chiraltype;
   int ival;
 
-#line 89 "C:/Users/glandrum/RDKit_git/Code/GraphMol/SmilesParse/smiles.tab.hpp" /* yacc.c:1909  */
+#line 89 "C:/Users/glandrum/RDKix_git/Code/GraphMol/SmilesParse/smiles.tab.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -91,8 +91,8 @@ typedef union YYSTYPE YYSTYPE;
 #define YYSTYPE_IS_DECLARED 1
 #endif
 
-int yysmiles_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
-                   RDKit::Atom *&lastAtom, RDKit::Bond *&lastBond,
+int yysmiles_parse(const char *input, std::vector<RDKix::RWMol *> *molList,
+                   RDKix::Atom *&lastAtom, RDKix::Bond *&lastBond,
                    unsigned &numAtomsParsed, unsigned &numBondsParsed,
                    std::list<unsigned int> *branchPoints, void *scanner,
                    int &start_token);
@@ -102,7 +102,7 @@ int yysmiles_parse(const char *input, std::vector<RDKit::RWMol *> *molList,
 #define YY_DECL \
   int yylex(YYSTYPE *yylval_param, yyscan_t yyscanner, int &start_token)
 
-#line 106 "C:/Users/glandrum/RDKit_git/Code/GraphMol/SmilesParse/smiles.tab.hpp" /* yacc.c:1909  */
+#line 106 "C:/Users/glandrum/RDKix_git/Code/GraphMol/SmilesParse/smiles.tab.hpp" /* yacc.c:1909  */
 
-#endif /* !YY_YYSMILES_C_USERS_GLANDRUM_RDKIT_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED \
+#endif /* !YY_YYSMILES_C_USERS_GLANDRUM_RDKIX_GIT_CODE_GRAPHMOL_SMILESPARSE_SMILES_TAB_HPP_INCLUDED \
         */

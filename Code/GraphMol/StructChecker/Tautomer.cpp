@@ -2,17 +2,17 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "../Substruct/SubstructMatch.h"
 #include "StructChecker.h"
 #include "Pattern.h"
 #include "Tautomer.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 bool StructCheckTautomer::applyTautomer(unsigned it) {
@@ -53,7 +53,7 @@ bool StructCheckTautomer::applyTautomer(unsigned it) {
   }
   // scan for completely mapped bonds and replace bond order with mapped bond
   // from to_tautomer
-  for (RDKit::BondIterator_ bond = Mol.beginBonds(); bond != Mol.endBonds();
+  for (RDKix::BondIterator_ bond = Mol.beginBonds(); bond != Mol.endBonds();
        ++bond) {
     unsigned ti = atomIdxMap[(*bond)->getBeginAtomIdx()];
     unsigned tj = atomIdxMap[(*bond)->getEndAtomIdx()];
@@ -77,4 +77,4 @@ bool StructCheckTautomer::applyTautomer(unsigned it) {
 }
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

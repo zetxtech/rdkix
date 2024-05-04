@@ -2,13 +2,13 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <fstream>
 #include <iostream>
 #include <RDGeneral/BadFileException.h>
@@ -20,14 +20,14 @@
 #include "Metal.h"
 #include "Validate.h"
 #include "MolStandardize.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/ROMol.h>
 #include <RDGeneral/Invariant.h>
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-using namespace RDKit;
+using namespace RDKix;
 
 typedef enum {
   StandardizeSmShort,
@@ -44,51 +44,51 @@ typedef enum {
   NormalizeLong,
   ReionizeShort,
   ReionizeLong
-} RDKitStandardizeMode;
+} RDKixStandardizeMode;
 
-RDKitStandardizeMode setMode(const std::string &argv1,
+RDKixStandardizeMode setMode(const std::string &argv1,
                              const std::string &argv2) {
-  RDKitStandardizeMode standardize_mode;
+  RDKixStandardizeMode standardize_mode;
   if (argv1 == "Metal" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::MetalShort;
+    standardize_mode = RDKixStandardizeMode::MetalShort;
   }
   if (argv1 == "Metal" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::MetalLong;
+    standardize_mode = RDKixStandardizeMode::MetalLong;
   }
   if (argv1 == "Fragment" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::FragmentShort;
+    standardize_mode = RDKixStandardizeMode::FragmentShort;
   }
   if (argv1 == "Fragment" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::FragmentLong;
+    standardize_mode = RDKixStandardizeMode::FragmentLong;
   }
   if (argv1 == "StandardizeSm" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::StandardizeSmShort;
+    standardize_mode = RDKixStandardizeMode::StandardizeSmShort;
   }
   if (argv1 == "StandardizeSm" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::StandardizeSmLong;
+    standardize_mode = RDKixStandardizeMode::StandardizeSmLong;
   }
   if (argv1 == "Validate" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::ValidateShort;
+    standardize_mode = RDKixStandardizeMode::ValidateShort;
   }
   if (argv1 == "Validate" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::ValidateLong;
+    standardize_mode = RDKixStandardizeMode::ValidateLong;
   }
   if (argv1 == "Normalize" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::NormalizeShort;
+    standardize_mode = RDKixStandardizeMode::NormalizeShort;
   }
   if (argv1 == "Normalize" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::NormalizeLong;
+    standardize_mode = RDKixStandardizeMode::NormalizeLong;
   }
   if (argv1 == "Reionize" && argv2 == "short") {
-    standardize_mode = RDKitStandardizeMode::ReionizeShort;
+    standardize_mode = RDKixStandardizeMode::ReionizeShort;
   }
   if (argv1 == "Reionize" && argv2 == "long") {
-    standardize_mode = RDKitStandardizeMode::ReionizeLong;
+    standardize_mode = RDKixStandardizeMode::ReionizeLong;
   }
   // check if argv is within defined enum types
-  if (standardize_mode < RDKitStandardizeMode::StandardizeSmShort ||
-      standardize_mode > RDKitStandardizeMode::ReionizeLong) {
-    throw ValueErrorException("Invalid RDKit standardize mode");
+  if (standardize_mode < RDKixStandardizeMode::StandardizeSmShort ||
+      standardize_mode > RDKixStandardizeMode::ReionizeLong) {
+    throw ValueErrorException("Invalid RDKix standardize mode");
   }
   std::cout << "Mode: " << standardize_mode << std::endl;
 
@@ -149,62 +149,62 @@ std::pair<std::string, std::string> readLine(const std::string &line) {
 }
 
 std::vector<std::pair<std::string, std::string>> readCSV(
-    const RDKitStandardizeMode &func) {
+    const RDKixStandardizeMode &func) {
   std::string rdbase = std::getenv("RDBASE");
   std::string filename;
   switch (func) {
-    case RDKitStandardizeMode::MetalShort:
+    case RDKixStandardizeMode::MetalShort:
       filename =
-          rdbase + "/rdkit/Chem/MolStandardize/test_data/1kPCS_metals.csv.gz";
+          rdbase + "/rdkix/Chem/MolStandardize/test_data/1kPCS_metals.csv.gz";
       break;
-    case RDKitStandardizeMode::MetalLong:
+    case RDKixStandardizeMode::MetalLong:
       filename =
-          rdbase + "/rdkit/Chem/MolStandardize/test_data/100kPCS_metals.csv.gz";
+          rdbase + "/rdkix/Chem/MolStandardize/test_data/100kPCS_metals.csv.gz";
       break;
-    case RDKitStandardizeMode::StandardizeSmShort:
+    case RDKixStandardizeMode::StandardizeSmShort:
       filename =
           rdbase +
-          "/rdkit/Chem/MolStandardize/test_data/1kPCS_standardize_sm.csv.gz";
+          "/rdkix/Chem/MolStandardize/test_data/1kPCS_standardize_sm.csv.gz";
       break;
-    case RDKitStandardizeMode::StandardizeSmLong:
+    case RDKixStandardizeMode::StandardizeSmLong:
       filename =
           rdbase +
-          "/rdkit/Chem/MolStandardize/test_data/100kPCS_standardize_sm.csv.gz";
+          "/rdkix/Chem/MolStandardize/test_data/100kPCS_standardize_sm.csv.gz";
       break;
-    case RDKitStandardizeMode::ValidateShort:
+    case RDKixStandardizeMode::ValidateShort:
       filename =
-          rdbase + "/rdkit/Chem/MolStandardize/test_data/1kPCS_validate.csv.gz";
+          rdbase + "/rdkix/Chem/MolStandardize/test_data/1kPCS_validate.csv.gz";
       // filename = "/data/dipper/leung/gsoc/downloads/1kPCS_validate.csv.gz";
       break;
-    case RDKitStandardizeMode::ValidateLong:
+    case RDKixStandardizeMode::ValidateLong:
       filename = rdbase +
-                 "/rdkit/Chem/MolStandardize/test_data/100kPCS_validate.csv.gz";
+                 "/rdkix/Chem/MolStandardize/test_data/100kPCS_validate.csv.gz";
       // filename = "/data/dipper/leung/gsoc/downloads/100kPCS_validate.csv.gz";
       break;
-    case RDKitStandardizeMode::FragmentShort:
+    case RDKixStandardizeMode::FragmentShort:
       filename =
-          rdbase + "/rdkit/Chem/MolStandardize/test_data/1kPCS_fragment.csv.gz";
+          rdbase + "/rdkix/Chem/MolStandardize/test_data/1kPCS_fragment.csv.gz";
       break;
-    case RDKitStandardizeMode::FragmentLong:
+    case RDKixStandardizeMode::FragmentLong:
       filename = rdbase +
-                 "/rdkit/Chem/MolStandardize/test_data/100kPCS_fragment.csv.gz";
+                 "/rdkix/Chem/MolStandardize/test_data/100kPCS_fragment.csv.gz";
       break;
-    case RDKitStandardizeMode::ReionizeShort:
+    case RDKixStandardizeMode::ReionizeShort:
       filename =
-          rdbase + "/rdkit/Chem/MolStandardize/test_data/1kPCS_reionize.csv.gz";
+          rdbase + "/rdkix/Chem/MolStandardize/test_data/1kPCS_reionize.csv.gz";
       break;
-    case RDKitStandardizeMode::ReionizeLong:
+    case RDKixStandardizeMode::ReionizeLong:
       filename = rdbase +
-                 "/rdkit/Chem/MolStandardize/test_data/100kPCS_reionize.csv.gz";
+                 "/rdkix/Chem/MolStandardize/test_data/100kPCS_reionize.csv.gz";
       break;
-    case RDKitStandardizeMode::NormalizeShort:
+    case RDKixStandardizeMode::NormalizeShort:
       filename = rdbase +
-                 "/rdkit/Chem/MolStandardize/test_data/1kPCS_normalize.csv.gz";
+                 "/rdkix/Chem/MolStandardize/test_data/1kPCS_normalize.csv.gz";
       break;
-    case RDKitStandardizeMode::NormalizeLong:
+    case RDKixStandardizeMode::NormalizeLong:
       filename =
           rdbase +
-          "/rdkit/Chem/MolStandardize/test_data/100kPCS_normalize.csv.gz";
+          "/rdkix/Chem/MolStandardize/test_data/100kPCS_normalize.csv.gz";
       break;
   }
 
@@ -235,40 +235,40 @@ std::vector<std::pair<std::string, std::string>> readCSV(
   return res;
 }
 
-std::string rdkitMolStandardizeMetal(const std::string &smi) {
+std::string rdkixMolStandardizeMetal(const std::string &smi) {
   MolStandardize::MetalDisconnector md;
   std::unique_ptr<RWMol> m(SmilesToMol(smi));
   md.disconnect(*m);
-  //	std::cout << "Rdkit standardize: " << MolToSmiles(*m) << std::endl;
+  //	std::cout << "Rdkix standardize: " << MolToSmiles(*m) << std::endl;
   return MolToSmiles(*m);
 }
 
-std::string rdkitMolStandardizeReionize(const std::string &smi) {
+std::string rdkixMolStandardizeReionize(const std::string &smi) {
   MolStandardize::CleanupParameters params;
   std::unique_ptr<RWMol> m(SmilesToMol(smi));
   RWMOL_SPTR reionized(MolStandardize::reionize(m.get(), params));
   return MolToSmiles(*reionized);
 }
 
-std::string rdkitMolStandardizeNormalize(const std::string &smi) {
+std::string rdkixMolStandardizeNormalize(const std::string &smi) {
   MolStandardize::CleanupParameters params;
   std::unique_ptr<RWMol> m(SmilesToMol(smi));
   RWMOL_SPTR normalized(MolStandardize::normalize(m.get(), params));
   return MolToSmiles(*normalized);
 }
 
-std::string rdkitMolStandardizeFragment(const std::string &smi) {
+std::string rdkixMolStandardizeFragment(const std::string &smi) {
   MolStandardize::CleanupParameters params;
   std::unique_ptr<RWMol> m(SmilesToMol(smi));
   RWMOL_SPTR fragmentParent(MolStandardize::fragmentParent(*m, params));
   return MolToSmiles(*fragmentParent);
 }
 
-std::string rdkitMolStandardizeStandardizeSm(const std::string &smi) {
+std::string rdkixMolStandardizeStandardizeSm(const std::string &smi) {
   return MolStandardize::standardizeSmiles(smi);
 }
 
-std::string rdkitMolStandardizeValidate(const std::string &smi) {
+std::string rdkixMolStandardizeValidate(const std::string &smi) {
   MolStandardize::MolVSValidation vm;
   std::unique_ptr<RWMol> m(SmilesToMol(smi));
   std::vector<MolStandardize::ValidationErrorInfo> errout =
@@ -291,52 +291,52 @@ std::string rdkitMolStandardizeValidate(const std::string &smi) {
 }
 
 void testfunc(const std::vector<std::pair<std::string, std::string>> &molvs_res,
-              const RDKitStandardizeMode &func) {
+              const RDKixStandardizeMode &func) {
   for (const auto &pair : molvs_res) {
     std::string smi = pair.first;
-    std::string rdkit_smi;
+    std::string rdkix_smi;
 
     switch (func) {
-      case RDKitStandardizeMode::MetalShort:
-      case RDKitStandardizeMode::MetalLong:
-        rdkit_smi = rdkitMolStandardizeMetal(smi);
+      case RDKixStandardizeMode::MetalShort:
+      case RDKixStandardizeMode::MetalLong:
+        rdkix_smi = rdkixMolStandardizeMetal(smi);
         break;
-      case RDKitStandardizeMode::ReionizeShort:
-      case RDKitStandardizeMode::ReionizeLong:
-        rdkit_smi = rdkitMolStandardizeReionize(smi);
+      case RDKixStandardizeMode::ReionizeShort:
+      case RDKixStandardizeMode::ReionizeLong:
+        rdkix_smi = rdkixMolStandardizeReionize(smi);
         break;
-      case RDKitStandardizeMode::NormalizeShort:
-      case RDKitStandardizeMode::NormalizeLong:
-        rdkit_smi = rdkitMolStandardizeNormalize(smi);
+      case RDKixStandardizeMode::NormalizeShort:
+      case RDKixStandardizeMode::NormalizeLong:
+        rdkix_smi = rdkixMolStandardizeNormalize(smi);
         break;
-      case RDKitStandardizeMode::FragmentShort:
-      case RDKitStandardizeMode::FragmentLong:
-        rdkit_smi = rdkitMolStandardizeFragment(smi);
+      case RDKixStandardizeMode::FragmentShort:
+      case RDKixStandardizeMode::FragmentLong:
+        rdkix_smi = rdkixMolStandardizeFragment(smi);
         break;
-      case RDKitStandardizeMode::StandardizeSmShort:
-      case RDKitStandardizeMode::StandardizeSmLong:
-        rdkit_smi = rdkitMolStandardizeStandardizeSm(smi);
+      case RDKixStandardizeMode::StandardizeSmShort:
+      case RDKixStandardizeMode::StandardizeSmLong:
+        rdkix_smi = rdkixMolStandardizeStandardizeSm(smi);
         break;
-      case RDKitStandardizeMode::ValidateShort:
-      case RDKitStandardizeMode::ValidateLong:
-        rdkit_smi = rdkitMolStandardizeValidate(smi);
+      case RDKixStandardizeMode::ValidateShort:
+      case RDKixStandardizeMode::ValidateLong:
+        rdkix_smi = rdkixMolStandardizeValidate(smi);
         break;
     }
 
-    if (rdkit_smi != pair.second) {
-      std::cout << "RDKIT DOES NOT MATCH MOLVS" << std::endl;
-      std::cout << "smi, molvs standardize, rdkit standardize" << std::endl;
+    if (rdkix_smi != pair.second) {
+      std::cout << "RDKIX DOES NOT MATCH MOLVS" << std::endl;
+      std::cout << "smi, molvs standardize, rdkix standardize" << std::endl;
       std::cout << pair.first << std::endl
                 << pair.second << std::endl
-                << rdkit_smi << std::endl;
+                << rdkix_smi << std::endl;
     }
 
-    TEST_ASSERT(rdkit_smi == pair.second);
+    TEST_ASSERT(rdkix_smi == pair.second);
   }
 }
 
 int main(int argc, char *argv[]) {
-  RDKitStandardizeMode standardize_mode = setMode(argv[1], argv[2]);
+  RDKixStandardizeMode standardize_mode = setMode(argv[1], argv[2]);
   std::vector<std::pair<std::string, std::string>> res =
       readCSV(standardize_mode);
   if (argc < 3) {

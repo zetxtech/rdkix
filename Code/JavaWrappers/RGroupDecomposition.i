@@ -3,10 +3,10 @@
 *  Copyright (c) 2019, Greg Landrum
 *  All rights reserved.
 *
-*  This file is part of the RDKit.
+*  This file is part of the RDKix.
 *  The contents are covered by the terms of the BSD license
 *  which is included in the file license.txt, found at the root
-*  of the RDKit source tree.
+*  of the RDKix source tree.
 *
 */
 %{
@@ -18,15 +18,15 @@ typedef std::vector<std::string> STR_VECT;
 %include "std_string.i"
 
 
-%template(SparseIntVect64) RDKit::SparseIntVect<boost::int64_t>;
+%template(SparseIntVect64) RDKix::SparseIntVect<boost::int64_t>;
 
 
-%template(ROMol_Vect) std::vector<boost::shared_ptr<RDKit::ROMol>>;
-%template(StringMolMap_Vect) std::vector<std::map<std::string, boost::shared_ptr<RDKit::ROMol>>>;
-%template(StringROMol_VectMap) std::map<std::string,std::vector<boost::shared_ptr<RDKit::ROMol>>>;
+%template(ROMol_Vect) std::vector<boost::shared_ptr<RDKix::ROMol>>;
+%template(StringMolMap_Vect) std::vector<std::map<std::string, boost::shared_ptr<RDKix::ROMol>>>;
+%template(StringROMol_VectMap) std::map<std::string,std::vector<boost::shared_ptr<RDKix::ROMol>>>;
 
 
-%extend std::map<std::string, boost::shared_ptr<RDKit::ROMol>> {
+%extend std::map<std::string, boost::shared_ptr<RDKix::ROMol>> {
   std::vector<std::string> keys() {
     std::vector<std::string> _keys;
     for(auto it : *self) {
@@ -37,7 +37,7 @@ typedef std::vector<std::string> STR_VECT;
   }
 }
 
-%extend std::map<std::string,std::vector<boost::shared_ptr<RDKit::ROMol>>> {
+%extend std::map<std::string,std::vector<boost::shared_ptr<RDKix::ROMol>>> {
   std::vector<std::string> keys() {
     std::vector<std::string> _keys;
     for(auto it : *self) {

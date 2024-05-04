@@ -2,10 +2,10 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file StructChecker.h
@@ -24,9 +24,9 @@ releases.
 
 #include <string>
 #include <vector>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 // Flags for the return values of the StructureChecker
@@ -60,7 +60,7 @@ enum AATopology {
   CHAIN = 2     // Chain
 };
 
-struct RDKIT_STRUCTCHECKER_EXPORT Ligand {
+struct RDKIX_STRUCTCHECKER_EXPORT Ligand {
   std::string AtomSymbol;
   int Charge;
   RadicalType Radical;
@@ -73,7 +73,7 @@ struct RDKIT_STRUCTCHECKER_EXPORT Ligand {
         BondType(ANY_BOND) {}
 };
 
-struct RDKIT_STRUCTCHECKER_EXPORT AugmentedAtom {
+struct RDKIX_STRUCTCHECKER_EXPORT AugmentedAtom {
   std::string AtomSymbol;
   std::string ShortName;
   int Charge;
@@ -93,7 +93,7 @@ struct RDKIT_STRUCTCHECKER_EXPORT AugmentedAtom {
         Topology(topology) {}
 };
 
-struct RDKIT_STRUCTCHECKER_EXPORT IncEntry {
+struct RDKIX_STRUCTCHECKER_EXPORT IncEntry {
   std::string AtomSymbol;
   double LocalInc;
   double AlphaInc;
@@ -107,7 +107,7 @@ struct RDKIT_STRUCTCHECKER_EXPORT IncEntry {
   int mult_inc_used;
 };
 
-struct RDKIT_STRUCTCHECKER_EXPORT PathEntry {
+struct RDKIX_STRUCTCHECKER_EXPORT PathEntry {
   AugmentedAtom Path;
   double Cond;
   // Used for logging
@@ -118,7 +118,7 @@ struct RDKIT_STRUCTCHECKER_EXPORT PathEntry {
 //! Structure Check Options
 ///   Holds all the user options for the StructureChecking.
 ///   Can be initialized from factory functions, perhaps serialized
-struct RDKIT_STRUCTCHECKER_EXPORT StructCheckerOptions {
+struct RDKIX_STRUCTCHECKER_EXPORT StructCheckerOptions {
   double AcidityLimit;
   bool RemoveMinorFragments;
   int DesiredCharge;
@@ -174,19 +174,19 @@ struct RDKIT_STRUCTCHECKER_EXPORT StructCheckerOptions {
 
   bool loadPatterns(const std::string &path);  // file with clean patterns
   void parsePatterns(
-      const std::vector<std::string> &smarts);  // can throw RDKit exceptions
+      const std::vector<std::string> &smarts);  // can throw RDKix exceptions
   void setPatterns(const std::vector<ROMOL_SPTR> &p);
 
   bool loadRotatePatterns(
       const std::string &path);  // file with rotate patterns
   void parseRotatePatterns(
-      const std::vector<std::string> &smarts);  // can throw RDKit exceptions
+      const std::vector<std::string> &smarts);  // can throw RDKix exceptions
   void setRotatePatterns(const std::vector<ROMOL_SPTR> &p);
 
   bool loadStereoPatterns(
       const std::string &path);  // file with stereo patterns
   void parseStereoPatterns(
-      const std::vector<std::string> &smarts);  // can throw RDKit exceptions
+      const std::vector<std::string> &smarts);  // can throw RDKix exceptions
   void setStereoPatterns(const std::vector<ROMOL_SPTR> &p);
 
   bool loadTautomerData(const std::string &path);  // file path
@@ -197,10 +197,10 @@ struct RDKIT_STRUCTCHECKER_EXPORT StructCheckerOptions {
   bool loadChargeDataTables(const std::string &path);  // file path
 };
 
-RDKIT_STRUCTCHECKER_EXPORT bool parseOptionsJSON(const std::string &json,
+RDKIX_STRUCTCHECKER_EXPORT bool parseOptionsJSON(const std::string &json,
                                                  StructCheckerOptions &op);
 
-RDKIT_STRUCTCHECKER_EXPORT bool loadOptionsFromFiles(
+RDKIX_STRUCTCHECKER_EXPORT bool loadOptionsFromFiles(
     StructCheckerOptions &op,
     const std::string &augmentedAtomTranslationsFile = "",
     // ?? AcidicAtoms;
@@ -242,7 +242,7 @@ or
     }
 \endcode
 */
-class RDKIT_STRUCTCHECKER_EXPORT StructChecker {
+class RDKIX_STRUCTCHECKER_EXPORT StructChecker {
  public:
   typedef enum StructureFlags {
     NO_CHANGE = 0,
@@ -297,5 +297,5 @@ class RDKIT_STRUCTCHECKER_EXPORT StructChecker {
  private:
 };
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

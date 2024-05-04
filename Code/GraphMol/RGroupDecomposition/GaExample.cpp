@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
@@ -23,7 +23,7 @@
 #include <boost/program_options.hpp>
 
 using namespace std;
-using namespace RDKit;
+using namespace RDKix;
 using namespace boost::program_options;
 namespace options = boost::program_options;
 

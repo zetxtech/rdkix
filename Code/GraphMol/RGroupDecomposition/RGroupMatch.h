@@ -2,16 +2,16 @@
 //  Copyright (C) 2017 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RGROUP_MATCH_DATA
 #define RGROUP_MATCH_DATA
 #include "RGroupData.h"
 
-namespace RDKit {
+namespace RDKix {
 typedef boost::shared_ptr<RGroupData> RData;
 typedef std::map<int, RData> R_DECOMP;
 
@@ -43,5 +43,5 @@ struct RGroupMatch {
   }
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

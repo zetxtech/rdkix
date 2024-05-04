@@ -34,8 +34,8 @@ import pickle
 import re
 import sys
 
-from rdkit import Chem
-from rdkit.Chem import BRICS
+from rdkix import Chem
+from rdkix.Chem import BRICS
 
 inF = file(sys.argv[1], 'r')
 inLs = inF.readlines()
