@@ -11,7 +11,7 @@ endif()
 if(NOT EXISTS "${URFLIB_DIR}/RingDecomposerLib.h")
     set(RELEASE_NO "1.1.3_rdkix")
     set(MD5 "e9a0bcdda8b921a35e812b9888a9a874")
-    downloadAndCheckMD5("https://github.com/rdkix/RingDecomposerLib/archive/v${RELEASE_NO}.tar.gz"
+    downloadAndCheckMD5("https://github.com/zetxtech/RingDecomposerLib/archive/v${RELEASE_NO}.tar.gz"
             "${CMAKE_CURRENT_SOURCE_DIR}/RingDecomposerLib-v${RELEASE_NO}.tar.gz" ${MD5})
     execute_process(COMMAND ${CMAKE_COMMAND} -E tar zxf
         ${CMAKE_CURRENT_SOURCE_DIR}/RingDecomposerLib-v${RELEASE_NO}.tar.gz
