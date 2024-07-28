@@ -52,14 +52,14 @@ if __name__ == '__main__':
     replace_keywords(
         Path.cwd(),
         r'RDKIT_GIT_URL="https://github.com/rdkit/rdkit.git"',
-        'RDKIX_GIT_URL="https://github.com/rdkix/rdkix.git"'
+        'RDKIX_GIT_URL="https://github.com/zetxtech/rdkix.git"'
     )
     
     # Code/MinimalLib/scripts/build_rdkixjs.sh
     replace_keywords(
         Path.cwd(),
         r'RDKIT_GIT_URL=\${2:-"https://github.com/rdkit/rdkit.git"}',
-        'RDKIX_GIT_URL=${2:-"https://github.com/rdkix/rdkix.git"}'
+        'RDKIX_GIT_URL=${2:-"https://github.com/zetxtech/rdkix.git"}'
     )
     
     # External/RingFamilies/CMakeLists.txt

@@ -22,7 +22,7 @@ set(AVALON_PROGRAMS_PATH "${AVALON_SRC_PATH}/programs")
 
 if(needDownload)
   if(NOT DEFINED AVALONTOOLS_URL)
-    set(AVALONTOOLS_URL "https://github.com/rdkix/ava-formake/archive/refs/tags/AvalonToolkit_${AVALON_VERSION}.tar.gz")
+    set(AVALONTOOLS_URL "https://github.com/zetxtech/ava-formake/archive/refs/tags/AvalonToolkit_${AVALON_VERSION}.tar.gz")
   endif()
   if(NOT DEFINED AVALONTOOLS_MD5SUM)
     set(AVALONTOOLS_MD5SUM "7a20c25a7e79f3344e0f9f49afa03351")
