@@ -1,24 +1,24 @@
 //
-//  Copyright (C) 2014-2021 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2014-2021 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
 // A load of helper classes used by MolDraw2D.
 
-#ifndef RDKIT_MOLDRAW2DHELPERS_H
-#define RDKIT_MOLDRAW2DHELPERS_H
+#ifndef RDKIX_MOLDRAW2DHELPERS_H
+#define RDKIX_MOLDRAW2DHELPERS_H
 
 #include <Geometry/point.h>
 
 using RDGeom::Point2D;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolDraw2D_detail {
 // for aligning the drawing of text to the passed in coords.
@@ -62,7 +62,7 @@ typedef std::vector<double> DashPattern;
 // MolDraw2D::getDrawLineWidth().
 static const double lineWidthScaleFactor = 0.02;
 
-//! use the RDKit's default palette r
+//! use the RDKix's default palette r
 // 201 is for hydrogens when atom symbols are not being drawn.
 inline void assignDefaultPalette(ColourPalette &palette) {
   palette.clear();
@@ -145,7 +145,7 @@ inline void assignBWPalette(ColourPalette &palette) {
 
 enum class MultiColourHighlightStyle { CIRCLEANDLINE, LASSO };
 
-struct RDKIT_MOLDRAW2D_EXPORT MolDrawOptions {
+struct RDKIX_MOLDRAW2D_EXPORT MolDrawOptions {
   bool atomLabelDeuteriumTritium =
       false;  // toggles replacing 2H with D and 3H with T
   bool dummiesAreAttachments = false;  // draws "breaks" at dummy atoms
@@ -280,7 +280,7 @@ struct RDKIT_MOLDRAW2D_EXPORT MolDrawOptions {
                                     // their colour from the atoms
   bool useMolBlockWedging = false;  // If the molecule came from a MolBlock,
                                     // prefer the wedging information that
-                                    // provides.  If false, use RDKit rules.
+                                    // provides.  If false, use RDKix rules.
   double scalingFactor = 20.0;      // scaling factor used for pixels->angstrom
                                     // when auto scaling is being used
   double baseFontSize =
@@ -317,6 +317,6 @@ struct RDKIT_MOLDRAW2D_EXPORT MolDrawOptions {
   }
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_MOLDRAW2DHELPERS_H
+#endif  // RDKIX_MOLDRAW2DHELPERS_H

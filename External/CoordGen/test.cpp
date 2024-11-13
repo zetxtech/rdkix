@@ -2,15 +2,15 @@
 //  Copyright (C) 2017-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <iostream>
 
 #include <fstream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -23,7 +23,7 @@
 #include "coordgen/sketcherMinimizer.h"
 #include <CoordGen/CoordGen.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
@@ -511,7 +511,7 @@ void testZOBs() {
   {
     auto m1 =
         R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2021 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #pragma once
@@ -14,7 +14,7 @@
 #include <boost/format.hpp>
 #include <GraphMol/SubstanceGroup.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace SGroupWriting {
 typedef std::unordered_map<int, SubstanceGroup> IDX_TO_SGROUP_MAP;
 
@@ -130,4 +130,4 @@ std::string FormatV3000CStateBlock(
 const std::string GetV3000MolFileSGroupLines(const unsigned int idx,
                                              const SubstanceGroup &sgroup);
 }  // namespace SGroupWriting
-}  // namespace RDKit
+}  // namespace RDKix

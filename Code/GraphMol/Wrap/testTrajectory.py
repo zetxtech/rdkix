@@ -2,9 +2,9 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import ChemicalForceFields, rdtrajectory
-from rdkit.Chem.rdtrajectory import (ReadAmberTrajectory, ReadGromosTrajectory,
+from rdkix import Chem, RDConfig
+from rdkix.Chem import ChemicalForceFields, rdtrajectory
+from rdkix.Chem.rdtrajectory import (ReadAmberTrajectory, ReadGromosTrajectory,
                                      Snapshot, Trajectory)
 
 
@@ -256,7 +256,7 @@ class TestCase(unittest.TestCase):
   def testAddConformersFromTrajectory(self):
     molBlock = \
       '\n' \
-      '     RDKit          3D\n' \
+      '     RDKix          3D\n' \
       '\n' \
       ' 71 74  0  0  0  0  0  0  0  0999 V2000\n' \
       '    8.2543    3.1901   -0.3005 C   0  0  0  0  0  0  0  0  0  0  0  0\n' \

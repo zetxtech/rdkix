@@ -38,12 +38,12 @@
 
 namespace {
 
-bool testForSameRXNRoleOfAllMoleculeAtoms(const RDKit::ROMol &mol, int role) {
-  RDKit::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
+bool testForSameRXNRoleOfAllMoleculeAtoms(const RDKix::ROMol &mol, int role) {
+  RDKix::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
   while (atItP.first != atItP.second) {
-    const RDKit::Atom *oAtom = mol[*(atItP.first++)];
+    const RDKix::Atom *oAtom = mol[*(atItP.first++)];
     int current_role;
-    if (oAtom->getPropIfPresent(RDKit::common_properties::molRxnRole,
+    if (oAtom->getPropIfPresent(RDKix::common_properties::molRxnRole,
                                 current_role) &&
         current_role != role) {
       return false;
@@ -52,12 +52,12 @@ bool testForSameRXNRoleOfAllMoleculeAtoms(const RDKit::ROMol &mol, int role) {
   return true;
 }
 
-int getRXNRoleOfMolecule(const RDKit::ROMol &mol) {
-  RDKit::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
+int getRXNRoleOfMolecule(const RDKix::ROMol &mol) {
+  RDKix::ROMol::ATOM_ITER_PAIR atItP = mol.getVertices();
   while (atItP.first != atItP.second) {
-    const RDKit::Atom *oAtom = mol[*(atItP.first++)];
+    const RDKix::Atom *oAtom = mol[*(atItP.first++)];
     int molRxnRole;
-    if (oAtom->getPropIfPresent(RDKit::common_properties::molRxnRole,
+    if (oAtom->getPropIfPresent(RDKix::common_properties::molRxnRole,
                                 molRxnRole)) {
       return molRxnRole;
     }
@@ -66,7 +66,7 @@ int getRXNRoleOfMolecule(const RDKit::ROMol &mol) {
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 
 ChemicalReaction *RxnMolToChemicalReaction(const ROMol &mol) {
   auto *rxn = new ChemicalReaction();
@@ -100,4 +100,4 @@ ChemicalReaction *RxnMolToChemicalReaction(const ROMol &mol) {
   }
   return rxn;
 }
-}  // namespace RDKit
+}  // namespace RDKix

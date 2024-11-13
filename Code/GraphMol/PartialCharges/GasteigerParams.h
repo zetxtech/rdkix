@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2015 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_GASTEIGERPARAMS_H
@@ -16,7 +16,7 @@
 #include <string>
 #include <map>
 
-namespace RDKit {
+namespace RDKix {
 extern std::string paramData;
 extern std::string additionalParamData;
 
@@ -27,7 +27,7 @@ const double IONXH = 20.02;
 const double DAMP_SCALE = 0.5;
 const double DAMP = 0.5;
 
-class RDKIT_PARTIALCHARGES_EXPORT GasteigerParams {
+class RDKIX_PARTIALCHARGES_EXPORT GasteigerParams {
   /* \brief Container for all the partial charge parameters
    *
    * It is filled by the paramData string defined in GasteigerParams.cpp
@@ -81,6 +81,6 @@ class RDKIT_PARTIALCHARGES_EXPORT GasteigerParams {
 
   static class GasteigerParams *ds_instance;
 };
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

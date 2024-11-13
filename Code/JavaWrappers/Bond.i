@@ -42,17 +42,17 @@
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 %}
 
-%ignore RDKit::Bond::getValenceContrib(const Atom *) const;
-%ignore RDKit::Bond::Match(const Bond *) const;
-%ignore RDKit::Bond::setBeginAtom(Atom *at);
-%ignore RDKit::Bond::setEndAtom(Atom *at);
-%ignore RDKit::getTwiceBondType(const RDKit::Bond &b);
-%ignore RDKit::Bond::setQuery;
-%ignore RDKit::Bond::expandQuery;
+%ignore RDKix::Bond::getValenceContrib(const Atom *) const;
+%ignore RDKix::Bond::Match(const Bond *) const;
+%ignore RDKix::Bond::setBeginAtom(Atom *at);
+%ignore RDKix::Bond::setEndAtom(Atom *at);
+%ignore RDKix::getTwiceBondType(const RDKix::Bond &b);
+%ignore RDKix::Bond::setQuery;
+%ignore RDKix::Bond::expandQuery;
 
 %include <GraphMol/Bond.h>
 
-%extend RDKit::Bond {
+%extend RDKix::Bond {
   std::string getProp(const std::string key){
     std::string res;
     ($self)->getProp(key, res);
@@ -60,22 +60,22 @@
   }
 
   /* Methods from MolFileStereoChem.h */
-  Bond::BondDir DetermineBondWedgeState(const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>> &wedgeBonds,
-                                        const RDKit::Conformer *conf) {
-    return RDKit::DetermineBondWedgeState(($self), wedgeBonds, conf);
+  Bond::BondDir DetermineBondWedgeState(const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>> &wedgeBonds,
+                                        const RDKix::Conformer *conf) {
+    return RDKix::DetermineBondWedgeState(($self), wedgeBonds, conf);
   }
   
   /* Based on corresponding methods in Atom.i */
    bool IsInRing(){
     if(!($self)->getOwningMol().getRingInfo()->isInitialized()){
-      RDKit::MolOps::findSSSR(($self)->getOwningMol());
+      RDKix::MolOps::findSSSR(($self)->getOwningMol());
     }
     return ($self)->getOwningMol().getRingInfo()->numBondRings(($self)->getIdx())!=0;
   }
 
   bool IsInRingSize(int size){
     if(!($self)->getOwningMol().getRingInfo()->isInitialized()){
-      RDKit::MolOps::findSSSR(($self)->getOwningMol());
+      RDKix::MolOps::findSSSR(($self)->getOwningMol());
     }
     return ($self)->getOwningMol().getRingInfo()->isBondInRingOfSize(($self)->getIdx(),size);
   }

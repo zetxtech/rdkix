@@ -3,10 +3,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <DataStructs/BitVects.h>
@@ -14,7 +14,7 @@
 #include <GraphMol/FragCatalog/FragFPGenerator.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 struct fragFPgen_wrapper {
   static void wrap() {
     python::class_<FragFPGenerator>("FragFPGenerator",
@@ -24,6 +24,6 @@ struct fragFPgen_wrapper {
              python::args("self", "mol", "fcat"));
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_fragFPgen() { RDKit::fragFPgen_wrapper::wrap(); }
+void wrap_fragFPgen() { RDKix::fragFPgen_wrapper::wrap(); }

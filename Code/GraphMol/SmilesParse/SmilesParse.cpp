@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // ----------------------------------------------------------------------------------
@@ -28,7 +28,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <RDGeneral/BoostEndInclude.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/Atropisomers.h>
@@ -56,13 +56,13 @@ int yysmarts_lex_init(void **);
 int yysmarts_lex_destroy(void *);
 size_t setup_smarts_string(const std::string &text, void *);
 extern int yysmarts_debug;
-namespace RDKit {
+namespace RDKix {
 namespace v2 {
 namespace SmilesParse {
 namespace {
 
 int smarts_parse_helper(const std::string &inp,
-                        std::vector<RDKit::RWMol *> &molVect, Atom *&atom,
+                        std::vector<RDKix::RWMol *> &molVect, Atom *&atom,
                         Bond *&bond, int start_tok) {
   std::list<unsigned int> branchPoints;
   void *scanner;
@@ -107,7 +107,7 @@ int smarts_atom_parse(const std::string &inp, Atom *&atom) {
   return smarts_parse_helper(inp, molVect, atom, bond, start_tok);
 }
 
-int smarts_parse(const std::string &inp, std::vector<RDKit::RWMol *> &molVect) {
+int smarts_parse(const std::string &inp, std::vector<RDKix::RWMol *> &molVect) {
   auto start_tok = static_cast<int>(START_MOL);
   Atom *atom = nullptr;
   Bond *bond = nullptr;
@@ -115,7 +115,7 @@ int smarts_parse(const std::string &inp, std::vector<RDKit::RWMol *> &molVect) {
 }
 
 int smiles_parse_helper(const std::string &inp,
-                        std::vector<RDKit::RWMol *> &molVect, Atom *&atom,
+                        std::vector<RDKix::RWMol *> &molVect, Atom *&atom,
                         Bond *&bond, int start_tok) {
   std::list<unsigned int> branchPoints;
   void *scanner;
@@ -159,7 +159,7 @@ int smiles_atom_parse(const std::string &inp, Atom *&atom) {
   return smiles_parse_helper(inp, molVect, atom, bond, start_tok);
 }
 
-int smiles_parse(const std::string &inp, std::vector<RDKit::RWMol *> &molVect) {
+int smiles_parse(const std::string &inp, std::vector<RDKix::RWMol *> &molVect) {
   auto start_tok = static_cast<int>(START_MOL);
   Atom *atom = nullptr;
   Bond *bond = nullptr;
@@ -226,14 +226,14 @@ std::string labelRecursivePatterns(const std::string &sma) {
 
 std::unique_ptr<RWMol> toMol(const std::string &inp,
                              int func(const std::string &,
-                                      std::vector<RDKit::RWMol *> &),
+                                      std::vector<RDKix::RWMol *> &),
                              const std::string &origInp) {
   // empty strings produce empty molecules:
   if (inp.empty()) {
     return std::make_unique<RWMol>();
   }
   std::unique_ptr<RWMol> res;
-  std::vector<RDKit::RWMol *> molVect;
+  std::vector<RDKix::RWMol *> molVect;
   try {
     func(inp, molVect);
     if (!molVect.empty()) {
@@ -391,7 +391,7 @@ void handleCXPartAndName(RWMol *res, const T &params, const std::string &cxPart,
       res->setProp("_CXSMILES_Data", std::string(cxPart.cbegin(), pos));
     } else if (params.strictCXSMILES && !params.parseName &&
                pos != cxPart.cend()) {
-      throw RDKit::SmilesParseException(
+      throw RDKix::SmilesParseException(
           "CXSMILES extension does not start with | and parseName=false");
     }
   }
@@ -561,4 +561,4 @@ std::unique_ptr<RWMol> MolFromSmarts(const std::string &smarts,
 };
 }  // namespace SmilesParse
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

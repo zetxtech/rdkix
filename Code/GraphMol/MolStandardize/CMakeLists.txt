@@ -1,4 +1,4 @@
-rdkit_library(MolStandardize
+rdkix_library(MolStandardize
     Pipeline.cpp
     MolStandardize.cpp
     Metal.cpp
@@ -20,9 +20,9 @@ rdkit_library(MolStandardize
     TautomerCatalog/TautomerCatalogParams.cpp
     TautomerCatalog/TautomerCatalogUtils.cpp
         LINK_LIBRARIES ChemReactions ChemTransforms SmilesParse SubstructMatch GraphMol )
-target_compile_definitions(MolStandardize PRIVATE RDKIT_MOLSTANDARDIZE_BUILD)
+target_compile_definitions(MolStandardize PRIVATE RDKIX_MOLSTANDARDIZE_BUILD)
 
-rdkit_headers(
+rdkix_headers(
     Pipeline.h
     MolStandardize.h
     Metal.h
@@ -33,25 +33,25 @@ rdkit_headers(
     Fragment.h
         DEST GraphMol/MolStandardize)
 
-rdkit_headers(
+rdkix_headers(
     FragmentCatalog/FragmentCatalogEntry.h
     FragmentCatalog/FragmentCatalogParams.h
     FragmentCatalog/FragmentCatalogUtils.h
         DEST GraphMol/MolStandardize/FragmentCatalog)
 
-rdkit_headers(
+rdkix_headers(
     AcidBaseCatalog/AcidBaseCatalogEntry.h
     AcidBaseCatalog/AcidBaseCatalogParams.h
     AcidBaseCatalog/AcidBaseCatalogUtils.h
         DEST GraphMol/MolStandardize/AcidBaseCatalog)
 
-rdkit_headers(
+rdkix_headers(
     TransformCatalog/TransformCatalogEntry.h
     TransformCatalog/TransformCatalogParams.h
     TransformCatalog/TransformCatalogUtils.h
         DEST GraphMol/MolStandardize/TransformCatalog)
 
-rdkit_headers(
+rdkix_headers(
     TautomerCatalog/TautomerCatalogEntry.h
     TautomerCatalog/TautomerCatalogParams.h
     TautomerCatalog/TautomerCatalogUtils.h
@@ -61,14 +61,14 @@ if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)
 endif()
 
-rdkit_test(molStandardizeTest test1.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molNormalizeTest testNormalize.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molValidateTest testValidate.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molChargeTest testCharge.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molTautomerTest testTautomer.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molStandardizeSmallTest test2.cpp LINK_LIBRARIES MolStandardize )
-rdkit_test(molFragmentTest testFragment.cpp LINK_LIBRARIES MolStandardize )
-rdkit_catch_test(molStandardizeCatchTest catch_tests.cpp LINK_LIBRARIES MolStandardize )
-rdkit_catch_test(molStandardizePipelineTest testPipeline.cpp LINK_LIBRARIES MolStandardize)
+rdkix_test(molStandardizeTest test1.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molNormalizeTest testNormalize.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molValidateTest testValidate.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molChargeTest testCharge.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molTautomerTest testTautomer.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molStandardizeSmallTest test2.cpp LINK_LIBRARIES MolStandardize )
+rdkix_test(molFragmentTest testFragment.cpp LINK_LIBRARIES MolStandardize )
+rdkix_catch_test(molStandardizeCatchTest catch_tests.cpp LINK_LIBRARIES MolStandardize )
+rdkix_catch_test(molStandardizePipelineTest testPipeline.cpp LINK_LIBRARIES MolStandardize)
 
 

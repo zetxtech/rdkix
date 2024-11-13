@@ -3,11 +3,11 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Chem import rdMolAlign
-from rdkit.Chem import rdMolTransforms as rdmt
-from rdkit.Chem import rdShapeHelpers as rdshp
-from rdkit.Geometry import rdGeometry as geom
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Chem import rdMolAlign
+from rdkix.Chem import rdMolTransforms as rdmt
+from rdkix.Chem import rdShapeHelpers as rdshp
+from rdkix.Geometry import rdGeometry as geom
 
 
 class TestCase(unittest.TestCase):

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2013-2024 Paolo Tosco and other RDKit contributors
+//  Copyright (C) 2013-2024 Paolo Tosco and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "ForceField.h"
 #include "TorsionConstraint.h"
@@ -43,9 +43,9 @@ double TorsionConstraintContrib::computeDihedralTerm(double dihedral) const {
       !(dihedral > d_minDihedralDeg && d_minDihedralDeg > d_maxDihedralDeg) &&
       !(dihedral < d_maxDihedralDeg && d_minDihedralDeg > d_maxDihedralDeg)) {
     double dihedralMinTarget = dihedral - d_minDihedralDeg;
-    RDKit::ForceFieldsHelper::normalizeAngleDeg(dihedralMinTarget);
+    RDKix::ForceFieldsHelper::normalizeAngleDeg(dihedralMinTarget);
     double dihedralMaxTarget = dihedral - d_maxDihedralDeg;
-    RDKit::ForceFieldsHelper::normalizeAngleDeg(dihedralMaxTarget);
+    RDKix::ForceFieldsHelper::normalizeAngleDeg(dihedralMaxTarget);
     if (fabs(dihedralMinTarget) < fabs(dihedralMaxTarget)) {
       dihedralTarget = d_minDihedralDeg;
     } else {
@@ -53,7 +53,7 @@ double TorsionConstraintContrib::computeDihedralTerm(double dihedral) const {
     }
   }
   double dihedralTerm = dihedral - dihedralTarget;
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(dihedralTerm);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(dihedralTerm);
   return dihedralTerm;
 }
 
@@ -66,8 +66,8 @@ void TorsionConstraintContrib::setParameters(
   d_at2Idx = idx2;
   d_at3Idx = idx3;
   d_at4Idx = idx4;
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(minDihedralDeg);
-  RDKit::ForceFieldsHelper::normalizeAngleDeg(maxDihedralDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(minDihedralDeg);
+  RDKix::ForceFieldsHelper::normalizeAngleDeg(maxDihedralDeg);
   d_minDihedralDeg = minDihedralDeg;
   d_maxDihedralDeg = maxDihedralDeg;
   d_forceConstant = forceConst;
@@ -91,7 +91,7 @@ TorsionConstraintContrib::TorsionConstraintContrib(
                     maxDihedralDeg);
   if (relative) {
     double dihedral;
-    RDKit::ForceFieldsHelper::computeDihedral(owner->positions(), idx1, idx2,
+    RDKix::ForceFieldsHelper::computeDihedral(owner->positions(), idx1, idx2,
                                               idx3, idx4, &dihedral);
     dihedral *= RAD2DEG;
     minDihedralDeg += dihedral;
@@ -105,7 +105,7 @@ double TorsionConstraintContrib::getEnergy(double *pos) const {
   PRECONDITION(dp_forceField, "no owner");
   PRECONDITION(pos, "bad vector");
   double dihedral;
-  RDKit::ForceFieldsHelper::computeDihedral(pos, d_at1Idx, d_at2Idx, d_at3Idx,
+  RDKix::ForceFieldsHelper::computeDihedral(pos, d_at1Idx, d_at2Idx, d_at3Idx,
                                             d_at4Idx, &dihedral);
   dihedral *= RAD2DEG;
   double dihedralTerm = computeDihedralTerm(dihedral);
@@ -126,7 +126,7 @@ void TorsionConstraintContrib::getGrad(double *pos, double *grad) const {
   RDGeom::Point3D t[2];
   double d[2];
   double dihedral;
-  RDKit::ForceFieldsHelper::computeDihedral(
+  RDKix::ForceFieldsHelper::computeDihedral(
       pos, d_at1Idx, d_at2Idx, d_at3Idx, d_at4Idx, &dihedral, nullptr, r, t, d);
   dihedral *= RAD2DEG;
   double dihedralTerm = computeDihedralTerm(dihedral);

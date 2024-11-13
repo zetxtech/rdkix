@@ -3,17 +3,17 @@
 //  Copyright (C) 2019 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RD_NULLQUERYALGEBRA_H
 #define RD_NULLQUERYALGEBRA_H
 
 #include <GraphMol/QueryOps.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 template <class T>
 void mergeBothNullQ(T *&returnQuery, T *&otherNullQ,
@@ -81,6 +81,6 @@ void mergeNullQueries(T *&returnQuery, bool isQueryNull, T *&otherQuery,
     mergeNullQFirst(returnQuery, otherQuery, how);
   }
 }
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

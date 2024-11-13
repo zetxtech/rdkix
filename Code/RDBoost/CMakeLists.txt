@@ -1,18 +1,18 @@
 if(WIN32 OR "${Py_ENABLE_SHARED}" STREQUAL "1")
-    rdkit_library(RDBoost Wrap.cpp
-                LINK_LIBRARIES RDGeneral rdkit_py_base rdkit_base)
+    rdkix_library(RDBoost Wrap.cpp
+                LINK_LIBRARIES RDGeneral rdkix_py_base rdkix_base)
 else()
-    rdkit_library(RDBoost Wrap.cpp
-                LINK_LIBRARIES RDGeneral rdkit_base)
+    rdkix_library(RDBoost Wrap.cpp
+                LINK_LIBRARIES RDGeneral rdkix_base)
     if("${PYTHON_LDSHARED}" STREQUAL "")
     else()       # fixes an apple issue
        STRING(REGEX REPLACE "-bundle" "" LDSHARED ${PYTHON_LDSHARED})
        set_target_properties(RDBoost PROPERTIES LINK_FLAGS ${LDSHARED})
     endif()
 endif()
-target_compile_definitions(RDBoost PRIVATE RDKIT_RDBOOST_BUILD)
+target_compile_definitions(RDBoost PRIVATE RDKIX_RDBOOST_BUILD)
 
-rdkit_headers(Wrap.h PySequenceHolder.h
+rdkix_headers(Wrap.h PySequenceHolder.h
               list_indexing_suite.hpp
               python.h
               boost_numpy.h
@@ -36,7 +36,7 @@ if(RDK_BUILD_PYTHON_WRAPPERS)
   IF(COMMAND cmake_policy)
      CMAKE_POLICY(SET CMP0009 NEW)
   ENDIF(COMMAND cmake_policy)
-  FILE(GLOB_RECURSE RDK_PYC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/../../rdkit/*.pyc")
+  FILE(GLOB_RECURSE RDK_PYC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/../../rdkix/*.pyc")
   FILE(GLOB_RECURSE RDK_PROJECTSQLT_FILES "${CMAKE_CURRENT_SOURCE_DIR}/../../Projects/*.sqlt")
   set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES
         "${RDK_PYC_FILES};${RDK_DATASQLT_FILES};${RDK_PROJECTSQLT_FILES}")

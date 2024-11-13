@@ -51,7 +51,7 @@
 #include <RDGeneral/utils.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/test_fixtures.h>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "../FileParsers/FileParsers.h"  //MOL single molecule !
 #include "../FileParsers/MolSupplier.h"  //SDF
 #include "../SmilesParse/SmilesParse.h"
@@ -61,7 +61,7 @@
 
 #include "MMPA.h"
 
-using namespace RDKit;
+using namespace RDKix;
 
 static unsigned n_failed = 0;
 static unsigned long long T0;
@@ -122,7 +122,7 @@ void printTime() {
 
 std::string getSmilesOnly(
     const char *smiles,
-    std::string *id = nullptr) {  // remove label, because RDKit parse FAILED
+    std::string *id = nullptr) {  // remove label, because RDKix parse FAILED
   const char *sp = strchr(smiles, ' ');
   unsigned n = (sp ? sp - smiles + 1 : strlen(smiles));
   if (id) {
@@ -137,7 +137,7 @@ void debugTest1(const char *init_mol) {
   std::cout << "CONV MOL: " << MolToSmiles(*m, true) << "\n";
 }
 /*
- * Work-around functions for RDKit canonical
+ * Work-around functions for RDKix canonical
  */
 std::string createCanonicalFromSmiles(const char *smiles) {
   std::unique_ptr<RWMol> m(SmilesToMol(smiles));
@@ -156,7 +156,7 @@ void test1() {
   BOOST_LOG(rdInfoLog) << "-------------------------------------" << std::endl;
   BOOST_LOG(rdInfoLog) << "MMPA test1()\n" << std::endl;
 
-  // DEBUG PRINT.      MolToSmiles() fails with new RDKit version
+  // DEBUG PRINT.      MolToSmiles() fails with new RDKix version
 
   //-----
 
@@ -207,10 +207,10 @@ void test1() {
       "[*:2]C[*:1]",
       "[*:2]O.[*:1]CNC(=O)c1c(C)n([O-])c2ccccc2[n+]1=O",
   };
-  char fs[15][256];  // 15 reference results with updated RDKit's SMARTS Writer
+  char fs[15][256];  // 15 reference results with updated RDKix's SMARTS Writer
   const char *fs1[] = {
       // 15+1dup reordered reference results
-      // Fix for updated RDKit. new SMILES for the same molecule:
+      // Fix for updated RDKix. new SMILES for the same molecule:
       "Cc1c(C(=O)NCCO)[n+](=O)c2ccccc2n1[O-],ZINC21984717,,C[*:1].O=C(NCCO)c1c("
       "n([O-])c2ccccc2[n+]1=O)[*:1]",
       // was
@@ -240,7 +240,7 @@ void test1() {
       "Cc1c(C(=O)NCCO)[n+](=O)c2ccccc2n1[O-],ZINC21984717,[*:2]CCNC(=O)c1c([*:"
       "1])n([O-])c2ccccc2[n+]1=O,[*:1]C.[*:2]O",
 
-      // Fix for updated RDKit. new SMILES for the same molecule:
+      // Fix for updated RDKix. new SMILES for the same molecule:
       "Cc1c(C(=O)NCCO)[n+](=O)c2ccccc2n1[O-],ZINC21984717,,Cc1c([n+](=O)"
       "c2ccccc2n1[O-])[*:1].O=C(NCCO)[*:1]",
       // was
@@ -271,10 +271,10 @@ void test1() {
       */
   };
 
-  // FIX RDKit update. But MolToSmiles() fails with new RDKit version
+  // FIX RDKix update. But MolToSmiles() fails with new RDKix version
   for (size_t r = 0; r < sizeof(fs) / sizeof(fs[0]); r++) {
     //        strcpy(fs[r], fs1[r]);
-    // MolToSmiles() fails with new RDKit version in DEBUG Build
+    // MolToSmiles() fails with new RDKix version in DEBUG Build
     char core[256] = "", side[256];
     if (fs_sm[2 * r][0]) {
       RWMol *m = SmilesToMol(fs_sm[2 * r]);
@@ -300,7 +300,7 @@ void test1() {
     ROMol *mol = SmilesToMol(smiles);
     std::vector<std::pair<ROMOL_SPTR, ROMOL_SPTR>> res;
     t0 = nanoClock();
-    RDKit::MMPA::fragmentMol(*mol, res, 3);
+    RDKix::MMPA::fragmentMol(*mol, res, 3);
     printTime();
     delete mol;
     std::cout << "TEST FINISHED "
@@ -415,7 +415,7 @@ void test2() {
     /*
      * General test fragment
      */
-    RDKit::MMPA::fragmentMol(*mol, res);
+    RDKix::MMPA::fragmentMol(*mol, res);
 
     printTime();
     std::map<size_t, size_t> fs2res;
@@ -510,7 +510,7 @@ void doTest(const char *smi, const char *fs[], unsigned fs_size) {
 
   std::cout << "\nTEST mol: " << id << " " << smi << "\n";
   t0 = nanoClock();
-  RDKit::MMPA::fragmentMol(*mol, res);
+  RDKix::MMPA::fragmentMol(*mol, res);
   printTime();
 
   // Create reference map
@@ -697,7 +697,7 @@ void testGithub6900() {
   // auto mol = "CN1CCCN=C1/C=C/c1cccs1"_smiles;
   auto mol = "N/C=C/C"_smiles;
   std::vector<std::pair<ROMOL_SPTR, ROMOL_SPTR>> res;
-  RDKit::MMPA::fragmentMol(*mol, res, 3);
+  RDKix::MMPA::fragmentMol(*mol, res, 3);
 }
 int main() {
   BOOST_LOG(rdInfoLog)

@@ -2,13 +2,13 @@
 //   Copyright (C) 2002-2017 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -23,7 +23,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testSmilesWriter() {
   std::string rdbase = getenv("RDBASE");
@@ -1574,7 +1574,7 @@ void testRGPMolFileWriterV2KV3K() {
   {
     auto m = R"CTAB(
 
-     RDKit          2D
+     RDKix          2D
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    2.4750    0.0000 R#  0  0  0  0  0  0  0  0  0  0  0  0
     0.7145    2.0625    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

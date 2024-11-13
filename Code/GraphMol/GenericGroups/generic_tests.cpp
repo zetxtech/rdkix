@@ -2,10 +2,10 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Tests of handling generics in substructure searching
 //
@@ -15,7 +15,7 @@
 #include <tuple>
 #include <utility>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -23,7 +23,7 @@
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/MarvinParse/MarvinParser.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 class _IsSubstructOf : public Catch::Matchers::MatcherBase<const ROMol &> {
   ROMol const *m_mol;
@@ -349,7 +349,7 @@ void runCxsmilesTest(const std::string groupToTest,
     query = std::unique_ptr<RWMol>(SmartsToMol(queryString));
   } else {
     query = std::unique_ptr<RWMol>(SmartsToMol("*C=O |$;;$|"));
-    query->getAtomWithIdx(0)->setProp(RDKit::common_properties::atomLabel,
+    query->getAtomWithIdx(0)->setProp(RDKix::common_properties::atomLabel,
                                       groupToTest);
   }
   runTest(query.get(), tests);

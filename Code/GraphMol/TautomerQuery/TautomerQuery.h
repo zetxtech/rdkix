@@ -1,17 +1,17 @@
 //
 // Created by Gareth Jones on 5/7/2020.
 //
-// Copyright 2020-2022 Schrodinger, Inc and other RDKit contributors
+// Copyright 2020-2022 Schrodinger, Inc and other RDKix contributors
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 #include <RDGeneral/export.h>
 
-#ifndef RDKIT_TAUTOMERQUERY_H
-#define RDKIT_TAUTOMERQUERY_H
+#ifndef RDKIX_TAUTOMERQUERY_H
+#define RDKIX_TAUTOMERQUERY_H
 
 #include <GraphMol/ROMol.h>
 #include <GraphMol/MolPickler.h>
@@ -27,13 +27,13 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 class RWMol;
 
-RDKIT_TAUTOMERQUERY_EXPORT bool TautomerQueryCanSerialize();
+RDKIX_TAUTOMERQUERY_EXPORT bool TautomerQueryCanSerialize();
 
-class RDKIT_TAUTOMERQUERY_EXPORT TautomerQuery {
+class RDKIX_TAUTOMERQUERY_EXPORT TautomerQuery {
  private:
   // Tautomers of the query
   std::vector<ROMOL_SPTR> d_tautomers;
@@ -155,10 +155,10 @@ class RDKIT_TAUTOMERQUERY_EXPORT TautomerQuery {
 };
 
 // so we can use the templates in Code/GraphMol/Substruct/SubstructMatch.h
-RDKIT_TAUTOMERQUERY_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_TAUTOMERQUERY_EXPORT std::vector<MatchVectType> SubstructMatch(
     const ROMol &mol, const TautomerQuery &query,
     const SubstructMatchParameters &params);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_TAUTOMERQUERY_H
+#endif  // RDKIX_TAUTOMERQUERY_H

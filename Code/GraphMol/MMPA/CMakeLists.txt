@@ -3,15 +3,15 @@ if (MSVC)
 endif(MSVC)
 
 
-rdkit_library(MMPA
+rdkix_library(MMPA
               MMPA.cpp
               LINK_LIBRARIES SubstructMatch Depictor FileParsers ChemTransforms GraphMol RDGeneral )
-target_compile_definitions(MMPA PRIVATE RDKIT_MMPA_BUILD)
+target_compile_definitions(MMPA PRIVATE RDKIX_MMPA_BUILD)
 
-rdkit_headers(MMPA.h
+rdkix_headers(MMPA.h
               DEST GraphMol/MMPA)
 
-rdkit_test(testMMPA MMPA_UnitTest.cpp LINK_LIBRARIES
+rdkix_test(testMMPA MMPA_UnitTest.cpp LINK_LIBRARIES
   MMPA SmilesParse )
 
 

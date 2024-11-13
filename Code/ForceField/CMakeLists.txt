@@ -1,5 +1,5 @@
 
-rdkit_library(ForceField
+rdkix_library(ForceField
               ForceField.cpp AngleConstraint.cpp AngleConstraints.cpp 
               DistanceConstraint.cpp DistanceConstraints.cpp
               PositionConstraint.cpp TorsionConstraint.cpp
@@ -10,9 +10,9 @@ rdkit_library(ForceField
               MMFF/OopBend.cpp MMFF/TorsionAngle.cpp MMFF/Nonbonded.cpp
               MMFF/Params.cpp
               LINK_LIBRARIES Optimizer Trajectory)
-target_compile_definitions(ForceField PRIVATE RDKIT_FORCEFIELD_BUILD)
+target_compile_definitions(ForceField PRIVATE RDKIX_FORCEFIELD_BUILD)
 
-rdkit_headers(Contrib.h
+rdkix_headers(Contrib.h
               ForceField.h
               AngleConstraint.h
               AngleConstraints.h
@@ -22,7 +22,7 @@ rdkit_headers(Contrib.h
               TorsionConstraint.h
               DEST ForceField)
 
-rdkit_headers(UFF/AngleBend.h
+rdkix_headers(UFF/AngleBend.h
               UFF/BondStretch.h
               UFF/Contribs.h
               UFF/DistanceConstraint.h
@@ -36,7 +36,7 @@ rdkit_headers(UFF/AngleBend.h
               UFF/Inversions.h
               UFF/TorsionAngle.h DEST ForceField/UFF)
 
-rdkit_headers(MMFF/AngleBend.h
+rdkix_headers(MMFF/AngleBend.h
               MMFF/BondStretch.h
               MMFF/StretchBend.h
               MMFF/OopBend.h
@@ -49,7 +49,7 @@ rdkit_headers(MMFF/AngleBend.h
               MMFF/PositionConstraint.h
               MMFF/Params.h DEST ForceField/MMFF)
 
-rdkit_catch_test(ForceFieldsCatch 
+rdkix_catch_test(ForceFieldsCatch 
                  catch_tests.cpp
                  LINK_LIBRARIES 
                  ForceField ForceFieldHelpers)

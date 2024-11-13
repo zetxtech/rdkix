@@ -11,9 +11,9 @@ import pickle
 import sys
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import ChemicalFeatures
-from rdkit.Geometry import rdGeometry as geom
+from rdkix import Chem, RDConfig
+from rdkix.Chem import ChemicalFeatures
+from rdkix.Geometry import rdGeometry as geom
 
 
 def feq(v1, v2, tol2=1e-4):

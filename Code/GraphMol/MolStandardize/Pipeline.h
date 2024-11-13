@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 Novartis Biomedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RD_MOLSTANDARDIZE_PIPELINE_H
 #define RD_MOLSTANDARDIZE_PIPELINE_H
@@ -16,11 +16,11 @@
 #include <utility>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolStandardize {
 
-struct RDKIT_MOLSTANDARDIZE_EXPORT PipelineOptions {
+struct RDKIX_MOLSTANDARDIZE_EXPORT PipelineOptions {
   // parsing
   bool strictParsing{false};
 
@@ -87,7 +87,7 @@ struct RDKIT_MOLSTANDARDIZE_EXPORT PipelineOptions {
   bool outputV2000{false};
 };
 
-enum RDKIT_MOLSTANDARDIZE_EXPORT PipelineStatus {
+enum RDKIX_MOLSTANDARDIZE_EXPORT PipelineStatus {
   NO_EVENT = 0,
   INPUT_ERROR = (1 << 0),
   PREPARE_FOR_VALIDATION_ERROR = (1 << 1),
@@ -119,7 +119,7 @@ enum RDKIT_MOLSTANDARDIZE_EXPORT PipelineStatus {
                             FRAGMENTS_REMOVED | PROTONATION_CHANGED)
 };
 
-enum class RDKIT_MOLSTANDARDIZE_EXPORT PipelineStage : std::uint32_t {
+enum class RDKIX_MOLSTANDARDIZE_EXPORT PipelineStage : std::uint32_t {
   NOT_STARTED = 0,
   PARSING_INPUT,
   PREPARE_FOR_VALIDATION,
@@ -133,14 +133,14 @@ enum class RDKIT_MOLSTANDARDIZE_EXPORT PipelineStage : std::uint32_t {
   COMPLETED
 };
 
-struct RDKIT_MOLSTANDARDIZE_EXPORT PipelineLogEntry {
+struct RDKIX_MOLSTANDARDIZE_EXPORT PipelineLogEntry {
   PipelineStatus status;
   std::string detail;
 };
 
 using PipelineLog = std::vector<PipelineLogEntry>;
 
-struct RDKIT_MOLSTANDARDIZE_EXPORT PipelineResult {
+struct RDKIX_MOLSTANDARDIZE_EXPORT PipelineResult {
   PipelineStatus status;
   std::uint32_t stage;
   PipelineLog log;
@@ -154,26 +154,26 @@ struct RDKIT_MOLSTANDARDIZE_EXPORT PipelineResult {
 using RWMOL_SPTR_PAIR = std::pair<RWMOL_SPTR, RWMOL_SPTR>;
 
 namespace Operations {
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR prepareForValidation(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR prepareForValidation(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR validate(RWMOL_SPTR mol,
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR validate(RWMOL_SPTR mol,
                                                 PipelineResult &result,
                                                 const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR prepareForStandardization(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR prepareForStandardization(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR standardize(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR standardize(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR reapplyWedging(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR reapplyWedging(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR cleanup2D(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR cleanup2D(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR_PAIR makeParent(
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR_PAIR makeParent(
     RWMOL_SPTR mol, PipelineResult &result, const PipelineOptions &options);
 
-RDKIT_MOLSTANDARDIZE_EXPORT RWMOL_SPTR parse(const std::string &molblock,
+RDKIX_MOLSTANDARDIZE_EXPORT RWMOL_SPTR parse(const std::string &molblock,
                                              PipelineResult &result,
                                              const PipelineOptions &options);
-RDKIT_MOLSTANDARDIZE_EXPORT void serialize(RWMOL_SPTR_PAIR output,
+RDKIX_MOLSTANDARDIZE_EXPORT void serialize(RWMOL_SPTR_PAIR output,
                                            PipelineResult &result,
                                            const PipelineOptions &options);
 
@@ -198,7 +198,7 @@ const PipelineVector standardizationSteps{
     {static_cast<uint32_t>(PipelineStage::CLEANUP_2D), &cleanup2D}};
 }  // namespace Operations
 
-class RDKIT_MOLSTANDARDIZE_EXPORT Pipeline {
+class RDKIX_MOLSTANDARDIZE_EXPORT Pipeline {
  private:
   PipelineOptions options;
   Operations::ParseOperation parse = Operations::parse;
@@ -229,6 +229,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT Pipeline {
 };
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

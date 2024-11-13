@@ -1,6 +1,6 @@
 <!--
 Visualize R group decomposition results similarly to
-https://greglandrum.github.io/rdkit-blog/posts/2021-08-07-rgd-and-highlighting.html
+https://greglandrum.github.io/rdkix-blog/posts/2021-08-07-rgd-and-highlighting.html
 Use
 rgd_demo.html?output=svg
 to switch from canvas to SVG output
@@ -23,7 +23,7 @@ to switch from canvas to SVG output
     }
   </style>
 </head>
-<script src="./RDKit_minimal.js"></script>
+<script src="./RDKix_minimal.js"></script>
 <script>
   const urlParams = new URLSearchParams(document.location.search);
   const useSvg = (urlParams.get('output') || '').toLowerCase() === 'svg';
@@ -126,8 +126,8 @@ to switch from canvas to SVG output
     return table;
   }
 
-  const displayRgdTable = (RDKitModule) => {
-    console.log('version: ' + RDKitModule.version());
+  const displayRgdTable = (RDKixModule) => {
+    console.log('version: ' + RDKixModule.version());
     const smiArray = [
       ['Cc1ccc2c(c3ccnc(Nc4cccc(c4)C(F)(F)F)n3)c(nn2n1)c5ccc(F)cc5', 'CHEMBL182493'],
       ['Cc1ccc2c(c3ccnc(Nc4ccc(F)c(F)c4)n3)c(nn2n1)c5ccc(F)cc5', 'CHEMBL182326'],
@@ -151,7 +151,7 @@ to switch from canvas to SVG output
     let mols;
     let rgd;
     try {
-      core = RDKitModule.get_mol(
+      core = RDKixModule.get_mol(
         'c1cc(-c2c([*:1])nn3nc([*:2])ccc23)nc(N(c2ccc([*:4])c([*:3])c2))n1',
         JSON.stringify({
           makeDummiesQueries: true,
@@ -160,11 +160,11 @@ to switch from canvas to SVG output
       );
       core.set_new_coords(useCoordGen);
       mols = smiArray.map(([smi, chemblId]) => {
-        const mol = RDKitModule.get_mol(smi);
+        const mol = RDKixModule.get_mol(smi);
         mol.set_prop(NAME, chemblId);
         return mol;
       });
-      rgd = RDKitModule.get_rgd(core, JSON.stringify({
+      rgd = RDKixModule.get_rgd(core, JSON.stringify({
         includeTargetMolInResults: true,
       }));
       mols.forEach((mol) => rgd.add(mol));
@@ -195,12 +195,12 @@ to switch from canvas to SVG output
     }
   };
 
-  initRDKitModule().then(displayRgdTable);
+  initRDKixModule().then(displayRgdTable);
 </script>
 
 <body>
   <div class="container-fluid col-md-8">
-    <h1>RDKit-JS R Group Decomposition demo</h1>
+    <h1>RDKix-JS R Group Decomposition demo</h1>
     <div id="tableDiv"></div>
 </body>
 

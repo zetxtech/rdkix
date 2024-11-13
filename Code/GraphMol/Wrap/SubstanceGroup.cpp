@@ -2,10 +2,10 @@
 //  Copyright (C) 2019 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -13,14 +13,14 @@
 #include <string>
 
 // ours
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <RDBoost/Wrap.h>
 #include "props.hpp"
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -342,6 +342,6 @@ struct sgroup_wrap {
                     python::with_custodian_and_ward_postcall<0, 1>>());
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_sgroup() { RDKit::sgroup_wrap::wrap(); }
+void wrap_sgroup() { RDKix::sgroup_wrap::wrap(); }

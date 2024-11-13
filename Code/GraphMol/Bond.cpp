@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Bond.h"
 #include "Atom.h"
@@ -13,7 +13,7 @@
 #include <RDGeneral/Invariant.h>
 #include "Atropisomers.h"
 
-namespace RDKit {
+namespace RDKix {
 
 Bond::Bond() : RDProps() { initBond(); };
 
@@ -327,101 +327,101 @@ bool Bond::invertChirality() {
   return false;
 }
 
-};  // namespace RDKit
+};  // namespace RDKix
 
 namespace {
-constexpr const char *bondTypeToString(RDKit::Bond::BondType d) {
+constexpr const char *bondTypeToString(RDKix::Bond::BondType d) {
   switch (d) {
-    case RDKit::Bond::BondType::UNSPECIFIED:
+    case RDKix::Bond::BondType::UNSPECIFIED:
       return "?";
-    case RDKit::Bond::BondType::SINGLE:
+    case RDKix::Bond::BondType::SINGLE:
       return "1";
-    case RDKit::Bond::BondType::DOUBLE:
+    case RDKix::Bond::BondType::DOUBLE:
       return "2";
-    case RDKit::Bond::BondType::TRIPLE:
+    case RDKix::Bond::BondType::TRIPLE:
       return "3";
-    case RDKit::Bond::BondType::QUADRUPLE:
+    case RDKix::Bond::BondType::QUADRUPLE:
       return "4";
-    case RDKit::Bond::BondType::QUINTUPLE:
+    case RDKix::Bond::BondType::QUINTUPLE:
       return "5";
-    case RDKit::Bond::BondType::HEXTUPLE:
+    case RDKix::Bond::BondType::HEXTUPLE:
       return "6";
-    case RDKit::Bond::BondType::ONEANDAHALF:
+    case RDKix::Bond::BondType::ONEANDAHALF:
       return "1.5";
-    case RDKit::Bond::BondType::TWOANDAHALF:
+    case RDKix::Bond::BondType::TWOANDAHALF:
       return "2.5";
-    case RDKit::Bond::BondType::THREEANDAHALF:
+    case RDKix::Bond::BondType::THREEANDAHALF:
       return "3.5";
-    case RDKit::Bond::BondType::FOURANDAHALF:
+    case RDKix::Bond::BondType::FOURANDAHALF:
       return "4.5";
-    case RDKit::Bond::BondType::FIVEANDAHALF:
+    case RDKix::Bond::BondType::FIVEANDAHALF:
       return "5.5";
-    case RDKit::Bond::BondType::AROMATIC:
+    case RDKix::Bond::BondType::AROMATIC:
       return "a";
-    case RDKit::Bond::BondType::IONIC:
+    case RDKix::Bond::BondType::IONIC:
       return "I";
-    case RDKit::Bond::BondType::HYDROGEN:
+    case RDKix::Bond::BondType::HYDROGEN:
       return "H";
-    case RDKit::Bond::BondType::THREECENTER:
+    case RDKix::Bond::BondType::THREECENTER:
       return "3C";
-    case RDKit::Bond::BondType::DATIVEONE:
+    case RDKix::Bond::BondType::DATIVEONE:
       return "D1";
-    case RDKit::Bond::BondType::DATIVE:
+    case RDKix::Bond::BondType::DATIVE:
       return "D";
-    case RDKit::Bond::BondType::DATIVEL:
+    case RDKix::Bond::BondType::DATIVEL:
       return "DL";
-    case RDKit::Bond::BondType::DATIVER:
+    case RDKix::Bond::BondType::DATIVER:
       return "DR";
-    case RDKit::Bond::BondType::OTHER:
+    case RDKix::Bond::BondType::OTHER:
       return "Other";
-    case RDKit::Bond::BondType::ZERO:
+    case RDKix::Bond::BondType::ZERO:
       return "0";
   }
   return ("");
 }
-constexpr const char *bondDirToString(RDKit::Bond::BondDir d) {
+constexpr const char *bondDirToString(RDKix::Bond::BondDir d) {
   switch (d) {
-    case RDKit::Bond::BondDir::NONE:
+    case RDKix::Bond::BondDir::NONE:
       return "NONE";
-    case RDKit::Bond::BondDir::BEGINWEDGE:
+    case RDKix::Bond::BondDir::BEGINWEDGE:
       return "wedge";
-    case RDKit::Bond::BondDir::BEGINDASH:
+    case RDKix::Bond::BondDir::BEGINDASH:
       return "dash";
-    case RDKit::Bond::BondDir::ENDDOWNRIGHT:
+    case RDKix::Bond::BondDir::ENDDOWNRIGHT:
       return "\\";
-    case RDKit::Bond::BondDir::ENDUPRIGHT:
+    case RDKix::Bond::BondDir::ENDUPRIGHT:
       return "/";
-    case RDKit::Bond::BondDir::EITHERDOUBLE:
+    case RDKix::Bond::BondDir::EITHERDOUBLE:
       return "x";
-    case RDKit::Bond::BondDir::UNKNOWN:
+    case RDKix::Bond::BondDir::UNKNOWN:
       return "?";
   }
   return ("");
 }
-constexpr const char *bondStereoToString(RDKit::Bond::BondStereo d) {
+constexpr const char *bondStereoToString(RDKix::Bond::BondStereo d) {
   switch (d) {
-    case RDKit::Bond::BondStereo::STEREONONE:
+    case RDKix::Bond::BondStereo::STEREONONE:
       return "NONE";
-    case RDKit::Bond::BondStereo::STEREOANY:
+    case RDKix::Bond::BondStereo::STEREOANY:
       return "ANY";
-    case RDKit::Bond::BondStereo::STEREOZ:
+    case RDKix::Bond::BondStereo::STEREOZ:
       return "Z";
-    case RDKit::Bond::BondStereo::STEREOE:
+    case RDKix::Bond::BondStereo::STEREOE:
       return "E";
-    case RDKit::Bond::BondStereo::STEREOCIS:
+    case RDKix::Bond::BondStereo::STEREOCIS:
       return "CIS";
-    case RDKit::Bond::BondStereo::STEREOTRANS:
+    case RDKix::Bond::BondStereo::STEREOTRANS:
       return "TRANS";
-    case RDKit::Bond::BondStereo::STEREOATROPCW:
+    case RDKix::Bond::BondStereo::STEREOATROPCW:
       return "CW";
-    case RDKit::Bond::BondStereo::STEREOATROPCCW:
+    case RDKix::Bond::BondStereo::STEREOATROPCCW:
       return "CCW";
   }
   return ("");
 }
 }  // namespace
 
-std::ostream &operator<<(std::ostream &target, const RDKit::Bond &bond) {
+std::ostream &operator<<(std::ostream &target, const RDKix::Bond &bond) {
   target << bond.getIdx() << " ";
   target << bond.getBeginAtomIdx() << "->" << bond.getEndAtomIdx();
   target << " order: " << bondTypeToString(bond.getBondType());
@@ -434,10 +434,10 @@ std::ostream &operator<<(std::ostream &target, const RDKit::Bond &bond) {
       const auto &ats = bond.getStereoAtoms();
       target << " ats: (" << ats[0] << " " << ats[1] << ")";
     }
-    if (bond.getStereo() == RDKit::Bond::BondStereo::STEREOATROPCCW ||
-        bond.getStereo() == RDKit::Bond::BondStereo::STEREOATROPCW) {
-      RDKit::Atropisomers::AtropAtomAndBondVec atomAndBonds[2];
-      if (RDKit::Atropisomers::getAtropisomerAtomsAndBonds(
+    if (bond.getStereo() == RDKix::Bond::BondStereo::STEREOATROPCCW ||
+        bond.getStereo() == RDKix::Bond::BondStereo::STEREOATROPCW) {
+      RDKix::Atropisomers::AtropAtomAndBondVec atomAndBonds[2];
+      if (RDKix::Atropisomers::getAtropisomerAtomsAndBonds(
               &bond, atomAndBonds, bond.getOwningMol())) {
         target << " bonds: (";
         for (auto i = 0u; i < atomAndBonds[0].second.size(); ++i) {

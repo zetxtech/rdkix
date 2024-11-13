@@ -4,15 +4,15 @@ import unittest
 from multiprocessing import Process, Value
 from time import sleep
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import ChemicalForceFields, rdMolTransforms
+from rdkix import Chem, RDConfig
+from rdkix.Chem import ChemicalForceFields, rdMolTransforms
 
 
 class OptSafe:
 
   def __init__(self):
     self.minInfLoop = """minInfLoop
-     RDKit          3D
+     RDKix          3D
 
   7  5  0  0  0  0  0  0  0  0999 V2000
     1.7321   -0.5000    0.0000 Br  0  0  0  0  0  0  0  0  0  0  0  0
@@ -70,7 +70,7 @@ class TestCase(unittest.TestCase):
 
   def setUp(self):
     self.molB = """butane
-     RDKit          3D
+     RDKix          3D
 butane
  17 16  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

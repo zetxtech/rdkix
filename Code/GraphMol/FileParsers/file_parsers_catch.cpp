@@ -1,10 +1,10 @@
 //
-//  Copyright (C) 2020-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2020-2021 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -16,7 +16,7 @@
 #include "RDGeneral/test.h"
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Chirality.h>
@@ -34,14 +34,14 @@
 #include <RDGeneral/FileParseException.h>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Basic SVG Parsing", "[SVG][reader]") {
   SECTION("basics") {
     std::string svg = R"SVG(<?xml version='1.0' encoding='iso-8859-1'?>
 <svg version='1.1' baseProfile='full'
               xmlns='http://www.w3.org/2000/svg'
-                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:rdkix='http://www.rdkit.org/xml'
                       xmlns:xlink='http://www.w3.org/1999/xlink'
          xml:space='preserve'
 width='200px' height='200px' >
@@ -66,24 +66,24 @@ width='200px' height='200px' >
 <text x='149.782' y='131.743' style='font-size:15px;font-style:normal;font-weight:normal;fill-opacity:1;stroke:none;font-family:sans-serif;text-anchor:start;fill:#FF0000' ><tspan>OH</tspan></text>
 <text x='89.9952' y='194' style='font-size:12px;font-style:normal;font-weight:normal;fill-opacity:1;stroke:none;font-family:sans-serif;text-anchor:start;fill:#000000' ><tspan>m1</tspan></text>
 <metadata>
-<rdkit:mol xmlns:rdkit = "http://www.rdkit.org/xml" version="0.9">
-<rdkit:atom idx="1" atom-smiles="[CH3]" drawing-x="9.09091" drawing-y="89.4974" x="-2.78651" y="0.295614" z="0" />
-<rdkit:atom idx="2" atom-smiles="[NH]" drawing-x="52.6897" drawing-y="75.8699" x="-1.35482" y="0.743114" z="0" />
-<rdkit:atom idx="3" atom-smiles="[C@H]" drawing-x="86.2908" drawing-y="106.814" x="-0.251428" y="-0.273019" z="0" />
-<rdkit:atom idx="4" atom-smiles="[Cl]" drawing-x="76.2932" drawing-y="151.385" x="-0.579728" y="-1.73665" z="0" />
-<rdkit:atom idx="5" atom-smiles="[C]" drawing-x="129.89" drawing-y="93.1862" x="1.18027" y="0.174481" z="0" />
-<rdkit:atom idx="6" atom-smiles="[O]" drawing-x="139.887" drawing-y="48.6148" x="1.50857" y="1.63811" z="0" />
-<rdkit:atom idx="7" atom-smiles="[OH]" drawing-x="163.491" drawing-y="124.13" x="2.28366" y="-0.841652" z="0" />
-<rdkit:bond idx="1" begin-atom-idx="1" end-atom-idx="2" bond-smiles="-" />
-<rdkit:bond idx="2" begin-atom-idx="2" end-atom-idx="3" bond-smiles="-" />
-<rdkit:bond idx="3" begin-atom-idx="3" end-atom-idx="4" bond-smiles="-" />
-<rdkit:bond idx="4" begin-atom-idx="3" end-atom-idx="5" bond-smiles="-" />
-<rdkit:bond idx="5" begin-atom-idx="5" end-atom-idx="6" bond-smiles="=" />
-<rdkit:bond idx="6" begin-atom-idx="5" end-atom-idx="7" bond-smiles="-" />
-</rdkit:mol></metadata>
+<rdkix:mol xmlns:rdkix = "http://www.rdkit.org/xml" version="0.9">
+<rdkix:atom idx="1" atom-smiles="[CH3]" drawing-x="9.09091" drawing-y="89.4974" x="-2.78651" y="0.295614" z="0" />
+<rdkix:atom idx="2" atom-smiles="[NH]" drawing-x="52.6897" drawing-y="75.8699" x="-1.35482" y="0.743114" z="0" />
+<rdkix:atom idx="3" atom-smiles="[C@H]" drawing-x="86.2908" drawing-y="106.814" x="-0.251428" y="-0.273019" z="0" />
+<rdkix:atom idx="4" atom-smiles="[Cl]" drawing-x="76.2932" drawing-y="151.385" x="-0.579728" y="-1.73665" z="0" />
+<rdkix:atom idx="5" atom-smiles="[C]" drawing-x="129.89" drawing-y="93.1862" x="1.18027" y="0.174481" z="0" />
+<rdkix:atom idx="6" atom-smiles="[O]" drawing-x="139.887" drawing-y="48.6148" x="1.50857" y="1.63811" z="0" />
+<rdkix:atom idx="7" atom-smiles="[OH]" drawing-x="163.491" drawing-y="124.13" x="2.28366" y="-0.841652" z="0" />
+<rdkix:bond idx="1" begin-atom-idx="1" end-atom-idx="2" bond-smiles="-" />
+<rdkix:bond idx="2" begin-atom-idx="2" end-atom-idx="3" bond-smiles="-" />
+<rdkix:bond idx="3" begin-atom-idx="3" end-atom-idx="4" bond-smiles="-" />
+<rdkix:bond idx="4" begin-atom-idx="3" end-atom-idx="5" bond-smiles="-" />
+<rdkix:bond idx="5" begin-atom-idx="5" end-atom-idx="6" bond-smiles="=" />
+<rdkix:bond idx="6" begin-atom-idx="5" end-atom-idx="7" bond-smiles="-" />
+</rdkix:mol></metadata>
 </svg>)SVG";
 
-    std::unique_ptr<RWMol> mol(RDKitSVGToMol(svg));
+    std::unique_ptr<RWMol> mol(RDKixSVGToMol(svg));
     REQUIRE(mol);
     CHECK(mol->getNumAtoms() == 7);
     CHECK(mol->getNumConformers() == 1);
@@ -477,7 +477,7 @@ M  SAP   1  1   8
 M  END
 )CTAB";
     std::string expectedMolblock1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  1  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -576,7 +576,7 @@ M  SBL   1  2   7   8
 M  END
 )CTAB";
     std::string expectedMolblock1NoSGroups = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  10 10  0  0  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -658,7 +658,7 @@ M  SAP   2  1  12
 M  END
 )CTAB";
     std::string expectedMolblock2 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 13  0  2  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -787,7 +787,7 @@ M  SAP   2  1  12
 M  END
 )CTAB";
     std::string expectedMolblock2NoSGroup1 = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 13  0  1  0  0  0  0  0  0999 V2000
    -1.2946    0.5348    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -946,7 +946,7 @@ TEST_CASE(
     "false",
     "[feature][sgroups]") {
   std::string molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2850,7 +2850,7 @@ TEST_CASE("multiple molecules in the PNG, second example", "[writer][PNG]") {
 TEST_CASE("github #3413: V3K mol blocks with no atoms fail to parse", "[bug]") {
   SECTION("basics") {
     auto m = R"CTAB(6065
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -3693,7 +3693,7 @@ M  END
 
 TEST_CASE("double bond stereo should not be set when the coords are all zero") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -4476,7 +4476,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("as reported3") {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4653,7 +4653,7 @@ TEST_CASE(
     "aromaticity perception") {
   SECTION("as reported") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4686,7 +4686,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("more detailed") {
     std::string molb = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4744,8 +4744,8 @@ TEST_CASE(
     REQUIRE(mol);
     auto groups = mol->getStereoGroups();
     REQUIRE(groups.size() == 2);
-    CHECK(groups[0].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
-    CHECK(groups[1].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
+    CHECK(groups[0].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
+    CHECK(groups[1].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
   }
 
   SECTION("as reported, less whitespace") {
@@ -4757,8 +4757,8 @@ TEST_CASE(
     REQUIRE(mol);
     auto groups = mol->getStereoGroups();
     REQUIRE(groups.size() == 2);
-    CHECK(groups[0].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
-    CHECK(groups[1].getGroupType() == RDKit::StereoGroupType::STEREO_AND);
+    CHECK(groups[0].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
+    CHECK(groups[1].getGroupType() == RDKix::StereoGroupType::STEREO_AND);
   }
 }
 
@@ -4860,7 +4860,7 @@ TEST_CASE(
     "to 3D molecules") {
   SECTION("basics") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4887,7 +4887,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("wiggly bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4913,11 +4913,11 @@ M  END)CTAB"_ctab;
           Atom::ChiralType::CHI_UNSPECIFIED);
   }
   SECTION("3D as 2D") {
-    // here we lie to the RDKit and tell it that a 3D conformer is 2D,
+    // here we lie to the RDKix and tell it that a 3D conformer is 2D,
     //  the code detects that and still sets the conformer to be 3D and
     //  assigns stereo:
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4943,10 +4943,10 @@ M  END)CTAB"_ctab;
           Atom::ChiralType::CHI_TETRAHEDRAL_CW);
   }
   SECTION("2D as 3D") {
-    // here we lie to the RDKit and tell it that a 2D conformer is 3D,
+    // here we lie to the RDKix and tell it that a 2D conformer is 3D,
     //  there's no chiral volume, so we don't end up with a chiral center
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -4974,7 +4974,7 @@ M  END
   }
   SECTION("double bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5001,7 +5001,7 @@ M  END
   }
   SECTION("double bond, crossed") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5028,7 +5028,7 @@ M  END
   }
   SECTION("double bond, wiggly bond") {
     auto m = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5246,7 +5246,7 @@ TEST_CASE(
     "GitHub Issue #5423: Parsing a Mol block/file does not clear the "
     "\"molTotValence\" property from atoms") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -5393,7 +5393,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("R# also gets the tag (V2000, #5810)") {
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   3  2  0  0  0  0  0  0  0  0999 V2000
    -2.9167    3.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6058,7 +6058,7 @@ TEST_CASE("MaeWriter atom numbering chirality", "[mae][MaeWriter][writer]") {
 
 TEST_CASE("MaeWriter any stereo", "[mae][MaeWriter][writer]") {
   auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -6092,7 +6092,7 @@ $$$$
   w.flush();
   auto maeblock = oss->str();
   CHECK(maeblock.find("i_sd_original_parity") != std::string::npos);
-  // expected bond line -- include RDKit cfg properties
+  // expected bond line -- include RDKix cfg properties
   CHECK(maeblock.find("1 1 2 2 2 2 2") != std::string::npos);
 }
 
@@ -6145,10 +6145,10 @@ TEST_CASE("MaeWriter basic testing", "[mae][MaeWriter][writer]") {
     // Check mol properties
     CHECK(ctBlock.find("s_m_title") != std::string::npos);
 
-    CHECK(ctBlock.find("b_rdkit_mol_bool_prop") != std::string::npos);
-    CHECK(ctBlock.find("i_rdkit_mol_int_prop") != std::string::npos);
-    CHECK(ctBlock.find("r_rdkit_mol_real_prop") != std::string::npos);
-    CHECK(ctBlock.find("s_rdkit_mol_string_prop") != std::string::npos);
+    CHECK(ctBlock.find("b_rdkix_mol_bool_prop") != std::string::npos);
+    CHECK(ctBlock.find("i_rdkix_mol_int_prop") != std::string::npos);
+    CHECK(ctBlock.find("r_rdkix_mol_real_prop") != std::string::npos);
+    CHECK(ctBlock.find("s_rdkix_mol_string_prop") != std::string::npos);
 
     // Check Atom properties
     CHECK(atomBlock.find("r_m_x_coord") != std::string::npos);
@@ -6157,20 +6157,20 @@ TEST_CASE("MaeWriter basic testing", "[mae][MaeWriter][writer]") {
     CHECK(atomBlock.find("i_m_atomic_number") != std::string::npos);
     CHECK(atomBlock.find("i_m_formal_charge") != std::string::npos);
 
-    CHECK(atomBlock.find("b_rdkit_atom_bool_prop") != std::string::npos);
-    CHECK(atomBlock.find("i_rdkit_atom_int_prop") != std::string::npos);
-    CHECK(atomBlock.find("r_rdkit_atom_real_prop") != std::string::npos);
-    CHECK(atomBlock.find("s_rdkit_atom_string_prop") != std::string::npos);
+    CHECK(atomBlock.find("b_rdkix_atom_bool_prop") != std::string::npos);
+    CHECK(atomBlock.find("i_rdkix_atom_int_prop") != std::string::npos);
+    CHECK(atomBlock.find("r_rdkix_atom_real_prop") != std::string::npos);
+    CHECK(atomBlock.find("s_rdkix_atom_string_prop") != std::string::npos);
 
     // Check Bond properties
     CHECK(bondBlock.find("i_m_from") != std::string::npos);
     CHECK(bondBlock.find("i_m_to") != std::string::npos);
     CHECK(bondBlock.find("i_m_order") != std::string::npos);
 
-    CHECK(bondBlock.find("b_rdkit_bond_bool_prop") != std::string::npos);
-    CHECK(bondBlock.find("i_rdkit_bond_int_prop") != std::string::npos);
-    CHECK(bondBlock.find("r_rdkit_bond_real_prop") != std::string::npos);
-    CHECK(bondBlock.find("s_rdkit_bond_string_prop") != std::string::npos);
+    CHECK(bondBlock.find("b_rdkix_bond_bool_prop") != std::string::npos);
+    CHECK(bondBlock.find("i_rdkix_bond_int_prop") != std::string::npos);
+    CHECK(bondBlock.find("r_rdkix_bond_real_prop") != std::string::npos);
+    CHECK(bondBlock.find("s_rdkix_bond_string_prop") != std::string::npos);
   }
 
   SECTION("Check bond ends indices order") {
@@ -6277,11 +6277,11 @@ TEST_CASE("MaeWriter basic testing", "[mae][MaeWriter][writer]") {
     // Check mol properties
     CHECK(ctBlock.find("s_m_title") != std::string::npos);
 
-    CHECK(ctBlock.find("b_rdkit_mol_bool_prop") != std::string::npos);
+    CHECK(ctBlock.find("b_rdkix_mol_bool_prop") != std::string::npos);
 
-    CHECK(ctBlock.find("i_rdkit_mol_int_prop") == std::string::npos);
-    CHECK(ctBlock.find("r_rdkit_mol_real_prop") == std::string::npos);
-    CHECK(ctBlock.find("s_rdkit_mol_string_prop") == std::string::npos);
+    CHECK(ctBlock.find("i_rdkix_mol_int_prop") == std::string::npos);
+    CHECK(ctBlock.find("r_rdkix_mol_real_prop") == std::string::npos);
+    CHECK(ctBlock.find("s_rdkix_mol_string_prop") == std::string::npos);
 
     // Check Atom properties
     CHECK(atomBlock.find("r_m_x_coord") != std::string::npos);
@@ -6290,24 +6290,24 @@ TEST_CASE("MaeWriter basic testing", "[mae][MaeWriter][writer]") {
     CHECK(atomBlock.find("i_m_atomic_number") != std::string::npos);
     CHECK(atomBlock.find("i_m_formal_charge") != std::string::npos);
 
-    CHECK(atomBlock.find("i_rdkit_atom_int_prop") != std::string::npos);
+    CHECK(atomBlock.find("i_rdkix_atom_int_prop") != std::string::npos);
 
-    CHECK(atomBlock.find("b_rdkit_atom_bool_prop") == std::string::npos);
-    CHECK(atomBlock.find("r_rdkit_atom_real_prop") == std::string::npos);
-    CHECK(atomBlock.find("s_rdkit_atom_string_prop") == std::string::npos);
+    CHECK(atomBlock.find("b_rdkix_atom_bool_prop") == std::string::npos);
+    CHECK(atomBlock.find("r_rdkix_atom_real_prop") == std::string::npos);
+    CHECK(atomBlock.find("s_rdkix_atom_string_prop") == std::string::npos);
 
     // Check Bond properties
     CHECK(bondBlock.find("i_m_from") != std::string::npos);
     CHECK(bondBlock.find("i_m_to") != std::string::npos);
     CHECK(bondBlock.find("i_m_order") != std::string::npos);
 
-    CHECK(bondBlock.find("r_rdkit_bond_real_prop") != std::string::npos);
+    CHECK(bondBlock.find("r_rdkix_bond_real_prop") != std::string::npos);
 
-    CHECK(bondBlock.find("b_rdkit_bond_bool_prop") == std::string::npos);
-    CHECK(bondBlock.find("i_rdkit_bond_int_prop") == std::string::npos);
-    CHECK(bondBlock.find("s_rdkit_bond_string_prop") == std::string::npos);
+    CHECK(bondBlock.find("b_rdkix_bond_bool_prop") == std::string::npos);
+    CHECK(bondBlock.find("i_rdkix_bond_int_prop") == std::string::npos);
+    CHECK(bondBlock.find("s_rdkix_bond_string_prop") == std::string::npos);
 
-    // The "i_rdkit_atom_int_prop" prop should only be set on the first atom,
+    // The "i_rdkix_atom_int_prop" prop should only be set on the first atom,
     // and unset on the other six
     auto count_occurrences = [&atomBlock](const char *needle) {
       size_t pos = 0;
@@ -6729,7 +6729,7 @@ TEST_CASE("MaeWriter should not prefix Maestro-formatted properties") {
   REQUIRE(mol);
 
   // MaeMolSupplier should ignore the i_m_ct_enhanced_stereo_status property
-  // (it's meaningless to the RDKit)
+  // (it's meaningless to the RDKix)
   CHECK(mol->hasProp("i_m_ct_enhanced_stereo_status") == false);
 
   std::string mae_block;
@@ -6742,20 +6742,20 @@ TEST_CASE("MaeWriter should not prefix Maestro-formatted properties") {
   }
 
   // properties that already match the Maestro format should not be prefixed
-  // with "[birs]_rdkit_"
-  CHECK(mae_block.find("b_rdkit_b_m_subgroup_collapsed") == std::string::npos);
+  // with "[birs]_rdkix_"
+  CHECK(mae_block.find("b_rdkix_b_m_subgroup_collapsed") == std::string::npos);
   CHECK(mae_block.find("b_m_subgroup_collapsed") != std::string::npos);
 
-  CHECK(mae_block.find("b_rdkit_b_sd_chiral_flag") == std::string::npos);
+  CHECK(mae_block.find("b_rdkix_b_sd_chiral_flag") == std::string::npos);
   CHECK(mae_block.find("b_sd_chiral_flag") != std::string::npos);
 
-  CHECK(mae_block.find("i_rdkit_i_m_Source_File_Index") == std::string::npos);
+  CHECK(mae_block.find("i_rdkix_i_m_Source_File_Index") == std::string::npos);
   CHECK(mae_block.find("i_m_Source_File_Index") != std::string::npos);
 
-  CHECK(mae_block.find("i_rdkit_i_m_ct_format") == std::string::npos);
+  CHECK(mae_block.find("i_rdkix_i_m_ct_format") == std::string::npos);
   CHECK(mae_block.find("i_m_ct_format") != std::string::npos);
 
-  CHECK(mae_block.find("s_rdkit_s_m_entry_name") == std::string::npos);
+  CHECK(mae_block.find("s_rdkix_s_m_entry_name") == std::string::npos);
   CHECK(mae_block.find("s_m_entry_name") != std::string::npos);
 }
 
@@ -6888,7 +6888,7 @@ TEST_CASE(
     "z coordinate tolerance in flat structures"
     "[bug][molblock]") {
   const auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0010 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6913,7 +6913,7 @@ M  END
 TEST_CASE("Calculate 2D/3D from coordinates", "[molblock]") {
   SECTION("v2000, 2D structure marked as 3D without 2D stereo marks") {
     const auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6937,7 +6937,7 @@ M  END
 
   SECTION("v2000, 2D structure marked as 3D with 2D stereo marks") {
     const auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6961,7 +6961,7 @@ M  END
 
   SECTION("v2000, 3D structure marked as 2D") {
     const auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   4  3  0  0  0  0  0  0  0  0999 V2000
    -0.0017    0.0135    0.0027 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -6985,7 +6985,7 @@ M  END
 
   SECTION("v3000, 2D structure marked as 3D without 2D stereo marks") {
     const auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0     0  0            999 V3000
 M  V30 BEGIN CTAB
@@ -7016,7 +7016,7 @@ M  END
 
   SECTION("v3000, 2D structure marked as 3D with 2D stereo marks") {
     const auto mol = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0     0  0            999 V3000
 M  V30 BEGIN CTAB
@@ -7047,7 +7047,7 @@ M  END
 
   SECTION("v3000, 3D structure marked as 2D") {
     const auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0     0  0            999 V3000
 M  V30 BEGIN CTAB
@@ -7266,10 +7266,10 @@ TEST_CASE(
 }
 
 TEST_CASE(
-    "GitHub Issue #7256: RDKit fails to parse \"M RAD\" lines where radical is 0",
+    "GitHub Issue #7256: RDKix fails to parse \"M RAD\" lines where radical is 0",
     "[bug]") {
   const auto mb = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   1  0  0  0  0  0  0  0  0  0999 V2000
     0.0000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -7323,7 +7323,7 @@ TEST_CASE("ZBOs in V3K blocks") {
   SECTION("example") {
     // from SI of Alex Clark's ZBO paper
     auto m = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

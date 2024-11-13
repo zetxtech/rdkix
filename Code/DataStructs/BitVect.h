@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2008 greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_BITVECT_H__
@@ -21,7 +21,7 @@ typedef DoubleVect::iterator DoubleVectIter;
 const int ci_BITVECT_VERSION = 0x0020;  //!< version number to use in pickles
 
 //! Abstract base class for storing BitVectors
-class RDKIT_DATASTRUCTS_EXPORT BitVect {
+class RDKIX_DATASTRUCTS_EXPORT BitVect {
  public:
   virtual ~BitVect() = 0;
   //! sets a particular bit and returns its original value

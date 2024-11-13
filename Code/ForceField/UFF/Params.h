@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_UFFPARAMS_H
@@ -32,40 +32,40 @@ inline bool isDoubleZero(const double x) {
 inline void clipToOne(double &x) { x = std::clamp(x, -1.0, 1.0); }
 
 //! class to store UFF parameters for bond stretching
-class RDKIT_FORCEFIELD_EXPORT UFFBond {
+class RDKIX_FORCEFIELD_EXPORT UFFBond {
  public:
   double kb;
   double r0;
 };
 
 //! class to store UFF parameters for angle bending
-class RDKIT_FORCEFIELD_EXPORT UFFAngle {
+class RDKIX_FORCEFIELD_EXPORT UFFAngle {
  public:
   double ka;
   double theta0;
 };
 
 //! class to store UFF parameters for torsions
-class RDKIT_FORCEFIELD_EXPORT UFFTor {
+class RDKIX_FORCEFIELD_EXPORT UFFTor {
  public:
   double V;
 };
 
 //! class to store UFF parameters for inversions
-class RDKIT_FORCEFIELD_EXPORT UFFInv {
+class RDKIX_FORCEFIELD_EXPORT UFFInv {
  public:
   double K;
 };
 
 //! class to store UFF parameters for van der Waals interactions
-class RDKIT_FORCEFIELD_EXPORT UFFVdW {
+class RDKIX_FORCEFIELD_EXPORT UFFVdW {
  public:
   double x_ij;
   double D_ij;
 };
 
 //! class to store atomic parameters for the Universal Force Field
-class RDKIT_FORCEFIELD_EXPORT AtomicParams {
+class RDKIX_FORCEFIELD_EXPORT AtomicParams {
  public:
   double r1;            //!<  valence bond radius
   double theta0;        //!< valence angle
@@ -105,7 +105,7 @@ const double amideBondOrder =
   format (see Params.cpp for an example).
 
 */
-class RDKIT_FORCEFIELD_EXPORT ParamCollection {
+class RDKIX_FORCEFIELD_EXPORT ParamCollection {
  public:
   //! gets a pointer to the singleton ParamCollection
   /*!

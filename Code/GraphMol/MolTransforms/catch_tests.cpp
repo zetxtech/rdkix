@@ -2,27 +2,27 @@
 //  Copyright (c) 2024 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 ///
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
 #include <algorithm>
 #include <regex>
 
-using namespace RDKit;
+using namespace RDKix;
 using std::unique_ptr;
 
 TEST_CASE("chirality flip in canonicalizeMolConformer") {
   SECTION("first discovery") {
     auto m1 = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -56,7 +56,7 @@ M  V30 END CTAB
 M  END)CTAB"_ctab;
     REQUIRE(m1);
     auto m2 = R"CTAB(
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

@@ -2,19 +2,19 @@
 #  Copyright (C) 2019 Greg Landrum
 #
 #   @@ All Rights Reserved @@
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 import argparse
 import gzip
 import time
 
-import rdkit
-from rdkit import Chem, DataStructs
-from rdkit.Chem import AllChem
-from rdkit.RDLogger import logger
+import rdkix
+from rdkix import Chem, DataStructs
+from rdkix.Chem import AllChem
+from rdkix.RDLogger import logger
 
 logger = logger()
 
@@ -31,7 +31,7 @@ ts = []
 logger.info('mols from smiles')
 mols = []
 t1 = time.time()
-# find this file here: https://raw.githubusercontent.com/greglandrum/rdkit_blog/master/data/chembl21_25K.pairs.txt.gz
+# find this file here: https://raw.githubusercontent.com/greglandrum/rdkix_blog/master/data/chembl21_25K.pairs.txt.gz
 with gzip.open('../Data/chembl21_25K.pairs.txt.gz', 'rb') as inf:
   for line in inf:
     line = line.decode().strip().split()
@@ -47,11 +47,11 @@ logger.info(f'Results{len(ts)}: {t2-t1 : .2f} seconds, {len(mols)} mols')
 
 logger.info('queries from smiles')
 t1 = time.time()
-# find this file here: https://raw.githubusercontent.com/greglandrum/rdkit_blog/master/data/zinc.frags.500.q.smi
+# find this file here: https://raw.githubusercontent.com/greglandrum/rdkix_blog/master/data/zinc.frags.500.q.smi
 frags = [Chem.MolFromSmiles(x.split()[0]) for x in open('../Data/zinc.frags.500.q.smi', 'r')]
-# find this file here: https://raw.githubusercontent.com/greglandrum/rdkit_blog/master/data/zinc.leads.500.q.smi
+# find this file here: https://raw.githubusercontent.com/greglandrum/rdkix_blog/master/data/zinc.leads.500.q.smi
 leads = [Chem.MolFromSmiles(x.split()[0]) for x in open('../Data/zinc.leads.500.q.smi', 'r')]
-# find this file here: https://raw.githubusercontent.com/greglandrum/rdkit_blog/master/data/fragqueries.q.txt
+# find this file here: https://raw.githubusercontent.com/greglandrum/rdkix_blog/master/data/fragqueries.q.txt
 pieces = [Chem.MolFromSmiles(x) for x in open('../Data/fragqueries.q.txt', 'r')]
 t2 = time.time()
 ts.append(t2 - t1)
@@ -105,4 +105,4 @@ for nm, qs, qfps in [('frags', frags, fragsfps), ('leads', leads, leadsfps),
     f'Results{len(ts)}: {t2-t1 : .2f} seconds. {nTested} tested ({nTested/nPossible :.4f} of total), {nFound} found, {nFound/nTested : .2f} accuracy. {nErrors} errors.'
   )
 
-print(f"| {rdkit.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")
+print(f"| {rdkix.__version__} | {' | '.join(['%.1f' % x for x in ts])} |")

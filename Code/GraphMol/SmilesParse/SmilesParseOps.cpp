@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2001-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/Chirality.h>
 #include "SmilesParse.h"
@@ -20,16 +20,16 @@
 #include <RDGeneral/RDLog.h>
 
 namespace SmilesParseOps {
-using namespace RDKit;
+using namespace RDKix;
 
-void ClearAtomChemicalProps(RDKit::Atom *atom) {
+void ClearAtomChemicalProps(RDKix::Atom *atom) {
   TEST_ASSERT(atom);
   atom->setIsotope(0);
   atom->setFormalCharge(0);
   atom->setNumExplicitHs(0);
 }
 
-void CheckRingClosureBranchStatus(RDKit::Atom *atom, RDKit::RWMol *mp) {
+void CheckRingClosureBranchStatus(RDKix::Atom *atom, RDKix::RWMol *mp) {
   // github #786 and #1652: if the ring closure comes after a branch,
   // the stereochem is wrong.
   // This function is called while closing a branch during construction of
@@ -151,7 +151,7 @@ void AddFragToMol(RWMol *mol, RWMol *frag, Bond::BondType bondOrder,
         newB->setOwningMol(mol);
         newB->setBeginAtomIdx(atomIdx1);
         newB->setEndAtomIdx(atomIdx2);
-        newB->setProp(RDKit::common_properties::_unspecifiedOrder, 1);
+        newB->setProp(RDKix::common_properties::_unspecifiedOrder, 1);
         mol->addBond(newB);
         delete newB;
       } else {
@@ -328,7 +328,7 @@ Bond::BondType GetUnspecifiedBondType(const RWMol *mol, const Atom *atom1,
 void SetUnspecifiedBondTypes(RWMol *mol) {
   PRECONDITION(mol, "no molecule");
   for (auto bond : mol->bonds()) {
-    if (bond->hasProp(RDKit::common_properties::_unspecifiedOrder)) {
+    if (bond->hasProp(RDKix::common_properties::_unspecifiedOrder)) {
       bond->setBondType(GetUnspecifiedBondType(mol, bond->getBeginAtom(),
                                                bond->getEndAtom()));
       if (bond->getBondType() == Bond::AROMATIC) {
@@ -363,14 +363,14 @@ void swapBondDirIfNeeded(Bond *bond1, const Bond *bond2) {
 }  // namespace
 
 static const std::map<int, int> permutationLimits = {
-    {RDKit::Atom::ChiralType::CHI_TETRAHEDRAL, 2},
-    {RDKit::Atom::ChiralType::CHI_ALLENE, 2},
-    {RDKit::Atom::ChiralType::CHI_SQUAREPLANAR, 3},
-    {RDKit::Atom::ChiralType::CHI_OCTAHEDRAL, 30},
-    {RDKit::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL, 20}};
+    {RDKix::Atom::ChiralType::CHI_TETRAHEDRAL, 2},
+    {RDKix::Atom::ChiralType::CHI_ALLENE, 2},
+    {RDKix::Atom::ChiralType::CHI_SQUAREPLANAR, 3},
+    {RDKix::Atom::ChiralType::CHI_OCTAHEDRAL, 30},
+    {RDKix::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL, 20}};
 
 bool checkChiralPermutation(int chiralTag, int permutation) {
-  if (chiralTag > RDKit::Atom::ChiralType::CHI_OTHER &&
+  if (chiralTag > RDKix::Atom::ChiralType::CHI_OTHER &&
       permutationLimits.find(chiralTag) != permutationLimits.end() &&
       (permutation < 0 || permutation > permutationLimits.at(chiralTag))) {
     return false;
@@ -378,11 +378,11 @@ bool checkChiralPermutation(int chiralTag, int permutation) {
   return true;
 }
 
-void CheckChiralitySpecifications(RDKit::RWMol *mol, bool strict) {
+void CheckChiralitySpecifications(RDKix::RWMol *mol, bool strict) {
   PRECONDITION(mol, "no molecule");
   for (const auto atom : mol->atoms()) {
     int permutation;
-    if (atom->getChiralTag() > RDKit::Atom::ChiralType::CHI_OTHER &&
+    if (atom->getChiralTag() > RDKix::Atom::ChiralType::CHI_OTHER &&
         permutationLimits.find(atom->getChiralTag()) !=
             permutationLimits.end() &&
         atom->getPropIfPresent(common_properties::_chiralPermutation,
@@ -398,12 +398,12 @@ void CheckChiralitySpecifications(RDKit::RWMol *mol, bool strict) {
         }
       }
       // directly convert @TH1 -> @ and @TH2 -> @@
-      if (atom->getChiralTag() == RDKit::Atom::ChiralType::CHI_TETRAHEDRAL) {
+      if (atom->getChiralTag() == RDKix::Atom::ChiralType::CHI_TETRAHEDRAL) {
         if (permutation == 0 || permutation == 1) {
-          atom->setChiralTag(RDKit::Atom::ChiralType::CHI_TETRAHEDRAL_CCW);
+          atom->setChiralTag(RDKix::Atom::ChiralType::CHI_TETRAHEDRAL_CCW);
           atom->clearProp(common_properties::_chiralPermutation);
         } else if (permutation == 2) {
-          atom->setChiralTag(RDKit::Atom::ChiralType::CHI_TETRAHEDRAL_CW);
+          atom->setChiralTag(RDKix::Atom::ChiralType::CHI_TETRAHEDRAL_CW);
           atom->clearProp(common_properties::_chiralPermutation);
         }
       }
@@ -620,7 +620,7 @@ void CleanupAfterParsing(RWMol *mol) {
     bond->clearProp(common_properties::_unspecifiedOrder);
     bond->clearProp("_cxsmilesBondIdx");
   }
-  for (auto sg : RDKit::getSubstanceGroups(*mol)) {
+  for (auto sg : RDKix::getSubstanceGroups(*mol)) {
     sg.clearProp("_cxsmilesindex");
   }
   if (!Chirality::getAllowNontetrahedralChirality()) {
@@ -643,8 +643,8 @@ void CleanupAfterParsing(RWMol *mol) {
   }
 }
 
-RDKit::QueryBond *getUnspecifiedQueryBond(const RDKit::Atom *a1,
-                                          const RDKit::Atom *a2) {
+RDKix::QueryBond *getUnspecifiedQueryBond(const RDKix::Atom *a1,
+                                          const RDKix::Atom *a2) {
   PRECONDITION(a1, "bad atom pointer");
   QueryBond *newB;
   if (!a1->getIsAromatic() || (a2 && !a2->getIsAromatic())) {
@@ -654,7 +654,7 @@ RDKit::QueryBond *getUnspecifiedQueryBond(const RDKit::Atom *a1,
     newB = new QueryBond(Bond::AROMATIC);
     newB->setQuery(makeSingleOrAromaticBondQuery());
   }
-  newB->setProp(RDKit::common_properties::_unspecifiedOrder, 1);
+  newB->setProp(RDKix::common_properties::_unspecifiedOrder, 1);
   return newB;
 }
 

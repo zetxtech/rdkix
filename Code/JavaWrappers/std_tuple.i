@@ -4,10 +4,10 @@
 *  Copyright (c) 2015-2022, Greg Landrum
 *  All rights reserved.
 *
-*  This file is part of the RDKit.
+*  This file is part of the RDKix.
 *  The contents are covered by the terms of the BSD license
 *  which is included in the file license.txt, found at the root
-*  of the RDKit source tree.
+*  of the RDKix source tree.
 *
 * adapted from this stackexchange answer: https://stackoverflow.com/a/72849351
 */

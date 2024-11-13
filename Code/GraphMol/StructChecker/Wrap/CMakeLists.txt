@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_STRUCTCHECKER_BUILD)
-rdkit_python_extension(rdStructChecker
+remove_definitions(-DRDKIX_STRUCTCHECKER_BUILD)
+rdkix_python_extension(rdStructChecker
         structchecker.cpp
         DEST Chem
         LINK_LIBRARIES StructChecker )

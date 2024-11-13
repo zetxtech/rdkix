@@ -1,16 +1,16 @@
 //
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RGroupDecompParams.h"
 #include "RGroupUtils.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FMCS/FMCS.h>
@@ -21,7 +21,7 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -380,7 +380,7 @@ bool RGroupDecompositionParameters::prepareCore(RWMol &core,
   }
 
   return true;
-}  // namespace RDKit
+}  // namespace RDKix
 
 void RGroupDecompositionParameters::checkNonTerminal(const Atom &atom) const {
   if (allowNonTerminalRGroups || atom.getDegree() == 1) {
@@ -462,4 +462,4 @@ void RGroupDecompositionParameters::addDummyAtomsToUnlabelledCoreAtoms(
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

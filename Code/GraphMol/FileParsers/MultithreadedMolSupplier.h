@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_BUILD_THREADSAFE_SSS
 #ifndef MULTITHREADED_MOL_SUPPLIER
@@ -28,10 +28,10 @@
 
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 
-namespace RDKit {
+namespace RDKix {
 namespace v2 {
 namespace FileParsers {
-class RDKIT_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
+class RDKIX_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
   //! this is an abstract base class to concurrently supply molecules one at a
   //! time
  public:
@@ -152,7 +152,7 @@ class RDKIT_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
 }  // namespace v2
 
 inline namespace v1 {
-class RDKIT_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
+class RDKIX_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
   //! this is an abstract base class to concurrently supply molecules one at a
   //! time
  public:
@@ -182,6 +182,6 @@ class RDKIT_FILEPARSERS_EXPORT MultithreadedMolSupplier : public MolSupplier {
   }
 };
 }  // namespace v1
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

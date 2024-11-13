@@ -2,22 +2,22 @@
 //  Copyright (c) 2024 Greg Landrum
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RDGeneral/test.h"
 #include <string>
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/FileParsers/MultithreadedMolSupplier.h>
 #include <GraphMol/FileParsers/MultithreadedSDMolSupplier.h>
 #include <GraphMol/FileParsers/MultithreadedSmilesMolSupplier.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("multithreaded supplier destruction without reading") {
   v2::FileParsers::MultithreadedMolSupplier::Parameters params;

@@ -3,15 +3,15 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <algorithm>
 #include <memory>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "CIPLabeler.h"
 #include "CIPMol.h"
@@ -32,7 +32,7 @@
 #include "rules/Rule6.h"
 #include <GraphMol/Chirality.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 namespace {
@@ -213,4 +213,4 @@ bool decrementRemainingCallCountAndCheck() {
 }
 
 }  // namespace CIPLabeler_detail
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 //  Copyright (C) 2014-2022 David Cosgrove and Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (AstraZeneca)
 // 27th May 2014
@@ -51,7 +51,7 @@
 using namespace boost;
 using namespace std;
 
-namespace RDKit {
+namespace RDKix {
 
 // ****************************************************************************
 MolDraw2D::MolDraw2D(int width, int height, int panelWidth, int panelHeight)
@@ -879,7 +879,7 @@ void MolDraw2D::getReactionDrawMols(
 
 // ****************************************************************************
 void MolDraw2D::makeReactionComponents(
-    const std::vector<RDKit::ROMOL_SPTR> &bits, const std::vector<int> *confIds,
+    const std::vector<RDKix::ROMOL_SPTR> &bits, const std::vector<int> *confIds,
     int heightToUse, std::map<int, DrawColour> &atomColours,
     std::vector<std::shared_ptr<MolDraw2D_detail::DrawMol>> &dms,
     double &minScale, double &minFontScale) {
@@ -1257,4 +1257,4 @@ std::pair<int, int> MolDraw2D::getMolSize(
   return std::make_pair(dm.width_, dm.height_);
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -29,8 +29,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RDVALUE_H
-#define RDKIT_RDVALUE_H
+#ifndef RDKIX_RDVALUE_H
+#define RDKIX_RDVALUE_H
 
 // #define UNSAFE_RDVALUE
 #ifdef UNSAFE_RDVALUE
@@ -39,7 +39,7 @@
 #include "RDValue-taggedunion.h"
 #endif
 
-namespace RDKit {
+namespace RDKix {
 //  Common Casts (POD Casts are implementation dependent)
 // string casts
 template <>
@@ -290,5 +290,5 @@ typename boost::disable_if<boost::is_arithmetic<T>, T>::type from_rdvalue(
     RDValue_cast_t arg) {
   return rdvalue_cast<T>(arg);
 }
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

@@ -2,10 +2,10 @@
 // Copyright (C) 2003-2016 Sereina Riniker, Paolo Tosco
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/Invariant.h>
@@ -17,7 +17,7 @@
 #include <set>
 #include "Trajectory.h"
 
-namespace RDKit {
+namespace RDKix {
 
 RDGeom::Point2D Snapshot::getPoint2D(unsigned int pointNum) const {
   PRECONDITION(d_pos, "d_pos must not be NULL");
@@ -116,7 +116,7 @@ unsigned int readAmberTrajectory(const std::string &fName, Trajectory &traj) {
   if (!inStream || inStream.bad()) {
     std::stringstream ss;
     ss << "Bad input file: " << fName;
-    throw RDKit::BadFileException(ss.str());
+    throw RDKix::BadFileException(ss.str());
   }
   std::string tempStr;
   // title
@@ -157,7 +157,7 @@ unsigned int readGromosTrajectory(const std::string &fName, Trajectory &traj) {
   if (!inStream || inStream.bad()) {
     std::stringstream ss;
     ss << "Bad input file: " << fName;
-    throw RDKit::BadFileException(ss.str());
+    throw RDKix::BadFileException(ss.str());
   }
   std::string tempStr;
   unsigned int nCoords = traj.numPoints() * 3;
@@ -220,8 +220,8 @@ unsigned int readGromosTrajectory(const std::string &fName, Trajectory &traj) {
   if (inStream.bad()) {
     std::stringstream ss;
     ss << "Bad input file: " << fName;
-    throw RDKit::BadFileException(ss.str());
+    throw RDKix::BadFileException(ss.str());
   }
   return nSnapshots;
 }
-}  // namespace RDKit
+}  // namespace RDKix

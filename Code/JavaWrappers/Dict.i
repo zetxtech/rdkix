@@ -35,7 +35,7 @@
 #include <RDGeneral/Dict.h>
 %}
 
-%ignore RDKit::Dict::Pair;
+%ignore RDKix::Dict::Pair;
 %include <RDGeneral/Dict.h>
 
 

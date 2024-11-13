@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2011-2022 Novartis Institutes for BioMedical Research Inc. and
-//  other RDkit contributors
+//  other RDkix contributors
 //  All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -39,13 +39,13 @@
 // - advanced InChI features - such as fixed-H layer - have not been tested
 //
 // - InChI-write issues on broken molecules (e.g. PubChem Compound 42622894,
-// 42622893, 42620342, 42621905, 42622374, 42617647), because RDKit and standard
+// 42622893, 42620342, 42621905, 42622374, 42617647), because RDKix and standard
 // InChI binary will "fix" them differently. However, if the molecules have been
-// preprocessed by RDKit, then most have no write issue.
+// preprocessed by RDKix, then most have no write issue.
 //
 // - InChI-read issues on molecules with metals.
 //
-// - For molecules with large ring and no coordinates, RDKit does not provide
+// - For molecules with large ring and no coordinates, RDKix does not provide
 // sufficient ring stereochemistry required by InChI and will result in a
 // warning about undefined stereo. InChI requires all single bond in a ring with
 // 8 or more bonds to have E/Z parity assigned. If coordinates are provided,
@@ -75,7 +75,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 
 // #define DEBUG 1
-namespace RDKit {
+namespace RDKix {
 namespace {
 /* assignBondDirs
  * assign bond direction for neighboring bonds of stereo double bonds based
@@ -1646,7 +1646,7 @@ RWMol *InchiToMol(const std::string &inchi, ExtraInchiReturnValues &rv,
     FreeStructFromINCHI(&inchiOutput);
   }
 
-  // clean up the molecule to be acceptable to RDKit
+  // clean up the molecule to be acceptable to RDKix
   if (m) {
     cleanUp(*m);
     try {
@@ -1753,7 +1753,7 @@ std::string MolToInchi(const ROMol &mol, ExtraInchiReturnValues &rv,
   // kekulize
   MolOps::Kekulize(*m, false);
 
-  // "reverse" cleanup: undo some clean up done by RDKit
+  // "reverse" cleanup: undo some clean up done by RDKix
   rCleanUp(*m);
 
   unsigned int nAtoms = m->getNumAtoms();
@@ -2000,7 +2000,7 @@ std::string MolToInchi(const ROMol &mol, ExtraInchiReturnValues &rv,
     }
 
     // double bond stereochemistry
-    // single bond in the big ring will get E/Z assigned as well. Though rdkit
+    // single bond in the big ring will get E/Z assigned as well. Though rdkix
     // will eventually remove it, I added it any way
     if (  // bondType == Bond::DOUBLE and
         bond->getStereo() > Bond::STEREOANY &&
@@ -2023,7 +2023,7 @@ std::string MolToInchi(const ROMol &mol, ExtraInchiReturnValues &rv,
       stereo0D.type = INCHI_StereoType_DoubleBond;
       stereo0DEntries.push_back(stereo0D);
     } else if (bond->getStereo() == Bond::STEREOANY) {
-      // have to treat STEREOANY separately because RDKit will clear out
+      // have to treat STEREOANY separately because RDKix will clear out
       // StereoAtoms information.
       // Here we just change the coordinates of the two end atoms - to bring
       // them really close - so that InChI will not try to infer stereobond
@@ -2170,4 +2170,4 @@ std::string InchiToInchiKey(const std::string &inchi) {
   BOOST_LOG(rdErrorLog) << error << " in generating InChI Key" << std::endl;
   return std::string();
 }
-}  // namespace RDKit
+}  // namespace RDKix

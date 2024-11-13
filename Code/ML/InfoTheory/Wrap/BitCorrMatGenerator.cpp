@@ -2,10 +2,10 @@
 //
 //  Copyright (C) 2003-2008 Greg Landrum and  Rational Discovery LLC
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
@@ -35,7 +35,7 @@ PyObject *getCorrMatrix(BitCorrMatGenerator *cmGen) {
 void setBitList(BitCorrMatGenerator *cmGen, python::object bitList) {
   PySequenceHolder<int> blist(bitList);
   unsigned int nb = blist.size();
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   res.reserve(nb);
   for (unsigned int i = 0; i < nb; i++) {
     res.push_back(blist[i]);

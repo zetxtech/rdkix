@@ -1,10 +1,10 @@
 //
-//  Copyright (C) 2021-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2021-2024 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -12,7 +12,7 @@
 
 #include <RDGeneral/RDLog.h>
 #include <GraphMol/test_fixtures.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Atropisomers.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -28,7 +28,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/trim.hpp>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Torsions not found in fused macrocycles", "[macrocycles]") {
   RDLog::InitLogs();
@@ -387,7 +387,7 @@ TEST_CASE("nontetrahedral stereo", "[nontetrahedral]") {
 TEST_CASE("problems with bounds matrix smoothing and aromatic sulfur") {
   SECTION("basics") {
     auto core = R"CTAB(test structure - renumbered
-     RDKit          3D
+     RDKix          3D
 
   7  7  0  0  0  0  0  0  0  0999 V2000
    48.6842  -14.8137    0.1450 C   0  0  0  0  0  0  0  0  0  0  0  0

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_DISTVIOLATIONCONTRIBS_H
@@ -28,7 +28,7 @@ struct DistViolationContribsParams {
 };
 //! A term to capture all violations of the upper and lower bounds by
 //! distance between two points
-class RDKIT_DISTGEOMETRY_EXPORT DistViolationContribs
+class RDKIX_DISTGEOMETRY_EXPORT DistViolationContribs
     : public ForceFields::ForceFieldContrib {
  public:
   DistViolationContribs() = default;

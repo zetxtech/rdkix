@@ -35,13 +35,13 @@
 #include <GraphMol/QueryBond.h>
 %}
 
-%ignore RDKit::QueryBond::expandQuery;
-%ignore RDKit::QueryBond::setQuery;
+%ignore RDKix::QueryBond::expandQuery;
+%ignore RDKix::QueryBond::setQuery;
 
 %include <GraphMol/QueryBond.h>
 
-%extend RDKit::QueryBond {
-	bool MatchBond(RDKit::Bond const *what) {
+%extend RDKix::QueryBond {
+	bool MatchBond(RDKix::Bond const *what) {
 		return ($self)->Match(what);
 	}
 }

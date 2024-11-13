@@ -1,11 +1,11 @@
 //
-// Copyright (c) 2001-2024 greg Landrum and other RDKit contributors
+// Copyright (c) 2001-2024 greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SparseBitVect.h"
 #include <RDGeneral/Exceptions.h>
@@ -288,21 +288,21 @@ std::string SparseBitVect::toString() const {
                        std::ios_base::in);
 
   std::int32_t tInt = ci_BITVECT_VERSION * -1;
-  RDKit::streamWrite(ss, tInt);
+  RDKix::streamWrite(ss, tInt);
   tInt = d_size;
-  RDKit::streamWrite(ss, tInt);
+  RDKix::streamWrite(ss, tInt);
   tInt = getNumOnBits();
-  RDKit::streamWrite(ss, tInt);
+  RDKix::streamWrite(ss, tInt);
 
   int prev = -1;
   unsigned int zeroes;
   for (int dp_bit : *dp_bits) {
     zeroes = dp_bit - prev - 1;
-    RDKit::appendPackedIntToStream(ss, zeroes);
+    RDKix::appendPackedIntToStream(ss, zeroes);
     prev = dp_bit;
   }
   zeroes = d_size - prev - 1;
-  RDKit::appendPackedIntToStream(ss, zeroes);
+  RDKix::appendPackedIntToStream(ss, zeroes);
 
   std::string res(ss.str());
   return res;

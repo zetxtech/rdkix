@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/Rings.h>
@@ -16,7 +16,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <utility>
 
-namespace RDKit {
+namespace RDKix {
 // Local utility namespace
 namespace {
 
@@ -783,4 +783,4 @@ bool KekulizeIfPossible(RWMol &mol, bool markAtomsBonds,
   return res;
 }
 }  // namespace MolOps
-}  // namespace RDKit
+}  // namespace RDKix

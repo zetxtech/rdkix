@@ -2,15 +2,15 @@
 //  Copyright (C) 2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -22,7 +22,7 @@
 #include <GraphMol/Descriptors/DCLV.h>
 #include <GraphMol/Descriptors/BCUT.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Kier kappa2", "[2D]") {
   SECTION("values from https://doi.org/10.1002/qsar.19860050103") {
@@ -134,34 +134,34 @@ TEST_CASE(
       pathName + "/Code/GraphMol/Descriptors/test_data/github4167.sdf";
   bool sanitize = true;
   bool removeHs = false;
-  RDKit::SDMolSupplier reader(sdfName, sanitize, removeHs);
+  RDKix::SDMolSupplier reader(sdfName, sanitize, removeHs);
   std::unique_ptr<ROMol> m1(reader.next());
   std::unique_ptr<ROMol> m2(reader.next());
   REQUIRE(m1);
   REQUIRE(m2);
-  m1->addConformer(new RDKit::Conformer(m2->getConformer()), true);
+  m1->addConformer(new RDKix::Conformer(m2->getConformer()), true);
   REQUIRE(m1->getNumConformers() == 2);
 
   {
     int confId = 0;
-    auto v1_0 = RDKit::Descriptors::spherocityIndex(*m1, confId, true);
-    auto v2 = RDKit::Descriptors::spherocityIndex(*m2, confId, true);
+    auto v1_0 = RDKix::Descriptors::spherocityIndex(*m1, confId, true);
+    auto v2 = RDKix::Descriptors::spherocityIndex(*m2, confId, true);
     confId = 1;
-    auto v1_1 = RDKit::Descriptors::spherocityIndex(*m1, confId, true);
+    auto v1_1 = RDKix::Descriptors::spherocityIndex(*m1, confId, true);
     CHECK(v1_0 != v1_1);
     CHECK(v1_1 == v2);
   }
   {
     std::vector<double (*)(const ROMol &, int, bool, bool)> funcs{
-        RDKit::Descriptors::NPR1,
-        RDKit::Descriptors::NPR2,
-        RDKit::Descriptors::PMI1,
-        RDKit::Descriptors::PMI2,
-        RDKit::Descriptors::PMI3,
-        RDKit::Descriptors::radiusOfGyration,
-        RDKit::Descriptors::inertialShapeFactor,
-        RDKit::Descriptors::eccentricity,
-        RDKit::Descriptors::asphericity};
+        RDKix::Descriptors::NPR1,
+        RDKix::Descriptors::NPR2,
+        RDKix::Descriptors::PMI1,
+        RDKix::Descriptors::PMI2,
+        RDKix::Descriptors::PMI3,
+        RDKix::Descriptors::radiusOfGyration,
+        RDKix::Descriptors::inertialShapeFactor,
+        RDKix::Descriptors::eccentricity,
+        RDKix::Descriptors::asphericity};
     for (const auto func : funcs) {
       bool useAtomMasses = true;
       bool force = true;
@@ -176,10 +176,10 @@ TEST_CASE(
   }
   // { // surrogate for NPR1, NPR2, PMI1, PM2,
   //   int confId = 0;
-  //   auto v1_0 = RDKit::Descriptors::spherocityIndex(*m1, confId, true);
-  //   auto v2 = RDKit::Descriptors::spherocityIndex(*m2, confId, true);
+  //   auto v1_0 = RDKix::Descriptors::spherocityIndex(*m1, confId, true);
+  //   auto v2 = RDKix::Descriptors::spherocityIndex(*m2, confId, true);
   //   confId = 1;
-  //   auto v1_1 = RDKit::Descriptors::spherocityIndex(*m1, confId, true);
+  //   auto v1_1 = RDKix::Descriptors::spherocityIndex(*m1, confId, true);
   //   CHECK(v1_0 != v1_1);
   //   CHECK(v1_1 == v2);
   // }
@@ -258,7 +258,7 @@ TEST_CASE("Oxidation numbers") {
       std::vector<std::vector<int>> expected{
           {-2, -2}, {0, -2}, {2, -2, -2}, {6, -2, -2, -2, -2}};
       for (auto i = 0u; i < smis.size(); ++i) {
-        std::unique_ptr<RWMol> mol(RDKit::SmilesToMol(smis[i]));
+        std::unique_ptr<RWMol> mol(RDKix::SmilesToMol(smis[i]));
         Descriptors::calcOxidationNumbers(*mol);
         for (const auto &a : mol->atoms()) {
           CHECK(a->getProp<int>(common_properties::OxidationNumber) ==
@@ -291,7 +291,7 @@ TEST_CASE("Oxidation numbers") {
       std::unique_ptr<ROMol> m1(mol_supplier.next());
       REQUIRE(m1);
       RWMol m2(*m1);
-      RDKit::MolOps::Kekulize(m2);
+      RDKix::MolOps::Kekulize(m2);
       std::vector<unsigned int> ats{0, 5, 10, 13, 14, 19, 20, 21, 42, 43, 44};
       std::vector<int> expected{-2, -2, 2, 3, 3, 2, -1, -1, -1, 0, -1};
       Descriptors::calcOxidationNumbers(m2);
@@ -309,14 +309,14 @@ TEST_CASE("Oxidation numbers") {
       std::unique_ptr<ROMol> m1(mol_supplier.next());
       REQUIRE(m1);
       RWMol m2(*m1);
-      RDKit::MolOps::Kekulize(m2);
+      RDKix::MolOps::Kekulize(m2);
       std::vector<int> expected{-3, -1, -2, 0, 2, -3, -1, -2, 0, -1, -1, 2};
       Descriptors::calcOxidationNumbers(m2);
       for (auto &a : m2.atoms()) {
         CHECK(a->getProp<int>(common_properties::OxidationNumber) ==
               expected[a->getIdx()]);
       }
-      RDKit::MolOps::hapticBondsToDative(m2);
+      RDKix::MolOps::hapticBondsToDative(m2);
       Descriptors::calcOxidationNumbers(m2);
       std::vector<int> expectedNoDummies{-3, -1, -2, 2, -3, -1, -2, -1, -1, 2};
       for (auto &a : m2.atoms()) {
@@ -535,8 +535,8 @@ TEST_CASE("Oxidation numbers") {
     for (const auto &test : test_set) {
       //      std::cout << "checking " << std::get<0>(test) << " : "
       //                << std::get<1>(test) << std::endl;
-      std::unique_ptr<RWMol> mol(RDKit::SmilesToMol(std::get<1>(test)));
-      RDKit::MolOps::Kekulize(*mol);
+      std::unique_ptr<RWMol> mol(RDKix::SmilesToMol(std::get<1>(test)));
+      RDKix::MolOps::Kekulize(*mol);
       Descriptors::calcOxidationNumbers(*mol);
       for (const auto &expected : std::get<2>(test)) {
         auto atom = mol->getAtomWithIdx(expected.first);

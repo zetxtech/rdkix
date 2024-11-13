@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Pat Lorton
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cstring>
 #include <iostream>
@@ -29,10 +29,10 @@
 #include <maeparser/Reader.hpp>
 
 using namespace schrodinger;
-using namespace RDKit::FileParsers::schrodinger;
-using RDKit::MolInterchange::bolookup;
+using namespace RDKix::FileParsers::schrodinger;
+using RDKix::MolInterchange::bolookup;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace v2 {
 namespace FileParsers {
@@ -187,7 +187,7 @@ void parseStereoBondLabel(RWMol &mol, const std::string &stereo_prop) {
     } else if (t == "Z") {
       type = Bond::STEREOCIS;
     } else {
-      // Atom indexes are 0-based in RDKit, and 1-based in Mae.
+      // Atom indexes are 0-based in RDKix, and 1-based in Mae.
       atom_indexes.push_back(FileParserUtils::toInt(t) - 1);
     }
   }
@@ -213,7 +213,7 @@ std::string strip_prefix_from_mae_property(const std::string &propName) {
     ++propNamePtr;
     if (strncmp(propNamePtr, "_rdk_", 5) == 0) {
       return propName.substr(6);
-    } else if (strncmp(propNamePtr, "_rdkit_", 7) == 0) {
+    } else if (strncmp(propNamePtr, "_rdkix_", 7) == 0) {
       return propName.substr(8);
     }
   }
@@ -323,8 +323,8 @@ void set_atom_properties(Atom &atom, const mae::IndexedBlock &atom_block,
       // Formal charge has a specific setter
       atom.setFormalCharge(prop.second->at(i));
     } else if (prop.first == MAE_RGROUP_LABEL) {
-      // Schrodinger adopted RDKit's Group label property,
-      // but with a "i_sd_" prefix instead of the usual "i_rdkit_"
+      // Schrodinger adopted RDKix's Group label property,
+      // but with a "i_sd_" prefix instead of the usual "i_rdkix_"
       atom.setProp(common_properties::_MolFileRLabel, prop.second->at(i));
     } else {
       auto propName = strip_prefix_from_mae_property(prop.first);
@@ -351,7 +351,7 @@ void addAtoms(const mae::IndexedBlock &atom_block, RWMol &mol,
 
   // atomic numbers, and x, y, and z coordinates
   const auto size = atomicNumbers->size();
-  auto conf = new RDKit::Conformer(size);
+  auto conf = new RDKix::Conformer(size);
   conf->setId(0);
 
   PDBInfo pdb_info(atom_block);
@@ -668,4 +668,4 @@ std::unique_ptr<RWMol> MaeMolSupplier::operator[](unsigned int idx) {
 
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

@@ -34,7 +34,7 @@
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "FileParsers.h"
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <RDGeneral/FileParseException.h>
@@ -42,7 +42,7 @@
 
 #include <string>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void testGeneral(std::string rdbase) {
   BOOST_LOG(rdInfoLog) << "---------------------------------------"

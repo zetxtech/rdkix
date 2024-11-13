@@ -36,8 +36,8 @@ import os
 import sys
 import unittest
 
-from rdkit import Chem, Geometry, RDConfig
-from rdkit.Chem import rdSLNParse
+from rdkix import Chem, Geometry, RDConfig
+from rdkix.Chem import rdSLNParse
 
 
 class TestCase(unittest.TestCase):

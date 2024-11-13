@@ -1,20 +1,20 @@
 #
-#  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+#  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 #   @@ All Rights Reserved @@
 #
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 
 import unittest
 
 #
-from rdkit import Chem
-from rdkit.Chem import rdMolProcessing
-from rdkit.Chem import rdFingerprintGenerator
-from rdkit import DataStructs
-from rdkit import RDConfig
+from rdkix import Chem
+from rdkix.Chem import rdMolProcessing
+from rdkix.Chem import rdFingerprintGenerator
+from rdkix import DataStructs
+from rdkix import RDConfig
 
 
 class TestCase(unittest.TestCase):

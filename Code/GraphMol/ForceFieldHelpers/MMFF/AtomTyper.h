@@ -4,10 +4,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_MMFFATOMTYPER_H__
@@ -19,7 +19,7 @@
 #include <ForceField/MMFF/Params.h>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 class Atom;
@@ -28,34 +28,34 @@ class Bond;
 namespace MMFF {
 
 namespace DefaultParameters {
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFPropCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFPropCollection *
 getMMFFProp();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAromCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAromCollection *
 getMMFFArom();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFDefCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFDefCollection *
 getMMFFDef();
-RDKIT_FORCEFIELDHELPERS_EXPORT const
+RDKIX_FORCEFIELDHELPERS_EXPORT const
     ForceFields::MMFF::MMFFHerschbachLaurieCollection *
     getMMFFHerschbachLaurie();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFPBCICollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFPBCICollection *
 getMMFFPBCI();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAngleCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAngleCollection *
 getMMFFAngle();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFStbnCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFStbnCollection *
 getMMFFStbn();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFDfsbCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFDfsbCollection *
 getMMFFDfsb();
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFTorCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFTorCollection *
 getMMFFTor(const bool isMMFFs);
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFOopCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFOopCollection *
 getMMFFOop(const bool isMMFFs);
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFVdWCollection *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFVdWCollection *
 getMMFFVdW();
 }  // namespace DefaultParameters
 
 class RingMembershipSize;
 using namespace ForceFields::MMFF;
-class RDKIT_FORCEFIELDHELPERS_EXPORT MMFFAtomProperties {
+class RDKIX_FORCEFIELDHELPERS_EXPORT MMFFAtomProperties {
  public:
   MMFFAtomProperties() {}
   ~MMFFAtomProperties() = default;
@@ -71,7 +71,7 @@ enum {
   MMFF_VERBOSITY_LOW = 1,
   MMFF_VERBOSITY_HIGH = 2
 };
-class RDKIT_FORCEFIELDHELPERS_EXPORT MMFFMolProperties {
+class RDKIX_FORCEFIELDHELPERS_EXPORT MMFFMolProperties {
  public:
   MMFFMolProperties(ROMol &mol, const std::string &mmffVariant = "MMFF94",
                     std::uint8_t verbosity = MMFF_VERBOSITY_NONE,
@@ -200,31 +200,31 @@ class RDKIT_FORCEFIELDHELPERS_EXPORT MMFFMolProperties {
   std::ostream *d_oStream;
   std::vector<MMFFAtomPropertiesPtr> d_MMFFAtomPropertiesPtrVect;
 };
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int isAngleInRingOfSize3or4(
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int isAngleInRingOfSize3or4(
     const ROMol &mol, const unsigned int idx1, const unsigned int idx2,
     const unsigned int idx3);
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int isTorsionInRingOfSize4or5(
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int isTorsionInRingOfSize4or5(
     const ROMol &mol, const unsigned int idx1, const unsigned int idx2,
     const unsigned int idx3, const unsigned int idx4);
-RDKIT_FORCEFIELDHELPERS_EXPORT bool isRingAromatic(
+RDKIX_FORCEFIELDHELPERS_EXPORT bool isRingAromatic(
     const ROMol &mol, const INT_VECT &ringIndxVect);
-RDKIT_FORCEFIELDHELPERS_EXPORT bool isAtomInAromaticRingOfSize(
+RDKIX_FORCEFIELDHELPERS_EXPORT bool isAtomInAromaticRingOfSize(
     const Atom *atom, const unsigned int ringSize);
-RDKIT_FORCEFIELDHELPERS_EXPORT bool isAtomNOxide(const Atom *atom);
-RDKIT_FORCEFIELDHELPERS_EXPORT bool areAtomsInSameAromaticRing(
+RDKIX_FORCEFIELDHELPERS_EXPORT bool isAtomNOxide(const Atom *atom);
+RDKIX_FORCEFIELDHELPERS_EXPORT bool areAtomsInSameAromaticRing(
     const ROMol &mol, const unsigned int idx1, const unsigned int idx2);
-RDKIT_FORCEFIELDHELPERS_EXPORT bool areAtomsInSameRingOfSize(
+RDKIX_FORCEFIELDHELPERS_EXPORT bool areAtomsInSameRingOfSize(
     const ROMol &mol, const unsigned int ringSize, const unsigned int numAtoms,
     ...);
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int sanitizeMMFFMol(RWMol &mol);
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int sanitizeMMFFMol(RWMol &mol);
 //! \deprecated, please use MolOps::setMMFFAromaticity instead
-RDKIT_FORCEFIELDHELPERS_EXPORT void setMMFFAromaticity(RWMol &mol);
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int getMMFFStretchBendType(
+RDKIX_FORCEFIELDHELPERS_EXPORT void setMMFFAromaticity(RWMol &mol);
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int getMMFFStretchBendType(
     const unsigned int angleType, const unsigned int bondType1,
     const unsigned int bondType2);
-RDKIT_FORCEFIELDHELPERS_EXPORT unsigned int getPeriodicTableRow(
+RDKIX_FORCEFIELDHELPERS_EXPORT unsigned int getPeriodicTableRow(
     const int atomicNum);
-RDKIT_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAngle *
+RDKIX_FORCEFIELDHELPERS_EXPORT const ForceFields::MMFF::MMFFAngle *
 getMMFFAngleBendEmpiricalRuleParams(
     const ROMol &mol, const ForceFields::MMFF::MMFFAngle *oldMMFFAngleParams,
     const ForceFields::MMFF::MMFFProp *mmffPropParamsCentralAtom,
@@ -232,6 +232,6 @@ getMMFFAngleBendEmpiricalRuleParams(
     const ForceFields::MMFF::MMFFBond *mmffBondParams2, unsigned int idx1,
     unsigned int idx2, unsigned int idx3);
 }  // namespace MMFF
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

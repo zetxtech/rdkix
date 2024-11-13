@@ -7,8 +7,8 @@ import pickle
 import sys
 import unittest
 
-from rdkit import Chem, DataStructs, RDConfig
-from rdkit.Chem import MolCatalog
+from rdkix import Chem, DataStructs, RDConfig
+from rdkix.Chem import MolCatalog
 
 
 class TestCase(unittest.TestCase):

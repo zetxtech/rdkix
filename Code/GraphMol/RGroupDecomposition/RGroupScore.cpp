@@ -2,10 +2,10 @@
 //  Copyright (C) 2017 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // #define DEBUG
@@ -15,7 +15,7 @@
 #include <vector>
 #include <map>
 #include <algorithm>
-namespace RDKit {
+namespace RDKix {
 
 // stupid total score
 // This has to handle all permutations and doesn't do anything terribly smart
@@ -306,4 +306,4 @@ void RGroupScorer::pushTieToStore(const std::vector<size_t> &permutation) {
 
 void RGroupScorer::clearTieStore() { d_store.clear(); }
 
-}  // namespace RDKit
+}  // namespace RDKix

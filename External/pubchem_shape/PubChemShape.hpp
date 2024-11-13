@@ -3,7 +3,7 @@
 #include <vector>
 
 //! The input for the pubchem shape alignment code
-struct RDKIT_PUBCHEMSHAPE_EXPORT ShapeInput {
+struct RDKIX_PUBCHEMSHAPE_EXPORT ShapeInput {
   std::vector<float> coord;
   std::vector<double> alpha_vector;
   std::vector<unsigned int> atom_type_vector;
@@ -23,7 +23,7 @@ struct RDKIT_PUBCHEMSHAPE_EXPORT ShapeInput {
 
   \return a ShapeInput object
 */
-RDKIT_PUBCHEMSHAPE_EXPORT ShapeInput PrepareConformer(const RDKit::ROMol &mol,
+RDKIX_PUBCHEMSHAPE_EXPORT ShapeInput PrepareConformer(const RDKix::ROMol &mol,
                                                       int confId = -1,
                                                       bool useColors = true);
 
@@ -41,8 +41,8 @@ RDKIT_PUBCHEMSHAPE_EXPORT ShapeInput PrepareConformer(const RDKit::ROMol &mol,
   \return a pair of the shape Tanimoto value and the color Tanimoto value (zero
   if useColors is false)
 */
-RDKIT_PUBCHEMSHAPE_EXPORT std::pair<double, double> AlignMolecule(
-    const ShapeInput &refShape, RDKit::ROMol &fit, std::vector<float> &matrix,
+RDKIX_PUBCHEMSHAPE_EXPORT std::pair<double, double> AlignMolecule(
+    const ShapeInput &refShape, RDKix::ROMol &fit, std::vector<float> &matrix,
     int fitConfId = -1, bool useColors = true, double opt_param = 0.5,
     unsigned int max_preiters = 3u, unsigned int max_postiters = 16u);
 
@@ -61,8 +61,8 @@ RDKIT_PUBCHEMSHAPE_EXPORT std::pair<double, double> AlignMolecule(
   \return a pair of the shape Tanimoto value and the color Tanimoto value (zero
   if useColors is false)
 */
-RDKIT_PUBCHEMSHAPE_EXPORT std::pair<double, double> AlignMolecule(
-    const RDKit::ROMol &ref, RDKit::ROMol &fit, std::vector<float> &matrix,
+RDKIX_PUBCHEMSHAPE_EXPORT std::pair<double, double> AlignMolecule(
+    const RDKix::ROMol &ref, RDKix::ROMol &fit, std::vector<float> &matrix,
     int refConfId = -1, int fitConfId = -1, bool useColors = true,
     double opt_param = 0.5, unsigned int max_preiters = 3u,
     unsigned int max_postiters = 16u);

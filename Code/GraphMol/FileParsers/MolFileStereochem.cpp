@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <list>
@@ -20,7 +20,7 @@
 #include <RDGeneral/Ranking.h>
 #include <RDGeneral/FileParseException.h>
 
-namespace RDKit {
+namespace RDKix {
 
 void WedgeBond(Bond *bond, unsigned int fromAtomIdx, const Conformer *conf) {
   Chirality::wedgeBond(bond, fromAtomIdx, conf);
@@ -189,7 +189,7 @@ Bond::BondDir DetermineBondWedgeState(const Bond *bond,
 }
 Bond::BondDir DetermineBondWedgeState(
     const Bond *bond,
-    const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds,
     const Conformer *conf) {
   return Chirality::detail::determineBondWedgeState(bond, wedgeBonds, conf);
@@ -216,7 +216,7 @@ void DetectBondStereoChemistry(ROMol &mol, const Conformer *conf) {
   MolOps::detectBondStereochemistry(mol, conf->getId());
 }
 void reapplyMolBlockWedging(RWMol &mol) {
-  RDKit::Chirality::reapplyMolBlockWedging(mol);
+  RDKix::Chirality::reapplyMolBlockWedging(mol);
 }
 
 void clearMolBlockWedgingInfo(RWMol &mol) {
@@ -229,12 +229,12 @@ void invertMolBlockWedgingInfo(ROMol &mol) {
 
 void markUnspecifiedStereoAsUnknown(ROMol &mol, int confId) {
   const auto conf = mol.getConformer(confId);
-  auto wedgeBonds = RDKit::Chirality::pickBondsToWedge(mol, nullptr, &conf);
+  auto wedgeBonds = RDKix::Chirality::pickBondsToWedge(mol, nullptr, &conf);
   for (auto b : mol.bonds()) {
     if (b->getBondType() == Bond::DOUBLE) {
       int dirCode;
       bool reverse;
-      RDKit::Chirality::GetMolFileBondStereoInfo(b, wedgeBonds, &conf, dirCode,
+      RDKix::Chirality::GetMolFileBondStereoInfo(b, wedgeBonds, &conf, dirCode,
                                                  reverse);
       if (dirCode == 3) {
         b->setStereo(Bond::STEREOANY);
@@ -252,7 +252,7 @@ void markUnspecifiedStereoAsUnknown(ROMol &mol, int confId) {
           i.specified == Chirality::StereoSpecified::Unspecified) {
         i.specified = Chirality::StereoSpecified::Unknown;
         auto atom = mol.getAtomWithIdx(i.centeredOn);
-        std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+        std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
             resSoFar;
         int bndIdx = Chirality::detail::pickBondToWedge(atom, mol, nChiralNbrs,
                                                         resSoFar, noNbrs);
@@ -334,4 +334,4 @@ void translateChiralFlagToStereoGroups(ROMol &mol,
     }
   }
 }
-}  // namespace RDKit
+}  // namespace RDKix

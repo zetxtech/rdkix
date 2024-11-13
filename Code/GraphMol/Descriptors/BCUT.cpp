@@ -2,21 +2,21 @@
 //  Copyright (C) 2020 Brian P. Kelley
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_HAS_EIGEN3
 #include "BCUT.h"
 #include "Crippen.h"
 #include <Eigen/Dense>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include "GraphMol/PartialCharges/GasteigerCharges.h"
 #include "GraphMol/PartialCharges/GasteigerParams.h"
 #include <RDGeneral/types.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 constexpr int NUM_BCUTS = 8;
 
@@ -117,7 +117,7 @@ std::vector<double> BCUT2D(const ROMol &m) {
   masses.reserve(numAtoms);
   charges.reserve(numAtoms);
 
-  RDKit::computeGasteigerCharges(*mol, 12, true);
+  RDKix::computeGasteigerCharges(*mol, 12, true);
   for (auto &atom : mol->atoms()) {
     masses.push_back(atom->getMass());
     charges.push_back(
@@ -140,6 +140,6 @@ std::vector<double> BCUT2D(const ROMol &m) {
   return res;
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

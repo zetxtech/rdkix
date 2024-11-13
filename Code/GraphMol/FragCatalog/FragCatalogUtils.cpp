@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // REVIEW: move this to a GraphMol/FuncGroups directory
@@ -21,7 +21,7 @@
 typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <boost/algorithm/string.hpp>
 
-namespace RDKit {
+namespace RDKix {
 // local utility namespace
 namespace {
 ROMol *getSmarts(std::string &&tmpStr) {
@@ -209,4 +209,4 @@ ROMol *prepareMol(const ROMol &mol, const FragCatParams *fparams,
 
   return coreMol;
 }
-}  // namespace RDKit
+}  // namespace RDKix

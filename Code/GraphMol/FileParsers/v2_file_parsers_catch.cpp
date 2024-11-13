@@ -1,10 +1,10 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <string>
@@ -12,16 +12,16 @@
 #include "RDGeneral/test.h"
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/MolWriters.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
-using namespace RDKit::v2::FileParsers;
+using namespace RDKix::v2::FileParsers;
 
 TEST_CASE("expandAttachmentPoints") {
   SECTION("basics") {

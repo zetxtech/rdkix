@@ -51,7 +51,7 @@
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 
 // from Python wrapper
-std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned int depth) {
+std::string describeQueryHelper(const RDKix::Atom::QUERYATOM_QUERY *q, unsigned int depth) {
   std::string res;
   if (q) {
     for (unsigned int i = 0; i < depth; ++i) {
@@ -68,9 +68,9 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
 
 %}
 
-%ignore RDKit::Atom::Match(const Atom *) const;
-%ignore RDKit::Atom::expandQuery;
-%template(Bond_Vect) std::vector<RDKit::Bond*>;
+%ignore RDKix::Atom::Match(const Atom *) const;
+%ignore RDKix::Atom::expandQuery;
+%template(Bond_Vect) std::vector<RDKix::Bond*>;
 
 %include "enums.swg"
 #if swifjava
@@ -78,10 +78,10 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
 #endif
 %include <GraphMol/Atom.h>
 
-%newobject RDKit::Atom::getProp;
-%newobject RDKit::Atom::getBonds;
+%newobject RDKix::Atom::getProp;
+%newobject RDKix::Atom::getBonds;
 
-%extend RDKit::Atom {
+%extend RDKix::Atom {
   std::string getProp(const std::string key){
     std::string res;
     ($self)->getProp(key, res);
@@ -90,13 +90,13 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
 
   /* Methods from ConjugHybrid.cpp */
   void markConjAtomBonds() {
-    RDKit::markConjAtomBonds(($self));
+    RDKix::markConjAtomBonds(($self));
   }
   int numBondsPlusLonePairs() {
-    return RDKit::numBondsPlusLonePairs(($self));
+    return RDKix::numBondsPlusLonePairs(($self));
   }
   bool atomHasConjugatedBond() {
-    return RDKit::MolOps::atomHasConjugatedBond(($self));
+    return RDKix::MolOps::atomHasConjugatedBond(($self));
   }
    /* From MolTransforms.h */
   void transformAtom(RDGeom::Transform3D &tform) {
@@ -106,25 +106,25 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
   /* Based on Python wrappers and unit tests */
   bool IsInRing(){
     if(!($self)->getOwningMol().getRingInfo()->isInitialized()){
-      RDKit::MolOps::findSSSR(($self)->getOwningMol());
+      RDKix::MolOps::findSSSR(($self)->getOwningMol());
     }
     return ($self)->getOwningMol().getRingInfo()->numAtomRings(($self)->getIdx())!=0;
   }
 
   bool IsInRingSize(int size){
     if(!($self)->getOwningMol().getRingInfo()->isInitialized()){
-      RDKit::MolOps::findSSSR(($self)->getOwningMol());
+      RDKix::MolOps::findSSSR(($self)->getOwningMol());
     }
     return ($self)->getOwningMol().getRingInfo()->isAtomInRingOfSize(($self)->getIdx(),size);
   }
 
-  std::vector<RDKit::Bond*> *getBonds() {
-    std::vector<RDKit::Bond*> *bonds = new std::vector<RDKit::Bond*>;
-    RDKit::ROMol *parent = &($self)->getOwningMol();
-    RDKit::ROMol::OEDGE_ITER begin,end;
+  std::vector<RDKix::Bond*> *getBonds() {
+    std::vector<RDKix::Bond*> *bonds = new std::vector<RDKix::Bond*>;
+    RDKix::ROMol *parent = &($self)->getOwningMol();
+    RDKix::ROMol::OEDGE_ITER begin,end;
     boost::tie(begin,end) = parent->getAtomBonds(($self));
     while(begin!=end){
-      RDKit::Bond *tmpB = (*parent)[*begin];
+      RDKix::Bond *tmpB = (*parent)[*begin];
       bonds->push_back(tmpB);
       begin++;
     }
@@ -132,11 +132,11 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
   }
 
   // also matches ATOM_NULL_QUERY
-  void setQuery(RDKit::ATOM_OR_QUERY *query) {
+  void setQuery(RDKix::ATOM_OR_QUERY *query) {
     $self->setQuery(query);
   }
 
-  void setQuery(RDKit::ATOM_EQUALS_QUERY *query) {
+  void setQuery(RDKix::ATOM_EQUALS_QUERY *query) {
     $self->setQuery(query);
   }
 
@@ -145,10 +145,10 @@ std::string describeQueryHelper(const RDKit::Atom::QUERYATOM_QUERY *q, unsigned 
                           bool isomericSmiles=true) {
 	std::string res;
 	if (($self)->hasQuery()) {
-	  res = RDKit::SmartsWrite::GetAtomSmarts(static_cast<const RDKit::QueryAtom *>(($self)));
+	  res = RDKix::SmartsWrite::GetAtomSmarts(static_cast<const RDKix::QueryAtom *>(($self)));
 	} else {
 	  // FIX: this should not be necessary
-	  res = RDKit::SmilesWrite::GetAtomSmiles(($self), doKekule, nullptr, allHsExplicit,
+	  res = RDKix::SmilesWrite::GetAtomSmiles(($self), doKekule, nullptr, allHsExplicit,
 									   isomericSmiles);
 	}
 	return res;

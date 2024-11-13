@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2023 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2023 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // This is based on a suggestion and code from Christian Feldmann.
 // It was discussion #4607.  His Python implementation (which I haven't
@@ -18,7 +18,7 @@
 #include <GraphMol/MolDraw2D/MolDraw2DDetails.h>
 #include <GraphMol/MolDraw2D/DrawMolMCHLasso.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // an empirically derived lineWidth.
@@ -132,7 +132,7 @@ void DrawMolMCHLasso::extractAtomColourLists(
 }
 
 // ****************************************************************************
-void DrawMolMCHLasso::drawLasso(size_t lassoNum, const RDKit::DrawColour &col,
+void DrawMolMCHLasso::drawLasso(size_t lassoNum, const RDKix::DrawColour &col,
                                 const std::vector<int> &colAtoms) {
   // Extract the arcs and lines for the given atoms in the given colour.
   // lassoNum is the number of the lasso being done, and hence dictates
@@ -228,7 +228,7 @@ void calcSubtendedAngles(const Point2D &pt1, const Point2D &pt2,
 // ****************************************************************************
 void DrawMolMCHLasso::addNoLineArcs(
     const std::vector<int> &colAtoms, size_t lassoNum,
-    const RDKit::DrawColour &col,
+    const RDKix::DrawColour &col,
     const std::vector<std::unique_ptr<DrawShapeSimpleLine>> &lines,
     std::vector<std::unique_ptr<DrawShapeArc>> &arcs) const {
   boost::dynamic_bitset<> inColAtoms(drawMol_->getNumAtoms());
@@ -418,7 +418,7 @@ void addExistingArcs(size_t i,
 // ****************************************************************************
 void DrawMolMCHLasso::makeIntersectingArcs(
     const std::vector<std::vector<unsigned int>> &intersects, int lassoNum,
-    const RDKit::DrawColour &col,
+    const RDKix::DrawColour &col,
     std::vector<std::unique_ptr<DrawShapeArc>> &currArcs,
     std::vector<DrawShapeArc *> &arcs) const {
   for (size_t i = 0; i < intersects.size(); ++i) {
@@ -483,7 +483,7 @@ void DrawMolMCHLasso::makeIntersectingArcs(
 
 // ****************************************************************************
 void DrawMolMCHLasso::extractBondLines(
-    size_t lassoNum, const RDKit::DrawColour &col,
+    size_t lassoNum, const RDKix::DrawColour &col,
     const std::vector<int> &colAtoms,
     std::vector<std::unique_ptr<DrawShapeSimpleLine>> &lines,
     std::vector<std::vector<LinePair>> &atomLines) const {
@@ -728,4 +728,4 @@ std::pair<Point2D, Point2D> getArcEnds(const DrawShapeArc &arc) {
 
 }  // namespace
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

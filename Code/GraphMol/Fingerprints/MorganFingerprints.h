@@ -1,7 +1,7 @@
 //
 //
 //  Copyright (c) 2009-2010, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -50,7 +50,7 @@
 #include <cstdint>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 namespace MorganFingerprints {
 typedef std::map<std::uint32_t,
@@ -104,7 +104,7 @@ const std::string morganFingerprintVersion = "1.0.0";
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getFingerprint(
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getFingerprint(
     const ROMol &mol, unsigned int radius,
     std::vector<boost::uint32_t> *invariants = nullptr,
     const std::vector<boost::uint32_t> *fromAtoms = nullptr,
@@ -156,7 +156,7 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getFingerprint(
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getHashedFingerprint(
+RDKIX_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getHashedFingerprint(
     const ROMol &mol, unsigned int radius, unsigned int nBits = 2048,
     std::vector<boost::uint32_t> *invariants = nullptr,
     const std::vector<boost::uint32_t> *fromAtoms = nullptr,
@@ -198,7 +198,7 @@ RDKIT_FINGERPRINTS_EXPORT SparseIntVect<std::uint32_t> *getHashedFingerprint(
   responsible for calling delete on this.
 
 */
-RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *getFingerprintAsBitVect(
+RDKIX_FINGERPRINTS_EXPORT ExplicitBitVect *getFingerprintAsBitVect(
     const ROMol &mol, unsigned int radius, unsigned int nBits,
     std::vector<std::uint32_t> *invariants = nullptr,
     const std::vector<std::uint32_t> *fromAtoms = nullptr,
@@ -207,6 +207,6 @@ RDKIT_FINGERPRINTS_EXPORT ExplicitBitVect *getFingerprintAsBitVect(
     bool includeRedundantEnvironments = false);
 
 }  // end of namespace MorganFingerprints
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

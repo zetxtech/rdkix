@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDBoost/python.h>
@@ -190,21 +190,21 @@ python::tuple PyForceField::minimizeTrajectory(unsigned int snapshotFreq,
                                                int maxIts, double forceTol,
                                                double energyTol) {
   PRECONDITION(this->field, "no force field");
-  RDKit::SnapshotVect snapshotVect;
+  RDKix::SnapshotVect snapshotVect;
   int resInt = this->field->minimize(snapshotFreq, &snapshotVect, maxIts,
                                      forceTol, energyTol);
   python::list l;
-  boost::python::manage_new_object::apply<RDKit::Snapshot *>::type converter;
+  boost::python::manage_new_object::apply<RDKix::Snapshot *>::type converter;
   for (const auto &it : snapshotVect) {
     // transfer ownership to python
-    python::handle<> handle(converter(new RDKit::Snapshot(it)));
+    python::handle<> handle(converter(new RDKix::Snapshot(it)));
     l.append(handle);
   }
   return python::make_tuple(resInt, l);
 }
 
 PyObject *PyMMFFMolProperties::getMMFFBondStretchParams(
-    const RDKit::ROMol &mol, const unsigned int idx1, const unsigned int idx2) {
+    const RDKix::ROMol &mol, const unsigned int idx1, const unsigned int idx2) {
   PyObject *res = nullptr;
   unsigned int bondType;
   ForceFields::MMFF::MMFFBond mmffBondStretchParams;
@@ -218,7 +218,7 @@ PyObject *PyMMFFMolProperties::getMMFFBondStretchParams(
   return res;
 };
 
-PyObject *PyMMFFMolProperties::getMMFFAngleBendParams(const RDKit::ROMol &mol,
+PyObject *PyMMFFMolProperties::getMMFFAngleBendParams(const RDKix::ROMol &mol,
                                                       const unsigned int idx1,
                                                       const unsigned int idx2,
                                                       const unsigned int idx3) {
@@ -236,7 +236,7 @@ PyObject *PyMMFFMolProperties::getMMFFAngleBendParams(const RDKit::ROMol &mol,
 };
 
 PyObject *PyMMFFMolProperties::getMMFFStretchBendParams(
-    const RDKit::ROMol &mol, const unsigned int idx1, const unsigned int idx2,
+    const RDKix::ROMol &mol, const unsigned int idx1, const unsigned int idx2,
     const unsigned int idx3) {
   PyObject *res = nullptr;
   unsigned int stretchBendType;
@@ -254,7 +254,7 @@ PyObject *PyMMFFMolProperties::getMMFFStretchBendParams(
   return res;
 };
 
-PyObject *PyMMFFMolProperties::getMMFFTorsionParams(const RDKit::ROMol &mol,
+PyObject *PyMMFFMolProperties::getMMFFTorsionParams(const RDKix::ROMol &mol,
                                                     const unsigned int idx1,
                                                     const unsigned int idx2,
                                                     const unsigned int idx3,
@@ -273,7 +273,7 @@ PyObject *PyMMFFMolProperties::getMMFFTorsionParams(const RDKit::ROMol &mol,
   return res;
 };
 
-PyObject *PyMMFFMolProperties::getMMFFOopBendParams(const RDKit::ROMol &mol,
+PyObject *PyMMFFMolProperties::getMMFFOopBendParams(const RDKix::ROMol &mol,
                                                     const unsigned int idx1,
                                                     const unsigned int idx2,
                                                     const unsigned int idx3,

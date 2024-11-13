@@ -2,8 +2,8 @@
 //  Copyright (C) 2006-2021 Greg Landrum
 //
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/RDLog.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -21,7 +21,7 @@
 #include <RDGeneral/FileParseException.h>
 #include <DataStructs/BitVects.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1() {
   BOOST_LOG(rdInfoLog) << ">>------------- Test 1" << std::endl;

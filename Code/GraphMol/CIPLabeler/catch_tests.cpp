@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <bitset>
@@ -38,8 +38,8 @@
 
 #include "CIPMol.h"
 
-using namespace RDKit;
-using namespace RDKit::CIPLabeler;
+using namespace RDKix;
+using namespace RDKix::CIPLabeler;
 
 std::string toBinaryString(int value) {
   return std::bitset<32>(value).to_string();
@@ -709,7 +709,7 @@ M  END
   )";
 
     auto mol =
-        std::unique_ptr<RDKit::RWMol>(MolBlockToMol(molBlock, true, false));
+        std::unique_ptr<RDKix::RWMol>(MolBlockToMol(molBlock, true, false));
     REQUIRE(mol);
     CHECK_THROWS_AS(CIPLabeler::assignCIPLabels(*mol, 100000),
                     CIPLabeler::MaxIterationsExceeded);
@@ -834,11 +834,11 @@ TEST_CASE("upsertTest", "[basic]") {
         "CC1=C(C2=C(F)C=C(C(N)=O)C3=C2C2=C(C[C@@H](C(C)(C)O)CC2)N3)C=CC=C1N1C(=O)C2=C(C(F)=CC=C2)N(C)C1=O |(-0.0582,-1.2887,-0.4699;-0.138,-0.6553,-1.1342;-0.9031,-0.4893,-1.4844;-1.6332,-0.9186,-1.2186;-1.8741,-1.6494,-1.6034;-1.4248,-1.9619,-2.2208;-2.581,-2.0639,-1.3539;-3.069,-1.7619,-0.7143;-3.8054,-2.1982,-0.4602;-4.0043,-2.9212,-0.8738;-4.2532,-1.9338,0.1012;-2.8218,-1.0304,-0.3345;-2.1142,-0.6018,-0.5711;-2.0583,0.1027,-0.0552;-2.7239,0.0857,0.4696;-2.9136,0.6925,1.1267;-2.4007,1.4836,0.9934;-2.4335,2.0277,1.7578;-1.9128,2.8014,1.6418;-3.3209,2.2556,1.9643;-2.112,1.5747,2.4382;-1.4992,1.2797,0.7621;-1.4396,0.7778,-0.0395;-3.1799,-0.5981,0.3004;-0.9727,0.1003,-2.1031;-0.2773,0.5242,-2.3716;0.4878,0.3584,-2.0214;0.5573,-0.2316,-1.4028;1.3588,-0.3932,-1.0482;1.5905,0.0773,-0.3585;1.2002,0.6554,-0.0665;2.3933,-0.1194,0.0095;2.9068,-0.6967,-0.3594;3.6768,-0.8489,0.0041;4.2097,-1.3952,-0.3066;3.9217,-0.4363,0.7167;3.4017,0.1354,1.0788;2.6386,0.2956,0.7262;2.6425,-1.1179,-1.0794;3.1982,-1.7169,-1.457;1.8575,-1.0047,-1.4246;1.6168,-1.4364,-2.0026),wU:27.30|",
         ps);
 
-    unsigned int flags = RDKit::SmilesWrite::CXSmilesFields::CX_COORDS |
-                         RDKit::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
-                         RDKit::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
-                         RDKit::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
-                         RDKit::SmilesWrite::CXSmilesFields::CX_ENHANCEDSTEREO;
+    unsigned int flags = RDKix::SmilesWrite::CXSmilesFields::CX_COORDS |
+                         RDKix::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
+                         RDKix::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
+                         RDKix::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
+                         RDKix::SmilesWrite::CXSmilesFields::CX_ENHANCEDSTEREO;
 
     auto smilesWriteParams = SmilesWriteParams();
     smilesWriteParams.canonical = true;
@@ -893,10 +893,10 @@ TEST_CASE("atropisomers", "[basic]") {
       wp.canonical = false;
       wp.doKekule = false;
       unsigned int flags =
-          RDKit::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
-          RDKit::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
-          RDKit::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
-          RDKit::SmilesWrite::CXSmilesFields::CX_BOND_ATROPISOMER;
+          RDKix::SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
+          RDKix::SmilesWrite::CXSmilesFields::CX_ATOM_PROPS |
+          RDKix::SmilesWrite::CXSmilesFields::CX_BOND_CFG |
+          RDKix::SmilesWrite::CXSmilesFields::CX_BOND_ATROPISOMER;
       v2::SmilesParse::SmilesParserParams pp;
       pp.allowCXSMILES = true;
       pp.sanitize = true;
@@ -920,9 +920,9 @@ TEST_CASE("atropisomers", "[basic]") {
         }
       }
 
-      RDKit::SubstructMatchParameters params;
+      RDKix::SubstructMatchParameters params;
 
-      auto match = RDKit::SubstructMatch(*molsdf, *newMol, params);
+      auto match = RDKix::SubstructMatch(*molsdf, *newMol, params);
 
       for (auto thisBond : newMol->bonds()) {
         unsigned int a1 = thisBond->getBeginAtomIdx();
@@ -945,7 +945,7 @@ TEST_CASE("atropisomers", "[basic]") {
 }
 
 std::string cipLabels(std::string molBlock) {
-  RDKit::ROMol *mol = nullptr;
+  RDKix::ROMol *mol = nullptr;
   std::string result = "";
   try {
     // try parsing the mol block with sanitize ob
@@ -966,7 +966,7 @@ std::string cipLabels(std::string molBlock) {
     std::vector<std::string> atomsArray;
     std::vector<std::string> bondsArray;
 
-    RDKit::CIPLabeler::assignCIPLabels(*mol);
+    RDKix::CIPLabeler::assignCIPLabels(*mol);
     for (auto atom : mol->atoms()) {
       if (atom->hasProp(common_properties::_CIPCode)) {
         std::string thisVal =

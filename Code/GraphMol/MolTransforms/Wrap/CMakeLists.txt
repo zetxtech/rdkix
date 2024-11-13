@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLTRANSFORMS_BUILD)
-rdkit_python_extension(rdMolTransforms 
+remove_definitions(-DRDKIX_MOLTRANSFORMS_BUILD)
+rdkix_python_extension(rdMolTransforms 
                        rdMolTransforms.cpp
                        DEST Chem 
                        LINK_LIBRARIES MolTransforms )

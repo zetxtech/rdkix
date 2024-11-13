@@ -10,7 +10,7 @@
 
 #include "PubChemShape.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("basic alignment") {
   std::string dirName = getenv("RDBASE");
@@ -39,7 +39,7 @@ TEST_CASE("basic alignment") {
     CHECK_THAT(nbr_st, Catch::Matchers::WithinAbs(0.773, 0.005));
     CHECK_THAT(nbr_ct, Catch::Matchers::WithinAbs(0.303, 0.005));
   }
-  SECTION("RDKit features") {
+  SECTION("RDKix features") {
     ref->clearProp("PUBCHEM_PHARMACOPHORE_FEATURES");
     probe->clearProp("PUBCHEM_PHARMACOPHORE_FEATURES");
     std::vector<float> matrix(12, 0.0);

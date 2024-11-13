@@ -2,8 +2,8 @@ import unittest
 
 import numpy as np
 
-from rdkit import Chem, DataStructs
-from rdkit.Chem import rdFingerprintGenerator
+from rdkix import Chem, DataStructs
+from rdkix.Chem import rdFingerprintGenerator
 
 
 class TestCase(unittest.TestCase):
@@ -97,9 +97,9 @@ class TestCase(unittest.TestCase):
     self.assertEqual(g.GetSparseCountFingerprint(ms[0]), g2.GetSparseCountFingerprint(ms[0]))
     self.assertEqual(g.GetSparseCountFingerprint(ms[1]), g2.GetSparseCountFingerprint(ms[1]))
 
-  def testRDKitFPGenerator(self):
+  def testRDKixFPGenerator(self):
     m = Chem.MolFromSmiles('CCCCC')
-    g = rdFingerprintGenerator.GetRDKitFPGenerator()
+    g = rdFingerprintGenerator.GetRDKixFPGenerator()
     fp = g.GetSparseCountFingerprint(m)
     nz = fp.GetNonzeroElements()
     self.assertEqual(len(nz), 8)
@@ -132,8 +132,8 @@ class TestCase(unittest.TestCase):
     self.assertEqual(results[2], g.GetSparseCountFingerprint(m3))
     self.assertEqual(len(results), 3)
 
-    g = rdFingerprintGenerator.GetRDKitFPGenerator()
-    results = rdFingerprintGenerator.GetSparseCountFPs([m1, m2, m3], rdFingerprintGenerator.RDKitFP)
+    g = rdFingerprintGenerator.GetRDKixFPGenerator()
+    results = rdFingerprintGenerator.GetSparseCountFPs([m1, m2, m3], rdFingerprintGenerator.RDKixFP)
     self.assertEqual(results[0], g.GetSparseCountFingerprint(m1))
     self.assertEqual(results[1], g.GetSparseCountFingerprint(m2))
     self.assertEqual(results[2], g.GetSparseCountFingerprint(m3))
@@ -161,8 +161,8 @@ class TestCase(unittest.TestCase):
     self.assertEqual(results[2], g.GetSparseFingerprint(m3))
     self.assertEqual(len(results), 3)
 
-    g = rdFingerprintGenerator.GetRDKitFPGenerator()
-    results = rdFingerprintGenerator.GetSparseFPs([m1, m2, m3], rdFingerprintGenerator.RDKitFP)
+    g = rdFingerprintGenerator.GetRDKixFPGenerator()
+    results = rdFingerprintGenerator.GetSparseFPs([m1, m2, m3], rdFingerprintGenerator.RDKixFP)
     self.assertEqual(results[0], g.GetSparseFingerprint(m1))
     self.assertEqual(results[1], g.GetSparseFingerprint(m2))
     self.assertEqual(results[2], g.GetSparseFingerprint(m3))
@@ -190,8 +190,8 @@ class TestCase(unittest.TestCase):
     self.assertEqual(results[2], g.GetCountFingerprint(m3))
     self.assertEqual(len(results), 3)
 
-    g = rdFingerprintGenerator.GetRDKitFPGenerator()
-    results = rdFingerprintGenerator.GetCountFPs([m1, m2, m3], rdFingerprintGenerator.RDKitFP)
+    g = rdFingerprintGenerator.GetRDKixFPGenerator()
+    results = rdFingerprintGenerator.GetCountFPs([m1, m2, m3], rdFingerprintGenerator.RDKixFP)
     self.assertEqual(results[0], g.GetCountFingerprint(m1))
     self.assertEqual(results[1], g.GetCountFingerprint(m2))
     self.assertEqual(results[2], g.GetCountFingerprint(m3))
@@ -207,11 +207,11 @@ class TestCase(unittest.TestCase):
 
   def testNumBitsPerFeature(self):
     m1 = Chem.MolFromSmiles('CCCO')
-    g = rdFingerprintGenerator.GetRDKitFPGenerator(minPath=1, maxPath=2)
+    g = rdFingerprintGenerator.GetRDKixFPGenerator(minPath=1, maxPath=2)
     fp = g.GetFingerprint(m1)
     self.assertEqual(fp.GetNumOnBits(), 8)
 
-    g = rdFingerprintGenerator.GetRDKitFPGenerator(minPath=1, maxPath=2, numBitsPerFeature=1)
+    g = rdFingerprintGenerator.GetRDKixFPGenerator(minPath=1, maxPath=2, numBitsPerFeature=1)
     fp = g.GetFingerprint(m1)
     self.assertEqual(fp.GetNumOnBits(), 4)
 
@@ -244,9 +244,9 @@ class TestCase(unittest.TestCase):
 
   def testCountBounds(self):
     m = Chem.MolFromSmiles('COc1ccc(CCNC(=O)c2ccccc2C(=O)NCCc2ccc(OC)cc2)cc1')
-    fp1 = rdFingerprintGenerator.GetRDKitFPGenerator(fpSize=2048,
+    fp1 = rdFingerprintGenerator.GetRDKixFPGenerator(fpSize=2048,
                                                      countSimulation=True).GetFingerprint(m)
-    fp2 = rdFingerprintGenerator.GetRDKitFPGenerator(fpSize=2048, countSimulation=True,
+    fp2 = rdFingerprintGenerator.GetRDKixFPGenerator(fpSize=2048, countSimulation=True,
                                                      countBounds=(1, 8, 16, 32)).GetFingerprint(m)
     self.assertNotEqual(fp1.GetNumOnBits(), fp2.GetNumOnBits())
     fp1 = rdFingerprintGenerator.GetTopologicalTorsionGenerator(
@@ -268,7 +268,7 @@ class TestCase(unittest.TestCase):
 
   def testNumpyFingerprints(self):
     m = Chem.MolFromSmiles('COc1ccc(CCNC(=O)c2ccccc2C(=O)NCCc2ccc(OC)cc2)cc1')
-    for fn in (rdFingerprintGenerator.GetRDKitFPGenerator,
+    for fn in (rdFingerprintGenerator.GetRDKixFPGenerator,
                rdFingerprintGenerator.GetMorganGenerator,
                rdFingerprintGenerator.GetAtomPairGenerator,
                rdFingerprintGenerator.GetTopologicalTorsionGenerator):
@@ -389,7 +389,7 @@ class TestCase(unittest.TestCase):
   def testFingerprintGeneratorOptionsLifetime(self):
     # this should not result in a seg fault
     import inspect
-    inspect.getmembers(rdFingerprintGenerator.GetRDKitFPGenerator().GetOptions())
+    inspect.getmembers(rdFingerprintGenerator.GetRDKixFPGenerator().GetOptions())
 
 
 if __name__ == '__main__':

@@ -2,21 +2,21 @@
 //  Copyright (C) 2003-2017 Rational Discovery LLC and Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include <RDBoost/python.h>
 #include <string>
 
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/types.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 
 /*
   NOTE: it looks like there is a typo in the below code
@@ -330,6 +330,6 @@ If the atom already has a query, nothing will be changed.)DOC";
         python::return_value_policy<python::reference_existing_object>());
   };
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_queries() { RDKit::queries_wrapper::wrap(); }
+void wrap_queries() { RDKix::queries_wrapper::wrap(); }

@@ -1,6 +1,6 @@
-#line 1 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 1 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
-#line 3 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 3 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -818,13 +818,13 @@ static const flex_int16_t yy_chk[358] =
 #include <GraphMol/Atom.h>
 #include <GraphMol/Bond.h>
 #include <GraphMol/PeriodicTable.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smiles.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 #define YY_FATAL_ERROR(msg) smiles_lexer_error(msg)
 
@@ -876,9 +876,9 @@ size_t setup_smiles_string(const std::string &text,yyscan_t yyscanner){
   return start;
 
 }
-#line 879 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 879 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
-#line 881 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 881 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 #define INITIAL 0
 #define IN_ATOM_STATE 1
@@ -1166,7 +1166,7 @@ YY_DECL
     }
 
 
-#line 1169 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 1169 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -2114,7 +2114,7 @@ case 169:
 YY_RULE_SETUP
 #line 332 "smiles.ll"
 { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDDOWNRIGHT);
 	return BOND_TOKEN;  }
 	YY_BREAK
@@ -2122,7 +2122,7 @@ case 170:
 YY_RULE_SETUP
 #line 337 "smiles.ll"
 { yylval->bond = new Bond(Bond::UNSPECIFIED);
-	yylval->bond->setProp(RDKit::common_properties::_unspecifiedOrder,1);
+	yylval->bond->setProp(RDKix::common_properties::_unspecifiedOrder,1);
 	yylval->bond->setBondDir(Bond::ENDUPRIGHT);
 	return BOND_TOKEN;  }
 	YY_BREAK
@@ -2197,7 +2197,7 @@ YY_RULE_SETUP
 #line 367 "smiles.ll"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 2200 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
+#line 2200 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmiles.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

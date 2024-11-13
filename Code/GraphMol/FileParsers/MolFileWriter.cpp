@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //  23/12/2013:
 //     V3000 mol block writer contributed by Jan Holst Jensen
@@ -15,7 +15,7 @@
 #include "MolSGroupWriting.h"
 #include <RDGeneral/Invariant.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/Atropisomers.h>
@@ -39,9 +39,9 @@
 
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit::SGroupWriting;
+using namespace RDKix::SGroupWriting;
 
-namespace RDKit {
+namespace RDKix {
 
 //*************************************
 //
@@ -709,7 +709,7 @@ const std::string GetMolFileBondLine(
 
   int dirCode = 0;
   bool reverse = false;
-  RDKit::Chirality::GetMolFileBondStereoInfo(bond, wedgeBonds, conf, dirCode,
+  RDKix::Chirality::GetMolFileBondStereoInfo(bond, wedgeBonds, conf, dirCode,
                                              reverse);
   // do not cross bonds which were aromatic before kekulization
   if (wasAromatic && dirCode == 3) {
@@ -1053,7 +1053,7 @@ const std::string GetV3000MolFileBondLine(
 
   int dirCode = 0;
   bool reverse = false;
-  RDKit::Chirality::GetMolFileBondStereoInfo(bond, wedgeBonds, conf, dirCode,
+  RDKix::Chirality::GetMolFileBondStereoInfo(bond, wedgeBonds, conf, dirCode,
                                              reverse);
   // do not cross bonds which were aromatic before kekulization
   if (wasAromatic && dirCode == 3) {
@@ -1120,14 +1120,14 @@ void appendEnhancedStereoGroups(
     for (auto &&group : stereo_groups) {
       tmp += "M  V30 MDLV30/";
       switch (group.getGroupType()) {
-        case RDKit::StereoGroupType::STEREO_ABSOLUTE:
+        case RDKix::StereoGroupType::STEREO_ABSOLUTE:
           tmp += "STEABS";
           break;
-        case RDKit::StereoGroupType::STEREO_OR:
+        case RDKix::StereoGroupType::STEREO_OR:
           tmp += "STEREL";
           tmp += std::to_string(group.getWriteId());
           break;
-        case RDKit::StereoGroupType::STEREO_AND:
+        case RDKix::StereoGroupType::STEREO_AND:
           tmp += "STERAC";
           tmp += std::to_string(group.getWriteId());
           break;
@@ -1279,7 +1279,7 @@ std::string outputMolToMolBlock(const RWMol &tmol, int confId,
     res += text;
   } else {
     std::stringstream ss;
-    ss << "  " << std::setw(8) << "RDKit";
+    ss << "  " << std::setw(8) << "RDKix";
     ss << std::setw(10) << "";
     if (conf) {
       if (conf->is3D()) {
@@ -1405,7 +1405,7 @@ void prepareMol(RWMol &trwmol, const MolWriterParams &params,
 
 std::string MolToMolBlock(const ROMol &mol, const MolWriterParams &params,
                           int confId) {
-  RDKit::Utils::LocaleSwitcher switcher;
+  RDKix::Utils::LocaleSwitcher switcher;
   RWMol trwmol(mol);
   boost::dynamic_bitset<> aromaticBonds(trwmol.getNumBonds());
   prepareMol(trwmol, params, aromaticBonds);
@@ -1417,7 +1417,7 @@ std::string MolToMolBlock(const ROMol &mol, const MolWriterParams &params,
 
 std::string MolToV2KMolBlock(const ROMol &mol, const MolWriterParams &params,
                              int confId) {
-  RDKit::Utils::LocaleSwitcher switcher;
+  RDKix::Utils::LocaleSwitcher switcher;
   RWMol trwmol(mol);
   boost::dynamic_bitset<> aromaticBonds(trwmol.getNumBonds());
   prepareMol(trwmol, params, aromaticBonds);
@@ -1443,4 +1443,4 @@ void MolToMolFile(const ROMol &mol, const std::string &fName,
   *outStream << outString;
   delete outStream;
 }
-}  // namespace RDKit
+}  // namespace RDKix

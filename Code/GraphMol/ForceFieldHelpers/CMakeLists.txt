@@ -1,21 +1,21 @@
 # moved back library build directives here
 
-rdkit_library(ForceFieldHelpers UFF/AtomTyper.cpp UFF/Builder.cpp
+rdkix_library(ForceFieldHelpers UFF/AtomTyper.cpp UFF/Builder.cpp
               MMFF/AtomTyper.cpp MMFF/Builder.cpp CrystalFF/TorsionAngleM6.cpp
               CrystalFF/TorsionPreferences.cpp CrystalFF/TorsionAngleContribs.cpp
               LINK_LIBRARIES SmilesParse SubstructMatch ForceField)
-target_compile_definitions(ForceFieldHelpers PRIVATE RDKIT_FORCEFIELDHELPERS_BUILD)
+target_compile_definitions(ForceFieldHelpers PRIVATE RDKIX_FORCEFIELDHELPERS_BUILD)
 
-rdkit_headers(FFConvenience.h DEST GraphMol/ForceFieldHelpers)
-rdkit_headers(UFF/AtomTyper.h
+rdkix_headers(FFConvenience.h DEST GraphMol/ForceFieldHelpers)
+rdkix_headers(UFF/AtomTyper.h
               UFF/Builder.h UFF/UFF.h DEST GraphMol/ForceFieldHelpers/UFF)
-rdkit_headers(MMFF/AtomTyper.h
+rdkix_headers(MMFF/AtomTyper.h
               MMFF/Builder.h MMFF/MMFF.h DEST GraphMol/ForceFieldHelpers/MMFF)
-rdkit_headers(CrystalFF/TorsionAngleM6.h CrystalFF/TorsionPreferences.h
+rdkix_headers(CrystalFF/TorsionAngleM6.h CrystalFF/TorsionPreferences.h
               CrystalFF/TorsionAngleContribs.h
               DEST GraphMol/ForceFieldHelpers/CrystalFF)
 
-rdkit_catch_test(forceFieldHelpersCatch catch_tests.cpp 
+rdkix_catch_test(forceFieldHelpersCatch catch_tests.cpp 
 LINK_LIBRARIES ForceFieldHelpers SmilesParse ForceField )
 
 add_subdirectory(MMFF)

@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2007-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -44,7 +44,7 @@
 #include <GraphMol/ChemReactions/ReactionUtils.h>
 #include "GraphMol/ChemReactions/ReactionRunner.h"
 
-namespace RDKit {
+namespace RDKix {
 
 std::vector<MOL_SPTR_VECT> ChemicalReaction::runReactants(
     const MOL_SPTR_VECT reactants, unsigned int maxProducts) const {
@@ -726,4 +726,4 @@ void ChemicalReaction::removeAgentTemplates(MOL_SPTR_VECT *targetVector) {
   m_agentTemplates.clear();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

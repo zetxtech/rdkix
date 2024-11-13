@@ -35,13 +35,13 @@
 #include <GraphMol/QueryAtom.h>
 %}
 
-%ignore RDKit::QueryAtom::expandQuery;
-%ignore RDKit::QueryAtom::setQuery;
+%ignore RDKix::QueryAtom::expandQuery;
+%ignore RDKix::QueryAtom::setQuery;
 
 %include <GraphMol/QueryAtom.h>
 
-%extend RDKit::QueryAtom {
-	bool MatchAtom(RDKit::Atom const *what) {
+%extend RDKix::QueryAtom {
+	bool MatchAtom(RDKix::Atom const *what) {
 		return ($self)->Match(what);
 	}
 }

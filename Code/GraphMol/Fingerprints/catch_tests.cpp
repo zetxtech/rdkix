@@ -2,24 +2,24 @@
 //  Copyright (C) 2019-2021 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 
 #include <memory>
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/Fingerprints/Fingerprints.h>
 #include <GraphMol/Fingerprints/MorganFingerprints.h>
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/Fingerprints/RDKitFPGenerator.h>
+#include <GraphMol/Fingerprints/RDKixFPGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
@@ -28,7 +28,7 @@
 #include <DataStructs/BitOps.h>
 #include <string>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Github 2051", "[patternfp][bug]") {
   auto mol = "CCC1CC1"_smiles;
@@ -69,7 +69,7 @@ TEST_CASE("Github 1761", "[patternfp][bug]") {
   SECTION("throw ValueErrorException") {
     auto mol = "CCC1CC1"_smiles;
     try {
-      RDKit::MorganFingerprints::getHashedFingerprint(*mol, 0, 0);
+      RDKix::MorganFingerprints::getHashedFingerprint(*mol, 0, 0);
       FAIL("Expected ValueErrorException");
     } catch (const ValueErrorException &e) {
       REQUIRE(std::string(e.what()) == "nBits can not be zero");
@@ -77,14 +77,14 @@ TEST_CASE("Github 1761", "[patternfp][bug]") {
   }
 }
 
-TEST_CASE("RDKit bits per feature", "[fpgenerator][rdkit]") {
+TEST_CASE("RDKix bits per feature", "[fpgenerator][rdkix]") {
   auto m1 = "CCCO"_smiles;
   REQUIRE(m1);
   SECTION("defaults") {
     unsigned int minPath = 1;
     unsigned int maxPath = 2;
     std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpGenerator(
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>(minPath, maxPath));
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>(minPath, maxPath));
     REQUIRE(fpGenerator);
     std::unique_ptr<ExplicitBitVect> fp(fpGenerator->getFingerprint(*m1));
     REQUIRE(fp);
@@ -97,7 +97,7 @@ TEST_CASE("RDKit bits per feature", "[fpgenerator][rdkit]") {
     unsigned int minPath = 1;
     unsigned int maxPath = 2;
     std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpGenerator(
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>(minPath, maxPath));
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>(minPath, maxPath));
     REQUIRE(fpGenerator);
     fpGenerator->getOptions()->d_numBitsPerFeature = 1;
     std::unique_ptr<ExplicitBitVect> fp(fpGenerator->getFingerprint(*m1));
@@ -261,13 +261,13 @@ TEST_CASE("MorganGenerator bit info", "[fpgenerator][morgan]") {
   }
 }
 
-TEST_CASE("RDKitGenerator bit info", "[fpgenerator][RDKit]") {
+TEST_CASE("RDKixGenerator bit info", "[fpgenerator][RDKix]") {
   auto m1 = "CCCO"_smiles;
   REQUIRE(m1);
   unsigned int minPath = 1;
   unsigned int maxPath = 3;
   std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpGenerator(
-      RDKitFP::getRDKitFPGenerator<std::uint64_t>(minPath, maxPath));
+      RDKixFP::getRDKixFPGenerator<std::uint64_t>(minPath, maxPath));
   REQUIRE(fpGenerator);
   const std::vector<std::uint32_t> *fromAtoms = nullptr;
   const std::vector<std::uint32_t> *ignoreAtoms = nullptr;
@@ -717,14 +717,14 @@ TEST_CASE(
   CHECK(fp1->getLength() == fp2->getLength());
 }
 
-TEST_CASE("RDKit set countBounds", "[fpgenerator][rdkit]") {
+TEST_CASE("RDKix set countBounds", "[fpgenerator][rdkix]") {
   auto m1 = "COc1ccc(CCNC(=O)c2ccccc2C(=O)NCCc2ccc(OC)cc2)cc1"_smiles;
   REQUIRE(m1);
   SECTION("change countBounds") {
     unsigned int minPath = 1;
     unsigned int maxPath = 7;
     std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpGenerator(
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>(minPath, maxPath));
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>(minPath, maxPath));
     REQUIRE(fpGenerator);
     fpGenerator->getOptions()->df_countSimulation = true;
     std::unique_ptr<ExplicitBitVect> fp1(fpGenerator->getFingerprint(*m1));

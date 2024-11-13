@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 #include "rdmolops.h"
@@ -17,9 +17,9 @@
 #include <cmath>
 
 #include <DataStructs/ExplicitBitVect.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/MonomerInfo.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
@@ -41,7 +41,7 @@
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 
-namespace RDKit {
+namespace RDKix {
 
 python::tuple fragmentOnSomeBondsHelper(const ROMol &mol,
                                         python::object pyBondIndices,
@@ -393,7 +393,7 @@ void addRecursiveQuery(ROMol &mol, const ROMol &query, unsigned int atomIdx,
 
 void reapplyWedging(ROMol &mol, bool allBondTypes) {
   auto &wmol = static_cast<RWMol &>(mol);
-  RDKit::Chirality::reapplyMolBlockWedging(wmol, allBondTypes);
+  RDKix::Chirality::reapplyMolBlockWedging(wmol, allBondTypes);
 }
 
 MolOps::SanitizeFlags sanitizeMol(ROMol &mol, boost::uint64_t sanitizeOps,
@@ -636,7 +636,7 @@ ExplicitBitVect *wrapLayeredFingerprint(
   }
 
   ExplicitBitVect *res;
-  res = RDKit::LayeredFingerprintMol(mol, layerFlags, minPath, maxPath, fpSize,
+  res = RDKix::LayeredFingerprintMol(mol, layerFlags, minPath, maxPath, fpSize,
                                      atomCountsV, includeOnlyBits,
                                      branchedPaths, lFromAtoms.get());
 
@@ -668,7 +668,7 @@ ExplicitBitVect *wrapPatternFingerprint(const ROMol &mol, unsigned int fpSize,
   }
 
   ExplicitBitVect *res;
-  res = RDKit::PatternFingerprintMol(mol, fpSize, atomCountsV, includeOnlyBits,
+  res = RDKix::PatternFingerprintMol(mol, fpSize, atomCountsV, includeOnlyBits,
                                      tautomerFingerprints);
 
   if (atomCountsV) {
@@ -685,7 +685,7 @@ ExplicitBitVect *wrapPatternFingerprintBundle(const MolBundle &bundle,
                                               ExplicitBitVect *includeOnlyBits,
                                               bool tautomerFingerprints) {
   ExplicitBitVect *res;
-  res = RDKit::PatternFingerprintMol(bundle, fpSize, includeOnlyBits,
+  res = RDKix::PatternFingerprintMol(bundle, fpSize, includeOnlyBits,
                                      tautomerFingerprints);
   return res;
 }
@@ -710,7 +710,7 @@ ExplicitBitVect *wrapRDKFingerprintMol(
     lBitInfo = new std::map<std::uint32_t, std::vector<std::vector<int>>>;
   }
   ExplicitBitVect *res;
-  res = RDKit::RDKFingerprintMol(mol, minPath, maxPath, fpSize, nBitsPerHash,
+  res = RDKix::RDKFingerprintMol(mol, minPath, maxPath, fpSize, nBitsPerHash,
                                  useHs, tgtDensity, minSize, branchedPaths,
                                  useBondOrder, lAtomInvariants.get(),
                                  lFromAtoms.get(), lAtomBits, lBitInfo);
@@ -902,10 +902,10 @@ python::tuple detectChemistryProblemsHelper(const ROMol &mol,
 }
 
 ROMol *canonicalizeStereoGroupsHelper(
-    ROMol &mol, RDKit::StereoGroupAbsOptions stereoGroupAbsOptions) {
+    ROMol &mol, RDKix::StereoGroupAbsOptions stereoGroupAbsOptions) {
   auto mol_uptr = std::unique_ptr<ROMol>(new ROMol(mol));
 
-  RDKit::canonicalizeStereoGroups(mol_uptr, stereoGroupAbsOptions);
+  RDKix::canonicalizeStereoGroups(mol_uptr, stereoGroupAbsOptions);
   return mol_uptr.release();
   ;
 }
@@ -1051,7 +1051,7 @@ void _testSetProps(RDProps &props, const std::string &prefix) {
 
   std::vector<std::string> svstring;
   svstring.push_back("The");
-  svstring.push_back("RDKit");
+  svstring.push_back("RDKix");
 
   props.setProp<std::vector<std::string>>(prefix + "svstring", svstring);
 }
@@ -1174,10 +1174,10 @@ struct molops_wrapper {
     - mol: the molecule to be modified\n\
     - sanitizeOps: (optional) sanitization operations to be carried out\n\
       these should be constructed by or'ing together the\n\
-      operations in rdkit.Chem.SanitizeFlags\n\
+      operations in rdkix.Chem.SanitizeFlags\n\
     - catchErrors: (optional) if provided, instead of raising an exception\n\
       when sanitization fails (the default behavior), the \n\
-      first operation that failed (as defined in rdkit.Chem.SanitizeFlags)\n\
+      first operation that failed (as defined in rdkix.Chem.SanitizeFlags)\n\
       is returned. Zero is returned on success.\n\
 \n";
     python::def(
@@ -1781,7 +1781,7 @@ to the terminal dummy atoms.\n\
 
     python::enum_<MolOps::AromaticityModel>("AromaticityModel")
         .value("AROMATICITY_DEFAULT", MolOps::AROMATICITY_DEFAULT)
-        .value("AROMATICITY_RDKIT", MolOps::AROMATICITY_RDKIT)
+        .value("AROMATICITY_RDKIX", MolOps::AROMATICITY_RDKIX)
         .value("AROMATICITY_SIMPLE", MolOps::AROMATICITY_SIMPLE)
         .value("AROMATICITY_MDL", MolOps::AROMATICITY_MDL)
         .value("AROMATICITY_MMFF94", MolOps::AROMATICITY_MMFF94)
@@ -2277,7 +2277,7 @@ RETURNS:
 
     // ------------------------------------------------------------------------
     docString =
-        "Returns an RDKit topological fingerprint for a molecule\n\
+        "Returns an RDKix topological fingerprint for a molecule\n\
 \n\
   Explanation of the algorithm below.\n\
 \n\
@@ -2360,10 +2360,10 @@ RETURNS:
         docString.c_str(),
         python::return_value_policy<python::manage_new_object>());
     python::scope().attr("_RDKFingerprint_version") =
-        RDKit::RDKFingerprintMolVersion;
+        RDKix::RDKFingerprintMolVersion;
 
     docString =
-        "Returns an unfolded count-based version of the RDKit fingerprint for a molecule\n\
+        "Returns an unfolded count-based version of the RDKix fingerprint for a molecule\n\
 \n\
 ARGUMENTS:\n\
     \n\
@@ -2482,9 +2482,9 @@ ARGUMENTS:\n\
         docString.c_str(),
         python::return_value_policy<python::manage_new_object>());
     python::scope().attr("_LayeredFingerprint_version") =
-        RDKit::LayeredFingerprintMolVersion;
+        RDKix::LayeredFingerprintMolVersion;
     python::scope().attr("LayeredFingerprint_substructLayers") =
-        RDKit::substructLayers;
+        RDKix::substructLayers;
 
     // ------------------------------------------------------------------------
     docString =
@@ -2500,7 +2500,7 @@ ARGUMENTS:\n\
                 docString.c_str(),
                 python::return_value_policy<python::manage_new_object>());
     python::scope().attr("_PatternFingerprint_version") =
-        RDKit::PatternFingerprintMolVersion;
+        RDKix::PatternFingerprintMolVersion;
     docString =
         "A fingerprint using SMARTS patterns \n\
 \n\
@@ -2568,11 +2568,11 @@ ARGUMENTS:\n\
                 Chirality::removeNonExplicit3DChirality, (python::arg("mol")),
                 docString.c_str());
 
-    python::enum_<RDKit::StereoGroupAbsOptions>("StereoGroupAbsOptions")
+    python::enum_<RDKix::StereoGroupAbsOptions>("StereoGroupAbsOptions")
         .value("OnlyIncludeWhenOtherGroupsExist",
-               RDKit::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist)
-        .value("NeverInclude", RDKit::StereoGroupAbsOptions::NeverInclude)
-        .value("AlwaysInclude", RDKit::StereoGroupAbsOptions::AlwaysInclude);
+               RDKix::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist)
+        .value("NeverInclude", RDKix::StereoGroupAbsOptions::NeverInclude)
+        .value("AlwaysInclude", RDKix::StereoGroupAbsOptions::AlwaysInclude);
 
     docString =
         "Rationalize Enhanced Stereo indications to a canonical form \n\
@@ -2588,7 +2588,7 @@ ARGUMENTS:\n\
         "CanonicalizeStereoGroups", canonicalizeStereoGroupsHelper,
         (python::arg("mol"),
          python::arg("outputAbsoluteGroups") =
-             RDKit::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist),
+             RDKix::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist),
         docString.c_str(),
         python::return_value_policy<python::manage_new_object>());
 
@@ -2693,7 +2693,7 @@ Calling:\n\
 \n\
     - The original molecule is *not* modified.\n\
 EXAMPLES:\n\n\
-    >>> from rdkit.Chem import MolToSmiles, MolFromSmiles, ReplaceCore\n\
+    >>> from rdkix.Chem import MolToSmiles, MolFromSmiles, ReplaceCore\n\
     >>> mol = MolFromSmiles('C1ONNCC1')\n\
     >>> core = MolFromSmiles('NN')\n\
 \n\
@@ -2742,7 +2742,7 @@ EXAMPLES:\n\n\
 \n\
   EXAMPLES:\n\
 \n\
-   >>> from rdkit.Chem import MolToSmiles, MolFromSmiles, MolFromSmarts, ReplaceCore\n\
+   >>> from rdkix.Chem import MolToSmiles, MolFromSmiles, MolFromSmarts, ReplaceCore\n\
 \n\
    Basic usage: remove a core as specified by SMILES (or another molecule).\n\
    To get the atom labels which are stored as an isotope of the matched atom, \n\
@@ -2887,7 +2887,7 @@ Setting this to false allows assembling chemically incorrect fragments.")
             "generateCoordinates", &MolzipParams::generateCoordinates,
             "If true will add depiction coordinates to input molecules and\n\
 zipped molecule (for molzipFragments only)")
-        .def("setAtomSymbols", &RDKit::setAtomSymbols,
+        .def("setAtomSymbols", &RDKix::setAtomSymbols,
              python::args("self", "symbols"),
              "Set the atom symbols used to zip mols together when using "
              "AtomType labeling");
@@ -2898,7 +2898,7 @@ zipped molecule (for molzipFragments only)")
 This is useful when dealing with results from fragmentOnBonds, RGroupDecomposition and MMPs.\n\
 \n\
 Example:\n\
-    >>> from rdkit.Chem import MolFromSmiles,  MolToSmiles, molzip\n\
+    >>> from rdkix.Chem import MolFromSmiles,  MolToSmiles, molzip\n\
     >>> a = MolFromSmiles('C=C[*:1]')\n\
     >>> b = MolFromSmiles('O/C=N/[*:1]')\n\
     >>> c = molzip(a,b)\n\
@@ -2906,7 +2906,7 @@ Example:\n\
     'C=C/N=C/O'\n\
 \n\
 The atoms to zip can be specified with the MolzipParams class.\n\
-    >>> from rdkit.Chem import MolzipParams, MolzipLabel\n\
+    >>> from rdkix.Chem import MolzipParams, MolzipLabel\n\
     >>> a = MolFromSmiles('C=C[1*]')\n\
     >>> b = MolFromSmiles('O/C=N/[1*]')\n\
     >>> p = MolzipParams()\n\
@@ -2944,8 +2944,8 @@ must be the core",
         "zip an RGroupRow together to recreate the original molecule.  This correctly handles\n"
         "broken cycles that can occur in decompositions.\n"
         " example:\n\n"
-        "  >>> from rdkit import Chem\n"
-        "  >>> from rdkit.Chem import rdRGroupDecomposition as rgd\n"
+        "  >>> from rdkix import Chem\n"
+        "  >>> from rdkix.Chem import rdRGroupDecomposition as rgd\n"
         "  >>> core = Chem.MolFromSmiles('CO')\n"
         "  >>> mols = [Chem.MolFromSmiles('C1NNO1')]\n"
         "  >>> rgroups, unmatched = rgd.RGroupDecompose(core, mols)\n"
@@ -3257,6 +3257,6 @@ enantiomer" or "OR enantiomer". CIP labels, if present, are removed.
         "returns whether or not the atom is involved in a conjugated bond");
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_molops() { RDKit::molops_wrapper::wrap(); }
+void wrap_molops() { RDKix::molops_wrapper::wrap(); }

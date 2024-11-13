@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2024 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <cstdlib>
@@ -27,7 +27,7 @@
 #include <cstdlib>
 
 using namespace std;
-using namespace RDKit;
+using namespace RDKix;
 template <typename T>
 inline void TXTMSG(const char *__a__, T __b__) {
   BOOST_LOG(rdInfoLog) << (__a__) << " " << (__b__) << std::endl;
@@ -1465,8 +1465,8 @@ int main() {
   ss.write((const char *)&v1, sizeof(v1));
   ss.write((const char *)&v2, sizeof(v2));
   ss.seekp(0, ios_base::beg);
-  RDKit::streamRead(ss, v3);
-  RDKit::streamRead(ss, v4);
+  RDKix::streamRead(ss, v3);
+  RDKix::streamRead(ss, v4);
 
   TXTMSG("v3", v3);
   TXTMSG("v4", v4);

@@ -2,10 +2,10 @@
 //  Copyright (C) 2013-2024 Greg Landrum and NextMove Software
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cstring>
 #include <cstdio>
@@ -28,7 +28,7 @@
 // PDBWriter support multiple "flavors" of PDB output
 // flavor & 1 : Ignore atoms in alternate conformations and dummy atoms
 // flavor & 2 : Read each MODEL into a separate molecule.
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -187,7 +187,7 @@ void PDBAtomLine(RWMol *mol, const char *ptr, unsigned int len,
 
     Conformer *conf;
     if (!mol->getNumConformers()) {
-      conf = new RDKit::Conformer(mol->getNumAtoms());
+      conf = new RDKix::Conformer(mol->getNumAtoms());
       conf->set3D(pos.z != 0.0);
       conf->setId(0);
       mol->addConformer(conf, false);
@@ -460,7 +460,7 @@ void PDBConformerLine(RWMol *mol, const char *ptr, unsigned int len,
     }
 
     if (conformer_atmidx == 0) {
-      conf = new RDKit::Conformer(mol->getNumAtoms());
+      conf = new RDKix::Conformer(mol->getNumAtoms());
       conf->setId(mol->getNumConformers());
       conf->set3D(pos.z != 0.0);
       mol->addConformer(conf, false);
@@ -717,4 +717,4 @@ std::unique_ptr<RWMol> MolFromPDBFile(const std::string &fileName,
 }
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

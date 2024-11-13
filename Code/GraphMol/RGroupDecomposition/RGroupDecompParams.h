@@ -1,21 +1,21 @@
 //
 //  Copyright (c) 2017-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#ifndef RDKIT_RGROUPDECOMPPARAMS_H
-#define RDKIT_RGROUPDECOMPPARAMS_H
+#ifndef RDKIX_RGROUPDECOMPPARAMS_H
+#define RDKIX_RGROUPDECOMPPARAMS_H
 
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-namespace RDKit {
+namespace RDKix {
 
 #define RGROUPLABELS_ENUM_ITEMS                                         \
   RGD_ENUM_ITEM(IsotopeLabels, 1 << 0)                                  \
@@ -61,7 +61,7 @@ typedef enum { RGROUPSCORE_ENUM_ITEMS } RGroupScore;
 #define RGD_STD_MAP_ITEM(k) {#k, k},
 #define RGD_ENUM_ITEM(k, v) RGD_STD_MAP_ITEM(k)
 
-struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
+struct RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
   unsigned int labels = AutoDetect;
   unsigned int matchingStrategy = GreedyChunks;
   unsigned int scoreMethod = Match;
@@ -90,7 +90,7 @@ struct RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupDecompositionParameters {
   //! and set _rgroupTargetAtoms and _rgroupTargetBonds properties
   //! on R groups and core as vectors of target atom and bond indices
   //! to enable highlighting for SAR analysis (see
-  //! https://greglandrum.github.io/rdkit-blog/posts/2021-08-07-rgd-and-highlighting.html)
+  //! https://greglandrum.github.io/rdkix-blog/posts/2021-08-07-rgd-and-highlighting.html)
   bool includeTargetMolInResults = false;
 
   double timeout = -1.0;  ///< timeout in seconds. <=0 indicates no timeout
@@ -138,6 +138,6 @@ void updateRGroupDecompositionParametersFromJSON(
 void updateRGroupDecompositionParametersFromJSON(
     RGroupDecompositionParameters &params, const char *details_json);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_RGROUPDECOMPPARAMS_H
+#endif  // RDKIX_RGROUPDECOMPPARAMS_H

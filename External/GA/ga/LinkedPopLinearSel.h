@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*
@@ -30,7 +30,7 @@
 #include "GaOperation.h"
 #include "../util/RandomUtil.h"
 
-// Don't include Reporter for RDKit build as it does not play well with Windows
+// Don't include Reporter for RDKix build as it does not play well with Windows
 // dynamic DLL
 #ifdef INCLUDE_REPORTER
 #include "../util/Reporter.h"

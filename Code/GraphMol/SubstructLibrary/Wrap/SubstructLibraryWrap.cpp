@@ -1,5 +1,5 @@
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -32,7 +32,7 @@
 //
 #include <RDBoost/python.h>
 #include <RDBoost/Wrap.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/python_streambuf.h>
 
 #include <GraphMol/SubstructLibrary/SubstructLibrary.h>
@@ -42,7 +42,7 @@
 namespace python = boost::python;
 using boost_adaptbx::python::streambuf;
 
-namespace RDKit {
+namespace RDKix {
 
 using GeneralizedSubstruct::ExtendedQueryMol;
 
@@ -240,10 +240,10 @@ const char *CachedSmilesMolHolderDoc =
 const char *CachedTrustedSmilesMolHolderDoc =
     "Holds molecules as trusted smiles string\n"
     "This allows more molecules to be held in memory at a time and avoids "
-    "RDKit sanitization\n"
+    "RDKix sanitization\n"
     "overhead.\n"
     "See: "
-    "http://rdkit.blogspot.com/2016/09/avoiding-unnecessary-work-and.html\n"
+    "http://rdkix.blogspot.com/2016/09/avoiding-unnecessary-work-and.html\n"
     "  AddMol(mol) -> adds a molecule to the molecule holder, returns index of "
     "molecule\n\n"
     "  AddSmiles(smiles) -> adds a smiles string to the molecule holder, "
@@ -278,8 +278,8 @@ const char *SubstructLibraryDoc =
     "\n"
     ">>> from __future__ import print_function\n"
     ">>> import os\n"
-    ">>> from rdkit import Chem, RDConfig\n"
-    ">>> from rdkit.Chem import rdSubstructLibrary\n"
+    ">>> from rdkix import Chem, RDConfig\n"
+    ">>> from rdkix.Chem import rdSubstructLibrary\n"
     ">>> library = rdSubstructLibrary.SubstructLibrary()\n"
     ">>> for mol in Chem.SDMolSupplier(os.path.join(RDConfig.RDDataDir, \n"
     "...                               'NCI', 'first_200.props.sdf')):\n"
@@ -380,7 +380,7 @@ python::object SubstructLibrary_Serialize(const SubstructLibraryWrap &cat) {
   return retval;
 }
 
-struct substructlibrary_pickle_suite : rdkit_pickle_suite {
+struct substructlibrary_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const SubstructLibraryWrap &self) {
     std::string res;
     if (!SubstructLibraryCanSerialize()) {
@@ -802,13 +802,13 @@ struct substructlibrary_wrapper {
              "object\n\n"
              "  ARGUMENTS:\n"
              "    - stream: a text or text stream like object\n\n"
-             "  >>> from rdkit.Chem import rdSubstructLibrary\n"
+             "  >>> from rdkix.Chem import rdSubstructLibrary\n"
              "  >>> import io\n"
              "  >>> lib = rdSubstructLibrary.SubstructLibrary()\n"
              "  >>> stream = io.StringIO()\n"
              "  >>> lib.ToStream(stream)\n\n"
              "   or\n"
-             "  >>> with open('rdkit.sslib', 'w') as stream:\n"
+             "  >>> with open('rdkix.sslib', 'w') as stream:\n"
              "  ...  lib.ToStream(stream)\n")
 
         .def("InitFromStream", &initFromStream,
@@ -821,14 +821,14 @@ struct substructlibrary_wrapper {
              "  ARGUMENTS:\n"
              "    - stream: a binary stream like object\n\n"
              "  SubstructLibrary.Serialize already writes a binary stream\n\n"
-             "  >>> from rdkit.Chem import rdSubstructLibrary\n"
+             "  >>> from rdkix.Chem import rdSubstructLibrary\n"
              "  >>> import io\n"
              "  >>> lib = rdSubstructLibrary.SubstructLibrary()\n"
              "  >>> stream = io.BytesIO( lib.Serialize() )\n"
              "  >>> lib.InitFromStream(stream)\n\n"
              "   remember to write to text and read from a binary stream\n"
-             "  >>> with open('rdkit.sslib', 'w') as f: lib.ToStream(f)\n"
-             "  >>> with open('rdkit.sslib', 'rb') as f: "
+             "  >>> with open('rdkix.sslib', 'w') as f: lib.ToStream(f)\n"
+             "  >>> with open('rdkix.sslib', 'rb') as f: "
              "lib.InitFromStream(f)\n")
 
         .def("Serialize", &SubstructLibrary_Serialize, python::args("self"))
@@ -856,6 +856,6 @@ struct substructlibrary_wrapper {
          python::arg("numThreads") = 1));
   }
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_substructlibrary() { RDKit::substructlibrary_wrapper::wrap(); }
+void wrap_substructlibrary() { RDKix::substructlibrary_wrapper::wrap(); }

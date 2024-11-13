@@ -3,45 +3,45 @@
 //
 // Copyright 2020 Schrodinger, Inc
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 
 
 %{
 #include <GraphMol/SubstanceGroup.h>
 
-const RDKit::SubstanceGroup *getSubstanceGroupWithIdx(RDKit::ROMol &mol, unsigned int idx) {
-  auto &groups = RDKit::getSubstanceGroups(mol);
+const RDKix::SubstanceGroup *getSubstanceGroupWithIdx(RDKix::ROMol &mol, unsigned int idx) {
+  auto &groups = RDKix::getSubstanceGroups(mol);
   return &(groups[idx]);
 }
 
-unsigned int getSubstanceGroupCount(RDKit::ROMol &mol) {
-    return RDKit::getSubstanceGroups(mol).size();
+unsigned int getSubstanceGroupCount(RDKix::ROMol &mol) {
+    return RDKix::getSubstanceGroups(mol).size();
 }
 %}
 
 
 // Base class RDProps is wrapped with shared_ptr, so SubstanceGroup must be too.
-%shared_ptr(RDKit::SubstanceGroup)
+%shared_ptr(RDKix::SubstanceGroup)
 %ignore getSubstanceGroups;
 
-RDKit::SubstanceGroup *getSubstanceGroupWithIdx(RDKit::ROMol &mol, unsigned int idx);
-unsigned int getSubstanceGroupCount(RDKit::ROMol &mol);
+RDKix::SubstanceGroup *getSubstanceGroupWithIdx(RDKix::ROMol &mol, unsigned int idx);
+unsigned int getSubstanceGroupCount(RDKix::ROMol &mol);
 
-%ignore RDKit::SubstanceGroup::getAtoms;
-%rename(getAtoms) RDKit::SubstanceGroup::getSgAtoms;
-%ignore RDKit::SubstanceGroup::getBonds;
-%rename(getBonds) RDKit::SubstanceGroup::getSgBonds;
-%ignore RDKit::SubstanceGroup::getBrackets;
-%ignore RDKit::SubstanceGroup::getCStates;
-%ignore RDKit::SubstanceGroup::getAttachPoints;
+%ignore RDKix::SubstanceGroup::getAtoms;
+%rename(getAtoms) RDKix::SubstanceGroup::getSgAtoms;
+%ignore RDKix::SubstanceGroup::getBonds;
+%rename(getBonds) RDKix::SubstanceGroup::getSgBonds;
+%ignore RDKix::SubstanceGroup::getBrackets;
+%ignore RDKix::SubstanceGroup::getCStates;
+%ignore RDKix::SubstanceGroup::getAttachPoints;
 
 %include <GraphMol/SubstanceGroup.h>
 
-%extend RDKit::SubstanceGroup {
+%extend RDKix::SubstanceGroup {
   // Wrap getAtoms, getParentAtoms and getBonds to return vector<int> by value (not reference).
   // int instead of unsigned int as vector<unsigned int> is not wrapped in C#
   // Not using references to avoid a free() error from Java
@@ -62,15 +62,15 @@ unsigned int getSubstanceGroupCount(RDKit::ROMol &mol);
   }
 
   // SWIG does not do well wrapping vectors of objects, so provide accessors
-  const RDKit::SubstanceGroup::Bracket *getBracket(unsigned int idx)  {
+  const RDKix::SubstanceGroup::Bracket *getBracket(unsigned int idx)  {
     auto &brackets = $self->getBrackets();
     return &(brackets[idx]);
   }
-  const RDKit::SubstanceGroup::CState *getCState(unsigned int idx)  {
+  const RDKix::SubstanceGroup::CState *getCState(unsigned int idx)  {
     auto &cstates = $self->getCStates();
     return &(cstates[idx]);
   }
-  const RDKit::SubstanceGroup::AttachPoint *getAttachPoint(unsigned int idx)  {
+  const RDKix::SubstanceGroup::AttachPoint *getAttachPoint(unsigned int idx)  {
     auto &attachPoints = $self->getAttachPoints();
     return &(attachPoints[idx]);
   }
@@ -85,8 +85,8 @@ unsigned int getSubstanceGroupCount(RDKit::ROMol &mol);
   }
 }
 
-%template(getStringProp) RDKit::SubstanceGroup::getProp<std::string>;
-%template(getUIntProp) RDKit::SubstanceGroup::getProp<unsigned int>;
-%template(getStringVectProp) RDKit::SubstanceGroup::getProp<RDKit::STR_VECT>;
-%template(getUIntVectProp) RDKit::SubstanceGroup::getProp<RDKit::UINT_VECT>;
+%template(getStringProp) RDKix::SubstanceGroup::getProp<std::string>;
+%template(getUIntProp) RDKix::SubstanceGroup::getProp<unsigned int>;
+%template(getStringVectProp) RDKix::SubstanceGroup::getProp<RDKix::STR_VECT>;
+%template(getUIntVectProp) RDKix::SubstanceGroup::getProp<RDKix::UINT_VECT>;
 

@@ -2,10 +2,10 @@
 //  Copyright (C) 2014 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
 #include <GraphMol/new_canon.h>
@@ -13,7 +13,7 @@
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/hanoiSort.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -23,7 +23,7 @@
 #include <random>
 #include <cstdlib>
 
-using namespace RDKit;
+using namespace RDKix;
 
 int pcmp(const void *a, const void *b) {
   if ((*(int *)a) < (*(int *)b)) {
@@ -86,7 +86,7 @@ void hs1(const std::vector<std::vector<int>> &vects) {
     int *count = (int *)malloc(vect.size() * sizeof(int));
     int *changed = (int *)malloc(vect.size() * sizeof(int));
     memset(changed, 1, vect.size() * sizeof(int));
-    RDKit::hanoisort(indices, vect.size(), count, changed, icmp);
+    RDKix::hanoisort(indices, vect.size(), count, changed, icmp);
     for (unsigned int j = 1; j < vect.size(); ++j) {
       TEST_ASSERT(data[indices[j]] >= data[indices[j - 1]]);
     }
@@ -220,7 +220,7 @@ void test2() {
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *changed = (int *)malloc(atoms.size() * sizeof(int));
     memset(changed, 1, atoms.size() * sizeof(int));
-    RDKit::hanoisort(data, atoms.size(), count, changed, ftor);
+    RDKix::hanoisort(data, atoms.size(), count, changed, ftor);
 
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       // std::cerr<<indices[i]<<" "<<" index: "<<atoms[indices[i]].index<<"
@@ -256,7 +256,7 @@ void test3() {
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor ftor(&atoms.front());
 
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -266,8 +266,8 @@ void test3() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -276,7 +276,7 @@ void test3() {
     //   "<<order[i]<<std::endl;
     // }
 
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -315,7 +315,7 @@ void test3() {
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor2 ftor(&atoms.front());
 
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -325,11 +325,11 @@ void test3() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
 
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -457,7 +457,7 @@ void test4() {
     std::vector<Canon::canon_atom> atoms(m->getNumAtoms());
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor3 ftor(&atoms.front(), *m);
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -467,8 +467,8 @@ void test4() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
     // std::cerr<<"1----------------------------------"<<std::endl;
     //  for(unsigned int i=0;i<m->getNumAtoms();++i){
@@ -476,7 +476,7 @@ void test4() {
     //    "<<count[order[i]]<<" next: "<<next[order[i]]<<" changed:
     //    "<<changed[order[i]]<<std::endl;
     // }
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"2----------------------------------"<<std::endl;
@@ -488,7 +488,7 @@ void test4() {
 
     // std::cerr<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
     ftor.df_useNbrs = true;
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
     // std::cerr<<"3----------------------------------"<<std::endl;
     // for(unsigned int i=0;i<m->getNumAtoms();++i){
@@ -496,7 +496,7 @@ void test4() {
     //    "<<count[order[i]]<<" next: "<<next[order[i]]<<" changed:
     //    "<<changed[order[i]]<<std::endl;
     // }
-    RDKit::Canon::RefinePartitions(*m, data, ftor, true, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, true, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -524,7 +524,7 @@ void test4() {
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor3 ftor(&atoms.front(), *m);
 
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -534,11 +534,11 @@ void test4() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
 
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
     // std::cerr<<"----------------------------------"<<std::endl;
     // for(unsigned int i=0;i<m->getNumAtoms();++i){
@@ -547,9 +547,9 @@ void test4() {
     // }
 
     ftor.df_useNbrs = true;
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
-    RDKit::Canon::RefinePartitions(*m, data, ftor, true, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, true, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -578,7 +578,7 @@ void test4() {
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor3 ftor(&atoms.front(), *m);
 
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -588,8 +588,8 @@ void test4() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -598,15 +598,15 @@ void test4() {
     //   "<<atoms[order[i]].index<<std::endl;
     // }
 
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
     ftor.df_useNbrs = true;
 
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
-    RDKit::Canon::RefinePartitions(*m, data, ftor, true, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, true, order, count,
                                    activeset, next, changed, touched);
     // std::cerr<<"----------------------------------"<<std::endl;
 
@@ -654,7 +654,7 @@ void test5() {
     initCanonAtoms(*m, atoms, true);
     atomcomparefunctor3 ftor(&atoms.front(), *m);
 
-    RDKit::Canon::canon_atom *data = &atoms.front();
+    RDKix::Canon::canon_atom *data = &atoms.front();
     int *count = (int *)malloc(atoms.size() * sizeof(int));
     int *order = (int *)malloc(atoms.size() * sizeof(int));
     int activeset;
@@ -664,8 +664,8 @@ void test5() {
     char *touched = (char *)malloc(atoms.size() * sizeof(char));
     memset(touched, 0, atoms.size() * sizeof(char));
 
-    RDKit::Canon::CreateSinglePartition(atoms.size(), order, count, data);
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::CreateSinglePartition(atoms.size(), order, count, data);
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -674,14 +674,14 @@ void test5() {
     //   "<<atoms[order[i]].index<<std::endl;
     // }
 
-    RDKit::Canon::RefinePartitions(*m, data, ftor, false, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, false, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<std::endl;
     ftor.df_useNbrs = true;
-    RDKit::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
+    RDKix::Canon::ActivatePartitions(atoms.size(), order, count, activeset,
                                      next, changed);
-    RDKit::Canon::RefinePartitions(*m, data, ftor, true, order, count,
+    RDKix::Canon::RefinePartitions(*m, data, ftor, true, order, count,
                                    activeset, next, changed, touched);
 
     // std::cerr<<"----------------------------------"<<std::endl;
@@ -702,7 +702,7 @@ void test5() {
     TEST_ASSERT(order[8] == 7 && count[7] == 0);
     TEST_ASSERT(order[9] == 1 && count[1] == 1);
 
-    RDKit::Canon::BreakTies(*m, data, ftor, true, order, count, activeset, next,
+    RDKix::Canon::BreakTies(*m, data, ftor, true, order, count, activeset, next,
                             changed, touched);
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       // std::cerr<<order[i]<<" "<<" index: "<<atoms[order[i]].index<<" count:
@@ -730,7 +730,7 @@ void test6() {
     TEST_ASSERT(m);
 
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       TEST_ASSERT(!seen[atomRanks[i]]);
@@ -758,7 +758,7 @@ void test6() {
     TEST_ASSERT(m);
 
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       // std::cerr<<i<<" "<<atomRanks[i]<<std::endl;
@@ -792,7 +792,7 @@ void test6() {
     TEST_ASSERT(m);
 
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       // std::cerr<<i<<" "<<atomRanks[i]<<std::endl;
@@ -812,7 +812,7 @@ void test6() {
     TEST_ASSERT(m);
 
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       // std::cerr<<i<<" "<<atomRanks[i]<<std::endl;
@@ -833,7 +833,7 @@ void test6() {
 
     // start w/o tie breaking here; we shouldn't need it.
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks, false);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks, false);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       //      std::cerr<<"      "<<i<<" "<<atomRanks[i]<<std::endl;
@@ -850,7 +850,7 @@ void test6() {
 
     // start w/o tie breaking here; we shouldn't need it.
     std::vector<unsigned int> atomRanks;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks, false);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks, false);
     boost::dynamic_bitset<> seen(m->getNumAtoms());
     for (unsigned int i = 0; i < m->getNumAtoms(); ++i) {
       TEST_ASSERT(!seen[atomRanks[i]]);
@@ -980,7 +980,7 @@ void test7a() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     //    std::cerr <<"\n\n\n\n\n\n\n\n\n\n\n\n>--------------" << std::endl;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks, false);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks, false);
     //    std::cerr <<"---------------" << std::endl;
     //    for(unsigned int i=0;i<m->getNumAtoms();++i){
     //      std::cerr<<" "<<i+1<<" "<<atomRanks[i]<<std::endl;
@@ -996,7 +996,7 @@ void test7a() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     //    std::cerr <<">--------------" << std::endl;
-    RDKit::Canon::rankMolAtoms(*m, atomRanks, false);
+    RDKix::Canon::rankMolAtoms(*m, atomRanks, false);
     //    std::cerr <<"---------------" << std::endl;
     //    for(unsigned int i=0;i<m->getNumAtoms();++i){
     //      std::cerr<<" "<<i+1<<" "<<atomRanks[i]<<std::endl;
@@ -1168,7 +1168,7 @@ void test7() {
 
 std::string molbl1 =
     "CHEMBL1950780                                                        \n"
-    "     RDKit          2D                                               \n"
+    "     RDKix          2D                                               \n"
     "                                                                     \n"
     " 12 12  0  0  0  0  0  0  0  0999 V2000                              \n"
     "   16.2083   -6.1750    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n"
@@ -1199,7 +1199,7 @@ std::string molbl1 =
 
 std::string molbl2 =
     "CHEMBL1874247                                                        \n"
-    "     RDKit          2D                                               \n"
+    "     RDKix          2D                                               \n"
     "                                                                     \n"
     " 12 12  0  0  0  0  0  0  0  0999 V2000                              \n"
     "    0.0000    1.6500    0.0000 Cl  0  0  0  0  0  0  0  0  0  0  0  0\n"
@@ -1318,7 +1318,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1338,7 +1338,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1359,7 +1359,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1379,7 +1379,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1402,7 +1402,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1419,7 +1419,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1436,7 +1436,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;
@@ -1453,7 +1453,7 @@ void test9() {
     MolOps::sanitizeMol(*m);
     std::vector<unsigned int> atomRanks;
     // std::cerr<<smi<<std::endl;
-    RDKit::Canon::chiralRankMolAtoms(*m, atomRanks);
+    RDKix::Canon::chiralRankMolAtoms(*m, atomRanks);
     // std::copy(atomRanks.begin(),atomRanks.end(),std::ostream_iterator<unsigned
     // int>(std::cerr," "));
     // std::cerr<<std::endl;

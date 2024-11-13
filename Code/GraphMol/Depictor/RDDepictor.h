@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -17,18 +17,18 @@
 #include <Geometry/point.h>
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 }
 
 namespace RDDepict {
 
-RDKIT_DEPICTOR_EXPORT extern bool
+RDKIX_DEPICTOR_EXPORT extern bool
     preferCoordGen;  // Ignored if coordgen support isn't active
 
 typedef boost::shared_array<double> DOUBLE_SMART_PTR;
 
-class RDKIT_DEPICTOR_EXPORT DepictException : public std::exception {
+class RDKIX_DEPICTOR_EXPORT DepictException : public std::exception {
  public:
   DepictException(const char *msg) : _msg(msg) {}
   DepictException(const std::string msg) : _msg(msg) {}
@@ -48,7 +48,7 @@ class RDKIT_DEPICTOR_EXPORT DepictException : public std::exception {
 
   \throws DepictException if any of the templates are invalid
 */
-void RDKIT_DEPICTOR_EXPORT
+void RDKIX_DEPICTOR_EXPORT
 setRingSystemTemplates(const std::string templatePath);
 
 //! \brief Add ring system templates to be used in 2D coordinater generation.
@@ -61,14 +61,14 @@ setRingSystemTemplates(const std::string templatePath);
 
   \throws DepictException if any of the templates are invalid
 */
-void RDKIT_DEPICTOR_EXPORT
+void RDKIX_DEPICTOR_EXPORT
 addRingSystemTemplates(const std::string templatePath);
 
 //! \brief Load default ring system templates to be used in 2D coordinate
 //! generation
-void RDKIT_DEPICTOR_EXPORT loadDefaultRingSystemTemplates();
+void RDKIX_DEPICTOR_EXPORT loadDefaultRingSystemTemplates();
 
-struct RDKIT_DEPICTOR_EXPORT Compute2DCoordParameters {
+struct RDKIX_DEPICTOR_EXPORT Compute2DCoordParameters {
   const RDGeom::INT_POINT2D_MAP *coordMap =
       nullptr;  //!< a map of int to Point2D, between atom IDs and their
                 //!< locations.  This is the container the user needs to
@@ -86,7 +86,7 @@ struct RDKIT_DEPICTOR_EXPORT Compute2DCoordParameters {
   bool permuteDeg4Nodes = false;  //!< try permuting the drawing order of bonds
                                   //!< around atoms with four neighbors in order
                                   //!< to improve the depiction
-  bool forceRDKit = false;        //!< use RDKit to generate coordinates even if
+  bool forceRDKix = false;        //!< use RDKix to generate coordinates even if
                                   //!< preferCoordGen is set to true
   bool useRingTemplates = false;  //!< whether to use ring system templates for
                                   //!< generating initial coordinates
@@ -105,8 +105,8 @@ struct RDKIT_DEPICTOR_EXPORT Compute2DCoordParameters {
   2D coordinates
 
 */
-RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
-    RDKit::ROMol &mol, const Compute2DCoordParameters &params);
+RDKIX_DEPICTOR_EXPORT unsigned int compute2DCoords(
+    RDKix::ROMol &mol, const Compute2DCoordParameters &params);
 
 //! \brief Generate 2D coordinates (a depiction) for a molecule
 /*!
@@ -135,7 +135,7 @@ RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
   \param permuteDeg4Nodes - try permuting the drawing order of bonds around
         atoms with four neighbors in order to improve the depiction
 
-  \param forceRDKit - use RDKit to generate coordinates even if
+  \param forceRDKix - use RDKix to generate coordinates even if
         preferCoordGen is set to true
 
   \param useRingTemplates whether to use ring system templates for generating
@@ -145,11 +145,11 @@ RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
   2D coordinates
 
 */
-RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
-    RDKit::ROMol &mol, const RDGeom::INT_POINT2D_MAP *coordMap = nullptr,
+RDKIX_DEPICTOR_EXPORT unsigned int compute2DCoords(
+    RDKix::ROMol &mol, const RDGeom::INT_POINT2D_MAP *coordMap = nullptr,
     bool canonOrient = false, bool clearConfs = true,
     unsigned int nFlipsPerSample = 0, unsigned int nSamples = 0,
-    int sampleSeed = 0, bool permuteDeg4Nodes = false, bool forceRDKit = false,
+    int sampleSeed = 0, bool permuteDeg4Nodes = false, bool forceRDKix = false,
     bool useRingTemplates = false);
 
 //! \brief Compute the 2D coordinates such the interatom distances
@@ -196,7 +196,7 @@ RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
   \param permuteDeg4Nodes - try permuting the drawing order of bonds around
         atoms with four neighbors in order to improve the depiction
 
-  \param forceRDKit - use RDKit to generate coordinates even if
+  \param forceRDKix - use RDKix to generate coordinates even if
         preferCoordGen is set to true
 
   \return ID of the conformation added to the molecule containing the
@@ -204,20 +204,20 @@ RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoords(
 
 
 */
-RDKIT_DEPICTOR_EXPORT unsigned int compute2DCoordsMimicDistMat(
-    RDKit::ROMol &mol, const DOUBLE_SMART_PTR *dmat = nullptr,
+RDKIX_DEPICTOR_EXPORT unsigned int compute2DCoordsMimicDistMat(
+    RDKix::ROMol &mol, const DOUBLE_SMART_PTR *dmat = nullptr,
     bool canonOrient = true, bool clearConfs = true, double weightDistMat = 0.5,
     unsigned int nFlipsPerSample = 3, unsigned int nSamples = 100,
-    int sampleSeed = 25, bool permuteDeg4Nodes = true, bool forceRDKit = false);
+    int sampleSeed = 25, bool permuteDeg4Nodes = true, bool forceRDKix = false);
 
-struct RDKIT_DEPICTOR_EXPORT ConstrainedDepictionParams {
+struct RDKIX_DEPICTOR_EXPORT ConstrainedDepictionParams {
   //! if false (default), a DepictException is thrown if the molecule
   /// does not have a substructure match to the reference;
   /// if true, an unconstrained depiction will be generated
   bool acceptFailure = false;
-  //! if true, use RDKit to generate coordinates even if preferCoordGen
+  //! if true, use RDKix to generate coordinates even if preferCoordGen
   /// is set to true; defaults to false
-  bool forceRDKit = false;
+  bool forceRDKix = false;
   //! if true, terminal dummy atoms in the reference are ignored
   /// if they match an implicit hydrogen in the molecule or if they are
   /// attached to a query atom; defaults to false
@@ -267,9 +267,9 @@ struct RDKIT_DEPICTOR_EXPORT ConstrainedDepictionParams {
   \param confId - (optional) the id of the reference conformation to use
   \param params - (optional) an instance of ConstrainedDepictionParams
 */
-RDKIT_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference,
-    const RDKit::MatchVectType &refMatchVect, int confId = -1,
+RDKIX_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference,
+    const RDKix::MatchVectType &refMatchVect, int confId = -1,
     const ConstrainedDepictionParams &params = ConstrainedDepictionParams());
 
 //! \brief Overload
@@ -284,12 +284,12 @@ RDKIT_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
                          generate the atom mapping between the molecule
                          and the reference.
   \param confId -       the id of the reference conformation to use
-  \param forceRDKit - use RDKit to generate coordinates even if
+  \param forceRDKix - use RDKix to generate coordinates even if
                       preferCoordGen is set to true
 */
-RDKIT_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference,
-    const RDKit::MatchVectType &refMatchVect, int confId, bool forceRDKit);
+RDKIX_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference,
+    const RDKix::MatchVectType &refMatchVect, int confId, bool forceRDKix);
 
 //! \brief Compute 2D coordinates constrained to a reference;
 ///  the constraint can be hard (default) or soft.
@@ -341,10 +341,10 @@ RDKIT_DEPICTOR_EXPORT void generateDepictionMatching2DStructure(
   \return MatchVectType with (queryAtomidx, molAtomIdx) pairs used for
           the constrained depiction
 */
-RDKIT_DEPICTOR_EXPORT RDKit::MatchVectType generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference, int confId = -1,
-    const RDKit::ROMol *referencePattern =
-        static_cast<const RDKit::ROMol *>(nullptr),
+RDKIX_DEPICTOR_EXPORT RDKix::MatchVectType generateDepictionMatching2DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference, int confId = -1,
+    const RDKix::ROMol *referencePattern =
+        static_cast<const RDKix::ROMol *>(nullptr),
     const ConstrainedDepictionParams &params = ConstrainedDepictionParams());
 
 //! \brief Compute 2D coordinates where a piece of the molecule is
@@ -371,7 +371,7 @@ RDKIT_DEPICTOR_EXPORT RDKit::MatchVectType generateDepictionMatching2DStructure(
                          generated for molecules that don't have a substructure
                          match to the reference; if false, throws a
                          DepictException.
-  \param forceRDKit - (optional) use RDKit to generate coordinates even if
+  \param forceRDKix - (optional) use RDKix to generate coordinates even if
                       preferCoordGen is set to true
   \param allowOptionalAttachments -  (optional) if true, terminal dummy atoms in
                          the reference are ignored if they match an implicit
@@ -382,10 +382,10 @@ RDKIT_DEPICTOR_EXPORT RDKit::MatchVectType generateDepictionMatching2DStructure(
   \return MatchVectType with (queryAtomidx, molAtomIdx) pairs used for
           the constrained depiction
 */
-RDKIT_DEPICTOR_EXPORT RDKit::MatchVectType generateDepictionMatching2DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference, int confId,
-    const RDKit::ROMol *referencePattern, bool acceptFailure,
-    bool forceRDKit = false, bool allowOptionalAttachments = false);
+RDKIX_DEPICTOR_EXPORT RDKix::MatchVectType generateDepictionMatching2DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference, int confId,
+    const RDKix::ROMol *referencePattern, bool acceptFailure,
+    bool forceRDKix = false, bool allowOptionalAttachments = false);
 
 //! \brief Generate a 2D depiction for a molecule where all or part of
 ///  it mimics the coordinates of a 3D reference structure.
@@ -408,13 +408,13 @@ RDKIT_DEPICTOR_EXPORT RDKit::MatchVectType generateDepictionMatching2DStructure(
                          generated
                          for molecules that don't match the reference or the
                          referencePattern; if false, throws a DepictException.
-  \param forceRDKit - (optional) use RDKit to generate coordinates even if
+  \param forceRDKix - (optional) use RDKix to generate coordinates even if
                       preferCoordGen is set to true
 */
-RDKIT_DEPICTOR_EXPORT void generateDepictionMatching3DStructure(
-    RDKit::ROMol &mol, const RDKit::ROMol &reference, int confId = -1,
-    RDKit::ROMol *referencePattern = nullptr, bool acceptFailure = false,
-    bool forceRDKit = false);
+RDKIX_DEPICTOR_EXPORT void generateDepictionMatching3DStructure(
+    RDKix::ROMol &mol, const RDKix::ROMol &reference, int confId = -1,
+    RDKix::ROMol *referencePattern = nullptr, bool acceptFailure = false,
+    bool forceRDKix = false);
 
 //! \brief Rotate the 2D depiction such that the majority of bonds have an
 //! angle with the X axis which is a multiple of 30 degrees.
@@ -431,7 +431,7 @@ RDKIT_DEPICTOR_EXPORT void generateDepictionMatching3DStructure(
   orientation as little as possible .
 */
 
-RDKIT_DEPICTOR_EXPORT void straightenDepiction(RDKit::ROMol &mol,
+RDKIX_DEPICTOR_EXPORT void straightenDepiction(RDKix::ROMol &mol,
                                                int confId = -1,
                                                bool minimizeRotation = false);
 
@@ -442,7 +442,7 @@ RDKIT_DEPICTOR_EXPORT void straightenDepiction(RDKit::ROMol &mol,
   (canonicalize >0, the default) or the Y axis (canonicalize <0).
   If canonicalize is 0, no canonicalization takes place.
   If scaleFactor is <0.0 (the default) the depiction is scaled such
-  that bond lengths conform to RDKit standards. The applied scaling
+  that bond lengths conform to RDKix standards. The applied scaling
   factor is returned.
 
   ARGUMENTS:
@@ -454,14 +454,14 @@ RDKIT_DEPICTOR_EXPORT void straightenDepiction(RDKit::ROMol &mol,
                         If 0, no canonical transformation is applied.
   \param scaleFactor  - (optional) if >0.0, the scaling factor to apply. The
                         default (-1.0) means that the depiction is automatically
-                        scaled such that bond lengths are the standard RDKit
+                        scaled such that bond lengths are the standard RDKix
                         ones.
   RETURNS:
 
   \return the applied scaling factor.
 */
 
-RDKIT_DEPICTOR_EXPORT double normalizeDepiction(RDKit::ROMol &mol,
+RDKIX_DEPICTOR_EXPORT double normalizeDepiction(RDKix::ROMol &mol,
                                                 int confId = -1,
                                                 int canonicalize = 1,
                                                 double scaleFactor = -1.0);

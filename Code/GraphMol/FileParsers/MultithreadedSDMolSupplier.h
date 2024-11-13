@@ -2,22 +2,22 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_BUILD_THREADSAFE_SSS
 #ifndef MULTITHREADED_SD_MOL_SUPPLIER
 #define MULTITHREADED_SD_MOL_SUPPLIER
 #include "MultithreadedMolSupplier.h"
-namespace RDKit {
+namespace RDKix {
 namespace v2 {
 namespace FileParsers {
 
 //! This class is still a bit experimental and the public API may change
 //! in future releases.
-class RDKIT_FILEPARSERS_EXPORT MultithreadedSDMolSupplier
+class RDKIX_FILEPARSERS_EXPORT MultithreadedSDMolSupplier
     : public MultithreadedMolSupplier {
  public:
   explicit MultithreadedSDMolSupplier(
@@ -62,7 +62,7 @@ class RDKIT_FILEPARSERS_EXPORT MultithreadedSDMolSupplier
 }  // namespace v2
 
 inline namespace v1 {
-class RDKIT_FILEPARSERS_EXPORT MultithreadedSDMolSupplier : public MolSupplier {
+class RDKIX_FILEPARSERS_EXPORT MultithreadedSDMolSupplier : public MolSupplier {
   //! this is an abstract base class to concurrently supply molecules one at a
   //! time
  public:
@@ -136,6 +136,6 @@ class RDKIT_FILEPARSERS_EXPORT MultithreadedSDMolSupplier : public MolSupplier {
   }
 };
 }  // namespace v1
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif

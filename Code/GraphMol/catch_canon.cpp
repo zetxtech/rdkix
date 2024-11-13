@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/new_canon.h>
@@ -27,7 +27,7 @@
 
 #include <random>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("chirality and canonicalization") {
   SECTION("basics") {
@@ -361,7 +361,7 @@ TEST_CASE("chiralRandomTest") {
           std::shuffle(nVect.begin(), nVect.end(), randomGen);
         }
         std::unique_ptr<ROMol> nmol{MolOps::renumberAtoms(*mol1, nVect)};
-        RDKit::canonicalizeStereoGroups(nmol);
+        RDKix::canonicalizeStereoGroups(nmol);
 
         auto outSmi1 = MolToCXSmiles(*nmol);
 
@@ -399,8 +399,8 @@ TEST_CASE("pseudoTestCanonFailure") {
 
     std::unique_ptr<ROMol> nmol{MolOps::renumberAtoms(*mol1, nVect)};
 
-    RDKit::canonicalizeStereoGroups(mol1);
-    RDKit::canonicalizeStereoGroups(nmol);
+    RDKix::canonicalizeStereoGroups(mol1);
+    RDKix::canonicalizeStereoGroups(nmol);
 
     SmilesWriteParams wp;
     wp.canonical = false;
@@ -561,8 +561,8 @@ TEST_CASE("pseudoTest1") {
 
         std::unique_ptr<ROMol> nmol{MolOps::renumberAtoms(*mol1, nVect)};
 
-        RDKit::canonicalizeStereoGroups(nmol);
-        RDKit::canonicalizeStereoGroups(mol2);
+        RDKix::canonicalizeStereoGroups(nmol);
+        RDKix::canonicalizeStereoGroups(mol2);
 
         auto outSmi1 = MolToCXSmiles(*nmol);
         auto outSmi2 = MolToCXSmiles(*mol2);
@@ -607,7 +607,7 @@ TEST_CASE("pseudoTest1") {
         std::shuffle(nVect.begin(), nVect.end(), std::mt19937(0xf00d));
         std::unique_ptr<ROMol> nmol{MolOps::renumberAtoms(*mol1, nVect)};
 
-        RDKit::canonicalizeStereoGroups(nmol);
+        RDKix::canonicalizeStereoGroups(nmol);
 
         auto outSmi1 = MolToCXSmiles(*nmol);
 
@@ -741,9 +741,9 @@ TEST_CASE("more enhanced stereo canonicalization") {
     forwardStereoGroupIds(*m1);
     forwardStereoGroupIds(*m2);
 
-    RDKit::canonicalizeStereoGroups(m1);
+    RDKix::canonicalizeStereoGroups(m1);
 
-    RDKit::canonicalizeStereoGroups(m2);
+    RDKix::canonicalizeStereoGroups(m2);
 
     auto cx1 = MolToCXSmiles(*m1);
     auto cx2 = MolToCXSmiles(*m2);
@@ -922,7 +922,7 @@ TEST_CASE(
   UseLegacyStereoPerceptionFixture reset_stereo_perception{false};
 
   const auto molb = R"CTAB("
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

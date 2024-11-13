@@ -12,24 +12,24 @@ endif ()
 
 if (RDK_BUILD_FREETYPE_SUPPORT AND RDK_INSTALL_COMIC_FONTS)
     set(needDownload "TRUE")
-    if (EXISTS "${RDKit_DataDir}/Fonts/ComicNeue-Regular.ttf")
-        message("${RDKit_DataDir}/Fonts/ComicNeue-Regular.ttf already there, skipping the download")
+    if (EXISTS "${RDKix_DataDir}/Fonts/ComicNeue-Regular.ttf")
+        message("${RDKix_DataDir}/Fonts/ComicNeue-Regular.ttf already there, skipping the download")
         set(needDownload "FALSE")
     endif ()
     if (needDownload)
         # we started having problems with constantly changing MD5s on the zip file,
         # so now we just check the MD5 of the target file
         downloadAndCheckMD5("https://github.com/google/fonts/raw/main/ofl/comicneue/ComicNeue-Regular.ttf"
-                "${RDKit_DataDir}/Fonts/ComicNeue-Regular.ttf"
+                "${RDKix_DataDir}/Fonts/ComicNeue-Regular.ttf"
                 "fc1eac54b325542d4c133732658f823b")
         downloadAndCheckMD5("https://github.com/google/fonts/raw/main/ofl/comicneue/OFL.txt"
-                "${RDKit_DataDir}/Fonts/OFL.txt"
+                "${RDKix_DataDir}/Fonts/OFL.txt"
                 "")
     endif (needDownload)
 
 endif ()
 
-rdkit_headers(MolDraw2D.h
+rdkix_headers(MolDraw2D.h
         MolDraw2DSVG.h
         MolDraw2Dwx.h
         MolDraw2DJS.h
@@ -38,7 +38,7 @@ rdkit_headers(MolDraw2D.h
         DEST GraphMol/MolDraw2D
 )
 
-rdkit_library(MolDraw2D MolDraw2D.cpp MolDraw2DSVG.cpp
+rdkix_library(MolDraw2D MolDraw2D.cpp MolDraw2DSVG.cpp
         MolDraw2DDetails.cpp MolDraw2DUtils.cpp AtomSymbol.cpp
         DrawAnnotation.cpp DrawMol.cpp DrawMolMCH.cpp DrawMolMCHCircleAndLine.cpp
         DrawMolMCHLasso.cpp
@@ -47,7 +47,7 @@ rdkit_library(MolDraw2D MolDraw2D.cpp MolDraw2DSVG.cpp
         LINK_LIBRARIES
         ChemReactions Depictor MolTransforms
         SubstructMatch Subgraphs GraphMol EigenSolvers)
-target_compile_definitions(MolDraw2D PRIVATE RDKIT_MOLDRAW2D_BUILD)
+target_compile_definitions(MolDraw2D PRIVATE RDKIX_MOLDRAW2D_BUILD)
 
 # if(RDK_BUILD_QT_DEMO && !RDK_BUILD_QT_SUPPORT) error
 if (RDK_BUILD_QT_SUPPORT)
@@ -64,7 +64,7 @@ if (RDK_BUILD_CAIRO_SUPPORT)
         target_link_libraries(MolDraw2D_static PUBLIC Cairo::Cairo)
         target_sources(MolDraw2D_static PRIVATE MolDraw2DCairo.cpp DrawTextCairo.cpp)
     endif ()
-    rdkit_headers(MolDraw2DCairo.h DEST GraphMol/MolDraw2D)
+    rdkix_headers(MolDraw2DCairo.h DEST GraphMol/MolDraw2D)
 endif (RDK_BUILD_CAIRO_SUPPORT)
 
 if (RDK_BUILD_FREETYPE_SUPPORT)
@@ -96,13 +96,13 @@ if (RDK_BUILD_FREETYPE_SUPPORT)
     endif ()
 endif (RDK_BUILD_FREETYPE_SUPPORT)
 
-rdkit_test(moldraw2DTest1 test1.cpp LINK_LIBRARIES
+rdkix_test(moldraw2DTest1 test1.cpp LINK_LIBRARIES
         MolDraw2D)
 
-rdkit_catch_test(moldraw2DTestCatch catch_tests.cpp LINK_LIBRARIES
+rdkix_catch_test(moldraw2DTestCatch catch_tests.cpp LINK_LIBRARIES
         MolDraw2D CIPLabeler)
 
-rdkit_test(moldraw2DRxnTest1 rxn_test1.cpp LINK_LIBRARIES
+rdkix_test(moldraw2DRxnTest1 rxn_test1.cpp LINK_LIBRARIES
         MolDraw2D)
 
 if (RDK_BUILD_PYTHON_WRAPPERS)

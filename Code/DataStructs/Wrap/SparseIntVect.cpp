@@ -3,10 +3,10 @@
 //  Copyright (C) 2007-2008 Greg Landrum
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <RDGeneral/BoostStartInclude.h>
@@ -18,7 +18,7 @@
 #include <RDBoost/PySequenceHolder.h>
 #include <DataStructs/SparseIntVect.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 namespace {
 template <typename IndexType>
@@ -31,7 +31,7 @@ python::object SIVToBinaryText(const SparseIntVect<IndexType> &siv) {
 }  // namespace
 
 template <typename IndexType>
-struct siv_pickle_suite : rdkit_pickle_suite {
+struct siv_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const SparseIntVect<IndexType> &self) {
     return python::make_tuple(SIVToBinaryText(self));
   };

@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2014-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -47,7 +47,7 @@
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/QueryBond.h>
 
-namespace RDKit {
+namespace RDKix {
 typedef std::vector<MatchVectType> VectMatchVectType;
 typedef std::vector<VectMatchVectType> VectVectMatchVectType;
 
@@ -485,7 +485,7 @@ ReactantProductAtomMapping *getAtomMappingsReactantProduct(
 }
 
 namespace {
-unsigned reactProdMapAnchorIdx(Atom *atom, const RDKit::UINT_VECT &pMatches) {
+unsigned reactProdMapAnchorIdx(Atom *atom, const RDKix::UINT_VECT &pMatches) {
   PRECONDITION(atom, "no atom");
   if (pMatches.size() == 1) {
     return pMatches[0];
@@ -2083,4 +2083,4 @@ ROMol *reduceProductToSideChains(const ROMOL_SPTR &product,
   return mol;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

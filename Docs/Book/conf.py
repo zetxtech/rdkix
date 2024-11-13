@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# RDKit documentation build configuration file, created by
+# RDKix documentation build configuration file, created by
 # sphinx-quickstart on Sun Aug  7 18:51:45 2011.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -30,8 +30,8 @@ extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'myst_parser', 'sphinx
 #autosummary_generate = True
 doctest_test_doctest_blocks = ""
 doctest_global_setup = '''
-from rdkit import Chem
-from rdkit.Chem import AllChem
+from rdkix import Chem
+from rdkix.Chem import AllChem
 '''
 
 # Add any paths that contain templates here, relative to this directory.
@@ -44,8 +44,8 @@ templates_path = ['_templates']
 master_doc = 'index'
 
 # General information about the project.
-project = u'The RDKit'
-copyright = u'2024, Greg Landrum and other RDKit contributors'
+project = u'The RDKix'
+copyright = u'2024, Greg Landrum and other RDKix contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -172,7 +172,7 @@ html_sidebars = {  # '**': ['globaltoc.html', 'relations.html', 'searchbox.html'
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RDKitdoc'
+htmlhelp_basename = 'RDKixdoc'
 
 # -- Options for LaTeX output --------------------------------------------------
 
@@ -185,7 +185,7 @@ htmlhelp_basename = 'RDKitdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'RDKit.tex', u'RDKit Documentation', u'Greg Landrum', 'manual'),
+  ('index', 'RDKix.tex', u'RDKix Documentation', u'Greg Landrum', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -217,4 +217,4 @@ autoclass_content = "both"
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [('index', 'rdkit', u'RDKit Documentation', [u'Greg Landrum'], 1)]
+man_pages = [('index', 'rdkix', u'RDKix Documentation', [u'Greg Landrum'], 1)]

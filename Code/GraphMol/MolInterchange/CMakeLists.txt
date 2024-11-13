@@ -21,18 +21,18 @@ endif()
 include_directories(${CMAKE_SOURCE_DIR}/External/rapidjson-1.1.0/include)
 
 
-rdkit_library(MolInterchange
+rdkix_library(MolInterchange
               Parser.cpp Writer.cpp
               LINK_LIBRARIES GraphMol)
-target_compile_definitions(MolInterchange PRIVATE RDKIT_MOLINTERCHANGE_BUILD)
+target_compile_definitions(MolInterchange PRIVATE RDKIX_MOLINTERCHANGE_BUILD)
 
-rdkit_headers(MolInterchange.h details.h
+rdkix_headers(MolInterchange.h details.h
               DEST GraphMol/MolInterchange)
 
-rdkit_test(molInterchangeTest1 test1.cpp
+rdkix_test(molInterchangeTest1 test1.cpp
            LINK_LIBRARIES MolInterchange FileParsers SmilesParse)
 
-rdkit_catch_test(molInterchangeCatchTest molinterchange_catch.cpp 
+rdkix_catch_test(molInterchangeCatchTest molinterchange_catch.cpp 
 LINK_LIBRARIES MolInterchange FileParsers SmilesParse )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

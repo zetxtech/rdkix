@@ -2,26 +2,26 @@
 //  Copyright (C) 2024 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 %include <boost_shared_ptr.i>
-%shared_ptr(RDKit::QueryAtom)
-%shared_ptr(RDKit::QueryBond)
+%shared_ptr(RDKix::QueryAtom)
+%shared_ptr(RDKix::QueryBond)
 
 // Adapted from the Python Wrappers
 
 %{
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/types.h>
 %}
 
-%include <GraphMol/RDKitBase.h>;
-%include <GraphMol/RDKitQueries.h>;
+%include <GraphMol/RDKixBase.h>;
+%include <GraphMol/RDKixQueries.h>;
 %include <RDGeneral/types.h>;
 
 /*
@@ -36,29 +36,29 @@
  %define QAFUNC1(funcname, func, type)
  %inline %{
 
-   boost::shared_ptr<RDKit::QueryAtom> funcname ## EqualsQueryAtom(type val, bool negate=false) {
-    boost::shared_ptr<RDKit::QueryAtom> res(new RDKit::QueryAtom());
-    res->setQuery(RDKit:: ## func(val));
+   boost::shared_ptr<RDKix::QueryAtom> funcname ## EqualsQueryAtom(type val, bool negate=false) {
+    boost::shared_ptr<RDKix::QueryAtom> res(new RDKix::QueryAtom());
+    res->setQuery(RDKix:: ## func(val));
     if (negate) {
       res->getQuery()->setNegation(true);
     }
     return res;
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> funcname ## LessQueryAtom(type val, bool negate=false) {
-    boost::shared_ptr<RDKit::QueryAtom> res(new RDKit::QueryAtom());
+  boost::shared_ptr<RDKix::QueryAtom> funcname ## LessQueryAtom(type val, bool negate=false) {
+    boost::shared_ptr<RDKix::QueryAtom> res(new RDKix::QueryAtom());
     res->setQuery(
-        RDKit:: ## func <RDKit::ATOM_GREATER_QUERY>(val, std::string( # funcname "Less")));
+        RDKix:: ## func <RDKix::ATOM_GREATER_QUERY>(val, std::string( # funcname "Less")));
     if (negate) {
       res->getQuery()->setNegation(true);
     }
     return res;
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> funcname ## GreaterQueryAtom(type val, bool negate=false) {
-    boost::shared_ptr<RDKit::QueryAtom> res(new RDKit::QueryAtom());
+  boost::shared_ptr<RDKix::QueryAtom> funcname ## GreaterQueryAtom(type val, bool negate=false) {
+    boost::shared_ptr<RDKix::QueryAtom> res(new RDKix::QueryAtom());
     res->setQuery(
-        RDKit:: ## func <RDKit::ATOM_LESS_QUERY>(val, std::string(# funcname "Greater")));
+        RDKix:: ## func <RDKix::ATOM_LESS_QUERY>(val, std::string(# funcname "Greater")));
     if (negate) {
       res->getQuery()->setNegation(true);
     }
@@ -69,9 +69,9 @@
 
 %define QAFUNC2(funcname, func, type)
 %inline %{
-  boost::shared_ptr<RDKit::QueryAtom> funcname(bool negate=false) {
-    boost::shared_ptr<RDKit::QueryAtom> res(new RDKit::QueryAtom());
-    res->setQuery(RDKit:: ## func());
+  boost::shared_ptr<RDKix::QueryAtom> funcname(bool negate=false) {
+    boost::shared_ptr<RDKix::QueryAtom> res(new RDKix::QueryAtom());
+    res->setQuery(RDKix:: ## func());
     if (negate) {
       res->getQuery()->setNegation(true);
     }
@@ -120,7 +120,7 @@ QAFUNC2(MHAtomQueryAtom, makeMHAtomQuery, int);
   template <class Ob, class Ret, class T>
   boost::shared_ptr<Ret> PropQuery(const std::string &propname, const T &v, bool negate) {
 	boost::shared_ptr<Ret> res(new Ret());
-	res->setQuery(RDKit::makePropQuery<Ob, T>(propname, v));
+	res->setQuery(RDKix::makePropQuery<Ob, T>(propname, v));
 	if (negate) {
 	  res->getQuery()->setNegation(true);
 	}
@@ -131,7 +131,7 @@ QAFUNC2(MHAtomQueryAtom, makeMHAtomQuery, int);
   boost::shared_ptr<Ret> PropQueryWithTol(const std::string &propname, const T &v, bool negate,
 						const T &tol = T()) {
 	boost::shared_ptr<Ret> res(new Ret());
-	res->setQuery(RDKit::makePropQuery<Ob, T>(propname, v, tol));
+	res->setQuery(RDKix::makePropQuery<Ob, T>(propname, v, tol));
 	if (negate) {
 	  res->getQuery()->setNegation(true);
 	}
@@ -142,92 +142,92 @@ QAFUNC2(MHAtomQueryAtom, makeMHAtomQuery, int);
   boost::shared_ptr<Ret> PropQueryWithTol(const std::string &propname, const ExplicitBitVect &v,
 						bool negate=false, float tol = 0.0) {
 	boost::shared_ptr<Ret> res(new Ret());
-	res->setQuery(RDKit::makePropQuery<Ob>(propname, v, tol));
+	res->setQuery(RDKix::makePropQuery<Ob>(propname, v, tol));
 	if (negate) {
 	  res->getQuery()->setNegation(true);
 	}
 	return res;
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasPropQueryAtom(const std::string &propname, bool negate=false) {
-	boost::shared_ptr<RDKit::QueryAtom> res(new RDKit::QueryAtom());
-	res->setQuery(RDKit::makeHasPropQuery<RDKit::Atom>(propname));
+  boost::shared_ptr<RDKix::QueryAtom> HasPropQueryAtom(const std::string &propname, bool negate=false) {
+	boost::shared_ptr<RDKix::QueryAtom> res(new RDKix::QueryAtom());
+	res->setQuery(RDKix::makeHasPropQuery<RDKix::Atom>(propname));
 	if (negate) {
 	  res->getQuery()->setNegation(true);
 	}
 	return res;
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasIntPropWithValueQueryAtom(const std::string &propname, int val, bool negate=false) {
- 	return PropQuery<RDKit::Atom, RDKit::QueryAtom, int>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryAtom> HasIntPropWithValueQueryAtom(const std::string &propname, int val, bool negate=false) {
+ 	return PropQuery<RDKix::Atom, RDKix::QueryAtom, int>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasBoolPropWithValueQueryAtom(const std::string &propname, bool val, bool negate=false) {
-	return PropQuery<RDKit::Atom, RDKit::QueryAtom, bool>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryAtom> HasBoolPropWithValueQueryAtom(const std::string &propname, bool val, bool negate=false) {
+	return PropQuery<RDKix::Atom, RDKix::QueryAtom, bool>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasStringPropWithValueQueryAtom(const std::string &propname, const std::string &val, bool negate=false) {
-	return PropQuery<RDKit::Atom, RDKit::QueryAtom, std::string>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryAtom> HasStringPropWithValueQueryAtom(const std::string &propname, const std::string &val, bool negate=false) {
+	return PropQuery<RDKix::Atom, RDKix::QueryAtom, std::string>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasDoublePropWithValueQueryAtom(const std::string &propname, double val, bool negate=false, double tol=0) {
-	return PropQueryWithTol<RDKit::Atom, RDKit::QueryAtom, double>(propname, val, negate, tol);
+  boost::shared_ptr<RDKix::QueryAtom> HasDoublePropWithValueQueryAtom(const std::string &propname, double val, bool negate=false, double tol=0) {
+	return PropQueryWithTol<RDKix::Atom, RDKix::QueryAtom, double>(propname, val, negate, tol);
   }
 
-  boost::shared_ptr<RDKit::QueryAtom> HasBitVectPropWithValueQueryAtom(const std::string  &propname, const ExplicitBitVect &val, bool negate=false, float tol=0) {
-	return PropQueryWithTol<RDKit::Atom, RDKit::QueryAtom>(propname, val, negate, tol);
+  boost::shared_ptr<RDKix::QueryAtom> HasBitVectPropWithValueQueryAtom(const std::string  &propname, const ExplicitBitVect &val, bool negate=false, float tol=0) {
+	return PropQueryWithTol<RDKix::Atom, RDKix::QueryAtom>(propname, val, negate, tol);
   }
 
-  boost::shared_ptr<RDKit::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false) {
-	boost::shared_ptr<RDKit::QueryBond> res(new RDKit::QueryBond());
-	res->setQuery(RDKit::makeHasPropQuery<RDKit::Bond>(propname));
+  boost::shared_ptr<RDKix::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false) {
+	boost::shared_ptr<RDKix::QueryBond> res(new RDKix::QueryBond());
+	res->setQuery(RDKix::makeHasPropQuery<RDKix::Bond>(propname));
 	if (negate) {
 	  res->getQuery()->setNegation(true);
 	}
 	return res;
   }
 
-  boost::shared_ptr<RDKit::QueryBond> HasIntPropWithValueQueryBond(const std::string &propname, int val, bool negate=false) {
-    return PropQuery<RDKit::Bond, RDKit::QueryBond, int>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryBond> HasIntPropWithValueQueryBond(const std::string &propname, int val, bool negate=false) {
+    return PropQuery<RDKix::Bond, RDKix::QueryBond, int>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryBond> HasBoolPropWithValueQueryBond(const std::string &propname, bool val, bool negate=false) {
-    return PropQuery<RDKit::Bond, RDKit::QueryBond, bool>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryBond> HasBoolPropWithValueQueryBond(const std::string &propname, bool val, bool negate=false) {
+    return PropQuery<RDKix::Bond, RDKix::QueryBond, bool>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryBond> HasStringPropWithValueQueryBond(const std::string &propname, const std::string &val, bool negate=false) {
-    return PropQuery<RDKit::Bond, RDKit::QueryBond, std::string>(propname, val, negate);
+  boost::shared_ptr<RDKix::QueryBond> HasStringPropWithValueQueryBond(const std::string &propname, const std::string &val, bool negate=false) {
+    return PropQuery<RDKix::Bond, RDKix::QueryBond, std::string>(propname, val, negate);
   }
 
-  boost::shared_ptr<RDKit::QueryBond> HasDoublePropWithValueQueryBond(const std::string &propname, double val, bool negate=false, double tol=0) {
-    return PropQueryWithTol<RDKit::Bond, RDKit::QueryBond, double>(propname, val, negate, tol);
+  boost::shared_ptr<RDKix::QueryBond> HasDoublePropWithValueQueryBond(const std::string &propname, double val, bool negate=false, double tol=0) {
+    return PropQueryWithTol<RDKix::Bond, RDKix::QueryBond, double>(propname, val, negate, tol);
   }
 
 %}
 
-boost::shared_ptr<RDKit::QueryAtom> HasPropQueryAtom(const std::string &propname, bool negate=false);
-boost::shared_ptr<RDKit::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false);
-boost::shared_ptr<RDKit::QueryAtom> HasIntPropWithValueQueryAtom(const std::string &propname, int val, bool negate=false);
-boost::shared_ptr<RDKit::QueryAtom> HasBoolPropWithValueQueryAtom(const std::string &propname, bool val, bool negate=false);
-boost::shared_ptr<RDKit::QueryAtom> HasStringPropWithValueQueryAtom(const std::string &propname, const std::string &val, bool negate=false);
-boost::shared_ptr<RDKit::QueryAtom> HasDoublePropWithValueQueryAtom(const std::string &propname, double val, bool negate=false, double tol=0);
-boost::shared_ptr<RDKit::QueryAtom> HasBitVectPropWithValueQueryAtom(const std::string  &propname, const ExplicitBitVect &val, bool negate=false, float tol=0);
-boost::shared_ptr<RDKit::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false);
-boost::shared_ptr<RDKit::QueryBond> HasIntPropWithValueQueryBond(const std::string &propname, int val, bool negate=false);
-boost::shared_ptr<RDKit::QueryBond> HasBoolPropWithValueQueryBond(const std::string &propname, bool val, bool negate=false);
-boost::shared_ptr<RDKit::QueryBond> HasStringPropWithValueQueryBond(const std::string &propname, const std::string &val, bool negate=false);
-boost::shared_ptr<RDKit::QueryBond> HasDoublePropWithValueQueryBond(const std::string &propname, double val, bool negate=false, double tol=0);
+boost::shared_ptr<RDKix::QueryAtom> HasPropQueryAtom(const std::string &propname, bool negate=false);
+boost::shared_ptr<RDKix::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false);
+boost::shared_ptr<RDKix::QueryAtom> HasIntPropWithValueQueryAtom(const std::string &propname, int val, bool negate=false);
+boost::shared_ptr<RDKix::QueryAtom> HasBoolPropWithValueQueryAtom(const std::string &propname, bool val, bool negate=false);
+boost::shared_ptr<RDKix::QueryAtom> HasStringPropWithValueQueryAtom(const std::string &propname, const std::string &val, bool negate=false);
+boost::shared_ptr<RDKix::QueryAtom> HasDoublePropWithValueQueryAtom(const std::string &propname, double val, bool negate=false, double tol=0);
+boost::shared_ptr<RDKix::QueryAtom> HasBitVectPropWithValueQueryAtom(const std::string  &propname, const ExplicitBitVect &val, bool negate=false, float tol=0);
+boost::shared_ptr<RDKix::QueryBond> HasPropQueryBond(const std::string &propname, bool negate=false);
+boost::shared_ptr<RDKix::QueryBond> HasIntPropWithValueQueryBond(const std::string &propname, int val, bool negate=false);
+boost::shared_ptr<RDKix::QueryBond> HasBoolPropWithValueQueryBond(const std::string &propname, bool val, bool negate=false);
+boost::shared_ptr<RDKix::QueryBond> HasStringPropWithValueQueryBond(const std::string &propname, const std::string &val, bool negate=false);
+boost::shared_ptr<RDKix::QueryBond> HasDoublePropWithValueQueryBond(const std::string &propname, double val, bool negate=false, double tol=0);
 
-%extend RDKit::QueryAtom {
-  void ExpandQuery(const RDKit::QueryAtom *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
+%extend RDKix::QueryAtom {
+  void ExpandQuery(const RDKix::QueryAtom *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
 	PRECONDITION(other, "bad atoms");
 	if (other->hasQuery()) {
-	  const RDKit::QueryAtom::QUERYATOM_QUERY *qry = other->getQuery();
+	  const RDKix::QueryAtom::QUERYATOM_QUERY *qry = other->getQuery();
 	  ($self)->expandQuery(qry->copy(), how, maintainOrder);
 	}
   }
 
-  void setQuery(const RDKit::QueryAtom *other) {
+  void setQuery(const RDKix::QueryAtom *other) {
 	PRECONDITION(other, "bad atoms");
 	if (other->hasQuery()) {
 	  ($self)->setQuery(other->getQuery()->copy());
@@ -235,16 +235,16 @@ boost::shared_ptr<RDKit::QueryBond> HasDoublePropWithValueQueryBond(const std::s
   }
 }
 
-%extend RDKit::Atom {
-  void ExpandQuery(const RDKit::QueryAtom *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
+%extend RDKix::Atom {
+  void ExpandQuery(const RDKix::QueryAtom *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
   PRECONDITION(other, "bad atoms");
   if (other->hasQuery()) {
-	  const RDKit::QueryAtom::QUERYATOM_QUERY *qry = other->getQuery();
+	  const RDKix::QueryAtom::QUERYATOM_QUERY *qry = other->getQuery();
 	  ($self)->expandQuery(qry->copy(), how, maintainOrder);
 	}
   }
 
-  void setQuery(const RDKit::QueryAtom *other) {
+  void setQuery(const RDKix::QueryAtom *other) {
 	PRECONDITION(other, "bad atoms");
 	if (other->hasQuery()) {
 	  ($self)->setQuery(other->getQuery()->copy());
@@ -252,16 +252,16 @@ boost::shared_ptr<RDKit::QueryBond> HasDoublePropWithValueQueryBond(const std::s
   }
 }
 
-%extend RDKit::QueryBond {
-  void ExpandQuery(const RDKit::QueryBond *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
+%extend RDKix::QueryBond {
+  void ExpandQuery(const RDKix::QueryBond *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
 	PRECONDITION(other, "bad bonds");
 	if (other->hasQuery()) {
-	  const RDKit::QueryBond::QUERYBOND_QUERY *qry = other->getQuery();
+	  const RDKix::QueryBond::QUERYBOND_QUERY *qry = other->getQuery();
 	  ($self)->expandQuery(qry->copy(), how, maintainOrder);
 	}
   }
 
-  void SetQuery(const RDKit::QueryBond *other) {
+  void SetQuery(const RDKix::QueryBond *other) {
 	PRECONDITION(other, "bad bonds");
 	if (other->hasQuery()) {
 	  ($self)->setQuery(other->getQuery()->copy());
@@ -269,16 +269,16 @@ boost::shared_ptr<RDKit::QueryBond> HasDoublePropWithValueQueryBond(const std::s
   }
 }
 
-%extend RDKit::Bond {
-  void ExpandQuery(const RDKit::QueryBond *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
+%extend RDKix::Bond {
+  void ExpandQuery(const RDKix::QueryBond *other, Queries::CompositeQueryType how=Queries::COMPOSITE_AND, bool maintainOrder=true) {
 	PRECONDITION(other, "bad bonds");
 	if (other->hasQuery()) {
-	  const RDKit::QueryBond::QUERYBOND_QUERY *qry = other->getQuery();
+	  const RDKix::QueryBond::QUERYBOND_QUERY *qry = other->getQuery();
 	  ($self)->expandQuery(qry->copy(), how, maintainOrder);
 	}
   }
 
-  void SetQuery(const RDKit::QueryBond *other) {
+  void SetQuery(const RDKix::QueryBond *other) {
 	PRECONDITION(other, "bad bonds");
 	if (other->hasQuery()) {
 	  ($self)->setQuery(other->getQuery()->copy());

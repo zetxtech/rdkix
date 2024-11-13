@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2021 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MOLPICKLE_H
@@ -31,12 +31,12 @@
 #endif
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RingInfo;
 
 //! used to indicate exceptions whilst pickling (serializing) molecules
-class RDKIT_GRAPHMOL_EXPORT MolPicklerException : public std::exception {
+class RDKIX_GRAPHMOL_EXPORT MolPicklerException : public std::exception {
  public:
   MolPicklerException(const char *msg) : _msg(msg) {}
   MolPicklerException(const std::string msg) : _msg(msg) {}
@@ -65,7 +65,7 @@ typedef enum {
 }  // namespace PicklerOps
 
 //! handles pickling (serializing) molecules
-class RDKIT_GRAPHMOL_EXPORT MolPickler {
+class RDKIX_GRAPHMOL_EXPORT MolPickler {
  public:
   static const std::int32_t versionMajor;  //!< mark the pickle major version
   static const std::int32_t versionMinor;  //!< mark the pickle minor version
@@ -321,6 +321,6 @@ QueryDetails getQueryDetails(const Queries::Query<int, T const *, true> *query);
 
 }  // namespace PicklerOps
 
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

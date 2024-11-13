@@ -44,24 +44,24 @@
 %}
 
 %include "Streams.i"
-%ignore RDKit::v2;
-%newobject RDKit::ForwardSDMolSupplier::next;
-%newobject RDKit::ResonanceMolSupplier::next;
-%newobject RDKit::SDMolSupplier::next;
-%newobject RDKit::SmilesMolSupplier::next;
-%newobject RDKit::TDTMolSupplier::next;
-%newobject RDKit::PDBMolSupplier::next;
+%ignore RDKix::v2;
+%newobject RDKix::ForwardSDMolSupplier::next;
+%newobject RDKix::ResonanceMolSupplier::next;
+%newobject RDKix::SDMolSupplier::next;
+%newobject RDKix::SmilesMolSupplier::next;
+%newobject RDKix::TDTMolSupplier::next;
+%newobject RDKix::PDBMolSupplier::next;
 
 
 %include <GraphMol/FileParsers/MolSupplier.h>
 %include <GraphMol/FileParsers/MolSupplier.v1API.h>
 
 #ifdef RDK_USE_BOOST_IOSTREAMS
-%extend RDKit::v1::ForwardSDMolSupplier {
-    ForwardSDMolSupplier(RDKit::gzstream *strm, bool sanitize=true, bool removeHs = true,
+%extend RDKix::v1::ForwardSDMolSupplier {
+    ForwardSDMolSupplier(RDKix::gzstream *strm, bool sanitize=true, bool removeHs = true,
                   bool strictParsing = true) {
     const bool takeOwnership = false;
-    RDKit::ForwardSDMolSupplier*foo = new RDKit::ForwardSDMolSupplier(
+    RDKix::ForwardSDMolSupplier*foo = new RDKix::ForwardSDMolSupplier(
                                      (std::istream*)strm,
                                      takeOwnership,
                                      sanitize, removeHs, strictParsing);
@@ -73,9 +73,9 @@
 
 %include <GraphMol/Resonance.h>
 
-%extend RDKit::ResonanceMolSupplier {
-  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKit::ROMol &query,bool uniquify=false, bool useChirality=false, int numThreads=1){
-    std::vector<RDKit::MatchVectType> mv;
+%extend RDKix::ResonanceMolSupplier {
+  std::vector< std::vector<std::pair<int, int> > > getSubstructMatches(RDKix::ROMol &query,bool uniquify=false, bool useChirality=false, int numThreads=1){
+    std::vector<RDKix::MatchVectType> mv;
     SubstructMatch(*($self),query,mv,uniquify,true,useChirality,false,1000,numThreads);
     return mv;
   }

@@ -1,17 +1,17 @@
 //
 //
-//  Copyright (C) 2018-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2018-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SubstanceGroup.h>
@@ -24,7 +24,7 @@
 #include <memory>
 #include <cstdlib>
 
-using namespace RDKit;
+using namespace RDKix;
 
 /* Auxiliary functions */
 void testIdxVector(const std::vector<unsigned int> &groupVector,
@@ -53,7 +53,7 @@ void testBrackets(
 }
 
 RWMol buildSampleMolecule() {
-  // This builds a RDKit::RWMol with all implemented SubstanceGroup features in
+  // This builds a RDKix::RWMol with all implemented SubstanceGroup features in
   // order to test them. SubstanceGroups and features probably do not make any
   // sense.
 
@@ -1040,7 +1040,7 @@ void testKeepSpecialHsOnRemoval() {
   // Keep XBOND Hydrogens
   {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1077,7 +1077,7 @@ M  END)CTAB"_ctab;
   // (This molecule is completely bogus).
   {
     auto molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1120,7 +1120,7 @@ M  END)CTAB";
   // H atom part of a CState bond
   {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1161,7 +1161,7 @@ M  END)CTAB"_ctab;
   // SGroups with only H atoms
   {
     auto mol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

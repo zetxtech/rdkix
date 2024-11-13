@@ -2,14 +2,14 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Validate.h"
 #include "Fragment.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/MolStandardize/FragmentCatalog/FragmentCatalogParams.h>
@@ -25,7 +25,7 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 class ROMol;
 
@@ -46,7 +46,7 @@ std::vector<ValidationErrorInfo> CompositeValidation::validate(
   return errors;
 }
 
-std::vector<ValidationErrorInfo> RDKitValidation::validate(
+std::vector<ValidationErrorInfo> RDKixValidation::validate(
     const ROMol &mol, bool reportAllFailures) const {
   ROMol molCopy = mol;
   std::vector<ValidationErrorInfo> errors;
@@ -101,7 +101,7 @@ std::vector<ValidationErrorInfo> FragmentValidation::validate(
   for (auto &fgrp : fgrps) {
     std::string fname;
     fgrp->getProp(common_properties::_Name, fname);
-    std::vector<RDKit::MatchVectType> res;
+    std::vector<RDKix::MatchVectType> res;
     unsigned int matches = SubstructMatch(mol, *fgrp, res);
     //		std::cout << fname << " matches " << matches << std::endl;
     if (matches != 0 && frags.size() != 0) {
@@ -149,7 +149,7 @@ std::vector<ValidationErrorInfo> FragmentValidation::validate(
 std::vector<ValidationErrorInfo> NeutralValidation::validate(
     const ROMol &mol, bool /*reportAllFailures*/) const {
   std::vector<ValidationErrorInfo> errors;
-  int charge = RDKit::MolOps::getFormalCharge(mol);
+  int charge = RDKix::MolOps::getFormalCharge(mol);
   if (charge != 0) {
     std::string charge_str;
     if (charge > 0) {
@@ -529,7 +529,7 @@ std::vector<ValidationErrorInfo> Layout2DValidation::validate(
   // make sure we have the required rings info available
   if (allowLongBondsInRings || allowAtomBondClashExemption) {
     if (!mol.getRingInfo()->isInitialized()) {
-      RDKit::MolOps::fastFindRings(mol);
+      RDKix::MolOps::fastFindRings(mol);
     }
   }
 
@@ -1009,4 +1009,4 @@ std::vector<ValidationErrorInfo> validateSmiles(const std::string &smiles) {
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

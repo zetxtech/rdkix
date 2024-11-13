@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2019 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_DISTGEOMUTILS_H_
@@ -35,13 +35,13 @@ namespace DistGeom {
 
   \return the largest element of the distance matrix
  */
-RDKIT_DISTGEOMETRY_EXPORT double pickRandomDistMat(
+RDKIX_DISTGEOMETRY_EXPORT double pickRandomDistMat(
     const BoundsMatrix &mmat, RDNumeric::SymmMatrix<double> &distmat,
     int seed = -1);
 //! \overload
-RDKIT_DISTGEOMETRY_EXPORT double pickRandomDistMat(
+RDKIX_DISTGEOMETRY_EXPORT double pickRandomDistMat(
     const BoundsMatrix &mmat, RDNumeric::SymmMatrix<double> &distmat,
-    RDKit::double_source_type &rng);
+    RDKix::double_source_type &rng);
 
 //! Compute an initial embedded in 3D based on a distance matrix
 /*!
@@ -62,14 +62,14 @@ RDKIT_DISTGEOMETRY_EXPORT double pickRandomDistMat(
 
   \return true if the embedding was successful
 */
-RDKIT_DISTGEOMETRY_EXPORT bool computeInitialCoords(
+RDKIX_DISTGEOMETRY_EXPORT bool computeInitialCoords(
     const RDNumeric::SymmMatrix<double> &distmat,
     RDGeom::PointPtrVect &positions, bool randNegEig = false,
     unsigned int numZeroFail = 2, int seed = -1);
 //! \overload
-RDKIT_DISTGEOMETRY_EXPORT bool computeInitialCoords(
+RDKIX_DISTGEOMETRY_EXPORT bool computeInitialCoords(
     const RDNumeric::SymmMatrix<double> &distmat,
-    RDGeom::PointPtrVect &positions, RDKit::double_source_type &rng,
+    RDGeom::PointPtrVect &positions, RDKix::double_source_type &rng,
     bool randNegEig = false, unsigned int numZeroFail = 2);
 
 //! places atoms randomly in a box
@@ -81,12 +81,12 @@ RDKIT_DISTGEOMETRY_EXPORT bool computeInitialCoords(
 
   \return true if the coordinate generation was successful
 */
-RDKIT_DISTGEOMETRY_EXPORT bool computeRandomCoords(
+RDKIX_DISTGEOMETRY_EXPORT bool computeRandomCoords(
     RDGeom::PointPtrVect &positions, double boxSize, int seed = -1);
 //! \overload
-RDKIT_DISTGEOMETRY_EXPORT bool computeRandomCoords(
+RDKIX_DISTGEOMETRY_EXPORT bool computeRandomCoords(
     RDGeom::PointPtrVect &positions, double boxSize,
-    RDKit::double_source_type &rng);
+    RDKix::double_source_type &rng);
 
 //! Setup the error function for violation of distance bounds as a forcefield
 /*!
@@ -113,7 +113,7 @@ RDKIT_DISTGEOMETRY_EXPORT bool computeRandomCoords(
     <b>NOTE:</b> the caller is responsible for deleting this force field.
 
 */
-RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *constructForceField(
+RDKIX_DISTGEOMETRY_EXPORT ForceFields::ForceField *constructForceField(
     const BoundsMatrix &mmat, RDGeom::PointPtrVect &positions,
     const VECT_CHIRALSET &csets, double weightChiral = 1.0,
     double weightFourthDim = 0.1,
@@ -132,7 +132,7 @@ RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *constructForceField(
   <b>NOTE:</b> the caller is responsible for deleting this force field.
 
 */
-RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
+RDKIX_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
     const BoundsMatrix &mmat, RDGeom::Point3DPtrVect &positions,
     const ForceFields::CrystalFF::CrystalFFDetails &etkdgDetails);
 //! Force field with experimental torsion angle preferences and 1-2/1-3 distance
@@ -149,7 +149,7 @@ RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
   <b>NOTE:</b> the caller is responsible for deleting this force field.
 
 */
-RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
+RDKIX_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
     const BoundsMatrix &mmat, RDGeom::Point3DPtrVect &positions,
     const ForceFields::CrystalFF::CrystalFFDetails &etkdgDetails,
     const std::map<std::pair<unsigned int, unsigned int>, double> &CPCI);
@@ -165,7 +165,7 @@ RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *construct3DForceField(
   <b>NOTE:</b> the caller is responsible for deleting this force field.
 
 */
-RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *constructPlain3DForceField(
+RDKIX_DISTGEOMETRY_EXPORT ForceFields::ForceField *constructPlain3DForceField(
     const BoundsMatrix &mmat, RDGeom::Point3DPtrVect &positions,
     const ForceFields::CrystalFF::CrystalFFDetails &etkdgDetails);
 
@@ -185,7 +185,7 @@ no longer used.
     <b>NOTE:</b> the caller is responsible for deleting this force field.
 
 */
-RDKIT_DISTGEOMETRY_EXPORT ForceFields::ForceField *
+RDKIX_DISTGEOMETRY_EXPORT ForceFields::ForceField *
 construct3DImproperForceField(
     const BoundsMatrix &mmat, RDGeom::Point3DPtrVect &positions,
     const std::vector<std::vector<int>> &improperAtoms,

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -14,7 +14,7 @@
 #include <thread>
 #endif
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/QueryBond.h>
@@ -23,7 +23,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 
-using namespace RDKit::v2;
+using namespace RDKix::v2;
 
 TEST_CASE("v2 basics") {
   {
@@ -71,7 +71,7 @@ TEST_CASE("handling of aromatic Al in SMILES") {
   SECTION("basics") {
     auto mol = SmilesParse::MolFromSmiles("[Al+]1cccccccccc1");
     REQUIRE(mol);
-    auto smi = RDKit::MolToSmiles(*mol);
+    auto smi = RDKix::MolToSmiles(*mol);
     CHECK(smi.find("Al") != std::string::npos);
   }
 }

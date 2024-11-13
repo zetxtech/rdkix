@@ -1,12 +1,12 @@
 
 //
-//  Copyright (C) 2024 Niels Maeder and other RDKit contributors
+//  Copyright (C) 2024 Niels Maeder and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cmath>
 #include <RDGeneral/test.h>
@@ -19,7 +19,7 @@
 #include <ForceField/DistanceConstraints.h>
 #include <ForceField/UFF/Params.h>
 
-using namespace RDKit;
+using namespace RDKix;
 namespace {
 
 double get_dist(const ROMol &mol, unsigned int idx1, unsigned int idx2) {

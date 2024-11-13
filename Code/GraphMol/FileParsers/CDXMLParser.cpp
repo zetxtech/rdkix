@@ -2,10 +2,10 @@
 //  Copyright (c) 2022 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "CDXMLParser.h"
 #include <boost/property_tree/xml_parser.hpp>
@@ -24,7 +24,7 @@
 #include <GraphMol/Atropisomers.h>
 
 using boost::property_tree::ptree;
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 const std::string NEEDS_FUSE("CDXML_NEEDS_FUSE");
@@ -41,7 +41,7 @@ const std::string CDX_ATOM_ID("_CDX_ATOM_ID");
 const std::string CDX_BOND_ID("_CDX_BOND_ID");
 const std::string CDX_BOND_ORDERING("CDXML_BOND_ORDERING");
 
-constexpr double RDKIT_DEPICT_BONDLENGTH = 1.5;
+constexpr double RDKIX_DEPICT_BONDLENGTH = 1.5;
 
 struct BondInfo {
   int bond_id = -1;
@@ -618,7 +618,7 @@ void visit_children(
       }
 
       if (hasConf) {
-        scaleBonds(*res, *conf, RDKIT_DEPICT_BONDLENGTH, bondLength);
+        scaleBonds(*res, *conf, RDKIX_DEPICT_BONDLENGTH, bondLength);
         auto confidx = res->addConformer(conf.release());
         DetectAtomStereoChemistry(*res, &res->getConformer(confidx));
 
@@ -833,4 +833,4 @@ std::vector<std::unique_ptr<RWMol>> MolsFromCDXML(
 }
 }  // namespace CDXMLParser
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

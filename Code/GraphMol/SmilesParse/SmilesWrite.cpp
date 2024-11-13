@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "SmilesWrite.h"
 #include "SmilesParseOps.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/new_canon.h>
@@ -31,7 +31,7 @@
 
 // #define VERBOSE_CANON 1
 
-namespace RDKit {
+namespace RDKix {
 
 void updateSmilesWriteParamsFromJSON(SmilesWriteParams &params,
                                      const char *details_json) {
@@ -569,8 +569,8 @@ std::string MolToSmiles(const ROMol &mol, const SmilesWriteParams &params,
   //      std::cout << std::endl;
   //    }
 
-  std::vector<std::vector<RDKit::UINT>> allAtomOrdering;
-  std::vector<std::vector<RDKit::UINT>> allBondOrdering;
+  std::vector<std::vector<RDKix::UINT>> allAtomOrdering;
+  std::vector<std::vector<RDKix::UINT>> allBondOrdering;
   for (unsigned fragIdx = 0; fragIdx < mols.size(); fragIdx++) {
     ROMol *tmol = mols[fragIdx].get();
 
@@ -619,7 +619,7 @@ std::string MolToSmiles(const ROMol &mol, const SmilesWriteParams &params,
       for (auto bond : tmol->bonds()) {
         if (bond->getBondType() == Bond::DATIVE) {
           // we are intentionally only handling DATIVE here. The other weird
-          // RDKit dative alternatives really shouldn't ever show up.
+          // RDKix dative alternatives really shouldn't ever show up.
           bond->setBondType(Bond::SINGLE);
           // update the explicit valence of the begin atom since the implicit
           // valence will no longer be properly perceived
@@ -789,7 +789,7 @@ std::string MolToCXSmiles(const ROMol &romol, const SmilesWriteParams &params,
   }
 
   if (restoreBondDirs == RestoreBondDirOptionTrue) {
-    RDKit::Chirality::reapplyMolBlockWedging(trwmol);
+    RDKix::Chirality::reapplyMolBlockWedging(trwmol);
   } else if (restoreBondDirs == RestoreBondDirOptionClear) {
     for (auto bond : trwmol.bonds()) {
       if (!canHaveDirection(*bond)) {
@@ -1032,4 +1032,4 @@ std::string MolFragmentToCXSmiles(const ROMol &mol,
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

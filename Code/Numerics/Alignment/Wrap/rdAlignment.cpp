@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2008 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rdalignment_array_API
 #include <RDBoost/python.h>
@@ -175,7 +175,7 @@ PyObject *AlignPointPairs(python::object refPoints, python::object probePoints,
 }  // namespace RDNumeric
 
 BOOST_PYTHON_MODULE(rdAlignment) {
-  rdkit_import_array();
+  rdkix_import_array();
   python::scope().attr("__doc__") =
       "Module containing functions to align pairs of points in 3D";
 

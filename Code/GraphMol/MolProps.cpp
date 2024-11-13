@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <map>
 #include <string>
 #include <strstream>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolOps {
 double getAvgMolWt(const ROMol &mol, bool onlyHeavy) {
   double res = 0.0;
@@ -163,4 +163,4 @@ std::string getMolFormula(const ROMol &mol, bool separateIsotopes,
 }
 
 }  // namespace MolOps
-}  // namespace RDKit
+}  // namespace RDKix

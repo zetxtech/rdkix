@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 #include <GraphMol/GraphMol.h>
@@ -18,14 +18,14 @@ namespace python = boost::python;
 namespace {
 python::tuple JSONToMols(const std::string &jsonBlock,
                          python::object pyparams) {
-  RDKit::MolInterchange::JSONParseParameters params;
+  RDKix::MolInterchange::JSONParseParameters params;
   if (pyparams) {
     params =
-        python::extract<RDKit::MolInterchange::JSONParseParameters>(pyparams);
+        python::extract<RDKix::MolInterchange::JSONParseParameters>(pyparams);
   } else {
-    params = RDKit::MolInterchange::defaultJSONParseParameters;
+    params = RDKix::MolInterchange::defaultJSONParseParameters;
   }
-  auto mols = RDKit::MolInterchange::JSONDataToMols(jsonBlock, params);
+  auto mols = RDKix::MolInterchange::JSONDataToMols(jsonBlock, params);
   python::list result;
   for (auto &mol : mols) {
     result.append(mol);
@@ -35,26 +35,26 @@ python::tuple JSONToMols(const std::string &jsonBlock,
 
 std::string MolsToJSON(const python::object &mols,
                        const python::object pyparams) {
-  auto pymols = pythonObjectToVect<const RDKit::ROMol *>(mols);
+  auto pymols = pythonObjectToVect<const RDKix::ROMol *>(mols);
   if (!pymols) {
     return "";
   }
-  RDKit::MolInterchange::JSONWriteParameters params =
-      RDKit::MolInterchange::defaultJSONWriteParameters;
+  RDKix::MolInterchange::JSONWriteParameters params =
+      RDKix::MolInterchange::defaultJSONWriteParameters;
   if (pyparams) {
     params =
-        python::extract<RDKit::MolInterchange::JSONWriteParameters>(pyparams);
+        python::extract<RDKix::MolInterchange::JSONWriteParameters>(pyparams);
   }
-  return RDKit::MolInterchange::MolsToJSONData(*pymols, params);
+  return RDKix::MolInterchange::MolsToJSONData(*pymols, params);
 }
-std::string MolToJSON(const RDKit::ROMol &mol, const python::object pyparams) {
-  RDKit::MolInterchange::JSONWriteParameters params =
-      RDKit::MolInterchange::defaultJSONWriteParameters;
+std::string MolToJSON(const RDKix::ROMol &mol, const python::object pyparams) {
+  RDKix::MolInterchange::JSONWriteParameters params =
+      RDKix::MolInterchange::defaultJSONWriteParameters;
   if (pyparams) {
     params =
-        python::extract<RDKit::MolInterchange::JSONWriteParameters>(pyparams);
+        python::extract<RDKix::MolInterchange::JSONWriteParameters>(pyparams);
   }
-  return RDKit::MolInterchange::MolToJSONData(mol, params);
+  return RDKix::MolInterchange::MolToJSONData(mol, params);
 }
 
 }  // namespace
@@ -65,37 +65,37 @@ BOOST_PYTHON_MODULE(rdMolInterchange) {
       "Note that this should be considered beta and that the format\n"
       "  and API will very likely change in future releases.";
 
-  python::class_<RDKit::MolInterchange::JSONParseParameters,
+  python::class_<RDKix::MolInterchange::JSONParseParameters,
                  boost::noncopyable>("JSONParseParameters",
                                      "Parameters controlling the JSON parser")
       .def_readwrite(
           "setAromaticBonds",
-          &RDKit::MolInterchange::JSONParseParameters::setAromaticBonds,
+          &RDKix::MolInterchange::JSONParseParameters::setAromaticBonds,
           "set bond types to aromatic for bonds flagged aromatic")
       .def_readwrite(
           "strictValenceCheck",
-          &RDKit::MolInterchange::JSONParseParameters::strictValenceCheck,
+          &RDKix::MolInterchange::JSONParseParameters::strictValenceCheck,
           "be strict when checking atom valences")
       .def_readwrite(
           "parseConformers",
-          &RDKit::MolInterchange::JSONParseParameters::parseConformers,
+          &RDKix::MolInterchange::JSONParseParameters::parseConformers,
           "parse conformers in the JSON")
       .def_readwrite(
           "parseProperties",
-          &RDKit::MolInterchange::JSONParseParameters::parseProperties,
+          &RDKix::MolInterchange::JSONParseParameters::parseProperties,
           "parse molecular properties in the JSON")
       .def_readwrite("useHCounts",
-                     &RDKit::MolInterchange::JSONParseParameters::useHCounts,
+                     &RDKix::MolInterchange::JSONParseParameters::useHCounts,
                      "use atomic H counts from the JSON. You may want to set "
                      "this to False when parsing queries.");
 
-  python::class_<RDKit::MolInterchange::JSONWriteParameters,
+  python::class_<RDKix::MolInterchange::JSONWriteParameters,
                  boost::noncopyable>("JSONWriteParameters",
                                      "Parameters controlling the JSON writer")
       .def_readwrite(
-          "useRDKitExtensions",
-          &RDKit::MolInterchange::JSONWriteParameters::useRDKitExtensions,
-          "use RDKit extensions to the commonchem format");
+          "useRDKixExtensions",
+          &RDKix::MolInterchange::JSONWriteParameters::useRDKixExtensions,
+          "use RDKix extensions to the commonchem format");
 
   std::string docString;
   docString =

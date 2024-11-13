@@ -28,12 +28,12 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <vector>
 
 #include "../PubChemShape.hpp"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDBoost/Wrap.h>
 namespace python = boost::python;
 
 namespace helpers {
-python::tuple alignMol(const RDKit::ROMol &ref, RDKit::ROMol &probe,
+python::tuple alignMol(const RDKix::ROMol &ref, RDKix::ROMol &probe,
                        int refConfId, int probeConfId, bool useColors,
                        double opt_param, unsigned int max_preiters,
                        unsigned int max_postiters) {
@@ -43,7 +43,7 @@ python::tuple alignMol(const RDKit::ROMol &ref, RDKit::ROMol &probe,
                     opt_param, max_preiters, max_postiters);
   return python::make_tuple(nbr_st, nbr_ct);
 }
-python::tuple alignMol2(const ShapeInput &ref, RDKit::ROMol &probe,
+python::tuple alignMol2(const ShapeInput &ref, RDKix::ROMol &probe,
                         int probeConfId, bool useColors, double opt_param,
                         unsigned int max_preiters, unsigned int max_postiters) {
   std::vector<float> matrix(12, 0.0);
@@ -52,7 +52,7 @@ python::tuple alignMol2(const ShapeInput &ref, RDKit::ROMol &probe,
                     max_preiters, max_postiters);
   return python::make_tuple(nbr_st, nbr_ct);
 }
-ShapeInput *prepConf(const RDKit::ROMol &mol, int confId, bool useColors) {
+ShapeInput *prepConf(const RDKix::ROMol &mol, int confId, bool useColors) {
   return new ShapeInput(PrepareConformer(mol, confId, useColors));
 }
 }  // namespace helpers
@@ -72,9 +72,9 @@ void wrap_pubchemshape() {
 
 Parameters
 ----------
-ref : RDKit.ROMol
+ref : RDKix.ROMol
     Reference molecule
-probe : RDKit.ROMol
+probe : RDKix.ROMol
     Probe molecule
 refConfId : int, optional
     Reference conformer ID (default is -1)
@@ -105,7 +105,7 @@ Parameters
 ----------
 refShape : ShapeInput
     Reference molecule
-probe : RDKit.ROMol
+probe : RDKix.ROMol
     Probe molecule
 probeConfId : int, optional
     Probe conformer ID (default is -1)
@@ -129,7 +129,7 @@ Returns
 
 Parameters
 ----------
-mol : RDKit.ROMol
+mol : RDKix.ROMol
     Reference molecule
 confId : int, optional
     Conformer ID to use (default is -1)

@@ -1,12 +1,12 @@
 //
 //  Copyright (c) 2017-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RGroupData.h"
@@ -15,7 +15,7 @@
 #include <GraphMol/ChemTransforms/ChemTransforms.h>
 #include <regex>
 
-namespace RDKit {
+namespace RDKix {
 
 void RGroupData::mergeIntoCombinedMol(const ROMOL_SPTR &mol) {
   CHECK_INVARIANT(mol, "mol must not be null");
@@ -158,4 +158,4 @@ std::string RGroupData::getSmiles() const {
   return s;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

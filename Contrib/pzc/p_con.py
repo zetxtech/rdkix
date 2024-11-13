@@ -22,9 +22,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import (auc, make_scorer, precision_score, recall_score,
                              roc_curve)
 
-from rdkit import Chem
-from rdkit.Chem import AllChem, Descriptors, SDWriter
-from rdkit.ML.Descriptors import MoleculeDescriptors
+from rdkix import Chem
+from rdkix.Chem import AllChem, Descriptors, SDWriter
+from rdkix.ML.Descriptors import MoleculeDescriptors
 
 kappa_template = '''\
 %(kind)s Kappa Coefficient
@@ -471,7 +471,7 @@ class p_con:
 
     for entry in all_struct_dict.keys():
       if len(all_struct_dict[entry]) == 1:
-        all_struct_dict[entry][0].SetProp('cansmirdkit', entry)
+        all_struct_dict[entry][0].SetProp('cansmirdkix', entry)
         result.append(all_struct_dict[entry][0])
 
     self.sd_entries = result
@@ -506,15 +506,15 @@ class p_con:
     result = []
     IC50_dict = {}
     for cpd in self.sd_entries:
-      if "cansmirdkit" not in cpd.GetPropNames():
+      if "cansmirdkix" not in cpd.GetPropNames():
         Chem.RemoveHs(cpd)
         cansmi = Chem.MolToSmiles(cpd, canonical=True)
-        cpd.SetProp('cansmirdkit', cansmi)
-      cansmi = str(cpd.GetProp("cansmirdkit"))
+        cpd.SetProp('cansmirdkix', cansmi)
+      cansmi = str(cpd.GetProp("cansmirdkix"))
       IC50_dict[cansmi] = {}
 
     for cpd in self.sd_entries:
-      cansmi = str(cpd.GetProp("cansmirdkit"))
+      cansmi = str(cpd.GetProp("cansmirdkix"))
       try:
         IC50_dict[cansmi].append(cpd)
       except Exception:
@@ -569,7 +569,7 @@ class p_con:
     sd_tags = [
       'activity__comment', 'alogp', 'assay__chemblid', 'assay__description', 'assay__type',
       'bioactivity__type', 'activity_comment', 'assay_chemblid', 'assay_description', 'assay_type',
-      'bioactivity_type', 'cansmirdkit', 'ingredient__cmpd__chemblid', 'ingredient_cmpd_chemblid',
+      'bioactivity_type', 'cansmirdkix', 'ingredient__cmpd__chemblid', 'ingredient_cmpd_chemblid',
       'knownDrug', 'medChemFriendly', 'molecularFormula', 'name__in__reference',
       'name_in_reference', 'numRo5Violations', 'operator', 'organism', 'parent__cmpd__chemblid',
       'parent_cmpd_chemblid', 'passesRuleOfThree', 'preferredCompoundName', 'reference',

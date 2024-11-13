@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryBond.h>
 #include <GraphMol/QueryOps.h>
 #include <GraphMol/Rings.h>
@@ -38,7 +38,7 @@ our code.
    O=C3C2=CC1=CC=COC1=CC2=CC=C3
  ************************************************************/
 namespace RingUtils {
-using namespace RDKit;
+using namespace RDKix;
 
 void pickFusedRings(int curr, const INT_INT_VECT_MAP &neighMap, INT_VECT &res,
                     boost::dynamic_bitset<> &done, int depth) {
@@ -125,7 +125,7 @@ void makeRingNeighborMap(const VECT_INT_VECT &brings,
 
 // local utility namespace
 namespace {
-using namespace RDKit;
+using namespace RDKix;
 
 typedef enum {
   VacantElectronDonorType,
@@ -612,7 +612,7 @@ ElectronDonorType getAtomDonorTypeArom(
 }
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 namespace MolOps {
 bool isBondOrderQuery(const Bond *bond) {
   if (bond->getBondType() == Bond::BondType::UNSPECIFIED && bond->hasQuery()) {
@@ -1129,7 +1129,7 @@ int setAromaticity(RWMol &mol, AromaticityModel model, int (*func)(RWMol &)) {
   int res;
   switch (model) {
     case AROMATICITY_DEFAULT:
-    case AROMATICITY_RDKIT:
+    case AROMATICITY_RDKIX:
       res = aromaticityHelper(mol, srings, 0, 0, true);
       break;
     case AROMATICITY_SIMPLE:
@@ -1154,4 +1154,4 @@ int setAromaticity(RWMol &mol, AromaticityModel model, int (*func)(RWMol &)) {
 }
 
 };  // end of namespace MolOps
-};  // end of namespace RDKit
+};  // end of namespace RDKix

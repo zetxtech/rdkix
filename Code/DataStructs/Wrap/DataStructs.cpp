@@ -3,10 +3,10 @@
 // Copyright (c) 2001-2006 greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define PY_ARRAY_UNIQUE_SYMBOL rddatastructs_array_API
 
@@ -52,7 +52,7 @@ void convertToNumpyArray(const T &v, python::object destArray) {
 }
 
 BOOST_PYTHON_MODULE(cDataStructs) {
-  rdkit_import_array();
+  rdkix_import_array();
   python::scope().attr("__doc__") =
       "Module containing an assortment of functionality for basic data "
       "structures.\n"
@@ -80,23 +80,23 @@ BOOST_PYTHON_MODULE(cDataStructs) {
       (void (*)(const ExplicitBitVect &, python::object))convertToNumpyArray,
       (python::arg("bv"), python::arg("destArray")));
   python::def("ConvertToNumpyArray",
-              (void (*)(const RDKit::DiscreteValueVect &,
+              (void (*)(const RDKix::DiscreteValueVect &,
                         python::object))convertToNumpyArray,
               (python::arg("bv"), python::arg("destArray")));
   python::def("ConvertToNumpyArray",
-              (void (*)(const RDKit::SparseIntVect<std::int32_t> &,
+              (void (*)(const RDKix::SparseIntVect<std::int32_t> &,
                         python::object))convertToNumpyArray,
               (python::arg("bv"), python::arg("destArray")));
   python::def("ConvertToNumpyArray",
-              (void (*)(const RDKit::SparseIntVect<boost::int64_t> &,
+              (void (*)(const RDKix::SparseIntVect<boost::int64_t> &,
                         python::object))convertToNumpyArray,
               (python::arg("bv"), python::arg("destArray")));
   python::def("ConvertToNumpyArray",
-              (void (*)(const RDKit::SparseIntVect<std::uint32_t> &,
+              (void (*)(const RDKix::SparseIntVect<std::uint32_t> &,
                         python::object))convertToNumpyArray,
               (python::arg("bv"), python::arg("destArray")));
   python::def("ConvertToNumpyArray",
-              (void (*)(const RDKit::SparseIntVect<boost::uint64_t> &,
+              (void (*)(const RDKix::SparseIntVect<boost::uint64_t> &,
                         python::object))convertToNumpyArray,
               (python::arg("bv"), python::arg("destArray")));
 }

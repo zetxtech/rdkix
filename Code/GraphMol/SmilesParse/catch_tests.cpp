@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2018-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -14,7 +14,7 @@
 #include <thread>
 #endif
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/QueryAtom.h>
 #include <GraphMol/QueryBond.h>
@@ -30,7 +30,7 @@
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 #include <GraphMol/SmilesParse/CanonicalizeStereoGroups.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("Github #1972", "[SMILES][bug]") {
   SECTION("basics") {
@@ -1628,7 +1628,7 @@ TEST_CASE(
 
 TEST_CASE("Github #4582: double bonds and ring closures") {
   auto mol = R"CTAB(CHEMBL409450
-     RDKit          2D
+     RDKix          2D
 
  22 25  0  0  0  0  0  0  0  0999 V2000
    -1.1669    1.3591    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1779,7 +1779,7 @@ M  END)CTAB"_ctab;
   }
   SECTION("CHEMBL3623347") {
     auto mol = R"CTAB(CHEMBL3623347
-     RDKit          2D
+     RDKix          2D
 
  44 47  0  0  0  0  0  0  0  0999 V2000
    -2.0000    1.0700    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2168,7 +2168,7 @@ TEST_CASE("wiggly and wedged bonds in CXSMILES") {
 
   SECTION("writing wedges and dashes") {
     auto m = R"CTAB(
-  RDKit             2D
+  RDKix             2D
 
   0  0  0     0  0            999 V3000
 M  V30 BEGIN CTAB
@@ -2437,7 +2437,7 @@ TEST_CASE("Atropisomer output in CXSMILES", "[SMILES]") {
     REQUIRE(mol);
     CHECK(mol->getNumConformers() == 1);
 
-    RDKit::SmilesWriteParams ps;
+    RDKix::SmilesWriteParams ps;
     ps.canonical = false;
     unsigned int flags = SmilesWrite::CXSmilesFields::CX_COORDS |
                          SmilesWrite::CXSmilesFields::CX_MOLFILE_VALUES |
@@ -2488,7 +2488,7 @@ TEST_CASE("Dative  bond in cxsmiles double double def", "[bug][cxsmiles]") {
     std::unique_ptr<RWMol> smilesMol(
         SmilesToMol("C1CCC2=[N]1[Fe](\\[O]=C(\\C)/C=C/C1CCCC1)[N]1=C(CCC1)C2",
                     smilesParserParams));
-    RDKit::Chirality::reapplyMolBlockWedging(*smilesMol);
+    RDKix::Chirality::reapplyMolBlockWedging(*smilesMol);
     {
       SmilesWriteParams ps;
       ps.canonical = true;
@@ -2509,7 +2509,7 @@ TEST_CASE("Fieldname not found in SuperatomSgroup in CXSmiles",
 
     std::unique_ptr<RWMol> smilesMol(
         SmilesToMol("CC |SgD:0:::|", smilesParserParams));
-    RDKit::Chirality::reapplyMolBlockWedging(*smilesMol);
+    RDKix::Chirality::reapplyMolBlockWedging(*smilesMol);
     {
       SmilesWriteParams ps;
       ps.canonical = true;
@@ -2616,8 +2616,8 @@ TEST_CASE("ensure unused features are not used") {
     SmilesWriteParams ps;
     ps.doIsomericSmiles = true;
 
-    RDKit::canonicalizeStereoGroups(mol1);
-    RDKit::canonicalizeStereoGroups(mol2);
+    RDKix::canonicalizeStereoGroups(mol1);
+    RDKix::canonicalizeStereoGroups(mol2);
 
     auto smiles = MolToCXSmiles(*mol1, ps);
     CHECK(smiles == "F[C@H](Cl)NCO[C@H](F)Cl |a:1,&1:6|");
@@ -2735,7 +2735,7 @@ TEST_CASE(
     "Github #5499: STEREOANY bonds lead to non-stable SMILES/SMARTS strings") {
   SECTION("as reported") {
     std::string mb = R"CTAB(7643724
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -2899,12 +2899,12 @@ void strip_atom_properties(RWMol *molecule) {
 
 TEST_CASE("Remove CX extension from SMILES", "[cxsmiles]") {
   SECTION("basics") {
-    std::unique_ptr<RWMol> molecule(RDKit::SmilesToMol(
+    std::unique_ptr<RWMol> molecule(RDKix::SmilesToMol(
         "N[C@@H]([O-])C1=[CH:1]C(=[13CH]C(=C1)N(=O)=O)C(N)[O-] |$_AV:;bar;;foo;;;;;;;;;;;$,c:5,7,t:3|",
         0, false));
     REQUIRE(molecule);
     strip_atom_properties(molecule.get());
-    std::string stripped_smiles = RDKit::MolToCXSmiles(*molecule);
+    std::string stripped_smiles = RDKix::MolToCXSmiles(*molecule);
 
     CHECK(stripped_smiles ==
           "NC([O-])C1=[13CH]C(N(=O)=O)=CC([C@@H](N)[O-])=C1");
@@ -2966,7 +2966,7 @@ TEST_CASE("Github #7340", "[Reaction][CX][CXSmiles]") {
       MolToSmiles(*entry);
     }
 
-    std::string cxExt = SmilesWrite::getCXExtensions(mol_vect, RDKit::SmilesWrite::CXSmilesFields::CX_ALL);
+    std::string cxExt = SmilesWrite::getCXExtensions(mol_vect, RDKix::SmilesWrite::CXSmilesFields::CX_ALL);
 
     CHECK(cxExt == "|(0,1.5,;1.5,1.5,;1.5,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,;0,0,),$_R1;;;;;label2;;;;;;label1;;;star_e;;star_e$,Sg:n:15::ht:::|");
   }
@@ -2985,6 +2985,6 @@ TEST_CASE("Github #7340", "[Reaction][CX][CXSmiles]") {
         mol_vect.push_back(mol.get());
     }
 
-    CHECK_THROWS_AS(SmilesWrite::getCXExtensions(mol_vect, RDKit::SmilesWrite::CXSmilesFields::CX_ALL), ValueErrorException);
+    CHECK_THROWS_AS(SmilesWrite::getCXExtensions(mol_vect, RDKix::SmilesWrite::CXSmilesFields::CX_ALL), ValueErrorException);
   }
 }

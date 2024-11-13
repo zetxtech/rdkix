@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/lexical_cast.hpp>
@@ -20,7 +20,7 @@
 #include "MolSGroupParsing.h"
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/StereoGroup.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <GraphMol/Atropisomers.h>
@@ -44,12 +44,12 @@
 #include <cstdio>
 #include <string_view>
 
-using namespace RDKit::SGroupParsing;
+using namespace RDKix::SGroupParsing;
 using std::regex;
 using std::regex_match;
 using std::smatch;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace FileParserUtils {
 
@@ -180,7 +180,7 @@ Atom *replaceAtomWithQueryAtom(RWMol *mol, Atom *atom) {
   return QueryOps::replaceAtomWithQueryAtom(mol, atom);
 }
 }  // namespace FileParserUtils
-using RDKit::FileParserUtils::getV3000Line;
+using RDKix::FileParserUtils::getV3000Line;
 
 namespace {
 
@@ -207,16 +207,16 @@ std::string parseEnhancedStereo(std::istream *inStream, unsigned int &line,
   while (!startsWith(tempStr, "END", 3)) {
     // If this line in the collection is part of a stereo group
     if (regex_match(tempStr, match, stereo_label)) {
-      StereoGroupType grouptype = RDKit::StereoGroupType::STEREO_ABSOLUTE;
+      StereoGroupType grouptype = RDKix::StereoGroupType::STEREO_ABSOLUTE;
       unsigned groupid = 0;
 
       if (match[1] == "ABS") {
-        grouptype = RDKit::StereoGroupType::STEREO_ABSOLUTE;
+        grouptype = RDKix::StereoGroupType::STEREO_ABSOLUTE;
       } else if (match[1] == "REL") {
-        grouptype = RDKit::StereoGroupType::STEREO_OR;
+        grouptype = RDKix::StereoGroupType::STEREO_OR;
         groupid = FileParserUtils::toUnsigned(match[2], true);
       } else if (match[1] == "RAC") {
-        grouptype = RDKit::StereoGroupType::STEREO_AND;
+        grouptype = RDKix::StereoGroupType::STEREO_AND;
         groupid = FileParserUtils::toUnsigned(match[2], true);
       } else {
         std::ostringstream errout;
@@ -3018,17 +3018,17 @@ void processSGroups(RWMol *mol) {
           sgsToRemove.push_back(sgIdx);
           continue;
         } else if (field == "ZBO") {
-          // RDKit extension for zero-order bonds
+          // RDKix extension for zero-order bonds
           processZBO(*mol, sg);
           sgsToRemove.push_back(sgIdx);
           continue;
         } else if (field == "ZCH") {
-          // RDKit extension for charge on atoms involved in zero-order bonds
+          // RDKix extension for charge on atoms involved in zero-order bonds
           processZCH(*mol, sg);
           sgsToRemove.push_back(sgIdx);
           continue;
         } else if (field == "HYD") {
-          // RDKit extension for hydrogen-count on atoms involved in
+          // RDKix extension for hydrogen-count on atoms involved in
           // zero-order bonds
           processHYD(*mol, sg);
           sgsToRemove.push_back(sgIdx);
@@ -3318,7 +3318,7 @@ bool ParseV2000CTAB(std::istream *inStream, unsigned int &line, RWMol *mol,
 
 void finishMolProcessing(
     RWMol *res, bool chiralityPossible,
-    const RDKit::v2::FileParsers::MolFileParserParams &params) {
+    const RDKix::v2::FileParsers::MolFileParserParams &params) {
   if (!res) {
     return;
   }
@@ -3635,4 +3635,4 @@ std::unique_ptr<RWMol> MolFromMolFile(const std::string &fName,
 }
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

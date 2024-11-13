@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2002-2024  RDKit contributors
+//  Copyright (C) 2002-2024  RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_CANONICALIZESTEROGROUPS_H
@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <limits>
 
-namespace RDKit {
+namespace RDKix {
 
 enum class StereoGroupAbsOptions {
   OnlyIncludeWhenOtherGroupsExist =
@@ -37,11 +37,11 @@ class RigorousEnhancedStereoException : public std::runtime_error {
       : std::runtime_error(message) {};
 };
 
-RDKIT_SMILESPARSE_EXPORT void canonicalizeStereoGroups(
+RDKIX_SMILESPARSE_EXPORT void canonicalizeStereoGroups(
     std::unique_ptr<ROMol> &mol,
     StereoGroupAbsOptions outputAbsoluteGroups =
         StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

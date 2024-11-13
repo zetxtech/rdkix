@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2008 greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_WRAP_H_
@@ -35,20 +35,20 @@
 
 namespace python = boost::python;
 
-RDKIT_RDBOOST_EXPORT void throw_index_error(
+RDKIX_RDBOOST_EXPORT void throw_index_error(
     int key);  //!< construct and throw an \c IndexError
-RDKIT_RDBOOST_EXPORT void throw_value_error(
+RDKIX_RDBOOST_EXPORT void throw_value_error(
     const std::string err);  //!< construct and throw a \c ValueError
-RDKIT_RDBOOST_EXPORT void throw_key_error(
+RDKIX_RDBOOST_EXPORT void throw_key_error(
     const std::string key);  //!< construct and throw a \c KeyError
-RDKIT_RDBOOST_EXPORT void translate_index_error(IndexErrorException const &e);
-RDKIT_RDBOOST_EXPORT void translate_value_error(ValueErrorException const &e);
-RDKIT_RDBOOST_EXPORT void translate_key_error(KeyErrorException const &e);
+RDKIX_RDBOOST_EXPORT void translate_index_error(IndexErrorException const &e);
+RDKIX_RDBOOST_EXPORT void translate_value_error(ValueErrorException const &e);
+RDKIX_RDBOOST_EXPORT void translate_key_error(KeyErrorException const &e);
 
 #ifdef INVARIANT_EXCEPTION_METHOD
-RDKIT_RDBOOST_EXPORT void throw_runtime_error(
+RDKIX_RDBOOST_EXPORT void throw_runtime_error(
     const std::string err);  //!< construct and throw a \c ValueError
-RDKIT_RDBOOST_EXPORT void translate_invariant_error(Invar::Invariant const &e);
+RDKIX_RDBOOST_EXPORT void translate_invariant_error(Invar::Invariant const &e);
 #endif
 
 //! \brief Checks whether there is already a registered Python converter for a
@@ -153,16 +153,16 @@ void pythonObjectToVect(const python::object &obj, std::vector<T> &res) {
   }
 }
 
-RDKIT_RDBOOST_EXPORT boost::dynamic_bitset<> pythonObjectToDynBitset(
+RDKIX_RDBOOST_EXPORT boost::dynamic_bitset<> pythonObjectToDynBitset(
     const python::object &obj, boost::dynamic_bitset<>::size_type maxV);
 
-RDKIT_RDBOOST_EXPORT std::vector<std::pair<int, int>> *translateAtomMap(
+RDKIX_RDBOOST_EXPORT std::vector<std::pair<int, int>> *translateAtomMap(
     const python::object &atomMap);
-RDKIT_RDBOOST_EXPORT std::vector<std::vector<std::pair<int, int>>>
+RDKIX_RDBOOST_EXPORT std::vector<std::vector<std::pair<int, int>>>
 translateAtomMapSeq(const python::object &atomMapSeq);
-RDKIT_RDBOOST_EXPORT RDNumeric::DoubleVector *translateDoubleSeq(
+RDKIX_RDBOOST_EXPORT RDNumeric::DoubleVector *translateDoubleSeq(
     const python::object &doubleSeq);
-RDKIT_RDBOOST_EXPORT std::vector<unsigned int> *translateIntSeq(
+RDKIX_RDBOOST_EXPORT std::vector<unsigned int> *translateIntSeq(
     const python::object &intSeq);
 
 // Quiet warnings on GCC
@@ -187,7 +187,7 @@ class PyGILStateHolder {
 //  on destruction - grab the lock
 //  no entry into the python interpreter can be performed
 //   between releasing and grabbing the lock
-class RDKIT_RDBOOST_EXPORT RDUNUSED NOGIL {
+class RDKIX_RDBOOST_EXPORT RDUNUSED NOGIL {
  public:
   inline NOGIL() { m_thread_state = PyEval_SaveThread(); }
 
@@ -348,8 +348,8 @@ struct path_converter {
 };
 
 //
-// allows rdkit objects to be pickled.
-struct rdkit_pickle_suite : python::pickle_suite {
+// allows rdkix objects to be pickled.
+struct rdkix_pickle_suite : python::pickle_suite {
   static python::tuple getstate(python::object w_obj) {
     return python::make_tuple(w_obj.attr("__dict__"));
   }

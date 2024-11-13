@@ -31,14 +31,14 @@
 //
 // Adding RBF descriptors to 3D descriptors by Guillaume Godin
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "RDF.h"
 #include "MolData3Ddescriptors.h"
 
 #include <cmath>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace {
 MolData3Ddescriptors moldata3D;
@@ -212,4 +212,4 @@ void RDF(const ROMol &mol, std::vector<double> &res, int confId,
   }
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

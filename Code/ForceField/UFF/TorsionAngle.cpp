@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "TorsionAngle.h"
 #include "Params.h"
@@ -85,7 +85,7 @@ void calcTorsionGrad(RDGeom::Point3D *r, RDGeom::Point3D *t, double *d,
 TorsionAngleContrib::TorsionAngleContrib(
     ForceField *owner, unsigned int idx1, unsigned int idx2, unsigned int idx3,
     unsigned int idx4, double bondOrder23, int atNum2, int atNum3,
-    RDKit::Atom::HybridizationType hyb2, RDKit::Atom::HybridizationType hyb3,
+    RDKix::Atom::HybridizationType hyb2, RDKix::Atom::HybridizationType hyb3,
     const AtomicParams *at2Params, const AtomicParams *at3Params,
     bool endAtomIsSP2) {
   PRECONDITION(owner, "bad owner");
@@ -111,16 +111,16 @@ TorsionAngleContrib::TorsionAngleContrib(
 
 void TorsionAngleContrib::calcTorsionParams(double bondOrder23, int atNum2,
                                             int atNum3,
-                                            RDKit::Atom::HybridizationType hyb2,
-                                            RDKit::Atom::HybridizationType hyb3,
+                                            RDKix::Atom::HybridizationType hyb2,
+                                            RDKix::Atom::HybridizationType hyb3,
                                             const AtomicParams *at2Params,
                                             const AtomicParams *at3Params,
                                             bool endAtomIsSP2) {
-  PRECONDITION((hyb2 == RDKit::Atom::SP2 || hyb2 == RDKit::Atom::SP3) &&
-                   (hyb3 == RDKit::Atom::SP2 || hyb3 == RDKit::Atom::SP3),
+  PRECONDITION((hyb2 == RDKix::Atom::SP2 || hyb2 == RDKix::Atom::SP3) &&
+                   (hyb3 == RDKix::Atom::SP2 || hyb3 == RDKix::Atom::SP3),
                "bad hybridizations");
 
-  if (hyb2 == RDKit::Atom::SP3 && hyb3 == RDKit::Atom::SP3) {
+  if (hyb2 == RDKix::Atom::SP3 && hyb3 == RDKix::Atom::SP3) {
     // general case:
     d_forceConstant = sqrt(at2Params->V1 * at3Params->V1);
     d_order = 3;
@@ -140,7 +140,7 @@ void TorsionAngleContrib::calcTorsionParams(double bondOrder23, int atNum2,
       d_order = 2;
       d_cosTerm = -1;  // phi0=90
     }
-  } else if (hyb2 == RDKit::Atom::SP2 && hyb3 == RDKit::Atom::SP2) {
+  } else if (hyb2 == RDKix::Atom::SP2 && hyb3 == RDKix::Atom::SP2) {
     d_forceConstant = Utils::equation17(bondOrder23, at2Params, at3Params);
     d_order = 2;
     // FIX: is this angle term right?
@@ -152,9 +152,9 @@ void TorsionAngleContrib::calcTorsionParams(double bondOrder23, int atNum2,
     d_cosTerm = 1.0;  // phi0 = 0
     if (bondOrder23 == 1.0) {
       // special case between group 6 sp3 and non-group 6 sp2:
-      if ((hyb2 == RDKit::Atom::SP3 && Utils::isInGroup6(atNum2) &&
+      if ((hyb2 == RDKix::Atom::SP3 && Utils::isInGroup6(atNum2) &&
            !Utils::isInGroup6(atNum3)) ||
-          (hyb3 == RDKit::Atom::SP3 && Utils::isInGroup6(atNum3) &&
+          (hyb3 == RDKix::Atom::SP3 && Utils::isInGroup6(atNum3) &&
            !Utils::isInGroup6(atNum2))) {
         d_forceConstant = Utils::equation17(bondOrder23, at2Params, at3Params);
         d_order = 2;
@@ -227,7 +227,7 @@ void TorsionAngleContrib::getGrad(double *pos, double *grad) const {
   RDGeom::Point3D t[2];
   double d[2];
   double cosPhi;
-  RDKit::ForceFieldsHelper::computeDihedral(
+  RDKix::ForceFieldsHelper::computeDihedral(
       pos, d_at1Idx, d_at2Idx, d_at3Idx, d_at4Idx, nullptr, &cosPhi, r, t, d);
   double sinPhiSq = 1.0 - cosPhi * cosPhi;
   double sinPhi = ((sinPhiSq > 0.0) ? sqrt(sinPhiSq) : 0.0);

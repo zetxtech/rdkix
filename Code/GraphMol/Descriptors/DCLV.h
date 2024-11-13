@@ -1,5 +1,5 @@
 /*=================================================================*/
-/* Copyright (C)  2024  Greg Landrum and other RDKit contributors  */
+/* Copyright (C)  2024  Greg Landrum and other RDKix contributors  */
 /* Contributed by NextMove Software, Cambridge, UK.                */
 /*                                                                 */
 /*                                                                 */
@@ -9,8 +9,8 @@
 /* license.txt.                                                    */
 /*=================================================================*/
 
-#ifndef RDKIT_DCLV_H
-#define RDKIT_DCLV_H
+#ifndef RDKIX_DCLV_H
+#define RDKIX_DCLV_H
 
 #include <iostream>
 #include <string>
@@ -20,13 +20,13 @@
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/MolOps.h>
 #include <Geometry/point.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/export.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
-class RDKIT_DESCRIPTORS_EXPORT DoubleCubicLatticeVolume {
+class RDKIX_DESCRIPTORS_EXPORT DoubleCubicLatticeVolume {
  public:
   /*!
 
@@ -89,5 +89,5 @@ class RDKIT_DESCRIPTORS_EXPORT DoubleCubicLatticeVolume {
   double packingDensity;
 };
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

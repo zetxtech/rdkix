@@ -2,14 +2,14 @@
 //  Copyright (C) 2023 Novartis Biomedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -20,7 +20,7 @@
 #include <memory>
 #include <string>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("VALIDATION_ERRORS_WITH_DEFAULT_OPTIONS") {
   MolStandardize::Pipeline pipeline;
@@ -44,7 +44,7 @@ M  V30 BEGIN CTAB
     REQUIRE(result.status & MolStandardize::PipelineStatus::INPUT_ERROR);
   }
 
-  SECTION("failing RDKit validation, no atoms") {
+  SECTION("failing RDKix validation, no atoms") {
     const char *molblock = R"(
           10052313452D          
 
@@ -70,7 +70,7 @@ M  END
             MolStandardize::PipelineStatus::BASIC_VALIDATION_ERROR);
   }
 
-  SECTION("failing RDKit validation, bad valence status") {
+  SECTION("failing RDKix validation, bad valence status") {
     const char *molblock = R"(
           10242314442D          
 
@@ -927,7 +927,7 @@ M  END
     REQUIRE(smiles_b == "CP(C)(=O)S");
   }
 
-  SECTION("normalize w/ RDKit's default normalizer transformations") {
+  SECTION("normalize w/ RDKix's default normalizer transformations") {
     const char *molblock = R"(
   Mrv2311 03112410152D          
 
@@ -986,7 +986,7 @@ M  END
 
     // 1,3- conjugated cation - test a first ctab permutation
     molblock = R"(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1037,7 +1037,7 @@ M  END
 
     // 1,3- conjugated cation - test a second ctab permutation
     molblock = R"(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1088,7 +1088,7 @@ M  END
 
     // 1,5- conjugated cation - test a first ctab permutation
     molblock = R"(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -1139,7 +1139,7 @@ M  END
 
     // 1,5- conjugated cation - test a second ctab permutation
     molblock = R"(
-     RDKit          2D
+     RDKix          2D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

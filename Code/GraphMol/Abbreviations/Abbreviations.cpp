@@ -2,20 +2,20 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Abbreviations.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/Invariant.h>
 
 #include <boost/dynamic_bitset.hpp>
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Abbreviations {
 
@@ -37,14 +37,14 @@ void applyMatches(RWMol &mol, const std::vector<AbbreviationMatch> &matches) {
     // worry about messing up chirality, etc.
     auto connectIdx = amatch.match.at(1).second;
     auto connectingAtom = mol.getAtomWithIdx(connectIdx);
-    connectingAtom->setProp(RDKit::common_properties::atomLabel,
+    connectingAtom->setProp(RDKix::common_properties::atomLabel,
                             amatch.abbrev.label);
     if (!amatch.abbrev.displayLabel.empty()) {
-      connectingAtom->setProp(RDKit::common_properties::_displayLabel,
+      connectingAtom->setProp(RDKix::common_properties::_displayLabel,
                               amatch.abbrev.displayLabel);
     }
     if (!amatch.abbrev.displayLabelW.empty()) {
-      connectingAtom->setProp(RDKit::common_properties::_displayLabelW,
+      connectingAtom->setProp(RDKix::common_properties::_displayLabelW,
                               amatch.abbrev.displayLabelW);
     }
 
@@ -240,7 +240,7 @@ void labelMolAbbreviations(RWMol &mol,
   labelMatches(mol, applicable);
 };
 
-RDKIT_ABBREVIATIONS_EXPORT void condenseAbbreviationSubstanceGroups(
+RDKIX_ABBREVIATIONS_EXPORT void condenseAbbreviationSubstanceGroups(
     RWMol &mol) {
   auto &molSGroups = getSubstanceGroups(mol);
   std::vector<AbbreviationMatch> abbrevMatches;
@@ -306,4 +306,4 @@ RDKIT_ABBREVIATIONS_EXPORT void condenseAbbreviationSubstanceGroups(
 };  // namespace Abbreviations
 
 }  // namespace Abbreviations
-}  // namespace RDKit
+}  // namespace RDKix

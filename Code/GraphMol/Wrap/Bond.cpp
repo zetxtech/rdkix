@@ -2,10 +2,10 @@
 //  Copyright (C) 2003-2017 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #define NO_IMPORT_ARRAY
@@ -13,14 +13,14 @@
 #include <string>
 #include "props.hpp"
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/QueryBond.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 #include <RDGeneral/types.h>
 
 namespace python = boost::python;
-namespace RDKit {
+namespace RDKix {
 
 void expandQuery(QueryBond *self, const QueryBond *other,
                  Queries::CompositeQueryType how, bool maintainOrder) {
@@ -356,5 +356,5 @@ These cannot currently be constructed directly from Python\n";
              "Replace our query with a copy of the other query");
   };
 };
-}  // namespace RDKit
-void wrap_bond() { RDKit::bond_wrapper::wrap(); }
+}  // namespace RDKix
+void wrap_bond() { RDKix::bond_wrapper::wrap(); }

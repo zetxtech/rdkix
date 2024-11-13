@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file Atom.h
 
@@ -26,14 +26,14 @@
 #include <RDGeneral/RDProps.h>
 #include <GraphMol/details.h>
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 }
 //! allows Atom objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
-                                               const RDKit::Atom &at);
+RDKIX_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
+                                               const RDKix::Atom &at);
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 class AtomMonomerInfo;
@@ -72,7 +72,7 @@ class AtomMonomerInfo;
   at the *end* of the list of other bonds.
 
 */
-class RDKIT_GRAPHMOL_EXPORT Atom : public RDProps {
+class RDKIX_GRAPHMOL_EXPORT Atom : public RDProps {
   friend class MolPickler;  //!< the pickler needs access to our privates
   friend class ROMol;
   friend class RWMol;
@@ -436,35 +436,35 @@ class RDKIT_GRAPHMOL_EXPORT Atom : public RDProps {
 
 //! Set the atom's MDL integer RLabel
 ///  Setting to 0 clears the rlabel.  Rlabel must be in the range [0..99]
-RDKIT_GRAPHMOL_EXPORT void setAtomRLabel(Atom *atm, int rlabel);
-RDKIT_GRAPHMOL_EXPORT int getAtomRLabel(const Atom *atm);
+RDKIX_GRAPHMOL_EXPORT void setAtomRLabel(Atom *atm, int rlabel);
+RDKIX_GRAPHMOL_EXPORT int getAtomRLabel(const Atom *atm);
 
 //! Set the atom's MDL atom alias
 ///  Setting to an empty string clears the alias
-RDKIT_GRAPHMOL_EXPORT void setAtomAlias(Atom *atom, const std::string &alias);
-RDKIT_GRAPHMOL_EXPORT std::string getAtomAlias(const Atom *atom);
+RDKIX_GRAPHMOL_EXPORT void setAtomAlias(Atom *atom, const std::string &alias);
+RDKIX_GRAPHMOL_EXPORT std::string getAtomAlias(const Atom *atom);
 
 //! Set the atom's MDL atom value
 ///  Setting to an empty string clears the value
 ///  This is where recursive smarts get stored in MolBlock Queries
-RDKIT_GRAPHMOL_EXPORT void setAtomValue(Atom *atom, const std::string &value);
-RDKIT_GRAPHMOL_EXPORT std::string getAtomValue(const Atom *atom);
+RDKIX_GRAPHMOL_EXPORT void setAtomValue(Atom *atom, const std::string &value);
+RDKIX_GRAPHMOL_EXPORT std::string getAtomValue(const Atom *atom);
 
 //! Sets the supplemental label that will follow the atom when writing
 ///  smiles strings.
-RDKIT_GRAPHMOL_EXPORT void setSupplementalSmilesLabel(Atom *atom,
+RDKIX_GRAPHMOL_EXPORT void setSupplementalSmilesLabel(Atom *atom,
                                                       const std::string &label);
-RDKIT_GRAPHMOL_EXPORT std::string getSupplementalSmilesLabel(const Atom *atom);
+RDKIX_GRAPHMOL_EXPORT std::string getSupplementalSmilesLabel(const Atom *atom);
 
 //! returns true if the atom is to the left of C
-RDKIT_GRAPHMOL_EXPORT bool isEarlyAtom(int atomicNum);
+RDKIX_GRAPHMOL_EXPORT bool isEarlyAtom(int atomicNum);
 //! returns true if the atom is aromatic or has an aromatic bond
-RDKIT_GRAPHMOL_EXPORT bool isAromaticAtom(const Atom &atom);
+RDKIX_GRAPHMOL_EXPORT bool isAromaticAtom(const Atom &atom);
 //! returns the number of pi electrons on the atom
-RDKIT_GRAPHMOL_EXPORT unsigned int numPiElectrons(const Atom &atom);
-};  // namespace RDKit
+RDKIX_GRAPHMOL_EXPORT unsigned int numPiElectrons(const Atom &atom);
+};  // namespace RDKix
 
 //! allows Atom objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
-                                               const RDKit::Atom &at);
+RDKIX_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
+                                               const RDKix::Atom &at);
 #endif

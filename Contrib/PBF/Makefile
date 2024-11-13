@@ -8,8 +8,8 @@ ifndef BOOSTHOME
 endif
 CPPFLAGS = -O2 -I${BOOSTHOME} -I${RDBASE}/Code -Wno-deprecated -I/usr/local/include/eigen3 -DUSE_EIGEN2
 
-%.o : %.cpp PBFRDKit.h
+%.o : %.cpp PBFRDKix.h
 	$(CXX) $(CPPFLAGS)  -c -o $@ $< 
 
-demo.exe: demo.o PBFRDKit.o 
-	$(CXX)  -o $@ $< PBFRDKit.o $(LDFLAGS) 
+demo.exe: demo.o PBFRDKix.o 
+	$(CXX)  -o $@ $< PBFRDKix.o $(LDFLAGS) 

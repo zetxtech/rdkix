@@ -1,6 +1,6 @@
 project (GraphMolCSharp)
 
-include_directories( ${RDKit_ExternalDir} )
+include_directories( ${RDKix_ExternalDir} )
 SET_SOURCE_FILES_PROPERTIES(GraphMolCSharp.i PROPERTIES CPLUSPLUS ON )
 
 # Setup a few variables for environment-specific things
@@ -75,8 +75,8 @@ SWIG_ADD_LIBRARY(RDKFuncs TYPE MODULE LANGUAGE CSharp SOURCES GraphMolCSharp.i )
 # it doesnt seem like the threading libs should need to be here, but
 # as of Oct 2012 using boost 1.51 under at least ubuntu 12.04 we get a
 # link error if they aren't there.
-SWIG_LINK_LIBRARIES(RDKFuncs ${RDKit_Wrapper_Libs}
-      rdkit_base ${RDKit_THREAD_LIBS} )
+SWIG_LINK_LIBRARIES(RDKFuncs ${RDKix_Wrapper_Libs}
+      rdkix_base ${RDKix_THREAD_LIBS} )
 
 INSTALL(TARGETS RDKFuncs
         DESTINATION ${CMAKE_CURRENT_SOURCE_DIR} )
@@ -90,22 +90,22 @@ if (RDK_BUILD_DOTNET_CSHARP_TESTS OR MSVC)
   endif (NOT DOTNET_EXE)
 
   ADD_CUSTOM_COMMAND(
-    OUTPUT RDKitDotNetLib SYMBOLIC
+    OUTPUT RDKixDotNetLib SYMBOLIC
   
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:RDKFuncs> ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND ${DOTNET_EXE} build RDKitDotNetCore.sln
+    COMMAND ${DOTNET_EXE} build RDKixDotNetCore.sln
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS RDKFuncs
   )
   
-  ADD_CUSTOM_TARGET(RDKitDotNet ALL
-     DEPENDS RDKFuncs RDKitDotNetLib
-     COMMENT "Building RDKit DotNet project"
+  ADD_CUSTOM_TARGET(RDKixDotNet ALL
+     DEPENDS RDKFuncs RDKixDotNetLib
+     COMMENT "Building RDKix DotNet project"
   )
   
   ADD_TEST(
     NAME CSharpTests
-    COMMAND ${DOTNET_EXE} test RDKitDotNetCore.sln "-l:console$<SEMICOLON>verbosity=normal" 
+    COMMAND ${DOTNET_EXE} test RDKixDotNetCore.sln "-l:console$<SEMICOLON>verbosity=normal" 
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   )
 else(RDK_BUILD_DOTNET_CSHARP_TESTS OR MSVC)
@@ -119,14 +119,14 @@ else(RDK_BUILD_DOTNET_CSHARP_TESTS OR MSVC)
   # code adapted from the wrapper code for
   # GDCM: http://gdcm.svn.sf.net/viewvc/gdcm/trunk/Wrapping/Java/CMakeLists.txt?view=markup
   ADD_CUSTOM_COMMAND(
-    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/RDKit2DotNet.dll
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/RDKix2DotNet.dll
     ## 1. run this custom command only after swig has been run.
-    COMMAND ${GMCS_EXE} -platform:${PLATFORM} -out:RDKit2DotNet.dll -t:library "swig_csharp/*.cs"
+    COMMAND ${GMCS_EXE} -platform:${PLATFORM} -out:RDKix2DotNet.dll -t:library "swig_csharp/*.cs"
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     DEPENDS "${swig_generated_file_fullname}"
   )
   ADD_CUSTOM_TARGET(RDKFuncsDLL ALL
-    DEPENDS RDKFuncs ${CMAKE_CURRENT_SOURCE_DIR}/RDKit2DotNet.dll
+    DEPENDS RDKFuncs ${CMAKE_CURRENT_SOURCE_DIR}/RDKix2DotNet.dll
     COMMENT "building mono dll"
   )
 endif(RDK_BUILD_DOTNET_CSHARP_TESTS OR MSVC)

@@ -1,11 +1,11 @@
 //
-// Copyright (C) 2003-2021 Greg Landrum and other RDKit contributors
+// Copyright (C) 2003-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "QueryOps.h"
 #include <algorithm>
@@ -15,7 +15,7 @@
 #include <boost/dynamic_bitset.hpp>
 #include <boost/algorithm/string.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 // common general queries
 
@@ -601,7 +601,7 @@ BOND_EQUALS_QUERY *makeBondOrderEqualsQuery(Bond::BondType what) {
   return res;
 }
 
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrAromaticBondQuery() {
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrAromaticBondQuery() {
   auto *res = new BOND_EQUALS_QUERY;
   res->setVal(true);
   res->setDataFunc(queryBondIsSingleOrAromatic);
@@ -610,7 +610,7 @@ RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrAromaticBondQuery() {
   return res;
 };
 
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeDoubleOrAromaticBondQuery() {
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeDoubleOrAromaticBondQuery() {
   auto *res = new BOND_EQUALS_QUERY;
   res->setVal(true);
   res->setDataFunc(queryBondIsDoubleOrAromatic);
@@ -619,7 +619,7 @@ RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeDoubleOrAromaticBondQuery() {
   return res;
 };
 
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrDoubleBondQuery() {
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrDoubleBondQuery() {
   auto *res = new BOND_EQUALS_QUERY;
   res->setVal(true);
   res->setDataFunc(queryBondIsSingleOrDouble);
@@ -628,7 +628,7 @@ RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *makeSingleOrDoubleBondQuery() {
   return res;
 };
 
-RDKIT_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *
+RDKIX_GRAPHMOL_EXPORT BOND_EQUALS_QUERY *
 makeSingleOrDoubleOrAromaticBondQuery() {
   auto *res = new BOND_EQUALS_QUERY;
   res->setVal(true);
@@ -645,7 +645,7 @@ const std::vector<std::string> bondOrderQueryFunctions{
     std::string("BondOrder"), std::string("SingleOrAromaticBond"),
     std::string("DoubleOrAromaticBond"), std::string("SingleOrDoubleBond"),
     std::string("SingleOrDoubleOrAromaticBond")};
-RDKIT_GRAPHMOL_EXPORT bool hasBondTypeQuery(
+RDKIX_GRAPHMOL_EXPORT bool hasBondTypeQuery(
     const Queries::Query<int, Bond const *, true> &qry) {
   const auto df = qry.getDescription();
   const auto dt = qry.getTypeLabel();
@@ -690,7 +690,7 @@ bool hasComplexBondTypeQueryHelper(
 }
 }  // namespace
 
-RDKIT_GRAPHMOL_EXPORT bool hasComplexBondTypeQuery(
+RDKIX_GRAPHMOL_EXPORT bool hasComplexBondTypeQuery(
     const Queries::Query<int, Bond const *, true> &qry) {
   return hasComplexBondTypeQueryHelper(qry, false);
 }
@@ -1172,4 +1172,4 @@ void finalizeQueryFromDescription(
 }
 
 }  // namespace QueryOps
-};  // namespace RDKit
+};  // namespace RDKix

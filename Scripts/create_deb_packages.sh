@@ -37,5 +37,5 @@ cpack -G DEB
 #  python3-six \
 #  python3-pandas
 
-# # to install the freshly built rdkit packages
+# # to install the freshly built rdkix packages
 # sudo dpkg -i *.deb

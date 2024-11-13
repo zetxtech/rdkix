@@ -13,7 +13,7 @@ namespace DistGeom {
 //! DEPRECATED: use FourthDimContribs instead
 //! A term used in penalizing chirality violations
 //!
-class RDKIT_DISTGEOMETRY_EXPORT FourthDimContrib
+class RDKIX_DISTGEOMETRY_EXPORT FourthDimContrib
     : public ForceFields::ForceFieldContrib {
  public:
   FourthDimContrib() {}

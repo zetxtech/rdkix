@@ -3,17 +3,17 @@
 //  Copyright (C) 2020 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <GraphMol/MolOps.h>
 
 #include "CIPMol.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CIPLabeler {
 
 CIPMol::CIPMol(ROMol &mol) : d_mol{mol} {}
@@ -67,7 +67,7 @@ int CIPMol::getBondOrder(Bond *bond) const {
       MolOps::Kekulize(tmp);
     } catch (const MolSanitizeException &) {
     }
-    auto& bonds = const_cast<std::vector<RDKit::Bond::BondType>&>(d_kekulized_bonds);
+    auto& bonds = const_cast<std::vector<RDKix::Bond::BondType>&>(d_kekulized_bonds);
     bonds.reserve(d_mol.getNumBonds());
     for (const auto &b : tmp.bonds()) {
       bonds.push_back(b->getBondType());
@@ -108,4 +108,4 @@ int CIPMol::getBondOrder(Bond *bond) const {
 };
 
 }  // namespace CIPLabeler
-}  // namespace RDKit
+}  // namespace RDKix

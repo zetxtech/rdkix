@@ -1,24 +1,24 @@
 //
-//  Copyright (C) 2002-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FILEWRITERS_H
 #define RD_FILEWRITERS_H
 
 #include <RDGeneral/types.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 
-struct RDKIT_FILEPARSERS_EXPORT MolWriterParams {
+struct RDKIX_FILEPARSERS_EXPORT MolWriterParams {
   bool includeStereo = true;  /**< toggles inclusion of stereochemistry
                                    information*/
   bool kekulize = true;       /**< triggers kekulization of the molecule before
@@ -37,7 +37,7 @@ struct RDKIT_FILEPARSERS_EXPORT MolWriterParams {
  *   \param confId          - selects the conformer to be used
  *                            (default=-1 - find first in mol)
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToMolBlock(
+RDKIX_FILEPARSERS_EXPORT std::string MolToMolBlock(
     const ROMol &mol, const MolWriterParams &params, int confId = -1);
 
 // \brief generates an MDL mol block for a molecule
@@ -101,7 +101,7 @@ inline std::string MolToV3KMolBlock(const ROMol &mol, bool includeStereo = true,
  *  \note This function will throw a ValueError exception if the molecule has
  *   more than 999 atoms, bonds, or SGroups.
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToV2KMolBlock(
+RDKIX_FILEPARSERS_EXPORT std::string MolToV2KMolBlock(
     const ROMol &mol, const MolWriterParams &params = MolWriterParams(),
     int confId = -1);
 
@@ -112,7 +112,7 @@ RDKIT_FILEPARSERS_EXPORT std::string MolToV2KMolBlock(
  *   \param MolWriterParams - parameter struct with write options
  *   \param confId          - selects the conformer to be used
  */
-RDKIT_FILEPARSERS_EXPORT void MolToMolFile(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void MolToMolFile(const ROMol &mol,
                                            const std::string &fName,
                                            const MolWriterParams &params,
                                            int confId = -1);
@@ -167,11 +167,11 @@ inline void MolToV3KMolFile(const ROMol &mol, const std::string &fName,
   MolToMolFile(mol, fName, params, confId);
 }
 
-RDKIT_FILEPARSERS_EXPORT std::string MolToCMLBlock(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT std::string MolToCMLBlock(const ROMol &mol,
                                                    int confId = -1,
                                                    bool kekulize = true);
 
-RDKIT_FILEPARSERS_EXPORT void MolToCMLFile(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void MolToCMLFile(const ROMol &mol,
                                            const std::string &fName,
                                            int confId = -1,
                                            bool kekulize = true);
@@ -182,7 +182,7 @@ RDKIT_FILEPARSERS_EXPORT void MolToCMLFile(const ROMol &mol,
  *   \param confId    - selects which conformation to output
  *   \param precision - precision of the coordinates
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToXYZBlock(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT std::string MolToXYZBlock(const ROMol &mol,
                                                    int confId = -1,
                                                    unsigned int precision = 6);
 
@@ -193,15 +193,15 @@ RDKIT_FILEPARSERS_EXPORT std::string MolToXYZBlock(const ROMol &mol,
  *   \param confId    - selects which conformation to output
  *   \param precision - precision of the coordinates
  */
-RDKIT_FILEPARSERS_EXPORT void MolToXYZFile(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void MolToXYZFile(const ROMol &mol,
                                            const std::string &fName,
                                            int confId = -1,
                                            unsigned int precision = 6);
 
-RDKIT_FILEPARSERS_EXPORT std::string MolToTPLText(
+RDKIX_FILEPARSERS_EXPORT std::string MolToTPLText(
     const ROMol &mol, const std::string &partialChargeProp = "_GasteigerCharge",
     bool writeFirstConfTwice = false);
-RDKIT_FILEPARSERS_EXPORT void MolToTPLFile(
+RDKIX_FILEPARSERS_EXPORT void MolToTPLFile(
     const ROMol &mol, const std::string &fName,
     const std::string &partialChargeProp = "_GasteigerCharge",
     bool writeFirstConfTwice = false);
@@ -218,7 +218,7 @@ RDKIT_FILEPARSERS_EXPORT void MolToTPLFile(
  *         flavor & 16 : Write MASTER record
  *         flavor & 32 : Write TER record
  */
-RDKIT_FILEPARSERS_EXPORT std::string MolToPDBBlock(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT std::string MolToPDBBlock(const ROMol &mol,
                                                    int confId = -1,
                                                    unsigned int flavor = 0);
 // \brief Writes a molecule to an MDL mol file
@@ -234,11 +234,11 @@ RDKIT_FILEPARSERS_EXPORT std::string MolToPDBBlock(const ROMol &mol,
  *         flavor & 16 : Write MASTER record
  *         flavor & 32 : Write TER record
  */
-RDKIT_FILEPARSERS_EXPORT void MolToPDBFile(const ROMol &mol,
+RDKIX_FILEPARSERS_EXPORT void MolToPDBFile(const ROMol &mol,
                                            const std::string &fname,
                                            int confId = -1,
                                            unsigned int flavor = 0);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

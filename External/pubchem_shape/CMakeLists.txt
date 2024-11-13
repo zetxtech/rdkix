@@ -35,19 +35,19 @@ if(needDownload)
        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 
-rdkit_library(pubchem_align3d ./pubchem-align3d/shape_functions1.cpp
+rdkix_library(pubchem_align3d ./pubchem-align3d/shape_functions1.cpp
             ./pubchem-align3d/shape_functions2.cpp ./pubchem-align3d/shape_neighbor.cpp SHARED)
 if((MSVC AND RDK_INSTALL_DLLS_MSVC) OR ((NOT MSVC) AND WIN32))
   set_target_properties(pubchem_align3d PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 endif()
 
-rdkit_library(PubChemShape PubChemShape.cpp SHARED
+rdkix_library(PubChemShape PubChemShape.cpp SHARED
  LINK_LIBRARIES pubchem_align3d SmilesParse SubstructMatch)
-target_compile_definitions(PubChemShape PRIVATE RDKIT_PUBCHEMSHAPE_BUILD)
+target_compile_definitions(PubChemShape PRIVATE RDKIX_PUBCHEMSHAPE_BUILD)
 
-rdkit_headers(PubChemShape.hpp DEST GraphMol)
+rdkix_headers(PubChemShape.hpp DEST GraphMol)
 
-rdkit_catch_test(shape_test test.cpp LINK_LIBRARIES PubChemShape FileParsers)
+rdkix_catch_test(shape_test test.cpp LINK_LIBRARIES PubChemShape FileParsers)
 
 if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)

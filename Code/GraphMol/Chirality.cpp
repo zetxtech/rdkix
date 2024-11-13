@@ -1,17 +1,17 @@
 //
-//  Copyright (C) 2004-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Chirality.h"
 
 #include <Geometry/point.h>
 #include <GraphMol/QueryOps.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/Ranking.h>
 #include <GraphMol/new_canon.h>
 #include <GraphMol/Atropisomers.h>
@@ -32,7 +32,7 @@
 
 // #define VERBOSE_CANON 1
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 bool shouldDetectDoubleBondStereo(const Bond *bond) {
@@ -1521,7 +1521,7 @@ bool atomIsCandidateForRingStereochem(const ROMol &mol, const Atom *atom) {
       // three-coordinate N additional requirements:
       //   in a ring of size 3  (from InChI)
       // OR
-      //   a bridgehead (RDKit extension)
+      //   a bridgehead (RDKix extension)
       if (atom->getAtomicNum() == 7 && atom->getTotalDegree() == 3 &&
           !ringInfo->isAtomInRingOfSize(atom->getIdx(), 3) &&
           !queryIsAtomBridgehead(atom)) {
@@ -1741,7 +1741,7 @@ std::pair<bool, bool> isAtomPotentialChiralCenter(
           // three-coordinate N additional requirements:
           //   in a ring of size 3  (from InChI)
           // OR
-          //   is a bridgehead atom (RDKit extension)
+          //   is a bridgehead atom (RDKix extension)
           // Also: cannot be SP2 hybridized or have a conjugated bond
           //   (this was Github #7434)
           if (atom->getHybridization() == Atom::HybridizationType::SP3 &&
@@ -2658,7 +2658,7 @@ bool canBeStereoBond(const Bond *bond) {
         // if two neighbors havr the same CIP ranking, this is not stereo
         const auto otherAtom = nbrBond->getOtherAtom(atom);
         int rank;
-        if (RDKit::Chirality::getUseLegacyStereoPerception()) {
+        if (RDKix::Chirality::getUseLegacyStereoPerception()) {
           if (!otherAtom->getPropIfPresent(common_properties::_CIPRank, rank)) {
             rank = -1;
           }
@@ -2776,7 +2776,7 @@ int BondGetDirCode(const Bond::BondDir dir) {
 
 void GetMolFileBondStereoInfo(
     const Bond *bond,
-    const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds,
     const Conformer *conf, Bond::BondDir &dir, bool &reverse) {
   PRECONDITION(bond, "");
@@ -2812,7 +2812,7 @@ void GetMolFileBondStereoInfo(
 
 void GetMolFileBondStereoInfo(
     const Bond *bond,
-    const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds,
     const Conformer *conf, int &dirCode, bool &reverse) {
   Bond::BondDir dir;
@@ -3573,7 +3573,7 @@ void assignChiralTypesFromMolParity(ROMol &mol, bool replaceExistingTags) {
     // if we are here, parity was 1 (CW) or 2 (CCW)
     // now we set parity 0 to be CW and 1 to be CCW
     --parity;
-    RDKit::ROMol::OBOND_ITER_PAIR nbrBonds = mol.getAtomBonds(atom);
+    RDKix::ROMol::OBOND_ITER_PAIR nbrBonds = mol.getAtomBonds(atom);
     INT_LIST nbrBondIdxList;
     std::transform(
         nbrBonds.first, nbrBonds.second, std::back_inserter(nbrBondIdxList),
@@ -3621,7 +3621,7 @@ void setDoubleBondNeighborDirections(ROMol &mol, const Conformer *conf) {
   // NOTE that we are explicitly excluding double bonds in rings
   // with this test.
   if (!mol.getRingInfo()->isSymmSssr()) {
-    RDKit::MolOps::symmetrizeSSSR(mol);
+    RDKix::MolOps::symmetrizeSSSR(mol);
   }
 
   for (auto bond : mol.bonds()) {
@@ -3999,4 +3999,4 @@ std::vector<std::pair<unsigned int, unsigned int>> findMesoCenters(
 }
 
 }  // namespace Chirality
-}  // namespace RDKit
+}  // namespace RDKix

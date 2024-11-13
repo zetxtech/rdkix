@@ -1,5 +1,5 @@
 ref
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB
@@ -52,7 +52,7 @@ M  V30 END CTAB
 M  END
 $$$$
 prb
-     RDKit          3D
+     RDKix          3D
 
   0  0  0  0  0  0  0  0  0  0999 V3000
 M  V30 BEGIN CTAB

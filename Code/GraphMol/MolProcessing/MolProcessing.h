@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_MOLPROCESSING_H
@@ -14,7 +14,7 @@
 #include <vector>
 #include <boost/dynamic_bitset.hpp>
 #include <DataStructs/BitVects.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/GeneralFileReader.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
@@ -24,10 +24,10 @@
 #include <mutex>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 namespace MolProcessing {
 namespace details {
-RDKIT_MOLPROCESSING_EXPORT extern GeneralMolSupplier::SupplierOptions
+RDKIX_MOLPROCESSING_EXPORT extern GeneralMolSupplier::SupplierOptions
     defaultSupplierOptions;
 }
 template <typename OutputType = std::uint32_t>
@@ -38,5 +38,5 @@ std::vector<std::unique_ptr<ExplicitBitVect>> getFingerprintsForMolsInFile(
     FingerprintGenerator<OutputType> *generator = nullptr);
 
 }  // namespace MolProcessing
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

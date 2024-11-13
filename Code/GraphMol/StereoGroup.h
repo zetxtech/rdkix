@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2018-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file StereoGroup.h
 
@@ -21,7 +21,7 @@
 #include <iostream>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 class Bond;
 class ROMol;
@@ -41,7 +41,7 @@ enum class StereoGroupType {
   of diastereomers.
 
  */
-class RDKIT_GRAPHMOL_EXPORT StereoGroup {
+class RDKIX_GRAPHMOL_EXPORT StereoGroup {
  private:
   StereoGroupType d_grouptype{StereoGroupType::STEREO_ABSOLUTE};
   std::vector<Atom *> d_atoms;
@@ -83,30 +83,30 @@ class RDKIT_GRAPHMOL_EXPORT StereoGroup {
     return (d_grouptype != other.d_grouptype) || (d_atoms != other.d_atoms) ||
            (d_bonds != other.d_bonds);
   }
-  friend RDKIT_GRAPHMOL_EXPORT void removeAtomFromGroups(
+  friend RDKIX_GRAPHMOL_EXPORT void removeAtomFromGroups(
       const Atom *atom, std::vector<StereoGroup> &groups);
 };
-RDKIT_GRAPHMOL_EXPORT void removeAtomFromGroups(
+RDKIX_GRAPHMOL_EXPORT void removeAtomFromGroups(
     const Atom *atom, std::vector<StereoGroup> &groups);
-RDKIT_GRAPHMOL_EXPORT void removeGroupsWithAtom(
+RDKIX_GRAPHMOL_EXPORT void removeGroupsWithAtom(
     const Atom *atom, std::vector<StereoGroup> &groups);
-RDKIT_GRAPHMOL_EXPORT void removeGroupsWithAtoms(
+RDKIX_GRAPHMOL_EXPORT void removeGroupsWithAtoms(
     const std::vector<Atom *> &atoms, std::vector<StereoGroup> &groups);
 
 //! Assign Group output IDs to all AND and OR StereoGroups in the vector
 //! that don't already have one. The IDs are assigned based on the order
 //! of the groups.
-RDKIT_GRAPHMOL_EXPORT void assignStereoGroupIds(
+RDKIX_GRAPHMOL_EXPORT void assignStereoGroupIds(
     std::vector<StereoGroup> &groups);
 
 //! Copy StereoGroup "read" IDs to "write" IDs so that they will be preserved
 //! when the mol is exported.
-RDKIT_GRAPHMOL_EXPORT void forwardStereoGroupIds(ROMol &mol);
+RDKIX_GRAPHMOL_EXPORT void forwardStereoGroupIds(ROMol &mol);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 //! allows StereoGroup objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
-                                               const RDKit::StereoGroup &stg);
+RDKIX_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
+                                               const RDKix::StereoGroup &stg);
 
 #endif

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2005-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2005-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/BoostStartInclude.h>
 #include <boost/tokenizer.hpp>
@@ -26,7 +26,7 @@
 #include <sstream>
 #include <string>
 
-namespace RDKit {
+namespace RDKix {
 namespace TDTParseUtils {
 typedef boost::tokenizer<boost::escaped_list_separator<char>> CommaTokenizer;
 
@@ -407,4 +407,4 @@ bool TDTMolSupplier::atEnd() {
 }
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

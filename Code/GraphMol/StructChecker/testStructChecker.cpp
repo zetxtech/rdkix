@@ -2,13 +2,13 @@
 //  Copyright (C) 2016 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/test.h>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "../FileParsers/FileParsers.h"  //MOL single molecule !
 #include "../FileParsers/MolSupplier.h"  //SDF
 
@@ -23,26 +23,26 @@
 #include "Stereo.h"
 #include "Pattern.h"
 
-using namespace RDKit;
-using namespace RDKit::StructureCheck;
+using namespace RDKix;
+using namespace RDKix::StructureCheck;
 
 void testFlags()  // PASSED
 {
   BOOST_LOG(rdInfoLog) << "-------------------------------------\n";
   BOOST_LOG(rdInfoLog) << "testFlags\n";
 
-  unsigned int flags = RDKit::StructureCheck::StructChecker::STEREO_ERROR;
+  unsigned int flags = RDKix::StructureCheck::StructChecker::STEREO_ERROR;
   std::string str =
-      RDKit::StructureCheck::StructChecker::StructureFlagsToString(flags);
+      RDKix::StructureCheck::StructChecker::StructureFlagsToString(flags);
   unsigned int f2 =
-      RDKit::StructureCheck::StructChecker::StringToStructureFlags(str);
+      RDKix::StructureCheck::StructChecker::StringToStructureFlags(str);
   BOOST_LOG(rdInfoLog) << str << "\n";
   TEST_ASSERT(flags == f2);
 
-  flags = RDKit::StructureCheck::StructChecker::STEREO_ERROR |
-          RDKit::StructureCheck::StructChecker::TRANSFORMED;
-  str = RDKit::StructureCheck::StructChecker::StructureFlagsToString(flags);
-  f2 = RDKit::StructureCheck::StructChecker::StringToStructureFlags(str);
+  flags = RDKix::StructureCheck::StructChecker::STEREO_ERROR |
+          RDKix::StructureCheck::StructChecker::TRANSFORMED;
+  str = RDKix::StructureCheck::StructChecker::StructureFlagsToString(flags);
+  f2 = RDKix::StructureCheck::StructChecker::StringToStructureFlags(str);
   BOOST_LOG(rdInfoLog) << str << "\n";
   TEST_ASSERT(flags == f2);
 
@@ -54,8 +54,8 @@ void testFlags()  // PASSED
 
   str = " STEREO_ERROR ,\t TRANSFORMED [xXx}";  // 'stability test with minor
                                                 // syntax errors'
-  flags = RDKit::StructureCheck::StructChecker::STEREO_ERROR |
-          RDKit::StructureCheck::StructChecker::TRANSFORMED;
+  flags = RDKix::StructureCheck::StructChecker::STEREO_ERROR |
+          RDKix::StructureCheck::StructChecker::TRANSFORMED;
   f2 = StructChecker::StringToStructureFlags(str);
   BOOST_LOG(rdInfoLog) << str << " = "
                        << StructChecker::StructureFlagsToString(f2) << "\n";
@@ -261,7 +261,7 @@ const char *Mrv1561_08171605252D =
     "M  END\n"
     "$$$$\n";
 // Avalon : ['EITHER_WARNING', 'DUBIOUS_STEREO_REMOVED']
-// RDKit : ATOM_CHECK_FAILED
+// RDKix : ATOM_CHECK_FAILED
 //--------------------
 
 //    crossed double bond (2D)
@@ -279,7 +279,7 @@ const char *Mrv1561_08171605322D =
     "M  END\n"
     "$$$$\n";
 // Avalon : []
-// RDKit : ATOM_CHECK_FAILED, EITHER_WARNING, DUBIOUS_STEREO_REMOVED
+// RDKix : ATOM_CHECK_FAILED, EITHER_WARNING, DUBIOUS_STEREO_REMOVED
 //--------------------
 
 // squiggle bond from double bond (2D)
@@ -297,7 +297,7 @@ const char *Mrv1561_08171605332D =
     "M  END\n"
     "$$$$\n";
 // Avalon : ['EITHER_WARNING', 'DUBIOUS_STEREO_REMOVED']
-// RDKit : ATOM_CHECK_FAILED, EITHER_WARNING, DUBIOUS_STEREO_REMOVED
+// RDKix : ATOM_CHECK_FAILED, EITHER_WARNING, DUBIOUS_STEREO_REMOVED
 //------------
 void testStereo()  // stereochemistry
 {
@@ -821,7 +821,7 @@ void testCarboxylicAcids() {
   try {
     RWMOL_SPTR mol(MolFileToMol(sdf));
     TEST_ASSERT(mol.get());  // never
-    std::string smiles = RDKit::MolToSmiles(*mol);
+    std::string smiles = RDKix::MolToSmiles(*mol);
     BOOST_LOG(rdInfoLog) << smiles << "\n";
     // C=CC(C1=CC(=O)C=CC1=O)c1ccccc1.Cc1ccc(Cl)c(Nc2ccccc2C(=O)[O-])c1Cl.[Na+]
     unsigned flags = chk.checkMolStructure(*mol.get());
@@ -832,8 +832,8 @@ void testCarboxylicAcids() {
                          << "\n";
     TEST_ASSERT(0 == (flags & StructChecker::ATOM_CHECK_FAILED));
     BOOST_LOG(rdInfoLog) << "\tdone" << std::endl;
-  } catch (RDKit::BadFileException &e) {
-    BOOST_LOG(rdInfoLog) << "caught RDKit::BadFileException" << e.what() << "\n"
+  } catch (RDKix::BadFileException &e) {
+    BOOST_LOG(rdInfoLog) << "caught RDKix::BadFileException" << e.what() << "\n"
                          << sdf << "\n";
   }
 }

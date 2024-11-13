@@ -2,13 +2,13 @@
 //  Copyright (C) 2011-2013 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/Descriptors/MolDescriptors.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -30,23 +30,23 @@ class ss_matcher {
  public:
   ss_matcher(const std::string &pattern) : m_pattern(pattern) {
     m_needCopies = (pattern.find_first_of("$") != std::string::npos);
-    RDKit::RWMol *p = RDKit::SmartsToMol(pattern);
+    RDKix::RWMol *p = RDKix::SmartsToMol(pattern);
     m_matcher = p;
     POSTCONDITION(m_matcher, "no matcher");
   };
-  const RDKit::ROMol *getMatcher() const { return m_matcher; };
-  unsigned int countMatches(const RDKit::ROMol &mol) const {
+  const RDKix::ROMol *getMatcher() const { return m_matcher; };
+  unsigned int countMatches(const RDKix::ROMol &mol) const {
     PRECONDITION(m_matcher, "no matcher");
-    std::vector<RDKit::MatchVectType> matches;
+    std::vector<RDKix::MatchVectType> matches;
     // This is an ugly one. Recursive queries aren't thread safe.
     // Unfortunately we have to take a performance hit here in order
     // to guarantee thread safety
     if (m_needCopies) {
-      const RDKit::ROMol nm(*(m_matcher), true);
-      RDKit::SubstructMatch(mol, nm, matches);
+      const RDKix::ROMol nm(*(m_matcher), true);
+      RDKix::SubstructMatch(mol, nm, matches);
     } else {
-      const RDKit::ROMol &nm = *m_matcher;
-      RDKit::SubstructMatch(mol, nm, matches);
+      const RDKix::ROMol &nm = *m_matcher;
+      RDKix::SubstructMatch(mol, nm, matches);
     }
     return matches.size();
   }
@@ -56,7 +56,7 @@ class ss_matcher {
   ss_matcher() : m_pattern("") {};
   std::string m_pattern;
   bool m_needCopies{false};
-  const RDKit::ROMol *m_matcher{nullptr};
+  const RDKix::ROMol *m_matcher{nullptr};
 };
 }  // namespace
 
@@ -65,13 +65,13 @@ typedef boost::flyweight<boost::flyweights::key_value<std::string, ss_matcher>,
     pattern_flyweight;
 #define SMARTSCOUNTFUNC(nm, pattern, vers)         \
   const std::string nm##Version = vers;            \
-  unsigned int calc##nm(const RDKit::ROMol &mol) { \
+  unsigned int calc##nm(const RDKix::ROMol &mol) { \
     pattern_flyweight m(pattern);                  \
     return m.get().countMatches(mol);              \
   }                                                \
   extern int no_such_variable
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 unsigned int calcLipinskiHBA(const ROMol &mol) {
@@ -552,4 +552,4 @@ unsigned int numUnspecifiedAtomStereoCenters(const ROMol &mol) {
 }
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix

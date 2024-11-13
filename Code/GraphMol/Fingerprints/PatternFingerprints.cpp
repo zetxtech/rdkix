@@ -2,13 +2,13 @@
 //  Copyright (C) 2013-2020 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/QueryOps.h>
 #include <DataStructs/ExplicitBitVect.h>
@@ -40,20 +40,20 @@ class ss_matcher {
  public:
   ss_matcher() {};
   ss_matcher(const std::string &pattern) {
-    RDKit::RWMol *p = RDKit::SmartsToMol(pattern);
+    RDKix::RWMol *p = RDKix::SmartsToMol(pattern);
     TEST_ASSERT(p);
     m_matcher.reset(p);
   };
 
-  // const RDKit::ROMOL_SPTR &getMatcher() const { return m_matcher; };
-  const RDKit::ROMol *getMatcher() const { return m_matcher.get(); };
+  // const RDKix::ROMOL_SPTR &getMatcher() const { return m_matcher; };
+  const RDKix::ROMol *getMatcher() const { return m_matcher.get(); };
 
  private:
-  RDKit::ROMOL_SPTR m_matcher;
+  RDKix::ROMOL_SPTR m_matcher;
 };
 }  // namespace
 
-namespace RDKit {
+namespace RDKix {
 const char *pqs[] = {
     "[*]~[*]", "[*]~[*]~[*]", "[R]~1~[R]~[R]~1",
     //"[*]~[*]~[*]~[*]",
@@ -394,4 +394,4 @@ ExplicitBitVect *PatternFingerprintMol(const MolBundle &bundle,
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

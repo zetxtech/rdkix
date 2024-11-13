@@ -6,14 +6,14 @@ steps:
     conda config --set always_yes yes --set changeps1 no
     conda update -q conda
     conda info -a
-    conda create --name rdkit_build -c conda-forge cmake \
+    conda create --name rdkix_build -c conda-forge cmake \
         libboost=$(boost_version) \
         libboost-devel=$(boost_version) \
         swig=4.2
   displayName: Setup build environment
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     mkdir build && cd build && \
     cmake .. \
     -DSWIG_EXECUTABLE=${CONDA_PREFIX}/bin/swig \
@@ -38,13 +38,13 @@ steps:
   displayName: Configure build (Run CMake)
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     cd build
     make -j $( $(number_of_cores) ) install
   displayName: Build
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     export RDBASE=`pwd`
     export PYTHONPATH=${RDBASE}:${PYTHONPATH}
     export LD_LIBRARY_PATH=${RDBASE}/lib:${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}

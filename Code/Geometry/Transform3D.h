@@ -2,10 +2,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_TRANSFORM3D_H__
@@ -19,7 +19,7 @@ namespace RDGeom {
 class Point3D;
 const unsigned int DIM_3D = 4;
 
-class RDKIT_RDGEOMETRYLIB_EXPORT Transform3D
+class RDKIX_RDGEOMETRYLIB_EXPORT Transform3D
     : public RDNumeric::SquareMatrix<double> {
  public:
   //!  Constructor
@@ -88,13 +88,13 @@ class RDKIT_RDGEOMETRYLIB_EXPORT Transform3D
  * The resulting transform t3 has the folliwng effect
  *  t3(point) = t1(t2(point))
  */
-RDKIT_RDGEOMETRYLIB_EXPORT RDGeom::Transform3D operator*(
+RDKIX_RDGEOMETRYLIB_EXPORT RDGeom::Transform3D operator*(
     const RDGeom::Transform3D &t1, const RDGeom::Transform3D &t2);
 
 /*! \brief Transform a point:
  *
  */
-RDKIT_RDGEOMETRYLIB_EXPORT RDGeom::Point3D operator*(
+RDKIX_RDGEOMETRYLIB_EXPORT RDGeom::Point3D operator*(
     const RDGeom::Transform3D &t, const RDGeom::Point3D &pt);
 
 #endif

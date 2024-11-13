@@ -32,7 +32,7 @@
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/utils.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <iostream>
 #include <Geometry/point.h>
@@ -48,7 +48,7 @@
 #include <GraphMol/Atom.h>
 #include <fstream>
 
-using namespace RDKit;
+using namespace RDKix;
 
 void test1Basics() {
   ROMol *mol = nullptr;
@@ -2892,25 +2892,25 @@ void test28RxnDepictor() {
     TEST_ASSERT(nWarn == 0);
     TEST_ASSERT(nError == 0);
 
-    for (RDKit::MOL_SPTR_VECT::const_iterator templIt =
+    for (RDKix::MOL_SPTR_VECT::const_iterator templIt =
              rxn->beginReactantTemplates();
          templIt != rxn->endReactantTemplates(); ++templIt) {
       TEST_ASSERT((*templIt)->getNumConformers() == 0);
     }
-    for (RDKit::MOL_SPTR_VECT::const_iterator templIt =
+    for (RDKix::MOL_SPTR_VECT::const_iterator templIt =
              rxn->beginProductTemplates();
          templIt != rxn->endProductTemplates(); ++templIt) {
       TEST_ASSERT((*templIt)->getNumConformers() == 0);
     }
 
     RDDepict::compute2DCoordsForReaction(*rxn);
-    for (RDKit::MOL_SPTR_VECT::const_iterator templIt =
+    for (RDKix::MOL_SPTR_VECT::const_iterator templIt =
              rxn->beginReactantTemplates();
          templIt != rxn->endReactantTemplates(); ++templIt) {
       TEST_ASSERT((*templIt)->getNumConformers() == 1);
       TEST_ASSERT(!(*templIt)->getConformer().is3D());
     }
-    for (RDKit::MOL_SPTR_VECT::const_iterator templIt =
+    for (RDKix::MOL_SPTR_VECT::const_iterator templIt =
              rxn->beginProductTemplates();
          templIt != rxn->endProductTemplates(); ++templIt) {
       TEST_ASSERT((*templIt)->getNumConformers() == 1);
@@ -7082,7 +7082,7 @@ void testStereoBondIsomerization() {
 
   {  // This should fail, but doesn't:
     // we attempt a null reaction on the opposite isomer of the reactant (second
-    // bond direction is flipped), but it sill works because RDKit cannot match
+    // bond direction is flipped), but it sill works because RDKix cannot match
     // SMARTS bond directions in the reactant, but still can force them onto the
     // products of the reaction.
     const std::string reaction(
@@ -7322,7 +7322,7 @@ void testDblBondCrash() {
     {
       // create an artificial situation in the molecule where bond stereo is
       // set, but neither stereoatoms nor CIP ranks are there (this can happen
-      // with serialized molecules from old RDKit versions)
+      // with serialized molecules from old RDKix versions)
       auto mol = RWMOL_SPTR(SmilesToMol("C/C=C(/C)CN"));
       mol->getBondWithIdx(1)->getStereoAtoms().clear();
       for (auto atom : mol->atoms()) {

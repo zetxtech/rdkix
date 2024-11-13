@@ -2,16 +2,16 @@
 //  Copyright (C) 2016-2023 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/test.h>
 #include <string>
 #include <vector>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/test_fixtures.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
@@ -27,7 +27,7 @@
 
 constexpr bool GenerateExpectedFiles = false;
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("base functionality") {
   {  // it works when nothing is provided
@@ -588,7 +588,7 @@ TEST_CASE("LINKNODES") {
     bool ok = false;
     try {
       auto m = "OC1CCC(F)C1 |LN:1:1.3|"_smiles;
-    } catch (const RDKit::SmilesParseException &) {
+    } catch (const RDKix::SmilesParseException &) {
       ok = true;
     }
     CHECK(ok);
@@ -805,7 +805,7 @@ void testOneAtropisomers(const SmilesTest *smilesTest) {
       std::string outMolStr = "";
       try {
         outMolStr = MolToMolBlock(*smilesMol, true, 0, true, true);
-      } catch (const RDKit::KekulizeException &e) {
+      } catch (const RDKix::KekulizeException &e) {
         outMolStr = "";
       } catch (...) {
         throw;  // re-throw the error if not a kekule error
@@ -824,15 +824,15 @@ void testOneAtropisomers(const SmilesTest *smilesTest) {
       std::string expectedFileName = fName + ".expected.mrv";
       std::string outMolStr = "";
       try {
-        RDKit::Chirality::reapplyMolBlockWedging(*smilesMol);
+        RDKix::Chirality::reapplyMolBlockWedging(*smilesMol);
         outMolStr = MolToMrvBlock(*smilesMol, true, -1, true, false);
-      } catch (const RDKit::KekulizeException &e) {
+      } catch (const RDKix::KekulizeException &e) {
         outMolStr = "";
       } catch (...) {
         throw;  // re-throw the error if not a kekule error
       }
       if (outMolStr == "") {
-        RDKit::Chirality::reapplyMolBlockWedging(*smilesMol);
+        RDKix::Chirality::reapplyMolBlockWedging(*smilesMol);
         outMolStr = MolToMrvBlock(*smilesMol, true, -1, false,
                                   false);  // try without kekule'ing
       }
@@ -877,7 +877,7 @@ void testOneAtropisomersCanon(const SmilesTest *smilesTest) {
 
     // test kekule and canonicalization
     {
-      RDKit::canonicalizeStereoGroups(smilesMol);
+      RDKix::canonicalizeStereoGroups(smilesMol);
 
       std::string expectedMrvName = fName + ".kekule_expected.cxsmi";
       SmilesWriteParams ps;
@@ -906,7 +906,7 @@ void testOneAtropisomersCanon(const SmilesTest *smilesTest) {
     smilesMol =
         std::unique_ptr<RWMol>(SmilesToMol(inputSmiles, smilesParserParams));
 
-    RDKit::canonicalizeStereoGroups(smilesMol);
+    RDKix::canonicalizeStereoGroups(smilesMol);
 
     // test round trip back to smiles
     {
@@ -993,7 +993,7 @@ void testOne3dChiral(const SmilesTest *smilesTest) {
     smilesParserParams.sanitize = true;
     smilesMol =
         std::unique_ptr<RWMol>(SmilesToMol(inputSmiles, smilesParserParams));
-    RDKit::Chirality::removeNonExplicit3DChirality(*smilesMol);
+    RDKix::Chirality::removeNonExplicit3DChirality(*smilesMol);
 
     // test no canonical, sanitize,  no restore bond dirs
     {
@@ -1451,7 +1451,7 @@ TEST_CASE("StereoGroup id forwarding", "[StereoGroup][cxsmiles]") {
 
   SECTION("forward input ids - rigorous") {
     forwardStereoGroupIds(*m);
-    RDKit::canonicalizeStereoGroups(m);
+    RDKix::canonicalizeStereoGroups(m);
     const auto smi_out = MolToCXSmiles(*m);
     CHECK(smi_out.find("&1") != std::string::npos);
     CHECK(smi_out.find("&2") != std::string::npos);

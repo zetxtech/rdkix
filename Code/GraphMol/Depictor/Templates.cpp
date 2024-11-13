@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "Templates.h"
@@ -13,7 +13,7 @@
 #include "RDDepictor.h"
 
 namespace RDDepict {
-void CoordinateTemplates::assertValidTemplate(RDKit::ROMol &mol,
+void CoordinateTemplates::assertValidTemplate(RDKix::ROMol &mol,
                                               const std::string &smiles) {
   // template must have 2D coordinates
   if (mol.getNumConformers() == 0) {
@@ -29,7 +29,7 @@ void CoordinateTemplates::assertValidTemplate(RDKit::ROMol &mol,
   // Make sure this template is a single ring system (spiro'd ring systems are
   // OK). We can check this by ensuring that every bond is in a ring and that
   // there is only one connected component in the molecular graph.
-  if (RDKit::MolOps::getMolFrags(mol).size() != 1) {
+  if (RDKix::MolOps::getMolFrags(mol).size() != 1) {
     std::string msg =
         "Template consists of multiple fragments, single fragment required: " +
         smiles;
@@ -51,7 +51,7 @@ void CoordinateTemplates::assertValidTemplate(RDKit::ROMol &mol,
 
 void CoordinateTemplates::loadTemplatesFromPath(
     const std::string &templatePath,
-    std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKit::ROMol>>>
+    std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKix::ROMol>>>
         &templates) {
   std::ifstream cxsmiles(templatePath);
   if (!cxsmiles) {
@@ -63,14 +63,14 @@ void CoordinateTemplates::loadTemplatesFromPath(
   // templates
   std::string line;
   while (std::getline(cxsmiles, line)) {
-    RDKit::ROMol *mol_ptr = RDKit::SmilesToMol(line);
+    RDKix::ROMol *mol_ptr = RDKix::SmilesToMol(line);
     if (!mol_ptr) {
       std::string msg =
           "Could not load templates from " + templatePath + ": Invalid smiles";
       cxsmiles.close();
       throw RDDepict::DepictException(msg);
     }
-    std::shared_ptr<RDKit::ROMol> mol(mol_ptr);
+    std::shared_ptr<RDKix::ROMol> mol(mol_ptr);
     try {
       assertValidTemplate(*mol, line);
     } catch (RDDepict::DepictException &e) {
@@ -86,7 +86,7 @@ void CoordinateTemplates::setRingSystemTemplates(
     const std::string &templatePath) {
   // Try loading templates in from this directory, if unsuccessful, keep current
   // templates
-  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKit::ROMol>>>
+  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKix::ROMol>>>
       templates;
   loadTemplatesFromPath(templatePath, templates);
   clearTemplates();
@@ -97,7 +97,7 @@ void CoordinateTemplates::addRingSystemTemplates(
     const std::string &templatePath) {
   // Try loading templates in from this directory, if unsuccessful, keep current
   // templates
-  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKit::ROMol>>>
+  std::unordered_map<unsigned int, std::vector<std::shared_ptr<RDKix::ROMol>>>
       templates;
   loadTemplatesFromPath(templatePath, templates);
   for (auto &kv : templates) {

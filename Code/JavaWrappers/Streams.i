@@ -50,7 +50,7 @@ class istream;
 }
 
 #ifdef RDK_USE_BOOST_IOSTREAMS
-%extend RDKit::gzstream {
+%extend RDKix::gzstream {
     std::istream* _GetStream() { return (std::istream*)$self; }
     std::string Dump() {
       std::ostringstream stream;
@@ -61,7 +61,7 @@ class istream;
       return stream.str();
     }
 }
-%typemap(javacode) RDKit::gzstream %{
+%typemap(javacode) RDKix::gzstream %{
   private SWIGTYPE_p_std__istream streamRef;
   public SWIGTYPE_p_std__istream GetStream() {
      if (streamRef == null)

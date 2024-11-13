@@ -1,6 +1,6 @@
-#line 1 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 1 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
-#line 3 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 3 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 #define  YY_INT_ALIGNED short int
 
@@ -811,14 +811,14 @@ extern "C" int fileno(FILE*);
 #include <cstdio>
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smarts.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 //static PeriodicTable * gl_ptab = PeriodicTable::getTable();
 
@@ -873,9 +873,9 @@ size_t setup_smarts_string(const std::string &text,yyscan_t yyscanner){
 
 }
 
-#line 876 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 876 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
-#line 878 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 878 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 #define INITIAL 0
 #define IN_ATOM_STATE 1
@@ -1171,7 +1171,7 @@ YY_DECL
     }
 
 
-#line 1174 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 1174 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1937,7 +1937,7 @@ YY_RULE_SETUP
 #line 458 "smarts.ll"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 1940 "/localhome/glandrum/RDKit_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
+#line 1940 "/localhome/glandrum/RDKix_git/Code/GraphMol/SmilesParse/lex.yysmarts.cpp"
 
 	case YY_END_OF_BUFFER:
 		{

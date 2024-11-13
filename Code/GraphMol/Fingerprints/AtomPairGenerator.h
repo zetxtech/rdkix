@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -15,11 +15,11 @@
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace AtomPair {
 using namespace AtomPairs;
 
-class RDKIT_FINGERPRINTS_EXPORT AtomPairAtomInvGenerator
+class RDKIX_FINGERPRINTS_EXPORT AtomPairAtomInvGenerator
     : public AtomInvariantsGenerator {
   const bool df_includeChirality;
   const bool df_topologicalTorsionCorrection;
@@ -47,7 +47,7 @@ class RDKIT_FINGERPRINTS_EXPORT AtomPairAtomInvGenerator
   \brief class that holds atom-pair fingerprint specific arguments
 
  */
-class RDKIT_FINGERPRINTS_EXPORT AtomPairArguments
+class RDKIX_FINGERPRINTS_EXPORT AtomPairArguments
     : public FingerprintArguments {
  public:
   bool df_use2D;
@@ -90,7 +90,7 @@ class RDKIT_FINGERPRINTS_EXPORT AtomPairArguments
 
  */
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT AtomPairAtomEnv
+class RDKIX_FINGERPRINTS_EXPORT AtomPairAtomEnv
     : public AtomEnvironment<OutputType> {
   const unsigned int d_atomIdFirst;
   const unsigned int d_atomIdSecond;
@@ -124,7 +124,7 @@ class RDKIT_FINGERPRINTS_EXPORT AtomPairAtomEnv
 
  */
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT AtomPairEnvGenerator
+class RDKIX_FINGERPRINTS_EXPORT AtomPairEnvGenerator
     : public AtomEnvironmentGenerator<OutputType> {
  public:
   std::vector<AtomEnvironment<OutputType> *> getEnvironments(
@@ -173,7 +173,7 @@ class RDKIT_FINGERPRINTS_EXPORT AtomPairEnvGenerator
 
  */
 template <typename OutputType>
-RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType> *
+RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType> *
 getAtomPairGenerator(
     const unsigned int minDistance = 1,
     const unsigned int maxDistance = maxPathLen - 1,
@@ -184,6 +184,6 @@ getAtomPairGenerator(
     const bool ownsAtomInvGen = false);
 
 }  // namespace AtomPair
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

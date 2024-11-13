@@ -1,10 +1,10 @@
 //
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include "DrawTextFTQt.h"
@@ -12,7 +12,7 @@
 #include <QPainter>
 #include <QPainterPath>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // ****************************************************************************
@@ -107,4 +107,4 @@ int DrawTextFTQt::CubicToFunctionImpl(const FT_Vector *controlOne,
 }
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

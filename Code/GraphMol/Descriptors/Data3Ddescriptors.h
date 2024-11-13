@@ -34,7 +34,7 @@
 #ifndef DATA3DDESCRIPTORS_2017
 #define DATA3DDESCRIPTORS_2017
 
-class RDKIT_DESCRIPTORS_EXPORT Data3Ddescriptors {
+class RDKIX_DESCRIPTORS_EXPORT Data3Ddescriptors {
  private:
   static double mw[110];
   static double vdW[110];

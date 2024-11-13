@@ -2,19 +2,19 @@
 //  Copyright (C) 2015 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MMPA {
 //! fragments a Molecule for processing with the Matched Molecular Pairs
@@ -33,7 +33,7 @@ namespace MMPA {
  \return true if the molecule was fragmented, false otherwise.
 */
 
-RDKIT_MMPA_EXPORT bool fragmentMol(
+RDKIX_MMPA_EXPORT bool fragmentMol(
     const ROMol &mol, std::vector<std::pair<ROMOL_SPTR, ROMOL_SPTR>> &result,
     unsigned int maxCuts = 3, unsigned int maxCutBonds = 20,
     const std::string &pattern = "[#6+0;!$(*=,#[!#6])]!@!=!#[*]");
@@ -54,7 +54,7 @@ RDKIT_MMPA_EXPORT bool fragmentMol(
 
  \return true if the molecule was fragmented, false otherwise.
 */
-RDKIT_MMPA_EXPORT bool fragmentMol(
+RDKIX_MMPA_EXPORT bool fragmentMol(
     const ROMol &mol, std::vector<std::pair<ROMOL_SPTR, ROMOL_SPTR>> &result,
     unsigned int minCuts, unsigned int maxCuts, unsigned int maxCutBonds,
     const std::string &pattern = "[#6+0;!$(*=,#[!#6])]!@!=!#[*]");
@@ -72,10 +72,10 @@ RDKIT_MMPA_EXPORT bool fragmentMol(
                         fragments.
  \return true if the molecule was fragmented, false otherwise.
 */
-RDKIT_MMPA_EXPORT bool fragmentMol(
+RDKIX_MMPA_EXPORT bool fragmentMol(
     const ROMol &mol, std::vector<std::pair<ROMOL_SPTR, ROMOL_SPTR>> &result,
     const std::vector<unsigned int> &bondsToCut, unsigned int minCuts = 1,
     unsigned int maxCuts = 3);
 
 }  // namespace MMPA
-}  // namespace RDKit
+}  // namespace RDKix

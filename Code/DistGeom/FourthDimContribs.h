@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_FOURTHDIMCONTRIBS_H
@@ -26,7 +26,7 @@ struct FourthDimContribsParams {
 
 //! A term used in penalizing the 4th dimension in order to move from 4D->3D
 //!
-class RDKIT_DISTGEOMETRY_EXPORT FourthDimContribs
+class RDKIX_DISTGEOMETRY_EXPORT FourthDimContribs
     : public ForceFields::ForceFieldContrib {
  public:
   FourthDimContribs() = default;

@@ -1,13 +1,13 @@
 ### ISSUE: This library was originally named DistGeom. I've renamed it here
 ### to avoid a target name clash in ./Wrap
 
-rdkit_library(DistGeometry
+rdkix_library(DistGeometry
               DistGeomUtils.cpp TriangleSmooth.cpp DistViolationContrib.cpp DistViolationContribs.cpp 
               ChiralViolationContrib.cpp ChiralViolationContribs.cpp
               LINK_LIBRARIES EigenSolvers ForceField ForceFieldHelpers)
-target_compile_definitions(DistGeometry PRIVATE RDKIT_DISTGEOMETRY_BUILD)
+target_compile_definitions(DistGeometry PRIVATE RDKIX_DISTGEOMETRY_BUILD)
 
-rdkit_headers(BoundsMatrix.h
+rdkix_headers(BoundsMatrix.h
               ChiralSet.h
               ChiralViolationContrib.h
               ChiralViolationContribs.h
@@ -18,7 +18,7 @@ rdkit_headers(BoundsMatrix.h
               FourthDimContribs.h
               TriangleSmooth.h DEST DistGeom)
 
-rdkit_test(testDistGeom testDistGeom.cpp 
+rdkix_test(testDistGeom testDistGeom.cpp 
 LINK_LIBRARIES DistGeometry )
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

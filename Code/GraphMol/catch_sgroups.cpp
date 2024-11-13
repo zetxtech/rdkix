@@ -3,22 +3,22 @@
 //  Copyright (C) 2018 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include "GraphMol/FileParsers/FileParsers.h"
 #include "GraphMol/MolInterchange/MolInterchange.h"
 
-using namespace RDKit;
+using namespace RDKix;
 
 /* Auxiliary functions */
 void testIdxVector(const std::vector<unsigned int> &groupVector,
@@ -47,7 +47,7 @@ void testBrackets(
 }
 
 RWMol buildSampleMolecule() {
-  // This builds a RDKit::RWMol with all implemented SubstanceGroup features in
+  // This builds a RDKix::RWMol with all implemented SubstanceGroup features in
   // order to test them. SubstanceGroups and features probably do not make any
   // sense.
 

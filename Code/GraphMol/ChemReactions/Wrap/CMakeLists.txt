@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_CHEMREACTIONS_BUILD)
-rdkit_python_extension(rdChemReactions
+remove_definitions(-DRDKIX_CHEMREACTIONS_BUILD)
+rdkix_python_extension(rdChemReactions
                        Enumerate.cpp
                        rdChemReactions.cpp
                        DEST Chem

@@ -1,4 +1,4 @@
-(irdkit.ML.Descriptors.MoleculeDescriptors
+(irdkix.ML.Descriptors.MoleculeDescriptors
 MolecularDescriptorCalculator
 p1
 (dp2

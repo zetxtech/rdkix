@@ -1,12 +1,12 @@
 
-rdkit_library(RGroupDecomposition RGroupDecomp.cpp RGroupDecompData.cpp RGroupData.cpp RGroupUtils.cpp RGroupCore.cpp
+rdkix_library(RGroupDecomposition RGroupDecomp.cpp RGroupDecompData.cpp RGroupData.cpp RGroupUtils.cpp RGroupCore.cpp
 				  RGroupDecompParams.cpp RGroupScore.cpp RGroupFingerprintScore.cpp RGroupGa.cpp
   LINK_LIBRARIES
   FMCS ChemTransforms SubstructMatch SmilesParse Fingerprints
  GraphMol RDGeneral ga MolEnumerator TautomerQuery )
-target_compile_definitions(RGroupDecomposition PRIVATE RDKIT_RGROUPDECOMPOSITION_BUILD)
+target_compile_definitions(RGroupDecomposition PRIVATE RDKIX_RGROUPDECOMPOSITION_BUILD)
 
-rdkit_headers(
+rdkix_headers(
    RGroupDecomp.h RGroupDecompParams.h
    DEST GraphMol/RGroupDecomposition)
 
@@ -14,13 +14,13 @@ if(RDK_BUILD_PYTHON_WRAPPERS)
 add_subdirectory(Wrap)
 endif()
 
-rdkit_test(testRGroupDecomp testRGroupDecomp.cpp
+rdkix_test(testRGroupDecomp testRGroupDecomp.cpp
 		LINK_LIBRARIES RGroupDecomposition )
 
-rdkit_test(testRGroupDecompInternals testRGroupInternals.cpp
+rdkix_test(testRGroupDecompInternals testRGroupInternals.cpp
 		LINK_LIBRARIES RGroupDecomposition )
 
-rdkit_catch_test(rgroupCatchTests catch_rgd.cpp 
+rdkix_catch_test(rgroupCatchTests catch_rgd.cpp 
 		LINK_LIBRARIES RGroupDecomposition )
 
 find_package(Boost ${RDK_BOOST_VERSION} COMPONENTS program_options CONFIG)

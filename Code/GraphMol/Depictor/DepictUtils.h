@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_DEPICT_UTILS_H
@@ -13,7 +13,7 @@
 
 // REVIEW: remove extra headers here
 #include <RDGeneral/types.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/RWMol.h>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/Substruct/SubstructUtils.h>
@@ -24,19 +24,19 @@
 
 namespace RDDepict {
 
-RDKIT_DEPICTOR_EXPORT extern double BOND_LEN;
-RDKIT_DEPICTOR_EXPORT extern double COLLISION_THRES;
-RDKIT_DEPICTOR_EXPORT extern double BOND_THRES;
-RDKIT_DEPICTOR_EXPORT extern double ANGLE_OPEN;
-RDKIT_DEPICTOR_EXPORT extern unsigned int MAX_COLL_ITERS;
-RDKIT_DEPICTOR_EXPORT extern double HETEROATOM_COLL_SCALE;
-RDKIT_DEPICTOR_EXPORT extern unsigned int NUM_BONDS_FLIPS;
+RDKIX_DEPICTOR_EXPORT extern double BOND_LEN;
+RDKIX_DEPICTOR_EXPORT extern double COLLISION_THRES;
+RDKIX_DEPICTOR_EXPORT extern double BOND_THRES;
+RDKIX_DEPICTOR_EXPORT extern double ANGLE_OPEN;
+RDKIX_DEPICTOR_EXPORT extern unsigned int MAX_COLL_ITERS;
+RDKIX_DEPICTOR_EXPORT extern double HETEROATOM_COLL_SCALE;
+RDKIX_DEPICTOR_EXPORT extern unsigned int NUM_BONDS_FLIPS;
 
 typedef std::vector<const RDGeom::Point2D *> VECT_C_POINT;
 
 typedef std::pair<int, int> PAIR_I_I;
 typedef std::vector<PAIR_I_I> VECT_PII;
-struct RDKIT_DEPICTOR_EXPORT gtIIPair {
+struct RDKIX_DEPICTOR_EXPORT gtIIPair {
   bool operator()(const PAIR_I_I &pd1, const PAIR_I_I &pd2) const {
     return pd1.first > pd2.first;
   }
@@ -70,10 +70,10 @@ typedef std::list<PAIR_D_I_I> LIST_PAIR_DII;
 
   where A is the angle between a and b
  */
-RDKIT_DEPICTOR_EXPORT RDGeom::INT_POINT2D_MAP embedRing(
-    const RDKit::INT_VECT &ring);
+RDKIX_DEPICTOR_EXPORT RDGeom::INT_POINT2D_MAP embedRing(
+    const RDKix::INT_VECT &ring);
 
-RDKIT_DEPICTOR_EXPORT void transformPoints(RDGeom::INT_POINT2D_MAP &nringCor,
+RDKIX_DEPICTOR_EXPORT void transformPoints(RDGeom::INT_POINT2D_MAP &nringCor,
                                            const RDGeom::Transform2D &trans);
 
 //! Find a point that bisects the angle at rcr
@@ -81,7 +81,7 @@ RDKIT_DEPICTOR_EXPORT void transformPoints(RDGeom::INT_POINT2D_MAP &nringCor,
   The new point lies between nb1 and nb2. The line (rcr, newPt) bisects the
   angle 'ang' at rcr
 */
-RDKIT_DEPICTOR_EXPORT RDGeom::Point2D computeBisectPoint(
+RDKIX_DEPICTOR_EXPORT RDGeom::Point2D computeBisectPoint(
     const RDGeom::Point2D &rcr, double ang, const RDGeom::Point2D &nb1,
     const RDGeom::Point2D &nb2);
 
@@ -95,11 +95,11 @@ RDKIT_DEPICTOR_EXPORT RDGeom::Point2D computeBisectPoint(
   mirror
   \param loc2           the second point of the line to be used as a mirror
  */
-RDKIT_DEPICTOR_EXPORT void reflectPoints(RDGeom::INT_POINT2D_MAP &coordMap,
+RDKIX_DEPICTOR_EXPORT void reflectPoints(RDGeom::INT_POINT2D_MAP &coordMap,
                                          const RDGeom::Point2D &loc1,
                                          const RDGeom::Point2D &loc2);
 
-RDKIT_DEPICTOR_EXPORT RDGeom::Point2D reflectPoint(const RDGeom::Point2D &point,
+RDKIX_DEPICTOR_EXPORT RDGeom::Point2D reflectPoint(const RDGeom::Point2D &point,
                                                    const RDGeom::Point2D &loc1,
                                                    const RDGeom::Point2D &loc2);
 
@@ -136,9 +136,9 @@ RDKIT_DEPICTOR_EXPORT RDGeom::Point2D reflectPoint(const RDGeom::Point2D &point,
 </pre>
   And the correct ordering of the neighbors is B,D,C
 */
-RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT setNbrOrder(unsigned int aid,
-                                                  const RDKit::INT_VECT &nbrs,
-                                                  const RDKit::ROMol &mol);
+RDKIX_DEPICTOR_EXPORT RDKix::INT_VECT setNbrOrder(unsigned int aid,
+                                                  const RDKix::INT_VECT &nbrs,
+                                                  const RDKix::ROMol &mol);
 
 //! \brief From a given set of fused rings find the "core" rings, i.e. the rings
 //! that are left after iteratively removing rings that are fused with only one
@@ -150,9 +150,9 @@ RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT setNbrOrder(unsigned int aid,
 
   \return list of rings that represent the core
 */
-RDKIT_DEPICTOR_EXPORT RDKit::VECT_INT_VECT findCoreRings(
-    const RDKit::VECT_INT_VECT &fusedRings, RDKit::INT_VECT &coreRingsIds,
-    const RDKit::ROMol &mol);
+RDKIX_DEPICTOR_EXPORT RDKix::VECT_INT_VECT findCoreRings(
+    const RDKix::VECT_INT_VECT &fusedRings, RDKix::INT_VECT &coreRingsIds,
+    const RDKix::ROMol &mol);
 
 //! \brief From a given set of rings find the ring the largest common elements
 /// with other rings
@@ -169,8 +169,8 @@ RDKIT_DEPICTOR_EXPORT RDKit::VECT_INT_VECT findCoreRings(
 
   \return list of atom ids that are common
 */
-RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT findNextRingToEmbed(
-    const RDKit::INT_VECT &doneRings, const RDKit::VECT_INT_VECT &fusedRings,
+RDKIX_DEPICTOR_EXPORT RDKix::INT_VECT findNextRingToEmbed(
+    const RDKix::INT_VECT &doneRings, const RDKix::VECT_INT_VECT &fusedRings,
     int &nextId);
 
 typedef std::pair<int, int> INT_PAIR;
@@ -186,7 +186,7 @@ typedef std::pair<double, INT_PAIR> DOUBLE_INT_PAIR;
   \param ascending  sort to an ascending order or a descending order
 */
 template <class T>
-RDKIT_DEPICTOR_EXPORT T rankAtomsByRank(const RDKit::ROMol &mol,
+RDKIX_DEPICTOR_EXPORT T rankAtomsByRank(const RDKix::ROMol &mol,
                                         const T &commAtms,
                                         bool ascending = true);
 
@@ -198,18 +198,18 @@ RDKIT_DEPICTOR_EXPORT T rankAtomsByRank(const RDKit::ROMol &mol,
   \return the subangle (in radians)
 */
 inline double computeSubAngle(unsigned int degree,
-                              RDKit::Atom::HybridizationType htype) {
+                              RDKix::Atom::HybridizationType htype) {
   double angle = M_PI;
   switch (htype) {
-    case RDKit::Atom::UNSPECIFIED:
-    case RDKit::Atom::SP3:
+    case RDKix::Atom::UNSPECIFIED:
+    case RDKix::Atom::SP3:
       if (degree == 4) {
         angle = M_PI / 2;
       } else {
         angle = 2 * M_PI / 3;
       }
       break;
-    case RDKit::Atom::SP2:
+    case RDKix::Atom::SP2:
       angle = 2 * M_PI / 3;
       break;
     default:
@@ -300,8 +300,8 @@ inline double computeAngle(const RDGeom::Point2D &center,
 
   \return the index of the ring with the least number of substitutions
 */
-RDKIT_DEPICTOR_EXPORT int pickFirstRingToEmbed(
-    const RDKit::ROMol &mol, const RDKit::VECT_INT_VECT &fusedRings);
+RDKIX_DEPICTOR_EXPORT int pickFirstRingToEmbed(
+    const RDKix::ROMol &mol, const RDKix::VECT_INT_VECT &fusedRings);
 
 //! \brief find the rotatable bonds on the shortest path between two atoms
 //!   we will ignore ring atoms, and double bonds which are marked cis/trans
@@ -316,7 +316,7 @@ RDKIT_DEPICTOR_EXPORT int pickFirstRingToEmbed(
 
   \return a set of the indices of the rotatable bonds
 */
-RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT getRotatableBonds(const RDKit::ROMol &mol,
+RDKIX_DEPICTOR_EXPORT RDKix::INT_VECT getRotatableBonds(const RDKix::ROMol &mol,
                                                         unsigned int aid1,
                                                         unsigned int aid2);
 
@@ -331,14 +331,14 @@ RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT getRotatableBonds(const RDKit::ROMol &mol,
 
   \return a set of the indices of the rotatable bonds
 */
-RDKIT_DEPICTOR_EXPORT RDKit::INT_VECT getAllRotatableBonds(
-    const RDKit::ROMol &mol);
+RDKIX_DEPICTOR_EXPORT RDKix::INT_VECT getAllRotatableBonds(
+    const RDKix::ROMol &mol);
 
 //! Get the ids of the atoms and bonds that are connected to aid
-RDKIT_DEPICTOR_EXPORT void getNbrAtomAndBondIds(unsigned int aid,
-                                                const RDKit::ROMol *mol,
-                                                RDKit::INT_VECT &aids,
-                                                RDKit::INT_VECT &bids);
+RDKIX_DEPICTOR_EXPORT void getNbrAtomAndBondIds(unsigned int aid,
+                                                const RDKix::ROMol *mol,
+                                                RDKix::INT_VECT &aids,
+                                                RDKix::INT_VECT &bids);
 
 //! Find pairs of bonds that can be permuted at a non-ring degree 4 atom
 /*!
@@ -364,12 +364,12 @@ RDKIT_DEPICTOR_EXPORT void getNbrAtomAndBondIds(unsigned int aid,
   the neighbors
    \param nbrLocs - locations of the neighbors
 */
-RDKIT_DEPICTOR_EXPORT INT_PAIR_VECT findBondsPairsToPermuteDeg4(
-    const RDGeom::Point2D &center, const RDKit::INT_VECT &nbrBids,
+RDKIX_DEPICTOR_EXPORT INT_PAIR_VECT findBondsPairsToPermuteDeg4(
+    const RDGeom::Point2D &center, const RDKix::INT_VECT &nbrBids,
     const VECT_C_POINT &nbrLocs);
 
 //! returns the rank of the atom for determining draw order
-inline int getAtomDepictRank(const RDKit::Atom *at) {
+inline int getAtomDepictRank(const RDKix::Atom *at) {
   const int maxAtNum = 1000;
   const int maxDeg = 100;
   int anum = at->getAtomicNum();
@@ -378,15 +378,15 @@ inline int getAtomDepictRank(const RDKit::Atom *at) {
   return maxDeg * anum + deg;
 }
 
-RDKIT_DEPICTOR_EXPORT bool hasTerminalRGroupOrQueryHydrogen(
-    const RDKit::ROMol &query);
-RDKIT_DEPICTOR_EXPORT std::unique_ptr<RDKit::RWMol> prepareTemplateForRGroups(
-    RDKit::RWMol &templateMol);
-RDKIT_DEPICTOR_EXPORT void reducedToFullMatches(
-    const RDKit::RWMol &reducedQuery, const RDKit::RWMol &molHs,
-    std::vector<RDKit::MatchVectType> &matches);
-RDKIT_DEPICTOR_EXPORT bool invertWedgingIfMolHasFlipped(
-    RDKit::ROMol &mol, const RDGeom::Transform3D &trans);
+RDKIX_DEPICTOR_EXPORT bool hasTerminalRGroupOrQueryHydrogen(
+    const RDKix::ROMol &query);
+RDKIX_DEPICTOR_EXPORT std::unique_ptr<RDKix::RWMol> prepareTemplateForRGroups(
+    RDKix::RWMol &templateMol);
+RDKIX_DEPICTOR_EXPORT void reducedToFullMatches(
+    const RDKix::RWMol &reducedQuery, const RDKix::RWMol &molHs,
+    std::vector<RDKix::MatchVectType> &matches);
+RDKIX_DEPICTOR_EXPORT bool invertWedgingIfMolHasFlipped(
+    RDKix::ROMol &mol, const RDGeom::Transform3D &trans);
 }  // namespace RDDepict
 
 #endif

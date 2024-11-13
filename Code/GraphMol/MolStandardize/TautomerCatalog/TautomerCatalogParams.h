@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2021 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2021 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_TAUTOMER_CATALOG_PARAMS_H
@@ -13,12 +13,12 @@
 
 #include <Catalogs/CatalogParams.h>
 #include "TautomerCatalogUtils.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <string>
 #include <vector>
 #include <iostream>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace MolStandardize {
@@ -28,12 +28,12 @@ using TautomerTransformDefs =
     std::vector<std::tuple<std::string, std::string, std::string, std::string>>;
 
 namespace defaults {
-RDKIT_MOLSTANDARDIZE_EXPORT extern const TautomerTransformDefs
+RDKIX_MOLSTANDARDIZE_EXPORT extern const TautomerTransformDefs
     defaultTautomerTransforms;
-RDKIT_MOLSTANDARDIZE_EXPORT extern const TautomerTransformDefs
+RDKIX_MOLSTANDARDIZE_EXPORT extern const TautomerTransformDefs
     defaultTautomerTransformsv1;
 }  // namespace defaults
-class RDKIT_MOLSTANDARDIZE_EXPORT TautomerCatalogParams
+class RDKIX_MOLSTANDARDIZE_EXPORT TautomerCatalogParams
     : public RDCatalog::CatalogParams {
  public:
   TautomerCatalogParams() {
@@ -64,6 +64,6 @@ class RDKIT_MOLSTANDARDIZE_EXPORT TautomerCatalogParams
 };  // class TautomerCatalogParams
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

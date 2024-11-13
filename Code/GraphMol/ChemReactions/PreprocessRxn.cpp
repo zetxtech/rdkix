@@ -38,7 +38,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 #include <GraphMol/FilterCatalog/FunctionalGroupHierarchy.h>
 
-namespace RDKit {
+namespace RDKix {
 
 bool preprocessReaction(ChemicalReaction &rxn, const std::string &propName) {
   const bool normalized = true;
@@ -83,4 +83,4 @@ bool preprocessReaction(
 
   return false;
 }
-}  // namespace RDKit
+}  // namespace RDKix

@@ -4,7 +4,7 @@ set(py3lib "python${Python3_VERSION_MAJOR}${Python3_VERSION_MINOR}")
 find_package(Boost COMPONENTS ${py3lib} REQUIRED CONFIG)
 
 
-rdkit_python_extension(rdShapeAlign
+rdkix_python_extension(rdShapeAlign
                        cshapealign.cpp
                        DEST Chem
                        LINK_LIBRARIES

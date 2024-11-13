@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Niels Maeder and other RDKit contributors
+//  Copyright (C) 2024 Niels Maeder and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_UFFINVERSIONS_H
@@ -17,7 +17,7 @@ namespace ForceFields {
 namespace UFF {
 class AtomicParams;
 
-struct RDKIT_FORCEFIELD_EXPORT InversionContribsParams {
+struct RDKIX_FORCEFIELD_EXPORT InversionContribsParams {
   unsigned int idx1{0};       //!< index of atom1 in the ForceField's positions
   unsigned int idx2{0};       //!< index of atom2 in the ForceField's positions
   unsigned int idx3{0};       //!< index of atom3 in the ForceField's positions
@@ -45,7 +45,7 @@ struct RDKIT_FORCEFIELD_EXPORT InversionContribsParams {
         forceConstant(forceConstant) {};
 };
 //! A term to capture all Inversion Contributionss.
-class RDKIT_FORCEFIELD_EXPORT InversionContribs : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT InversionContribs : public ForceFieldContrib {
  public:
   InversionContribs() = default;
   //! Constructor

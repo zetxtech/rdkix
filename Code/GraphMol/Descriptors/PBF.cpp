@@ -42,13 +42,13 @@
 //
 //
 // Created by Nicholas Firth, November 2011
-// Modified by Greg Landrum for inclusion in the RDKit distribution November
+// Modified by Greg Landrum for inclusion in the RDKix distribution November
 // 2012
-// Further modified by Greg Landrum for inclusion in the RDKit core September
+// Further modified by Greg Landrum for inclusion in the RDKix core September
 // 2016
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 
 #include "PBF.h"
@@ -58,7 +58,7 @@
 
 #include <Eigen/Dense>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace {
 
@@ -152,4 +152,4 @@ double PBF(const ROMol &mol, int confId) {
 }
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

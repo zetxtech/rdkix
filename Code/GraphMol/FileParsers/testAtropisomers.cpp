@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2002-2021 Collaboartive Drug Discovery and other RDKit
+//  Copyright (C) 2002-2021 Collaboartive Drug Discovery and other RDKix
 //  contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/SequenceParsers.h>
 #include <GraphMol/FileParsers/SequenceWriters.h>
@@ -28,7 +28,7 @@
 #include <fstream>
 #include <boost/lexical_cast.hpp>
 #include <filesystem>
-using namespace RDKit;
+using namespace RDKix;
 
 class MolAtropTest {
  public:
@@ -86,7 +86,7 @@ class MolAtropTest {
 
     try {
       std::unique_ptr<RWMol> mol(MolFileToMol(fName, false, false, false));
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       TEST_ASSERT(mol != nullptr);
       TEST_ASSERT(mol->getNumAtoms() == molFileTest->atomCount)
@@ -94,7 +94,7 @@ class MolAtropTest {
 
       {
         MolOps::Kekulize(*mol);
-        RDKit::Chirality::reapplyMolBlockWedging(*mol);
+        RDKix::Chirality::reapplyMolBlockWedging(*mol);
         std::string outMolStr = MolToMolBlock(*mol, true, 0, true, true);
 
         generateNewExpectedFilesIfSoSpecified(fName + ".NEW.sdf", outMolStr);
@@ -107,7 +107,7 @@ class MolAtropTest {
       // SANITIZATION IS ON
 
       mol = std::unique_ptr<RWMol>(MolFileToMol(fName, true, false, false));
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       {
         MolOps::Kekulize(*mol);
@@ -121,7 +121,7 @@ class MolAtropTest {
       // CXSMILES
 
       mol = std::unique_ptr<RWMol>(MolFileToMol(fName, false, false, false));
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       {
         std::string expectedFileName = fName + ".expected.cxsmi";
@@ -317,7 +317,7 @@ void testLookForAtropisomersInSDdfFiles(std::string fileName,
     std::unique_ptr<RWMol> mol(MolBlockToMol(molBlock, false, false, false));
     TEST_ASSERT(mol != nullptr);
 
-    auto hasAtropisomers = RDKit::Atropisomers::doesMolHaveAtropisomers(*mol);
+    auto hasAtropisomers = RDKix::Atropisomers::doesMolHaveAtropisomers(*mol);
 
     if (hasAtropisomers) {
       BOOST_LOG(rdInfoLog) << "Found atropisomers in " << fileName << std::endl;

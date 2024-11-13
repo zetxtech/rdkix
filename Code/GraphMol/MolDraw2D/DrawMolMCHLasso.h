@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2023 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2023 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 
 #ifndef DRAWMOLMCHLASSO_H
 #define DRAWMOLMCHLASSO_H
 
 #include <GraphMol/MolDraw2D/DrawMolMCH.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // Struct to hold a pair of lines that make up part of the
@@ -90,12 +90,12 @@ class DrawMolMCHLasso : public DrawMolMCH {
                        std::vector<std::unique_ptr<DrawShapeArc>> &arcs) const;
   void addNoLineArcs(
       const std::vector<int> &colAtoms, size_t lassoNum,
-      const RDKit::DrawColour &col,
+      const RDKix::DrawColour &col,
       const std::vector<std::unique_ptr<DrawShapeSimpleLine>> &lines,
       std::vector<std::unique_ptr<DrawShapeArc>> &arcs) const;
   void makeIntersectingArcs(
       const std::vector<std::vector<unsigned int>> &intersects, int lassoNum,
-      const RDKit::DrawColour &col,
+      const RDKix::DrawColour &col,
       std::vector<std::unique_ptr<DrawShapeArc>> &currArcs,
       std::vector<DrawShapeArc *> &arcs) const;
   // Put the start points of each pair of atoms in order so that going in
@@ -106,6 +106,6 @@ class DrawMolMCHLasso : public DrawMolMCH {
   void orderAtomLines(std::vector<std::vector<LinePair>> &atomLines) const;
 };
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif  // DRAWMOLMCHLASSO_H

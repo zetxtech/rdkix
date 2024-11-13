@@ -2,10 +2,10 @@
 //  Copyright (C) 2002-2019 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -22,10 +22,10 @@
 #include <vector>
 #include <exception>
 
-namespace RDKit {
+namespace RDKix {
 
 //! class for flagging sanitization errors
-class RDKIT_GRAPHMOL_EXPORT MolSanitizeException : public std::exception {
+class RDKIX_GRAPHMOL_EXPORT MolSanitizeException : public std::exception {
  public:
   MolSanitizeException(const char *msg) : d_msg(msg) {}
   MolSanitizeException(std::string msg) : d_msg(std::move(msg)) {}
@@ -42,7 +42,7 @@ class RDKIT_GRAPHMOL_EXPORT MolSanitizeException : public std::exception {
   std::string d_msg;
 };
 
-class RDKIT_GRAPHMOL_EXPORT AtomSanitizeException
+class RDKIX_GRAPHMOL_EXPORT AtomSanitizeException
     : public MolSanitizeException {
  public:
   AtomSanitizeException(const char *msg, unsigned int atomIdx)
@@ -62,7 +62,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomSanitizeException
   unsigned int d_atomIdx;
 };
 
-class RDKIT_GRAPHMOL_EXPORT AtomValenceException
+class RDKIX_GRAPHMOL_EXPORT AtomValenceException
     : public AtomSanitizeException {
  public:
   AtomValenceException(const char *msg, unsigned int atomIdx)
@@ -78,7 +78,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomValenceException
   std::string getType() const override { return "AtomValenceException"; }
 };
 
-class RDKIT_GRAPHMOL_EXPORT AtomKekulizeException
+class RDKIX_GRAPHMOL_EXPORT AtomKekulizeException
     : public AtomSanitizeException {
  public:
   AtomKekulizeException(const char *msg, unsigned int atomIdx)
@@ -94,7 +94,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomKekulizeException
   std::string getType() const override { return "AtomKekulizeException"; }
 };
 
-class RDKIT_GRAPHMOL_EXPORT KekulizeException : public MolSanitizeException {
+class RDKIX_GRAPHMOL_EXPORT KekulizeException : public MolSanitizeException {
  public:
   KekulizeException(const char *msg, std::vector<unsigned int> indices)
       : MolSanitizeException(msg), d_atomIndices(std::move(indices)) {}
@@ -115,6 +115,6 @@ class RDKIT_GRAPHMOL_EXPORT KekulizeException : public MolSanitizeException {
   std::vector<unsigned int> d_atomIndices;
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

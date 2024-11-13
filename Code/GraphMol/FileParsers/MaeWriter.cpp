@@ -3,10 +3,10 @@
 //  Copyright (C) 2023 Schrödinger, LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolWriters.h"
 
@@ -26,15 +26,15 @@
 #include <GraphMol/FileParsers/MaestroProperties.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MonomerInfo.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/FileParseException.h>
 #include <RDGeneral/RDLog.h>
 
 using namespace schrodinger;
-using namespace RDKit::FileParsers::schrodinger;
+using namespace RDKix::FileParsers::schrodinger;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -154,7 +154,7 @@ void copyProperties(
       case RDTypeTag::BoolTag: {
         auto propName = prop.key;
         if (!std::regex_match(prop.key, MMCT_PROP_REGEX)) {
-          propName.insert(0, "b_rdkit_");
+          propName.insert(0, "b_rdkix_");
         }
 
         boolSetter(propName, idx, rdvalue_cast<bool>(prop.val));
@@ -167,7 +167,7 @@ void copyProperties(
         if (prop.key == common_properties::_MolFileRLabel) {
           propName = MAE_RGROUP_LABEL;
         } else if (!std::regex_match(prop.key, MMCT_PROP_REGEX)) {
-          propName.insert(0, "i_rdkit_");
+          propName.insert(0, "i_rdkix_");
         }
 
         intSetter(propName, idx, rdvalue_cast<int>(prop.val));
@@ -178,7 +178,7 @@ void copyProperties(
       case RDTypeTag::FloatTag: {
         auto propName = prop.key;
         if (!std::regex_match(prop.key, MMCT_PROP_REGEX)) {
-          propName.insert(0, "r_rdkit_");
+          propName.insert(0, "r_rdkix_");
         }
 
         realSetter(propName, idx, rdvalue_cast<double>(prop.val));
@@ -188,7 +188,7 @@ void copyProperties(
       case RDTypeTag::StringTag: {
         auto propName = prop.key;
         if (!std::regex_match(prop.key, MMCT_PROP_REGEX)) {
-          propName.insert(0, "s_rdkit_");
+          propName.insert(0, "s_rdkix_");
         }
 
         stringSetter(propName, idx, rdvalue_cast<std::string>(prop.val));
@@ -236,10 +236,10 @@ int bondTypeToOrder(const Bond &bond) {
   }
 }
 
-static bool isDoubleAnyBond(const RDKit::Bond &b) {
-  if (b.getBondType() == RDKit::Bond::DOUBLE) {
-    if (b.getStereo() == RDKit::Bond::BondStereo::STEREOANY ||
-        b.getBondDir() == RDKit::Bond::EITHERDOUBLE) {
+static bool isDoubleAnyBond(const RDKix::Bond &b) {
+  if (b.getBondType() == RDKix::Bond::DOUBLE) {
+    if (b.getStereo() == RDKix::Bond::BondStereo::STEREOANY ||
+        b.getBondDir() == RDKix::Bond::EITHERDOUBLE) {
       return true;
     }
 
@@ -248,8 +248,8 @@ static bool isDoubleAnyBond(const RDKit::Bond &b) {
       return b.hasProp(prop) && b.getProp<int>(prop) == either_value;
     };
 
-    return hasPropValue(RDKit::common_properties::_MolFileBondCfg, 2) ||
-           hasPropValue(RDKit::common_properties::_MolFileBondStereo, 3);
+    return hasPropValue(RDKix::common_properties::_MolFileBondCfg, 2) ||
+           hasPropValue(RDKix::common_properties::_MolFileBondStereo, 3);
   }
   return false;
 }
@@ -629,4 +629,4 @@ std::string MaeWriter::getText(const ROMol &mol, int confId,
   return sstr.str();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

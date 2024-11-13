@@ -3,10 +3,10 @@
 //   Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <Geometry/Transform3D.h>
 #include <Geometry/UniformGrid3D.h>
@@ -18,8 +18,8 @@
 // #include <GraphMol/ROMol.h>
 #include <GraphMol/Conformer.h>
 // #include <GraphMol/PeriodicTable.h>
-#include <GraphMol/RDKitBase.h>
-namespace RDKit {
+#include <GraphMol/RDKixBase.h>
+namespace RDKix {
 namespace MolShapes {
 void EncodeShape(const ROMol &mol, RDGeom::UniformGrid3D &grid, int confId,
                  const RDGeom::Transform3D *trans, double vdwScale,
@@ -50,4 +50,4 @@ void EncodeShape(const Conformer &conf, RDGeom::UniformGrid3D &grid,
   }
 }
 }  // namespace MolShapes
-}  // namespace RDKit
+}  // namespace RDKix

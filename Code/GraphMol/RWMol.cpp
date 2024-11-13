@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <boost/tokenizer.hpp>
@@ -20,7 +20,7 @@
 #include "RingInfo.h"
 #include "SubstanceGroup.h"
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void insertStereoGroups(RWMol &mol, const ROMol &other,
@@ -28,16 +28,16 @@ void insertStereoGroups(RWMol &mol, const ROMol &other,
   if (other.getStereoGroups().empty()) {
     return;
   }
-  std::vector<RDKit::Atom *> abs_atoms;
-  std::vector<RDKit::Bond *> abs_bonds;
-  std::vector<RDKit::StereoGroup> new_groups;
+  std::vector<RDKix::Atom *> abs_atoms;
+  std::vector<RDKix::Bond *> abs_bonds;
+  std::vector<RDKix::StereoGroup> new_groups;
   new_groups.reserve(mol.getStereoGroups().size());
   for (const auto &sg : mol.getStereoGroups()) {
     // The sdf specification forbids more than one ABS stereo group, but we
     // don't enforce that in our code. But if we see more than one ABS groups
     // here, just merge the atoms and bonds in them into one group. Other stereo
     // groups are just forwarded.
-    if (sg.getGroupType() == RDKit::StereoGroupType::STEREO_ABSOLUTE) {
+    if (sg.getGroupType() == RDKix::StereoGroupType::STEREO_ABSOLUTE) {
       auto &atoms = sg.getAtoms();
       auto &bonds = sg.getBonds();
       abs_atoms.insert(abs_atoms.end(), atoms.begin(), atoms.end());
@@ -49,8 +49,8 @@ void insertStereoGroups(RWMol &mol, const ROMol &other,
 
   for (const auto &sg : other.getStereoGroups()) {
     // update the stereo group's atom and bond indices
-    std::vector<RDKit::Atom *> new_atoms;
-    std::vector<RDKit::Bond *> new_bonds;
+    std::vector<RDKix::Atom *> new_atoms;
+    std::vector<RDKix::Bond *> new_bonds;
     for (auto atom : sg.getAtoms()) {
       auto idx = atom->getIdx() + origNumAtoms;
       new_atoms.push_back(mol.getAtomWithIdx(idx));
@@ -61,11 +61,11 @@ void insertStereoGroups(RWMol &mol, const ROMol &other,
     }
 
     // Collect all ABS atoms and bonds so they are added as a single group
-    if (sg.getGroupType() == RDKit::StereoGroupType::STEREO_ABSOLUTE) {
+    if (sg.getGroupType() == RDKix::StereoGroupType::STEREO_ABSOLUTE) {
       abs_atoms.insert(abs_atoms.end(), new_atoms.begin(), new_atoms.end());
       abs_bonds.insert(abs_bonds.end(), new_bonds.begin(), new_bonds.end());
     } else {
-      RDKit::StereoGroup new_group(sg.getGroupType(), new_atoms, new_bonds,
+      RDKix::StereoGroup new_group(sg.getGroupType(), new_atoms, new_bonds,
                                    sg.getReadId());
       // default write ID to 0 to avoid id clashes. We can use
       // assignStereoGroupIds() later on to assign new IDs
@@ -74,7 +74,7 @@ void insertStereoGroups(RWMol &mol, const ROMol &other,
     }
   }
   if (!abs_atoms.empty() || !abs_bonds.empty()) {
-    new_groups.emplace_back(RDKit::StereoGroupType::STEREO_ABSOLUTE, abs_atoms,
+    new_groups.emplace_back(RDKix::StereoGroupType::STEREO_ABSOLUTE, abs_atoms,
                             abs_bonds);
   }
   mol.setStereoGroups(new_groups);
@@ -408,12 +408,12 @@ void RWMol::removeAtom(Atom *atom, bool clearProps) {
   std::string sprop;
   while (beg != end) {
     Bond *bond = d_graph[*beg++];
-    if (bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+    if (bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                sprop)) {
       // This would ideally use ParseV3000Array but I'm buggered if I can get
       // the linker to find it.
       //      std::vector<unsigned int> oats =
-      //          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
+      //          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
       if ('(' == sprop.front() && ')' == sprop.back()) {
         sprop = sprop.substr(1, sprop.length() - 2);
 
@@ -433,7 +433,7 @@ void RWMol::removeAtom(Atom *atom, bool clearProps) {
           --num_ats;
         }
         if (!num_ats) {
-          bond->clearProp(RDKit::common_properties::_MolFileBondEndPts);
+          bond->clearProp(RDKix::common_properties::_MolFileBondEndPts);
           bond->clearProp(common_properties::_MolFileBondAttach);
         } else {
           sprop = "(" + std::to_string(num_ats) + " ";
@@ -444,7 +444,7 @@ void RWMol::removeAtom(Atom *atom, bool clearProps) {
             sprop += std::to_string(i) + " ";
           }
           sprop[sprop.length() - 1] = ')';
-          bond->setProp(RDKit::common_properties::_MolFileBondEndPts, sprop);
+          bond->setProp(RDKix::common_properties::_MolFileBondEndPts, sprop);
         }
       }
     }
@@ -789,12 +789,12 @@ void RWMol::batchRemoveAtoms() {
     std::string sprop;
     while (beg != end) {
       Bond *bond = d_graph[*beg++];
-      if (bond->getPropIfPresent(RDKit::common_properties::_MolFileBondEndPts,
+      if (bond->getPropIfPresent(RDKix::common_properties::_MolFileBondEndPts,
                                  sprop)) {
         // This would ideally use ParseV3000Array but I'm buggered if I can get
         // the linker to find it.
         //      std::vector<unsigned int> oats =
-        //          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
+        //          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(sprop);
         if ('(' == sprop.front() && ')' == sprop.back()) {
           sprop = sprop.substr(1, sprop.length() - 2);
 
@@ -814,7 +814,7 @@ void RWMol::batchRemoveAtoms() {
             --num_ats;
           }
           if (!num_ats) {
-            bond->clearProp(RDKit::common_properties::_MolFileBondEndPts);
+            bond->clearProp(RDKix::common_properties::_MolFileBondEndPts);
             bond->clearProp(common_properties::_MolFileBondAttach);
           } else {
             sprop = "(" + std::to_string(num_ats) + " ";
@@ -825,7 +825,7 @@ void RWMol::batchRemoveAtoms() {
               sprop += std::to_string(i) + " ";
             }
             sprop[sprop.length() - 1] = ')';
-            bond->setProp(RDKit::common_properties::_MolFileBondEndPts, sprop);
+            bond->setProp(RDKix::common_properties::_MolFileBondEndPts, sprop);
           }
         }
       }
@@ -890,4 +890,4 @@ void RWMol::batchRemoveAtoms() {
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

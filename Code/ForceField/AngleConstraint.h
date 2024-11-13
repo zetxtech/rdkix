@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2024 Paolo Tosco and other RDKit contributors
+//  Copyright (C) 2004-2024 Paolo Tosco and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_ANGLECONSTRAINT_H
@@ -15,7 +15,7 @@
 namespace ForceFields {
 
 //! An angle range constraint modelled after a AngleBendContrib
-class RDKIT_FORCEFIELD_EXPORT AngleConstraintContrib
+class RDKIX_FORCEFIELD_EXPORT AngleConstraintContrib
     : public ForceFieldContrib {
  public:
   AngleConstraintContrib() {}

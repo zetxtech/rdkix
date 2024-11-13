@@ -9,7 +9,7 @@
 #include <GraphMol/Depictor/RDDepictor.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 int main(int argc, char **argv) {
   auto mol = "c1nccc2n1ccc2"_smiles;
@@ -23,13 +23,13 @@ int main(int argc, char **argv) {
 
   RDDepict::compute2DCoords(*mol, nullptr, true);
 
-  std::shared_ptr<RDKit::ROMol> templ(RDKit::SmilesToMol("c1nccc2n1ccc2"));
+  std::shared_ptr<RDKix::ROMol> templ(RDKix::SmilesToMol("c1nccc2n1ccc2"));
   RDDepict::compute2DCoords(*templ);
-  std::shared_ptr<RDKit::ROMol> mol1(RDKit::SmilesToMol("c1cccc2ncn3cccc3c21"));
+  std::shared_ptr<RDKix::ROMol> mol1(RDKix::SmilesToMol("c1cccc2ncn3cccc3c21"));
 
   MatchVectType matchVect;
   if (SubstructMatch(*mol1, *templ, matchVect)) {
-    RDKit::Conformer &conf = templ->getConformer();
+    RDKix::Conformer &conf = templ->getConformer();
     RDGeom::INT_POINT2D_MAP coordMap;
     for (auto mv : matchVect) {
       RDGeom::Point3D pt3 = conf.getAtomPos(mv.first);

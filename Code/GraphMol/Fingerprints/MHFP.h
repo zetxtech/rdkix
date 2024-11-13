@@ -2,10 +2,10 @@
 //  2019, Daniel Probst, Reymond Group @ University of Bern
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 /*! \file MHFP.h
@@ -20,7 +20,7 @@
 #include <DataStructs/ExplicitBitVect.h>
 
 class SparseBitVect;
-namespace RDKit {
+namespace RDKix {
 namespace MHFPFingerprints {
 const std::string mhfpFingerprintVersion = "1.0.0";
 
@@ -41,7 +41,7 @@ inline uint32_t hash(const std::string &str, uint32_t hash = seed) {
 };
 }  // namespace FNV
 
-class RDKIT_FINGERPRINTS_EXPORT MHFPEncoder {
+class RDKIX_FINGERPRINTS_EXPORT MHFPEncoder {
  public:
   //! Constructor
   /*!
@@ -131,7 +131,7 @@ class RDKIT_FINGERPRINTS_EXPORT MHFPEncoder {
 
     This methods is a wrapper around MHFPEncoder::CreateShingling and
     MHFPEncoder::FromStringArray. When a vector of molecules or SMILES is passed
-    and RDKit was compiled with OpenMP, it is parallelized and will speed up by
+    and RDKix was compiled with OpenMP, it is parallelized and will speed up by
     a factor of the number of cores.
 
     \param radius the maximum radius of the substructure that is generated at
@@ -280,6 +280,6 @@ class RDKIT_FINGERPRINTS_EXPORT MHFPEncoder {
 };
 
 }  // namespace MHFPFingerprints
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

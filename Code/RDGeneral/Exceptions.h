@@ -2,10 +2,10 @@
 // Copyright (c) 2003-2005 greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_EXCEPTIONS_H
@@ -17,7 +17,7 @@
 //! \brief Class to allow us to throw an \c IndexError from C++ and have
 //!         it make it back to Python
 //!
-class RDKIT_RDGENERAL_EXPORT IndexErrorException : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT IndexErrorException : public std::runtime_error {
  public:
   IndexErrorException(int i)
       : std::runtime_error("IndexErrorException"),
@@ -37,7 +37,7 @@ class RDKIT_RDGENERAL_EXPORT IndexErrorException : public std::runtime_error {
 //! \brief Class to allow us to throw a \c ValueError from C++ and have
 //!         it make it back to Python
 //!
-class RDKIT_RDGENERAL_EXPORT ValueErrorException : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT ValueErrorException : public std::runtime_error {
  public:
   ValueErrorException(std::string i)
       : std::runtime_error("ValueErrorException"), _value(std::move(i)) {}
@@ -53,7 +53,7 @@ class RDKIT_RDGENERAL_EXPORT ValueErrorException : public std::runtime_error {
 //! \brief Class to allow us to throw a \c KeyError from C++ and have
 //!         it make it back to Python
 //!
-class RDKIT_RDGENERAL_EXPORT KeyErrorException : public std::runtime_error {
+class RDKIX_RDGENERAL_EXPORT KeyErrorException : public std::runtime_error {
  public:
   KeyErrorException(std::string key)
       : std::runtime_error("KeyErrorException"),

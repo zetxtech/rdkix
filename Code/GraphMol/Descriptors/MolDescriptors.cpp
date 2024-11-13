@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2005-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2005-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include "MolDescriptors.h"
 #include <map>
@@ -16,7 +16,7 @@
 #include <algorithm>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 const std::string amwVersion = "1.0.0";
@@ -47,4 +47,4 @@ std::string calcMolFormula(const ROMol &mol, bool separateIsotopes,
 }
 
 }  // end of namespace Descriptors
-}  // end of namespace RDKit
+}  // end of namespace RDKix

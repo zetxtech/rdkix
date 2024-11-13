@@ -1,13 +1,13 @@
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Author: Igor Filippov based on the work of David Cosgrove (AstraZeneca)
 //
-// This is a concrete class derived from MolDraw2D that uses RDKit to draw a
+// This is a concrete class derived from MolDraw2D that uses RDKix to draw a
 // molecule into a wxDC
 
 #include <RDGeneral/export.h>
@@ -23,9 +23,9 @@
 
 // ****************************************************************************
 
-namespace RDKit {
+namespace RDKix {
 
-class RDKIT_MOLDRAW2D_EXPORT MolDraw2Dwx : public MolDraw2D {
+class RDKIX_MOLDRAW2D_EXPORT MolDraw2Dwx : public MolDraw2D {
  public:
   MolDraw2Dwx(int width, int height, wxDC &dc, int panelWidth = -1,
               int panelHeight = -1)
@@ -35,7 +35,7 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2Dwx : public MolDraw2D {
   }
 
   // set font size in molecule coordinate units. That's probably Angstrom for
-  // RDKit. It will turned into drawing units using scale_, which might be
+  // RDKix. It will turned into drawing units using scale_, which might be
   // changed as a result, to make sure things still appear in the window.
 
   void setFontSize(double new_size) {
@@ -103,5 +103,5 @@ class RDKIT_MOLDRAW2D_EXPORT MolDraw2Dwx : public MolDraw2D {
  private:
   wxDC &m_dc;
 };
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // MOLDRAW2DWX_H

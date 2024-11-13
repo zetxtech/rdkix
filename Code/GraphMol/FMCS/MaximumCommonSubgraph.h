@@ -2,17 +2,17 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "FMCS.h"
 #include "DebugTrace.h"  // algorithm filter definitions
 #include "SeedSet.h"
@@ -22,7 +22,7 @@
 #include "MatchTable.h"
 #include "TargetMatch.h"
 
-namespace RDKit {
+namespace RDKix {
 
 inline bool FinalChiralityCheckFunction(
     const std::uint32_t c1[], const std::uint32_t c2[], const ROMol &mol1,
@@ -35,7 +35,7 @@ bool FinalMatchCheckFunction(const std::uint32_t c1[], const std::uint32_t c2[],
                              const MCSParameters *p);
 
 namespace FMCS {
-class RDKIT_FMCS_EXPORT MaximumCommonSubgraph {
+class RDKIX_FMCS_EXPORT MaximumCommonSubgraph {
   // current result. Reference to a fragment of source molecule
   struct MCS {
     std::vector<const Atom *> Atoms;
@@ -103,4 +103,4 @@ class RDKIT_FMCS_EXPORT MaximumCommonSubgraph {
   bool matchIncrementalFast(Seed &seed, unsigned int itarget);
 };
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

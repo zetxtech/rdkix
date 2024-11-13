@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2016-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2016-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/MolDraw2D/MolDraw2D.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
@@ -33,7 +33,7 @@
 #include <sys/stat.h>
 #include <Numerics/Conrec.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2DUtils {
 
 namespace {
@@ -109,7 +109,7 @@ void updateMolDrawOptionsFromJSON(MolDrawOptions &opts, const char *json) {
   updateMolDrawOptionsFromJSON(opts, std::string(json));
 };
 
-RDKIT_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
+RDKIX_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(MolDraw2D &drawer,
                                                        const char *json) {
   updateMolDrawOptionsFromJSON(drawer.drawOptions(), json);
 }
@@ -276,7 +276,7 @@ void updateMolDrawOptionsFromJSON(MolDrawOptions &opts,
                              opts.multiColourHighlightStyle);
 }
 
-RDKIT_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(
+RDKIX_MOLDRAW2D_EXPORT void updateDrawerParamsFromJSON(
     MolDraw2D &drawer, const std::string &json) {
   updateMolDrawOptionsFromJSON(drawer.drawOptions(), json);
 }
@@ -581,4 +581,4 @@ double meanBondLength(const ROMol &mol, int confId) {
 }
 
 }  // namespace MolDraw2DUtils
-}  // namespace RDKit
+}  // namespace RDKix

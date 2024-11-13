@@ -26,8 +26,8 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
   const bool sanitize = fdp.ConsumeIntegralInRange(0, 1);
   std::string smiles_string = fdp.ConsumeRemainingBytesAsString();
   try {
-    std::shared_ptr<RDKit::ROMol> mol3(
-        RDKit::SmilesToMol(smiles_string, 0, sanitize));
+    std::shared_ptr<RDKix::ROMol> mol3(
+        RDKix::SmilesToMol(smiles_string, 0, sanitize));
   } catch (...) {
   }
 

@@ -31,13 +31,13 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::QueryAtom "
+%typemap(javaimports) RDKix::QueryAtom "
 /** 
 Class for storing atomic queries.
 <p>
 QueryAtom objects are derived from Atom objects, so they can be added to molecules and the like, but they have much fancier querying capabilities. */"
 
-%javamethodmodifiers RDKit::QueryAtom::expandQuery 	( 	QUERYATOM_QUERY *  	what, 		Queries::CompositeQueryType  	how = Queries::COMPOSITE_AND, 		bool  	maintainOrder = true	  	) 			"
+%javamethodmodifiers RDKix::QueryAtom::expandQuery 	( 	QUERYATOM_QUERY *  	what, 		Queries::CompositeQueryType  	how = Queries::COMPOSITE_AND, 		bool  	maintainOrder = true	  	) 			"
 /**
 <p>
 expands our current query
@@ -49,16 +49,16 @@ how 	the operator to be used in the expansion
 maintainOrder 	(optional) flags whether the relative order of the queries needs to be maintained, if this is false, the order is reversed Notes:
 * what should probably be constructed using one of the functions defined in QueryOps.h
 * the maintainOrder option can be useful because the combination operators short circuit when possible.
-Reimplemented from RDKit::Atom.
+Reimplemented from RDKix::Atom.
 */
 public";
 
-%javamethodmodifiers RDKit::QueryAtom::Match 	( 	Atom const *  	what 	 )  	const "
+%javamethodmodifiers RDKix::QueryAtom::Match 	( 	Atom const *  	what 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 <p>
-Reimplemented from RDKit::Atom.
+Reimplemented from RDKix::Atom.
 <p>
 
 */

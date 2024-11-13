@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2003-2022 greg Landrum and other RDKit contributors
+//  Copyright (C) 2003-2022 greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/types.h>
 #include <cmath>
@@ -30,7 +30,7 @@ unsigned int MAX_COLL_ITERS = 15;
 double HETEROATOM_COLL_SCALE = 1.3;
 unsigned int NUM_BONDS_FLIPS = 3;
 
-RDGeom::INT_POINT2D_MAP embedRing(const RDKit::INT_VECT &ring) {
+RDGeom::INT_POINT2D_MAP embedRing(const RDKix::INT_VECT &ring) {
   // The process here is very straight forward
   // we take the center of the ring to lies at the origin put the first
   // point at the origin and then sweep
@@ -116,8 +116,8 @@ void reflectPoints(RDGeom::INT_POINT2D_MAP &coordMap,
   });
 }
 
-RDKit::INT_VECT setNbrOrder(unsigned int aid, const RDKit::INT_VECT &nbrs,
-                            const RDKit::ROMol &mol) {
+RDKix::INT_VECT setNbrOrder(unsigned int aid, const RDKix::INT_VECT &nbrs,
+                            const RDKix::ROMol &mol) {
   PRECONDITION(aid < mol.getNumAtoms(), "");
   PR_QUEUE subsAid;
   int ref = -1;
@@ -132,7 +132,7 @@ RDKit::INT_VECT setNbrOrder(unsigned int aid, const RDKit::INT_VECT &nbrs,
     }
   }
 
-  RDKit::INT_VECT thold = nbrs;
+  RDKix::INT_VECT thold = nbrs;
   if (ref >= 0) {
     thold.push_back(ref);
   }
@@ -149,7 +149,7 @@ RDKit::INT_VECT setNbrOrder(unsigned int aid, const RDKit::INT_VECT &nbrs,
 
   // go clock wise along the list from this position for the arranged neighbor
   // list
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   res.reserve(thold.size());
   auto pos = std::find(thold.begin(), thold.end(), ref);
   if (pos != thold.end()) {
@@ -163,8 +163,8 @@ RDKit::INT_VECT setNbrOrder(unsigned int aid, const RDKit::INT_VECT &nbrs,
   return res;
 }
 
-int pickFirstRingToEmbed(const RDKit::ROMol &mol,
-                         const RDKit::VECT_INT_VECT &fusedRings) {
+int pickFirstRingToEmbed(const RDKix::ROMol &mol,
+                         const RDKix::VECT_INT_VECT &fusedRings) {
   // ok this is what we will do here
   // we will pick the ring with the smallest number of substituents
   int res = -1;
@@ -193,9 +193,9 @@ int pickFirstRingToEmbed(const RDKit::ROMol &mol,
   return res;
 }
 
-RDKit::VECT_INT_VECT findCoreRings(const RDKit::VECT_INT_VECT &fusedRings,
-                                   RDKit::INT_VECT &coreRingsIds,
-                                   const RDKit::ROMol &mol) {
+RDKix::VECT_INT_VECT findCoreRings(const RDKix::VECT_INT_VECT &fusedRings,
+                                   RDKix::INT_VECT &coreRingsIds,
+                                   const RDKix::ROMol &mol) {
   // simplify the fused rings to a set of core rings by iteratively removing
   // rings that share only one or two consecutive atoms. These
   // are trivial to embed after the core rings have been embedded and will make
@@ -219,8 +219,8 @@ RDKit::VECT_INT_VECT findCoreRings(const RDKit::VECT_INT_VECT &fusedRings,
         if (currRingId == otherRingId || removedRings[otherRingId]) {
           continue;
         }
-        RDKit::INT_VECT commmonAtoms;
-        RDKit::Intersect(fusedRings[currRingId], fusedRings[otherRingId],
+        RDKix::INT_VECT commmonAtoms;
+        RDKix::Intersect(fusedRings[currRingId], fusedRings[otherRingId],
                          commmonAtoms);
         for (auto rii : commmonAtoms) {
           if (rii != aid1 && rii != aid2) {
@@ -248,7 +248,7 @@ RDKit::VECT_INT_VECT findCoreRings(const RDKit::VECT_INT_VECT &fusedRings,
       }
     }
   } while (removedARing);
-  RDKit::VECT_INT_VECT res;
+  RDKix::VECT_INT_VECT res;
   for (unsigned int currRingId = 0; currRingId < fusedRings.size();
        currRingId++) {
     if (!removedRings[currRingId]) {
@@ -259,8 +259,8 @@ RDKit::VECT_INT_VECT findCoreRings(const RDKit::VECT_INT_VECT &fusedRings,
   return res;
 }
 
-RDKit::INT_VECT findNextRingToEmbed(const RDKit::INT_VECT &doneRings,
-                                    const RDKit::VECT_INT_VECT &fusedRings,
+RDKix::INT_VECT findNextRingToEmbed(const RDKix::INT_VECT &doneRings,
+                                    const RDKix::VECT_INT_VECT &fusedRings,
                                     int &nextId) {
   // REVIEW: We are changing this after Issue166
   // Originally the ring that have maximum number of atoms in common with the
@@ -277,14 +277,14 @@ RDKit::INT_VECT findNextRingToEmbed(const RDKit::INT_VECT &doneRings,
   PRECONDITION(doneRings.size() > 0, "");
   PRECONDITION(fusedRings.size() > 1, "");
 
-  RDKit::INT_VECT commonAtoms, res, doneAtoms, notDone;
+  RDKix::INT_VECT commonAtoms, res, doneAtoms, notDone;
   for (int i = 0; i < rdcast<int>(fusedRings.size()); i++) {
     if (std::find(doneRings.begin(), doneRings.end(), i) == doneRings.end()) {
       notDone.push_back(i);
     }
   }
 
-  RDKit::Union(fusedRings, doneAtoms, &notDone);
+  RDKix::Union(fusedRings, doneAtoms, &notDone);
 
   int maxCommonAtoms = 0;
 
@@ -343,7 +343,7 @@ RDKit::INT_VECT findNextRingToEmbed(const RDKit::INT_VECT &doneRings,
   }
   // now do the moving if we have to
   if ((cmnLst > 0) && (cmnLst < res.size())) {
-    RDKit::INT_VECT tempV = res;
+    RDKix::INT_VECT tempV = res;
 
     for (unsigned int i = cmnLst; i < nCmn; i++) {
       res[i - cmnLst] = tempV[i];
@@ -358,11 +358,11 @@ RDKit::INT_VECT findNextRingToEmbed(const RDKit::INT_VECT &doneRings,
   return res;
 }
 
-RDKit::INT_VECT getAllRotatableBonds(const RDKit::ROMol &mol) {
-  RDKit::INT_VECT res;
+RDKix::INT_VECT getAllRotatableBonds(const RDKix::ROMol &mol) {
+  RDKix::INT_VECT res;
   for (const auto bond : mol.bonds()) {
     int bid = bond->getIdx();
-    if ((bond->getStereo() <= RDKit::Bond::STEREOANY) &&
+    if ((bond->getStereo() <= RDKix::Bond::STEREOANY) &&
         (!(mol.getRingInfo()->numBondRings(bid)))) {
       res.push_back(bid);
     }
@@ -370,13 +370,13 @@ RDKit::INT_VECT getAllRotatableBonds(const RDKit::ROMol &mol) {
   return res;
 }
 
-RDKit::INT_VECT getRotatableBonds(const RDKit::ROMol &mol, unsigned int aid1,
+RDKix::INT_VECT getRotatableBonds(const RDKix::ROMol &mol, unsigned int aid1,
                                   unsigned int aid2) {
   PRECONDITION(aid1 < mol.getNumAtoms(), "");
   PRECONDITION(aid2 < mol.getNumAtoms(), "");
 
-  RDKit::INT_LIST path = RDKit::MolOps::getShortestPath(mol, aid1, aid2);
-  RDKit::INT_VECT res;
+  RDKix::INT_LIST path = RDKix::MolOps::getShortestPath(mol, aid1, aid2);
+  RDKix::INT_VECT res;
   if (path.size() >= 4) {
     // remove the first atom (aid1) and last atom (aid2)
     CHECK_INVARIANT(static_cast<unsigned int>(path.front()) == aid1,
@@ -391,9 +391,9 @@ RDKit::INT_VECT getRotatableBonds(const RDKit::ROMol &mol, unsigned int aid1,
       if (aid == pid) {
         continue;
       }
-      const RDKit::Bond *bond = mol.getBondBetweenAtoms(pid, aid);
+      const RDKix::Bond *bond = mol.getBondBetweenAtoms(pid, aid);
       int bid = bond->getIdx();
-      if ((bond->getStereo() <= RDKit::Bond::STEREOANY) &&
+      if ((bond->getStereo() <= RDKix::Bond::STEREOANY) &&
           (!(mol.getRingInfo()->numBondRings(bid)))) {
         res.push_back(bid);
       }
@@ -403,8 +403,8 @@ RDKit::INT_VECT getRotatableBonds(const RDKit::ROMol &mol, unsigned int aid1,
   return res;
 }
 
-void getNbrAtomAndBondIds(unsigned int aid, const RDKit::ROMol *mol,
-                          RDKit::INT_VECT &aids, RDKit::INT_VECT &bids) {
+void getNbrAtomAndBondIds(unsigned int aid, const RDKix::ROMol *mol,
+                          RDKix::INT_VECT &aids, RDKix::INT_VECT &bids) {
   CHECK_INVARIANT(mol, "");
   unsigned int na = mol->getNumAtoms();
   URANGE_CHECK(aid, na);
@@ -433,7 +433,7 @@ void getNbrAtomAndBondIds(unsigned int aid, const RDKit::ROMol *mol,
 // returned
 // All other permutations can be achieved via a rotatable bond flip.
 INT_PAIR_VECT findBondsPairsToPermuteDeg4(const RDGeom::Point2D &center,
-                                          const RDKit::INT_VECT &nbrBids,
+                                          const RDKix::INT_VECT &nbrBids,
                                           const VECT_C_POINT &nbrLocs) {
   INT_PAIR_VECT res;
 
@@ -484,16 +484,16 @@ INT_PAIR_VECT findBondsPairsToPermuteDeg4(const RDGeom::Point2D &center,
 }
 
 template <class T>
-T rankAtomsByRank(const RDKit::ROMol &mol, const T &commAtms, bool ascending) {
+T rankAtomsByRank(const RDKix::ROMol &mol, const T &commAtms, bool ascending) {
   size_t natms = commAtms.size();
   INT_PAIR_VECT rankAid;
   rankAid.reserve(natms);
   typename T::const_iterator ci;
   for (ci = commAtms.begin(); ci != commAtms.end(); ci++) {
     unsigned int rank;
-    const RDKit::Atom *at = mol.getAtomWithIdx(*ci);
-    if (at->hasProp(RDKit::common_properties::_CIPRank)) {
-      at->getProp(RDKit::common_properties::_CIPRank, rank);
+    const RDKix::Atom *at = mol.getAtomWithIdx(*ci);
+    if (at->hasProp(RDKix::common_properties::_CIPRank)) {
+      at->getProp(RDKix::common_properties::_CIPRank, rank);
     } else {
       rank = mol.getNumAtoms() * getAtomDepictRank(at) + (*ci);
     }
@@ -512,42 +512,42 @@ T rankAtomsByRank(const RDKit::ROMol &mol, const T &commAtms, bool ascending) {
   return res;
 }
 
-template RDKit::INT_VECT rankAtomsByRank(const RDKit::ROMol &mol,
-                                         const RDKit::INT_VECT &commAtms,
+template RDKix::INT_VECT rankAtomsByRank(const RDKix::ROMol &mol,
+                                         const RDKix::INT_VECT &commAtms,
                                          bool ascending);
-template RDKit::INT_DEQUE rankAtomsByRank(const RDKit::ROMol &mol,
-                                          const RDKit::INT_DEQUE &commAtms,
+template RDKix::INT_DEQUE rankAtomsByRank(const RDKix::ROMol &mol,
+                                          const RDKix::INT_DEQUE &commAtms,
                                           bool ascending);
-template RDKit::INT_LIST rankAtomsByRank(const RDKit::ROMol &mol,
-                                         const RDKit::INT_LIST &commAtms,
+template RDKix::INT_LIST rankAtomsByRank(const RDKix::ROMol &mol,
+                                         const RDKix::INT_LIST &commAtms,
                                          bool ascending);
 
-bool hasTerminalRGroupOrQueryHydrogen(const RDKit::ROMol &mol) {
+bool hasTerminalRGroupOrQueryHydrogen(const RDKix::ROMol &mol) {
   // we do not need the allowRGroups logic if there are no
   // terminal dummy atoms
   auto atoms = mol.atoms();
   return std::any_of(atoms.begin(), atoms.end(),
-                     RDKit::isAtomTerminalRGroupOrQueryHydrogen);
+                     RDKix::isAtomTerminalRGroupOrQueryHydrogen);
 }
 
-std::unique_ptr<RDKit::RWMol> prepareTemplateForRGroups(
-    RDKit::RWMol &templateMol) {
-  auto queryParams = RDKit::MolOps::AdjustQueryParameters::noAdjustments();
+std::unique_ptr<RDKix::RWMol> prepareTemplateForRGroups(
+    RDKix::RWMol &templateMol) {
+  auto queryParams = RDKix::MolOps::AdjustQueryParameters::noAdjustments();
   queryParams.adjustSingleBondsToDegreeOneNeighbors = true;
   queryParams.adjustSingleBondsBetweenAromaticAtoms = true;
-  RDKit::MolOps::adjustQueryProperties(templateMol, &queryParams);
+  RDKix::MolOps::adjustQueryProperties(templateMol, &queryParams);
   std::map<unsigned int, unsigned int> removedIdxToNbrIdx;
-  std::unique_ptr<RDKit::RWMol> reducedTemplateMol;
+  std::unique_ptr<RDKix::RWMol> reducedTemplateMol;
   for (const auto &bond : templateMol.bonds()) {
     int atomIdxToRemove = -1;
     int nbrIdx = -1;
     auto beginAtom = bond->getBeginAtom();
     auto endAtom = bond->getEndAtom();
-    if (RDKit::isAtomTerminalRGroupOrQueryHydrogen(beginAtom) &&
+    if (RDKix::isAtomTerminalRGroupOrQueryHydrogen(beginAtom) &&
         endAtom->hasQuery()) {
       atomIdxToRemove = beginAtom->getIdx();
       nbrIdx = endAtom->getIdx();
-    } else if (RDKit::isAtomTerminalRGroupOrQueryHydrogen(endAtom) &&
+    } else if (RDKix::isAtomTerminalRGroupOrQueryHydrogen(endAtom) &&
                beginAtom->hasQuery()) {
       atomIdxToRemove = endAtom->getIdx();
       nbrIdx = beginAtom->getIdx();
@@ -557,7 +557,7 @@ std::unique_ptr<RDKit::RWMol> prepareTemplateForRGroups(
     }
   }
   if (!removedIdxToNbrIdx.empty()) {
-    reducedTemplateMol.reset(new RDKit::RWMol(templateMol));
+    reducedTemplateMol.reset(new RDKix::RWMol(templateMol));
     for (auto reducedTemplateAtom : reducedTemplateMol->atoms()) {
       auto formerIdx = reducedTemplateAtom->getIdx();
       reducedTemplateAtom->setProp(FORMER_IDX, formerIdx);
@@ -580,16 +580,16 @@ std::unique_ptr<RDKit::RWMol> prepareTemplateForRGroups(
   return reducedTemplateMol;
 }
 
-void reducedToFullMatches(const RDKit::RWMol &reducedQuery,
-                          const RDKit::RWMol &molHs,
-                          std::vector<RDKit::MatchVectType> &matches) {
+void reducedToFullMatches(const RDKix::RWMol &reducedQuery,
+                          const RDKix::RWMol &molHs,
+                          std::vector<RDKix::MatchVectType> &matches) {
   boost::dynamic_bitset<> molHsMatches(molHs.getNumAtoms());
   for (auto &match : matches) {
     molHsMatches.reset();
     for (const auto &pair : match) {
       molHsMatches.set(pair.second);
     }
-    RDKit::MatchVectType newMatch;
+    RDKix::MatchVectType newMatch;
     for (auto pairIt = match.begin(); pairIt != match.end(); ++pairIt) {
       const auto reducedQueryAtom = reducedQuery.getAtomWithIdx(pairIt->first);
       const auto molAtom = molHs.getAtomWithIdx(pairIt->second);
@@ -616,13 +616,13 @@ void reducedToFullMatches(const RDKit::RWMol &reducedQuery,
   }
 }
 
-bool invertWedgingIfMolHasFlipped(RDKit::ROMol &mol,
+bool invertWedgingIfMolHasFlipped(RDKix::ROMol &mol,
                                   const RDGeom::Transform3D &trans) {
   constexpr double FLIP_THRESHOLD = -0.99;
   auto zRot = trans.getVal(2, 2);
   bool shouldFlip = zRot < FLIP_THRESHOLD;
   if (shouldFlip) {
-    RDKit::Chirality::invertMolBlockWedgingInfo(mol);
+    RDKix::Chirality::invertMolBlockWedgingInfo(mol);
   }
   return shouldFlip;
 }

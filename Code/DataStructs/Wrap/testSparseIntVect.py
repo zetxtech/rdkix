@@ -11,8 +11,8 @@ import random
 import sys
 import unittest
 
-from rdkit import DataStructs as ds
-from rdkit import RDConfig
+from rdkix import DataStructs as ds
+from rdkix import RDConfig
 
 
 def feq(v1, v2, tol=1e-4):

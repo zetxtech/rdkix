@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "MolProcessing.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace MolProcessing {
 
 namespace details {
@@ -129,13 +129,13 @@ std::vector<std::unique_ptr<ExplicitBitVect>> getFingerprintsForMolsInFile(
   return results;
 }
 
-template RDKIT_MOLPROCESSING_EXPORT
+template RDKIX_MOLPROCESSING_EXPORT
     std::vector<std::unique_ptr<ExplicitBitVect>>
     getFingerprintsForMolsInFile(
         const std::string &fileName,
         const GeneralMolSupplier::SupplierOptions &options,
         FingerprintGenerator<std::uint32_t> *generator);
-template RDKIT_MOLPROCESSING_EXPORT
+template RDKIX_MOLPROCESSING_EXPORT
     std::vector<std::unique_ptr<ExplicitBitVect>>
     getFingerprintsForMolsInFile(
         const std::string &fileName,
@@ -143,4 +143,4 @@ template RDKIT_MOLPROCESSING_EXPORT
         FingerprintGenerator<std::uint64_t> *generator);
 
 }  // namespace MolProcessing
-}  // namespace RDKit
+}  // namespace RDKix

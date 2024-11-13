@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
@@ -35,7 +35,7 @@
 #include <GraphMol/Depictor/RDDepictor.h>
 #include <GraphMol/Atropisomers.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolDraw2D_detail {
 
 // ****************************************************************************
@@ -457,13 +457,13 @@ void DrawMol::extractStereoGroups() {
     std::string stereoGroupType;
 
     switch (group.getGroupType()) {
-      case RDKit::StereoGroupType::STEREO_ABSOLUTE:
+      case RDKix::StereoGroupType::STEREO_ABSOLUTE:
         stereoGroupType = "abs";
         break;
-      case RDKit::StereoGroupType::STEREO_OR:
+      case RDKix::StereoGroupType::STEREO_OR:
         stereoGroupType = "or" + std::to_string(++orCount);
         break;
-      case RDKit::StereoGroupType::STEREO_AND:
+      case RDKix::StereoGroupType::STEREO_AND:
         stereoGroupType = "and" + std::to_string(++andCount);
         break;
       default:
@@ -471,7 +471,7 @@ void DrawMol::extractStereoGroups() {
     }
 
     std::vector<unsigned int> atomIds;
-    std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         wedgeBonds;  // empty - all wedges should have been added to the mol, so
                      // this doesn't matter
     Atropisomers::getAllAtomIdsForStereoGroup(*drawMol_, group, atomIds,
@@ -627,7 +627,7 @@ void DrawMol::extractVariableBonds() {
         bond->getPropIfPresent(common_properties::_MolFileBondAttach, attach)) {
       // FIX: maybe distinguish between "ANY" and "ALL" values of attach here?
       std::vector<unsigned int> oats =
-          RDKit::SGroupParsing::ParseV3000Array<unsigned int>(endpts);
+          RDKix::SGroupParsing::ParseV3000Array<unsigned int>(endpts);
       atomsInvolved.reset();
       // decrement the indices and do error checking:
       for (auto &oat : oats) {
@@ -1458,9 +1458,9 @@ std::string DrawMol::getAtomSymbol(const Atom &atom,
 }
 
 // ****************************************************************************
-OrientType DrawMol::getAtomOrientation(const RDKit::Atom &atom) const {
+OrientType DrawMol::getAtomOrientation(const RDKix::Atom &atom) const {
   // anything with a slope of more than 70 degrees is vertical. This way,
-  // the NH in an indole is vertical as RDKit lays it out normally (72ish
+  // the NH in an indole is vertical as RDKix lays it out normally (72ish
   // degrees) but the 2 amino groups of c1ccccc1C1CCC(N)(N)CC1 are E and W
   // when they are drawn at the bottom of the molecule.
   // NB - this assumes that the atom coords have already been inverted
@@ -3838,4 +3838,4 @@ const Atom *otherNeighbor(const Atom *firstAtom, const Atom *secondAtom,
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix

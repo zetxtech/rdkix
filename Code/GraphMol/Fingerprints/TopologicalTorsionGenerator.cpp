@@ -1,18 +1,18 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 #include <GraphMol/Fingerprints/FingerprintUtil.h>
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace TopologicalTorsion {
 
 using namespace AtomPairs;
@@ -202,7 +202,7 @@ FingerprintGenerator<OutputType> *getTopologicalTorsionGenerator(
 
 // Topological torsion fingerprint does not support 32 bit output yet
 
-template RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
+template RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<std::uint64_t> *
 getTopologicalTorsionGenerator(bool includeChirality, uint32_t torsionAtomCount,
                                AtomInvariantsGenerator *atomInvariantsGenerator,
                                bool countSimulation, std::uint32_t fpSize,
@@ -210,4 +210,4 @@ getTopologicalTorsionGenerator(bool includeChirality, uint32_t torsionAtomCount,
                                bool ownsAtomInvGen);
 
 }  // namespace TopologicalTorsion
-}  // namespace RDKit
+}  // namespace RDKix

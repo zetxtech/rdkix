@@ -1,15 +1,15 @@
 //
-//  Copyright (C) 2018-2023 Susan H. Leung and other RDKit contributors
+//  Copyright (C) 2018-2023 Susan H. Leung and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/Wrap.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolStandardize/MolStandardize.h>
 
 #include <vector>
@@ -18,172 +18,172 @@ namespace python = boost::python;
 
 namespace {
 template <typename FUNCTYPE>
-RDKit::ROMol *msHelper(const RDKit::ROMol *mol, python::object params,
+RDKix::ROMol *msHelper(const RDKix::ROMol *mol, python::object params,
                        FUNCTYPE func) {
   if (!mol) {
     throw_value_error("Molecule is None");
   }
-  const RDKit::MolStandardize::CleanupParameters *ps =
-      &RDKit::MolStandardize::defaultCleanupParameters;
+  const RDKix::MolStandardize::CleanupParameters *ps =
+      &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
-  return static_cast<RDKit::ROMol *>(
-      func(static_cast<const RDKit::RWMol *>(mol), *ps));
+  return static_cast<RDKix::ROMol *>(
+      func(static_cast<const RDKix::RWMol *>(mol), *ps));
 }
 
-RDKit::ROMol *cleanupHelper(const RDKit::ROMol *mol, python::object params) {
+RDKix::ROMol *cleanupHelper(const RDKix::ROMol *mol, python::object params) {
   return msHelper(
       mol, params,
       static_cast<
-          RDKit::RWMol *(*)(const RDKit::RWMol *,
-                            const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::cleanup));
+          RDKix::RWMol *(*)(const RDKix::RWMol *,
+                            const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::cleanup));
 }
 
-RDKit::ROMol *normalizeHelper(const RDKit::ROMol *mol, python::object params) {
-  return msHelper(mol, params, RDKit::MolStandardize::normalize);
+RDKix::ROMol *normalizeHelper(const RDKix::ROMol *mol, python::object params) {
+  return msHelper(mol, params, RDKix::MolStandardize::normalize);
 }
 
-RDKit::ROMol *reionizeHelper(const RDKit::ROMol *mol, python::object params) {
-  return msHelper(mol, params, RDKit::MolStandardize::reionize);
+RDKix::ROMol *reionizeHelper(const RDKix::ROMol *mol, python::object params) {
+  return msHelper(mol, params, RDKix::MolStandardize::reionize);
 }
 
-RDKit::ROMol *removeFragsHelper(const RDKit::ROMol *mol,
+RDKix::ROMol *removeFragsHelper(const RDKix::ROMol *mol,
                                 python::object params) {
-  return msHelper(mol, params, RDKit::MolStandardize::removeFragments);
+  return msHelper(mol, params, RDKix::MolStandardize::removeFragments);
 }
 
-RDKit::ROMol *canonicalTautomerHelper(const RDKit::ROMol *mol,
+RDKix::ROMol *canonicalTautomerHelper(const RDKix::ROMol *mol,
                                       python::object params) {
-  return msHelper(mol, params, RDKit::MolStandardize::canonicalTautomer);
+  return msHelper(mol, params, RDKix::MolStandardize::canonicalTautomer);
 }
 
 template <typename FUNCTYPE>
-void inPlaceHelper(RDKit::ROMol *mol, python::object params, FUNCTYPE func) {
+void inPlaceHelper(RDKix::ROMol *mol, python::object params, FUNCTYPE func) {
   if (!mol) {
     throw_value_error("Molecule is None");
   }
-  const RDKit::MolStandardize::CleanupParameters *ps =
-      &RDKit::MolStandardize::defaultCleanupParameters;
+  const RDKix::MolStandardize::CleanupParameters *ps =
+      &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
-  func(*static_cast<RDKit::RWMol *>(mol), *ps);
+  func(*static_cast<RDKix::RWMol *>(mol), *ps);
 }
 
 template <typename FUNCTYPE>
-void inPlaceHelper2(RDKit::ROMol *mol, python::object params,
+void inPlaceHelper2(RDKix::ROMol *mol, python::object params,
                     bool skip_standardize, FUNCTYPE func) {
   if (!mol) {
     throw_value_error("Molecule is None");
   }
-  const RDKit::MolStandardize::CleanupParameters *ps =
-      &RDKit::MolStandardize::defaultCleanupParameters;
+  const RDKix::MolStandardize::CleanupParameters *ps =
+      &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
-  func(*static_cast<RDKit::RWMol *>(mol), *ps, skip_standardize);
+  func(*static_cast<RDKix::RWMol *>(mol), *ps, skip_standardize);
 }
-void cleanupInPlaceHelper(RDKit::ROMol *mol, python::object params) {
+void cleanupInPlaceHelper(RDKix::ROMol *mol, python::object params) {
   inPlaceHelper(
       mol, params,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::cleanupInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::cleanupInPlace));
 }
 
-void normalizeInPlaceHelper(RDKit::ROMol *mol, python::object params) {
+void normalizeInPlaceHelper(RDKix::ROMol *mol, python::object params) {
   inPlaceHelper(
       mol, params,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::normalizeInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::normalizeInPlace));
 }
 
-void reionizeInPlaceHelper(RDKit::ROMol *mol, python::object params) {
+void reionizeInPlaceHelper(RDKix::ROMol *mol, python::object params) {
   inPlaceHelper(
       mol, params,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::reionizeInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::reionizeInPlace));
 }
 
-void removeFragmentsInPlaceHelper(RDKit::ROMol *mol, python::object params) {
+void removeFragmentsInPlaceHelper(RDKix::ROMol *mol, python::object params) {
   inPlaceHelper(
       mol, params,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::removeFragmentsInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::removeFragmentsInPlace));
 }
 
-void fragmentParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void fragmentParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                                  bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
       static_cast<void (*)(
-          RDKit::RWMol &, const RDKit::MolStandardize::CleanupParameters &,
-          bool)>(RDKit::MolStandardize::fragmentParentInPlace));
+          RDKix::RWMol &, const RDKix::MolStandardize::CleanupParameters &,
+          bool)>(RDKix::MolStandardize::fragmentParentInPlace));
 }
 
-void stereoParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void stereoParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                                bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::stereoParentInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::stereoParentInPlace));
 }
 
-void isotopeParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void isotopeParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                                 bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::isotopeParentInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::isotopeParentInPlace));
 }
 
-void chargeParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void chargeParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                                bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::chargeParentInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::chargeParentInPlace));
 }
 
-void superParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void superParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                               bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
-      static_cast<void (*)(RDKit::RWMol &,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::superParentInPlace));
+      static_cast<void (*)(RDKix::RWMol &,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::superParentInPlace));
 }
 
-void tautomerParentInPlaceHelper(RDKit::ROMol *mol, python::object params,
+void tautomerParentInPlaceHelper(RDKix::ROMol *mol, python::object params,
                                  bool skip_standardize) {
   inPlaceHelper2(
       mol, params, skip_standardize,
       static_cast<void (*)(
-          RDKit::RWMol &, const RDKit::MolStandardize::CleanupParameters &,
-          bool)>(RDKit::MolStandardize::tautomerParentInPlace));
+          RDKix::RWMol &, const RDKix::MolStandardize::CleanupParameters &,
+          bool)>(RDKix::MolStandardize::tautomerParentInPlace));
 }
 
 template <typename FUNCTYPE>
 void mtinPlaceHelper(python::object pymols, int numThreads,
                      python::object params, FUNCTYPE func) {
-  const RDKit::MolStandardize::CleanupParameters *ps =
-      &RDKit::MolStandardize::defaultCleanupParameters;
+  const RDKix::MolStandardize::CleanupParameters *ps =
+      &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
   unsigned int nmols = python::extract<unsigned int>(pymols.attr("__len__")());
-  std::vector<RDKit::RWMol *> mols(nmols);
+  std::vector<RDKix::RWMol *> mols(nmols);
   for (auto i = 0u; i < nmols; ++i) {
-    auto mol = static_cast<RDKit::RWMol *>(
-        python::extract<RDKit::ROMol *>(pymols[i])());
+    auto mol = static_cast<RDKix::RWMol *>(
+        python::extract<RDKix::ROMol *>(pymols[i])());
     mols[i] = mol;
   }
   {
@@ -195,15 +195,15 @@ template <typename FUNCTYPE>
 void mtinPlaceHelper2(python::object pymols, int numThreads,
                       python::object params, bool skip_standardize,
                       FUNCTYPE func) {
-  const auto *ps = &RDKit::MolStandardize::defaultCleanupParameters;
+  const auto *ps = &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
   unsigned int nmols = python::extract<unsigned int>(pymols.attr("__len__")());
-  std::vector<RDKit::RWMol *> mols(nmols);
+  std::vector<RDKix::RWMol *> mols(nmols);
   for (auto i = 0u; i < nmols; ++i) {
-    auto mol = static_cast<RDKit::RWMol *>(
-        python::extract<RDKit::ROMol *>(pymols[i])());
+    auto mol = static_cast<RDKix::RWMol *>(
+        python::extract<RDKix::ROMol *>(pymols[i])());
     mols[i] = mol;
   }
   {
@@ -216,36 +216,36 @@ void mtcleanupInPlaceHelper(python::object mols, int numThreads,
                             python::object params) {
   mtinPlaceHelper(
       mols, numThreads, params,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::cleanupInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::cleanupInPlace));
 }
 
 void mtnormalizeInPlaceHelper(python::object mols, int numThreads,
                               python::object params) {
   mtinPlaceHelper(
       mols, numThreads, params,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::normalizeInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::normalizeInPlace));
 }
 
 void mtreionizeInPlaceHelper(python::object mols, int numThreads,
                              python::object params) {
   mtinPlaceHelper(
       mols, numThreads, params,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::reionizeInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::reionizeInPlace));
 }
 
 void mtremoveFragmentsInPlaceHelper(python::object mols, int numThreads,
                                     python::object params) {
   mtinPlaceHelper(
       mols, numThreads, params,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &)>(
-          RDKit::MolStandardize::removeFragmentsInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &)>(
+          RDKix::MolStandardize::removeFragmentsInPlace));
 }
 
 void mtfragmentParentInPlaceHelper(python::object mols, int numThreads,
@@ -253,18 +253,18 @@ void mtfragmentParentInPlaceHelper(python::object mols, int numThreads,
                                    bool skip_standardize) {
   mtinPlaceHelper2(mols, numThreads, params, skip_standardize,
                    static_cast<void (*)(
-                       std::vector<RDKit::RWMol *> &, int,
-                       const RDKit::MolStandardize::CleanupParameters &, bool)>(
-                       RDKit::MolStandardize::fragmentParentInPlace));
+                       std::vector<RDKix::RWMol *> &, int,
+                       const RDKix::MolStandardize::CleanupParameters &, bool)>(
+                       RDKix::MolStandardize::fragmentParentInPlace));
 }
 
 void mtstereoParentInPlaceHelper(python::object mols, int numThreads,
                                  python::object params, bool skip_standardize) {
   mtinPlaceHelper2(
       mols, numThreads, params, skip_standardize,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::stereoParentInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::stereoParentInPlace));
 }
 
 void mtisotopeParentInPlaceHelper(python::object mols, int numThreads,
@@ -272,27 +272,27 @@ void mtisotopeParentInPlaceHelper(python::object mols, int numThreads,
                                   bool skip_standardize) {
   mtinPlaceHelper2(
       mols, numThreads, params, skip_standardize,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::isotopeParentInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::isotopeParentInPlace));
 }
 
 void mtchargeParentInPlaceHelper(python::object mols, int numThreads,
                                  python::object params, bool skip_standardize) {
   mtinPlaceHelper2(
       mols, numThreads, params, skip_standardize,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::chargeParentInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::chargeParentInPlace));
 }
 
 void mtsuperParentInPlaceHelper(python::object mols, int numThreads,
                                 python::object params, bool skip_standardize) {
   mtinPlaceHelper2(
       mols, numThreads, params, skip_standardize,
-      static_cast<void (*)(std::vector<RDKit::RWMol *> &, int,
-                           const RDKit::MolStandardize::CleanupParameters &,
-                           bool)>(RDKit::MolStandardize::superParentInPlace));
+      static_cast<void (*)(std::vector<RDKix::RWMol *> &, int,
+                           const RDKix::MolStandardize::CleanupParameters &,
+                           bool)>(RDKix::MolStandardize::superParentInPlace));
 }
 
 void mttautomerParentInPlaceHelper(python::object mols, int numThreads,
@@ -300,81 +300,81 @@ void mttautomerParentInPlaceHelper(python::object mols, int numThreads,
                                    bool skip_standardize) {
   mtinPlaceHelper2(mols, numThreads, params, skip_standardize,
                    static_cast<void (*)(
-                       std::vector<RDKit::RWMol *> &, int,
-                       const RDKit::MolStandardize::CleanupParameters &, bool)>(
-                       RDKit::MolStandardize::tautomerParentInPlace));
+                       std::vector<RDKix::RWMol *> &, int,
+                       const RDKix::MolStandardize::CleanupParameters &, bool)>(
+                       RDKix::MolStandardize::tautomerParentInPlace));
 }
 
 template <typename FUNCTYPE>
-RDKit::ROMol *parentHelper(const RDKit::ROMol *mol, python::object params,
+RDKix::ROMol *parentHelper(const RDKix::ROMol *mol, python::object params,
                            bool skip_standardize, FUNCTYPE func) {
   if (!mol) {
     throw_value_error("Molecule is None");
   }
-  const RDKit::MolStandardize::CleanupParameters *ps =
-      &RDKit::MolStandardize::defaultCleanupParameters;
+  const RDKix::MolStandardize::CleanupParameters *ps =
+      &RDKix::MolStandardize::defaultCleanupParameters;
   if (params) {
-    ps = python::extract<RDKit::MolStandardize::CleanupParameters *>(params);
+    ps = python::extract<RDKix::MolStandardize::CleanupParameters *>(params);
   }
-  return static_cast<RDKit::ROMol *>(
-      func(static_cast<const RDKit::RWMol &>(*mol), *ps, skip_standardize));
+  return static_cast<RDKix::ROMol *>(
+      func(static_cast<const RDKix::RWMol &>(*mol), *ps, skip_standardize));
 }
 
-RDKit::ROMol *tautomerParentHelper(const RDKit::ROMol *mol,
+RDKix::ROMol *tautomerParentHelper(const RDKix::ROMol *mol,
                                    python::object params,
                                    bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::tautomerParent);
+                      RDKix::MolStandardize::tautomerParent);
 }
-RDKit::ROMol *fragmentParentHelper(const RDKit::ROMol *mol,
+RDKix::ROMol *fragmentParentHelper(const RDKix::ROMol *mol,
                                    python::object params,
                                    bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::fragmentParent);
+                      RDKix::MolStandardize::fragmentParent);
 }
-RDKit::ROMol *stereoParentHelper(const RDKit::ROMol *mol, python::object params,
+RDKix::ROMol *stereoParentHelper(const RDKix::ROMol *mol, python::object params,
                                  bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::stereoParent);
+                      RDKix::MolStandardize::stereoParent);
 }
-RDKit::ROMol *isotopeParentHelper(const RDKit::ROMol *mol,
+RDKix::ROMol *isotopeParentHelper(const RDKix::ROMol *mol,
                                   python::object params,
                                   bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::isotopeParent);
+                      RDKix::MolStandardize::isotopeParent);
 }
-RDKit::ROMol *chargeParentHelper(const RDKit::ROMol *mol, python::object params,
+RDKix::ROMol *chargeParentHelper(const RDKix::ROMol *mol, python::object params,
                                  bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::chargeParent);
+                      RDKix::MolStandardize::chargeParent);
 }
-RDKit::ROMol *superParentHelper(const RDKit::ROMol *mol, python::object params,
+RDKix::ROMol *superParentHelper(const RDKix::ROMol *mol, python::object params,
                                 bool skip_standardize) {
   return parentHelper(mol, params, skip_standardize,
-                      RDKit::MolStandardize::superParent);
+                      RDKix::MolStandardize::superParent);
 }
-RDKit::ROMol *disconnectOrganometallicsHelper(RDKit::ROMol &mol,
+RDKix::ROMol *disconnectOrganometallicsHelper(RDKix::ROMol &mol,
                                               python::object params) {
   if (params) {
-    RDKit::MolStandardize::MetalDisconnectorOptions *mdo =
-        python::extract<RDKit::MolStandardize::MetalDisconnectorOptions *>(
+    RDKix::MolStandardize::MetalDisconnectorOptions *mdo =
+        python::extract<RDKix::MolStandardize::MetalDisconnectorOptions *>(
             params);
-    return RDKit::MolStandardize::disconnectOrganometallics(mol, *mdo);
+    return RDKix::MolStandardize::disconnectOrganometallics(mol, *mdo);
   } else {
-    return RDKit::MolStandardize::disconnectOrganometallics(mol);
+    return RDKix::MolStandardize::disconnectOrganometallics(mol);
   }
 }
-void disconnectOrganometallicsInPlaceHelper(RDKit::ROMol *mol,
+void disconnectOrganometallicsInPlaceHelper(RDKix::ROMol *mol,
                                             python::object params) {
   if (params) {
-    RDKit::MolStandardize::MetalDisconnectorOptions *mdo =
-        python::extract<RDKit::MolStandardize::MetalDisconnectorOptions *>(
+    RDKix::MolStandardize::MetalDisconnectorOptions *mdo =
+        python::extract<RDKix::MolStandardize::MetalDisconnectorOptions *>(
             params);
-    return RDKit::MolStandardize::disconnectOrganometallicsInPlace(
-        *static_cast<RDKit::RWMol *>(mol), *mdo);
+    return RDKix::MolStandardize::disconnectOrganometallicsInPlace(
+        *static_cast<RDKix::RWMol *>(mol), *mdo);
   } else {
-    return RDKit::MolStandardize::disconnectOrganometallicsInPlace(
-        *static_cast<RDKit::RWMol *>(mol));
+    return RDKix::MolStandardize::disconnectOrganometallicsInPlace(
+        *static_cast<RDKix::RWMol *>(mol));
   }
 }
 
@@ -393,77 +393,77 @@ BOOST_PYTHON_MODULE(rdMolStandardize) {
       "Module containing functions for molecular standardization";
 
   bool noproxy = true;
-  RegisterVectorConverter<RDKit::ROMOL_SPTR>("MOL_SPTR_VECT", noproxy);
+  RegisterVectorConverter<RDKix::ROMOL_SPTR>("MOL_SPTR_VECT", noproxy);
 
   std::string docString = "";
 
-  python::class_<RDKit::MolStandardize::CleanupParameters, boost::noncopyable>(
+  python::class_<RDKix::MolStandardize::CleanupParameters, boost::noncopyable>(
       "CleanupParameters", "Parameters controlling molecular standardization")
       .def_readwrite("normalizationsFile",
-                     &RDKit::MolStandardize::CleanupParameters::normalizations,
+                     &RDKix::MolStandardize::CleanupParameters::normalizations,
                      "file containing the normalization transformations")
       .def_readwrite("acidbaseFile",
-                     &RDKit::MolStandardize::CleanupParameters::acidbaseFile,
+                     &RDKix::MolStandardize::CleanupParameters::acidbaseFile,
                      "file containing the acid and base definitions")
       .def_readwrite("fragmentFile",
-                     &RDKit::MolStandardize::CleanupParameters::fragmentFile,
+                     &RDKix::MolStandardize::CleanupParameters::fragmentFile,
                      "file containing the acid and base definitions")
       .def_readwrite(
           "tautomerTransformsFile",
-          &RDKit::MolStandardize::CleanupParameters::tautomerTransforms,
+          &RDKix::MolStandardize::CleanupParameters::tautomerTransforms,
           "file containing the tautomer transformations")
       .def_readwrite("maxRestarts",
-                     &RDKit::MolStandardize::CleanupParameters::maxRestarts,
+                     &RDKix::MolStandardize::CleanupParameters::maxRestarts,
                      "maximum number of restarts")
       .def_readwrite("preferOrganic",
-                     &RDKit::MolStandardize::CleanupParameters::preferOrganic,
+                     &RDKix::MolStandardize::CleanupParameters::preferOrganic,
                      "prefer organic fragments to inorganic ones when deciding "
                      "what to keep")
       .def_readwrite("doCanonical",
-                     &RDKit::MolStandardize::CleanupParameters::doCanonical,
+                     &RDKix::MolStandardize::CleanupParameters::doCanonical,
                      "apply atom-order dependent normalizations (like "
                      "uncharging) in a canonical order")
       .def_readwrite("maxTautomers",
-                     &RDKit::MolStandardize::CleanupParameters::maxTautomers,
+                     &RDKix::MolStandardize::CleanupParameters::maxTautomers,
                      "maximum number of tautomers to generate (defaults to "
                      "1000)")
       .def_readwrite("maxTransforms",
-                     &RDKit::MolStandardize::CleanupParameters::maxTransforms,
+                     &RDKix::MolStandardize::CleanupParameters::maxTransforms,
                      "maximum number of transforms to apply during tautomer "
                      "enumeration (defaults to 1000)")
       .def_readwrite(
           "tautomerRemoveSp3Stereo",
-          &RDKit::MolStandardize::CleanupParameters::tautomerRemoveSp3Stereo,
+          &RDKix::MolStandardize::CleanupParameters::tautomerRemoveSp3Stereo,
           "remove stereochemistry from sp3 centers involved in "
           "tautomerism (defaults to True)")
       .def_readwrite(
           "tautomerRemoveBondStereo",
-          &RDKit::MolStandardize::CleanupParameters::tautomerRemoveBondStereo,
+          &RDKix::MolStandardize::CleanupParameters::tautomerRemoveBondStereo,
           "remove stereochemistry from double bonds involved in "
           "tautomerism (defaults to True)")
       .def_readwrite(
           "tautomerRemoveIsotopicHs",
-          &RDKit::MolStandardize::CleanupParameters::tautomerRemoveIsotopicHs,
+          &RDKix::MolStandardize::CleanupParameters::tautomerRemoveIsotopicHs,
           "remove isotopic Hs from centers involved in "
           "tautomerism (defaults to True)")
       .def_readwrite(
           "tautomerReassignStereo",
-          &RDKit::MolStandardize::CleanupParameters::tautomerReassignStereo,
+          &RDKix::MolStandardize::CleanupParameters::tautomerReassignStereo,
           "call AssignStereochemistry on all generated tautomers "
           "(defaults to True)")
       .def_readwrite("largestFragmentChooserUseAtomCount",
-                     &RDKit::MolStandardize::CleanupParameters::
+                     &RDKix::MolStandardize::CleanupParameters::
                          largestFragmentChooserUseAtomCount,
                      "Whether LargestFragmentChooser should use atom "
                      "count as main criterion before MW (defaults to True)")
       .def_readwrite("largestFragmentChooserCountHeavyAtomsOnly",
-                     &RDKit::MolStandardize::CleanupParameters::
+                     &RDKix::MolStandardize::CleanupParameters::
                          largestFragmentChooserCountHeavyAtomsOnly,
                      "whether LargestFragmentChooser should only count "
                      "heavy atoms (defaults to False)");
 
   python::def("UpdateParamsFromJSON",
-              &RDKit::MolStandardize::updateCleanupParamsFromJSON,
+              &RDKix::MolStandardize::updateCleanupParamsFromJSON,
               python::args("params", "json"),
               "updates the cleanup parameters from the provided JSON string");
 
@@ -482,7 +482,7 @@ BOOST_PYTHON_MODULE(rdMolStandardize) {
                python::arg("params") = python::object()),
               docString.c_str());
   docString = "Convenience function for standardizing a SMILES";
-  python::def("StandardizeSmiles", RDKit::MolStandardize::standardizeSmiles,
+  python::def("StandardizeSmiles", RDKix::MolStandardize::standardizeSmiles,
               (python::arg("smiles")), docString.c_str());
   docString =
       "Returns the tautomer parent of a given molecule. The fragment parent is "

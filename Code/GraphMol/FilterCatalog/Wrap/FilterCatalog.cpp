@@ -36,13 +36,13 @@
 #include <GraphMol/FilterCatalog/FilterMatcherBase.h>
 #include <GraphMol/FilterCatalog/FilterMatchers.h>
 #include <GraphMol/FilterCatalog/FunctionalGroupHierarchy.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 namespace python = boost::python;
 
-namespace RDKit {
+namespace RDKix {
 
-struct filtercatalog_pickle_suite : rdkit_pickle_suite {
+struct filtercatalog_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const FilterCatalog &self) {
     std::string res;
     if (!FilterCatalogCanSerialize()) {
@@ -220,7 +220,7 @@ const char *FilterMatcherBaseDoc =
     "\nNote that a FilterMatcherBase can be combined from may "
     "FilterMatcherBases"
     "\nThis is why GetMatches can return multiple FilterMatcherBases.\n"
-    ">>> from rdkit.Chem.FilterCatalog import *\n"
+    ">>> from rdkix.Chem.FilterCatalog import *\n"
     ">>> carbon_matcher = SmartsMatcher('Carbon', '[#6]', 0, 1)\n"
     ">>> oxygen_matcher = SmartsMatcher('Oxygen', '[#8]', 0, 1)\n"
     ">>> co_matcher = FilterMatchOps.Or(carbon_matcher, oxygen_matcher)\n"
@@ -239,7 +239,7 @@ const char *SmartsMatcherDoc =
     "  note: If the supplied smarts pattern is not valid, the IsValid() "
     "function will\n"
     "   return False\n"
-    ">>> from rdkit.Chem.FilterCatalog import *\n"
+    ">>> from rdkix.Chem.FilterCatalog import *\n"
     ">>> minCount, maxCount = 1,2\n"
     ">>> carbon_matcher = SmartsMatcher('Carbon', '[#6]', minCount, maxCount)\n"
     ">>> print (carbon_matcher.HasMatch(Chem.MolFromSmiles('CC')))\n"
@@ -264,8 +264,8 @@ const char *FilterHierarchyMatcherDoc =
     "  i.e. lowest node in a branch) is returned.\n\n"
     " n.b. A FilterHierarchicalMatcher of functional groups is returned\n"
     "  by calling GetFunctionalGroupHierarchy()\n\n"
-    ">>> from rdkit.Chem import MolFromSmiles\n"
-    ">>> from rdkit.Chem.FilterCatalog import *\n"
+    ">>> from rdkix.Chem import MolFromSmiles\n"
+    ">>> from rdkix.Chem.FilterCatalog import *\n"
     ">>> functionalGroups = GetFunctionalGroupHierarchy()\n"
     ">>> [match.filterMatch.GetName() \n"
     "...     for match in functionalGroups.GetFilterMatches(\n"
@@ -280,7 +280,7 @@ const char *FilterCatalogEntryDoc =
     "undesirable property.\n\n"
     "For example, a PAINS (Pan Assay INterference) catalog entry be appear as\n"
     "follows:\n\n"
-    ">>> from rdkit.Chem.FilterCatalog import *\n"
+    ">>> from rdkix.Chem.FilterCatalog import *\n"
     ">>> params = FilterCatalogParams()\n"
     ">>> params.AddCatalog(FilterCatalogParams.FilterCatalogs.PAINS_A)\n"
     "True\n"
@@ -423,7 +423,7 @@ struct filtercat_wrapper {
     python::register_ptr_to_python<boost::shared_ptr<FilterHierarchyMatcher>>();
 
     bool noproxy = true;
-    RegisterVectorConverter<RDKit::ROMol *>("MolList", noproxy);
+    RegisterVectorConverter<RDKix::ROMol *>("MolList", noproxy);
 
     python::class_<FilterCatalogEntry, FilterCatalogEntry *,
                    boost::shared_ptr<const FilterCatalogEntry>>(
@@ -600,6 +600,6 @@ struct filtercat_wrapper {
   };
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 
-void wrap_filtercat() { RDKit::filtercat_wrapper::wrap(); }
+void wrap_filtercat() { RDKix::filtercat_wrapper::wrap(); }

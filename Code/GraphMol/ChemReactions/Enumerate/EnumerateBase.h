@@ -30,8 +30,8 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 #include <RDGeneral/export.h>
-#ifndef RDKIT_ENUMERATEBASE_H
-#define RDKIT_ENUMERATEBASE_H
+#ifndef RDKIX_ENUMERATEBASE_H
+#define RDKIX_ENUMERATEBASE_H
 
 #include <vector>
 #include "EnumerateTypes.h"
@@ -43,7 +43,7 @@
 #include "../ReactionPickler.h"
 #include <GraphMol/MolPickler.h>
 
-namespace RDKit {
+namespace RDKix {
 //! Base class for enumerating chemical reactions from collections of
 /// building blocks and reagents.
 /*!
@@ -60,7 +60,7 @@ namespace RDKit {
   See Reaction.h for more details on how ChemicalReactions are
   used.
 */
-class RDKIT_CHEMREACTIONS_EXPORT EnumerateLibraryBase {
+class RDKIX_CHEMREACTIONS_EXPORT EnumerateLibraryBase {
  protected:
   ChemicalReaction m_rxn;
   boost::shared_ptr<EnumerationStrategyBase> m_enumerator;
@@ -196,5 +196,5 @@ class RDKIT_CHEMREACTIONS_EXPORT EnumerateLibraryBase {
 #ifdef RDK_USE_BOOST_SERIALIZATION
 BOOST_SERIALIZATION_ASSUME_ABSTRACT(EnumerateLibraryBase)
 #endif
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

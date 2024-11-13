@@ -39,7 +39,7 @@
 #include <boost/random/uniform_int_distribution.hpp>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 
 //! This is a class for fully randomly sampling reagents.
 ///  Note that this enumerator never halts.
@@ -62,7 +62,7 @@ namespace RDKit {
 
   See EnumerationStrategyBase for more details and usage.
 */
-class RDKIT_CHEMREACTIONS_EXPORT RandomSampleStrategy
+class RDKIX_CHEMREACTIONS_EXPORT RandomSampleStrategy
     : public EnumerationStrategyBase {
   boost::uint64_t m_numPermutationsProcessed{};
   boost::minstd_rand m_rng;
@@ -154,10 +154,10 @@ class RDKIT_CHEMREACTIONS_EXPORT RandomSampleStrategy
   }
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::RandomSampleStrategy, 1)
+BOOST_CLASS_VERSION(RDKix::RandomSampleStrategy, 1)
 #endif
 
 #endif

@@ -31,7 +31,7 @@
 
 #include "StructChecker.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace StructureCheck {
 
 struct AugmentedAtom_t {
@@ -1278,4 +1278,4 @@ static const AugmentedAtomTransforms_t DefaultAugmentedAtomTransforms[] = {
 };
 
 }  // namespace StructureCheck
-}  // namespace RDKit
+}  // namespace RDKix

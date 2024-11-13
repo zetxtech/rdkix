@@ -20,7 +20,7 @@ constexpr auto pubchemFeatureName = "PUBCHEM_PHARMACOPHORE_FEATURES";
 // #define DEBUG_MSG(msg_stream) cout << msg_stream << '\n'
 #define DEBUG_MSG(msg_stream)
 
-using namespace RDKit;
+using namespace RDKix;
 
 // Bondi radii
 //  can find more of these in Table 12 of this publication:
@@ -80,23 +80,23 @@ class ss_matcher {
  public:
   ss_matcher(const std::string &pattern) : m_pattern(pattern) {
     m_needCopies = (pattern.find_first_of("$") != std::string::npos);
-    RDKit::RWMol *p = RDKit::SmartsToMol(pattern);
+    RDKix::RWMol *p = RDKix::SmartsToMol(pattern);
     m_matcher = p;
     POSTCONDITION(m_matcher, "no matcher");
   };
-  const RDKit::ROMol *getMatcher() const { return m_matcher; };
-  unsigned int countMatches(const RDKit::ROMol &mol) const {
+  const RDKix::ROMol *getMatcher() const { return m_matcher; };
+  unsigned int countMatches(const RDKix::ROMol &mol) const {
     PRECONDITION(m_matcher, "no matcher");
-    std::vector<RDKit::MatchVectType> matches;
+    std::vector<RDKix::MatchVectType> matches;
     // This is an ugly one. Recursive queries aren't thread safe.
     // Unfortunately we have to take a performance hit here in order
     // to guarantee thread safety
     if (m_needCopies) {
-      const RDKit::ROMol nm(*(m_matcher), true);
-      RDKit::SubstructMatch(mol, nm, matches);
+      const RDKix::ROMol nm(*(m_matcher), true);
+      RDKix::SubstructMatch(mol, nm, matches);
     } else {
-      const RDKit::ROMol &nm = *m_matcher;
-      RDKit::SubstructMatch(mol, nm, matches);
+      const RDKix::ROMol &nm = *m_matcher;
+      RDKix::SubstructMatch(mol, nm, matches);
     }
     return matches.size();
   }
@@ -106,7 +106,7 @@ class ss_matcher {
   ss_matcher() : m_pattern("") {};
   std::string m_pattern;
   bool m_needCopies{false};
-  const RDKit::ROMol *m_matcher{nullptr};
+  const RDKix::ROMol *m_matcher{nullptr};
 };
 }  // namespace
 

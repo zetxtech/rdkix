@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Niels Maeder and other RDKit contributors
+//  Copyright (C) 2024 Niels Maeder and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -37,7 +37,7 @@ struct AngleConstraintContribsParams {
 };
 
 //! A term to capture all flat bottom angle constraint potentials.
-class RDKIT_FORCEFIELD_EXPORT AngleConstraintContribs
+class RDKIX_FORCEFIELD_EXPORT AngleConstraintContribs
     : public ForceFieldContrib {
  public:
   AngleConstraintContribs() = default;

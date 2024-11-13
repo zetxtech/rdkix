@@ -2,27 +2,27 @@
 //  Copyright (C) 2017 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef RGROUP_UTILS
 #define RGROUP_UTILS
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/ChemTransforms/MolFragmenter.h>
 #include "RGroupDecomp.h"
 
 #include <map>
-namespace RDKit {
+namespace RDKix {
 
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL;
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL_TYPE;
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL_CORE_INDEX;
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string SIDECHAIN_RLABELS;
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string done;
-RDKIT_RGROUPDECOMPOSITION_EXPORT extern const std::string
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL;
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL_TYPE;
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string RLABEL_CORE_INDEX;
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string SIDECHAIN_RLABELS;
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string done;
+RDKIX_RGROUPDECOMPOSITION_EXPORT extern const std::string
     UNLABELED_CORE_ATTACHMENT;
 
 const unsigned int EMPTY_CORE_LABEL = -100000;
@@ -79,19 +79,19 @@ inline bool isAnyAtomWithMultipleNeighborsOrNotUserRLabel(const Atom &atom) {
 
 //! Returns a JSON form
 /// The prefix argument is added to each line in the output
-RDKIT_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
+RDKIX_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
     const RGroupRow &rgr, const std::string &prefix = "");
 //! Returns a JSON form
 /// The prefix argument is added to each line in the output
-RDKIT_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
+RDKIX_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
     const RGroupRows &rgr, const std::string &prefix = "");
 //! Returns a JSON form
 /// The prefix argument is added to each line in the output
-RDKIT_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
+RDKIX_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
     const RGroupColumn &rgr, const std::string &prefix = "");
 //! Returns a JSON form
 /// The prefix argument is added to each line in the output
-RDKIT_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
+RDKIX_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
     const RGroupColumns &rgr, const std::string &prefix = "");
 
 //! Relabel dummy atoms bearing an R-group mapping (as
@@ -104,10 +104,10 @@ RDKIT_RGROUPDECOMPOSITION_EXPORT std::string toJSON(
 /// the priority on input is Atom map number > Isotope > MDLRGroup.
 /// The inputLabels parameter allows to configure which mappings
 /// are taken into consideration.
-RDKIT_RGROUPDECOMPOSITION_EXPORT void relabelMappedDummies(
+RDKIX_RGROUPDECOMPOSITION_EXPORT void relabelMappedDummies(
     ROMol &mol, unsigned int inputLabels = AtomMap | Isotope | MDLRGroup,
     unsigned int outputLabels = MDLRGroup);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

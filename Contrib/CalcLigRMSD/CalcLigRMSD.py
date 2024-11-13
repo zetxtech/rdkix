@@ -2,15 +2,15 @@
 # Copyright (C) 2021 Carmen Esposito
 #
 #   @@ All Rights Reserved @@
-#  This file is part of the RDKit.
+#  This file is part of the RDKix.
 #  The contents are covered by the terms of the BSD license
 #  which is included in the file license.txt, found at the root
-#  of the RDKit source tree.
+#  of the RDKix source tree.
 #
 import numpy as np
 
-from rdkit import Chem
-from rdkit.Chem import rdFMCS
+from rdkix import Chem
+from rdkix.Chem import rdFMCS
 
 
 def CalcLigRMSD(lig1, lig2, rename_lig2=True, output_filename="tmp.pdb"):
@@ -23,8 +23,8 @@ def CalcLigRMSD(lig1, lig2, rename_lig2=True, output_filename="tmp.pdb"):
 
     Parameters
     ----------
-    lig1 : RDKit molecule
-    lig2 : RDKit molecule
+    lig1 : RDKix molecule
+    lig2 : RDKix molecule
     rename_lig2 : bool, optional
         True to rename the atoms of lig2 according to the atom names of lig1
     output_filename : str, optional

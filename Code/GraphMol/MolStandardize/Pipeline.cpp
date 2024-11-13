@@ -2,10 +2,10 @@
 //  Copyright (C) 2023 Novartis Biomedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <cmath>
@@ -23,7 +23,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/Chirality.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
 void PipelineResult::append(PipelineStatus newStatus, const std::string &info) {
@@ -218,8 +218,8 @@ RWMOL_SPTR validate(RWMOL_SPTR mol, PipelineResult &result,
   }
 
   // check the number of atoms and valence status
-  RDKitValidation rdkitValidation(options.allowEmptyMolecules);
-  if (!applyValidation(rdkitValidation, BASIC_VALIDATION_ERROR) &&
+  RDKixValidation rdkixValidation(options.allowEmptyMolecules);
+  if (!applyValidation(rdkixValidation, BASIC_VALIDATION_ERROR) &&
       !options.reportAllFailures) {
     return mol;
   }
@@ -580,4 +580,4 @@ RWMOL_SPTR_PAIR makeParent(RWMOL_SPTR mol, PipelineResult &result,
 }  // namespace Operations
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2007-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2007-2024 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_SPARSEBITVECTS_H__
@@ -32,7 +32,7 @@ typedef IntSet::const_iterator IntSetConstIter;
     vectors but become rather a nightmare if they need to be negated.
 
  */
-class RDKIT_DATASTRUCTS_EXPORT SparseBitVect : public BitVect {
+class RDKIX_DATASTRUCTS_EXPORT SparseBitVect : public BitVect {
  public:
   SparseBitVect() {}
   //! initialize with a particular size;

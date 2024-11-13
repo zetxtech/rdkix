@@ -2,10 +2,10 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "Fragment.h"
 #include <GraphMol/MolStandardize/FragmentCatalog/FragmentCatalogUtils.h>
@@ -17,7 +17,7 @@ typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <RDGeneral/types.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 
 // constructor
@@ -294,4 +294,4 @@ LargestFragmentChooser::Largest::Largest(std::string &smiles,
       Organic(organic) {}
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -43,7 +43,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-namespace RDKit {
+namespace RDKix {
 
 std::string GetClass(const EnumerationStrategyBase *en) {
   if (dynamic_cast<const CartesianProductStrategy *>(en)) {
@@ -109,4 +109,4 @@ boost::shared_ptr<EnumerationStrategyBase> fromPickle(
 #endif
 }
 }  // namespace EnumerationStrategyPickler
-}  // namespace RDKit
+}  // namespace RDKix

@@ -38,8 +38,8 @@
 
 %include <RDGeneral/RDProps.h>
 
-%template(setProp)  RDKit::RDProps::setProp<std::string>;
-%template(setIntProp) RDKit::RDProps::setProp<int>;
-%template(setBoolProp) RDKit::RDProps::setProp<bool>;
-%template(setDoubleProp) RDKit::RDProps::setProp<double>;
+%template(setProp)  RDKix::RDProps::setProp<std::string>;
+%template(setIntProp) RDKix::RDProps::setProp<int>;
+%template(setBoolProp) RDKix::RDProps::setProp<bool>;
+%template(setDoubleProp) RDKix::RDProps::setProp<double>;
 

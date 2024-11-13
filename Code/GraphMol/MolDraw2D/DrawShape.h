@@ -1,26 +1,26 @@
 //
-//  Copyright (C) 2021-2022 David Cosgrove and other RDKit contributors
+//  Copyright (C) 2021-2022 David Cosgrove and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // Original author: David Cosgrove (CozChemIx Limited)
 //
 
 // A set of shapes used in 2D drawing.d  Not part of the public API.
 
-#ifndef RDKIT_DRAWSHAPE_H
-#define RDKIT_DRAWSHAPE_H
+#ifndef RDKIX_DRAWSHAPE_H
+#define RDKIX_DRAWSHAPE_H
 
 #include <vector>
 
 #include <Geometry/point.h>
 #include <GraphMol/MolDraw2D/MolDraw2DHelpers.h>
 
-namespace RDKit {
+namespace RDKix {
 
 class MolDraw2D;
 const DashPattern noDash;
@@ -248,6 +248,6 @@ class DrawShapeArc : public DrawShape {
 };
 
 }  // namespace MolDraw2D_detail
-}  // namespace RDKit
+}  // namespace RDKix
 
-#endif  // RDKIT_DRAWSHAPE_H
+#endif  // RDKIX_DRAWSHAPE_H

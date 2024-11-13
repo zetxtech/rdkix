@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 #include <GraphMol/MolAlign/AlignMolecules.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include "RDDepictor.h"
 #include "DepictUtils.h"
@@ -20,7 +20,7 @@
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE(
     "github #4504: overlapping coordinates with 1,1-disubstituted "
@@ -218,13 +218,13 @@ TEST_CASE("use ring system templates") {
   auto diff =
       mol->getConformer().getAtomPos(10) - mol->getConformer().getAtomPos(11);
   // when templates are not used, bond from 10-11 is very short
-  TEST_ASSERT(RDKit::feq(diff.length(), 0.116, .1));
+  TEST_ASSERT(RDKix::feq(diff.length(), 0.116, .1));
 
   params.useRingTemplates = true;
   RDDepict::compute2DCoords(*mol, params);
   diff =
       mol->getConformer().getAtomPos(10) - mol->getConformer().getAtomPos(11);
-  TEST_ASSERT(RDKit::feq(diff.length(), 1.0, .1))
+  TEST_ASSERT(RDKix::feq(diff.length(), 1.0, .1))
 }
 
 TEST_CASE("find core rings") {
@@ -234,11 +234,11 @@ TEST_CASE("find core rings") {
       {"C1CCC2CC3CCCCC3CC2C1", 1u}, {"C1CC2CCCC3C2C(C1)CCC3", 3u}};
   for (auto example : examples) {
     auto mol = v2::SmilesParse::MolFromSmiles(example.first);
-    RDKit::VECT_INT_VECT arings;
+    RDKix::VECT_INT_VECT arings;
     bool includeDativeBonds = true;
-    RDKit::MolOps::symmetrizeSSSR(*mol, arings, includeDativeBonds);
+    RDKix::MolOps::symmetrizeSSSR(*mol, arings, includeDativeBonds);
     CHECK(arings.size() == 3);
-    RDKit::INT_VECT coreRingsIds;
+    RDKix::INT_VECT coreRingsIds;
     auto coreRings = RDDepict::findCoreRings(arings, coreRingsIds, *mol);
     CHECK(coreRings.size() == example.second);
   }
@@ -381,15 +381,15 @@ TEST_CASE("trans bonds in large rings") {
   auto mol = "C1=C/CCCCCCCCCCCCC/1"_smiles;
   RDDepict::compute2DCoords(*mol);
   // simulate writing to SDF and reading again:
-  RDKit::MolOps::removeStereochemistry(*mol);
+  RDKix::MolOps::removeStereochemistry(*mol);
   mol->getConformer().set3D(true);
-  RDKit::MolOps::assignStereochemistryFrom3D(*mol);
-  CHECK(RDKit::MolToSmiles(*mol) == "C1=C/CCCCCCCCCCCCC/1");
+  RDKix::MolOps::assignStereochemistryFrom3D(*mol);
+  CHECK(RDKix::MolToSmiles(*mol) == "C1=C/CCCCCCCCCCCCC/1");
 }
 
 TEST_CASE("generate aligned coords accept failure") {
   auto template_ref_molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -416,7 +416,7 @@ M  END
   std::unique_ptr<RWMol> template_ref(MolBlockToMol(template_ref_molblock));
   REQUIRE(template_ref);
   auto mol_molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9  9  0  0  0  0  0  0  0  0999 V2000
    -0.8929    1.0942    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -479,7 +479,7 @@ M  END
 
 TEST_CASE("generate aligned coords alignOnly") {
   auto template_ref_molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   6  6  0  0  0  0  0  0  0  0999 V2000
   -13.7477    6.3036    0.0000 R#  0  0  0  0  0  0  0  0  0  0  0  0
@@ -500,7 +500,7 @@ M  END
   std::unique_ptr<RWMol> template_ref(MolBlockToMol(template_ref_molblock));
   REQUIRE(template_ref);
   auto mol_molblock = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  18 22  0  0  0  0  0  0  0  0999 V2000
     4.3922   -1.5699    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -591,7 +591,7 @@ M  END
 
 TEST_CASE("generate aligned coords and wedging") {
   auto wedgedMol = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  29 34  0  0  1  0  0  0  0  0999 V2000
     1.3719    5.1304    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -733,7 +733,7 @@ M  END
 )CTAB";
   SECTION("wedging all within scaffold") {
     auto scaffold = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 14  0  0  1  0  0  0  0  0999 V2000
    -1.6549    2.5755    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -879,7 +879,7 @@ M  END
   }
   SECTION("wedging outside scaffold") {
     auto scaffold = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   9 10  0  0  1  0  0  0  0  0999 V2000
    -0.8816    0.5663    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -1017,7 +1017,7 @@ M  END
   }
   SECTION("wedging no match") {
     auto scaffoldNoMatch = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  13 14  0  0  1  0  0  0  0  0999 V2000
    -1.6549    2.5755    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2079,7 +2079,7 @@ M  END
   SECTION(
       "roundtripping molblock with cis double bond should not change it into crosssed") {
     auto molblockIn = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
   5  4  0  0  0  0  0  0  0  0999 V2000
    -2.4998    2.4772    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2100,7 +2100,7 @@ M  END
     }
     {
       std::unique_ptr<RWMol> mol(MolBlockToMol(molblockIn, false));
-      RDKit::Chirality::reapplyMolBlockWedging(*mol);
+      RDKix::Chirality::reapplyMolBlockWedging(*mol);
       auto molblockOut = MolToMolBlock(*mol);
       CHECK(molblockIn == molblockOut);
     }
@@ -2109,7 +2109,7 @@ M  END
 
 TEST_CASE("test GitHub6952") {
   auto methotrexate = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  33 35  0  0  0  0  0  0  0  0999 V2000
     9.6907   -4.0059    0.0000 N   0  0  0  0  0  0  0  0  0  0  0  0
@@ -2184,7 +2184,7 @@ M  END
 )CTAB"_ctab;
   REQUIRE(methotrexate);
   auto methotrexateAnalog = R"CTAB(
-     RDKit          2D
+     RDKix          2D
 
  33 35  0  0  1  0  0  0  0  0999 V2000
    -4.0189    0.3866    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

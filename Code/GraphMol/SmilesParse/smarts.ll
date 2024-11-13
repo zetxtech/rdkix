@@ -21,14 +21,14 @@ extern "C" int fileno(FILE*);
 #include <cstdio>
 
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 
 #include <string>
 #include <cstring>
 #include "smarts.tab.hpp"
 
-using namespace RDKit;
+using namespace RDKix;
 
 //static PeriodicTable * gl_ptab = PeriodicTable::getTable();
 

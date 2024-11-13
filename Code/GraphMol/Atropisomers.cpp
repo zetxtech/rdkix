@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2021 Tad hurst/CDD  and other RDKit contributors
+//  Copyright (C) 2004-2021 Tad hurst/CDD  and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <list>
@@ -25,7 +25,7 @@
 
 constexpr double REALLY_SMALL_BOND_LEN = 0.0000001;
 
-namespace RDKit {
+namespace RDKix {
 namespace Atropisomers {
 
 bool getAtropisomerAtomsAndBonds(const Bond *bond,
@@ -569,7 +569,7 @@ void detectAtropisomerChirality(ROMol &mol, const Conformer *conf) {
 void getAllAtomIdsForStereoGroup(
     const ROMol &mol, const StereoGroup &group,
     std::vector<unsigned int> &atomIds,
-    const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds) {
   atomIds.clear();
   for (auto &&atom : group.getAtoms()) {
@@ -603,7 +603,7 @@ void getAllAtomIdsForStereoGroup(
 
 bool WedgeBondFromAtropisomerOneBondNoConf(
     Bond *bond, const ROMol &mol,
-    std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds) {
   PRECONDITION(bond, "no bond");
 
@@ -750,8 +750,8 @@ bool WedgeBondFromAtropisomerOneBondNoConf(
 
     bestBond->setBondDir(bestBondDir);
 
-    auto newWedgeInfo = std::unique_ptr<RDKit::Chirality::WedgeInfoBase>(
-        new RDKit::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
+    auto newWedgeInfo = std::unique_ptr<RDKix::Chirality::WedgeInfoBase>(
+        new RDKix::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
                                                    bestBondDir));
     wedgeBonds[bestBond->getIdx()] = std::move(newWedgeInfo);
   } else {
@@ -766,7 +766,7 @@ bool WedgeBondFromAtropisomerOneBondNoConf(
 
 bool WedgeBondFromAtropisomerOneBond2d(
     Bond *bond, const ROMol &mol, const Conformer *conf,
-    std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds) {
   PRECONDITION(bond, "no bond");
 
@@ -970,8 +970,8 @@ bool WedgeBondFromAtropisomerOneBond2d(
     }
     bestBond->setBondDir(bestBondDir);
 
-    auto newWedgeInfo = std::unique_ptr<RDKit::Chirality::WedgeInfoBase>(
-        new RDKit::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
+    auto newWedgeInfo = std::unique_ptr<RDKix::Chirality::WedgeInfoBase>(
+        new RDKix::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
                                                    bestBondDir));
     wedgeBonds[bestBond->getIdx()] = std::move(newWedgeInfo);
 
@@ -987,7 +987,7 @@ bool WedgeBondFromAtropisomerOneBond2d(
 
 bool WedgeBondFromAtropisomerOneBond3d(
     Bond *bond, const ROMol &mol, const Conformer *conf,
-    std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds) {
   PRECONDITION(bond, "bad bond");
 
@@ -1147,8 +1147,8 @@ bool WedgeBondFromAtropisomerOneBond3d(
       bestBond->setBeginAtom(atomAndBondVecs[bestBondEnd].first);
     }
     bestBond->setBondDir(bestBondDir);
-    auto newWedgeInfo = std::unique_ptr<RDKit::Chirality::WedgeInfoBase>(
-        new RDKit::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
+    auto newWedgeInfo = std::unique_ptr<RDKix::Chirality::WedgeInfoBase>(
+        new RDKix::Chirality::WedgeInfoAtropisomer(bond->getIdx(),
                                                    bestBondDir));
 
     wedgeBonds[bestBond->getIdx()] = std::move(newWedgeInfo);
@@ -1164,14 +1164,14 @@ bool WedgeBondFromAtropisomerOneBond3d(
 
 void wedgeBondsFromAtropisomers(
     const ROMol &mol, const Conformer *conf,
-    std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds) {
   PRECONDITION(conf == nullptr || &(conf->getOwningMol()) == &mol,
                "conformer does not belong to molecule");
 
   // WedgeBondFromAtropisomerOneBond 2d/3d requires ring bond counts
   if (!mol.getRingInfo()->isSssrOrBetter()) {
-    RDKit::MolOps::findSSSR(mol);
+    RDKix::MolOps::findSSSR(mol);
   }
 
   for (auto bond : mol.bonds()) {
@@ -1211,4 +1211,4 @@ bool doesMolHaveAtropisomers(const ROMol &mol) {
   return false;
 }
 }  // namespace Atropisomers
-}  // namespace RDKit
+}  // namespace RDKix

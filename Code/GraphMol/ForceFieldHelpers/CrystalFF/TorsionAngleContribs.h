@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Niels Maeder and other RDKit contributors
+//  Copyright (C) 2024 Niels Maeder and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -28,7 +28,7 @@ namespace CrystalFF {
 
 //! A term to capture all torsion constraint potentials.
 //!
-struct RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribsParams {
+struct RDKIX_FORCEFIELDHELPERS_EXPORT TorsionAngleContribsParams {
   unsigned int idx1{0};
   unsigned int idx2{0};
   unsigned int idx3{0};
@@ -47,7 +47,7 @@ struct RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribsParams {
         signs(signs) {}
 };
 
-class RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribs
+class RDKIX_FORCEFIELDHELPERS_EXPORT TorsionAngleContribs
     : public ForceFieldContrib {
  public:
   TorsionAngleContribs() = default;
@@ -105,7 +105,7 @@ class RDKIT_FORCEFIELDHELPERS_EXPORT TorsionAngleContribs
  \param signs          Phases of the cosine fits
  \param cosPhi         cosine of the torsion angle phi
 */
-RDKIT_FORCEFIELDHELPERS_EXPORT double calcTorsionEnergy(
+RDKIX_FORCEFIELDHELPERS_EXPORT double calcTorsionEnergy(
     const std::vector<double> &forceConstants, const std::vector<int> &signs,
     const double cosPhi);
 

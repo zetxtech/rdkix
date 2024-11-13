@@ -1,6 +1,6 @@
 import unittest
 
-from rdkit import Chem
+from rdkix import Chem
 
 class TestCase(unittest.TestCase):
 

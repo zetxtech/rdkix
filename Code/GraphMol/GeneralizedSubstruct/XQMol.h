@@ -1,11 +1,11 @@
 //
-//  Copyright (c) 2023, Greg Landrum and other RDKit contributors
+//  Copyright (c) 2023, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <RDGeneral/export.h>
@@ -20,15 +20,15 @@
 #include <boost/core/noncopyable.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/TautomerQuery/TautomerQuery.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace GeneralizedSubstruct {
-struct RDKIT_GENERALIZEDSUBSTRUCT_EXPORT ExtendedQueryMol {
+struct RDKIX_GENERALIZEDSUBSTRUCT_EXPORT ExtendedQueryMol {
   enum ExtendedQueryMolTypes : unsigned char {
     XQM_MOL = 1,
     XQM_MOLBUNDLE = 2,
@@ -96,18 +96,18 @@ struct RDKIT_GENERALIZEDSUBSTRUCT_EXPORT ExtendedQueryMol {
     \return The new ExtendedQueryMol
 
 */
-RDKIT_GENERALIZEDSUBSTRUCT_EXPORT ExtendedQueryMol createExtendedQueryMol(
+RDKIX_GENERALIZEDSUBSTRUCT_EXPORT ExtendedQueryMol createExtendedQueryMol(
     const RWMol &mol, bool doEnumeration = true, bool doTautomers = true,
     bool adjustQueryProperties = false,
     MolOps::AdjustQueryParameters params = {});
 
 //! does a substructure search with an ExtendedQueryMol
-RDKIT_GENERALIZEDSUBSTRUCT_EXPORT std::vector<MatchVectType> SubstructMatch(
+RDKIX_GENERALIZEDSUBSTRUCT_EXPORT std::vector<MatchVectType> SubstructMatch(
     const ROMol &mol, const ExtendedQueryMol &query,
     const SubstructMatchParameters &params = SubstructMatchParameters());
 
 //! Fingerprints a target molecule
-RDKIT_GENERALIZEDSUBSTRUCT_EXPORT std::unique_ptr<ExplicitBitVect>
+RDKIX_GENERALIZEDSUBSTRUCT_EXPORT std::unique_ptr<ExplicitBitVect>
 patternFingerprintTargetMol(const ROMol &mol, unsigned int fpSize = 2048U);
 
 //! checks if a molecule has a match to an ExtendedQueryMol
@@ -119,5 +119,5 @@ inline bool hasSubstructMatch(
   return !SubstructMatch(mol, query, lparams).empty();
 }
 }  // namespace GeneralizedSubstruct
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

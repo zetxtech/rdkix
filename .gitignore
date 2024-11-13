@@ -7,8 +7,8 @@
 /Code/JavaWrappers/csharp_wrapper/swig_csharp/*.cxx
 /Code/JavaWrappers/csharp_wrapper/swig_csharp/bin
 /Code/JavaWrappers/csharp_wrapper/swig_csharp/obj
-/Code/JavaWrappers/csharp_wrapper/RdkitTests/bin
-/Code/JavaWrappers/csharp_wrapper/RdkitTests/obj
+/Code/JavaWrappers/csharp_wrapper/RdkixTests/bin
+/Code/JavaWrappers/csharp_wrapper/RdkixTests/obj
 /Data/Fonts/ComicNeue-*
 /Data/Fonts/OFL.txt
 /vcpkg/*
@@ -75,8 +75,8 @@ __pycache__/
 /External/catch/catch/
 /External/rapidjson*/
 
-/rdkit/RDPaths.py
-/rdkit/Chem/inchi.py
+/rdkix/RDPaths.py
+/rdkix/Chem/inchi.py
 
 #- Files created during tests
 /Code/ForceField/MMFF/test_data/MMFF94_dative_min.sdf
@@ -130,20 +130,20 @@ __pycache__/
 
 /Projects/DbCLI/testData/bzr/
 
-/rdkit/sping/tests/testallps.ps
+/rdkix/sping/tests/testallps.ps
 
-/rdkit/ML/Data/test_data/testgeneral.dat.pkl
-/rdkit/ML/Data/test_data/testquant.qdat.pkl
+/rdkix/ML/Data/test_data/testgeneral.dat.pkl
+/rdkix/ML/Data/test_data/testquant.qdat.pkl
 .DS_Store
 
-/rdkit/fragmentshetero_atom_mutations_fuzzing.csv
-/rdkit/fragmentsnot_changed_during_fuzzing.csv
-/rdkit/hetero_atom_mutations.csv
-/rdkit/not_changed.csv
-/rdkit/similarityMap1_out.svg
-/rdkit/similarityMap1_out2.svg
+/rdkix/fragmentshetero_atom_mutations_fuzzing.csv
+/rdkix/fragmentsnot_changed_during_fuzzing.csv
+/rdkix/hetero_atom_mutations.csv
+/rdkix/not_changed.csv
+/rdkix/similarityMap1_out.svg
+/rdkix/similarityMap1_out2.svg
 
 # JS distribution or temp files
 Code/MinimalLib/dist
-MAIN_RDKIT_README*
+MAIN_RDKIX_README*
 node_modules

@@ -1,5 +1,5 @@
 add_custom_target(coordgen_support ALL)
-include(RDKitUtils)
+include(RDKixUtils)
 
 if(RDK_BUILD_MAEPARSER_SUPPORT OR RDK_BUILD_COORDGEN_SUPPORT)
   if((NOT MSVC) OR RDK_INSTALL_DLLS_MSVC)
@@ -36,8 +36,8 @@ if(RDK_BUILD_MAEPARSER_SUPPORT OR RDK_BUILD_COORDGEN_SUPPORT)
       set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -Wno-deprecated-copy")
      endif()
 
-    rdkit_library(maeparser ${MAESOURCES} SHARED)
-    install(TARGETS maeparser DESTINATION ${RDKit_LibDir})
+    rdkix_library(maeparser ${MAESOURCES} SHARED)
+    install(TARGETS maeparser DESTINATION ${RDKix_LibDir})
     set(maeparser_LIBRARIES maeparser)
 
 
@@ -84,14 +84,14 @@ if(RDK_BUILD_COORDGEN_SUPPORT)
     set(coordgen_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}
         CACHE STRING "CoordGen Include File" FORCE)
     file(GLOB CGSOURCES "${COORDGEN_DIR}/*.cpp")
-    rdkit_library(coordgen ${CGSOURCES} SHARED)
+    rdkix_library(coordgen ${CGSOURCES} SHARED)
 if(CMAKE_C_COMPILER_ID STREQUAL "Clang")
     target_compile_options(coordgen PUBLIC -Wno-unused-but-set-variable)
 if(RDK_INSTALL_STATIC_LIBS)
     target_compile_options(coordgen_static PUBLIC -Wno-unused-but-set-variable)
 endif()
 endif()
-    install(TARGETS coordgen DESTINATION ${RDKit_LibDir})
+    install(TARGETS coordgen DESTINATION ${RDKix_LibDir})
     set(RDK_COORDGEN_LIBS coordgen CACHE STRING "the external libraries" FORCE)
 
   elseif(coordgen_FOUND)
@@ -102,18 +102,18 @@ endif()
 
   include_directories(${coordgen_INCLUDE_DIRS})
 
-  rdkit_headers(CoordGen.h DEST GraphMol)
+  rdkix_headers(CoordGen.h DEST GraphMol)
 
   if(RDK_BUILD_PYTHON_WRAPPERS)
     add_subdirectory(Wrap)
   endif(RDK_BUILD_PYTHON_WRAPPERS)
 
-  rdkit_test(testCoordGen test.cpp
+  rdkix_test(testCoordGen test.cpp
     LINK_LIBRARIES
     "${RDK_COORDGEN_LIBS}" Depictor ChemTransforms
     FileParsers SmilesParse SubstructMatch GraphMol
     RDGeneral DataStructs RDGeneral RDGeometryLib
-    ${RDKit_THREAD_LIBS})
+    ${RDKix_THREAD_LIBS})
 
 else (RDK_BUILD_COORDGEN_SUPPORT)
 

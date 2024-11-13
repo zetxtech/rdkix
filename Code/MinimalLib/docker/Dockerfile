@@ -6,29 +6,29 @@
 #
 # 2. build the JS and WASM libraries
 #    (the build-arg arguments are all optional)
-# docker build -t rdkit-minimallib --network=host \
-#  --build-arg "RDKIT_GIT_URL=https://github.com/myfork/rdkit.git" \
-#  --build-arg "RDKIT_BRANCH=mybranch" .
+# docker build -t rdkix-minimallib --network=host \
+#  --build-arg "RDKIX_GIT_URL=https://github.com/myfork/rdkix.git" \
+#  --build-arg "RDKIX_BRANCH=mybranch" .
 #
 # 3. create a temporary container and copy built libraries
 #    from the container to your local filesystem, then destroy
 #    the temporary container
-# docker create --name=rdkit-minimallib-container rdkit-minimallib:latest --entrypoint /
-# docker cp rdkit-minimallib-container:/RDKit_minimal.js ../demo
-# docker cp rdkit-minimallib-container:/RDKit_minimal.wasm ../demo
-# docker rm rdkit-minimallib-container
+# docker create --name=rdkix-minimallib-container rdkix-minimallib:latest --entrypoint /
+# docker cp rdkix-minimallib-container:/RDKix_minimal.js ../demo
+# docker cp rdkix-minimallib-container:/RDKix_minimal.wasm ../demo
+# docker rm rdkix-minimallib-container
 
 
-ARG RDKIT_GIT_URL="https://github.com/rdkit/rdkit.git"
-ARG RDKIT_BRANCH="master"
+ARG RDKIX_GIT_URL="https://github.com/rdkit/rdkit.git"
+ARG RDKIX_BRANCH="master"
 ARG EMSDK_VERSION="latest"
 ARG BOOST_MAJOR_VERSION="1"
 ARG BOOST_MINOR_VERSION="84"
 ARG BOOST_PATCH_VERSION="0"
 
 FROM debian:bookworm as build-stage
-ARG RDKIT_GIT_URL
-ARG RDKIT_BRANCH
+ARG RDKIX_GIT_URL
+ARG RDKIX_BRANCH
 ARG EMSDK_VERSION
 ARG BOOST_MAJOR_VERSION
 ARG BOOST_MINOR_VERSION
@@ -70,11 +70,11 @@ RUN ./emsdk install ${EMSDK_VERSION} && \
 
 RUN mkdir /src
 WORKDIR /src
-ENV RDBASE=/src/rdkit
-RUN git clone ${RDKIT_GIT_URL}
+ENV RDBASE=/src/rdkix
+RUN git clone ${RDKIX_GIT_URL}
 WORKDIR $RDBASE
 RUN git fetch --all --tags && \
-  git checkout ${RDKIT_BRANCH}
+  git checkout ${RDKIX_BRANCH}
 
 RUN mkdir build
 WORKDIR $RDBASE/build
@@ -91,29 +91,29 @@ RUN emcmake cmake -DBoost_INCLUDE_DIR=/opt/boost/include -DRDK_BUILD_FREETYPE_SU
   -DFREETYPE_LIBRARY=/opt/emsdk/upstream/emscripten/cache/sysroot/lib/wasm32-emscripten/libfreetype.a \
   -DCMAKE_CXX_FLAGS="-Wno-enum-constexpr-conversion -s DISABLE_EXCEPTION_CATCHING=0" \
   -DCMAKE_C_FLAGS="-Wno-enum-constexpr-conversion -DCOMPILE_ANSI_ONLY" \
-  -DCMAKE_EXE_LINKER_FLAGS="-s MODULARIZE=1 -s EXPORT_NAME=\"'initRDKitModule'\"" ..
+  -DCMAKE_EXE_LINKER_FLAGS="-s MODULARIZE=1 -s EXPORT_NAME=\"'initRDKixModule'\"" ..
 
 # "patch" to make the InChI code work with emscripten:
-RUN cp /src/rdkit/External/INCHI-API/src/INCHI_BASE/src/util.c /src/rdkit/External/INCHI-API/src/INCHI_BASE/src/util.c.bak && \
-  sed 's/&& defined(__APPLE__)//' /src/rdkit/External/INCHI-API/src/INCHI_BASE/src/util.c.bak > /src/rdkit/External/INCHI-API/src/INCHI_BASE/src/util.c
+RUN cp /src/rdkix/External/INCHI-API/src/INCHI_BASE/src/util.c /src/rdkix/External/INCHI-API/src/INCHI_BASE/src/util.c.bak && \
+  sed 's/&& defined(__APPLE__)//' /src/rdkix/External/INCHI-API/src/INCHI_BASE/src/util.c.bak > /src/rdkix/External/INCHI-API/src/INCHI_BASE/src/util.c
 
 # comment out a line which causes a compilation error on some platforms
 # (based on the change which has already been applied to the RapidJSON master branch, see
 # https://github.com/Tencent/rapidjson/blob/ab1842a2dae061284c0a62dca1cc6d5e7e37e346/include/rapidjson/document.h#L414)
 RUN sed -i 's|^\( *\)\(GenericStringRef\& operator=(const GenericStringRef\& rhs) { s = rhs.s; length = rhs.length; } *\)$|\1//\2|' \
-  /src/rdkit/External/rapidjson-1.1.0/include/rapidjson/document.h
+  /src/rdkix/External/rapidjson-1.1.0/include/rapidjson/document.h
 
 # build and "install"
-RUN make -j2 RDKit_minimal && \
-  cp Code/MinimalLib/RDKit_minimal.* ../Code/MinimalLib/demo/
+RUN make -j2 RDKix_minimal && \
+  cp Code/MinimalLib/RDKix_minimal.* ../Code/MinimalLib/demo/
 
 # run the tests
-WORKDIR /src/rdkit/Code/MinimalLib/tests
+WORKDIR /src/rdkix/Code/MinimalLib/tests
 RUN /opt/emsdk/node/*/bin/node tests.js
 
-# Copy js and wasm rdkit files to use in browser
+# Copy js and wasm rdkix files to use in browser
 # This feature requires the BuildKit backend
 # https://docs.docker.com/engine/reference/commandline/build/#custom-build-outputs
 FROM scratch as export-stage
-COPY --from=build-stage /src/rdkit/Code/MinimalLib/demo /
-COPY --from=build-stage /src/rdkit/Code/MinimalLib/docs /
+COPY --from=build-stage /src/rdkix/Code/MinimalLib/demo /
+COPY --from=build-stage /src/rdkix/Code/MinimalLib/docs /

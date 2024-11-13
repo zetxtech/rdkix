@@ -1,5 +1,5 @@
 #  Copyright (C) 2017-2021  Novartis Institute of BioMedical Research
-#   and other RDKit contributors
+#   and other RDKix contributors
 #
 #         All Rights Reserved
 #
@@ -40,16 +40,16 @@ import os
 import sys
 import unittest
 
-from rdkit import RDConfig, RDLogger, rdBase
-from rdkit.RDLogger import logger
+from rdkix import RDConfig, RDLogger, rdBase
+from rdkix.RDLogger import logger
 
 logger = logger()
 import pickle
 import tempfile
 import time
 
-from rdkit import Chem
-from rdkit.Chem import rdSubstructLibrary, rdGeneralizedSubstruct, rdTautomerQuery
+from rdkix import Chem
+from rdkix.Chem import rdSubstructLibrary, rdGeneralizedSubstruct, rdTautomerQuery
 
 
 def load_tests(loader, tests, ignore):
@@ -668,7 +668,7 @@ class TestCase(unittest.TestCase):
     # this test is really verbose, so disable the actual output without
     # disabling that logging happens.
     rdBase.LogToPythonLogger()
-    pylog = logging.getLogger("rdkit")
+    pylog = logging.getLogger("rdkix")
     pylog.setLevel(logging.CRITICAL)
     for holder in [
         rdSubstructLibrary.CachedSmilesMolHolder(),

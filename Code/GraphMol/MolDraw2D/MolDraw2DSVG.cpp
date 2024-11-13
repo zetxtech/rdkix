@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2015-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2015-2021 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 // derived from Dave Cosgrove's MolDraw2D
 //
@@ -24,7 +24,7 @@
 #include <boost/algorithm/string.hpp>
 #include <sstream>
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 template <class t_obj>
 void outputTagClasses(const t_obj *obj, std::ostream &d_os,
@@ -123,7 +123,7 @@ void MolDraw2DSVG::initDrawing() {
   d_os << "<?xml version='1.0' encoding='iso-8859-1'?>\n";
   d_os << "<svg version='1.1' baseProfile='full'\n      \
         xmlns='http://www.w3.org/2000/svg'\n              \
-        xmlns:rdkit='http://www.rdkit.org/xml'\n              \
+        xmlns:rdkix='http://www.rdkit.org/xml'\n              \
         xmlns:xlink='http://www.w3.org/1999/xlink'\n          \
         xml:space='preserve'\n";
   d_os
@@ -332,18 +332,18 @@ void MolDraw2DSVG::clearDrawing() {
 }
 
 // ****************************************************************************
-static const char *RDKIT_SVG_VERSION = "0.9";
+static const char *RDKIX_SVG_VERSION = "0.9";
 void MolDraw2DSVG::addMoleculeMetadata(const ROMol &mol, int confId) const {
   PRECONDITION(d_os, "no output stream");
   d_os << "<metadata>"
        << "\n";
-  d_os << "<rdkit:mol"
-       << " xmlns:rdkit = \"http://www.rdkit.org/xml\""
-       << " version=\"" << RDKIT_SVG_VERSION << "\""
+  d_os << "<rdkix:mol"
+       << " xmlns:rdkix = \"http://www.rdkit.org/xml\""
+       << " version=\"" << RDKIX_SVG_VERSION << "\""
        << ">"
        << "\n";
   for (const auto atom : mol.atoms()) {
-    d_os << "<rdkit:atom idx=\"" << atom->getIdx() + 1 << "\"";
+    d_os << "<rdkix:atom idx=\"" << atom->getIdx() + 1 << "\"";
     bool doKekule = false, allHsExplicit = true, isomericSmiles = true;
     d_os << " atom-smiles=\""
          << SmilesWrite::GetAtomSmiles(atom, doKekule, nullptr, allHsExplicit,
@@ -372,7 +372,7 @@ void MolDraw2DSVG::addMoleculeMetadata(const ROMol &mol, int confId) const {
          << "\n";
   }
   for (const auto bond : mol.bonds()) {
-    d_os << "<rdkit:bond idx=\"" << bond->getIdx() + 1 << "\"";
+    d_os << "<rdkix:bond idx=\"" << bond->getIdx() + 1 << "\"";
     d_os << " begin-atom-idx=\"" << bond->getBeginAtomIdx() + 1 << "\"";
     d_os << " end-atom-idx=\"" << bond->getEndAtomIdx() + 1 << "\"";
     bool doKekule = false, allBondsExplicit = true;
@@ -385,7 +385,7 @@ void MolDraw2DSVG::addMoleculeMetadata(const ROMol &mol, int confId) const {
     d_os << " />"
          << "\n";
   }
-  d_os << "</rdkit:mol></metadata>"
+  d_os << "</rdkix:mol></metadata>"
        << "\n";
 }
 
@@ -515,4 +515,4 @@ void MolDraw2DSVG::outputClasses() {
   d_os << "' ";
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

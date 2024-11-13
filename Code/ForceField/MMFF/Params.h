@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2024 Paolo Tosco and other RDKit contributors
+//  Copyright (C) 2004-2024 Paolo Tosco and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 #include <RDGeneral/export.h>
@@ -29,9 +29,9 @@
 // binary searches are slightly faster than std::map;
 // however when I moved to binary searches I had already
 // written the code for std::map, so the two methods
-// can be toggled defining RDKIT_MMFF_PARAMS_USE_STD_MAP
+// can be toggled defining RDKIX_MMFF_PARAMS_USE_STD_MAP
 
-// #define RDKIT_MMFF_PARAMS_USE_STD_MAP 1
+// #define RDKIX_MMFF_PARAMS_USE_STD_MAP 1
 
 namespace ForceFields {
 namespace MMFF {
@@ -45,13 +45,13 @@ inline bool isDoubleZero(const double x) {
 inline void clipToOne(double &x) { x = std::clamp(x, -1.0, 1.0); }
 
 //! class to store MMFF atom type equivalence levels
-class RDKIT_FORCEFIELD_EXPORT MMFFDef {
+class RDKIX_FORCEFIELD_EXPORT MMFFDef {
  public:
   std::uint8_t eqLevel[4];
 };
 
 //! class to store MMFF Properties
-class RDKIT_FORCEFIELD_EXPORT MMFFProp {
+class RDKIX_FORCEFIELD_EXPORT MMFFProp {
  public:
   std::uint8_t atno;
   std::uint8_t crd;
@@ -64,7 +64,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFProp {
 };
 
 //! class to store MMFF Partial Bond Charge Increments
-class RDKIT_FORCEFIELD_EXPORT MMFFPBCI {
+class RDKIX_FORCEFIELD_EXPORT MMFFPBCI {
  public:
   double pbci;
   double fcadj;
@@ -72,13 +72,13 @@ class RDKIT_FORCEFIELD_EXPORT MMFFPBCI {
 
 //! class to store MMFF bond-charge-increment parameters used to
 //! construct MMFF partial atomic charges
-class RDKIT_FORCEFIELD_EXPORT MMFFChg {
+class RDKIX_FORCEFIELD_EXPORT MMFFChg {
  public:
   double bci;
 };
 
 //! class to store MMFF parameters for bond stretching
-class RDKIT_FORCEFIELD_EXPORT MMFFBond {
+class RDKIX_FORCEFIELD_EXPORT MMFFBond {
  public:
   double kb;
   double r0;
@@ -86,7 +86,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBond {
 
 //! class to store parameters for Herschbach-Laurie's version
 //! of Badger's rule
-class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurie {
+class RDKIX_FORCEFIELD_EXPORT MMFFHerschbachLaurie {
  public:
   double a_ij;
   double d_ij;
@@ -95,34 +95,34 @@ class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurie {
 
 //! class to store covalent radius and Pauling electronegativity
 //! values for MMFF bond stretching empirical rule
-class RDKIT_FORCEFIELD_EXPORT MMFFCovRadPauEle {
+class RDKIX_FORCEFIELD_EXPORT MMFFCovRadPauEle {
  public:
   double r0;
   double chi;
 };
 
 //! class to store MMFF parameters for angle bending
-class RDKIT_FORCEFIELD_EXPORT MMFFAngle {
+class RDKIX_FORCEFIELD_EXPORT MMFFAngle {
  public:
   double ka;
   double theta0;
 };
 
 //! class to store MMFF parameters for stretch-bending
-class RDKIT_FORCEFIELD_EXPORT MMFFStbn {
+class RDKIX_FORCEFIELD_EXPORT MMFFStbn {
  public:
   double kbaIJK;
   double kbaKJI;
 };
 
 //! class to store MMFF parameters for out-of-plane bending
-class RDKIT_FORCEFIELD_EXPORT MMFFOop {
+class RDKIX_FORCEFIELD_EXPORT MMFFOop {
  public:
   double koop;
 };
 
 //! class to store MMFF parameters for torsions
-class RDKIT_FORCEFIELD_EXPORT MMFFTor {
+class RDKIX_FORCEFIELD_EXPORT MMFFTor {
  public:
   double V1;
   double V2;
@@ -130,7 +130,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFTor {
 };
 
 //! class to store MMFF parameters for non-bonded Van der Waals
-class RDKIT_FORCEFIELD_EXPORT MMFFVdW {
+class RDKIX_FORCEFIELD_EXPORT MMFFVdW {
  public:
   double alpha_i;
   double N_i;
@@ -140,7 +140,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFVdW {
   std::uint8_t DA;
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFVdWRijstarEps {
+class RDKIX_FORCEFIELD_EXPORT MMFFVdWRijstarEps {
  public:
   double R_ij_starUnscaled;
   double epsilonUnscaled;
@@ -148,7 +148,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFVdWRijstarEps {
   double epsilon;
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFAromCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFAromCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -163,14 +163,14 @@ class RDKIT_FORCEFIELD_EXPORT MMFFAromCollection {
   std::vector<std::uint8_t> d_params;  //!< the aromatic type vector
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFDefCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFDefCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
     \return a pointer to the MMFFDef object, NULL on failure.
   */
   const MMFFDef *operator()(const unsigned int atomType) const {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res = d_params.find(atomType);
     return ((res != d_params.end()) ? &((*res).second) : NULL);
 #else
@@ -182,21 +182,21 @@ class RDKIT_FORCEFIELD_EXPORT MMFFDefCollection {
 
   MMFFDefCollection(std::string mmffDef = "");
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, MMFFDef> d_params;  //!< the parameter map
 #else
   std::vector<MMFFDef> d_params;  //!< the parameter vector
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFPropCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFPropCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
     \return a pointer to the MMFFProp object, NULL on failure.
   */
   const MMFFProp *operator()(const unsigned int atomType) const {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res = d_params.find(atomType);
     return ((res != d_params.end()) ? &((*res).second) : NULL);
 #else
@@ -209,7 +209,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFPropCollection {
   }
 
   MMFFPropCollection(std::string mmffProp = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, MMFFProp> d_params;  //!< the parameter map
 #else
   std::vector<MMFFProp> d_params;
@@ -217,14 +217,14 @@ class RDKIT_FORCEFIELD_EXPORT MMFFPropCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFPBCICollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFPBCICollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
     \return a pointer to the MMFFPBCI object, NULL on failure.
   */
   const MMFFPBCI *operator()(const unsigned int atomType) const {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res = d_params.find(atomType);
     return ((res != d_params.end()) ? &((*res).second) : NULL);
 #else
@@ -236,14 +236,14 @@ class RDKIT_FORCEFIELD_EXPORT MMFFPBCICollection {
 
   MMFFPBCICollection(std::string mmffPBCI = "");
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, MMFFPBCI> d_params;  //!< the parameter map
 #else
   std::vector<MMFFPBCI> d_params;  //!< the parameter vector
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFChgCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFChgCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -261,7 +261,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFChgCollection {
       canJAtomType = iAtomType;
       sign = 1;
     }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res1 = d_params[bondType].find(canIAtomType);
     if (res1 != d_params[bondType].end()) {
       const auto res2 = ((*res1).second).find(canJAtomType);
@@ -295,7 +295,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFChgCollection {
   MMFFChgCollection(std::string mmffChg = "");
 
 //!< the parameter 3D-map
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int, std::map<const unsigned int, MMFFChg>>>
       d_params;  //!< the parameter 3D-map
@@ -307,7 +307,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFChgCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFBondCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFBondCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -323,7 +323,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBondCollection {
       canAtomType = nbrAtomType;
       canNbrAtomType = atomType;
     }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res1 = d_params.find(bondType);
     std::map<const unsigned int,
              std::map<const unsigned int, MMFFBond>>::const_iterator res2;
@@ -361,7 +361,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBondCollection {
   }
 
   MMFFBondCollection(std::string mmffBond = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int, std::map<const unsigned int, MMFFBond>>>
       d_params;  //!< the parameter 3D-map
@@ -373,7 +373,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBondCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFBndkCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFBndkCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -388,7 +388,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBndkCollection {
       canAtomicNum = nbrAtomicNum;
       canNbrAtomicNum = atomicNum;
     }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res1 = d_params.find(canAtomicNum);
     std::map<const unsigned int, MMFFBond>::const_iterator res2;
     if (res1 != d_params.end()) {
@@ -415,7 +415,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBndkCollection {
   }
 
   MMFFBndkCollection(std::string mmffBndk = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, std::map<const unsigned int, MMFFBond>>
       d_params;  //!< the parameter 2D-map
 #else
@@ -425,7 +425,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFBndkCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurieCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFHerschbachLaurieCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -439,7 +439,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurieCollection {
       canIRow = jRow;
       canJRow = iRow;
     }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res1 = d_params.find(canIRow);
     std::map<const unsigned int, MMFFHerschbachLaurie>::const_iterator res2;
     if (res1 != d_params.end()) {
@@ -465,7 +465,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurieCollection {
 
   MMFFHerschbachLaurieCollection(std::string mmffHerschbachLaurie = "");
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int, MMFFHerschbachLaurie>>
       d_params;  //!< the parameter 2D-map
@@ -476,14 +476,14 @@ class RDKIT_FORCEFIELD_EXPORT MMFFHerschbachLaurieCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFCovRadPauEleCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFCovRadPauEleCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
     \return a pointer to the MMFFCovRadPauEle object, NULL on failure.
   */
   const MMFFCovRadPauEle *operator()(const unsigned int atomicNum) const {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res = d_params.find(atomicNum);
     return ((res != d_params.end()) ? &((*res).second) : NULL);
 #else
@@ -496,7 +496,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFCovRadPauEleCollection {
   }
 
   MMFFCovRadPauEleCollection(std::string mmffCovRadPauEle = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, MMFFCovRadPauEle>
       d_params;  //!< the parameter map
 #else
@@ -505,7 +505,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFCovRadPauEleCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFAngleCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFAngleCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -523,7 +523,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFAngleCollection {
 // in the level combinations 1-1-1,2-2-2,3-2-3,4-2-4, and
 // 5-2-5 is used. (MMFF.I, note 68, page 519)
 // We skip 1-1-1 since Level 2 === Level 1
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     while ((iter < 4) && (!mmffAngleParams)) {
       unsigned int canIAtomType = (*mmffDef)(iAtomType)->eqLevel[iter];
       unsigned int canKAtomType = (*mmffDef)(kAtomType)->eqLevel[iter];
@@ -584,7 +584,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFAngleCollection {
   }
 
   MMFFAngleCollection(std::string mmffAngle = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int,
                     std::map<const unsigned int,
@@ -599,7 +599,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFAngleCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFStbnCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFStbnCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -621,7 +621,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFStbnCollection {
     } else if (iAtomType == kAtomType) {
       swap = (bondType1 < bondType2);
     }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res1 = d_params.find(canStretchBendType);
     if (res1 != d_params.end()) {
       const auto res2 = ((*res1).second).find(canIAtomType);
@@ -666,7 +666,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFStbnCollection {
   }
 
   MMFFStbnCollection(std::string mmffStbn = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int,
                     std::map<const unsigned int,
@@ -682,7 +682,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFStbnCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFDfsbCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFDfsbCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -721,7 +721,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFDfsbCollection {
       d_params;  //!< the parameter 3D-map
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFOopCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFOopCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -739,7 +739,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFOopCollection {
 // atom [cf. eq. (511, the five-stage protocol 1-1-1; 1, 2-2-2; 2,
 // 3-2-3;3, 4-2-4;4, 5-2-5;5 is used. The final stage provides
 // wild-card defaults for all except the central atom.
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     while ((iter < 4) && (!mmffOopParams)) {
       canIKLAtomType[0] = (*mmffDef)(iAtomType)->eqLevel[iter];
       unsigned int canJAtomType = jAtomType;
@@ -799,7 +799,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFOopCollection {
 
   MMFFOopCollection(const bool isMMFFs, std::string mmffOop = "");
 
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int,
            std::map<const unsigned int,
                     std::map<const unsigned int,
@@ -814,7 +814,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFOopCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFTorCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFTorCollection {
  public:
   //! Looks up the parameters for a particular key and returns them.
   /*!
@@ -835,7 +835,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFTorCollection {
 // process based on level combinations 1-1-1-1, 2-2-2-2,
 // 3-2-2-5, 5-2-2-3, and 5-2-2-5 is used, where stages 3
 // and 4 correspond to "half-default" or "half-wild-card" entries.
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
 #else
 #endif
 
@@ -877,7 +877,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFTorCollection {
         canLAtomType = canIAtomType;
         canIAtomType = temp;
       }
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
       const auto res1 = d_params.find(canTorType);
       if (res1 != d_params.end()) {
         const auto res2 = ((*res1).second).find(canIAtomType);
@@ -938,7 +938,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFTorCollection {
   }
 
   MMFFTorCollection(const bool isMMFFs, std::string mmffTor = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<
       const unsigned int,
       std::map<
@@ -958,7 +958,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFTorCollection {
 #endif
 };
 
-class RDKIT_FORCEFIELD_EXPORT MMFFVdWCollection {
+class RDKIX_FORCEFIELD_EXPORT MMFFVdWCollection {
  public:
   //! gets a pointer to the singleton MMFFVdWCollection
   double power;
@@ -971,7 +971,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFVdWCollection {
     \return a pointer to the MMFFVdW object, NULL on failure.
   */
   const MMFFVdW *operator()(const unsigned int atomType) const {
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
     const auto res = d_params.find(atomType);
     return (res != d_params.end() ? &((*res).second) : NULL);
 #else
@@ -984,7 +984,7 @@ class RDKIT_FORCEFIELD_EXPORT MMFFVdWCollection {
   }
 
   MMFFVdWCollection(std::string mmffVdW = "");
-#ifdef RDKIT_MMFF_PARAMS_USE_STD_MAP
+#ifdef RDKIX_MMFF_PARAMS_USE_STD_MAP
   std::map<const unsigned int, MMFFVdW> d_params;  //!< the parameter map
 #else
   std::vector<MMFFVdW> d_params;         //!< the parameter vector

@@ -3,13 +3,13 @@
 //  Copyright (c) 2014, Novartis Institutes for BioMedical Research Inc.
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <sstream>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/ChemReactions/Reaction.h>
 #include <GraphMol/ChemReactions/ReactionPickler.h>
@@ -21,7 +21,7 @@
 using std::int32_t;
 using std::uint32_t;
 
-namespace RDKit {
+namespace RDKix {
 const int32_t ReactionPickler::versionMajor = 3;
 const int32_t ReactionPickler::versionMinor = 0;
 const int32_t ReactionPickler::versionPatch = 0;
@@ -309,4 +309,4 @@ void ReactionPickler::_depickle(std::istream &ss, ChemicalReaction *rxn,
   rxn->df_needsInit = flag & 0x2;
 
 }  // end of _depickle
-};  // namespace RDKit
+};  // namespace RDKix

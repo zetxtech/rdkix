@@ -2,16 +2,16 @@
 // Copyright (C)  2015 Sereina Riniker
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/utils.h>
 #include <Geometry/point.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <ForceField/MMFF/Params.h>
 #include <ForceField/MMFF/TorsionAngle.h>
@@ -25,7 +25,7 @@
 #include <cmath>
 
 using namespace RDGeom;
-using namespace RDKit;
+using namespace RDKix;
 
 void testTorsionAngleContribs() {
   std::cerr << "-------------------------------------" << std::endl;
@@ -75,7 +75,7 @@ void testTorsionAngleContribs() {
       *(RDGeom::Point3D *)ff.positions()[1],
       *(RDGeom::Point3D *)ff.positions()[2],
       *(RDGeom::Point3D *)ff.positions()[3]);
-  TEST_ASSERT(RDKit::feq(cosPhi, 0.5, 1e-4));
+  TEST_ASSERT(RDKix::feq(cosPhi, 0.5, 1e-4));
 
   // ------- ------- ------- ------- ------- ------- -------
   // Basic SP2 - SP2
@@ -113,7 +113,7 @@ void testTorsionAngleContribs() {
       *(RDGeom::Point3D *)ff.positions()[1],
       *(RDGeom::Point3D *)ff.positions()[2],
       *(RDGeom::Point3D *)ff.positions()[3]);
-  TEST_ASSERT(RDKit::feq(cosPhi, 1.0, 1e-4));
+  TEST_ASSERT(RDKix::feq(cosPhi, 1.0, 1e-4));
 }
 
 void testTorsionPrefs() {

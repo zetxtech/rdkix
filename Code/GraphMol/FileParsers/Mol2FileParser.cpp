@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2008-2023, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //   All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -36,7 +36,7 @@
 
 #include "FileParsers.h"
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/StreamOps.h>
 #include <RDGeneral/RDLog.h>
 //
@@ -49,7 +49,7 @@
 #include <RDGeneral/BadFileException.h>
 #include <RDGeneral/LocaleSwitcher.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 void fixNitroSubstructureAndCharge(RWMol *res, unsigned int atIdx) {
@@ -1019,4 +1019,4 @@ std::unique_ptr<RWMol> MolFromMol2File(const std::string &fName,
 }
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

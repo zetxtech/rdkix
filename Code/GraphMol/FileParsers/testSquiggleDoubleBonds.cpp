@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2002-2021 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2002-2021 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include "RDGeneral/test.h"
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
@@ -20,7 +20,7 @@
 #include <GraphMol/Chirality.h>
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolFileStereochem.h>
 #include <GraphMol/ChemReactions/Reaction.h>
@@ -28,7 +28,7 @@
 
 #include <string>
 
-using namespace RDKit;
+using namespace RDKix;
 
 class MolTest {
  public:
@@ -55,7 +55,7 @@ void testMolFiles(const MolTest *molFileTest) {
 
   try {
     std::unique_ptr<RWMol> mol(MolFileToMol(fName, true, false, false));
-    RDKit::Chirality::reapplyMolBlockWedging(*mol);
+    RDKix::Chirality::reapplyMolBlockWedging(*mol);
 
     CHECK(mol != nullptr);
     CHECK(mol->getNumAtoms() == molFileTest->atomCount);
@@ -66,7 +66,7 @@ void testMolFiles(const MolTest *molFileTest) {
       std::string outMolStr = "";
       try {
         outMolStr = MolToMolBlock(*mol, true, 0, true, true);
-      } catch (const RDKit::KekulizeException &e) {
+      } catch (const RDKix::KekulizeException &e) {
         outMolStr = "";
       } catch (...) {
         throw;  // re-trhow the error if not a kekule error

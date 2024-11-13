@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2001-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2001-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <cmath>
 
@@ -21,7 +21,7 @@
 #include <RDGeneral/types.h>
 #include <RDGeneral/Dict.h>
 
-namespace RDKit {
+namespace RDKix {
 
 bool isAromaticAtom(const Atom &atom) {
   if (atom.getIsAromatic()) {
@@ -939,59 +939,59 @@ unsigned int numPiElectrons(const Atom &atom) {
   return res;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 namespace {
 constexpr const char *hybridizationToString(
-    RDKit::Atom::HybridizationType type) {
+    RDKix::Atom::HybridizationType type) {
   switch (type) {
-    case RDKit::Atom::HybridizationType::UNSPECIFIED:
+    case RDKix::Atom::HybridizationType::UNSPECIFIED:
       return "";
-    case RDKit::Atom::HybridizationType::S:
+    case RDKix::Atom::HybridizationType::S:
       return "S";
-    case RDKit::Atom::HybridizationType::SP:
+    case RDKix::Atom::HybridizationType::SP:
       return "SP";
-    case RDKit::Atom::HybridizationType::SP2:
+    case RDKix::Atom::HybridizationType::SP2:
       return "SP2";
-    case RDKit::Atom::HybridizationType::SP3:
+    case RDKix::Atom::HybridizationType::SP3:
       return "SP3";
-    case RDKit::Atom::HybridizationType::SP3D:
+    case RDKix::Atom::HybridizationType::SP3D:
       return "SP3D";
-    case RDKit::Atom::HybridizationType::SP2D:
+    case RDKix::Atom::HybridizationType::SP2D:
       return "SP2D";
-    case RDKit::Atom::HybridizationType::SP3D2:
+    case RDKix::Atom::HybridizationType::SP3D2:
       return "SP3D2";
-    case RDKit::Atom::HybridizationType::OTHER:
+    case RDKix::Atom::HybridizationType::OTHER:
       return "OTHER";
   }
   return "";
 }
-constexpr const char *chiralityToString(RDKit::Atom::ChiralType type) {
+constexpr const char *chiralityToString(RDKix::Atom::ChiralType type) {
   switch (type) {
-    case RDKit::Atom::ChiralType::CHI_UNSPECIFIED:
+    case RDKix::Atom::ChiralType::CHI_UNSPECIFIED:
       return "Unspecified";
-    case RDKit::Atom::ChiralType::CHI_TETRAHEDRAL_CW:
+    case RDKix::Atom::ChiralType::CHI_TETRAHEDRAL_CW:
       return "CW";
-    case RDKit::Atom::ChiralType::CHI_TETRAHEDRAL_CCW:
+    case RDKix::Atom::ChiralType::CHI_TETRAHEDRAL_CCW:
       return "CCW";
-    case RDKit::Atom::ChiralType::CHI_OTHER:
+    case RDKix::Atom::ChiralType::CHI_OTHER:
       return "Other";
-    case RDKit::Atom::ChiralType::CHI_TETRAHEDRAL:
+    case RDKix::Atom::ChiralType::CHI_TETRAHEDRAL:
       return "Td";
-    case RDKit::Atom::ChiralType::CHI_ALLENE:
+    case RDKix::Atom::ChiralType::CHI_ALLENE:
       return "Allene";
-    case RDKit::Atom::ChiralType::CHI_SQUAREPLANAR:
+    case RDKix::Atom::ChiralType::CHI_SQUAREPLANAR:
       return "SqP";
-    case RDKit::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL:
+    case RDKix::Atom::ChiralType::CHI_TRIGONALBIPYRAMIDAL:
       return "Tbp";
-    case RDKit::Atom::ChiralType::CHI_OCTAHEDRAL:
+    case RDKix::Atom::ChiralType::CHI_OCTAHEDRAL:
       return "Oh";
   }
   return "";
 }
 }  // namespace
 
-std::ostream &operator<<(std::ostream &target, const RDKit::Atom &at) {
+std::ostream &operator<<(std::ostream &target, const RDKix::Atom &at) {
   target << at.getIdx() << " " << at.getAtomicNum() << " " << at.getSymbol();
   target << " chg: " << at.getFormalCharge();
   target << "  deg: " << at.getDegree();
@@ -1010,10 +1010,10 @@ std::ostream &operator<<(std::ostream &target, const RDKit::Atom &at) {
   if (at.getIsAromatic()) {
     target << " arom?: " << at.getIsAromatic();
   }
-  if (at.getChiralTag() != RDKit::Atom::CHI_UNSPECIFIED) {
+  if (at.getChiralTag() != RDKix::Atom::CHI_UNSPECIFIED) {
     target << " chi: " << chiralityToString(at.getChiralTag());
     int perm;
-    if (at.getPropIfPresent(RDKit::common_properties::_chiralPermutation,
+    if (at.getPropIfPresent(RDKix::common_properties::_chiralPermutation,
                             perm)) {
       target << "(" << perm << ")";
     }

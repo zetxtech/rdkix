@@ -1,23 +1,23 @@
 
-rdkit_library(MolAlign AlignMolecules.cpp 
+rdkix_library(MolAlign AlignMolecules.cpp 
               LINK_LIBRARIES MolTransforms SmilesParse SubstructMatch Alignment GraphMol RDGeneral)
-target_compile_definitions(MolAlign PRIVATE RDKIT_MOLALIGN_BUILD)
+target_compile_definitions(MolAlign PRIVATE RDKIX_MOLALIGN_BUILD)
 
-rdkit_library(O3AAlign O3AAlignMolecules.cpp
+rdkix_library(O3AAlign O3AAlignMolecules.cpp
               LINK_LIBRARIES MolAlign Descriptors MolTransforms SubstructMatch Alignment GraphMol RDGeneral ForceFieldHelpers)
-target_compile_definitions(O3AAlign PRIVATE RDKIT_MOLALIGN_BUILD)
+target_compile_definitions(O3AAlign PRIVATE RDKIX_MOLALIGN_BUILD)
 
-rdkit_headers(AlignMolecules.h O3AAlignMolecules.h DEST GraphMol/MolAlign)
+rdkix_headers(AlignMolecules.h O3AAlignMolecules.h DEST GraphMol/MolAlign)
 
-rdkit_test(testMolAlign testMolAlign.cpp
+rdkix_test(testMolAlign testMolAlign.cpp
            LINK_LIBRARIES MolAlign 
 FileParsers DistGeomHelpers SmilesParse)
 
-rdkit_test(testO3AAlign testO3AAlign.cpp
+rdkix_test(testO3AAlign testO3AAlign.cpp
            LINK_LIBRARIES O3AAlign Descriptors
 FileParsers DistGeomHelpers SmilesParse)
 
-rdkit_catch_test(molAlignCatchTest catch_tests.cpp 
+rdkix_catch_test(molAlignCatchTest catch_tests.cpp 
            LINK_LIBRARIES MolAlign SmilesParse FileParsers )
 
 

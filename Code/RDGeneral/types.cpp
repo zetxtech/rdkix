@@ -1,17 +1,17 @@
 //
-//  Copyright 2001-2021 Greg Landrum and other RDKit contributors
+//  Copyright 2001-2021 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
 #include "types.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace detail {
 const std::string computedPropName = "__computedProps";
 }
@@ -218,4 +218,4 @@ int nextCombination(INT_VECT &comb, int tot) {
   }
   return celem;
 }
-}  // namespace RDKit
+}  // namespace RDKix

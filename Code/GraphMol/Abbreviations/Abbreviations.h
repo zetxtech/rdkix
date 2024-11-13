@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_ABBREVIATIONS_H
@@ -16,12 +16,12 @@
 #include <string>
 #include <memory>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 
 namespace Abbreviations {
-struct RDKIT_ABBREVIATIONS_EXPORT AbbreviationDefinition {
+struct RDKIX_ABBREVIATIONS_EXPORT AbbreviationDefinition {
   std::string label;
   std::string displayLabel;
   std::string displayLabelW;
@@ -36,7 +36,7 @@ struct RDKIT_ABBREVIATIONS_EXPORT AbbreviationDefinition {
     return !(*this == other);
   }
 };
-struct RDKIT_ABBREVIATIONS_EXPORT AbbreviationMatch {
+struct RDKIX_ABBREVIATIONS_EXPORT AbbreviationMatch {
   MatchVectType match;
   AbbreviationDefinition abbrev;
   AbbreviationMatch(std::vector<std::pair<int, int>> matchArg,
@@ -51,16 +51,16 @@ struct RDKIT_ABBREVIATIONS_EXPORT AbbreviationMatch {
   }
 };
 namespace common_properties {
-RDKIT_ABBREVIATIONS_EXPORT extern const std::string numDummies;
-RDKIT_ABBREVIATIONS_EXPORT extern const std::string origAtomMapping;
-RDKIT_ABBREVIATIONS_EXPORT extern const std::string origBondMapping;
+RDKIX_ABBREVIATIONS_EXPORT extern const std::string numDummies;
+RDKIX_ABBREVIATIONS_EXPORT extern const std::string origAtomMapping;
+RDKIX_ABBREVIATIONS_EXPORT extern const std::string origBondMapping;
 }  // namespace common_properties
 namespace Utils {
 //! returns the default set of abbreviation definitions
-RDKIT_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
+RDKIX_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
 getDefaultAbbreviations();
 //! returns the default set of linker definitions
-RDKIT_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
+RDKIX_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
 getDefaultLinkers();
 
 //! parses a string describing abbreviation matches and returns the result
@@ -88,7 +88,7 @@ Format of the text data:
   atom is the surrogate for the rest of the group.
 
 */
-RDKIT_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
+RDKIX_ABBREVIATIONS_EXPORT std::vector<AbbreviationDefinition>
 parseAbbreviations(const std::string &text, bool removeExtraDummies = false,
                    bool allowConnectionToDummies = false);
 //! \brief equivalent to calling \c parseAbbreviations(text,true,true)
@@ -105,31 +105,31 @@ inline std::vector<AbbreviationDefinition> parseLinkers(
     \param maxCoverage any abbreviation that covers than more than this fraction
         of the molecule's atoms (not counting dummies) will not be returned.
 */
-RDKIT_ABBREVIATIONS_EXPORT std::vector<AbbreviationMatch>
+RDKIX_ABBREVIATIONS_EXPORT std::vector<AbbreviationMatch>
 findApplicableAbbreviationMatches(
     const ROMol &mol, const std::vector<AbbreviationDefinition> &abbrevs,
     double maxCoverage = 0.4);
 //! applies the abbreviation matches to a molecule, modifying it in place.
 //! the modified molecule is not sanitized
-RDKIT_ABBREVIATIONS_EXPORT void applyMatches(
+RDKIX_ABBREVIATIONS_EXPORT void applyMatches(
     RWMol &mol, const std::vector<AbbreviationMatch> &matches);
 //! creates "SUP" SubstanceGroups on the molecule describing the abbreviation
-RDKIT_ABBREVIATIONS_EXPORT void labelMatches(
+RDKIX_ABBREVIATIONS_EXPORT void labelMatches(
     RWMol &mol, const std::vector<AbbreviationMatch> &matches);
 //! convenience function for finding and applying abbreviations
 //! the modified molecule is not sanitized
-RDKIT_ABBREVIATIONS_EXPORT void condenseMolAbbreviations(
+RDKIX_ABBREVIATIONS_EXPORT void condenseMolAbbreviations(
     RWMol &mol, const std::vector<AbbreviationDefinition> &abbrevs,
     double maxCoverage = 0.4, bool sanitize = true);
 //! convenience function for finding and labeling abbreviations as SUP
 //! SubstanceGroups
-RDKIT_ABBREVIATIONS_EXPORT void labelMolAbbreviations(
+RDKIX_ABBREVIATIONS_EXPORT void labelMolAbbreviations(
     RWMol &mol, const std::vector<AbbreviationDefinition> &abbrevs,
     double maxCoverage = 0.4);
 //! collapses abbreviation (i.e. "SUP") substance groups
 //! the modified molecule is not sanitized
-RDKIT_ABBREVIATIONS_EXPORT void condenseAbbreviationSubstanceGroups(RWMol &mol);
+RDKIX_ABBREVIATIONS_EXPORT void condenseAbbreviationSubstanceGroups(RWMol &mol);
 
 }  // namespace Abbreviations
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

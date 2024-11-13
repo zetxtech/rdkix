@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
@@ -17,7 +17,7 @@
 #include "SparseIntVect.h"
 #include <limits>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("special cases for the limits of sparse vectors") {
   SECTION("SparseBitVect") {

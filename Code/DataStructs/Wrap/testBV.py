@@ -4,7 +4,7 @@ import unittest
 
 import numpy
 
-from rdkit import DataStructs, RDConfig
+from rdkix import DataStructs, RDConfig
 
 
 def feq(a, b, tol=1e-4):

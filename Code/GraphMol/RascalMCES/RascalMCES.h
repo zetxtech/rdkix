@@ -2,22 +2,22 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
-#ifndef RDKIT_RASCAL_MCES_H
-#define RDKIT_RASCAL_MCES_H
+#ifndef RDKIX_RASCAL_MCES_H
+#define RDKIX_RASCAL_MCES_H
 
 #include <vector>
 
 #include <GraphMol/RascalMCES/RascalClusterOptions.h>
 #include <GraphMol/RascalMCES/RascalOptions.h>
 #include <GraphMol/RascalMCES/RascalResult.h>
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 
 namespace RascalMCES {
@@ -32,7 +32,7 @@ namespace RascalMCES {
  * @param opts : (optional) set of options controlling the MCES determination
  * @return : vector of RascalResult objects.
  */
-RDKIT_RASCALMCES_EXPORT std::vector<RascalResult> rascalMCES(
+RDKIX_RASCALMCES_EXPORT std::vector<RascalResult> rascalMCES(
     const ROMol &mol1, const ROMol &mol2,
     const RascalOptions &opts = RascalOptions());
 
@@ -52,7 +52,7 @@ RDKIT_RASCALMCES_EXPORT std::vector<RascalResult> rascalMCES(
  * @return clusters as vector of vectors of unsigned ints - indices into the
  *         input mols vector
  */
-RDKIT_RASCALMCES_EXPORT std::vector<std::vector<unsigned int>> rascalCluster(
+RDKIX_RASCALMCES_EXPORT std::vector<std::vector<unsigned int>> rascalCluster(
     const std::vector<std::shared_ptr<ROMol>> &mols,
     const RascalClusterOptions &clusOpts = RascalClusterOptions());
 // Cluster the molecules using the Johnson similarity from rascalMCES and
@@ -64,10 +64,10 @@ RDKIT_RASCALMCES_EXPORT std::vector<std::vector<unsigned int>> rascalCluster(
  * @return clusters as vector of vectors of unsigned ints - indices into the
  *         input mols vector
  */
-RDKIT_RASCALMCES_EXPORT std::vector<std::vector<unsigned int>>
+RDKIX_RASCALMCES_EXPORT std::vector<std::vector<unsigned int>>
 rascalButinaCluster(
     const std::vector<std::shared_ptr<ROMol>> &mols,
     const RascalClusterOptions &clusOpts = RascalClusterOptions());
 }  // namespace RascalMCES
-}  // namespace RDKit
-#endif  // RDKIT_RASCAL_MCES_H
+}  // namespace RDKix
+#endif  // RDKIX_RASCAL_MCES_H

@@ -31,13 +31,13 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-%typemap(javaimports) RDKit::QueryBond "
+%typemap(javaimports) RDKix::QueryBond "
 /** 
 Class for storing Bond queries.
 <p>
 QueryBond objects are derived from Bond objects, so they can be added to molecules and the like, but they have much fancier querying capabilities. */"
 
-%javamethodmodifiers RDKit::QueryBond::expandQuery 	( 	QUERYBOND_QUERY *  	what, 		Queries::CompositeQueryType  	how = Queries::COMPOSITE_AND, 		bool  	maintainOrder = true	  	) 			"
+%javamethodmodifiers RDKix::QueryBond::expandQuery 	( 	QUERYBOND_QUERY *  	what, 		Queries::CompositeQueryType  	how = Queries::COMPOSITE_AND, 		bool  	maintainOrder = true	  	) 			"
 /**
 <p>
 expands our current query
@@ -51,16 +51,16 @@ maintainOrder 	(optional) flags whether the relative order of the queries needs 
 @notes
 <li>what should probably be constructed using one of the functions defined in QueryOps.h
 <li>the maintainOrder option can be useful because the combination operators short circuit when possible.
-Reimplemented from RDKit::Bond.
+Reimplemented from RDKix::Bond.
 */
 public";
 
-%javamethodmodifiers RDKit::QueryBond::Match 	( 	Bond const *  	what 	 )  	const "
+%javamethodmodifiers RDKix::QueryBond::Match 	( 	Bond const *  	what 	 )  	const "
 /**
 <p>
 This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
 <p>
-Reimplemented from RDKit::Bond.
+Reimplemented from RDKix::Bond.
 <p>
 
 */

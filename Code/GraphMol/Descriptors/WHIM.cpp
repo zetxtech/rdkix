@@ -29,9 +29,9 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-// for build & set RDBASE! => export RDBASE=/Users/GVALMTGG/Github/rdkit_mine/
+// for build & set RDBASE! => export RDBASE=/Users/GVALMTGG/Github/rdkix_mine/
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "WHIM.h"
 #include "MolData3Ddescriptors.h"
@@ -42,7 +42,7 @@
 
 using namespace Eigen;
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 namespace {
 
@@ -393,4 +393,4 @@ void WHIM(const ROMol &mol, std::vector<double> &res, int confId, double th,
   }
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

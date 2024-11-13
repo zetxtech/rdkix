@@ -13,7 +13,7 @@
 #include <cmath>
 #include <any>
 
-using namespace RDKit;
+using namespace RDKix;
 
 template <class T>
 void testLimits() {

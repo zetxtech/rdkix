@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/export.h>
@@ -15,7 +15,7 @@
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 #include <cstdint>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MorganFingerprint {
 
@@ -24,7 +24,7 @@ namespace MorganFingerprint {
  ECFP-type invariants
 
  */
-class RDKIT_FINGERPRINTS_EXPORT MorganAtomInvGenerator
+class RDKIX_FINGERPRINTS_EXPORT MorganAtomInvGenerator
     : public AtomInvariantsGenerator {
   const bool df_includeRingMembership;
 
@@ -49,7 +49,7 @@ class RDKIT_FINGERPRINTS_EXPORT MorganAtomInvGenerator
  FCFP-type invariants
 
  */
-class RDKIT_FINGERPRINTS_EXPORT MorganFeatureAtomInvGenerator
+class RDKIX_FINGERPRINTS_EXPORT MorganFeatureAtomInvGenerator
     : public AtomInvariantsGenerator {
   std::vector<const ROMol *> *dp_patterns;
 
@@ -75,7 +75,7 @@ class RDKIT_FINGERPRINTS_EXPORT MorganFeatureAtomInvGenerator
  \brief Bond invariants generator for Morgan fingerprint
 
  */
-class RDKIT_FINGERPRINTS_EXPORT MorganBondInvGenerator
+class RDKIX_FINGERPRINTS_EXPORT MorganBondInvGenerator
     : public BondInvariantsGenerator {
   const bool df_useBondTypes;
   const bool df_useChirality;
@@ -104,7 +104,7 @@ class RDKIT_FINGERPRINTS_EXPORT MorganBondInvGenerator
  \brief Class for holding Morgan fingerprint specific arguments
 
  */
-class RDKIT_FINGERPRINTS_EXPORT MorganArguments : public FingerprintArguments {
+class RDKIX_FINGERPRINTS_EXPORT MorganArguments : public FingerprintArguments {
  public:
   bool df_onlyNonzeroInvariants = false;
   unsigned int d_radius = 3;
@@ -148,7 +148,7 @@ class RDKIT_FINGERPRINTS_EXPORT MorganArguments : public FingerprintArguments {
 
  */
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT MorganAtomEnv
+class RDKIX_FINGERPRINTS_EXPORT MorganAtomEnv
     : public AtomEnvironment<OutputType> {
   const OutputType d_code;
   const unsigned int d_atomId;
@@ -182,7 +182,7 @@ class RDKIT_FINGERPRINTS_EXPORT MorganAtomEnv
 
  */
 template <typename OutputType>
-class RDKIT_FINGERPRINTS_EXPORT MorganEnvGenerator
+class RDKIX_FINGERPRINTS_EXPORT MorganEnvGenerator
     : public AtomEnvironmentGenerator<OutputType> {
  public:
   std::vector<AtomEnvironment<OutputType> *> getEnvironments(
@@ -246,7 +246,7 @@ This generator supports the following \c AdditionalOutput types:
 
  */
 template <typename OutputType>
-RDKIT_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType> *getMorganGenerator(
+RDKIX_FINGERPRINTS_EXPORT FingerprintGenerator<OutputType> *getMorganGenerator(
     unsigned int radius, bool countSimulation, bool includeChirality,
     bool useBondTypes, bool onlyNonzeroInvariants,
     bool includeRedundantEnvironments,
@@ -319,6 +319,6 @@ FingerprintGenerator<OutputType> *getMorganGenerator(
 };
 
 }  // namespace MorganFingerprint
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

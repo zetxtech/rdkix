@@ -1,7 +1,7 @@
 import unittest
-from rdkit import Chem
-from rdkit.Chem import rdShapeAlign
-from rdkit import RDConfig
+from rdkix import Chem
+from rdkix.Chem import rdShapeAlign
+from rdkix import RDConfig
 
 datadir = RDConfig.RDBaseDir + '/External/pubchem_shape/test_data';
 

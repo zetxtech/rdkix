@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <ctime>
@@ -22,7 +22,7 @@
 
 // #define DEBUG
 
-namespace RDKit {
+namespace RDKix {
 
 RGroupDecompositionChromosome::RGroupDecompositionChromosome(RGroupGa &rGroupGa)
     : IntegerStringChromosome(rGroupGa.chromosomeLength(), rGroupGa.getRng(),
@@ -315,7 +315,7 @@ vector<GaResult> RGroupGa::runBatch() {
   if (gaParallelRuns) {
     gaParallelRuns = false;
     BOOST_LOG(rdWarningLog)
-        << "This RDKit build does not enable GA parallel runs" << std::endl;
+        << "This RDKix build does not enable GA parallel runs" << std::endl;
   }
 #endif
 
@@ -327,7 +327,7 @@ vector<GaResult> RGroupGa::runBatch() {
     vector<future<GaResult>> tasks;
     tasks.reserve(numberRuns);
     for (int n = 0; n < numberRuns; n++) {
-      auto future = async(launch::async, &RDKit::RGroupGa::run, this, n + 1);
+      auto future = async(launch::async, &RDKix::RGroupGa::run, this, n + 1);
       tasks.push_back(std::move(future));
     }
 
@@ -382,4 +382,4 @@ void clearVarianceData(
   fingerprintVarianceScoreData.numberOfMolecules = 0;
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

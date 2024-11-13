@@ -1,15 +1,15 @@
 import os
 import time
 
-from rdkit import Chem, RDConfig, rdBase
-from rdkit.Chem import AllChem
-from rdkit.Chem import rdMolDescriptors as rdMD
+from rdkix import Chem, RDConfig, rdBase
+from rdkix.Chem import AllChem
+from rdkix.Chem import rdMolDescriptors as rdMD
 
 
 def get3D(m, is3d):
   if not is3d:
     m = Chem.AddHs(m)
-    # define the new code from RDKit Molecule 3D ETKDG.
+    # define the new code from RDKix Molecule 3D ETKDG.
     ps = AllChem.ETKDG()
     ps.randomSeed = 0xf00d
     AllChem.EmbedMolecule(m, ps)
@@ -19,7 +19,7 @@ def get3D(m, is3d):
 
 
 def generateAll():
-  filename = '/Users/GVALMTGG/Github/rdkit_mine/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf'
+  filename = '/Users/GVALMTGG/Github/rdkix_mine/Code/GraphMol/Descriptors/test_data/PBF_egfr.sdf'
   suppl = Chem.SDMolSupplier(filename, removeHs=False)
   mols = [x for x in suppl]
   start = time.time()

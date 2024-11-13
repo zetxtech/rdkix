@@ -6,17 +6,17 @@ steps:
     conda config --set always_yes yes --set changeps1 no
     conda update -q conda
     conda info -a
-    conda create --name rdkit_build $(python) cmake \
+    conda create --name rdkix_build $(python) cmake \
         boost-cpp=$(boost_version) \
         py-boost=$(boost_version) \
         numpy pillow eigen pandas=2.0 matplotlib-base=3.7 \
         qt=5.9.7 cairo
-    conda activate rdkit_build
+    conda activate rdkix_build
     conda install -c conda-forge pytest nbval ipykernel>=6.0
   displayName: Setup build environment
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     export CXXFLAGS="${CXXFLAGS} -Wall -Werror"
     mkdir build && cd build && \
     cmake .. \
@@ -51,13 +51,13 @@ steps:
   displayName: Configure build (Run CMake)
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     cd build
     make -j $( $(number_of_cores) ) install
   displayName: Build
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     export RDBASE=`pwd`
     export PYTHONPATH=${RDBASE}:${PYTHONPATH}
     export LD_LIBRARY_PATH=${RDBASE}/lib:${CONDA_PREFIX}/lib:${LD_LIBRARY_PATH}
@@ -68,7 +68,7 @@ steps:
   displayName: Run tests
 - bash: |
     source ${CONDA}/etc/profile.d/conda.sh
-    conda activate rdkit_build
+    conda activate rdkix_build
     conda install -c conda-forge ipython=8.12 sphinx myst-parser
     export RDBASE=`pwd`
     export PYTHONPATH=${RDBASE}:${PYTHONPATH}

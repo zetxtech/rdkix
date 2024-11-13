@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_ANGLEBEND_H__
@@ -19,7 +19,7 @@ namespace UFF {
 class AtomicParams;
 
 //! The angle-bend term for the Universal Force Field
-class RDKIT_FORCEFIELD_EXPORT AngleBendContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT AngleBendContrib : public ForceFieldContrib {
  public:
   AngleBendContrib() {}
   //! Constructor
@@ -78,11 +78,11 @@ namespace Utils {
   \param at3Params   pointer to the parameters for atom 3
 
 */
-RDKIT_FORCEFIELD_EXPORT double calcAngleForceConstant(
+RDKIX_FORCEFIELD_EXPORT double calcAngleForceConstant(
     double theta0, double bondOrder12, double bondOrder23,
     const AtomicParams *at1Params, const AtomicParams *at2Params,
     const AtomicParams *at3Params);
-RDKIT_FORCEFIELD_EXPORT void calcAngleBendGrad(RDGeom::Point3D *r, double *dist,
+RDKIX_FORCEFIELD_EXPORT void calcAngleBendGrad(RDGeom::Point3D *r, double *dist,
                                                double **g, double &dE_dTheta,
                                                double &cosTheta,
                                                double &sinTheta);

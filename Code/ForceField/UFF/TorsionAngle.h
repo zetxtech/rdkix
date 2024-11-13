@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef __RD_TORSIONANGLE_H__
@@ -26,7 +26,7 @@ namespace UFF {
 class AtomicParams;
 
 //! the torsion term for the Universal Force Field
-class RDKIT_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
+class RDKIX_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
  public:
   TorsionAngleContrib() {}
   //! Constructor
@@ -50,18 +50,18 @@ class RDKIT_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
     \param at3Params   pointer to the parameters for atom 3
     \param endAtomIsSP2 (optional)
       This boolean is used to signal whether either atom1 or atom4 are
-      RDKit::Atom::SP2 hybridized.
+      RDKix::Atom::SP2 hybridized.
       This triggers a special case when either of these cases holds:
-       - atom1 is RDKit::Atom::SP2, atom2 is RDKit::Atom::SP2
-         and atom3 is RDKit::Atom::SP3
-       - atom4 is RDKit::Atom::SP2, atom3 is RDKit::Atom::SP2
-         and atom2 is RDKit::Atom::SP3
+       - atom1 is RDKix::Atom::SP2, atom2 is RDKix::Atom::SP2
+         and atom3 is RDKix::Atom::SP3
+       - atom4 is RDKix::Atom::SP2, atom3 is RDKix::Atom::SP2
+         and atom2 is RDKix::Atom::SP3
   */
   TorsionAngleContrib(ForceField *owner, unsigned int idx1, unsigned int idx2,
                       unsigned int idx3, unsigned int idx4, double bondOrder23,
                       int atNum2, int atNum3,
-                      RDKit::Atom::HybridizationType hyb2,
-                      RDKit::Atom::HybridizationType hyb3,
+                      RDKix::Atom::HybridizationType hyb2,
+                      RDKix::Atom::HybridizationType hyb3,
                       const AtomicParams *at2Params,
                       const AtomicParams *at3Params, bool endAtomIsSP2 = false);
   double getEnergy(double *pos) const override;
@@ -89,26 +89,26 @@ class RDKIT_FORCEFIELD_EXPORT TorsionAngleContrib : public ForceFieldContrib {
      see the constructor for an explanation of the arguments
   */
   void calcTorsionParams(double bondOrder23, int atNum2, int atNum3,
-                         RDKit::Atom::HybridizationType hyb2,
-                         RDKit::Atom::HybridizationType hyb3,
+                         RDKix::Atom::HybridizationType hyb2,
+                         RDKix::Atom::HybridizationType hyb3,
                          const AtomicParams *at2Params,
                          const AtomicParams *at3Params, bool endAtomIsSP2);
 };
 
 namespace Utils {
 //! calculates and returns the cosine of a torsion angle
-RDKIT_FORCEFIELD_EXPORT double calculateCosTorsion(const RDGeom::Point3D &p1,
+RDKIX_FORCEFIELD_EXPORT double calculateCosTorsion(const RDGeom::Point3D &p1,
                                                    const RDGeom::Point3D &p2,
                                                    const RDGeom::Point3D &p3,
                                                    const RDGeom::Point3D &p4);
-RDKIT_FORCEFIELD_EXPORT void calcTorsionGrad(RDGeom::Point3D *r,
+RDKIX_FORCEFIELD_EXPORT void calcTorsionGrad(RDGeom::Point3D *r,
                                              RDGeom::Point3D *t, double *d,
                                              double **g, double &sinTerm,
                                              double &cosPhi);
-RDKIT_FORCEFIELD_EXPORT double equation17(double bondOrder23,
+RDKIX_FORCEFIELD_EXPORT double equation17(double bondOrder23,
                                           const AtomicParams *at2Params,
                                           const AtomicParams *at3Params);
-RDKIT_FORCEFIELD_EXPORT bool isInGroup6(int num);
+RDKIX_FORCEFIELD_EXPORT bool isInGroup6(int num);
 }  // namespace Utils
 }  // namespace UFF
 }  // namespace ForceFields

@@ -2,22 +2,22 @@
 //  Copyright (C) 2020 Brian P. Kelley
 //   @@ All Rights Reserved @@
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <RDGeneral/RDLog.h>
 #include <vector>
 
 #include <GraphMol/Descriptors/BCUT.h>
-using namespace RDKit;
+using namespace RDKix;
 
 // from knuth.
 bool feq(float a, float b, float epsilon = 1e-6) {
@@ -79,9 +79,9 @@ void test2() {
   std::string sdfName =
       pathName + "/Code/GraphMol/Descriptors/test_data/bace_200_bcut.sdf";
 
-  RDKit::SDMolSupplier reader(sdfName, true, false);
+  RDKix::SDMolSupplier reader(sdfName, true, false);
   while (!reader.atEnd()) {
-    std::unique_ptr<RDKit::ROMol> m(reader.next());
+    std::unique_ptr<RDKix::ROMol> m(reader.next());
     TEST_ASSERT(m.get());
     std::vector<double> bcuts = Descriptors::BCUT2D(*m);
     TEST_ASSERT(bcuts.size() == 8);

@@ -19,7 +19,7 @@
 #include <string>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 class RWMol;
 namespace MolHash {
 enum class HashFunction {
@@ -48,7 +48,7 @@ enum class HashFunction {
            //! change from one release to the next.
 };
 
-RDKIT_MOLHASH_EXPORT std::string MolHash(RWMol *mol, HashFunction func,
+RDKIX_MOLHASH_EXPORT std::string MolHash(RWMol *mol, HashFunction func,
                                          bool useCXSmiles = false,
                                          unsigned cxFlagsToSkip = 0);
 
@@ -60,8 +60,8 @@ enum class StripType {
   Hydrogen = 16
 };
 
-RDKIT_MOLHASH_EXPORT void Strip(RWMol *mol, unsigned int striptype);
-RDKIT_MOLHASH_EXPORT void SplitMolecule(RWMol *mol, std::vector<RWMol *> &molv);
+RDKIX_MOLHASH_EXPORT void Strip(RWMol *mol, unsigned int striptype);
+RDKIX_MOLHASH_EXPORT void SplitMolecule(RWMol *mol, std::vector<RWMol *> &molv);
 }  // namespace MolHash
-}  // namespace RDKit
+}  // namespace RDKix
 #endif  // NMS_MOLHASH_H

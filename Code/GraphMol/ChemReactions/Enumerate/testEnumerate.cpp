@@ -33,8 +33,8 @@
 #include <RDGeneral/test.h>
 #include <RDGeneral/utils.h>
 #include <RDGeneral/Exceptions.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 
@@ -55,7 +55,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 #endif
 
-using namespace RDKit;
+using namespace RDKix;
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
 // for each starting point check to see that the archive

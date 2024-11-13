@@ -3,10 +3,10 @@
 //  Copyright (C) 2018-2020 Greg Landrum and T5 Informatics GmbH
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file SubstanceGroup.h
 
@@ -26,14 +26,14 @@
 #include <RDGeneral/RDProps.h>
 #include <boost/smart_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 class ROMol;
 class RWMol;
 class Bond;
 class Atom;
 
 //! used to indicate errors from incorrect sgroup access
-class RDKIT_GRAPHMOL_EXPORT SubstanceGroupException
+class RDKIX_GRAPHMOL_EXPORT SubstanceGroupException
     : public std::runtime_error {
  public:
   //! construct with an error message
@@ -52,7 +52,7 @@ class RDKIT_GRAPHMOL_EXPORT SubstanceGroupException
 
 */
 
-class RDKIT_GRAPHMOL_EXPORT SubstanceGroup : public RDProps {
+class RDKIX_GRAPHMOL_EXPORT SubstanceGroup : public RDProps {
  public:
   //! Bond type (see V3000 spec)
   enum class BondType {
@@ -236,7 +236,7 @@ class RDKIT_GRAPHMOL_EXPORT SubstanceGroup : public RDProps {
   std::vector<Bracket> d_brackets;
   std::vector<CState> d_cstates;
   std::vector<AttachPoint> d_saps;
-};  // namespace RDKit
+};  // namespace RDKix
 
 namespace SubstanceGroupChecks {
 
@@ -251,13 +251,13 @@ const std::vector<std::string> sGroupTypes = {
 const std::vector<std::string> sGroupSubtypes = {"ALT", "RAN", "BLO"};
 const std::vector<std::string> sGroupConnectTypes = {"HH", "HT", "EU"};
 
-RDKIT_GRAPHMOL_EXPORT bool isValidType(const std::string &type);
+RDKIX_GRAPHMOL_EXPORT bool isValidType(const std::string &type);
 
-RDKIT_GRAPHMOL_EXPORT bool isValidSubType(const std::string &type);
+RDKIX_GRAPHMOL_EXPORT bool isValidSubType(const std::string &type);
 
-RDKIT_GRAPHMOL_EXPORT bool isValidConnectType(const std::string &type);
+RDKIX_GRAPHMOL_EXPORT bool isValidConnectType(const std::string &type);
 
-RDKIT_GRAPHMOL_EXPORT bool isSubstanceGroupIdFree(const ROMol &mol,
+RDKIX_GRAPHMOL_EXPORT bool isSubstanceGroupIdFree(const ROMol &mol,
                                                   unsigned int id);
 
 }  // namespace SubstanceGroupChecks
@@ -265,9 +265,9 @@ RDKIT_GRAPHMOL_EXPORT bool isSubstanceGroupIdFree(const ROMol &mol,
 //! \name SubstanceGroups and molecules
 //! @{
 
-RDKIT_GRAPHMOL_EXPORT std::vector<SubstanceGroup> &getSubstanceGroups(
+RDKIX_GRAPHMOL_EXPORT std::vector<SubstanceGroup> &getSubstanceGroups(
     ROMol &mol);
-RDKIT_GRAPHMOL_EXPORT const std::vector<SubstanceGroup> &getSubstanceGroups(
+RDKIX_GRAPHMOL_EXPORT const std::vector<SubstanceGroup> &getSubstanceGroups(
     const ROMol &mol);
 
 //! Add a new SubstanceGroup. A copy is added, so we can be sure that no other
@@ -275,7 +275,7 @@ RDKIT_GRAPHMOL_EXPORT const std::vector<SubstanceGroup> &getSubstanceGroups(
 /*!
   \param sgroup - SubstanceGroup to be added to the molecule.
 */
-RDKIT_GRAPHMOL_EXPORT unsigned int addSubstanceGroup(ROMol &mol,
+RDKIX_GRAPHMOL_EXPORT unsigned int addSubstanceGroup(ROMol &mol,
                                                      SubstanceGroup sgroup);
 
 //! Removes SubstanceGroups which reference a particular atom index
@@ -283,20 +283,20 @@ RDKIT_GRAPHMOL_EXPORT unsigned int addSubstanceGroup(ROMol &mol,
   \param mol - molecule to be edited.
   \param idx - atom index
 */
-RDKIT_GRAPHMOL_EXPORT void removeSubstanceGroupsReferencingAtom(
+RDKIX_GRAPHMOL_EXPORT void removeSubstanceGroupsReferencingAtom(
     RWMol &mol, unsigned int idx);
 //! Removes SubstanceGroups which reference a particular bond index
 /*!
   \param mol - molecule to be edited.
   \param idx - bond index
 */
-RDKIT_GRAPHMOL_EXPORT void removeSubstanceGroupsReferencingBond(
+RDKIX_GRAPHMOL_EXPORT void removeSubstanceGroupsReferencingBond(
     RWMol &mol, unsigned int idx);
 //! @}
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 //! allows SubstanceGroup objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
-                                               const RDKit::SubstanceGroup &sg);
+RDKIX_GRAPHMOL_EXPORT std::ostream &operator<<(std::ostream &target,
+                                               const RDKix::SubstanceGroup &sg);
 #endif

@@ -14,7 +14,7 @@ import unittest
 
 import numpy as np
 
-from rdkit import DistanceGeometry as DG
+from rdkix import DistanceGeometry as DG
 
 
 def feq(v1, v2, tol2=1e-4):

@@ -1,4 +1,4 @@
-rdkit_python_extension(rdMolProcessing
+rdkix_python_extension(rdMolProcessing
                        rdMolProcessing.cpp
                        DEST Chem
                        LINK_LIBRARIES MolProcessing 

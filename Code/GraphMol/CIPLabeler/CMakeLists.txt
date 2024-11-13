@@ -18,18 +18,18 @@ set(rules_src
     rules/Rule6.cpp
     rules/SequenceRule.cpp)
 
-rdkit_library(CIPLabeler
+rdkix_library(CIPLabeler
               CIPMol.cpp CIPLabeler.cpp
               Mancude.cpp Digraph.cpp Node.cpp Edge.cpp Sort.cpp
               ${configs_src} ${rules_src}
               LINK_LIBRARIES GraphMol)
-target_compile_definitions(CIPLabeler PRIVATE RDKIT_CIPLABELER_BUILD)
+target_compile_definitions(CIPLabeler PRIVATE RDKIX_CIPLABELER_BUILD)
 
-rdkit_headers(CIPLabeler.h
+rdkix_headers(CIPLabeler.h
               TooManyNodesException.h
               DEST GraphMol/CIPLabeler)
 
-rdkit_catch_test(testCIPLabeler catch_tests.cpp 
+rdkix_catch_test(testCIPLabeler catch_tests.cpp 
                  CIPMol.cpp CIPLabeler.cpp
                  Mancude.cpp Digraph.cpp Node.cpp Edge.cpp Sort.cpp
                  ${configs_src} ${rules_src}
@@ -39,7 +39,7 @@ rdkit_catch_test(testCIPLabeler catch_tests.cpp
 # to test private, unexported functions, we are building the test from
 # sources, and NOT linking to the lib.
 if(RDK_BUILD_CPP_TESTS)
-    target_compile_definitions(testCIPLabeler PRIVATE RDKIT_CIPLABELER_BUILD)
+    target_compile_definitions(testCIPLabeler PRIVATE RDKIX_CIPLABELER_BUILD)
 endif()
 
 if(RDK_BUILD_PYTHON_WRAPPERS)

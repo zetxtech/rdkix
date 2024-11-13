@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "ForceField.h"
 #include "Contrib.h"
@@ -14,7 +14,7 @@
 #include <RDGeneral/Invariant.h>
 #include <Numerics/Optimizer/BFGSOpt.h>
 
-namespace RDKit {
+namespace RDKix {
 namespace ForceFieldsHelper {
 void normalizeAngleDeg(double &angleDeg) {
   angleDeg = fmod(angleDeg, 360.0);
@@ -91,7 +91,7 @@ void computeDihedral(const RDGeom::Point3D *p1, const RDGeom::Point3D *p2,
   }
 }
 }  // namespace ForceFieldsHelper
-}  // namespace RDKit
+}  // namespace RDKix
 
 namespace ForceFieldsHelper {
 class calcEnergy {
@@ -271,7 +271,7 @@ int ForceField::minimize(unsigned int maxIts, double forceTol,
 }
 
 int ForceField::minimize(unsigned int snapshotFreq,
-                         RDKit::SnapshotVect *snapshotVect, unsigned int maxIts,
+                         RDKix::SnapshotVect *snapshotVect, unsigned int maxIts,
                          double forceTol, double energyTol) {
   PRECONDITION(df_init, "not initialized");
   PRECONDITION(static_cast<unsigned int>(d_numPoints) == d_positions.size(),

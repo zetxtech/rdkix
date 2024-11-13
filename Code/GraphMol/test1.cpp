@@ -2,16 +2,16 @@
 //  Copyright (C) 2001-2018 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MonomerInfo.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/types.h>
 #include <RDGeneral/RDLog.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -25,7 +25,7 @@
 #include <boost/range/iterator_range.hpp>
 
 using namespace std;
-using namespace RDKit;
+using namespace RDKix;
 
 // -------------------------------------------------------------------
 void testBookmarks(ROMol m) {
@@ -163,7 +163,7 @@ void testMolProps() {
   m2.setProp("cprop1", 1, true);
   m2.setProp("cprop2", 2, true);
   STR_VECT cplst;
-  m2.getProp(RDKit::detail::computedPropName, cplst);
+  m2.getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 2, "");
   CHECK_INVARIANT(cplst[0] == "cprop1", "");
   CHECK_INVARIANT(cplst[1] == "cprop2", "");
@@ -181,12 +181,12 @@ void testMolProps() {
 
   m2.clearProp("cprop1");
   CHECK_INVARIANT(!m2.hasProp("cprop1"), "");
-  m2.getProp(RDKit::detail::computedPropName, cplst);
+  m2.getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 1, "");
 
   m2.clearComputedProps();
   CHECK_INVARIANT(!m2.hasProp("cprop2"), "");
-  m2.getProp(RDKit::detail::computedPropName, cplst);
+  m2.getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 0, "");
 
   BOOST_LOG(rdInfoLog) << "Finished" << std::endl;
@@ -208,7 +208,7 @@ void testClearMol() {
   m2.getProp("prop1", tmpI);
   TEST_ASSERT(tmpI == 2);
 
-  TEST_ASSERT(m2.hasProp(RDKit::detail::computedPropName));
+  TEST_ASSERT(m2.hasProp(RDKix::detail::computedPropName));
 
   m2.clear();
   TEST_ASSERT(!m2.hasProp("prop1"));
@@ -218,7 +218,7 @@ void testClearMol() {
   TEST_ASSERT(m2.getBondBookmarks()->empty());
 
   TEST_ASSERT(
-      m2.hasProp(RDKit::detail::computedPropName));  // <- github issue 176
+      m2.hasProp(RDKix::detail::computedPropName));  // <- github issue 176
   TEST_ASSERT(m2.getPropList().size() == 1);
 
   BOOST_LOG(rdInfoLog) << "Finished" << std::endl;
@@ -290,19 +290,19 @@ void testAtomProps() {
   a1->setProp("cprop1", 1, true);
   a1->setProp("cprop2", 2, true);
   STR_VECT cplst;
-  a1->getProp(RDKit::detail::computedPropName, cplst);
+  a1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 2, "");
   CHECK_INVARIANT(cplst[0] == "cprop1", "");
   CHECK_INVARIANT(cplst[1] == "cprop2", "");
 
   a1->clearProp("cprop1");
   CHECK_INVARIANT(!a1->hasProp("cprop1"), "");
-  a1->getProp(RDKit::detail::computedPropName, cplst);
+  a1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 1, "");
 
   a1->clearComputedProps();
   CHECK_INVARIANT(!a1->hasProp("cprop2"), "");
-  a1->getProp(RDKit::detail::computedPropName, cplst);
+  a1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 0, "");
 
   BOOST_LOG(rdInfoLog) << "Finished" << std::endl;
@@ -345,19 +345,19 @@ void testBondProps() {
   b1->setProp("cprop1", 1, true);
   b1->setProp("cprop2", 2, true);
   STR_VECT cplst;
-  b1->getProp(RDKit::detail::computedPropName, cplst);
+  b1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 2, "");
   CHECK_INVARIANT(cplst[0] == "cprop1", "");
   CHECK_INVARIANT(cplst[1] == "cprop2", "");
 
   b1->clearProp("cprop1");
   CHECK_INVARIANT(!b1->hasProp("cprop1"), "");
-  b1->getProp(RDKit::detail::computedPropName, cplst);
+  b1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 1, "");
 
   b1->clearComputedProps();
   CHECK_INVARIANT(!b1->hasProp("cprop2"), "");
-  b1->getProp(RDKit::detail::computedPropName, cplst);
+  b1->getProp(RDKix::detail::computedPropName, cplst);
   CHECK_INVARIANT(cplst.size() == 0, "");
 
   BOOST_LOG(rdInfoLog) << "Finished" << std::endl;
@@ -1582,7 +1582,7 @@ void testHasValenceViolation() {
     int debugParse = 0;
     bool sanitize = false;
     std::unique_ptr<RWMol> mol(
-        RDKit::SmilesToMol(smiles, debugParse, sanitize));
+        RDKix::SmilesToMol(smiles, debugParse, sanitize));
     TEST_ASSERT(mol != nullptr);
     mol->updatePropertyCache(false);
     return mol;
@@ -1625,7 +1625,7 @@ void testHasValenceViolation() {
   for (const auto &smiles : {
            // FIXME: commented out cases do not raise AtomValenceException
            // when passing through the valence calculation code; will file
-           // RDKit issues to address within the valence code separately.
+           // RDKix issues to address within the valence code separately.
            // "[C+5]",
            "C(C)(C)(C)(C)C",
            "S(C)(C)(C)(C)(C)(C)C",

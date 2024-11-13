@@ -36,39 +36,39 @@
 
 #include <GraphMol/ChemReactions/Reaction.h>
 
-namespace RDKit {
+namespace RDKix {
 
 enum ReactionMoleculeType { Reactant, Product, Agent };
 
-RDKIT_CHEMREACTIONS_EXPORT MOL_SPTR_VECT::const_iterator getStartIterator(
+RDKIX_CHEMREACTIONS_EXPORT MOL_SPTR_VECT::const_iterator getStartIterator(
     const ChemicalReaction &rxn, ReactionMoleculeType t);
-RDKIT_CHEMREACTIONS_EXPORT MOL_SPTR_VECT::const_iterator getEndIterator(
+RDKIX_CHEMREACTIONS_EXPORT MOL_SPTR_VECT::const_iterator getEndIterator(
     const ChemicalReaction &rxn, ReactionMoleculeType t);
 
-RDKIT_CHEMREACTIONS_EXPORT bool hasReactantTemplateSubstructMatch(
+RDKIX_CHEMREACTIONS_EXPORT bool hasReactantTemplateSubstructMatch(
     const ChemicalReaction &rxn, const ChemicalReaction &query_rxn);
 
-RDKIT_CHEMREACTIONS_EXPORT bool hasProductTemplateSubstructMatch(
+RDKIX_CHEMREACTIONS_EXPORT bool hasProductTemplateSubstructMatch(
     const ChemicalReaction &rxn, const ChemicalReaction &query_rxn);
 
-RDKIT_CHEMREACTIONS_EXPORT bool hasAgentTemplateSubstructMatch(
+RDKIX_CHEMREACTIONS_EXPORT bool hasAgentTemplateSubstructMatch(
     const ChemicalReaction &rxn, const ChemicalReaction &query_rxn);
 
-RDKIT_CHEMREACTIONS_EXPORT bool hasReactionSubstructMatch(
+RDKIX_CHEMREACTIONS_EXPORT bool hasReactionSubstructMatch(
     const ChemicalReaction &rxn, const ChemicalReaction &query_rxn,
     bool includeAgents = false);
 
-RDKIT_CHEMREACTIONS_EXPORT bool hasReactionAtomMapping(
+RDKIX_CHEMREACTIONS_EXPORT bool hasReactionAtomMapping(
     const ChemicalReaction &rxn);
 
-RDKIT_CHEMREACTIONS_EXPORT bool isReactionTemplateMoleculeAgent(
+RDKIX_CHEMREACTIONS_EXPORT bool isReactionTemplateMoleculeAgent(
     const ROMol &mol, double agentThreshold);
 
-RDKIT_CHEMREACTIONS_EXPORT void updateProductsStereochem(ChemicalReaction *rxn);
+RDKIX_CHEMREACTIONS_EXPORT void updateProductsStereochem(ChemicalReaction *rxn);
 
-RDKIT_CHEMREACTIONS_EXPORT void removeMappingNumbersFromReactions(
+RDKIX_CHEMREACTIONS_EXPORT void removeMappingNumbersFromReactions(
     const ChemicalReaction &rxn);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif

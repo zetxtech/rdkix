@@ -2,10 +2,10 @@
 //  Copyright (C) 2018-2022 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef _MSC_VER
 #pragma warning(disable : 4503)
@@ -13,7 +13,7 @@
 
 #include <RDGeneral/Invariant.h>
 #include <RDGeneral/versions.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SubstanceGroup.h>
 #include <GraphMol/StereoGroup.h>
@@ -33,7 +33,7 @@
 
 namespace rj = rapidjson;
 
-namespace RDKit {
+namespace RDKix {
 
 namespace MolInterchange {
 
@@ -60,8 +60,8 @@ void initBondDefaults(rj::Value &rjDefaults, rj::Document &document) {
 }
 void initHeader(rj::Value &rjHeader, rj::Document &document,
                 const JSONWriteParameters &params) {
-  auto vers = currentRDKitJSONVersion;
-  if (!params.useRDKitExtensions) {
+  auto vers = currentRDKixJSONVersion;
+  if (!params.useRDKixExtensions) {
     vers = currentMolJSONVersion;
   }
   rjHeader.AddMember("version", vers, document.GetAllocator());
@@ -225,7 +225,7 @@ void addBond(const Bond &bond, rj::Value &rjBond, rj::Document &doc,
     bo = boIter->second;
   }
   // commonchem only supports a few bond orders:
-  if (!params.useRDKitExtensions && bo > 3) {
+  if (!params.useRDKixExtensions && bo > 3) {
     bo = -1;
   }
   if (bo < 0) {
@@ -462,7 +462,7 @@ void addMol(const T &imol, rj::Value &rjMol, rj::Document &doc,
   }
   rjMol.AddMember("bonds", rjBonds, doc.GetAllocator());
 
-  if (params.useRDKitExtensions && !mol.getStereoGroups().empty()) {
+  if (params.useRDKixExtensions && !mol.getStereoGroups().empty()) {
     rj::Value rjStereoGroups(rj::kArrayType);
     for (const auto &sg : mol.getStereoGroups()) {
       rj::Value rjSG(rj::kObjectType);
@@ -472,7 +472,7 @@ void addMol(const T &imol, rj::Value &rjMol, rj::Document &doc,
     rjMol.AddMember("stereoGroups", rjStereoGroups, doc.GetAllocator());
   }
 
-  if (params.useRDKitExtensions && !getSubstanceGroups(mol).empty()) {
+  if (params.useRDKixExtensions && !getSubstanceGroups(mol).empty()) {
     rj::Value rjSubstanceGroups(rj::kArrayType);
     for (const auto &sg : getSubstanceGroups(mol)) {
       rj::Value rjSG(rj::kObjectType);
@@ -503,11 +503,11 @@ void addMol(const T &imol, rj::Value &rjMol, rj::Document &doc,
   }
 
   rj::Value representation(rj::kObjectType);
-  representation.AddMember("name", "rdkitRepresentation", doc.GetAllocator());
-  representation.AddMember("formatVersion", currentRDKitRepresentationVersion,
+  representation.AddMember("name", "rdkixRepresentation", doc.GetAllocator());
+  representation.AddMember("formatVersion", currentRDKixRepresentationVersion,
                            doc.GetAllocator());
   rj::Value toolkitVersion;
-  toolkitVersion.SetString(rj::StringRef(rdkitVersion));
+  toolkitVersion.SetString(rj::StringRef(rdkixVersion));
   representation.AddMember("toolkitVersion", toolkitVersion,
                            doc.GetAllocator());
 
@@ -587,12 +587,12 @@ void addMol(const T &imol, rj::Value &rjMol, rj::Document &doc,
   if (mol.getAtomWithIdx(0)->hasProp(common_properties::_GasteigerCharge)) {
     rj::Value representation(rj::kObjectType);
     representation.AddMember("name", "partialCharges", doc.GetAllocator());
-    representation.AddMember("generator", "RDKit", doc.GetAllocator());
+    representation.AddMember("generator", "RDKix", doc.GetAllocator());
     representation.AddMember("formatVersion",
                              currentChargeRepresentationVersion,
                              doc.GetAllocator());
     rj::Value toolkitVersion;
-    toolkitVersion.SetString(rj::StringRef(rdkitVersion));
+    toolkitVersion.SetString(rj::StringRef(rdkixVersion));
     representation.AddMember("generatorVersion", toolkitVersion,
                              doc.GetAllocator());
 
@@ -612,11 +612,11 @@ void addMol(const T &imol, rj::Value &rjMol, rj::Document &doc,
 
   if (hasQueryAtoms || hasQueryBonds) {
     rj::Value representation(rj::kObjectType);
-    representation.AddMember("name", "rdkitQueries", doc.GetAllocator());
+    representation.AddMember("name", "rdkixQueries", doc.GetAllocator());
     representation.AddMember("formatVersion", currentQueryRepresentationVersion,
                              doc.GetAllocator());
     rj::Value toolkitVersion;
-    toolkitVersion.SetString(rj::StringRef(rdkitVersion));
+    toolkitVersion.SetString(rj::StringRef(rdkixVersion));
     representation.AddMember("toolkitVersion", toolkitVersion,
                              doc.GetAllocator());
 
@@ -657,10 +657,10 @@ std::string MolsToJSONData(const std::vector<T> &mols,
 
   rj::Value header(rj::kObjectType);
   initHeader(header, doc, params);
-  if (!params.useRDKitExtensions) {
+  if (!params.useRDKixExtensions) {
     doc.AddMember("commonchem", header, doc.GetAllocator());
   } else {
-    doc.AddMember("rdkitjson", header, doc.GetAllocator());
+    doc.AddMember("rdkixjson", header, doc.GetAllocator());
   }
 
   rj::Value defaults(rj::kObjectType);
@@ -694,14 +694,14 @@ std::string MolsToJSONData(const std::vector<T> &mols,
   return buffer.GetString();
 };
 
-template RDKIT_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<ROMol *>(
+template RDKIX_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<ROMol *>(
     const std::vector<ROMol *> &, const JSONWriteParameters &);
-template RDKIT_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<RWMol *>(
+template RDKIX_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<RWMol *>(
     const std::vector<RWMol *> &, const JSONWriteParameters &);
-template RDKIT_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<const ROMol *>(
+template RDKIX_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<const ROMol *>(
     const std::vector<const ROMol *> &, const JSONWriteParameters &);
-template RDKIT_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<const RWMol *>(
+template RDKIX_MOLINTERCHANGE_EXPORT std::string MolsToJSONData<const RWMol *>(
     const std::vector<const RWMol *> &, const JSONWriteParameters &);
 
 }  // end of namespace MolInterchange
-}  // end of namespace RDKit
+}  // end of namespace RDKix

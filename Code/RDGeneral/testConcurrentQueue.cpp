@@ -8,7 +8,7 @@
 
 #include "ConcurrentQueue.h"
 
-using namespace RDKit;
+using namespace RDKix;
 
 //! method for testing basic ConcurrentQueue operations
 void testPushAndPop() {

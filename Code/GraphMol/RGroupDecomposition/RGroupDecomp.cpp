@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2017-2021, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -33,7 +33,7 @@
 //
 #include "RGroupDecomp.h"
 #include "RGroupDecompData.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -47,7 +47,7 @@
 
 // #define VERBOSE 1
 
-namespace RDKit {
+namespace RDKix {
 
 // Attachment Points
 //  labeled cores => isotopes
@@ -840,4 +840,4 @@ unsigned int RGroupDecompose(const std::vector<ROMOL_SPTR> &cores,
   columns = decomp.getRGroupsAsColumns();
   return mols.size() - unmatched.size();
 }
-}  // namespace RDKit
+}  // namespace RDKix

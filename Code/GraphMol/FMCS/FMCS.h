@@ -2,20 +2,20 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 #include "Graph.h"
 
-namespace RDKit {
+namespace RDKix {
 
 struct MCSParameters;
 
@@ -38,7 +38,7 @@ typedef enum {
   StrictRingFusion
 } RingComparator;
 
-struct RDKIT_FMCS_EXPORT MCSAtomCompareParameters {
+struct RDKIX_FMCS_EXPORT MCSAtomCompareParameters {
   bool MatchValences = false;
   bool MatchChiralTag = false;
   bool MatchFormalCharge = false;
@@ -48,7 +48,7 @@ struct RDKIT_FMCS_EXPORT MCSAtomCompareParameters {
   double MaxDistance = -1.0;
 };
 
-struct RDKIT_FMCS_EXPORT MCSBondCompareParameters {
+struct RDKIX_FMCS_EXPORT MCSBondCompareParameters {
   bool RingMatchesRingOnly = false;
   bool CompleteRingsOnly = false;
   bool MatchFusedRings = false;
@@ -73,62 +73,62 @@ typedef bool (*MCSFinalMatchCheckFunction)(const std::uint32_t[],
                                            const MCSParameters *);
 
 // Some predefined functors:
-RDKIT_FMCS_EXPORT bool checkAtomRingMatch(const MCSAtomCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkAtomRingMatch(const MCSAtomCompareParameters &p,
                                           const ROMol &mol1, unsigned int atom1,
                                           const ROMol &mol2,
                                           unsigned int atom2);
-RDKIT_FMCS_EXPORT bool checkAtomCharge(const MCSAtomCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkAtomCharge(const MCSAtomCompareParameters &p,
                                        const ROMol &mol1, unsigned int atom1,
                                        const ROMol &mol2, unsigned int atom2);
-RDKIT_FMCS_EXPORT bool checkAtomChirality(const MCSAtomCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkAtomChirality(const MCSAtomCompareParameters &p,
                                           const ROMol &mol1, unsigned int atom1,
                                           const ROMol &mol2,
                                           unsigned int atom2);
-RDKIT_FMCS_EXPORT bool checkAtomDistance(const MCSAtomCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkAtomDistance(const MCSAtomCompareParameters &p,
                                          const ROMol &mol1, unsigned int atom1,
                                          const ROMol &mol2, unsigned int atom2);
 
-RDKIT_FMCS_EXPORT bool MCSAtomCompareAny(const MCSAtomCompareParameters &p,
+RDKIX_FMCS_EXPORT bool MCSAtomCompareAny(const MCSAtomCompareParameters &p,
                                          const ROMol &mol1, unsigned int atom1,
                                          const ROMol &mol2, unsigned int atom2,
                                          void *userData);
-RDKIT_FMCS_EXPORT bool MCSAtomCompareAnyHeavyAtom(
+RDKIX_FMCS_EXPORT bool MCSAtomCompareAnyHeavyAtom(
     const MCSAtomCompareParameters &p, const ROMol &mol1, unsigned int atom1,
     const ROMol &mol2, unsigned int atom2, void *userData);
 
-RDKIT_FMCS_EXPORT bool MCSAtomCompareElements(
+RDKIX_FMCS_EXPORT bool MCSAtomCompareElements(
     const MCSAtomCompareParameters &p, const ROMol &mol1, unsigned int atom1,
     const ROMol &mol2, unsigned int atom2, void *userData);
-RDKIT_FMCS_EXPORT bool MCSAtomCompareIsotopes(
+RDKIX_FMCS_EXPORT bool MCSAtomCompareIsotopes(
     const MCSAtomCompareParameters &p, const ROMol &mol1, unsigned int atom1,
     const ROMol &mol2, unsigned int atom2, void *userData);
 
-RDKIT_FMCS_EXPORT bool checkBondStereo(const MCSBondCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkBondStereo(const MCSBondCompareParameters &p,
                                        const ROMol &mol1, unsigned int bond1,
                                        const ROMol &mol2, unsigned int bond2);
 
-RDKIT_FMCS_EXPORT bool havePairOfCompatibleRings(
+RDKIX_FMCS_EXPORT bool havePairOfCompatibleRings(
     const MCSBondCompareParameters &p, const ROMol &mol1, unsigned int bond1,
     const ROMol &mol2, unsigned int bond2);
 
-RDKIT_FMCS_EXPORT bool checkBondRingMatch(const MCSBondCompareParameters &p,
+RDKIX_FMCS_EXPORT bool checkBondRingMatch(const MCSBondCompareParameters &p,
                                           const ROMol &mol1, unsigned int bond1,
                                           const ROMol &mol2,
                                           unsigned int bond2);
 
-RDKIT_FMCS_EXPORT bool MCSBondCompareAny(const MCSBondCompareParameters &p,
+RDKIX_FMCS_EXPORT bool MCSBondCompareAny(const MCSBondCompareParameters &p,
                                          const ROMol &mol1, unsigned int bond1,
                                          const ROMol &mol2, unsigned int bond2,
                                          void *userData);
-RDKIT_FMCS_EXPORT bool MCSBondCompareOrder(
+RDKIX_FMCS_EXPORT bool MCSBondCompareOrder(
     const MCSBondCompareParameters &p, const ROMol &mol1, unsigned int bond1,
     const ROMol &mol2, unsigned int bond2,
     void *userData);  // ignore Aromatization
-RDKIT_FMCS_EXPORT bool MCSBondCompareOrderExact(
+RDKIX_FMCS_EXPORT bool MCSBondCompareOrderExact(
     const MCSBondCompareParameters &p, const ROMol &mol1, unsigned int bond1,
     const ROMol &mol2, unsigned int bond2, void *userData);
 
-struct RDKIT_FMCS_EXPORT MCSProgressData {
+struct RDKIX_FMCS_EXPORT MCSProgressData {
   unsigned int NumAtoms{0};
   unsigned int NumBonds{0};
   unsigned int SeedProcessed{0};
@@ -140,11 +140,11 @@ struct RDKIT_FMCS_EXPORT MCSProgressData {
 typedef bool (*MCSProgressCallback)(const MCSProgressData &stat,
                                     const MCSParameters &params,
                                     void *userData);
-RDKIT_FMCS_EXPORT bool MCSProgressCallbackTimeout(const MCSProgressData &stat,
+RDKIX_FMCS_EXPORT bool MCSProgressCallbackTimeout(const MCSProgressData &stat,
                                                   const MCSParameters &params,
                                                   void *userData);
 
-struct RDKIT_FMCS_EXPORT MCSParameters {
+struct RDKIX_FMCS_EXPORT MCSParameters {
   MCSParameters() {}
   MCSParameters(const MCSParameters *other) : MCSParameters() {
     if (other) {
@@ -191,7 +191,7 @@ struct MCSParametersInternal : public MCSParameters {
 };
 }  // end namespace detail
 
-struct RDKIT_FMCS_EXPORT MCSResult {
+struct RDKIX_FMCS_EXPORT MCSResult {
   unsigned int NumAtoms{0};
   unsigned int NumBonds{0};
   std::string SmartsString;
@@ -205,20 +205,20 @@ struct RDKIT_FMCS_EXPORT MCSResult {
   bool isCompleted() const { return !Canceled; }
 };
 
-RDKIT_FMCS_EXPORT void parseMCSParametersJSON(const char *json,
+RDKIX_FMCS_EXPORT void parseMCSParametersJSON(const char *json,
                                               MCSParameters *params);
 
-RDKIT_FMCS_EXPORT MCSResult findMCS(const std::vector<ROMOL_SPTR> &mols,
+RDKIX_FMCS_EXPORT MCSResult findMCS(const std::vector<ROMOL_SPTR> &mols,
                                     const MCSParameters *params = nullptr);
-RDKIT_FMCS_EXPORT MCSResult findMCS_P(const std::vector<ROMOL_SPTR> &mols,
+RDKIX_FMCS_EXPORT MCSResult findMCS_P(const std::vector<ROMOL_SPTR> &mols,
                                       const char *params_json);
 
-RDKIT_FMCS_EXPORT MCSResult findMCS(
+RDKIX_FMCS_EXPORT MCSResult findMCS(
     const std::vector<ROMOL_SPTR> &mols, bool maximizeBonds, double threshold,
     unsigned int timeout, bool verbose, bool matchValences,
     bool ringMatchesRingOnly, bool completeRingsOnly, bool matchChiralTag,
     AtomComparator atomComp, BondComparator bondComp, RingComparator ringComp);
-RDKIT_FMCS_EXPORT MCSResult findMCS(
+RDKIX_FMCS_EXPORT MCSResult findMCS(
     const std::vector<ROMOL_SPTR> &mols, bool maximizeBonds,
     double threshold = 1.0, unsigned int timeout = 3600, bool verbose = false,
     bool matchValences = false, bool ringMatchesRingOnly = false,
@@ -226,4 +226,4 @@ RDKIT_FMCS_EXPORT MCSResult findMCS(
     AtomComparator atomComp = AtomCompareElements,
     BondComparator bondComp = BondCompareOrder);
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -3,10 +3,10 @@
 //  Copyright (C) 2004-2012 Greg Landrum and Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "DiscreteValueVect.h"
 #include <RDGeneral/Invariant.h>
@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 const int ci_DISCRETEVALUEVECTPICKLE_VERSION = 0x1;
 
 DiscreteValueVect::DiscreteValueVect(const DiscreteValueVect &other) {
@@ -297,4 +297,4 @@ DiscreteValueVect operator-(const DiscreteValueVect &p1,
   return res;
 };
 
-}  // end of namespace RDKit
+}  // end of namespace RDKix

@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <regex>
@@ -24,11 +24,11 @@
 #include <GraphMol/RascalMCES/RascalDetails.h>
 #include <GraphMol/RascalMCES/RascalResult.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace RascalMCES {
 
-RascalResult::RascalResult(const RDKit::ROMol &mol1, const RDKit::ROMol &mol2,
+RascalResult::RascalResult(const RDKix::ROMol &mol1, const RDKix::ROMol &mol2,
                            const std::vector<std::vector<int>> &adjMatrix1,
                            const std::vector<std::vector<int>> &adjMatrix2,
                            const std::vector<unsigned int> &clique,
@@ -49,12 +49,12 @@ RascalResult::RascalResult(const RDKit::ROMol &mol1, const RDKit::ROMol &mol2,
       d_ignoreBondOrders(ignoreBondOrders) {
   const std::vector<std::vector<int>> *mol1AdjMatrix;
   if (swapped) {
-    d_mol1.reset(new RDKit::ROMol(mol2));
-    d_mol2.reset(new RDKit::ROMol(mol1));
+    d_mol1.reset(new RDKix::ROMol(mol2));
+    d_mol2.reset(new RDKix::ROMol(mol1));
     mol1AdjMatrix = &adjMatrix2;
   } else {
-    d_mol1.reset(new RDKit::ROMol(mol1));
-    d_mol2.reset(new RDKit::ROMol(mol2));
+    d_mol1.reset(new RDKix::ROMol(mol1));
+    d_mol2.reset(new RDKix::ROMol(mol2));
     mol1AdjMatrix = &adjMatrix1;
   }
 
@@ -125,9 +125,9 @@ RascalResult &RascalResult::operator=(const RascalResult &other) {
 void RascalResult::largestFragOnly() { largestFragsOnly(1); }
 
 void RascalResult::largestFragsOnly(unsigned int numFrags) {
-  std::unique_ptr<RDKit::ROMol> mol1_frags(makeMolFrags(1));
+  std::unique_ptr<RDKix::ROMol> mol1_frags(makeMolFrags(1));
   // getMolFrags() returns boost::shared_ptr.  Ho-hum.
-  auto frags = RDKit::MolOps::getMolFrags(*mol1_frags, false);
+  auto frags = RDKix::MolOps::getMolFrags(*mol1_frags, false);
   if (numFrags < 1 || frags.size() < numFrags) {
     return;
   }
@@ -141,9 +141,9 @@ void RascalResult::largestFragsOnly(unsigned int numFrags) {
 }
 
 void RascalResult::trimSmallFrags(unsigned int minFragSize) {
-  std::unique_ptr<RDKit::ROMol> mol1_frags(makeMolFrags(1));
+  std::unique_ptr<RDKix::ROMol> mol1_frags(makeMolFrags(1));
   // getMolFrags() returns boost::shared_ptr.  Ho-hum.
-  auto frags = RDKit::MolOps::getMolFrags(*mol1_frags, false);
+  auto frags = RDKix::MolOps::getMolFrags(*mol1_frags, false);
   frags.erase(std::remove_if(frags.begin(), frags.end(),
                              [&](const boost::shared_ptr<ROMol> &f) -> bool {
                                return f->getNumAtoms() < minFragSize;
@@ -216,29 +216,29 @@ std::string RascalResult::createSmartsString() const {
   auto mol1Rings = d_mol1->getRingInfo();
   auto mol2Rings = d_mol2->getRingInfo();
   for (const auto &am : d_atomMatches) {
-    RDKit::QueryAtom a;
+    RDKix::QueryAtom a;
     auto mol1Atom = d_mol1->getAtomWithIdx(am.first);
-    a.setQuery(RDKit::makeAtomNumQuery(mol1Atom->getAtomicNum()));
+    a.setQuery(RDKix::makeAtomNumQuery(mol1Atom->getAtomicNum()));
     auto mol2Atom = d_mol2->getAtomWithIdx(am.second);
     if (mol1Atom->getAtomicNum() != mol2Atom->getAtomicNum()) {
-      a.expandQuery(RDKit::makeAtomNumQuery(mol2Atom->getAtomicNum()),
+      a.expandQuery(RDKix::makeAtomNumQuery(mol2Atom->getAtomicNum()),
                     Queries::COMPOSITE_OR);
     }
     if (mol1Atom->getIsAromatic() && mol2Atom->getIsAromatic()) {
-      a.expandQuery(RDKit::makeAtomAromaticQuery(), Queries::COMPOSITE_AND,
+      a.expandQuery(RDKix::makeAtomAromaticQuery(), Queries::COMPOSITE_AND,
                     true);
     } else if (!mol1Atom->getIsAromatic() && !mol2Atom->getIsAromatic()) {
-      a.expandQuery(RDKit::makeAtomAliphaticQuery(), Queries::COMPOSITE_AND,
+      a.expandQuery(RDKix::makeAtomAliphaticQuery(), Queries::COMPOSITE_AND,
                     true);
     }
     if (d_ringMatchesRingOnly && !mol1Atom->getIsAromatic() &&
         !mol2Atom->getIsAromatic() &&
         mol1Rings->numAtomRings(mol1Atom->getIdx()) &&
         mol2Rings->numAtomRings(mol2Atom->getIdx())) {
-      a.expandQuery(RDKit::makeAtomInRingQuery(), Queries::COMPOSITE_AND, true);
+      a.expandQuery(RDKix::makeAtomInRingQuery(), Queries::COMPOSITE_AND, true);
     }
     if (d_exactConnectionsMatch) {
-      a.expandQuery(RDKit::makeAtomExplicitDegreeQuery(mol1Atom->getDegree()),
+      a.expandQuery(RDKix::makeAtomExplicitDegreeQuery(mol1Atom->getDegree()),
                     Queries::COMPOSITE_AND, true);
     }
     auto ai = smartsMol.addAtom(&a);
@@ -246,7 +246,7 @@ std::string RascalResult::createSmartsString() const {
   }
 
   for (const auto &bm : d_bondMatches) {
-    RDKit::QueryBond b;
+    RDKix::QueryBond b;
     auto mol1Bond = d_mol1->getBondWithIdx(bm.first);
     auto mol2Bond = d_mol2->getBondWithIdx(bm.second);
     b.setBeginAtomIdx(atomMap[mol1Bond->getBeginAtomIdx()]);
@@ -264,19 +264,19 @@ std::string RascalResult::createSmartsString() const {
         !mol2Bond->getIsAromatic() &&
         mol1Rings->numBondRings(mol1Bond->getIdx()) &&
         mol2Rings->numBondRings(mol2Bond->getIdx())) {
-      b.expandQuery(RDKit::makeBondIsInRingQuery(), Queries::COMPOSITE_AND,
+      b.expandQuery(RDKix::makeBondIsInRingQuery(), Queries::COMPOSITE_AND,
                     true);
     }
     smartsMol.addBond(&b, false);
   }
-  std::string smt = RDKit::MolToSmarts(smartsMol, true);
+  std::string smt = RDKix::MolToSmarts(smartsMol, true);
   details::cleanSmarts(smt, d_equivalentAtoms);
   return smt;
 }
 
 namespace {
 // Return the atom common to the two bonds, -1 if there isn't one.
-int common_atom_in_bonds(const RDKit::Bond *bond1, const RDKit::Bond *bond2) {
+int common_atom_in_bonds(const RDKix::Bond *bond1, const RDKix::Bond *bond2) {
   int commonAtom = -1;
   if (bond1->getBeginAtomIdx() == bond2->getBeginAtomIdx()) {
     commonAtom = bond1->getBeginAtomIdx();
@@ -379,13 +379,13 @@ void RascalResult::matchCliqueAtoms(
 }
 
 void RascalResult::applyMaxFragSep() {
-  std::unique_ptr<RDKit::ROMol> mol1_frags(makeMolFrags(1));
-  auto frags1 = RDKit::MolOps::getMolFrags(*mol1_frags, false);
+  std::unique_ptr<RDKix::ROMol> mol1_frags(makeMolFrags(1));
+  auto frags1 = RDKix::MolOps::getMolFrags(*mol1_frags, false);
   if (frags1.size() < 2) {
     return;
   }
-  auto fragFragDist = [](const boost::shared_ptr<RDKit::ROMol> &frag1,
-                         const boost::shared_ptr<RDKit::ROMol> &frag2,
+  auto fragFragDist = [](const boost::shared_ptr<RDKix::ROMol> &frag1,
+                         const boost::shared_ptr<RDKix::ROMol> &frag2,
                          const double *pathMatrix, int num_atoms) -> double {
     int minDist = std::numeric_limits<int>::max();
     for (auto at1 : frag1->atoms()) {
@@ -401,13 +401,13 @@ void RascalResult::applyMaxFragSep() {
     return minDist;
   };
 
-  std::unique_ptr<RDKit::ROMol> mol2Frags(makeMolFrags(2));
-  auto frags2 = RDKit::MolOps::getMolFrags(*mol2Frags, false);
+  std::unique_ptr<RDKix::ROMol> mol2Frags(makeMolFrags(2));
+  auto frags2 = RDKix::MolOps::getMolFrags(*mol2Frags, false);
   // These arrays must not be deleted - they are cached in the molecule and
   // deleted when it is. The distance matrix will be re-calculated in case
   // something's been copied over somewhere.
-  auto mol1Dists = RDKit::MolOps::getDistanceMat(*d_mol1, false, false, true);
-  auto mol2Dists = RDKit::MolOps::getDistanceMat(*d_mol2, false, false, true);
+  auto mol1Dists = RDKix::MolOps::getDistanceMat(*d_mol1, false, false, true);
+  auto mol2Dists = RDKix::MolOps::getDistanceMat(*d_mol2, false, false, true);
 
   bool deletedFrag = false;
   for (size_t i = 0; i < frags1.size() - 1; ++i) {
@@ -475,8 +475,8 @@ void RascalResult::applyMaxFragSep() {
 
 // Return a molecule with the clique in it.  Each atom will have the property
 // ORIG_INDEX giving its index in the original molecule.
-RDKit::ROMol *RascalResult::makeMolFrags(int molNum) const {
-  std::shared_ptr<RDKit::ROMol> theMol;
+RDKix::ROMol *RascalResult::makeMolFrags(int molNum) const {
+  std::shared_ptr<RDKix::ROMol> theMol;
   if (molNum == 1) {
     theMol = d_mol1;
   } else if (molNum == 2) {
@@ -487,7 +487,7 @@ RDKit::ROMol *RascalResult::makeMolFrags(int molNum) const {
   if (!theMol) {
     return nullptr;
   }
-  auto *molFrags = new RDKit::RWMol(*theMol);
+  auto *molFrags = new RDKix::RWMol(*theMol);
   std::vector<char> ainClique(theMol->getNumAtoms(), 0);
   for (const auto &am : d_atomMatches) {
     if (molNum == 1) {
@@ -569,9 +569,9 @@ int RascalResult::calcMaxDeltaAtomAtomDistScore() const {
   // call is to force recalculation, just in case there's some other type copied
   // over from the input molecule.
   const auto *mol1Dists =
-      RDKit::MolOps::getDistanceMat(*d_mol1, false, false, true);
+      RDKix::MolOps::getDistanceMat(*d_mol1, false, false, true);
   const auto *mol2Dists =
-      RDKit::MolOps::getDistanceMat(*d_mol2, false, false, true);
+      RDKix::MolOps::getDistanceMat(*d_mol2, false, false, true);
 
   int score = 0;
   auto dist = [](int idx1, int idx2, const double *dists,
@@ -597,9 +597,9 @@ int RascalResult::calcLargestFragSize() const {
   if (!d_mol1 || !d_mol2) {
     return 0;
   }
-  std::unique_ptr<RDKit::ROMol> mol1_frags(makeMolFrags(1));
+  std::unique_ptr<RDKix::ROMol> mol1_frags(makeMolFrags(1));
   std::vector<int> mapping;
-  auto numFrags = RDKit::MolOps::getMolFrags(*mol1_frags, mapping);
+  auto numFrags = RDKix::MolOps::getMolFrags(*mol1_frags, mapping);
   auto lfs = std::count(mapping.begin(), mapping.end(), 0);
   for (unsigned int i = 1; i < numFrags; ++i) {
     auto fragSize = std::count(mapping.begin(), mapping.end(), i);
@@ -613,9 +613,9 @@ int RascalResult::getNumFrags() const {
     return 0;
   }
   if (d_numFrags == -1) {
-    std::unique_ptr<RDKit::ROMol> mol1_frags(makeMolFrags(1));
+    std::unique_ptr<RDKix::ROMol> mol1_frags(makeMolFrags(1));
     std::vector<int> mol1_frag_mapping;
-    d_numFrags = RDKit::MolOps::getMolFrags(*mol1_frags, mol1_frag_mapping);
+    d_numFrags = RDKix::MolOps::getMolFrags(*mol1_frags, mol1_frag_mapping);
   }
   return d_numFrags;
 }
@@ -840,7 +840,7 @@ void printScores(const RascalResult &res, std::ostream &os) {
 
 double johnsonSimilarity(const std::vector<std::pair<int, int>> &bondMatches,
                          const std::vector<std::pair<int, int>> &atomMatches,
-                         const RDKit::ROMol &mol1, const RDKit::ROMol &mol2) {
+                         const RDKix::ROMol &mol1, const RDKix::ROMol &mol2) {
   double num = (bondMatches.size() + atomMatches.size()) *
                (bondMatches.size() + atomMatches.size());
   double denom = (mol1.getNumAtoms() + mol1.getNumBonds()) *
@@ -850,4 +850,4 @@ double johnsonSimilarity(const std::vector<std::pair<int, int>> &bondMatches,
 }  // namespace details
 
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix

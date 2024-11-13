@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 // this file WRITES MRV file for molecules and reactions
@@ -32,7 +32,7 @@
 #include "MarvinParser.h"
 #include "MarvinDefs.h"
 
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <GraphMol/StereoGroup.h>
 
 #include <RDGeneral/StreamOps.h>
@@ -44,13 +44,13 @@
 #include <boost/algorithm/string.hpp>
 #include <RDGeneral/BoostEndInclude.h>
 
-using namespace RDKit::SGroupWriting;
+using namespace RDKix::SGroupWriting;
 
 #define ARROW_MIN_LENGTH 1.0
 #define ARROW_SPACE 0.5
 #define PLUS_SPACE 1.0
 
-namespace RDKit {
+namespace RDKix {
 class MarvinCMLWriter {
   bool hasComplexQuery(const Atom *atom) {
     PRECONDITION(atom, "bad atom");
@@ -561,13 +561,13 @@ class MarvinCMLWriter {
         std::string stereoGroupType;
 
         switch (group.getGroupType()) {
-          case RDKit::StereoGroupType::STEREO_ABSOLUTE:
+          case RDKix::StereoGroupType::STEREO_ABSOLUTE:
             stereoGroupType = "abs";
             break;
-          case RDKit::StereoGroupType::STEREO_OR:
+          case RDKix::StereoGroupType::STEREO_OR:
             stereoGroupType = "or" + std::to_string(++orCount);
             break;
-          case RDKit::StereoGroupType::STEREO_AND:
+          case RDKix::StereoGroupType::STEREO_AND:
             stereoGroupType = "and" + std::to_string(++andCount);
             break;
           default:
@@ -746,7 +746,7 @@ class MarvinCMLWriter {
           marvinGenericSgroup->molID = 'm' + std::to_string(++tempMolCount);
 
           marvinGenericSgroup->charge =
-              "onAtoms";  // RDKit has not place to put the charge location
+              "onAtoms";  // RDKix has not place to put the charge location
                           // value, so we assume onAtoms here
 
           for (auto atomIndex : sgroup.getAtoms()) {
@@ -777,14 +777,14 @@ class MarvinCMLWriter {
           marvinMonomerSgroup->title = titleValue;
 
           marvinMonomerSgroup->charge =
-              "onAtoms";  // RDKit has not place to put the charge location
+              "onAtoms";  // RDKix has not place to put the charge location
                           // value, so we assume onAtoms here
         }
       }
 
       // convert the superInfos to supergroups
 
-      marvinMol->processSgroupsFromRDKit();
+      marvinMol->processSgroupsFromRDKix();
       std::map<std::string, std::string> sgMap;
       std::map<std::string, std::string> atomMap;
       std::map<std::string, std::string> bondMap;
@@ -1242,4 +1242,4 @@ void ChemicalReactionToMrvFile(const ChemicalReaction &rxn,
   *outStream << outString;
   delete outStream;
 };
-}  // namespace RDKit
+}  // namespace RDKix

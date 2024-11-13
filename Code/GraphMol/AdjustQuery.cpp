@@ -2,10 +2,10 @@
 //  Copyright (c) 2015-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <GraphMol/GraphMol.h>
 #include <GraphMol/QueryAtom.h>
@@ -25,7 +25,7 @@
 #include <vector>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 namespace {
 bool isMapped(const Atom *atom) {
   return atom->hasProp(common_properties::molAtomMapNumber);
@@ -529,4 +529,4 @@ void adjustQueryProperties(RWMol &mol, const AdjustQueryParameters *inParams) {
   }
 }
 }  // namespace MolOps
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,5 +1,5 @@
 /*=================================================================*/
-/* Copyright (C)  2024  Greg Landrum and other RDKit contributors  */
+/* Copyright (C)  2024  Greg Landrum and other RDKix contributors  */
 /* Contributed by NextMove Software, Cambridge, UK.                */
 /*                                                                 */
 /*                                                                 */
@@ -20,14 +20,14 @@
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MonomerInfo.h>
 #include <Geometry/point.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
 #include "DCLV.h"
 
 using RDGeom::Point3D;
 
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 constexpr int VOXORDER = 16;
@@ -886,4 +886,4 @@ DoubleCubicLatticeVolume::DoubleCubicLatticeVolume(const ROMol &mol,
 }
 
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

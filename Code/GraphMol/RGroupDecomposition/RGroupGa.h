@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Gareth Jones, Glysade LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #ifndef RGROUPDECOMPGA_H_
@@ -24,7 +24,7 @@
 #include "RGroupFingerprintScore.h"
 #include "RGroupScore.h"
 
-namespace RDKit {
+namespace RDKix {
 
 using namespace GapeGa;
 using namespace std;
@@ -100,7 +100,7 @@ struct GaResult {
   GaResult &operator=(const GaResult &other);
 };
 
-class RDKIT_RGROUPDECOMPOSITION_EXPORT RGroupGa : public GaBase {
+class RDKIX_RGROUPDECOMPOSITION_EXPORT RGroupGa : public GaBase {
  public:
   RGroupGa(const RGroupDecompData &rGroupData,
            const chrono::steady_clock::time_point *const t0 = nullptr);
@@ -157,6 +157,6 @@ void copyVarianceData(const FingerprintVarianceScoreData &fromData,
 void clearVarianceData(
     FingerprintVarianceScoreData &fingerprintVarianceScoreData);
 
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif  // RGROUPDECOMPGA_H_

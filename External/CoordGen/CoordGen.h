@@ -2,14 +2,14 @@
 //  Copyright (C) 2017-2020 Greg Landrum
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Substruct/SubstructMatch.h>
 #include <GraphMol/MolTransforms/MolTransforms.h>
 #include <Geometry/Transform3D.h>
@@ -18,7 +18,7 @@
 #include "coordgen/sketcherMinimizer.h"
 #include "coordgen/CoordgenFragmenter.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace CoordGen {
 
 struct CoordGenParams {
@@ -192,4 +192,4 @@ unsigned int addCoords(T &mol, const CoordGenParams *params = nullptr) {
   return res;
 }
 }  // end of namespace CoordGen
-}  // namespace RDKit
+}  // namespace RDKix

@@ -29,7 +29,7 @@ using namespace std;
 // #define DEBUG_MSG(msg_stream) cout << msg_stream << '\n'
 #define DEBUG_MSG(msg_stream)
 
-using namespace RDKit;
+using namespace RDKix;
 
 int main(int argc, char **argv) {
   int status = -1;

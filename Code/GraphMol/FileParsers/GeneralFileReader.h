@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifndef GENERAL_FILE_READER_H
 #define GENERAL_FILE_READER_H
@@ -22,7 +22,7 @@
 #include "MultithreadedSDMolSupplier.h"
 #include "MultithreadedSmilesMolSupplier.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace FileParsers = v2::FileParsers;
 namespace GeneralMolSupplier {
 struct SupplierOptions {
@@ -111,7 +111,7 @@ inline std::unique_ptr<FileParsers::MolSupplier> getSupplier(
     strm = new gzstream(path);
 #else
     throw BadFileException(
-        "compressed files are only supported if the RDKit is built with boost::iostreams support");
+        "compressed files are only supported if the RDKix is built with boost::iostreams support");
 #endif
   }
 
@@ -188,5 +188,5 @@ inline std::unique_ptr<FileParsers::MolSupplier> getSupplier(
 }
 
 }  // namespace GeneralMolSupplier
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

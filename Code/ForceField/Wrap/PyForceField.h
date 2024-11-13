@@ -3,10 +3,10 @@
 //  Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #include <ForceField/ForceField.h>
@@ -85,7 +85,7 @@ class PyForceField {
 
 class PyMMFFMolProperties {
  public:
-  PyMMFFMolProperties(RDKit::MMFF::MMFFMolProperties *mp)
+  PyMMFFMolProperties(RDKix::MMFF::MMFFMolProperties *mp)
       : mmffMolProperties(mp) {}
   ~PyMMFFMolProperties() = default;
 
@@ -98,23 +98,23 @@ class PyMMFFMolProperties {
   double getMMFFPartialCharge(unsigned int idx) {
     return mmffMolProperties->getMMFFPartialCharge(idx);
   }
-  PyObject *getMMFFBondStretchParams(const RDKit::ROMol &mol,
+  PyObject *getMMFFBondStretchParams(const RDKix::ROMol &mol,
                                      const unsigned int idx1,
                                      const unsigned int idx2);
-  PyObject *getMMFFAngleBendParams(const RDKit::ROMol &mol,
+  PyObject *getMMFFAngleBendParams(const RDKix::ROMol &mol,
                                    const unsigned int idx1,
                                    const unsigned int idx2,
                                    const unsigned int idx3);
-  PyObject *getMMFFStretchBendParams(const RDKit::ROMol &mol,
+  PyObject *getMMFFStretchBendParams(const RDKix::ROMol &mol,
                                      const unsigned int idx1,
                                      const unsigned int idx2,
                                      const unsigned int idx3);
-  PyObject *getMMFFTorsionParams(const RDKit::ROMol &mol,
+  PyObject *getMMFFTorsionParams(const RDKix::ROMol &mol,
                                  const unsigned int idx1,
                                  const unsigned int idx2,
                                  const unsigned int idx3,
                                  const unsigned int idx4);
-  PyObject *getMMFFOopBendParams(const RDKit::ROMol &mol,
+  PyObject *getMMFFOopBendParams(const RDKix::ROMol &mol,
                                  const unsigned int idx1,
                                  const unsigned int idx2,
                                  const unsigned int idx3,
@@ -153,23 +153,23 @@ class PyMMFFMolProperties {
   void setMMFFVerbosity(unsigned int verbosity) {
     mmffMolProperties->setMMFFVerbosity(verbosity);
   }
-  boost::shared_ptr<RDKit::MMFF::MMFFMolProperties> mmffMolProperties;
+  boost::shared_ptr<RDKix::MMFF::MMFFMolProperties> mmffMolProperties;
 };
-PyObject *getUFFBondStretchParams(const RDKit::ROMol &mol,
+PyObject *getUFFBondStretchParams(const RDKix::ROMol &mol,
                                   const unsigned int idx1,
                                   const unsigned int idx2);
-PyObject *getUFFAngleBendParams(const RDKit::ROMol &mol,
+PyObject *getUFFAngleBendParams(const RDKix::ROMol &mol,
                                 const unsigned int idx1,
                                 const unsigned int idx2,
                                 const unsigned int idx3);
-PyObject *getUFFTorsionParams(const RDKit::ROMol &mol, const unsigned int idx1,
+PyObject *getUFFTorsionParams(const RDKix::ROMol &mol, const unsigned int idx1,
                               const unsigned int idx2, const unsigned int idx3,
                               const unsigned int idx4);
-PyObject *getUFFInversionParams(const RDKit::ROMol &mol,
+PyObject *getUFFInversionParams(const RDKix::ROMol &mol,
                                 const unsigned int idx1,
                                 const unsigned int idx2,
                                 const unsigned int idx3,
                                 const unsigned int idx4);
-PyObject *getUFFVdWParams(const RDKit::ROMol &mol, const unsigned int idx1,
+PyObject *getUFFVdWParams(const RDKix::ROMol &mol, const unsigned int idx1,
                           const unsigned int idx2);
 }  // namespace ForceFields

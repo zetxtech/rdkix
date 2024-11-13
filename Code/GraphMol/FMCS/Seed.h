@@ -2,36 +2,36 @@
 //  Copyright (C) 2014 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #pragma once
 #include <map>
 #include <boost/dynamic_bitset.hpp>
-#include "../RDKitBase.h"
+#include "../RDKixBase.h"
 // algorithm optimisation definitions
 #include "DebugTrace.h"
 #include "Graph.h"
 #include "DuplicatedSeedCache.h"
 #include "SubstructMatchCustom.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace FMCS {
 class MaximumCommonSubgraph;
 struct TargetMatch;
 
 // Reference to a fragment of source molecule
-struct RDKIT_FMCS_EXPORT MolFragment {
+struct RDKIX_FMCS_EXPORT MolFragment {
   std::vector<const Atom *> Atoms;
   std::vector<const Bond *> Bonds;
   // Full Query Molecule to Seed indices backward conversionmap
   std::map<unsigned int, unsigned int> SeedAtomIdxMap;
 };
 
-struct RDKIT_FMCS_EXPORT NewBond {
+struct RDKIX_FMCS_EXPORT NewBond {
   // index in qmol of new bond scheduled to be added into
   // seed. This is outgoing bond from SourceAtomIdx
   unsigned int BondIdx{0};
@@ -57,7 +57,7 @@ struct RDKIT_FMCS_EXPORT NewBond {
         NewAtom(a) {}
 };
 
-class RDKIT_FMCS_EXPORT Seed {
+class RDKIX_FMCS_EXPORT Seed {
  private:
   boost::dynamic_bitset<> addNewBondsToSeed(const ROMol &qmol,
                                             Seed &seed) const;
@@ -154,4 +154,4 @@ class RDKIT_FMCS_EXPORT Seed {
   void setStoreAllDegenerateMCS(bool value) { StoreAllDegenerateMCS = value; }
 };
 }  // namespace FMCS
-}  // namespace RDKit
+}  // namespace RDKix

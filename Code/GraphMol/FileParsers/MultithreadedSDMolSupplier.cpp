@@ -3,16 +3,16 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MultithreadedSDMolSupplier.h"
 
 #include "FileParserUtils.h"
 
-namespace RDKit {
+namespace RDKix {
 namespace v2 {
 namespace FileParsers {
 MultithreadedSDMolSupplier::MultithreadedSDMolSupplier(
@@ -251,5 +251,5 @@ RWMol *MultithreadedSDMolSupplier::processMoleculeRecord(
 }
 }  // namespace FileParsers
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

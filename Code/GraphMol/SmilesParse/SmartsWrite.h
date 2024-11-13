@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2004-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2004-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef RD_SMARTSWRITE_H_012020
@@ -15,14 +15,14 @@
 #include <vector>
 #include "SmilesWrite.h"
 
-namespace RDKit {
+namespace RDKix {
 class Atom;
 class Bond;
 class ROMol;
 
 namespace SmartsWrite {
 //! returns the SMARTS for an Atom
-RDKIT_SMILESPARSE_EXPORT std::string GetAtomSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string GetAtomSmarts(
     const Atom *qatom, const SmilesWriteParams &params);
 
 //! returns the SMARTS for an Atom
@@ -32,7 +32,7 @@ inline std::string GetAtomSmarts(const Atom *qatom) {
 };
 
 //! returns the SMARTS for a Bond
-RDKIT_SMILESPARSE_EXPORT std::string GetBondSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string GetBondSmarts(
     const Bond *qbond, const SmilesWriteParams &params, int atomToLeftIdx = -1);
 //! returns the SMARTS for a Bond
 inline std::string GetBondSmarts(const Bond *qbond, int atomToLeftIdx = -1) {
@@ -41,7 +41,7 @@ inline std::string GetBondSmarts(const Bond *qbond, int atomToLeftIdx = -1) {
   return GetBondSmarts(qbond, params, atomToLeftIdx);
 };
 }  // namespace SmartsWrite
-RDKIT_SMILESPARSE_EXPORT std::string MolToSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string MolToSmarts(
     const ROMol &mol, const SmilesWriteParams &params);
 
 //! returns the SMARTS for a molecule
@@ -53,16 +53,16 @@ inline std::string MolToSmarts(const ROMol &mol, bool doIsomericSmarts = true,
   return MolToSmarts(mol, params);
 };
 
-RDKIT_SMILESPARSE_EXPORT std::string MolFragmentToSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string MolFragmentToSmarts(
     const ROMol &mol, const SmilesWriteParams &params,
     const std::vector<int> &atomsToUse,
     const std::vector<int> *bondsToUse = nullptr);
 
 //! returns the CXSMARTS for a molecule
-RDKIT_SMILESPARSE_EXPORT std::string MolToCXSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string MolToCXSmarts(
     const ROMol &mol, const SmilesWriteParams &params);
 
-RDKIT_SMILESPARSE_EXPORT std::string MolFragmentToCXSmarts(
+RDKIX_SMILESPARSE_EXPORT std::string MolFragmentToCXSmarts(
     const ROMol &mol, const SmilesWriteParams &params,
     const std::vector<int> &atomsToUse,
     const std::vector<int> *bondsToUse = nullptr);
@@ -92,6 +92,6 @@ inline std::string MolFragmentToCXSmarts(
   params.doIsomericSmiles = doIsomericSmarts;
   return MolFragmentToCXSmarts(mol, params, atomsToUse, bondsToUse);
 }
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

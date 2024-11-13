@@ -2,16 +2,16 @@
 //  Copyright (C) 2004-2019 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RingInfo.h"
 #include <RDGeneral/Invariant.h>
 #include <algorithm>
 
-namespace RDKit {
+namespace RDKix {
 RingInfo::INT_VECT RingInfo::atomRingSizes(unsigned int idx) const {
   PRECONDITION(df_init, "RingInfo not initialized");
 
@@ -290,7 +290,7 @@ unsigned int RingInfo::addRingFamily(const INT_VECT &atomIndices,
 }
 #endif
 
-void RingInfo::initialize(RDKit::FIND_RING_TYPE ringType) {
+void RingInfo::initialize(RDKix::FIND_RING_TYPE ringType) {
   df_init = true;
   df_find_type_type = ringType;
 };
@@ -299,7 +299,7 @@ void RingInfo::reset() {
     return;
   }
   df_init = false;
-  df_find_type_type = RDKit::FIND_RING_TYPE_OTHER_OR_UNKNOWN;
+  df_find_type_type = RDKix::FIND_RING_TYPE_OTHER_OR_UNKNOWN;
   d_atomMembers.clear();
   d_bondMembers.clear();
   d_atomRings.clear();
@@ -313,4 +313,4 @@ void RingInfo::preallocate(unsigned int numAtoms, unsigned int numBonds) {
   d_atomMembers.resize(numAtoms);
   d_bondMembers.resize(numBonds);
 }
-}  // namespace RDKit
+}  // namespace RDKix

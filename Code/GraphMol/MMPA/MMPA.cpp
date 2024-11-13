@@ -2,10 +2,10 @@
 //  Copyright (C) 2015 Novartis Institutes for BioMedical Research
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <map>
 #include <vector>
@@ -22,7 +22,7 @@
 
 // #define MMPA_DEBUG // enable debug info output
 
-namespace RDKit {
+namespace RDKix {
 namespace MMPA {
 
 typedef std::vector<std::pair<unsigned, unsigned>>
@@ -538,4 +538,4 @@ bool fragmentMol(const ROMol &mol,
   return true;
 }
 }  // namespace MMPA
-}  // namespace RDKit
+}  // namespace RDKix

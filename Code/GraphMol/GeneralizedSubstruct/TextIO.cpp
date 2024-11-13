@@ -1,18 +1,18 @@
 //
-//  Copyright (c) 2023, Greg Landrum and other RDKit contributors
+//  Copyright (c) 2023, Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 //
 
 #include <DataStructs/base64.h>
 #include <GraphMol/MolBundle.h>
 #include <GraphMol/MolPickler.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/SmilesParse/SmartsWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -31,7 +31,7 @@
 
 namespace bpt = boost::property_tree;
 
-namespace RDKit {
+namespace RDKix {
 namespace GeneralizedSubstruct {
 namespace detail {
 constexpr std::uint16_t recognition = 0xbe73;
@@ -350,4 +350,4 @@ std::string ExtendedQueryMol::toJSON() const {
   return ss.str();
 }
 }  // namespace GeneralizedSubstruct
-}  // namespace RDKit
+}  // namespace RDKix

@@ -1,16 +1,16 @@
 //
-//  Copyright (C) 2018-2022 Boran Adas and other RDKit contributors
+//  Copyright (C) 2018-2022 Boran Adas and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <RDGeneral/test.h>
 #include <GraphMol/Fingerprints/AtomPairs.h>
 #include <GraphMol/Fingerprints/MorganFingerprints.h>
@@ -18,14 +18,14 @@
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/Fingerprints/AtomPairGenerator.h>
 #include <GraphMol/Fingerprints/MorganGenerator.h>
-#include <GraphMol/Fingerprints/RDKitFPGenerator.h>
+#include <GraphMol/Fingerprints/RDKixFPGenerator.h>
 #include <GraphMol/Fingerprints/TopologicalTorsionGenerator.h>
 #include <GraphMol/Fingerprints/FingerprintGenerator.h>
 
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 std::string smis[] = {
     "C[C@@H]1CCC[C@H](C)[C@H]1C",
@@ -1422,9 +1422,9 @@ void testCustomInvariants() {
   BOOST_LOG(rdErrorLog) << "  done" << std::endl;
 }
 
-void testRDKitFP() {
+void testRDKixFP() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
-  BOOST_LOG(rdErrorLog) << "Test RDKit fp generator" << std::endl;
+  BOOST_LOG(rdErrorLog) << "Test RDKix fp generator" << std::endl;
 
   ROMol *mol;
   SparseIntVect<std::uint64_t> *fp, *fpTemp, *fpOld;
@@ -1443,7 +1443,7 @@ void testRDKitFP() {
   std::uint32_t fpSize = 2048;
   std::uint32_t numBitsPerFeature = 1;
   std::unique_ptr<FingerprintGenerator<std::uint64_t>> fpGenerator(
-      RDKitFP::getRDKitFPGenerator<std::uint64_t>(
+      RDKixFP::getRDKixFPGenerator<std::uint64_t>(
           minPath, maxPath, useHs, branchedPaths, useBondOrder,
           atomInvariantsGenerator, countSimulation, countBounds, fpSize,
           numBitsPerFeature));
@@ -1478,7 +1478,7 @@ void testRDKFPUnfolded() {
   BOOST_LOG(rdErrorLog) << "    Test unfolded version of RDKFP   " << std::endl;
   {
     FingerprintGenerator<std::uint64_t> *generator =
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>();
     ROMol *m1 = SmilesToMol("c1ccccc1N");
     TEST_ASSERT(m1);
     SparseIntVect<std::uint64_t> *fp1;
@@ -1506,7 +1506,7 @@ void testRDKFPUnfolded() {
   }
   {
     FingerprintGenerator<std::uint64_t> *generator =
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>();
     ROMol *m1 = SmilesToMol("Cl");
     TEST_ASSERT(m1);
     SparseIntVect<std::uint64_t> *fp1;
@@ -1523,7 +1523,7 @@ void testRDKFPUnfolded() {
   // additional outputs are not fully functional yet
   /*{
     FingerprintGenerator<std::uint64_t> *generator =
-        RDKitFP::getRDKitFPGenerator<std::uint64_t>();
+        RDKixFP::getRDKixFPGenerator<std::uint64_t>();
     ROMol *m1 = SmilesToMol("CCCO");
     TEST_ASSERT(m1);
     SparseIntVect<std::uint64_t> *fp1;
@@ -2387,8 +2387,8 @@ void testBulkFP() {
       MorganFingerprint::getMorganGenerator<std::uint64_t>(2),
       FPType::MorganFP);
 
-  testPairs.emplace_back(RDKitFP::getRDKitFPGenerator<std::uint64_t>(),
-                         FPType::RDKitFP);
+  testPairs.emplace_back(RDKixFP::getRDKixFPGenerator<std::uint64_t>(),
+                         FPType::RDKixFP);
 
   testPairs.emplace_back(
       TopologicalTorsion::getTopologicalTorsionGenerator<std::uint64_t>(),
@@ -2432,7 +2432,7 @@ void testAtomPairFPDifference() {
   const unsigned int maxLength = 30;
   const std::vector<std::uint32_t> fromAtoms{12, 13};
   std::unique_ptr<SparseIntVect<std::int32_t>> fpFromFreeFunc(
-      RDKit::AtomPairs::getAtomPairFingerprint(*zinc36905137, minLength,
+      RDKix::AtomPairs::getAtomPairFingerprint(*zinc36905137, minLength,
                                                maxLength, &fromAtoms));
   std::unique_ptr<FingerprintGenerator<std::uint32_t>> atomPairGenerator(
       AtomPair::getAtomPairGenerator<std::uint32_t>(minLength, maxLength));
@@ -2489,7 +2489,7 @@ int main(int argc, char *argv[]) {
   testGitHubIssue874();
   testInvariantGenerators();
   testCustomInvariants();
-  testRDKitFP();
+  testRDKixFP();
   testRDKFPUnfolded();
   testTopologicalTorsionFPOld();
   testTorsions();

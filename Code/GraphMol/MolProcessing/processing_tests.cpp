@@ -1,21 +1,21 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <catch2/catch_all.hpp>
 #include "RDGeneral/test.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolProcessing/MolProcessing.h>
 #include <RDGeneral/RDLog.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
 TEST_CASE("getFingerprintsForMolsInFile") {
   std::string dirName = getenv("RDBASE");
@@ -41,10 +41,10 @@ TEST_CASE("getFingerprintsForMolsInFile") {
       CHECK(res.size() == 4999);
     }
     {
-      RDKit::GeneralMolSupplier::SupplierOptions options;
+      RDKix::GeneralMolSupplier::SupplierOptions options;
       options.numWriterThreads = 1;
       options.titleLine = false;
-      auto res = RDKit::MolProcessing::getFingerprintsForMolsInFile<>(fileName,
+      auto res = RDKix::MolProcessing::getFingerprintsForMolsInFile<>(fileName,
                                                                       options);
       CHECK(res.size() == 4999);
     }

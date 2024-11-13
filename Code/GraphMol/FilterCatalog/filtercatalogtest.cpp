@@ -30,7 +30,7 @@
 //
 #include <RDGeneral/test.h>
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <GraphMol/FilterCatalog/FilterCatalog.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -39,7 +39,7 @@
 #include <map>
 #include <algorithm>
 
-using namespace RDKit;
+using namespace RDKix;
 using namespace std;
 
 struct IntPair {

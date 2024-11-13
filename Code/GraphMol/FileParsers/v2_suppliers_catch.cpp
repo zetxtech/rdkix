@@ -1,10 +1,10 @@
 //
-//  Copyright (C) 2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2024 Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <algorithm>
@@ -14,14 +14,14 @@
 #include "RDGeneral/test.h"
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/FileParsers/MolSupplier.h>
 #include <RDGeneral/FileParseException.h>
 #include <boost/algorithm/string.hpp>
 
-using namespace RDKit;
-using namespace RDKit::v2;
+using namespace RDKix;
+using namespace RDKix::v2;
 
 TEST_CASE("ForwardSDMolSupplier") {
   SECTION("basics") {

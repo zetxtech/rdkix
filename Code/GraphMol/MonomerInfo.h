@@ -1,11 +1,11 @@
 //
-//  Copyright (C) 2013-2024 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2013-2024 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 /*! \file MonomerInfo.h
 
@@ -20,10 +20,10 @@
 #include <utility>
 #include <boost/shared_ptr.hpp>
 
-namespace RDKit {
+namespace RDKix {
 
 //! The abstract base class for atom-level monomer info
-class RDKIT_GRAPHMOL_EXPORT AtomMonomerInfo {
+class RDKIX_GRAPHMOL_EXPORT AtomMonomerInfo {
  public:
   typedef enum { UNKNOWN = 0, PDBRESIDUE, OTHER } AtomMonomerType;
 
@@ -47,7 +47,7 @@ class RDKIT_GRAPHMOL_EXPORT AtomMonomerInfo {
 };
 
 //! Captures atom-level information about peptide residues
-class RDKIT_GRAPHMOL_EXPORT AtomPDBResidueInfo : public AtomMonomerInfo {
+class RDKIX_GRAPHMOL_EXPORT AtomPDBResidueInfo : public AtomMonomerInfo {
  public:
   AtomPDBResidueInfo() : AtomMonomerInfo(PDBRESIDUE) {}
   AtomPDBResidueInfo(const AtomPDBResidueInfo &other) = default;
@@ -117,9 +117,9 @@ class RDKIT_GRAPHMOL_EXPORT AtomPDBResidueInfo : public AtomMonomerInfo {
   unsigned int d_secondaryStructure = 0;
   unsigned int d_segmentNumber = 0;
 };
-};  // namespace RDKit
+};  // namespace RDKix
 //! allows AtomPDBResidueInfo objects to be dumped to streams
-RDKIT_GRAPHMOL_EXPORT std::ostream &operator<<(
-    std::ostream &target, const RDKit::AtomPDBResidueInfo &apri);
+RDKIX_GRAPHMOL_EXPORT std::ostream &operator<<(
+    std::ostream &target, const RDKix::AtomPDBResidueInfo &apri);
 
 #endif

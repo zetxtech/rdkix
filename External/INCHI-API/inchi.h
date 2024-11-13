@@ -31,12 +31,12 @@
 //
 
 #include <RDGeneral/export.h>
-#ifndef RDKIT_INCHI_30JUNE2011
-#define RDKIT_INCHI_30JUNE2011
-#include <GraphMol/RDKitBase.h>
+#ifndef RDKIX_INCHI_30JUNE2011
+#define RDKIX_INCHI_30JUNE2011
+#include <GraphMol/RDKixBase.h>
 #include <string>
-namespace RDKit {
-struct RDKIT_RDINCHILIB_EXPORT ExtraInchiReturnValues {
+namespace RDKix {
+struct RDKIX_RDINCHILIB_EXPORT ExtraInchiReturnValues {
   int returnCode;
   std::string messagePtr;
   std::string logPtr;
@@ -51,7 +51,7 @@ struct RDKIT_RDINCHILIB_EXPORT ExtraInchiReturnValues {
  * \param removeHs Whether to remove hydrogens from the generated molecule
  * before returning it.
  */
-RDKIT_RDINCHILIB_EXPORT RWMol *InchiToMol(const std::string &inchi,
+RDKIX_RDINCHILIB_EXPORT RWMol *InchiToMol(const std::string &inchi,
                                           ExtraInchiReturnValues &rv,
                                           bool sanitize = true,
                                           bool removeHs = true);
@@ -68,7 +68,7 @@ RDKIT_RDINCHILIB_EXPORT RWMol *InchiToMol(const std::string &inchi,
  * and the User Guide:
  * http://www.inchi-trust.org/fileadmin/user_upload/software/inchi-v1.04/InChI_UserGuide.pdf
  */
-RDKIT_RDINCHILIB_EXPORT std::string MolToInchi(const ROMol &mol,
+RDKIX_RDINCHILIB_EXPORT std::string MolToInchi(const ROMol &mol,
                                                ExtraInchiReturnValues &rv,
                                                const char *options = NULL);
 /*! Get the InChI string for a given mol block
@@ -84,13 +84,13 @@ RDKIT_RDINCHILIB_EXPORT std::string MolToInchi(const ROMol &mol,
  * and the User Guide:
  * http://www.inchi-trust.org/fileadmin/user_upload/software/inchi-v1.04/InChI_UserGuide.pdf
  */
-RDKIT_RDINCHILIB_EXPORT std::string MolBlockToInchi(const std::string &mol,
+RDKIX_RDINCHILIB_EXPORT std::string MolBlockToInchi(const std::string &mol,
                                                     ExtraInchiReturnValues &rv,
                                                     const char *options = NULL);
 /*! Get the InChI Key for an input InChI string
  * \param inchi The input InChI string, which can be standard or not.
  */
-RDKIT_RDINCHILIB_EXPORT std::string InchiToInchiKey(const std::string &inchi);
+RDKIX_RDINCHILIB_EXPORT std::string InchiToInchiKey(const std::string &inchi);
 
 /*! Get the InChI key for a given molecule directly
  * \param mol The input molecule
@@ -107,5 +107,5 @@ inline std::string MolToInchiKey(const ROMol &mol, const char *options = NULL) {
   return InchiToInchiKey(MolToInchi(mol, rv, options));
 };
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif

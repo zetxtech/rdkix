@@ -35,15 +35,15 @@
 
 #include <GraphMol/SLNParse/SLNParse.h>
 #include <GraphMol/SLNParse/SLNAttribs.h>
-#include <GraphMol/RDKitBase.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixBase.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/RDLog.h>
 #include <RDGeneral/Invariant.h>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 
-namespace RDKit {
+namespace RDKix {
 namespace SLNParse {
 namespace {
 int parseIntAttribVal(std::string attribName, std::string attribVal,
@@ -258,7 +258,7 @@ void parseAtomAttribs(Atom *atom, AttribListType attribs, bool doingQuery) {
           val = parseIntAttribVal(attribName, attribVal);
         }
         query = makeQueryFromOp(
-            "=", val, (int (*)(const RDKit::Atom *))(queryAtomAllBondProduct),
+            "=", val, (int (*)(const RDKix::Atom *))(queryAtomAllBondProduct),
             fTag + "AtomBondEnvironment");
       } else {
         // anything we don't know how to deal with we'll just store in raw form:
@@ -424,7 +424,7 @@ void parseBondAttribs(Bond *bond, AttribListType attribs, bool doingQuery) {
           query->setNegation(!query->getNegation());
         }
         if (seenTypeQuery) {
-          static_cast<RDKit::QueryBond *>(bond)->expandQuery(query, how, true);
+          static_cast<RDKix::QueryBond *>(bond)->expandQuery(query, how, true);
         } else {
           // if this is the first type query, we need to replace any existing
           // bond order queries:
@@ -483,7 +483,7 @@ void adjustAtomChiralities(RWMol *mol) {
     std::string attribVal;
     if ((*atomIt)->getPropIfPresent(common_properties::_SLN_s, attribVal)) {
       // the atom is marked as chiral, translate the sln chirality into
-      // RDKit chirality
+      // RDKix chirality
 
       // start with a straight map of the chirality value:
       // as a reminder, here are some SLN <-> SMILES pairs
@@ -517,7 +517,7 @@ void adjustAtomChiralities(RWMol *mol) {
         // std::cerr << " " << nbrIt->second;
       }
 
-      // ok, we now have the ordering of the bonds (used for RDKit chirality),
+      // ok, we now have the ordering of the bonds (used for RDKix chirality),
       // figure out the permutation order relative to the atom numbering
       // (sln chirality):
       int nSwaps = (*atomIt)->getPerturbationOrder(bondOrdering);
@@ -532,4 +532,4 @@ void adjustAtomChiralities(RWMol *mol) {
   }
 }
 }  // namespace SLNParse
-}  // namespace RDKit
+}  // namespace RDKix

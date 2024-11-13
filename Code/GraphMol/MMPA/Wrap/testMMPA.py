@@ -1,7 +1,7 @@
 import unittest
 
-from rdkit import Chem, RDConfig
-from rdkit.Chem import rdMMPA
+from rdkix import Chem, RDConfig
+from rdkix.Chem import rdMMPA
 
 
 def natoms(tpl):

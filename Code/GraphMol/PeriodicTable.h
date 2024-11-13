@@ -2,10 +2,10 @@
 //  Copyright (C) 2001-2011 Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDGeneral/export.h>
 #ifndef _RD_PERIODIC_TABLE_H
@@ -16,7 +16,7 @@
 #include <RDGeneral/types.h>
 #include "atomic_data.h"
 
-namespace RDKit {
+namespace RDKix {
 
 //! singleton class for retrieving information about atoms
 /*!
@@ -29,7 +29,7 @@ namespace RDKit {
   \endverbatim
 
 */
-class RDKIT_GRAPHMOL_EXPORT PeriodicTable {
+class RDKIX_GRAPHMOL_EXPORT PeriodicTable {
  public:
   //! returns a pointer to the singleton PeriodicTable
   /*
@@ -344,6 +344,6 @@ class RDKIT_GRAPHMOL_EXPORT PeriodicTable {
   std::vector<atomicData> byanum;
   STR_UINT_MAP byname;
 };
-};  // namespace RDKit
+};  // namespace RDKix
 
 #endif

@@ -1,14 +1,14 @@
 //
-//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKit contributors
+//  Copyright (C) 2022-2023 Tad Hurst, Greg Landrum and other RDKix contributors
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/RDLog.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/test_fixtures.h>
 #include <GraphMol/FileParsers/FileParsers.h>
@@ -27,7 +27,7 @@
 #include <fstream>
 #include <filesystem>
 
-using namespace RDKit;
+using namespace RDKix;
 
 class MrvTests {
  public:
@@ -244,7 +244,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*smilesMol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
 
           if (outMolStr == "") {
@@ -295,7 +295,7 @@ class MrvTests {
 
       auto mol = GetMolv2(molTest);
       TEST_ASSERT(mol != nullptr);
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       if (molTest->reapplyMolBlockWedging) {
         Chirality::reapplyMolBlockWedging(*mol);
@@ -312,7 +312,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*mol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -338,7 +338,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*mol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -479,7 +479,7 @@ class MrvTests {
         rwMol->updatePropertyCache(false);
       }
       MolOps::Kekulize(*rwMol);
-      RDKit::Chirality::reapplyMolBlockWedging(*rwMol);
+      RDKix::Chirality::reapplyMolBlockWedging(*rwMol);
 
       {
         std::string outMolStr = MolToMrvBlock(*rwMol, false, -1, false, false);
@@ -520,7 +520,7 @@ class MrvTests {
 
       auto mol = GetMolv2(molTest);
       TEST_ASSERT(mol != nullptr);
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       Chirality::reapplyMolBlockWedging(*mol);
 
@@ -532,7 +532,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*mol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         } catch (...) {
           throw;  // re-trhow the error if not a kekule error
@@ -553,9 +553,9 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*mol, true, -1, true, false);
-          RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+          RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         } catch (...) {
           throw;  // re-throw the error if not a kekule error
@@ -594,14 +594,14 @@ class MrvTests {
       auto mol = MolFromMrvFile(fName, params);
       // mol  test
       TEST_ASSERT(mol != nullptr);
-      RDKit::Chirality::removeNonExplicit3DChirality(*mol);
+      RDKix::Chirality::removeNonExplicit3DChirality(*mol);
 
       TEST_ASSERT(mol->getNumAtoms() == molTest->atomCount)
       TEST_ASSERT(mol->getNumBonds() == molTest->bondCount)
 
       MolOps::Kekulize(*mol);
       if (molTest->reapplyMolBlockWedging) {
-        RDKit::Chirality::reapplyMolBlockWedging(*mol);
+        RDKix::Chirality::reapplyMolBlockWedging(*mol);
       }
 
       {
@@ -675,7 +675,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMolBlock(*mol, true, 0, true, true);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -698,7 +698,7 @@ class MrvTests {
         std::string outMolStr = "";
         try {
           outMolStr = MolToMrvBlock(*mol, true, -1, true, false);
-        } catch (const RDKit::KekulizeException &) {
+        } catch (const RDKix::KekulizeException &) {
           outMolStr = "";
         }
         if (outMolStr == "") {
@@ -851,7 +851,7 @@ class MrvTests {
     MrvWriterParams params{true, true, true, 15};
     std::string outMolStr = MolToMrvBlock(*mol, params, -1);
     std::unique_ptr<ROMol> readMol{
-        RDKit::v2::MarvinParser::MolFromMrvBlock(outMolStr)};
+        RDKix::v2::MarvinParser::MolFromMrvBlock(outMolStr)};
     TEST_ASSERT(numAtoms == readMol->getNumAtoms());
     const Conformer &conformer = mol->getConformer();
     const Conformer &readConformer = readMol->getConformer();

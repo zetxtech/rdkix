@@ -1,13 +1,13 @@
 //
-//  Copyright (C) 2023 Greg Landrum and other RDKit contributors
+//  Copyright (C) 2023 Greg Landrum and other RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Atropisomers.h>
 #include <RDGeneral/types.h>
 #include <sstream>
@@ -23,7 +23,7 @@
 
 #include <cstdlib>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace Chirality {
 
@@ -234,7 +234,7 @@ Bond::BondDir determineBondWedgeState(const Bond *bond,
 }
 Bond::BondDir determineBondWedgeState(
     const Bond *bond,
-    const std::map<int, std::unique_ptr<RDKit::Chirality::WedgeInfoBase>>
+    const std::map<int, std::unique_ptr<RDKix::Chirality::WedgeInfoBase>>
         &wedgeBonds,
     const Conformer *conf) {
   PRECONDITION(bond, "no bond");
@@ -396,12 +396,12 @@ std::map<int, std::unique_ptr<Chirality::WedgeInfoBase>> pickBondsToWedge(
     auto bnd1 =
         detail::pickBondToWedge(atom, mol, nChiralNbrs, wedgeInfo, noNbrs);
     if (bnd1 >= 0) {
-      auto wi = std::unique_ptr<RDKit::Chirality::WedgeInfoChiral>(
-          new RDKit::Chirality::WedgeInfoChiral(idx));
+      auto wi = std::unique_ptr<RDKix::Chirality::WedgeInfoChiral>(
+          new RDKix::Chirality::WedgeInfoChiral(idx));
       wedgeInfo[bnd1] = std::move(wi);
     }
   }
-  RDKit::Atropisomers::wedgeBondsFromAtropisomers(mol, conf, wedgeInfo);
+  RDKix::Atropisomers::wedgeBondsFromAtropisomers(mol, conf, wedgeInfo);
 
   return wedgeInfo;
 }
@@ -636,4 +636,4 @@ void invertMolBlockWedgingInfo(ROMol &mol) {
 }
 
 }  // namespace Chirality
-}  // namespace RDKit
+}  // namespace RDKix

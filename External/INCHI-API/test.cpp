@@ -9,7 +9,7 @@
 #include <RDGeneral/utils.h>
 #include <RDGeneral/StreamOps.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -23,7 +23,7 @@
 #include <DataStructs/BitOps.h>
 #include "inchi.h"
 
-using namespace RDKit;
+using namespace RDKix;
 
 #ifdef RDK_TEST_MULTITHREADED
 namespace {
@@ -647,7 +647,7 @@ M  END
   }
   {
     std::string molb = R"MOL(BDBM163075
-     RDKit          2D
+     RDKix          2D
 
  27 30  0  0  0  0  0  0  0  0999 V2000
     1.6146   -5.5162    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0

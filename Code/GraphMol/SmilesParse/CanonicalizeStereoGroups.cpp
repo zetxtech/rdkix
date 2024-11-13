@@ -1,20 +1,20 @@
 
-//  Copyright (C) 2001-2024  RDKit contributors
+//  Copyright (C) 2001-2024  RDKix contributors
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/Canon.h>
 #include <GraphMol/Chirality.h>
 #include <GraphMol/new_canon.h>
 
 #include <GraphMol/SmilesParse/SmilesParseOps.h>
-#include <GraphMol/RDKitQueries.h>
+#include <GraphMol/RDKixQueries.h>
 #include <RDGeneral/Exceptions.h>
 #include <RDGeneral/hash/hash.hpp>
 #include <RDGeneral/utils.h>
@@ -24,7 +24,7 @@
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/CanonicalizeStereoGroups.h>
 
-namespace RDKit {
+namespace RDKix {
 
 namespace {
 
@@ -69,25 +69,25 @@ void buildTree(int atomIndexToAdd, const ROMol *mol,
 class ChiralAtomItem {
  private:
   unsigned int atomId;
-  RDKit::Atom::ChiralType chiralType;
+  RDKix::Atom::ChiralType chiralType;
 
  public:
   ChiralAtomItem() = delete;
-  ChiralAtomItem(const RDKit::Atom *atomInit,
+  ChiralAtomItem(const RDKix::Atom *atomInit,
                  const std::vector<unsigned int> &atomsToInvert)
       : atomId(atomInit->getIdx()), chiralType(atomInit->getChiralTag()) {
     if (std::find(atomsToInvert.begin(), atomsToInvert.end(), atomId) !=
         atomsToInvert.end()) {
-      if (chiralType == RDKit::Atom::CHI_TETRAHEDRAL_CW) {
-        chiralType = RDKit::Atom::CHI_TETRAHEDRAL_CCW;
-      } else if (chiralType == RDKit::Atom::CHI_TETRAHEDRAL_CCW) {
-        chiralType = RDKit::Atom::CHI_TETRAHEDRAL_CW;
+      if (chiralType == RDKix::Atom::CHI_TETRAHEDRAL_CW) {
+        chiralType = RDKix::Atom::CHI_TETRAHEDRAL_CCW;
+      } else if (chiralType == RDKix::Atom::CHI_TETRAHEDRAL_CCW) {
+        chiralType = RDKix::Atom::CHI_TETRAHEDRAL_CW;
       }
     }
   }
 
   unsigned int getAtomId() const { return atomId; }
-  RDKit::Atom::ChiralType getChiralType() const { return chiralType; }
+  RDKix::Atom::ChiralType getChiralType() const { return chiralType; }
 
   bool operator<(const ChiralAtomItem &other) const {
     if (atomId < other.atomId) {
@@ -122,7 +122,7 @@ class ChiralAtomItem {
 
 class ChiralBondItem {
  private:
-  RDKit::Bond::BondStereo stereoType = RDKit::Bond::BondStereo::STEREONONE;
+  RDKix::Bond::BondStereo stereoType = RDKix::Bond::BondStereo::STEREONONE;
   unsigned int bondId;
   unsigned int atomId1;
   unsigned int atomId2;
@@ -132,10 +132,10 @@ class ChiralBondItem {
   unsigned int getAtomId1() const { return atomId1; }
   unsigned int getAtomId2() const { return atomId2; }
 
-  RDKit::Bond::BondStereo getStereoType() const { return stereoType; }
+  RDKix::Bond::BondStereo getStereoType() const { return stereoType; }
 
   ChiralBondItem() = delete;
-  ChiralBondItem(const RDKit::Bond *bondInit)
+  ChiralBondItem(const RDKix::Bond *bondInit)
       : stereoType(bondInit->getStereo()),
         bondId(bondInit->getIdx()),
         atomId1(bondInit->getBeginAtomIdx()),
@@ -186,12 +186,12 @@ class RankedValue {
   mutable bool bondsSorted = false;
 
  public:
-  void AddAtom(RDKit::Atom *atom,
+  void AddAtom(RDKix::Atom *atom,
                const std::vector<unsigned int> &atomsToInvert) {
     chiralAtomItems.emplace_back(atom, atomsToInvert);
   }
 
-  void AddBond(RDKit::Bond *bond) {
+  void AddBond(RDKix::Bond *bond) {
     chiralBondItems.emplace_back(bond);
     bondsSorted = false;
   }
@@ -432,7 +432,7 @@ unsigned int countSwaps(std::vector<unsigned int> &nbrs) {
 // it does return the atoms in the order handed to it, which could be the order
 // of atoms for a possible smiles string.
 //
-// RDKit internally bases the chiral atoms on the order of the bonds
+// RDKix internally bases the chiral atoms on the order of the bonds
 // to an atom, and the renumber function below does not change the order of the
 // bonds to an atom.  So, the chiral atoms are still correct and are unchanged
 // by renumber.
@@ -441,7 +441,7 @@ unsigned int countSwaps(std::vector<unsigned int> &nbrs) {
 // smiles were it to be generated.  This allows processing of a mol in a
 // smiles-like order without actually generating a smiles string.
 
-void getAtomsToInvert2(const RDKit::ROMol &mol,
+void getAtomsToInvert2(const RDKix::ROMol &mol,
                        const std::vector<unsigned int> &newOrder,
                        std::vector<unsigned int> &atomsToInvert) {
   unsigned int nAts = mol.getNumAtoms();
@@ -462,9 +462,9 @@ void getAtomsToInvert2(const RDKit::ROMol &mol,
   // copy over the atoms:
   for (unsigned int nIdx = 0; nIdx < nAts; ++nIdx) {
     unsigned int oIdx = newOrder[nIdx];
-    const RDKit::Atom *oAtom = mol.getAtomWithIdx(oIdx);
+    const RDKix::Atom *oAtom = mol.getAtomWithIdx(oIdx);
 
-    if (oAtom->getChiralTag() != RDKit::Atom::CHI_UNSPECIFIED) {
+    if (oAtom->getChiralTag() != RDKix::Atom::CHI_UNSPECIFIED) {
       // get the neighbors in the new order
 
       std::vector<unsigned int> nbrs;
@@ -474,7 +474,7 @@ void getAtomsToInvert2(const RDKit::ROMol &mol,
         nbrs.push_back(revOrder[nbr->getIdx()]);
       }
 
-      if ((RDKit::countSwaps(nbrs)) % 2) {
+      if ((RDKix::countSwaps(nbrs)) % 2) {
         atomsToInvert.push_back(nIdx);
       }
     }
@@ -518,22 +518,22 @@ void clearStereoGroups(ROMol &mol) {
 }
 
 void canonicalizeStereoGroups_internal(
-    std::unique_ptr<RDKit::ROMol> &mol, RDKit::StereoGroupType stereoGroupType,
-    RDKit::StereoGroupAbsOptions outputAbsoluteGroups) {
+    std::unique_ptr<RDKix::ROMol> &mol, RDKix::StereoGroupType stereoGroupType,
+    RDKix::StereoGroupAbsOptions outputAbsoluteGroups) {
   // this expands a mol with stereo groups to a vector of values that are the
   // result of expanding the stereo groups, then determines the stereo groups
   // from that set
 
-  std::set<RDKit::RankedValue> allRankedValues;
+  std::set<RDKix::RankedValue> allRankedValues;
 
-  std::vector<RDKit::StereoGroup> groupsToProcess;
-  std::vector<RDKit::StereoGroup> andGroupsToKeep;
+  std::vector<RDKix::StereoGroup> groupsToProcess;
+  std::vector<RDKix::StereoGroup> andGroupsToKeep;
 
   for (auto &grp : mol->getStereoGroups()) {
     if (stereoGroupType == grp.getGroupType()) {
       groupsToProcess.push_back(grp);
-    } else if (stereoGroupType == RDKit::StereoGroupType::STEREO_OR &&
-               grp.getGroupType() == RDKit::StereoGroupType::STEREO_AND) {
+    } else if (stereoGroupType == RDKix::StereoGroupType::STEREO_OR &&
+               grp.getGroupType() == RDKix::StereoGroupType::STEREO_AND) {
       andGroupsToKeep.push_back(grp);
     }
   }
@@ -541,34 +541,34 @@ void canonicalizeStereoGroups_internal(
   mol->setStereoGroups(
       andGroupsToKeep);  // these groups might be empty, especially if we
                          // are PROCESSING AND groups
-  std::unique_ptr<RDKit::ROMol> bestNewMol;
+  std::unique_ptr<RDKix::ROMol> bestNewMol;
   auto newMolCount = std::pow(2, groupsToProcess.size());
 
   for (unsigned int molIndex = 0; molIndex < newMolCount; ++molIndex) {
-    auto newMol = std::unique_ptr<RDKit::ROMol>(new RDKit::RWMol(*(mol.get())));
+    auto newMol = std::unique_ptr<RDKix::ROMol>(new RDKix::RWMol(*(mol.get())));
 
     for (unsigned int grpIndex = 0; grpIndex < groupsToProcess.size();
          ++grpIndex) {
       if (molIndex & (1 << grpIndex)) {
         for (auto atomPtr : groupsToProcess[grpIndex].getAtoms()) {
-          if (atomPtr->getChiralTag() == RDKit::Atom::CHI_TETRAHEDRAL_CW) {
+          if (atomPtr->getChiralTag() == RDKix::Atom::CHI_TETRAHEDRAL_CW) {
             newMol->getAtomWithIdx(atomPtr->getIdx())
-                ->setChiralTag(RDKit::Atom::CHI_TETRAHEDRAL_CCW);
+                ->setChiralTag(RDKix::Atom::CHI_TETRAHEDRAL_CCW);
           } else if (atomPtr->getChiralTag() ==
-                     RDKit::Atom::CHI_TETRAHEDRAL_CCW) {
+                     RDKix::Atom::CHI_TETRAHEDRAL_CCW) {
             newMol->getAtomWithIdx(atomPtr->getIdx())
-                ->setChiralTag(RDKit::Atom::CHI_TETRAHEDRAL_CW);
+                ->setChiralTag(RDKix::Atom::CHI_TETRAHEDRAL_CW);
           }
         }
         // do any  atropisomer bonds in this stereo group
 
         for (auto bond : groupsToProcess[grpIndex].getBonds()) {
-          if (bond->getStereo() == RDKit::Bond::STEREOATROPCW) {
+          if (bond->getStereo() == RDKix::Bond::STEREOATROPCW) {
             newMol->getBondWithIdx(bond->getIdx())
-                ->setStereo(RDKit::Bond::STEREOATROPCCW);
-          } else if (bond->getStereo() == RDKit::Bond::STEREOATROPCCW) {
+                ->setStereo(RDKix::Bond::STEREOATROPCCW);
+          } else if (bond->getStereo() == RDKix::Bond::STEREOATROPCCW) {
             newMol->getBondWithIdx(bond->getIdx())
-                ->setStereo(RDKit::Bond::STEREOATROPCW);
+                ->setStereo(RDKix::Bond::STEREOATROPCW);
           }
         }
       }
@@ -576,8 +576,8 @@ void canonicalizeStereoGroups_internal(
 
     if (!andGroupsToKeep.empty()) {
       canonicalizeStereoGroups_internal(
-          newMol, RDKit::StereoGroupType::STEREO_AND,
-          RDKit::StereoGroupAbsOptions::NeverInclude);
+          newMol, RDKix::StereoGroupType::STEREO_AND,
+          RDKix::StereoGroupAbsOptions::NeverInclude);
     }
     std::vector<unsigned int> ranks(mol->getNumAtoms());
 
@@ -589,7 +589,7 @@ void canonicalizeStereoGroups_internal(
     const bool includeChiralPresence = true;
     const bool includeStereoGroups = true;
 
-    RDKit::Canon::rankMolAtoms(*newMol, ranks, breakTies, includeChirality,
+    RDKix::Canon::rankMolAtoms(*newMol, ranks, breakTies, includeChirality,
                                includeIsotopes, includeAtomMaps,
                                includeChiralPresence, includeStereoGroups,
                                useNonStereoRanks);
@@ -617,7 +617,7 @@ void canonicalizeStereoGroups_internal(
         break;  // all atoms are done
       }
 
-      RDKit::buildTree(startingAtomIndex, newMol.get(), chosenOrder,
+      RDKix::buildTree(startingAtomIndex, newMol.get(), chosenOrder,
                        reversedOrder, ranks);
     }
     if (newMol->getNumAtoms() != chosenOrder.size()) {
@@ -631,12 +631,12 @@ void canonicalizeStereoGroups_internal(
     // inverted in a smiles string
 
     std::vector<unsigned int> atomsToInvert;
-    RDKit::getAtomsToInvert2(*newMol.get(), chosenOrder, atomsToInvert);
+    RDKix::getAtomsToInvert2(*newMol.get(), chosenOrder, atomsToInvert);
 
-    newMol.reset((RDKit::RWMol *)RDKit::MolOps::renumberAtoms(*newMol.get(),
+    newMol.reset((RDKix::RWMol *)RDKix::MolOps::renumberAtoms(*newMol.get(),
                                                               chosenOrder));
 
-    RDKit::RankedValue newRankedValue;
+    RDKix::RankedValue newRankedValue;
 
     boost::dynamic_bitset<> atomIndicesInStereoGroups(newMol->getNumAtoms());
     boost::dynamic_bitset<> bondIndicesInStereoGroups(newMol->getNumBonds());
@@ -654,18 +654,18 @@ void canonicalizeStereoGroups_internal(
     // groups
 
     for (auto atom : newMol->atoms()) {
-      // if (atom->getChiralTag() != RDKit::Atom::CHI_UNSPECIFIED &&
-      if ((atom->getChiralTag() == RDKit::Atom::CHI_TETRAHEDRAL_CCW ||
-           atom->getChiralTag() == RDKit::Atom::CHI_TETRAHEDRAL_CW) &&
+      // if (atom->getChiralTag() != RDKix::Atom::CHI_UNSPECIFIED &&
+      if ((atom->getChiralTag() == RDKix::Atom::CHI_TETRAHEDRAL_CCW ||
+           atom->getChiralTag() == RDKix::Atom::CHI_TETRAHEDRAL_CW) &&
           !atomIndicesInStereoGroups[atom->getIdx()]) {
         newRankedValue.AddAtom(atom, atomsToInvert);
       }
     }
 
     for (auto bond : newMol->bonds()) {
-      // if (bond->getStereo() != RDKit::Bond::STEREONONE &&
-      if ((bond->getStereo() == RDKit::Bond::BondStereo::STEREOATROPCCW ||
-           bond->getStereo() == RDKit::Bond::BondStereo::STEREOATROPCW) &&
+      // if (bond->getStereo() != RDKix::Bond::STEREONONE &&
+      if ((bond->getStereo() == RDKix::Bond::BondStereo::STEREOATROPCCW ||
+           bond->getStereo() == RDKix::Bond::BondStereo::STEREOATROPCW) &&
           !bondIndicesInStereoGroups[bond->getIdx()]) {
         newRankedValue.AddBond(bond);
       }
@@ -676,7 +676,7 @@ void canonicalizeStereoGroups_internal(
 
     if (!allRankedValues.empty() &&
         !newRankedValue.equivalentTo(*allRankedValues.begin())) {
-      throw RDKit::RigorousEnhancedStereoException(
+      throw RDKix::RigorousEnhancedStereoException(
           "ranked items  are not equivalent");
     }
 
@@ -694,16 +694,16 @@ void canonicalizeStereoGroups_internal(
   std::vector<bool> bondsDone(allRankedValues.begin()->getNumChiralBonds(),
                               false);
 
-  std::vector<RDKit::Atom *> absGroupAtoms;
-  std::vector<RDKit::Bond *> absGroupBonds;
+  std::vector<RDKix::Atom *> absGroupAtoms;
+  std::vector<RDKix::Bond *> absGroupBonds;
 
   // if there is only one smiles, then there is no variation and
   // add stereo groups are actual abs (and there is only one group)
 
-  std::vector<RDKit::StereoGroup> newGroups;
+  std::vector<RDKix::StereoGroup> newGroups;
 
   if (allRankedValues.size() == 1) {
-    if (outputAbsoluteGroups == RDKit::StereoGroupAbsOptions::NeverInclude) {
+    if (outputAbsoluteGroups == RDKix::StereoGroupAbsOptions::NeverInclude) {
       mol.swap(bestNewMol);
       return;
     }
@@ -733,14 +733,14 @@ void canonicalizeStereoGroups_internal(
 
       if (!doesAtomChiralityVary(allRankedValues, index1)) {
         if (outputAbsoluteGroups !=
-            RDKit::StereoGroupAbsOptions::NeverInclude) {
+            RDKix::StereoGroupAbsOptions::NeverInclude) {
           absGroupAtoms.push_back(bestNewMol->getAtomWithIdx(atomIndex1));
         }
         atomsDone[index1] = true;
         continue;
       }
 
-      std::vector<RDKit::Atom *> atomsToAdd;
+      std::vector<RDKix::Atom *> atomsToAdd;
       atomsToAdd.push_back(bestNewMol->getAtomWithIdx(atomIndex1));
       atomsDone[index1] = true;
 
@@ -761,7 +761,7 @@ void canonicalizeStereoGroups_internal(
         }
       }
 
-      std::vector<RDKit::Bond *> bondsToAdd;
+      std::vector<RDKix::Bond *> bondsToAdd;
       for (unsigned int index2 = 0;
            index2 < allRankedValues.begin()->getNumChiralBonds(); ++index2) {
         if (bondsDone[index2]) {
@@ -778,11 +778,11 @@ void canonicalizeStereoGroups_internal(
       }
 
       std::sort(atomsToAdd.begin(), atomsToAdd.end(),
-                [](const RDKit::Atom *a, const RDKit::Atom *b) {
+                [](const RDKix::Atom *a, const RDKix::Atom *b) {
                   return a->getIdx() < b->getIdx();
                 });
       std::sort(bondsToAdd.begin(), bondsToAdd.end(),
-                [](const RDKit::Bond *a, const RDKit::Bond *b) {
+                [](const RDKix::Bond *a, const RDKix::Bond *b) {
                   return a->getIdx() < b->getIdx();
                 });
       newGroups.emplace_back(stereoGroupType, atomsToAdd, bondsToAdd,
@@ -802,14 +802,14 @@ void canonicalizeStereoGroups_internal(
 
       if (!doesBondStereoVary(allRankedValues, index1)) {
         if (outputAbsoluteGroups !=
-            RDKit::StereoGroupAbsOptions::NeverInclude) {
+            RDKix::StereoGroupAbsOptions::NeverInclude) {
           absGroupBonds.push_back(bestNewMol->getBondWithIdx(bondIndex1));
         }
         bondsDone[index1] = true;
         continue;
       }
 
-      std::vector<RDKit::Bond *> bondsToAdd;
+      std::vector<RDKix::Bond *> bondsToAdd;
       bondsToAdd.push_back(bestNewMol->getBondWithIdx(bondIndex1));
       bondsDone[index1] = true;
 
@@ -831,10 +831,10 @@ void canonicalizeStereoGroups_internal(
       }
 
       std::sort(bondsToAdd.begin(), bondsToAdd.end(),
-                [](const RDKit::Bond *a, const RDKit::Bond *b) {
+                [](const RDKix::Bond *a, const RDKix::Bond *b) {
                   return a->getIdx() < b->getIdx();
                 });
-      std::vector<RDKit::Atom *> atomsToAdd;  // nothing added to this one here
+      std::vector<RDKix::Atom *> atomsToAdd;  // nothing added to this one here
       newGroups.emplace_back(stereoGroupType, atomsToAdd, bondsToAdd,
                              ++groupCount);
     }
@@ -850,27 +850,27 @@ void canonicalizeStereoGroups_internal(
   }
 
   // if the abs group is not empty, add it
-  if ((outputAbsoluteGroups == RDKit::StereoGroupAbsOptions::AlwaysInclude ||
+  if ((outputAbsoluteGroups == RDKix::StereoGroupAbsOptions::AlwaysInclude ||
        (outputAbsoluteGroups ==
-            RDKit::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist &&
+            RDKix::StereoGroupAbsOptions::OnlyIncludeWhenOtherGroupsExist &&
         !newGroups.empty())) &&
       (!absGroupAtoms.empty() || !absGroupBonds.empty())) {
     std::sort(absGroupAtoms.begin(), absGroupAtoms.end(),
-              [](const RDKit::Atom *a, const RDKit::Atom *b) {
+              [](const RDKix::Atom *a, const RDKix::Atom *b) {
                 return a->getIdx() < b->getIdx();
               });
     std::sort(absGroupBonds.begin(), absGroupBonds.end(),
-              [](const RDKit::Bond *a, const RDKit::Bond *b) {
+              [](const RDKix::Bond *a, const RDKix::Bond *b) {
                 return a->getIdx() < b->getIdx();
               });
 
-    newGroups.emplace_back(RDKit::StereoGroupType::STEREO_ABSOLUTE,
+    newGroups.emplace_back(RDKix::StereoGroupType::STEREO_ABSOLUTE,
                            absGroupAtoms, absGroupBonds, 0);
   }
 
   bestNewMol->setStereoGroups(newGroups);
 
-  mol = std::unique_ptr<RDKit::ROMol>(bestNewMol.release());
+  mol = std::unique_ptr<RDKix::ROMol>(bestNewMol.release());
 
   return;
 }
@@ -936,7 +936,7 @@ void canonicalizeStereoGroups(std::unique_ptr<ROMol> &mol,
           auto res = Chirality::findMesoCenters(*mol);
           if (res.size() == 1) {
             if (outputAbsoluteGroups ==
-                RDKit::StereoGroupAbsOptions::AlwaysInclude) {
+                RDKix::StereoGroupAbsOptions::AlwaysInclude) {
               addSingleAbsGroup(*mol);
             } else {
               clearStereoGroups(*mol);
@@ -988,10 +988,10 @@ void canonicalizeStereoGroups(std::unique_ptr<ROMol> &mol,
   auto savedStereoGroups = mol->getStereoGroups();
   try {
     if (!foundOrGroup) {
-      RDKit::canonicalizeStereoGroups_internal(mol, StereoGroupType::STEREO_AND,
+      RDKix::canonicalizeStereoGroups_internal(mol, StereoGroupType::STEREO_AND,
                                                outputAbsoluteGroups);
     } else {
-      RDKit::canonicalizeStereoGroups_internal(mol, StereoGroupType::STEREO_OR,
+      RDKix::canonicalizeStereoGroups_internal(mol, StereoGroupType::STEREO_OR,
                                                outputAbsoluteGroups);
     }
 
@@ -1011,4 +1011,4 @@ void canonicalizeStereoGroups(std::unique_ptr<ROMol> &mol,
   }
 }
 
-}  // namespace RDKit
+}  // namespace RDKix

@@ -31,7 +31,7 @@
 //
 // Guillaume GODIN access the AutoCorrelation 3D descriptors names in Dragon TDB
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
 #include "AUTOCORR3D.h"
 #include "MolData3Ddescriptors.h"
@@ -45,7 +45,7 @@
 #include <Eigen/SVD>
 
 using namespace Eigen;
-namespace RDKit {
+namespace RDKix {
 namespace Descriptors {
 
 namespace {
@@ -250,4 +250,4 @@ void AUTOCORR3D(const ROMol &mol, std::vector<double> &res, int confId,
   }
 }
 }  // namespace Descriptors
-}  // namespace RDKit
+}  // namespace RDKix

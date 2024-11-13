@@ -1,5 +1,5 @@
-remove_definitions(-DRDKIT_MOLHASH_BUILD)
-rdkit_python_extension(rdMolHash
+remove_definitions(-DRDKIX_MOLHASH_BUILD)
+rdkix_python_extension(rdMolHash
                        rdMolHash.cpp
                        DEST Chem 
                        LINK_LIBRARIES MolHash)

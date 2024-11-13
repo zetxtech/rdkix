@@ -49,12 +49,12 @@
 #endif
 #include <RDGeneral/BoostEndInclude.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 
-namespace RDKit {
+namespace RDKix {
 
 //! class for flagging enumeration strategy errors
-class RDKIT_CHEMREACTIONS_EXPORT EnumerationStrategyException
+class RDKIX_CHEMREACTIONS_EXPORT EnumerationStrategyException
     : public std::exception {
  public:
   EnumerationStrategyException(const char *msg) : _msg(msg) {}
@@ -85,14 +85,14 @@ EnumerationTypes::RGROUPS getSizesFromBBs(
 //!  Helper function for enumeration, bbs are stored in a
 //!   std::vector< std::vector<boost:shared_ptr<ROMol> >
 //
-RDKIT_CHEMREACTIONS_EXPORT EnumerationTypes::RGROUPS getSizesFromReactants(
+RDKIX_CHEMREACTIONS_EXPORT EnumerationTypes::RGROUPS getSizesFromReactants(
     const std::vector<MOL_SPTR_VECT> &bbs);
 
 //! getReactantsFromRGroups
 //!  Helper function for enumeration, bbs are stored in a
 //!   std::vector< std::vector<boost:shared_ptr<ROMol> >
 //
-RDKIT_CHEMREACTIONS_EXPORT MOL_SPTR_VECT
+RDKIX_CHEMREACTIONS_EXPORT MOL_SPTR_VECT
 getReactantsFromRGroups(const std::vector<MOL_SPTR_VECT> &bbs,
                         const EnumerationTypes::RGROUPS &rgroups);
 
@@ -103,7 +103,7 @@ getReactantsFromRGroups(const std::vector<MOL_SPTR_VECT> &bbs,
 //!   number will not fit into the machines integer type.
 //!   n.b. An overflow simply means there are a lot of products
 //!     not that they cannot be enumerated
-RDKIT_CHEMREACTIONS_EXPORT boost::uint64_t computeNumProducts(
+RDKIX_CHEMREACTIONS_EXPORT boost::uint64_t computeNumProducts(
     const EnumerationTypes::RGROUPS &sizes);
 
 //! Base Class for enumeration strategies
@@ -120,7 +120,7 @@ RDKIT_CHEMREACTIONS_EXPORT boost::uint64_t computeNumProducts(
 //!   }
 //!  \endverbatim
 
-class RDKIT_CHEMREACTIONS_EXPORT EnumerationStrategyBase {
+class RDKIX_CHEMREACTIONS_EXPORT EnumerationStrategyBase {
  protected:
   EnumerationTypes::RGROUPS m_permutation;  // where are we currently?
   EnumerationTypes::RGROUPS
@@ -218,10 +218,10 @@ class RDKIT_CHEMREACTIONS_EXPORT EnumerationStrategyBase {
 #ifdef RDK_USE_BOOST_SERIALIZATION
 BOOST_SERIALIZATION_ASSUME_ABSTRACT(EnumerationStrategyBase)
 #endif
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::EnumerationStrategyBase, 1)
+BOOST_CLASS_VERSION(RDKix::EnumerationStrategyBase, 1)
 #endif
 
 #endif

@@ -6,7 +6,7 @@
 #include <vector>
 #include <GraphMol/TautomerQuery/TautomerQuery.h>
 %}
-%shared_ptr(RDKit::ROMol)
+%shared_ptr(RDKix::ROMol)
 %template(Sizet_Vect) std::vector<size_t>;
 
 %include <GraphMol/TautomerQuery/TautomerQuery.h>

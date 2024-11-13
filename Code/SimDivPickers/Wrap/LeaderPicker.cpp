@@ -1,10 +1,10 @@
 //
 //  Copyright (C) 2019  Greg Landrum
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #define NO_IMPORT_ARRAY
 
@@ -31,9 +31,9 @@ namespace {
 template <typename T>
 void LazyLeaderHelper(LeaderPicker *picker, T functor, unsigned int poolSize,
                       double &threshold, unsigned int pickSize,
-                      python::object firstPicks, RDKit::INT_VECT &res,
+                      python::object firstPicks, RDKix::INT_VECT &res,
                       int nThreads) {
-  RDKit::INT_VECT firstPickVect;
+  RDKix::INT_VECT firstPickVect;
   for (unsigned int i = 0;
        i < python::extract<unsigned int>(firstPicks.attr("__len__")()); ++i) {
     firstPickVect.push_back(python::extract<int>(firstPicks[i]));
@@ -43,7 +43,7 @@ void LazyLeaderHelper(LeaderPicker *picker, T functor, unsigned int poolSize,
 }
 }  // end of anonymous namespace
 
-RDKit::INT_VECT LazyVectorLeaderPicks(LeaderPicker *picker, python::object objs,
+RDKix::INT_VECT LazyVectorLeaderPicks(LeaderPicker *picker, python::object objs,
                                       int poolSize, double threshold,
                                       int pickSize, python::object firstPicks,
                                       int numThreads) {
@@ -52,17 +52,17 @@ RDKit::INT_VECT LazyVectorLeaderPicks(LeaderPicker *picker, python::object objs,
     bvs[i] = python::extract<const ExplicitBitVect *>(objs[i]);
   }
   pyBVFunctor<ExplicitBitVect> functor(bvs, TANIMOTO);
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   LazyLeaderHelper(picker, functor, poolSize, threshold, pickSize, firstPicks,
                    res, numThreads);
   return res;
 }
 
-RDKit::INT_VECT LazyLeaderPicks(LeaderPicker *picker, python::object distFunc,
+RDKix::INT_VECT LazyLeaderPicks(LeaderPicker *picker, python::object distFunc,
                                 int poolSize, double threshold, int pickSize,
                                 python::object firstPicks, int numThreads) {
   pyobjFunctor functor(distFunc);
-  RDKit::INT_VECT res;
+  RDKix::INT_VECT res;
   LazyLeaderHelper(picker, functor, poolSize, threshold, pickSize, firstPicks,
                    res, numThreads);
   return res;
@@ -77,7 +77,7 @@ struct LeaderPicker_wrap {
         "A class for diversity picking of items using Roger Sayle's Leader "
         "algorithm (analogous to sphere exclusion). The algorithm is "
         "currently unpublished, but a description is available in this "
-        "presentation from the 2019 RDKit UGM: "
+        "presentation from the 2019 RDKix UGM: "
         "https://github.com/rdkit/UGM_2019/raw/master/Presentations/"
         "Sayle_Clustering.pdf\n")
         .def("LazyBitVectorPick", RDPickers::LazyVectorLeaderPicks,

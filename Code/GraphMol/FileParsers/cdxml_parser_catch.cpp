@@ -2,15 +2,15 @@
 //  Copyright (c) 2022 Brian P Kelley
 //  All rights reserved.
 //
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "RDGeneral/test.h"
 #include <catch2/catch_all.hpp>
 #include <RDGeneral/Invariant.h>
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/FileParsers/FileParsers.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
@@ -20,8 +20,8 @@
 #include <RDGeneral/BadFileException.h>
 #include <GraphMol/SmilesParse/CanonicalizeStereoGroups.h>
 
-using namespace RDKit;
-using namespace RDKit::v2::CDXMLParser;
+using namespace RDKix;
+using namespace RDKix::v2::CDXMLParser;
 
 std::string canon(const std::string &smi) {
   auto *m = SmilesToMol(smi);
@@ -489,7 +489,7 @@ TEST_CASE("CDXML") {
     for (auto &mol : mols) {
       auto tomol = std::unique_ptr<ROMol>(mol.release());
       tomol.get()->clearConformers();
-      RDKit::canonicalizeStereoGroups(tomol);
+      RDKix::canonicalizeStereoGroups(tomol);
 
       CHECK(MolToSmiles(*tomol) == expected[i]);
       CHECK(MolToCXSmiles(*tomol, wp) == expected_cx[i++]);
@@ -582,7 +582,7 @@ TEST_CASE("CDXML") {
     // this was another hella fun to validate the stereo-chemistry...
     //   there were so many stereo warnings in chemdraw, I'm just going to
     //   assume
-    //    the rdkit is correct here...
+    //    the rdkix is correct here...
     auto fname = cdxmlbase + "chemdraw_template2.cdxml";
     auto mols = MolsFromCDXMLFile(fname);
     std::vector<std::string> expected = {
@@ -667,7 +667,7 @@ TEST_CASE("CDXML") {
     // this was another hella fun to validate the stereo-chemistry...
     //   there were so many stereo warnings in chemdraw, I'm just going to
     //   assume
-    //    the rdkit is correct here...
+    //    the rdkix is correct here...
     auto fname = cdxmlbase + "chemdraw_template3.cdxml";
     auto mols = MolsFromCDXMLFile(fname);
     std::vector<std::string> expected = {
@@ -742,7 +742,7 @@ TEST_CASE("CDXML") {
     try {
       auto mols = MolsFromCDXMLFile("missing file");
       CHECK(0);  // Bad file exception not caught
-    } catch (RDKit::BadFileException &) {
+    } catch (RDKix::BadFileException &) {
     }
   }
 

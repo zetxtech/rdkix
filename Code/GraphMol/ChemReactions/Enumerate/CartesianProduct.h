@@ -36,7 +36,7 @@
 
 #include "EnumerationStrategyBase.h"
 
-namespace RDKit {
+namespace RDKix {
 //! This is a class for enumerating reagents using Cartesian Products of
 /// reagents.
 /*!
@@ -67,7 +67,7 @@ namespace RDKit {
 See EnumerationStrategyBase for more details and usage.
 */
 
-class RDKIT_CHEMREACTIONS_EXPORT CartesianProductStrategy
+class RDKIX_CHEMREACTIONS_EXPORT CartesianProductStrategy
     : public EnumerationStrategyBase {
   size_t m_numPermutationsProcessed{};
 
@@ -138,10 +138,10 @@ class RDKIT_CHEMREACTIONS_EXPORT CartesianProductStrategy
   }
 #endif
 };
-}  // namespace RDKit
+}  // namespace RDKix
 
 #ifdef RDK_USE_BOOST_SERIALIZATION
-BOOST_CLASS_VERSION(RDKit::CartesianProductStrategy, 1)
+BOOST_CLASS_VERSION(RDKix::CartesianProductStrategy, 1)
 #endif
 
 #endif

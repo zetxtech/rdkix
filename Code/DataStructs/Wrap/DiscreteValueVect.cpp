@@ -3,10 +3,10 @@
 //  Copyright (C) 2005-2006 Rational Discovery LLC
 //
 //  @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <RDBoost/python.h>
 
@@ -15,9 +15,9 @@
 #include <RDBoost/PySequenceHolder.h>
 #include <DataStructs/DiscreteValueVect.h>
 
-using namespace RDKit;
+using namespace RDKix;
 
-struct dvv_pickle_suite : rdkit_pickle_suite {
+struct dvv_pickle_suite : rdkix_pickle_suite {
   static python::tuple getinitargs(const DiscreteValueVect &self) {
     std::string res = self.toString();
     python::object retval = python::object(

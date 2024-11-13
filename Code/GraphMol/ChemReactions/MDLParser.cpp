@@ -1,6 +1,6 @@
 //
 //  Copyright (c) 2007-2024, Novartis Institutes for BioMedical Research Inc.
-//  and other RDKit contributors
+//  and other RDKix contributors
 //
 //  All rights reserved.
 //
@@ -50,7 +50,7 @@
 
 #include "ReactionUtils.h"
 
-namespace RDKit {
+namespace RDKix {
 
 using namespace v2::FileParsers;
 
@@ -388,4 +388,4 @@ std::unique_ptr<ChemicalReaction> ReactionFromRxnFile(
 };
 }  // namespace ReactionParser
 }  // namespace v2
-}  // namespace RDKit
+}  // namespace RDKix

@@ -33,7 +33,7 @@
 #include "FilterCatalogEntry.h"
 #include <GraphMol/SmilesParse/SmilesParse.h>
 
-namespace RDKit {
+namespace RDKix {
 
 const std::string DESCRIPTION = "description";
 std::string FilterCatalogEntry::getDescription() const {
@@ -109,4 +109,4 @@ FilterCatalogEntry *MakeFilterCatalogEntry(const FilterData_t &data,
 
   return entry;
 }
-}  // end namespace RDKit
+}  // end namespace RDKix

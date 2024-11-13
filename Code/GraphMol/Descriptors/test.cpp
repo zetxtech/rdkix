@@ -2,10 +2,10 @@
 //  Copyright (C) 2004-2018 Greg Landrum and Rational Discovery LLC
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 
 #include <RDGeneral/test.h>
@@ -23,7 +23,7 @@
 #include <RDGeneral/utils.h>
 #include <RDGeneral/StreamOps.h>
 
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <GraphMol/MolPickler.h>
 #include <GraphMol/SmilesParse/SmilesParse.h>
 #include <GraphMol/SmilesParse/SmilesWrite.h>
@@ -40,8 +40,8 @@
 
 #include <DataStructs/BitVects.h>
 #include <DataStructs/BitOps.h>
-using namespace RDKit;
-using namespace RDKit::Descriptors;
+using namespace RDKix;
+using namespace RDKix::Descriptors;
 
 void test1() {
   BOOST_LOG(rdErrorLog) << "-------------------------------------" << std::endl;
@@ -2160,7 +2160,7 @@ void testGithub1973() {
 
   {
     // Some examples from the original publication, including the non S and P
-    // values calculated with RDKit (which match what's in table 3 of the
+    // values calculated with RDKix (which match what's in table 3 of the
     // original publication) and then values with S and P contributions added by
     // hand.
     std::vector<std::string> smiles = {

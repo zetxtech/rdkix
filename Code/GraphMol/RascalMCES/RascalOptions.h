@@ -2,10 +2,10 @@
 // Copyright (C) David Cosgrove 2023
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include <string>
 #include <RDGeneral/export.h>
@@ -13,11 +13,11 @@
 #ifndef RASCALOPTIONS_H
 #define RASCALOPTIONS_H
 
-namespace RDKit {
+namespace RDKix {
 
 namespace RascalMCES {
 
-struct RDKIT_RASCALMCES_EXPORT RascalOptions {
+struct RDKIX_RASCALMCES_EXPORT RascalOptions {
   double similarityThreshold =
       0.7;  // if calculated below this, no MCES will be evaluated.
   bool completeAromaticRings =
@@ -60,6 +60,6 @@ struct RDKIT_RASCALMCES_EXPORT RascalOptions {
                                         aromatic and aliphatic as different. */
 };
 }  // namespace RascalMCES
-}  // namespace RDKit
+}  // namespace RDKix
 
 #endif  // RASCALOPTIONS_H

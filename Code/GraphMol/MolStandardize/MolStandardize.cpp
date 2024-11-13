@@ -2,17 +2,17 @@
 //  Copyright (C) 2018 Susan H. Leung
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #include "MolStandardize.h"
 #include "Metal.h"
 #include "Normalize.h"
 #include "Tautomer.h"
 #include "Fragment.h"
-#include <GraphMol/RDKitBase.h>
+#include <GraphMol/RDKixBase.h>
 #include <iostream>
 #include <GraphMol/ROMol.h>
 #include <GraphMol/MolOps.h>
@@ -32,7 +32,7 @@
 #include <RDGeneral/BoostEndInclude.h>
 
 using namespace std;
-namespace RDKit {
+namespace RDKix {
 namespace MolStandardize {
 const CleanupParameters defaultCleanupParameters;
 
@@ -459,16 +459,16 @@ std::vector<std::string> enumerateTautomerSmiles(
 }
 
 void disconnectOrganometallics(
-    RWMol &mol, RDKit::MolStandardize::MetalDisconnectorOptions mdo) {
-  RDKit::MolStandardize::MetalDisconnector md(mdo);
+    RWMol &mol, RDKix::MolStandardize::MetalDisconnectorOptions mdo) {
+  RDKix::MolStandardize::MetalDisconnector md(mdo);
   md.disconnect(mol);
 }
 
 ROMol *disconnectOrganometallics(
-    const ROMol &mol, RDKit::MolStandardize::MetalDisconnectorOptions mdo) {
-  RDKit::MolStandardize::MetalDisconnector md(mdo);
+    const ROMol &mol, RDKix::MolStandardize::MetalDisconnectorOptions mdo) {
+  RDKix::MolStandardize::MetalDisconnector md(mdo);
   return md.disconnect(mol);
 }
 
 }  // namespace MolStandardize
-}  // namespace RDKit
+}  // namespace RDKix

@@ -2,10 +2,10 @@
 //  Copyright (C) 2020 Shrey Aryan
 //
 //   @@ All Rights Reserved @@
-//  This file is part of the RDKit.
+//  This file is part of the RDKix.
 //  The contents are covered by the terms of the BSD license
 //  which is included in the file license.txt, found at the root
-//  of the RDKit source tree.
+//  of the RDKix source tree.
 //
 #ifdef RDK_BUILD_THREADSAFE_SSS
 #ifndef CONCURRENT_QUEUE
@@ -14,7 +14,7 @@
 #include <thread>
 #include <vector>
 
-namespace RDKit {
+namespace RDKix {
 template <typename E>
 class ConcurrentQueue {
  private:
@@ -127,6 +127,6 @@ void ConcurrentQueue<E>::clear() {
   d_elements.clear();
 }
 
-}  // namespace RDKit
+}  // namespace RDKix
 #endif
 #endif
